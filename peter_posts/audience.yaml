@@ -81,7 +81,6 @@ posts:
         profile_url: "https://www.linkedin.com/in/ACoAAAEZiJcBrQzPTg9VPP13HruVEwRBO-knG8w"
     commenters_count: 0
     commenters:
-      []
   - id: "7429507665682391040"
     date: "2026-02-17"
     title: "Two senior devs meet at the coffee machine. 😄"
@@ -432,340 +431,551 @@ posts:
         connection_degree: "2nd"
         reaction_type: "funny"
         profile_url: "https://www.linkedin.com/in/ACoAAB7ZyJABx75ZAx8tYR56hnZtCT976wZd3Co"
-    commenters_count: 56
+    commenters_count: 85
     commenters:
-      - name: "Christof Donat"
-        headline: ""
-        connection_degree: "• 3rd+"
-        profile_url: "https://www.linkedin.com/in/christof-donat-b03b262"
-        comment_text: "That's not how senior devs talk. More like managers imagine, senior devs talk. Senior devs know, that there are different tools for different jobs, and there's no such thing as a \"wrong library\"."
-        is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Christof Donat try reading reading comments at mediawiki ;)"
+        is_reply: true
+      - name: "Christof Donat"
+        headline: "„Fearless when facing complex challenges“"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/christof-donat-b03b262"
+        comment_text: "Peter Ovchynnikov Are those comments written by senior developers? Or by script kiddies, cosplaying as senior devs?"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "I even saw this engineers. Well, not in person, in google meet. If it’s ai it’s really good ai :)"
+        is_reply: true
+      - name: "Christof Donat"
+        headline: "„Fearless when facing complex challenges“"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/christof-donat-b03b262"
+        comment_text: "Peter Ovchynnikov I didn't suggest, it's AI. Just people, who are not senior devs cosplaying as senior devs."
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "It’s hard to recognize. Really. Let’s say they are experienced. They consider themselves as seniors. Of course they speak like that very seldom, but chasing you to use their preferred option while refusing other. That is for sure."
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Peter Ovchynnikov I’d challenge the statement that “senior engineers knows there’s no wrong library”.1. Reddit would lose half of its popularity then :)2. It might depend on culture. I believe us people more open to listen to each other’s.3. I personally work with those who definitely know what’s be"
+        is_reply: true
+      - name: "Christof Donat"
+        headline: "„Fearless when facing complex challenges“"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/christof-donat-b03b262"
+        comment_text: "Peter Ovchynnikov 1. Reddit is full of trolls. If I'd post there, I'd also try and come up with the most outrageous hot takes, to gain attention.2. I'm unsure, what you're trying to say here. Are you talking about people in the USA; or about your people?3. So you work with people, who, independent o"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "1. Ok. I have no exact data how many troll on Reddit.2. Yes. Sorry for confusion, US - USA.3. Agree. It would be great to create a definition of senior, but its a topic for another holy war :) So let's stop here :)"
         is_reply: true
       - name: "Len Jaffe"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Non-fungible, Pragmatic, Wizened - Cloud Whisperer / Host of Code Jam Columbus / Perl Monger / IaC DevOps Platform Engineer at Labcorp"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/lenjaffe"
-        comment_text: "The difference between developer's idea of \"can be changed in the future\"  and business' idea of it are that the developer values it more than the business values it. In fact, the business typically only values \"solves the problem now\". Maintainability is clawed back one enhancement crisis at a "
+        comment_text: "The difference between developer's idea of \"can be changed in the future\"  and business' idea of it are that the developer values it more than the business values it. In fact, the business typically only values \"solves the problem now\". Maintainability is clawed back one enhancement crisis at a time"
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Len Jaffe you might be right, but businesses that focus on “now” only dies quickly. Or keep struggling over times. Without balance between now and future everyone is unhappy :("
+        is_reply: true
+      - name: "Len Jaffe"
+        headline: "Non-fungible, Pragmatic, Wizened - Cloud Whisperer / Host of Code Jam Columbus / Perl Monger / IaC DevOps Platform Engineer at Labcorp"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/lenjaffe"
+        comment_text: "Peter Ovchynnikov The devs know this. The management is only paid to think about this quarter. Also, debt is a perfectly acceptable finance tool to the wealthy. Only the turning class really worries about debt. That is why business management doesn't stress when we call it debt. We must start callin"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Len Jaffe good catch."
         is_reply: true
       - name: "Oleksandr Don"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Software Engineer at UKRSIBBANK BNP Paribas Group"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/oleksandr-don-0457b034a"
         comment_text: "IMO \"Can be changed in the future\" leads to accumulating \"Architectural debt\", rarely addressed in the future until major issue emerges. Chicken or egg situation, has little impact on business unless risk can be estimated and proven quantitatively."
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "unfortunately, I’ve seen several businesses that couldn’t overcome technical debt during the scaling phase—especially performance-related debt—and they eventually died. Businesses need to stay focused on the future; that’s another side of this problem.Engineers often don’t understand what matters mo"
+        is_reply: true
       - name: "Oleksandr Don"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Software Engineer at UKRSIBBANK BNP Paribas Group"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/oleksandr-don-0457b034a"
+        comment_text: "Peter Ovchynnikov thank you for term correction.  I was not thinking in terms of SOLID. Brutal case of DB schema misdesign ignoring future read use cases led to few months debugging in prod freezing system with little clue(memory dumps, event logs, performance profiling). Third party DB exhausted th"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Oleksandr Don the same, SOLID, DRY, DB normal forms, microservises, hexagonal architecture, Clean Code. All these are required to support possibilities to make changes in the future. When business ignores future everyone is suffering :)"
+        is_reply: true
+      - name: "Oleksandr Don"
+        headline: "Software Engineer at UKRSIBBANK BNP Paribas Group"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/oleksandr-don-0457b034a"
         comment_text: "Peter Ovchynnikov I will read through the suggested methodology. Thanks. Adapter (DB gateway) was in place so the problem was more or less contained."
         is_reply: true
       - name: "Maryna Tochkova"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "IT Consultant & Developer | Frontend-Focused | UX/UI-Minded | Fintech & Insurance Domain Experience"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/maryna-tochkova-7657375b"
         comment_text: "But the time for change can be from 15 minutes up to months in case code duplicates are used everywhere etc.."
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Maryna Tochkova if ai could deal with those duplications, than who care? Disclaimer: ai isn’t capable of that yet."
+        is_reply: true
+      - name: "Maryna Tochkova"
+        headline: "IT Consultant & Developer | Frontend-Focused | UX/UI-Minded | Fintech & Insurance Domain Experience"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/maryna-tochkova-7657375b"
+        comment_text: "Peter Ovchynnikov Code can be good and bad. Good code means same coding style, same principles, naming conventions etc. In case all of it is consistent - me, you and probably AI will understand it fast, change or scale it. If it’s a different file/component structure in each case, mixed naming conve"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Maryna Tochkova have you ever tried to read low level JavaScript produced by babel? Have seen how many duplications are there?"
+        is_reply: true
+      - name: "Maryna Tochkova"
+        headline: "IT Consultant & Developer | Frontend-Focused | UX/UI-Minded | Fintech & Insurance Domain Experience"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/maryna-tochkova-7657375b"
+        comment_text: "Peter Ovchynnikov no I didn’t. Why would I do it, with wich purpose? Since it’s a compiler it has its own reasons to do so due to the way it works. We don’t maintain/change this code directly. Anyway, I worked with old legacy code a lot - the code was bad, buggy, it’s maintenance was incredibly pain"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Maryna Tochkova right, the question is what do you mean by code quality? How do you distinguish bad code from good code?"
+        is_reply: true
+      - name: "Maryna Tochkova"
+        headline: "IT Consultant & Developer | Frontend-Focused | UX/UI-Minded | Fintech & Insurance Domain Experience"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/maryna-tochkova-7657375b"
+        comment_text: "Peter Ovchynnikov good one is: me as a new team member can quickly understand the structure of the project and code itself, it is consistent and clean. I get the naming, the logic of how things are built. I understand where to change the code and how it will impact the rest - no surprises for me. I "
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Maryna Tochkova doesn’t it mean that for you code has enough quality when it’s easy to you to make changes? Does code have enough quality when page loads 15 seconds? What other traits of quality could be?"
+        is_reply: true
+      - name: "Maryna Tochkova"
+        headline: "IT Consultant & Developer | Frontend-Focused | UX/UI-Minded | Fintech & Insurance Domain Experience"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/maryna-tochkova-7657375b"
+        comment_text: "Peter Ovchynnikov it means a lot things that’s my point. And it means that “𝗱𝗲𝗯𝗮𝘁𝗲𝘀 𝗮𝗯𝗼𝘂𝘁 𝘄𝗵𝗲𝘁𝗵𝗲𝗿 𝗔𝗜 𝘄𝗿𝗶𝘁𝗲𝘀 𝗴𝗼𝗼𝗱 𝗼𝗿 𝗯𝗮𝗱 𝗰𝗼𝗱𝗲 𝗮𝗿𝗲 𝘀𝗲𝗻𝘀𝗲𝗹𝗲𝘀𝘀” is not really the case… At least for now. I vibe code - I refactor very long after. I do AI powered developm"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Maryna Tochkova right, thank you for article, I read it already. We have a transition now. AI is writing code. His is the reality. We both saw tons of such code. Good it or bad? From human perspective definitely bad. Why? Because it’s repetitive, not SOLID, hardly understood. Etc.From businesses per"
         is_reply: true
       - name: "Paul Hammond"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Contract Web Developer"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/paul-hammond-bb5b78251"
         comment_text: "If one of those people is using Angular, one of them is definitely wrong."
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Paul Hammond exactly :)"
+        is_reply: true
       - name: "William Alexander"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Software Delivery Lead | Sociotechnical Systems Engineer"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/william-alexander-software-delivery-lead"
+        comment_text: "Paul Hammond absolutely: the other one 😎"
+        is_reply: true
+      - name: "Paul Hammond"
+        headline: "Contract Web Developer"
+        connection_degree: "2nd"
+        profile_url: "https://www.linkedin.com/in/paul-hammond-bb5b78251"
+        comment_text: "William Alexander I knew you would find this comment 🤣"
+        is_reply: true
+      - name: "William Alexander"
+        headline: "Software Delivery Lead | Sociotechnical Systems Engineer"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/william-alexander-software-delivery-lead"
         comment_text: "Paul Hammond my spidey-senses tingle when otherwise intelligent engineers talk nonsense ^^"
         is_reply: true
       - name: "Oleksandr Koreniak"
-        headline: ""
-        connection_degree: "• 1st"
+        headline: "Senior C++ developer"
+        connection_degree: "1st"
         profile_url: "https://www.linkedin.com/in/oleksandr-koreniak-2a198319"
         comment_text: "AI-generated code is simply working code that works and is worth as much as the AI ​​model that generated it. It's simply another code producer in the code supply chain. An experienced engineer knows where and how to use it."
         is_reply: false
       - name: "Yurii Kinakh"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "CTO & Co-Founder at @Inspirit | Building payment infrastructure & systems that handle scale | Writing about where engineering actually gets stuck"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/yurii-kinakh"
         comment_text: "Been thinking this way for a while. Once you stop treating code like art and start treating it like a tool that has to work and stay flexible, most quality debates dissolve.What's tricky tho is the cultural side. Some senior devs feel like their craft is being devaluated when you adopt this mindset."
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Yurii Kinakh WOW!"
+        is_reply: true
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Yurii Kinakh a lot of people disagree. Not me though :)"
+        is_reply: true
       - name: "Yurii Kinakh"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "CTO & Co-Founder at @Inspirit | Building payment infrastructure & systems that handle scale | Writing about where engineering actually gets stuck"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/yurii-kinakh"
         comment_text: "Peter Ovchynnikov ha, yeah the \"code is art\" crowd can get passionate about it. Appreciate the post, it needed to be said."
         is_reply: true
       - name: "Sanyam Arya"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Leading and Shaping Technology and Teams"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/sanyam-arya"
         comment_text: "It shouldn't just run, 𝗶𝘁 𝗻𝗲𝗲𝗱𝘀 𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲. Design principles are exactly what make that \"𝗰𝗵𝗮𝗻𝗴𝗲𝗮𝗯𝗹𝗲 𝗹𝗮𝘁𝗲𝗿\" requirement actually possible."
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Sanyam Arya didn’t I stated that?"
         is_reply: true
       - name: "Yitzhak Kornbluth"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Staff Software Engineer, looking for new opportunities"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/yitzhak-kornbluth-02a187125"
         comment_text: "Yitzhak Kornbluth As for AI-written code that can only be maintained by AI: Even assuming that the AI can in fact reliably maintain it (something that quite a few engineers say they've seen not happening), that locks you in to AI, which could be a problem if the venture capital dries up and the AI c"
         is_reply: false
       - name: "Mukesh A."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Principal Software Engineer, Inventor, National Award Winner, .Net stack (C#), ASP.NETCore, Azure DevOps."
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/mukesh-adhvaryu"
         comment_text: "Spot on! I’ve seen people doing refactoring to use new tools just because they are hyped to solve the problem better and faster. Conveniently ignoring man hours to get it done and failing to analyse what these changes will add to overall business value and propositions- the things really matter."
         is_reply: false
       - name: "Andre Prellwitz"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Full-stack .NET Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/andreprellwitz"
         comment_text: "Software has this quality where it seems to work for the moment, but fails catastrophically without warning, given the right conditions.  That failure can include function, performance, security, or even legal.  Does this actually work, is it fast enough to compete, is it compatible with our securit"
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Let's consider software that fails without warning as not working.  E. g. work for the moment, but fails catastrophically without warning = NOT WORKING CODE. Code that has security issue = NOT WORKING CODE. If page load 15 seconds = NOT WORKING CODE. I don't see contradiction here."
+        is_reply: true
       - name: "Andre Prellwitz"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Full-stack .NET Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/andreprellwitz"
-        comment_text: "Peter Ovchynnikov Maybe it's a language or culture effect, but saying something \"works\" means something entirely different than what you postulated.Of course if AI code passes security scans, meets intuitive performance goals, considers licensing, handles edge cases, etc., there's no issue with it"
+        comment_text: "Peter Ovchynnikov Maybe it's a language or culture effect, but saying something \"works\" means something entirely different than what you postulated.Of course if AI code passes security scans, meets intuitive performance goals, considers licensing, handles edge cases, etc., there's no issue with it. "
         is_reply: true
       - name: "Iharob Al Asimi"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Senior Software Engineer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/iharob"
         comment_text: "AI code can certainly be modified later by AI. But i increasingly becomes a mess that eventually stops working. I am conducting an experiment rigth now. There is potential, that eventually it will actually be able to do what engineers do. But not yet."
         is_reply: false
       - name: "Aleksandr Ishchenko"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Senior Full Stack Engineer | AI-Powered Interfaces | TypeScript · React.js · Next.js · tRPC · NestJS"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/aishenko"
         comment_text: "Arguing at the coffee machine is often a sign of juniority. And when they understand your idea about the fact that code is not a holy grail but rather a business instrument, we call them \"software developers\". And when we can explain this idea to other developers, we call them \"seniors.\""
         is_reply: false
       - name: "Lowie Rojas"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Senior Software Engineer C++ Eindhoven"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/lowie-rojas-187562216"
-        comment_text: "Seniors would never use such language. Maybe you could hear it from juniors, and it is still a maybe.A real senior would try to deal with this using constructive comments.  \"Have you considered a different approach, maybe using this other library? Why would you prefer this one instead of the other?"
+        comment_text: "Seniors would never use such language. Maybe you could hear it from juniors, and it is still a maybe.A real senior would try to deal with this using constructive comments.  \"Have you considered a different approach, maybe using this other library? Why would you prefer this one instead of the other?\""
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Lowie Rojas ohh. Heav you heard holy wars what’s better .NET or Java?"
         is_reply: true
       - name: "Yitzhak Kornbluth"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Staff Software Engineer, looking for new opportunities"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/yitzhak-kornbluth-02a187125"
-        comment_text: "I have to disagree with your bolded statement.  You named two criteria.1. It solves the problem now.2. It can be changed when requirements shift.  Presumably you mean \"easily changed\".I think you need to add:3. It is relatively easy to maintain.What makes code maintainable?  There are quite a few "
+        comment_text: "I have to disagree with your bolded statement.  You named two criteria.1. It solves the problem now.2. It can be changed when requirements shift.  Presumably you mean \"easily changed\".I think you need to add:3. It is relatively easy to maintain.What makes code maintainable?  There are quite a few fa"
         is_reply: false
       - name: "Yannick L."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Software architect | Originator of the Independent Variation Principle (IVP, software architecture) and Causal Graph Theory (CGT, physics)"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/yannickloth"
-        comment_text: "Hi Peter OvchynnikovI agree with your point.Though, maybe for the first time, there is one generally applicable design principle that is purely objective when evaluating the quality of a system/module/library/code construct: the hashtag#IndependentVariationPrinciple (IVP).The IVP won't always help y"
+        comment_text: "Like
+            
+        
+      
+
+
+      
+
+    
+        
+    
+    
+
+
+      
+
+    
+  
+
+      
+
+      
+          
+
+    
+  
+    Reply"
         is_reply: false
       - name: "Joseph Boese"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Principal Software Engineer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/joseph-boese-8379a833b"
         comment_text: "I read this and think hmm might be spending the latter half of my career refactoring/rewriting AI created spaghetti code tightly coupled hairballs.  Any decent size code base can be modified by AI until it can't and then good luck meeting business needs without spending money on human coders who wil"
         is_reply: false
       - name: "Matt E."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Senior Software Engineer at Anthology"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/matt-e-4b2120124"
-        comment_text: "\"Works on my machine\" code works also. Should that now be acceptable in production too?  Why not just eliminate all coding standards just because something works?  The time spent writing proper code will be far lower than the time spent debugging, maintaining and ultimately refactoring poorly writ"
+        comment_text: "\"Works on my machine\" code works also. Should that now be acceptable in production too?  Why not just eliminate all coding standards just because something works?  The time spent writing proper code will be far lower than the time spent debugging, maintaining and ultimately refactoring poorly writte"
         is_reply: false
       - name: "Nickolai Stepanov"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "AI Integration | Full Stack | Founding | SaaS | Product | MVP | Startup | React | Next.js | Node.js | Nest"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/nickot"
-        comment_text: "Like \"Functional Programming is better Class\"...Also, code might be written 1000 ways...Yes maintentable code is not spaghetti code, but almost all subjective, all have pros and cons...AI  makes code review better ))) just need control result.                                                    …mo"
+        comment_text: "Like \"Functional Programming is better Class\"...Also, code might be written 1000 ways...Yes maintentable code is not spaghetti code, but almost all subjective, all have pros and cons...AI  makes code review better ))) just need control result."
         is_reply: false
       - name: "Vitaly Gapontsev"
-        headline: ""
-        connection_degree: "• 1st"
+        headline: "Front-End / Fullstack (React + Node.js)"
+        connection_degree: "1st"
         profile_url: "https://www.linkedin.com/in/vitaly-gapontsev"
         comment_text: "Figures why I'm no senior yet."
         is_reply: false
       - name: "Michael S. P. Miller"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "..."
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/mikespmiller"
         comment_text: "That's why the Systems Aanalyst exists. S/he gathers the requirements and tells the Senior Devs what to code. S/he is the arbiter of correctness."
         is_reply: false
       - name: "Kyle Griffin Aretae"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Software And Education"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/kyle-aretae"
         comment_text: "Indeed...but if its not maintainable 6 months later...which we've seen...then that's the key"
         is_reply: false
       - name: "Jiajun Gao"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Senior Software Engineer at Linkedin"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/eickegao"
         comment_text: "Are you sure you started to use AI since 2018?"
         is_reply: false
       - name: "Krystian Cybulski"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "I help the world’s most demanding leaders hire exceptional tech talent from Europe — without the usual outsourcing headaches."
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/krystianc"
         comment_text: "As long as they finish arguing before they finish drinking their coffee, this is OK."
         is_reply: false
       - name: "Stuart Werbner"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Contract Python Software Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/stuartwerbner"
         comment_text: "Time to re-hire a librarian??"
         is_reply: false
       - name: "Oleksandr Don"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Software Engineer at UKRSIBBANK BNP Paribas Group"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/oleksandr-don-0457b034a"
         comment_text: "Stuart Werbner best response)"
         is_reply: true
       - name: "Rob Leslie"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Financial Software Developer. C++. Mensa. Bach lover. I’m just a bloke, Guv! This is what I want, when I go; A Fistful of Dollars!"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/robleslie100"
         comment_text: "Peter, you're path through life was different to mine. You're argument is mostly correct, but it failed as soon as you said \"the rest might just be a matter of taste. 🔧\".Have a good life!"
         is_reply: false
       - name: "Darrin Baines"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Strategic Health Economics Executive | HTA & Cost-Effectiveness Modelling | Model Validation | Semantic Layer for Pharma and Health Systems | archive.org/details/darrin-baines-health-economics"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/darrinbaines"
         comment_text: "Why did i read all those books on clean coding, pragmatic coding, scrum, waterfall, blah blah blah?"
         is_reply: false
+      - name: "Kevin Brown"
+        headline: "AI + Automation in Regulated Domains | Deterministic Orchestration • Payments in an AI era • Telco Cloud • Compliance-by-Design"
+        connection_degree: "3rd+"
+        profile_url: "https://www.linkedin.com/in/kevinbr"
+        comment_text: "Darrin Baines stick to clean eating, pragmatic life choices and watch only scrums in rugby ? Take the odd weekend triip to picnic by a waterfall and make sure you stand up as much as you can every day"
+        is_reply: true
       - name: "Darrin Baines"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Strategic Health Economics Executive | HTA & Cost-Effectiveness Modelling | Model Validation | Semantic Layer for Pharma and Health Systems | archive.org/details/darrin-baines-health-economics"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/darrinbaines"
         comment_text: "Kevin Brown Thank you"
         is_reply: true
       - name: "Michael Martell"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Full-Stack React / Swift iOS App Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/martell01"
         comment_text: "This post is AI slop"
         is_reply: false
       - name: "Timm Krause"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "System Engineer Cloud and On-Premises Solutions at CLAAS"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/timmkrause"
-        comment_text: "Gute Idee, muss noch den STREITSCHLICHTER.md Agent einchecken.                                                                                        Show translation                       Show translation of this comment"
+        comment_text: "Gute Idee, muss noch den STREITSCHLICHTER.md Agent einchecken.
+
+                    
+                      
+  
+                  
+    
+      
+        Show translation
+      
+      
+        Show translation of this comment"
         is_reply: false
       - name: "Jaakko Saaristo"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Java Specialist | Cloud Application Generalist"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/jaakko-saaristo"
         comment_text: "\"𝗰𝗼𝗱𝗲 𝗾𝘂𝗮𝗹𝗶𝘁𝘆 𝗶𝘀 𝘀𝘂𝗿𝗽𝗿𝗶𝘀𝗶𝗻𝗴𝗹𝘆 𝘀𝗶𝗺𝗽𝗹𝗲: 𝗶𝘁 𝘀𝗼𝗹𝘃𝗲𝘀 𝘁𝗵𝗲 𝗽𝗿𝗼𝗯𝗹𝗲𝗺 𝗻𝗼𝘄, 𝗮𝗻𝗱 𝗶𝘁 𝗰𝗮𝗻 𝗯𝗲 𝗰𝗵𝗮𝗻𝗴𝗲𝗱 𝘄𝗵𝗲𝗻 𝗿𝗲𝗾𝘂𝗶𝗿𝗲𝗺𝗲𝗻𝘁𝘀 𝘀𝗵𝗶𝗳𝘁.  That's it. \"I think what you really want to say is that you don't give a damn about code quality."
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Jaakko Saaristo that completely true. The more code I write the less I understand what the quality is. Could you please bring your perspective on this question? What do you know about code quality ?"
+        is_reply: true
       - name: "Jaakko Saaristo"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Java Specialist | Cloud Application Generalist"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/jaakko-saaristo"
         comment_text: "Peter Ovchynnikov No, I think it's enough that you admit that you don't know what code quality is, which completely invalidates your core argument which is to say that senior developers don't know what it is."
         is_reply: true
       - name: "Lion Kozlinsky"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Lead Backend Developer"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/lion-kozlinsky-b0711157"
-        comment_text: "I strongly disagree. Difference between good code and bad can be a difference between new developer easily delivering new features and same developer crying and quitting without delivering anything, and hiring process starts again, business progress blocked. \"Code works\" is merely the most obvious"
+        comment_text: "I strongly disagree. Difference between good code and bad can be a difference between new developer easily delivering new features and same developer crying and quitting without delivering anything, and hiring process starts again, business progress blocked. \"Code works\" is merely the most obvious c"
         is_reply: false
       - name: "Robert A."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Software Engineering Leader of 20 Years"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/robertambrosini"
-        comment_text: "20 years of software & management and I can tell you;This \"argument\" never happens with experienced senior devs, it's always \"how come you X over Y\" or \"don't use this instead of that\". AI picks, and does as it's told, and if you tell it the wrong thing, you have screwed yourself in the future"
+        comment_text: "20 years of software & management and I can tell you;This \"argument\" never happens with experienced senior devs, it's always \"how come you X over Y\" or \"don't use this instead of that\". AI picks, and does as it's told, and if you tell it the wrong thing, you have screwed yourself in the future. \"Wor"
         is_reply: false
       - name: "Maria Virk"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Digital Manager & Full-Stack Developer at Percuma by CKE | Architecting High-Conversion Ecosystems with Next.js & React | Full Ownership of Digital Strategy."
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/maria-virk"
         comment_text: "Code quality is subjective; business value is objective. This is a great reminder to zoom out from the IDE every once in a while and look at the bottom line."
         is_reply: false
       - name: "Óscar Vives"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Lead Senior Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/oscarvives"
         comment_text: "𝗙𝗿𝗼𝗺 𝗮 𝗯𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗽𝗲𝗿𝘀𝗽𝗲𝗰𝘁𝗶𝘃𝗲, 𝗰𝗼𝗱𝗲 𝗾𝘂𝗮𝗹𝗶𝘁𝘆 𝗶𝘀 𝘀𝘂𝗿𝗽𝗿𝗶𝘀𝗶𝗻𝗴𝗹𝘆 𝘀𝗶𝗺𝗽𝗹𝗲: 𝗶𝘁 𝘀𝗼𝗹𝘃𝗲𝘀 𝘁𝗵𝗲 𝗽𝗿𝗼𝗯𝗹𝗲𝗺 𝗻𝗼𝘄, 𝗮𝗻𝗱 𝗶𝘁 𝗰𝗮𝗻 𝗯𝗲 𝗰𝗵𝗮𝗻𝗴𝗲𝗱 𝘄𝗵𝗲𝗻 𝗿𝗲𝗾𝘂𝗶𝗿𝗲𝗺𝗲𝗻𝘁𝘀 𝘀𝗵𝗶𝗳𝘁. I would no use a plane or elevator designed ov"
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Óscar Vives me either. Therac-25 is example. Still for LinkedIn app, 99.50% of crash free sessions is good results. Different consequences require different approaches."
+        is_reply: true
       - name: "Óscar Vives"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Lead Senior Developer"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/oscarvives"
         comment_text: "Peter Ovchynnikov,  \"Oscar Vives died on a defect on v0.98, fortunally fixed in v0.98b\"  would be a hilarious crappy tombstone text"
         is_reply: true
       - name: "Bobby R."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Holistic Software Architect"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/bobby-ratliff"
         comment_text: "What senior dev automatically looks to libraries for help?"
         is_reply: false
       - name: "yameen javaid"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Fullstack Software Engineer | Product Engineer | Turning Ideas into Products"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/yameen-javaid"
         comment_text: "Yeah, this hits I’ve seen so many “wrong” code debates that were really just different tradeoffs based on what each dev optimized for at the time."
         is_reply: false
       - name: "Ahmad Asif"
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Attended University of Management and Technology - UMT"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/ahmad-asif-9a00b332b"
         comment_text: "yameen javaid literally"
         is_reply: true
       - name: "Jacob R."
-        headline: ""
-        connection_degree: "• 3rd+"
+        headline: "Senior Web Architect & Engineer | Scalable Web Systems | AI Integration | Performance Optimization | Dev Team Leadership @ Act!"
+        connection_degree: "3rd+"
         profile_url: "https://www.linkedin.com/in/jacobrossdev"
         comment_text: "Which one is getting regular updates and more community engagement? I want that library."
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Jacob R. I would look whether it solves problems. And then apply your approach for sure."
         is_reply: true
       - name: "Tihomir Turzai"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "QA That Helps You Ship Faster, Safer, and Smarter | QA Strategy & Automation Expert | Founder @Digital Archer"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/turzait"
         comment_text: "this is exactly how it looks when two AIs, both claiming they’re “the best on the market,” start arguing... 😄"
         is_reply: false
+      - name: "Peter Ovchynnikov"
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
+        connection_degree: ""
+        profile_url: "https://www.linkedin.com/in/ovchyn"
+        comment_text: "Tihomir Turzai not only, have you ever heard how people argue what’s better: react or angular?"
+        is_reply: true
       - name: "William Alexander"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Software Delivery Lead | Sociotechnical Systems Engineer"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/william-alexander-software-delivery-lead"
         comment_text: "Peter Ovchynnikov I can give you plenty of business, engineering, and human ways in which Angular is better ^^"
         is_reply: true
       - name: "Dmytro Shatalov"
-        headline: ""
-        connection_degree: "• 2nd"
+        headline: "Helping businesses launch fast MVPs and reliable web platforms | SaaS, automation, APIs | WordPress"
+        connection_degree: "2nd"
         profile_url: "https://www.linkedin.com/in/dimashatalov"
         comment_text: "Who told that  engeneers think it is bad? :)"
         is_reply: false
       - name: "Peter Ovchynnikov"
-        headline: ""
+        headline: "Building software with AI since 2018 ▪️ Co-CEO at Speed & Function ▪️Entrepreneur ▪️ Classical engineering × AI creativity"
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
         comment_text: "Dmytro Shatalov i didn’t"
@@ -806,7 +1016,30 @@ posts:
         headline: ""
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
-        comment_text: "Project Vend: Phase two \ Anthropichttps://www.anthropic.com/research/project-vend-2                                                                                                                                                                                                Project Vend: Phase two "
+        comment_text: "Project Vend: Phase two \\ Anthropichttps://www.anthropic.com/research/project-vend-2
+
+                    
+                      
+  
+                  
+      
+    
+      
+          
+    
+        
+    
+
+          
+    
+  
+          
+  
+              
+      
+        
+          Project Vend: Phase two
+"
         is_reply: false
       - name: "Nikolay Mironchenko"
         headline: ""
@@ -846,7 +1079,6 @@ posts:
         profile_url: "https://www.linkedin.com/in/ACoAACpvJeoB3IFBwtysTAA5kSTI4CcNAcFtF8w"
     commenters_count: 0
     commenters:
-      []
   - id: "7421897520596893696"
     date: "2026-01-27"
     title: "Most juniors leave before becoming useful. AI might cut that window..."
@@ -903,13 +1135,36 @@ posts:
         headline: ""
         connection_degree: ""
         profile_url: "https://www.linkedin.com/in/ovchyn"
-        comment_text: "https://tidyfirst.substack.com/p/the-bet-on-juniors-just-got-better                                                                                                                                                                                                The Bet On Juniors Just Got Better       "
+        comment_text: "https://tidyfirst.substack.com/p/the-bet-on-juniors-just-got-better
+
+                    
+                      
+  
+                  
+      
+    
+      
+          
+    
+        
+    
+
+          
+    
+  
+          
+  
+              
+      
+        
+          The Bet On Juniors Just Got Better
+      "
         is_reply: false
       - name: "Adi Stan"
         headline: ""
         connection_degree: "• 1st"
         profile_url: "https://www.linkedin.com/in/adistan"
-        comment_text: "Hi, Peter!Beck talks about the \"valley of regret\" from an organizational investment angle. I see something else: a fundamental cognitive shift. When a junior works with AI, they are not just compressing search time, they are building their mental models differently. In \"Cognitive Divergence Theor"
+        comment_text: "Hi, Peter!Beck talks about the \"valley of regret\" from an organizational investment angle. I see something else: a fundamental cognitive shift. When a junior works with AI, they are not just compressing search time, they are building their mental models differently. In \"Cognitive Divergence Theory \""
         is_reply: false
       - name: "Maxim Geraskin"
         headline: ""
@@ -1159,7 +1414,6 @@ posts:
         profile_url: "https://www.linkedin.com/in/ACoAACbm41QBpZ4PW1Jzs2MSnVkAjglorKTCTGM"
     commenters_count: 0
     commenters:
-      []
   - id: "7399100453231386624"
     date: "2025-11-25"
     title: "🚀 Deploy early saves startups more often than a seed round."
@@ -1222,7 +1476,6 @@ posts:
         profile_url: "https://www.linkedin.com/in/ACoAADNczxABXYk_r3AUiB5ogBsSMdv6fc43I9k"
     commenters_count: 0
     commenters:
-      []
   - id: "7394110933008216065"
     date: "2025-11-11"
     title: "Attending the United Nations Forum on Business and Human Rights in ..."
@@ -1340,4 +1593,3 @@ posts:
         profile_url: "https://www.linkedin.com/in/ACoAABWCubcBfqlOFoAlB3BLTNU2MDPTSFRVYCc"
     commenters_count: 0
     commenters:
-      []
