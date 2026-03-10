@@ -1,0 +1,187 @@
+Topic: S&F:OS Hub (Re)Connect
+Date: Mar 06, 2026, 03:32 PM UTC
+Transcription
+Nick Gluzdov 00:00:00
+Recording, we can share the recording we're gonna get from this. Either way is fine.
+Columbus Leonard 00:00:05
+Yeah, I'll just start this one too because it will show up in a spot where Natalie can like we'll look for it, and then, but yeah, if you want to share yours, that would be great too.
+Nick Gluzdov 00:00:15
+Okay. Awesome.
+Columbus Leonard 00:00:27
+Great. Well, I hope. Are you going to stay in New York for the weekend, Nick?
+Nick Gluzdov 00:00:32
+No, I'm going to a retreat. I'm going to New York for a few hours and then going to Ashbury Park on Jersey Shore for a weekend. Irina and I are doing a retreat this weekend.
+Stephan Protsack 00:00:47
+Yeah. That sounds great.
+Columbus Leonard 00:00:54
+And if we have any notes or anything, I might just take them in your February call follow-up doc if it's okay to just make that living, but happy to make my own copy if you prefer.
+Nick Gluzdov 00:01:08
+Yeah. Yeah, that sounds like a great idea to proceed. Just keep updating it, use comments, and we'll convert some of those comments into text just to make sure that we have kind of like a single source of truth. I think it would be much better than doing it over email.
+Columbus Leonard 00:01:26
+Yeah, yeah. Okay. Great. How about you, Stefan?
+Stephan Protsack 00:01:33
+I'm not sure. You know, I'm studying German, so tomorrow is my German day, and I didn't do any homework. So I'm trying to catch up with that. My next three to four weekends is going to be that. I'll just try be trying to catch up on my German homework. So that's, I don't know. After that, I'll definitely do some kind of a retreat or something to get a little bit outside of the house.
+Stephan Protsack 00:01:59
+But yeah. What about you?
+Columbus Leonard 00:02:04
+Huge plans. Only a huge plan now. This is the I guess 2nd weekend home in a while was traveling for a bit. So I'm excited to see what comes a little more organically and have zero plan.
+Stephan Protsack 00:02:25
+That's also always good.
+Columbus Leonard 00:02:30
+Great. Well, thank you for the follow-up document. No, Natalie dropped in the chat that she reviewed it. I also reviewed it. So, yeah, looking forward to maybe we just go through that. We don't need to go through it word by word, but just go through each topic kind of from top to bottom and check in.
+Nick Gluzdov 00:02:51
+Yeah, so Stefan and I put a lot of work into this. We analyzed, we had a bunch of internal discussions with the team, with each other. So this is all based on many discussions and research. And then we use AI to organize it all in a single document.
+Columbus Leonard 00:03:13
+Nice. Okay. Fantastic. Yeah, and I don't think we've actually had a retro, Stefan, right, since. Yep. Okay.
+Stephan Protsack 00:03:25
+Next week, I think.
+Columbus Leonard 00:03:26
+Next week, yeah. So I'll join that. And Natalie did make a comment to make sure it was a good use of my time. I think going And checking in will definitely be a good use of time, at least to see the ceremony and get to know folks. And we'll see if everyone makes sense, or if we do the next couple and then start to find a cadence that works there.
+Nick Gluzdov 00:03:58
+I agree. I agree. It would be really useful because we have a little bit of tension, and I think we need your experience to help us diagnose. Because you might see a quick solution or a quick lock-hanging fruit here and there that will save us, you know. Hours of experiments and trying different things. So, I think at least once it would be really useful just to kind of sell the energy and the dynamics in the group. And then maybe we can debrief it.
+Nick Gluzdov 00:04:32
+And we would be happy to take suggestions from you and see where it can get better.
+Columbus Leonard 00:04:40
+Okay. Yeah. And same back with you, Stefan. And as you know, as we go, please continue sharing the feedback. I think it's been really great. Really great the last month or two, which is when I joined.
+Stephan Protsack 00:04:55
+Yeah, likewise, from your side, I just wanted to mention, like, in terms of those things, we have our, I think, bi-weekly, right? So if you have anything to share that relates to anything, like if you see something needs to be addressed, please do bring it up. And we can kind of, I think there would be like a quicker feedback cycle for us to go through that if we can see some tactical things that we can turn over quickly. So please do. And I'll try to do the same. If I see anything, I'll just kind of try to use that time to synchronize.
+Columbus Leonard 00:05:28
+Okay. Yeah, that sounds great. Yeah. So responding directly to some of your bullets, I think, yeah, involving y'all in roadmap discussions and quarterly planning makes a lot of sense. I think that that's. Yeah, let's plan on doing that. And I think, yeah, the feedback loop is what we just talked about, Stefan.
+Columbus Leonard 00:05:51
+Sorry.
+Stephan Protsack 00:05:52
+Yeah, no, no, nothing. No, I just wanted to add that. Yeah, I raised that thing: I think we need to do that smartly because in some cases it is helpful. In some cases, it might be the case that the feedback loop needs to be organized differently and stuff like that. Yeah, let's try to do something, see how that works, and then adjust accordingly. That's at least how I see that.
+Columbus Leonard 00:06:24
+Yeah, and I think also, you know, a monthly session, or we'll try it a few times on Helena's planning that we discussed as kind of being like a. All hands of sorts that we can put together and start with a little update from OS Hub to Speed and Function about what different initiatives are happening across the organization that maybe they're not involved with day to day. And then probably spend 10 minutes on that and then open it up for discussion of whatever Vlad, Vadim, whoever Angelina want to discuss. We just kind of follow their lead of the things that they're curious about based on that update or based on anything that's happened.
+Stephan Protsack 00:07:13
+Sure, that makes sense. I think also, I think one of the things I think we can circle back to in terms of, I don't know, just an idea. We have those bi-weekly calls, so team bi-weekly, where we have the whole org and we're looking through the on the OS Hub side, like me and Vlad are on those calls when we look at the metrics, how things are going, stuff like that. Just, I think we'll keep attending those. And then, with additional context that we could get from those monthly calls, it'd probably be like a good way to synchronize in terms of what's happening in different parts and get those bits and pieces of the information.
+Columbus Leonard 00:08:05
+Okay. Yeah, that sounds good. When we do these all hands, do you want it to just be speed and function or do you want like the data engineering team to be there? Like, I see pros and cons to both. Like, one that you can speak candidly of just speed and function there or Or one where you get to hear different opinions from other folks?
+Stephan Protsack 00:08:30
+I also see pros and cons in that. I think one of the things I did wanted to talk to you about is that I've been working a lot more with the data team in the latest days, in the last weeks or so. And then I think overall, kind of bringing those teams close together in some capacity would be useful because I think there are a lot of things that the data team can pick up in terms of how engineers are doing things. And they all are great and very capable. And with a little bit more communication and guidance, I think they can really boost up their productivity in the way they ship things and the way they do things. So I just want us to look at it from that perspective as well. And I don't have a solution for this yet, but maybe having us all on that call can be a 1st step.
+Columbus Leonard 00:09:26
+Okay. Yeah. Go ahead, Nick. Sorry.
+Nick Gluzdov 00:09:31
+Oh, thanks. I think we need to do both and kind of experiment with both formats because I think we do need integration. We need to make sure that teams are working with each other and understanding each other and hearing each other's concerns and needs and where everybody's going. Like that part is important. And also the smaller circle is important so that we can be more focused. Like, can we alternate? You know, I don't know.
+Nick Gluzdov 00:10:02
+Something like that.
+Stephan Protsack 00:10:03
+No, Nick, that's a good idea. I think that it can be like that. I don't know. Again, totally up to you, Boss, and how you see those things coming forward. But I just have an idea of like if that's a share out that's between teams that we can do. And then on we have refinements on our other calls where we can do more specific, like engineering center. This is how platform should evolve to support this particular thing.
+Stephan Protsack 00:10:33
+And then, like, maybe, yeah, maybe something like that. So, yeah, that makes sense.
+Columbus Leonard 00:10:40
+Yeah, I feel like at some point in the future, we're going to say this should just be one agile scrum team. And I'm curious when that is. And I'm letting the data team kind of guide that in some way because I think we just started Agile Sprints like six weeks ago when I, when I like a couple weeks after I joined. And I think letting them get used to that would be good before we like drop it into you guys. And then they're like, you have to onboard three or four people.
+Nick Gluzdov 00:11:16
+They didn't have Scrum before? How did they manage? Did they have any methodology prior to that?
+Columbus Leonard 00:11:25
+I'm just curious. I'm not sure. I'm not sure. There didn't seem to be a clear to-do list. It was kind of just Slack messages and asks from the team. So, yeah, they have actually really appreciated the process and the daily stand-up check-ins. And they've said it's been really clear to have clear priorities.
+Columbus Leonard 00:11:58
+So, that's been great.
+Nick Gluzdov 00:12:00
+Yeah, and by the way, I really agree with the idea of having maybe a joint scrum or scrum of scrums. I don't know. This is too small for safe, but it would be good to have some space, maybe not daily, but where like everybody hears everybody, each part of the organization can kind of be heard and yeah, something like that.
+Columbus Leonard 00:12:26
+Yeah, it was the 1st , this is we just are starting our 3rd sprint, and the 1st two were definitely on the messier side. So, I didn't want to like expose it would not be a good use of time in the middle of the connections launch and stuff to like introduce the chaos. But I think. And maybe after this 3rd sprint, we'll be like, okay, cool. We're feeling like we have a good muscle memory for this and have a good backlog, and it wouldn't be totally chaotic to introduce the two. So maybe it's next sprint, maybe it's in a month.
+Stephan Protsack 00:13:00
+But yeah, I think that's a great idea, Buzz. I think I shared this with you on other calls. I think, again, it would be highly beneficial to pull all this together in one work stream. How that looks like in terms of specific is something we can work out along the way. But I personally benefited a lot with working closer with the data team in the last month or so. And there's definitely like there's def there are definitely things like, e.g. , MIT helping us out currently was a pretty good experiment also. I think, well, we'll see.
+Stephan Protsack 00:13:41
+I'd like to kind of see her feedback and see what she thinks. She loved it.
+Columbus Leonard 00:13:47
+She loved it. She sang your praises quite aggressively. She was very thanks for helping her and welcoming her into that part of the tech stack.
+Stephan Protsack 00:14:00
+Yeah, that's awesome. She was very helpful. Anything we can kind of slowly get folks more and more comfortable with contributing. I think, yeah, so yeah, okay. I think we're on the same page here. So cool.
+Columbus Leonard 00:14:13
+Should we roll to Anhalina or anything else to brainstorm in this area?
+Stephan Protsack 00:14:18
+I'm good. Nick, you have your hand up, but I don't know whether that's intentional or you just forgot to turn it off.
+Nick Gluzdov 00:14:23
+Well, that was from previous time. I thought it was automatic. Let me see how I can. Yeah, I need to take it down somehow.
+Columbus Leonard 00:14:34
+Oh, good, or you can just chime in if it becomes relevant again. There you go. All right. Yeah, got your notes. We also spoke with Pranali and kind of asked her to come up with the items that she'd like Anhalina to own. And I think they've already transitioned the UAT script creation to Anhalina. And I think a couple other things around like.
+Columbus Leonard 00:15:07
+Some other aspects of the delivery. Let me get Pernali's list. They'll explore. So I feel good about where this is going. And I think it was related to Pernali really wanting to feel super connected to everything. And so I think she just took on more activities than is where we want the balance to be struck.
+Nick Gluzdov 00:15:35
+Does she feel overloaded? Do you have a lot of work?
+Columbus Leonard 00:15:39
+Yes. Yeah. Yeah, so UAT testing and then supporting more timeline tracking and speed and function delivery risk assessment. And probably if they do that together, I think there's probably going to be a good give and take from like the engineering project management side to the product management side. That's probably like the healthy pushback that we want to have. And so and then confluence release notes was another aspect that we were brainstorming. How do those three sound to y'all as far as?
+Stephan Protsack 00:16:19
+That sounds great. I do think where I don't know how to I don't have a solution for this, but I have a hunch that Anholina and Pranali starting to work closer together and kind of exchanging responsibilities and stuff like that could empower Pranali to hand off more kind of timeline planning stuff, not hand off in terms of not do that, but in terms of like collaborate more closely with Analina, Anhelina on that. And then a lot of kind of and that will bring a lot of the context into the work of everyone else involved. So I think that's a good starting point. Let's see how that goes. And then after that's done, we can start exploring is there anything else? What goes next?
+Stephan Protsack 00:17:07
+If there is a next, or and stuff like that. Also, if we are going to bring the two teams together to work on a single work stream, I think having Anholina there would be super useful because she's a pretty good Scrum master in general. So organizing and kind of taking her, looking at that process might be useful. So just putting that up in the air and then we can think about it more closely when the time comes.
+Columbus Leonard 00:17:41
+Great. Okay. Yeah, then we can check back on this in a month or so and just see how everyone's feeling. Yep. But I feel like we have a good path here. It sounds like you're feeling similarly, Stefan. Yep, totally agree.
+Columbus Leonard 00:17:58
+Cool. Okay, AI tools and velocity. I think we seems like we generally just miscommunicated on this as far as where different understandings were. So thanks for digging in and clarifying that. It's great to see y'all have cursor and a standard tool set and that sort of thing. How I'd like so we talked a little bit about this, Stefan, in our in our last chat, I believe. But from a metrics perspective, like and I don't want we I'll just share what we're gonna do and I'll invite you to like capture a similar set of metrics.
+Columbus Leonard 00:18:53
+I think we're already tracking velocity, which is like very standard, and we that's like a great tool we can learn from as far as you know, story points per Per sprint, et cetera, per engineer. The other thing, and that will be like functional velocity. The other thing I'd like to do with our team, and I think we're a little newer to AI tools than y'all, it seems like based on based on this document and our subsequent conversations. But I want to track usage of those tools. So, how many prompts, how many like where it like basically measure the activity in cloud code? And this won't be like there's no penalization or anything.
+Columbus Leonard 00:19:38
+I don't believe in that kind of metric. But I do want to make sure that we have traffic going there. And if there is no traffic, then I'll talk to Emily T or Emily O or James or whatever and say, hey, like, see, you haven't used this this week. Let's chat about how we're potentially able to use it or different strategies. So I'm going to start tracking traffic in those tools so that. Yeah.
+Stephan Protsack 00:20:04
+That's actually a good idea. I think that would be a good indication that information that I've gathered so far is fully accurate. We do have, I think we do have those dashboards as well in terms of traffic, how much usage and stuff like that. So, yeah, I think we can start there, definitely. I need to actually analyze the data. I have not looked at the data in a while. But overall, we have not seen so far adoption.
+Stephan Protsack 00:20:38
+So, early on, when we started introducing the tools, we seen a little bit of kind of concerns among the engineers in terms of adoption, meaning like especially when models were a bit early and they were not as powerful as they are now. So, that is something like we just by providing the tools and kind of showing things off, we were able to overcome. That's at least based on my data, that's not an issue anymore. I will, though, kind of dig deeper into the metrics. I know we have them, so we can definitely go also in terms of AI in general. Um, I think one of the things that will be useful, and then we kind of touched on that in the Slack a little bit, and then in terms of kind of shareouts and having I think Vlad has some ideas.
+Stephan Protsack 00:21:43
+I've shared that in the channel around how we can kind of speed up the mock-up development process and translate that into work and stuff like that. So, kind of reducing the bottlenecks to simplify the flow of like this is the product direction, this is the execution strategy. Let's take this on and then let's just grab this and put that into the application and then do everything that needed that is needed to make sure it's scalable and works well. So, yeah, well, I also want to experiment a little bit with a couple of new features that Cursor developed. So they have kind of cloud autonomous engines. I don't know the like I've seen mixed results around that online. So we'll kind of, I think, bus for just overall, if we could touch base on that every week or two to kind of
+Stephan Protsack 00:22:38
+Share ideas, talk through the things I find useful or I found like are good that might help us so that we can constantly introduce and experiment with those tools. My general feeling is that tools like Cursor and Claude are pretty standard and they are more or less established, meaning they don't change too much and they can be safely kind of deployed to work with everything. But there are new things that are coming up, and it's usually like a little bit of a wild west in terms of tools coming up and going features to those tools. So I would like like that would be probably good just to keep both of the teams in sync. And kind of you and I, we can kind of be the touch point in terms of like are we trying this? Are we trying that? Stuff like that.
+Columbus Leonard 00:23:32
+Okay. Yeah, that makes sense. And then you also mentioned kind of the UI style guide. That feels like a really good opportunity for AI to like go through our existing. Application and like CSS code or and pull a style guide out.
+Stephan Protsack 00:23:59
+That's probably a good experiment to run. I would like to see the results. The problem is that we don't have a like we have a mixed style guides, meaning we have some pages that behave one way, some pages that behave the other way. But overall, I think we can try to see what the AI tool will produce, and that might as well be super helpful. I think we did a little bit of that in the last couple of PRs. So I would try to do that generally. I think just manual labor involved into making that happen is probably not something we can that's something we can prioritize right away.
+Stephan Protsack 00:24:40
+But if we can upload that to AI and get something meaningful that we can work with, that would be awesome.
+Columbus Leonard 00:24:47
+Yeah, okay. Yeah, I think yeah, that would be interesting. We can we can at least just put an hour research spike to see you know if we give our Figma mock-up so we just take screenshots even of the website or I guess the website's public so we can just point yeah we can probably just point. Yeah so yeah, we can I'd be curious to see how that how that turns out Okay, and then And then what, yeah, any thoughts on the release process?
+Stephan Protsack 00:25:28
+Yeah, I do have a lot of thoughts, but I don't like, okay, I'll try to make it simple. And I suggest maybe we set up some time next, like maybe I think we have sync Monday or maybe the week after. Yeah. I think we're this is something I am like we're tracking Dora metrics and are Dora metrics like basically tied together to the release cycle. They don't change because release cycle doesn't change. Which metrics are Dora, Dora. So yeah.
+Stephan Protsack 00:26:00
+So and like they are pretty tight to the release cycle. And then our release cycle is pretty like kind of we have two weeks release cycle. So every two weeks we release a bunch of things. That is okay sometimes, but in other times we do like it becomes a little bit of a pain to do mid-spring releases and stuff like that. I would want us to end up in a situation where we can release like more frequently. I mean, we can decide whether we want to release more frequently. We should have the capability and have the cadence there.
+Stephan Protsack 00:26:39
+I do think that would kind of significantly improve the velocity and then shorten the kind of the whole release cycle and amount of labor that's needed to get into that. Into the release. Right now, we are currently quite heavy on kind of quality assurance before the release. And some of those things would ideally be automated. So there is a huge room for improvement there. And some of those issues are technical, some of our processes. So I guess kind of slowly trying to roll that over into quicker cycles.
+Stephan Protsack 00:27:22
+That's at least my idea on how we can make things faster and make the overall kind of ability to ship stuff much, much, much more straightforward and easier. Yeah. Okay.
+Nick Gluzdov 00:27:37
+By the way, you guys don't have a hard stop, right? We can keep going.
+Columbus Leonard 00:27:41
+I do a couple minutes. I do have a call starting in five or so.
+Nick Gluzdov 00:27:46
+Oh, okay. Because maybe we can have a round two, because I think there's more stuff to cover. Yeah. Okay. Yeah. Go ahead. Go ahead, Nick.
+Nick Gluzdov 00:28:02
+Yeah, go ahead. I mean, I want to. So, yeah, it's good that we are diving into details of how we use AI today, but I also want to talk a little slightly more high-level with how do we need to do to tell ourselves that we are doing, we're getting the maximum out of it and validating that, right? Like, how can we tell ourselves to feel comfortable that we are taking full advantage of what AI has to offer today? Like, there might be, you know, a process and some steps to go through to achieve that state. So, I'd love to talk about it the next time. Okay.
+Stephan Protsack 00:28:58
+Sounds good. Yeah, Nick, that's a good comment. I think I yeah. I think, Bas, you still have 4 min , right?
+Columbus Leonard 00:29:16
+Yep, yep.
+Stephan Protsack 00:29:17
+I think I would like to touch the next item, action item, at least a little bit.
+Columbus Leonard 00:29:22
+Yep, yep.
+Stephan Protsack 00:29:24
+And I just wanted to say again, like the latest situation in terms of like the two-week delay and stuff like that, that is something we as well. I think we talked about this beginning. This is something we want to bring up on the next retro. And we want to make sure that we clear those communication gaps and make sure that on our side, we are adjust our communication to make sure that it does not come out that way in terms of like, now we need to wait two weeks, like, but more open in terms of how we present the options, what are potential options and stuff like that. So, and we do, I do think that would be super useful. And I talked about this with Pranania. I think she's okay with that.
+Stephan Protsack 00:30:22
+But I will double-check with her for her to bring that feedback on our retro and to kind of give like to basically make sure the team also hears that from her. And then again, we'll then start adjusting things to make sure that that's not the case in the future.
+Columbus Leonard 00:30:43
+Okay. Yeah. And I think also if we. I can understand that if you feel like you don't know what's going on in the rest of the OS org, it's hard to present different options as far as where timelines are slipping and you don't know the impact. So I think these monthly all-hands of sorts will greatly help give context that allows people to feel comfortable. Putting everything in the bigger picture. Yeah.
+Columbus Leonard 00:31:20
+And then, yeah, do you have time for the stress levels piece? Because, yeah, I think this is important.
+Stephan Protsack 00:31:26
+Yes, we do. Yeah, we have 2 min . I can start from my side. I think we're, I do think we're getting better at that. And Pranali giving the feedback and retro will significantly help to reduce those stress levels. I think everything that we charted out throughout our conversations, the message that you sent and the work that we already started doing, I think that should contribute significantly to making sure that everyone. I mean, I think the why question is the main point here.
+Stephan Protsack 00:32:03
+I think if we can clearly translate the why to the team, that would definitely kind of bring that down significantly. So, and then, yeah, and then I think as well, we're starting to like. I think AI in general as a tool can be a good integrator point because everyone's curious about the technology. Like folks are excited on both sides to see what are the applications of that. So one of the latest suggestions that was in the channel to kind of do a share out on how folks use Cloud Code or whatever other tools that will bring folks to kind of collaborate together and get to know each other more. And I think that's a great idea overall to kind of understand, like, yeah, understand each other and get a broader context. And that would help significantly.
+Columbus Leonard 00:33:07
+Okay. Yeah. And I think we'll end up doing that on Wednesday. We'll use Tyler's invite because I think a few folks are busy on Monday. So yeah, we'll find the time for that definitely next week. Okay. Great.
+Columbus Leonard 00:33:24
+Well, thanks, Atan, for the conversation. We can definitely follow on here in our one-on-one stuff on next week. And then also, Nick, if there's a piece that you want to follow up on the AI, we can set that up in a couple of weeks and chat there.
+Nick Gluzdov 00:33:46
+Yeah, let's do that. I think it would be great to talk again. And yeah, Dive. And then something will change in the next couple of weeks. So we'll have other things to discuss as well.
+Columbus Leonard 00:33:57
+Yeah. Okay. Thank you both so much for the partnership. And yeah, appreciate all the help on all the ongoing activities. I'm looking forward to more ahead.
+Stephan Protsack 00:34:08
+Yeah, likewise. It was a pleasure to talk to all of those things. And I'm glad that we are moving forward with everything that we have discussed. So, yeah, again, see you Monday. All right, sounds good. Have a good weekend. All right.
+Nick Gluzdov 00:34:22
+Thanks, boss.
+Stephan Protsack 00:34:23
+Thanks, Dan. Yeah, please do. I do. I do want to see those. I mean, I do. I have not seen those kind of models before, so I am pretty curious. So thanks.
+🗂️  Meeting Resources
+🎥  Video
+📄  This Call Transcript
+📁  Parent Folder
