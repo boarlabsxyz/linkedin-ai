@@ -99,8 +99,7 @@ function stripTrailingMetadata(text: string): string {
 }
 
 function splitTranscript(text: string): CallSegment[] {
-  const cleaned = stripTrailingMetadata(text);
-  const parts = cleaned.split(/(?=^Topic: )/m);
+  const parts = text.split(/(?=^Topic: )/m);
   const segments: CallSegment[] = [];
 
   for (const part of parts) {
@@ -120,7 +119,10 @@ function splitTranscript(text: string): CallSegment[] {
     if (!date) date = "unknown";
 
     const contentMatch = trimmed.match(/^Transcription\s*\n([\s\S]*)/m);
-    const content = contentMatch ? contentMatch[1].trim() : trimmed;
+    let content = contentMatch ? contentMatch[1].trim() : trimmed;
+
+    // Strip trailing Google Docs metadata PER segment
+    content = stripTrailingMetadata(content);
 
     segments.push({ topic, date, content });
   }
