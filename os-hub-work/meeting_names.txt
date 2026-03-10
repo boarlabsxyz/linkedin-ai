@@ -1,0 +1,73 @@
+     59 [OS Hub] Standup
+     48 [OS Hub] Q&A
+     35 [OS Hub] S&F Tech Call
+     35 OS Hub: Standup
+     25 [OS Hub] Backlog Review
+     16 [OS Hub] S&F RMMM
+     15 [OS Hub] Sprint Demo
+     14 [OS Hub] Sprint Planning
+     10 [OS Hub] Retrospective
+     10 OS Hub: Poker Planning
+      8 [OS Hub] Bizdev
+      7 [OS Hub] Poker Planning
+      7 OS Hub: Q&A
+      4 OS Hub: Prod update
+      3 OS Hub: Retrospective
+      3 OS Hub and Stagen development (Don't touch this time)
+      2 [OS Hub] Strategy
+      2 [OS Hub] Bizdev: Review+Demo+MiniPlanning
+      2 OS Hub: Epic Planning
+      2 OS Hub: Backlog Review
+      2 1:1 Stas, Mariel
+      1 [OS Hub] Strategy - RBA Data & Security
+      1 [OS Hub] PRs in Jira
+      1 [OS Hub] Kate/Peter (1-1)
+      1 [OS Hub] Debrief Nick's call with Kate (Ad Hoc meeting)
+      1 [OS Hub] Bizdev: Review+Demo+MiniPlanning / RETRO (part 2)
+      1 [OS Hub] Bizdev: Retro / Review+Demo+MiniPlanning
+      1 [OS Hub] Bizdev: Backlog refinement + Agenda
+      1 [OS Hub] Bizdev: Backlog Refinement / Retro p.2
+      1 [OS Hub] Bizdev: Backlog Refinement
+      1 [OS Hub] Bizdev: Agenda disc
+      1 [OS Hub] Bizdev: Agenda
+      1 Release Demo! 
+      1 Q3 Planning Session
+      1 Q2 Retro Session
+      1 Q2 Planning Session
+      1 Q1 Retro Session
+      1 Q1 & Q2 Team Share Out (Remind Tyler to Record)
+      1 Peter / Stas
+      1 OS Hub: Vadim/Peter/Stephan
+      1 OS Hub: Uptime & AWS Costs 
+      1 OS Hub: Strategy
+      1 OS Hub: Sprint Planning
+      1 OS Hub: Sprint 25 Demo AAR
+      1 OS Hub: New contract numbers
+      1 OS Hub: High Level Arch. & Contribot
+      1 OS Hub: Goal Review/Setup
+      1 OS Hub: GDPR discussion
+      1 OS Hub: Expectations from QA
+      1 OS Hub: Discuss serialization
+      1 OS Hub: Discuss plan to change deployment process
+      1 OS Hub: Demo Prep.
+      1 OS Hub: Demo Prep
+      1 OS Hub: Deduplication
+      1 OS Hub: Bonus Distribution
+      1 OS Hub: Automative Testing flow & type
+      1 OS Hub: API Epics Ref.
+      1 OS Hub | Stakeholders' network research results discussion 
+      1 OS Hub release
+      1 OS Hub Financial Retro
+      1 OS Hub Bonus System Brainstorming
+      1 OS Hub + S&F: private instance of OS Hub
+      1 OS Hub + S&F | Numbers
+      1 Kate/Peter DORA metrics
+      1 Finalize Blog DNS
+      1 FY24 Q1 Team Goals Share Out
+      1 Create Individual Activities
+      1 Cookie discussion OS Hub/ C&A
+      1 Annual Goal-setting / Planning Session
+      1 API Customer Feedback (pre-planning for Q2) 
+      1 1.12 Release Demo
+      1 1.11 Release Demo
+      1 031 OSH/Janis - Code Review (14.00 CET / 08.00 ET)
