@@ -68,51 +68,35 @@ If a doc fails, log to `./os-hub-work/errors.log` and continue.
 
 **Output:** `./os-hub-work/raw/*.txt`
 
-## Step 5: Create and run local processing script
+## Step 5: Run local processing script
 
-Write `./os-hub-work/process-transcripts.ts` and execute with `npx tsx`.
+Run the existing `./os-hub-work/process-transcripts.ts` with `npx tsx`.
 
-The script must:
-
-### 5a. Read inputs
-- Read `transcript_docs.jsonl` for doc metadata
-- Read each `./os-hub-work/raw/<id>.txt` file
-
-### 5b. Parse and split transcripts
-Each call in a transcript starts with this header pattern:
-```
-Topic: <meeting name>
-Date: <human date>, <time> UTC
-Transcription
+```bash
+npx tsx ./os-hub-work/process-transcripts.ts
 ```
 
-For each raw file:
-- Count occurrences of `/^Topic: /m` — if >1, it's a multi-call file
-- Split at each `Topic:` boundary
-- For each segment, extract:
-  - **Meeting name** from `Topic: <name>` line
-  - **Date** from `Date: <date string>` line → parse to `yyyy.mm.dd`
+The script handles:
 
-### 5c. Organize into folder structure
+### Parsing
+Each call starts with: `Topic: <name>\nDate: <date>\nTranscription\n<content>`
+- Multi-call files are split on `Topic:` boundaries
+- Dates are parsed to `yyyy.mm.dd` format
+- Trailing Google Docs metadata (Meeting Resources, Video, etc.) is stripped
+
+### Deduplication
+Rolling transcript docs overlap — the same call appears in multiple raw files.
+The script deduplicates by `(callName, date)` key, keeping the **longest** version.
+
+### Name cleanup
+Meeting names are cleaned: `[OS Hub]`, `[Purpose: OsHub]`, `[Placeholder]:`, etc.
+are stripped. Leading punctuation (`: `, `<>`) is also removed.
+
+### Output structure
 ```
 ./OS HUB Transcripts/
   <call-name>/
     <yyyy.mm.dd>-<slug>.md
-```
-
-Rules:
-- `<call-name>`: Strip `[OS Hub]` prefix, trim whitespace. E.g. `[OS Hub] Standup` → `Standup`
-- `<slug>`: kebab-case of call name. E.g. `bizdev`, `sprint-planning`
-- Each `.md` file content:
-  ```markdown
-  # <Meeting Name> — <yyyy.mm.dd>
-
-  <transcript content>
-  ```
-
-### 5d. Run it
-```bash
-npx tsx ./os-hub-work/process-transcripts.ts
 ```
 
 ## Step 6: Report summary
