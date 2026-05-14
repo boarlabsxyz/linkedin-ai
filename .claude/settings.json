@@ -5,7 +5,8 @@
       "Bash(gh:*)",
       "Bash(mkdir:*)",
       "Bash(rm ./tmp/*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(echo:*)"
     ]
   }
 }

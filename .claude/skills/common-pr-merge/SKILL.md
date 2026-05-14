@@ -21,22 +21,11 @@ Run these commands in sequence. Stop and report if the merge itself fails — bu
 
 ```bash
 CURRENT_BRANCH=$(git branch --show-current)
-
 gh pr merge --squash --delete-branch
-
-MAIN_BRANCH="main"
-if git show-ref --verify --quiet refs/heads/master; then
-    MAIN_BRANCH="master"
-fi
-
-git checkout $MAIN_BRANCH
-git pull origin $MAIN_BRANCH
-
-if git show-ref --verify --quiet "refs/heads/$CURRENT_BRANCH"; then
-    git branch -D $CURRENT_BRANCH
-else
-    echo "Local branch '$CURRENT_BRANCH' already deleted"
-fi
+MAIN_BRANCH=$(git show-ref --verify --quiet refs/heads/master && echo master || echo main)
+git checkout "$MAIN_BRANCH"
+git pull origin "$MAIN_BRANCH"
+git branch -D "$CURRENT_BRANCH" 2>/dev/null || echo "Local branch '$CURRENT_BRANCH' already deleted"
 ```
 
 ## Requirements

@@ -14,7 +14,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── tone-of-voice.md          # Tone, taboos, sentence rhythm (Ukrainian)
 │   └── post-instructions.md      # Post structure, mini-brief format, quality formula (Ukrainian)
 ├── .claude/
-│   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat)
+│   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
 │   └── skills/                   # Project skills (see below)
 ├── .mcp.json                     # MCP servers: context7, terminal, playwright
 └── CLAUDE.md                     # This file
