@@ -53,9 +53,9 @@ if [ -z "$PR_TITLE" ] || [ ! -s "$PR_BODY_FILE" ]; then
 fi
 
 if gh pr view --json number >/dev/null 2>&1; then
-  gh pr edit --title "$PR_TITLE" --body-file "$PR_BODY_FILE"
+  gh pr edit --title "$PR_TITLE" --body-file "$PR_BODY_FILE" >/dev/null
 else
-  gh pr create --title "$PR_TITLE" --body-file "$PR_BODY_FILE"
+  gh pr create --title "$PR_TITLE" --body-file "$PR_BODY_FILE" >/dev/null
 fi
 
 rm "$PR_BODY_FILE"
