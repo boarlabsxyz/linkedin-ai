@@ -5,7 +5,25 @@
       "Bash(gh:*)",
       "Bash(mkdir:*)",
       "Bash(rm ./tmp/*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(cp *)",
+      "Bash(chmod +x *)",
+      "Bash(./.claude/skills/*)",
+      "Bash(bash -n .claude/skills/*)",
+      "Bash(curl -s https://api.github.com/repos/speedandfunction/snf-ai-skills/contents/)",
+      "Bash(curl -sI https://github.com/speedandfunction/snf-ai-skills)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://github.com/speedandfunction/snf-ai-skills)",
+      "Bash(python3 -c \"import json,sys,base64; d=json.load\\(sys.stdin\\); print\\(base64.b64decode\\(d['content']\\).decode\\(\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f['name'], f['type'], f.get\\('download_url',''\\)\\) for f in data]\")",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Skill(update-config)",
+      "mcp__claude_ai_ClickUP__listWorkspaces",
+      "mcp__claude_ai_ClickUP__searchDocs",
+      "mcp__claude_ai_ClickUP__listLists",
+      "mcp__claude_ai_ClickUP__createDoc",
+      "mcp__claude_ai_ClickUP__getDoc"
     ]
   }
 }

@@ -17,27 +17,15 @@ Merge the current branch's pull request and clean up afterwards. This is a squas
 
 ## Implementation
 
-Run these commands in sequence. Stop and report if the merge itself fails — but treat "local branch already deleted" as success (not an error). `gh pr merge --delete-branch` may delete the local feature branch if you're sitting on it, so check before deleting.
+Run the bundled merge script from the project root:
 
 ```bash
-CURRENT_BRANCH=$(git branch --show-current)
-
-gh pr merge --squash --delete-branch
-
-MAIN_BRANCH="main"
-if git show-ref --verify --quiet refs/heads/master; then
-    MAIN_BRANCH="master"
-fi
-
-git checkout $MAIN_BRANCH
-git pull origin $MAIN_BRANCH
-
-if git show-ref --verify --quiet "refs/heads/$CURRENT_BRANCH"; then
-    git branch -D $CURRENT_BRANCH
-else
-    echo "Local branch '$CURRENT_BRANCH' already deleted"
-fi
+./.claude/skills/common-pr-merge/merge.sh
 ```
+
+The script does all of the steps above and exits non-zero if the merge itself fails. "Local branch already deleted" is treated as success — `gh pr merge --delete-branch` may have already removed the local feature branch if you were sitting on it.
+
+The script is checked in at `.claude/skills/common-pr-merge/merge.sh`; the logic lives there rather than inline so Claude Code's bash parser sees a single command (matchable against the allowlist) instead of a multi-line script with command substitution.
 
 ## Requirements
 
