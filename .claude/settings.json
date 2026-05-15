@@ -18,12 +18,11 @@
       "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f['name'], f['type'], f.get\\('download_url',''\\)\\) for f in data]\")",
       "WebSearch",
       "WebFetch(domain:github.com)",
-      "Skill(update-config)",
-      "mcp__claude_ai_ClickUP__listWorkspaces",
-      "mcp__claude_ai_ClickUP__searchDocs",
-      "mcp__claude_ai_ClickUP__listLists",
-      "mcp__claude_ai_ClickUP__createDoc",
-      "mcp__claude_ai_ClickUP__getDoc"
+      "Skill(*)",
+      "mcp__claude_ai_ClickUP",
+      "Bash(bash *)",
+      "Bash(python3 *)",
+      "mcp__playwright"
     ]
   }
 }
