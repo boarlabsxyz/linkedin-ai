@@ -42,6 +42,7 @@ Your final message must be exactly one of two shapes — no extra prose after.
 WEEK=<YYYY-MM-DD>
 POSTS_MEASURED=<int>
 POSTS_FAILED=<int>
+POSTS_SKIPPED=<int>
 FAILED_IDS=<comma-separated ids or "-">
 ```
 
@@ -50,7 +51,7 @@ FAILED_IDS=<comma-separated ids or "-">
 ERROR=<NETWORK|AUTH|FS|UNKNOWN>
 ```
 
-Per-post failures do **not** trigger `ERROR=` — they're counted into `POSTS_FAILED` and listed in `FAILED_IDS`.
+Per-post failures do **not** trigger `ERROR=` — they're counted into `POSTS_FAILED` and listed in `FAILED_IDS`. `POSTS_SKIPPED` is the count of files with `type: "repost"` — analytics for those belong to the original poster, so we deliberately don't scrape them.
 
 ## Steps
 
@@ -60,7 +61,7 @@ Per-post failures do **not** trigger `ERROR=` — they're counted into `POSTS_FA
 ls -1 ./tmp/li-stats/posts/*.json 2>/dev/null
 ```
 
-If the list is empty → final contract with `POSTS_MEASURED=0 POSTS_FAILED=0 FAILED_IDS=-`. Done.
+If the list is empty → final contract with `POSTS_MEASURED=0 POSTS_FAILED=0 POSTS_SKIPPED=0 FAILED_IDS=-`. Done.
 
 ### 2. Open a NEW browser tab (never replace existing ones)
 
@@ -70,7 +71,9 @@ If the list is empty → final contract with `POSTS_MEASURED=0 POSTS_FAILED=0 FA
 
 For each post file (sorted by filename, oldest first):
 
-1. **Read the JSON** with `Read`. Extract `urn` and `id`.
+1. **Read the JSON** with `Read`. Extract `urn`, `id`, and `type` (default `"post"` if absent — legacy files predate the field).
+
+   If `type == "repost"`: increment a local `skipped` counter and `continue` to the next file. Don't navigate, don't sleep. Pure reshares have no analytics of their own.
 
 2. **Navigate to post-summary** in the tab you opened:
    `https://www.linkedin.com/analytics/post-summary/<urn>/`
@@ -238,6 +241,7 @@ For each post file (sorted by filename, oldest first):
 WEEK=<YYYY-MM-DD>
 POSTS_MEASURED=<n successfully written>
 POSTS_FAILED=<n failed>
+POSTS_SKIPPED=<n with type:"repost">
 FAILED_IDS=<comma-separated, or "-">
 ```
 

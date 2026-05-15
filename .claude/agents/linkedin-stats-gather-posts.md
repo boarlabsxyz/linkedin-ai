@@ -80,7 +80,10 @@ The page lazy-loads posts as you scroll. Loop:
        // First ~250 chars of the post body for preview/slug
        const textEl = c.querySelector('.update-components-text, .feed-shared-update-v2__description');
        const previewRaw = (textEl?.innerText || c.innerText || '').trim().replace(/\s+/g, ' ');
-       return { urn, id, previewRaw: previewRaw.slice(0, 400) };
+       // Pure reshares ("X reposted this", no commentary) render that exact phrase
+       // in the card's leading header. Original posts and repost-with-thoughts don't.
+       const isRepost = /\breposted this\b/i.test((c.innerText || '').slice(0, 150));
+       return { urn, id, previewRaw: previewRaw.slice(0, 400), isRepost };
      });
    }
    ```
@@ -162,6 +165,7 @@ For every new URN whose decoded `postedAtMs >= CUTOFF`:
 
 - `urn` — `urn:li:activity:<id>`
 - `id` — numeric string
+- `type` — `"repost"` if the card's scraper returned `isRepost: true`, else `"post"`. Pure reshares have no analytics page of their own, so the metrics agent skips files marked `"repost"`.
 - `posted_at` — ISO-8601 UTC from `postedAtMs`, e.g. `2026-05-12T12:14:01Z`
 - `posted_date` — `YYYY-MM-DD` (UTC) from `postedAtMs`
 - `post_url` — `https://www.linkedin.com/feed/update/<urn>/`
@@ -193,6 +197,7 @@ For each new post, write JSON pretty-printed with 2-space indent. Use the `Write
 {
   "urn": "urn:li:activity:<id>",
   "id": "<id>",
+  "type": "post",
   "posted_at": "<ISO 8601 UTC>",
   "posted_date": "<YYYY-MM-DD>",
   "post_url": "<https://...>",

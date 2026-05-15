@@ -27,6 +27,7 @@ description: >
    - Week:       <WEEK>
    - Measured:   <POSTS_MEASURED>
    - Failed:     <POSTS_FAILED>
+   - Skipped:    <POSTS_SKIPPED>
    - Failed ids: <FAILED_IDS>
 
    Gather account
