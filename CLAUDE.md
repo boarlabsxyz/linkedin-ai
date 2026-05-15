@@ -46,6 +46,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 ## Conventions
 
 - **Skill scope:** if a workflow has more than ~50 lines of detail, split sub-guidance into `references/` files next to the SKILL.md. Keep SKILL.md focused on flow + constants.
+- **Bundled scripts in skills:** PR skills (`common-pr-commit`, `common-pr-merge`, `common-pr-update`) keep their bash logic in colocated `.sh` files (e.g., `commit.sh`, `merge.sh`, `pr-update.sh`), allowlisted by path in `.claude/settings.json` to avoid permission prompts on compound-bash parsing. `commit.sh` and `pr-update.sh` invoke `claude -p` internally to generate the commit message and PR copy from the diff.
 - **Transcript language:** AWESOME Sync and weekly meeting transcripts are in Russian/Ukrainian; ClickUp output is always in English with consistent transliteration (e.g., always "Petro", not sometimes "Peter").
 - **Temp files:** use `./tmp/` and clean up afterward. Listed in `.gitignore`.
 - **ClickUp writes need validation:** AWESOME and weekly-priorities both validate every extracted item one-by-one before writing — auto-generated tasks/priorities are noisy and require human judgment.
