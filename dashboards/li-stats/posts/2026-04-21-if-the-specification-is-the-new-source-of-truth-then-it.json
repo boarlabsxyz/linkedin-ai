@@ -1,0 +1,65 @@
+{
+  "urn": "urn:li:activity:7452326158773366784",
+  "id": "7452326158773366784",
+  "type": "post",
+  "posted_at": "2026-04-21T12:03:33Z",
+  "posted_date": "2026-04-21",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452326158773366784/",
+  "preview": "If the specification is the new source of truth, then it should give you the same behavior on Monday and on Friday. Does it? I've been following Andrey Breslav and his project CodeSpeak with great int",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 496,
+        "members_reached": 298,
+        "reactions": 2,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 0.6
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 31.5,
+          "Senior": 27.5,
+          "Owner": 6.0,
+          "CXO": 5.4,
+          "Director": 5.0
+        },
+        "job_title": {
+          "Software Engineer": 13.4,
+          "Founder": 4.4,
+          "Co-Founder": 2.7,
+          "Quality Assurance Engineer": 2.3,
+          "Project Manager": 2.3
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.9,
+          "Software Development": 26.5,
+          "Technology, Information and Internet": 9.7
+        },
+        "company_size": {
+          "51-200 employees": 16.8,
+          "11-50 employees": 13.8,
+          "1-10 employees": 13.1,
+          "10,001+ employees": 9.7,
+          "1001-5000 employees": 9.7
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 5.4,
+          "Lviv": 4.7,
+          "Zagreb Metropolitan Area": 4.0,
+          "Belgrade Metropolitan Area": 3.7,
+          "Copenhagen Metropolitan Area": 2.7
+        },
+        "company": {
+          "Speed and Function": 6.4,
+          "EPAM Systems": 2.3
+        }
+      }
+    }
+  }
+}

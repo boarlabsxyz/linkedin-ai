@@ -1,0 +1,57 @@
+{
+  "urn": "urn:li:activity:7415030743866929153",
+  "id": "7415030743866929153",
+  "type": "post",
+  "posted_at": "2026-01-08T14:04:53Z",
+  "posted_date": "2026-01-08",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7415030743866929153/",
+  "preview": "Some of the biggest resistances to AI aren't technical. To my mind, they're psychological. A few weeks ago, I gave a task to one of our experienced devs. Automation stuff — take content from one chann",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 336,
+        "members_reached": 87,
+        "reactions": 4,
+        "comments": 3,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 3,
+        "followers_gained": 0,
+        "engagement_rate": 2.08
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 35.6,
+          "Entry": 28.7,
+          "CXO": 9.2
+        },
+        "job_title": {
+          "Software Engineer": 11.5,
+          "Project Manager": 6.9
+        },
+        "industry": {
+          "IT Services and IT Consulting": 44.8,
+          "Software Development": 28.7
+        },
+        "company_size": {
+          "51-200 employees": 25.3,
+          "11-50 employees": 11.5,
+          "1-10 employees": 11.5,
+          "201-500 employees": 9.2,
+          "10,001+ employees": 8
+        },
+        "location": {
+          "Odesa": 6.9,
+          "Warsaw Metropolitan Area": 6.9,
+          "Wroclaw Metropolitan Area": 6.9,
+          "New York City Metropolitan Area": 6.9
+        },
+        "company": {
+          "Speed and Function": 17.2
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 name: linkedin-stats-gather-metrics
 description: >
-  For every post file under ./tmp/li-stats/posts/, opens LinkedIn's
+  For every post file under ./dashboards/li-stats/posts/, opens LinkedIn's
   post-summary and demographic-detail analytics pages, scrapes all metrics
   and the six demographic breakdowns, and writes a new entry to that
   post's `weeks` map keyed by the current ISO-week's Monday date. Returns
@@ -12,13 +12,13 @@ model: sonnet
 
 # LinkedIn Analytics → posts/*.json `weeks[...]` snapshots
 
-You walk every JSON file under `./tmp/li-stats/posts/`, open its analytics pages, and append one entry to that file's `weeks` map for the current ISO week.
+You walk every JSON file under `./dashboards/li-stats/posts/`, open its analytics pages, and append one entry to that file's `weeks` map for the current ISO week.
 
 ## Inputs
 
 The caller's prompt may override these constants; otherwise use the defaults:
 
-- **POSTS_DIR** — `./tmp/li-stats/posts/`
+- **POSTS_DIR** — `./dashboards/li-stats/posts/`
 - **POST_SUMMARY_URL_TEMPLATE** — `https://www.linkedin.com/analytics/post-summary/<urn>/`
 - **DEMO_URL_TEMPLATE** — `https://www.linkedin.com/analytics/demographic-detail/<urn>/?metricType=IMPRESSIONS`
 - **POLITENESS_DELAY_S** — `1.5` (sleep between posts; jitter ±0.5s ok)
@@ -58,7 +58,7 @@ Per-post failures do **not** trigger `ERROR=` — they're counted into `POSTS_FA
 ### 1. Enumerate post files
 
 ```bash
-ls -1 ./tmp/li-stats/posts/*.json 2>/dev/null
+ls -1 ./dashboards/li-stats/posts/*.json 2>/dev/null
 ```
 
 If the list is empty → final contract with `POSTS_MEASURED=0 POSTS_FAILED=0 POSTS_SKIPPED=0 FAILED_IDS=-`. Done.

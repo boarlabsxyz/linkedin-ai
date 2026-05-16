@@ -2,16 +2,16 @@
 name: linkedin-stats
 description: >
   Gather LinkedIn post links and per-post weekly analytics into local JSON
-  files under ./tmp/li-stats/. Use when the user says "gather linkedin
+  files under ./dashboards/li-stats/. Use when the user says "gather linkedin
   stats", "update linkedin statistics", "refresh post analytics", "snapshot
   linkedin posts", or "linkedin weekly stats".
 ---
 
 # LinkedIn Stats
 
-1. Spawn the `linkedin-stats-gather-posts` agent via the Agent tool. It scrolls Peter's recent-activity feed, decodes URN timestamps, and creates one file per post under `./tmp/li-stats/posts/<YYYY-MM-DD>-<slug>.json` with an empty `weeks: {}` map.
+1. Spawn the `linkedin-stats-gather-posts` agent via the Agent tool. It scrolls Peter's recent-activity feed, decodes URN timestamps, and creates one file per post under `./dashboards/li-stats/posts/<YYYY-MM-DD>-<slug>.json` with an empty `weeks: {}` map.
 2. Spawn the `linkedin-stats-gather-metrics` agent via the Agent tool. It opens the post-summary + demographic-detail analytics pages for every post file and adds the current ISO-week's snapshot under that post's `weeks` map.
-3. Spawn the `linkedin-stats-gather-account` agent via the Agent tool. It opens Peter's dashboard + four creator-analytics pages (content / audience / search-appearances / profile-views) and appends a week-keyed snapshot to `./tmp/li-stats/account.json`.
+3. Spawn the `linkedin-stats-gather-account` agent via the Agent tool. It opens Peter's dashboard + four creator-analytics pages (content / audience / search-appearances / profile-views) and appends a week-keyed snapshot to `./dashboards/li-stats/account.json`.
 4. Print a final report combining all three agents' KEY=VALUE contracts. Format:
    ```
    ### LinkedIn Stats — <YYYY-MM-DD>

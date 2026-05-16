@@ -1,0 +1,62 @@
+{
+  "urn": "urn:li:activity:7422633195491454976",
+  "id": "7422633195491454976",
+  "type": "post",
+  "posted_at": "2026-01-29T13:34:19Z",
+  "posted_date": "2026-01-29",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7422633195491454976/",
+  "preview": "What does company culture actually do in practice? Recently, I wrote about how hard it is to sell culture as a competitive advantage — even though culture is exactly what our long-term clients highlig",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 548,
+        "members_reached": 278,
+        "reactions": 7,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.28
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 32,
+          "Entry": 27.7,
+          "Director": 7.6,
+          "Manager": 7.6,
+          "Owner": 3.2
+        },
+        "job_title": {
+          "Software Engineer": 10.4,
+          "Project Manager": 3.2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 27.3,
+          "Software Development": 18,
+          "Technology, Information and Internet": 6.8,
+          "Human Resources Services": 3.2
+        },
+        "company_size": {
+          "51-200 employees": 16.9,
+          "11-50 employees": 12.6,
+          "1001-5000 employees": 10.8,
+          "501-1000 employees": 8.3,
+          "10,001+ employees": 7.9
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 3.2,
+          "London Area, United Kingdom": 2.9,
+          "Amsterdam Area": 2.5,
+          "Kyiv Metropolitan Area": 2.5,
+          "Wroclaw Metropolitan Area": 2.5
+        },
+        "company": {
+          "Speed and Function": 6.1
+        }
+      }
+    }
+  }
+}

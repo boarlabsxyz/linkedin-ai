@@ -1,0 +1,66 @@
+{
+  "urn": "urn:li:activity:7406707512676147201",
+  "id": "7406707512676147201",
+  "type": "post",
+  "posted_at": "2025-12-16T14:51:20Z",
+  "posted_date": "2025-12-16",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7406707512676147201/",
+  "preview": "\"Juniors are disappearing. There's no work for them anymore.\" I keep hearing this. And honestly? I'm not convinced. Here's what I'm actually observing: the tool is changing, not the profession. A year",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 1748,
+        "members_reached": 1176,
+        "reactions": 10,
+        "comments": 5,
+        "reposts": 0,
+        "saves": 1,
+        "sends": 2,
+        "profile_viewers": 3,
+        "followers_gained": 0,
+        "engagement_rate": 0.86
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 32.2,
+          "Senior": 29.4,
+          "CXO": 5.8,
+          "Director": 5.7,
+          "Manager": 3.7
+        },
+        "job_title": {
+          "Software Engineer": 14.2,
+          "Frontend Developer": 2.5,
+          "Project Manager": 2.2,
+          "Founder": 2.1,
+          "Chief Executive Officer": 2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.1,
+          "Software Development": 27.4,
+          "Technology, Information and Internet": 7.2,
+          "Business Consulting and Services": 2.7,
+          "Financial Services": 2
+        },
+        "company_size": {
+          "51-200 employees": 16.4,
+          "11-50 employees": 14.2,
+          "10,001+ employees": 10.5,
+          "1001-5000 employees": 10,
+          "1-10 employees": 8.6
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.4,
+          "Lviv": 3.8,
+          "Zagreb Metropolitan Area": 3.2,
+          "Bratislava Metropolitan Area": 2.6,
+          "Ljubljana Metropolitan Area": 2.6
+        },
+        "company": {
+          "Speed and Function": 1.6
+        }
+      }
+    }
+  }
+}

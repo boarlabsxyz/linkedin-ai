@@ -1,0 +1,65 @@
+{
+  "urn": "urn:li:activity:7414311440871833601",
+  "id": "7414311440871833601",
+  "type": "post",
+  "posted_at": "2026-01-06T14:26:38Z",
+  "posted_date": "2026-01-06",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7414311440871833601/",
+  "preview": "𝗢𝗻𝗲 𝗰𝗮𝗻'𝘁 𝗯𝗲 𝗮 𝗹𝗲𝗮𝗱𝗲𝗿 𝘄𝗵𝗶𝗹𝗲 𝗷𝘂𝗱𝗴𝗶𝗻𝗴 𝗼𝘁𝗵𝗲𝗿𝘀 𝗳𝗼𝗿 𝗵𝗼𝘄 𝘁𝗵𝗲𝘆 𝗯𝗲𝗵𝗮𝘃𝗲. This might be my biggest insight of the year. I thought I was a pretty good leader. Us",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 467,
+        "members_reached": 214,
+        "reactions": 10,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 2,
+        "followers_gained": 0,
+        "engagement_rate": 2.14
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 33.2,
+          "Entry": 32.7,
+          "CXO": 6.1,
+          "Director": 5.1,
+          "Manager": 3.3
+        },
+        "job_title": {
+          "Software Engineer": 13.6,
+          "Frontend Developer": 4.7,
+          "Project Manager": 3.3,
+          "Founder": 3.3,
+          "Full Stack Engineer": 3.3
+        },
+        "industry": {
+          "IT Services and IT Consulting": 36.4,
+          "Software Development": 23.8,
+          "Technology, Information and Internet": 6.5,
+          "Business Consulting and Services": 2.8,
+          "IT System Custom Software Development": 2.8
+        },
+        "company_size": {
+          "51-200 employees": 22.9,
+          "11-50 employees": 16.4,
+          "10,001+ employees": 9.8,
+          "1001-5000 employees": 9.3,
+          "1-10 employees": 8.4
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 8.4,
+          "Lviv": 5.6,
+          "Greater Philadelphia": 3.3,
+          "Wroclaw Metropolitan Area": 3.3
+        },
+        "company": {
+          "Speed and Function": 9.3
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ name: linkedin-stats-gather-posts
 description: >
   Scrolls Peter's LinkedIn recent-activity feed, extracts every post's URN
   (activity ID), decodes it to an absolute UTC posting timestamp, and writes
-  one JSON file per post under ./tmp/li-stats/posts/. Each file is created
+  one JSON file per post under ./dashboards/li-stats/posts/. Each file is created
   with static metadata only and an empty `weeks: {}` map — a separate
   metrics agent fills the snapshots. Returns a strict KEY=VALUE contract.
 tools: Bash, Read, Write, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_snapshot
@@ -19,7 +19,7 @@ You scroll Peter's LinkedIn activity feed, collect every post since a cutoff dat
 The caller's prompt may override these constants; otherwise use the defaults:
 
 - **PROFILE_URL** — `https://www.linkedin.com/in/ovchyn/recent-activity/all/`
-- **POSTS_DIR** — `./tmp/li-stats/posts/`
+- **POSTS_DIR** — `./dashboards/li-stats/posts/`
 - **DEFAULT_CUTOFF** — `2025-11-01` (used when `POSTS_DIR` is empty)
 - **CUTOFF_OVERRIDE** — optional explicit cutoff (`YYYY-MM-DD`) passed by the caller. When set, it **always** wins over the incremental rule below. Use this when backfilling.
 
@@ -46,10 +46,10 @@ ERROR=<NETWORK|AUTH|SCRAPE|FS|UNKNOWN>
 ### 1. Determine the cutoff
 
 ```bash
-mkdir -p ./tmp/li-stats/posts
+mkdir -p ./dashboards/li-stats/posts
 ```
 
-Read every existing file in `./tmp/li-stats/posts/` and load every `id` + `posted_date` into a Set / Map.
+Read every existing file in `./dashboards/li-stats/posts/` and load every `id` + `posted_date` into a Set / Map.
 
 Then pick `CUTOFF` in this priority order:
 
@@ -206,7 +206,7 @@ For each new post, write JSON pretty-printed with 2-space indent. Use the `Write
 }
 ```
 
-Path: `./tmp/li-stats/posts/<filename>`.
+Path: `./dashboards/li-stats/posts/<filename>`.
 
 If `Write` fails for any file, record the ID in a failure list but continue with the others.
 
