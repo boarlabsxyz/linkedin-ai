@@ -8,9 +8,9 @@
   "preview": "Deployment frequency, lead time, mean time to restore. Looks like a technical dashboard. My idea is this: it's actually a mirror of your business. I wrote code for years. Then, unexpectedly, I became ",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T15:00:00Z",
       "metrics": {
-        "impressions": 545,
+        "impressions": 547,
         "members_reached": 331,
         "reactions": 5,
         "comments": 0,
@@ -19,7 +19,7 @@
         "sends": 0,
         "profile_viewers": 1,
         "followers_gained": 0,
-        "engagement_rate": 0.92
+        "engagement_rate": 0.91
       },
       "demographics": {
         "seniority": {
