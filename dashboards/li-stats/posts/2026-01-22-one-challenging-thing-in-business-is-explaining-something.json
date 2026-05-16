@@ -1,0 +1,55 @@
+{
+  "urn": "urn:li:activity:7420113588977192960",
+  "id": "7420113588977192960",
+  "type": "post",
+  "posted_at": "2026-01-22T14:42:18Z",
+  "posted_date": "2026-01-22",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7420113588977192960/",
+  "preview": "One challenging thing in business is explaining something your stakeholders have never actually experienced",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 236,
+        "members_reached": 111,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 1.69
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 28.8,
+          "Entry": 26.1,
+          "Director": 6.3,
+          "CXO": 5.4
+        },
+        "job_title": {
+          "Software Engineer": 15.3,
+          "Project Manager": 5.4
+        },
+        "industry": {
+          "IT Services and IT Consulting": 45,
+          "Software Development": 27
+        },
+        "company_size": {
+          "51-200 employees": 23.4,
+          "11-50 employees": 15.3,
+          "10,001+ employees": 9,
+          "1001-5000 employees": 7.2,
+          "1-10 employees": 5.4
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 8.1
+        },
+        "company": {
+          "Speed and Function": 10.8
+        }
+      }
+    }
+  }
+}

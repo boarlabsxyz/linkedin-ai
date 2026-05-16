@@ -1,0 +1,64 @@
+{
+  "urn": "urn:li:activity:7452456886655762433",
+  "id": "7452456886655762433",
+  "type": "post",
+  "posted_at": "2026-04-21T20:43:01Z",
+  "posted_date": "2026-04-21",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+  "preview": "Funny. I spent two years competing with OpenAI using a team of 5 and a $30K budget — and winning. Not because we evolved faster. Because our client's enterprise had full immunity to adopting ChatGPT.",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 451,
+        "members_reached": 211,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 2,
+        "followers_gained": 1,
+        "engagement_rate": 0.89
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 28.4,
+          "Entry": 25.1,
+          "CXO": 8.1,
+          "Director": 6.6,
+          "Owner": 5.2
+        },
+        "job_title": {
+          "Software Engineer": 9.5,
+          "Founder": 3.8,
+          "Co-Founder": 3.8,
+          "Full Stack Engineer": 3.8,
+          "Chief Executive Officer": 3.3
+        },
+        "industry": {
+          "Software Development": 28.4,
+          "IT Services and IT Consulting": 28.0,
+          "Technology, Information and Internet": 11.4
+        },
+        "company_size": {
+          "51-200 employees": 18.5,
+          "11-50 employees": 16.1,
+          "1-10 employees": 12.3,
+          "201-500 employees": 9.0,
+          "10,001+ employees": 6.2
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 7.1,
+          "San Francisco Bay Area": 6.2,
+          "Lviv": 4.3,
+          "London Area, United Kingdom": 3.8,
+          "Copenhagen Metropolitan Area": 3.3
+        },
+        "company": {
+          "Speed and Function": 10.4
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "urn": "urn:li:activity:7399100453231386624",
+  "id": "7399100453231386624",
+  "type": "post",
+  "posted_at": "2025-11-25T15:03:36Z",
+  "posted_date": "2025-11-25",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7399100453231386624/",
+  "preview": "🚀 𝐃𝐞𝐩𝐥𝐨𝐲 𝐞𝐚𝐫𝐥𝐲 𝐬𝐚𝐯𝐞𝐬 𝐬𝐭𝐚𝐫𝐭𝐮𝐩𝐬 𝐦𝐨𝐫𝐞 𝐨𝐟𝐭𝐞𝐧 𝐭𝐡𝐚𝐧 𝐚 𝐬𝐞𝐞𝐝 𝐫𝐨𝐮𝐧𝐝. I have a friend who has been building his startup for three months already. He showed me a d",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 679,
+        "members_reached": 323,
+        "reactions": 11,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 4,
+        "followers_gained": 0,
+        "engagement_rate": 1.62
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 32.5,
+          "Senior": 26.6,
+          "CXO": 6.2,
+          "Owner": 5.9,
+          "Manager": 4.6
+        },
+        "job_title": {
+          "Software Engineer": 12.1,
+          "Founder": 4.3,
+          "Frontend Developer": 3.4,
+          "Full Stack Engineer": 3.1,
+          "Co-Founder": 2.8
+        },
+        "industry": {
+          "IT Services and IT Consulting": 34.7,
+          "Software Development": 27.6,
+          "Technology, Information and Internet": 9.3,
+          "Business Consulting and Services": 3.1
+        },
+        "company_size": {
+          "51-200 employees": 21.4,
+          "11-50 employees": 14.2,
+          "1-10 employees": 11.8,
+          "201-500 employees": 7.7,
+          "1001-5000 employees": 6.8
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.8,
+          "Lviv": 6.2,
+          "Warsaw Metropolitan Area": 2.5,
+          "Greater Philadelphia": 1.9,
+          "Kharkiv Metropolitan Area": 1.9
+        },
+        "company": {
+          "Speed and Function": 5.9
+        }
+      }
+    }
+  }
+}

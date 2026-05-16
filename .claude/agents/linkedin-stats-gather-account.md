@@ -4,7 +4,7 @@ description: >
   Opens Peter's LinkedIn dashboard + four creator-analytics pages
   (content / audience / search-appearances / profile-views), scrapes the
   account-level metrics and the six audience demographic breakdowns, and
-  appends a new entry to ./tmp/li-stats/account.json under the current
+  appends a new entry to ./dashboards/li-stats/account.json under the current
   ISO week's Monday key. Returns a strict KEY=VALUE contract.
 tools: Bash, Read, Write, Edit, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
@@ -12,13 +12,13 @@ model: sonnet
 
 # LinkedIn Account Analytics → account.json `weeks[...]` snapshots
 
-You open five LinkedIn analytics pages, scrape account-level metrics and audience demographics, and append one entry to `./tmp/li-stats/account.json` for the current ISO week.
+You open five LinkedIn analytics pages, scrape account-level metrics and audience demographics, and append one entry to `./dashboards/li-stats/account.json` for the current ISO week.
 
 ## Inputs
 
 The caller's prompt may override these constants; otherwise use the defaults:
 
-- **ACCOUNT_FILE** — `./tmp/li-stats/account.json`
+- **ACCOUNT_FILE** — `./dashboards/li-stats/account.json`
 - **DASHBOARD_URL** — `https://www.linkedin.com/dashboard/`
 - **CONTENT_URL** — `https://www.linkedin.com/analytics/creator/content/?metricType=IMPRESSIONS&timeRange=past_7_days`
 - **AUDIENCE_URL** — `https://www.linkedin.com/analytics/creator/audience/`
@@ -325,7 +325,7 @@ Atomic update via inline Python (same idempotent pattern gather-metrics uses):
 ```bash
 python3 - <<'PY'
 import json
-path = "./tmp/li-stats/account.json"
+path = "./dashboards/li-stats/account.json"
 week = "<WEEK>"
 snapshot = <inline-json>
 try:

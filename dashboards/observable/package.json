@@ -1,0 +1,16 @@
+{
+  "name": "linkedin-stats-observable",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "observable preview",
+    "build": "observable build"
+  },
+  "dependencies": {
+    "@observablehq/framework": "^1.13.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0"
+  }
+}

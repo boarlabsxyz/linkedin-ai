@@ -1,0 +1,66 @@
+{
+  "urn": "urn:li:activity:7457394670176788480",
+  "id": "7457394670176788480",
+  "type": "post",
+  "posted_at": "2026-05-05T11:44:01Z",
+  "posted_date": "2026-05-05",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7457394670176788480/",
+  "preview": "If you want AI not to fire you, delegate more to AI. This is a bit of my pain right now, because I'm replacing people who don't automate their work with people who do. And it's not that I enjoy it I g",
+  "weeks": {
+    "2026-05-11": {
+      "snapshot_at": "2026-05-15T19:03:00Z",
+      "metrics": {
+        "impressions": 560,
+        "members_reached": 341,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 4,
+        "followers_gained": 0,
+        "engagement_rate": 0.71
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 29.0,
+          "Senior": 27.6,
+          "Director": 8.2,
+          "Owner": 5.6,
+          "CXO": 4.1
+        },
+        "job_title": {
+          "Software Engineer": 10.9,
+          "Project Manager": 2.9,
+          "Full Stack Engineer": 2.9,
+          "Co-Founder": 2.9,
+          "Founder": 2.6
+        },
+        "industry": {
+          "IT Services and IT Consulting": 29.9,
+          "Software Development": 22.0,
+          "Technology, Information and Internet": 5.9,
+          "Industrial Machinery Manufacturing": 2.6,
+          "IT System Custom Software Development": 2.3
+        },
+        "company_size": {
+          "51-200 employees": 19.1,
+          "201-500 employees": 10.9,
+          "1-10 employees": 10.6,
+          "11-50 employees": 10.3,
+          "1001-5000 employees": 9.1
+        },
+        "location": {
+          "Belgrade Metropolitan Area": 7.9,
+          "Ljubljana Metropolitan Area": 7.3,
+          "Zagreb Metropolitan Area": 7.3,
+          "Kyiv Metropolitan Area": 3.5,
+          "Greater Kitchener-Cambridge-Waterloo Metropolitan Area": 2.6
+        },
+        "company": {
+          "Speed and Function": 4.7
+        }
+      }
+    }
+  }
+}
