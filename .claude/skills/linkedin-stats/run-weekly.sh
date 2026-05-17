@@ -13,7 +13,7 @@ done
 
 PROMPT='Open https://www.linkedin.com/ in the browser via the Playwright MCP using browser_navigate.
 Then take a browser_snapshot so you can confirm what loaded.
-Then call browser_wait_for with text "this-text-will-never-appear-just-burn-time" and a timeout of 540 seconds — during this 9-minute window the human will log in manually if needed; the wait will time out, which is fine and expected.
+Then call browser_wait_for with ONLY the "time" parameter set to 540 (numeric seconds — do NOT also pass "text" or "textGone", they are mutually exclusive with "time"). This is a pure 9-minute pause to let the human log in manually.
 After the wait, take a fresh browser_snapshot and report whether you can see signed-in chrome (e.g. the "Me" avatar, the home feed, the messaging icon) vs the public login wall.
 Do not exit before the wait completes.'
 
