@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# TEMP: auth-probe mode. Opens LinkedIn via the Playwright MCP and waits long
-# enough for the human to log in interactively, so the session lands in the
-# Playwright cache. Revert to the full scrape flow once the session is seeded.
+# TEMP: profile-share probe. Navigates to LinkedIn via the Playwright MCP and
+# reports whether the pinned --user-data-dir profile is logged in. Revert to
+# the full scrape flow once the shared profile is confirmed.
 set -euo pipefail
 
 for cmd in claude; do
@@ -11,10 +11,11 @@ for cmd in claude; do
   fi
 done
 
-PROMPT='Open https://www.linkedin.com/ in the browser via the Playwright MCP using browser_navigate.
-Then take a browser_snapshot so you can confirm what loaded.
-Then call browser_wait_for with ONLY the "time" parameter set to 540 (numeric seconds — do NOT also pass "text" or "textGone", they are mutually exclusive with "time"). This is a pure 9-minute pause to let the human log in manually.
-After the wait, take a fresh browser_snapshot and report whether you can see signed-in chrome (e.g. the "Me" avatar, the home feed, the messaging icon) vs the public login wall.
-Do not exit before the wait completes.'
+PROMPT='Use the Playwright MCP to:
+1. browser_navigate to https://www.linkedin.com/feed/
+2. browser_snapshot
+3. Report concisely: is the page the signed-in feed (look for the "Start a post" composer, the left-rail Me card, the "Home/My Network/Jobs/Messaging/Notifications" top nav) or the public login wall? Quote one short piece of the snapshot that proves it.
+4. browser_close
+Do not call browser_wait_for.'
 
 echo "$PROMPT" | claude -p --dangerously-skip-permissions --output-format stream-json --verbose
