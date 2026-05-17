@@ -10,7 +10,12 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest", "--headed"]
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--user-data-dir",
+        "/Users/peterovchinnikov/Library/Caches/ms-playwright/mcp-chrome-linkedin-ai"
+      ]
     }
   }
 }
