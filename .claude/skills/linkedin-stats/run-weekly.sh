@@ -12,7 +12,7 @@
 #      manual runs).
 set -euo pipefail
 
-for cmd in claude python3 node npm gh git; do
+for cmd in claude python3 node npm gh git jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Required command not found in PATH: $cmd" >&2
     exit 1
@@ -25,7 +25,14 @@ BRANCH="chore/linkedin-stats-${WEEK}"
 git fetch origin main
 git checkout -B "$BRANCH" origin/main
 
-echo "gather linkedin stats" | claude -p --dangerously-skip-permissions --output-format stream-json --verbose
+echo "gather linkedin stats" \
+  | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
+  | jq -r '
+      .description
+      // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
+      // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
+      // empty
+    '
 
 python3 dashboards/flatten.py
 
