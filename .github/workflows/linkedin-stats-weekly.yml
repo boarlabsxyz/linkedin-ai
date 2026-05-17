@@ -1,0 +1,24 @@
+name: linkedin-stats-weekly
+
+on:
+  schedule:
+    # 00:00 UTC Mon -> 02:00 Kyiv winter / 03:00 Kyiv summer
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scrape:
+    runs-on: [self-hosted, macos, linkedin-ai]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run weekly scrape
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./.claude/skills/linkedin-stats/run-weekly.sh

@@ -1,261 +1,272 @@
 ---
 name: linkedin-stats-gather-metrics
 description: >
-  For every post file under ./dashboards/li-stats/posts/, opens LinkedIn's
-  post-summary and demographic-detail analytics pages, scrapes all metrics
-  and the six demographic breakdowns, and writes a new entry to that
-  post's `weeks` map keyed by the current ISO-week's Monday date. Returns
-  a strict KEY=VALUE contract.
+  For ONE LinkedIn post file passed in via POST_FILE, opens that post's
+  post-summary and demographic-detail analytics pages, scrapes the four
+  cards and six demographic breakdowns, and writes a single entry to that
+  file's `weeks` map keyed by the caller-supplied WEEK. Returns a strict
+  KEY=VALUE contract.
 tools: Bash, Read, Write, Edit, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
 ---
 
-# LinkedIn Analytics → posts/*.json `weeks[...]` snapshots
+# LinkedIn Analytics → one post's `weeks[WEEK]` snapshot
 
-You walk every JSON file under `./dashboards/li-stats/posts/`, open its analytics pages, and append one entry to that file's `weeks` map for the current ISO week.
+You scrape **one** post's LinkedIn analytics and write **one** entry to its `weeks` map. The caller (the `linkedin-stats` skill) runs you once per post in a sequential fan-out.
 
-## Inputs
+## Inputs (from caller's prompt body)
 
-The caller's prompt may override these constants; otherwise use the defaults:
+Required:
 
-- **POSTS_DIR** — `./dashboards/li-stats/posts/`
+- **POST_FILE** — path to one post JSON, e.g. `./dashboards/li-stats/posts/2026-05-12-before-python-….json`.
+- **WEEK** — the ISO-week Monday key the caller computed once for the whole run, e.g. `2026-05-11`.
+
+Optional (defaults if omitted):
+
 - **POST_SUMMARY_URL_TEMPLATE** — `https://www.linkedin.com/analytics/post-summary/<urn>/`
 - **DEMO_URL_TEMPLATE** — `https://www.linkedin.com/analytics/demographic-detail/<urn>/?metricType=IMPRESSIONS`
-- **POLITENESS_DELAY_S** — `1.5` (sleep between posts; jitter ±0.5s ok)
-
-## Week key — ISO-week Monday
-
-Compute `WEEK` once at the start of the run. Bash:
-
-```bash
-WEEK=$(date -u -v-Mon "+%Y-%m-%d" 2>/dev/null || date -u -d "last monday" "+%Y-%m-%d")
-```
-
-If today is Monday, use today. The key format is `YYYY-MM-DD` (UTC).
 
 ## The shared contract
 
-Your final message must be exactly one of two shapes — no extra prose after.
+Your final message must be exactly one of these shapes — no extra prose after.
 
-**Success:**
+**Success (normal post):**
 ```
+STATUS=OK
+POST_ID=<id>
 WEEK=<YYYY-MM-DD>
-POSTS_MEASURED=<int>
-POSTS_FAILED=<int>
-POSTS_SKIPPED=<int>
-FAILED_IDS=<comma-separated ids or "-">
+IMPRESSIONS=<int>
+REACTIONS=<int>
+COMMENTS=<int>
 ```
 
-**Failure (before any post was measured):**
+**Repost (no analytics page exists):**
 ```
-ERROR=<NETWORK|AUTH|FS|UNKNOWN>
+STATUS=SKIPPED_REPOST
+POST_ID=<id>
+WEEK=<YYYY-MM-DD>
 ```
 
-Per-post failures do **not** trigger `ERROR=` — they're counted into `POSTS_FAILED` and listed in `FAILED_IDS`. `POSTS_SKIPPED` is the count of files with `type: "repost"` — analytics for those belong to the original poster, so we deliberately don't scrape them.
+**Per-post failure (scrape/wait/eval threw, or the file write failed):**
+```
+STATUS=FAIL
+POST_ID=<id>
+WEEK=<YYYY-MM-DD>
+REASON=<NETWORK|AUTH|SCRAPE|FS|UNKNOWN>
+```
+
+**Input broken — no `id` to report (POST_FILE missing/unreadable, WEEK malformed):**
+```
+ERROR=<FS|UNKNOWN>
+```
+
+`STATUS=FAIL` is for failures encountered *after* the post was identified. `ERROR=` is reserved for inputs-broken-before-we-tried. Do not retry; the caller decides what to do with `FAIL`.
 
 ## Steps
 
-### 1. Enumerate post files
+### 1. Validate inputs
 
-```bash
-ls -1 ./dashboards/li-stats/posts/*.json 2>/dev/null
+- If `POST_FILE` is empty or the file does not exist → emit `ERROR=FS` and stop.
+- If `WEEK` is empty or does not match `YYYY-MM-DD` → emit `ERROR=UNKNOWN` and stop.
+
+### 2. Read the post file
+
+Use `Read` to load `POST_FILE`. Extract `urn`, `id`, and `type` (default `"post"` if absent — legacy files predate the field).
+
+If `type == "repost"` → emit `STATUS=SKIPPED_REPOST POST_ID=<id> WEEK=<WEEK>` and stop. **Do not open the browser.** Pure reshares have no analytics of their own.
+
+### 3. Open a NEW browser tab (never replace existing ones)
+
+`mcp__playwright__browser_tabs` action `new` with `url=about:blank`. Record the tab index from the response (the line marked `(current)`). Tab discipline is mandatory: this is the tab you own for the rest of the run, and you must close it at the end (success OR failure).
+
+### 4. Navigate to post-summary
+
+Substitute `<urn>` into `POST_SUMMARY_URL_TEMPLATE` and `mcp__playwright__browser_navigate`.
+
+Wait for cards to render:
+- `mcp__playwright__browser_wait_for(text="Discovery", time=3)` (text fallback to time)
+- Scroll to bottom to trigger lazy load:
+  ```js
+  () => { window.scrollTo(0, document.body.scrollHeight); return true; }
+  ```
+- `mcp__playwright__browser_wait_for(time=2)`
+
+### 5. Scrape the four cards
+
+```js
+() => {
+  const cards = Array.from(document.querySelectorAll('section.artdeco-card.member-analytics-addon-card__base-card'))
+    .map(c => ({
+      title: c.querySelector('h2')?.textContent?.trim() || '',
+      text:  c.textContent.replace(/\s+/g, ' ').trim(),
+    }));
+  return { cards };
+}
 ```
 
-If the list is empty → final contract with `POSTS_MEASURED=0 POSTS_FAILED=0 POSTS_SKIPPED=0 FAILED_IDS=-`. Done.
+Parse from each card's `text` using anchored regex against the metric label. **The number always appears immediately before the label** (e.g. `253 Impressions`, `1 Reactions`, `0 Saves`).
 
-### 2. Open a NEW browser tab (never replace existing ones)
+| Card title | Metric key | Regex (capture group 1 = number) |
+|---|---|---|
+| Discovery | `impressions` | `/(\d[\d,]*)\s+Impressions/` |
+| Discovery | `members_reached` | `/(\d[\d,]*)\s+Members reached/` |
+| Profile activity | `profile_viewers` | `/Profile viewers from this post\s*(\d[\d,]*)/` |
+| Profile activity | `followers_gained` | `/Followers gained from this post\s*(\d[\d,]*)/` |
+| Social engagement | `reactions` | `/Reactions\s*(\d[\d,]*)/` |
+| Social engagement | `comments` | `/Comments\s*(\d[\d,]*)/` |
+| Social engagement | `reposts` | `/Reposts\s*(\d[\d,]*)/` |
+| Social engagement | `saves` | `/Saves\s*(\d[\d,]*)/` |
+| Social engagement | `sends` | `/Sends(?: on LinkedIn)?\s*(\d[\d,]*)/` |
 
-`mcp__playwright__browser_tabs` action `list` → action `new` with `url=about:blank`. Record the tab index. Tab discipline is mandatory.
+Strip commas before parsing as integers. If a metric is missing, default to `0`.
 
-### 3. Per-post loop
+### 6. Compute engagement_rate
 
-For each post file (sorted by filename, oldest first):
+```
+engagement_rate = round((reactions + comments + reposts) / impressions * 100, 2)
+```
 
-1. **Read the JSON** with `Read`. Extract `urn`, `id`, and `type` (default `"post"` if absent — legacy files predate the field).
+If `impressions == 0`, set `engagement_rate = 0`.
 
-   If `type == "repost"`: increment a local `skipped` counter and `continue` to the next file. Don't navigate, don't sleep. Pure reshares have no analytics of their own.
+### 7. Navigate to demographic-detail (same tab)
 
-2. **Navigate to post-summary** in the tab you opened:
-   `https://www.linkedin.com/analytics/post-summary/<urn>/`
+Substitute `<urn>` into `DEMO_URL_TEMPLATE` and `mcp__playwright__browser_navigate`.
 
-3. **Wait** for analytics cards to render:
-   - `mcp__playwright__browser_wait_for(text="Discovery", time=3)` *(text fallback to time)*
-   - Then scroll to the bottom to trigger lazy load:
-     ```js
-     () => { window.scrollTo(0, document.body.scrollHeight); return true; }
-     ```
-   - `mcp__playwright__browser_wait_for(time=2)`
+Wait: `text="Top demographics"` (3s), then scroll to bottom, then `wait_for(time=2)`.
 
-4. **Scrape the four cards** with `mcp__playwright__browser_evaluate`:
+### 8. Expand any "Show all" / "Show more" buttons
 
-   ```js
-   () => {
-     const cards = Array.from(document.querySelectorAll('section.artdeco-card.member-analytics-addon-card__base-card'))
-       .map(c => ({
-         title: c.querySelector('h2')?.textContent?.trim() || '',
-         text:  c.textContent.replace(/\s+/g, ' ').trim(),
-       }));
-     return { cards };
-   }
-   ```
+```js
+() => {
+  const btns = Array.from(document.querySelectorAll('button')).filter(b => /show all|show more/i.test(b.textContent || ''));
+  btns.forEach(b => b.click());
+  return btns.length;
+}
+```
 
-   Parse from each card's `text` using anchored regex against the metric label. **The number always appears immediately before the label** (e.g. `253 Impressions`, `1 Reactions`, `0 Saves`).
+Wait 1s after clicking.
 
-   Required extractions:
+### 9. Scrape the six dimensions
 
-   | Card title | Metric key | Regex (number capture group 1) |
-   |---|---|---|
-   | Discovery | `impressions` | `/(\d[\d,]*)\s+Impressions/` |
-   | Discovery | `members_reached` | `/(\d[\d,]*)\s+Members reached/` |
-   | Profile activity | `profile_viewers` | `/Profile viewers from this post\s*(\d[\d,]*)/` |
-   | Profile activity | `followers_gained` | `/Followers gained from this post\s*(\d[\d,]*)/` |
-   | Social engagement | `reactions` | `/Reactions\s*(\d[\d,]*)/` |
-   | Social engagement | `comments` | `/Comments\s*(\d[\d,]*)/` |
-   | Social engagement | `reposts` | `/Reposts\s*(\d[\d,]*)/` |
-   | Social engagement | `saves` | `/Saves\s*(\d[\d,]*)/` |
-   | Social engagement | `sends` | `/Sends(?: on LinkedIn)?\s*(\d[\d,]*)/` |
-
-   Strip commas from captured numbers before parsing as integers. If a metric is missing, default to `0`.
-
-5. **Compute engagement_rate**:
-   ```
-   engagement_rate = round((reactions + comments + reposts) / impressions * 100, 2)
-   ```
-   If `impressions == 0`, set `engagement_rate = 0`.
-
-6. **Navigate to demographic-detail** in the same tab:
-   `https://www.linkedin.com/analytics/demographic-detail/<urn>/?metricType=IMPRESSIONS`
-
-7. **Wait** for `text="Top demographics"` (3s max), then scroll to bottom, then `wait_for(time=2)`.
-
-8. **Expand any "Show all" / "Show more" buttons** so we capture full lists. Try via `browser_evaluate`:
-   ```js
-   () => {
-     const btns = Array.from(document.querySelectorAll('button')).filter(b => /show all|show more/i.test(b.textContent || ''));
-     btns.forEach(b => b.click());
-     return btns.length;
-   }
-   ```
-   Wait 1s after clicking.
-
-9. **Scrape the six dimensions** with `browser_evaluate`:
-
-   ```js
-   () => {
-     // Each dimension is a <section> whose <h2> is the dimension name.
-     // Inside, rows look like "<label> <pct>%".
-     const out = {};
-     const sections = Array.from(document.querySelectorAll('section, [class*="demographic"]'))
-       .filter(s => s.querySelector('h2, h3'));
-     for (const s of sections) {
-       const title = (s.querySelector('h2, h3')?.textContent || '').trim();
-       if (!title) continue;
-       const rows = Array.from(s.querySelectorAll('li, [class*="row"]'))
-         .map(r => (r.textContent || '').replace(/\s+/g, ' ').trim())
-         .filter(t => /\d+(\.\d+)?%/.test(t));
-       const parsed = {};
-       for (const row of rows) {
-         // Match the LAST percentage in the row, anything before it = label.
-         const m = row.match(/^(.+?)\s+(\d+(?:\.\d+)?)%\s*$/);
-         if (m) parsed[m[1].trim()] = parseFloat(m[2]);
-       }
-       out[title] = parsed;
-     }
-     return out;
-   }
-   ```
-
-   Map the returned section titles to our six canonical keys (case-insensitive match):
-
-   | Page heading | JSON key |
-   |---|---|
-   | Seniority | `seniority` |
-   | Job title | `job_title` |
-   | Industry | `industry` |
-   | Company size | `company_size` |
-   | Location | `location` |
-   | Company | `company` |
-
-   If a dimension is missing from the page, write `{}` for that key — the shape must be uniform across snapshots.
-
-10. **Build the snapshot object**:
-
-    ```json
-    {
-      "snapshot_at": "<now ISO 8601 UTC>",
-      "metrics": {
-        "impressions": <n>,
-        "members_reached": <n>,
-        "reactions": <n>,
-        "comments": <n>,
-        "reposts": <n>,
-        "saves": <n>,
-        "sends": <n>,
-        "profile_viewers": <n>,
-        "followers_gained": <n>,
-        "engagement_rate": <float>
-      },
-      "demographics": {
-        "seniority": {...},
-        "job_title": {...},
-        "industry": {...},
-        "company_size": {...},
-        "location": {...},
-        "company": {...}
-      }
+```js
+() => {
+  const out = {};
+  const sections = Array.from(document.querySelectorAll('section, [class*="demographic"]'))
+    .filter(s => s.querySelector('h2, h3'));
+  for (const s of sections) {
+    const title = (s.querySelector('h2, h3')?.textContent || '').trim();
+    if (!title) continue;
+    const rows = Array.from(s.querySelectorAll('li, [class*="row"]'))
+      .map(r => (r.textContent || '').replace(/\s+/g, ' ').trim())
+      .filter(t => /\d+(\.\d+)?%/.test(t));
+    const parsed = {};
+    for (const row of rows) {
+      const m = row.match(/^(.+?)\s+(\d+(?:\.\d+)?)%\s*$/);
+      if (m) parsed[m[1].trim()] = parseFloat(m[2]);
     }
-    ```
+    out[title] = parsed;
+  }
+  return out;
+}
+```
 
-11. **Merge into the post file**:
+Map the returned section titles to our six canonical keys (case-insensitive match):
 
-    Read the JSON file, set `data.weeks[WEEK] = snapshot`, write back pretty-printed (2-space indent). Use Python via Bash for atomic update:
+| Page heading | JSON key |
+|---|---|
+| Seniority | `seniority` |
+| Job title | `job_title` |
+| Industry | `industry` |
+| Company size | `company_size` |
+| Location | `location` |
+| Company | `company` |
 
-    ```bash
-    python3 - <<'PY'
-    import json, sys
-    path = "<filename>"
-    week = "<WEEK>"
-    snapshot = <inline-json>
-    with open(path) as f: data = json.load(f)
-    data.setdefault("weeks", {})[week] = snapshot
-    with open(path, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-    PY
-    ```
+If a dimension is missing from the page, write `{}` for that key — the shape must be uniform across snapshots.
 
-    Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for earlier weeks are never touched.
+### 10. Build the snapshot object
 
-12. **Politeness sleep** between posts:
-    `mcp__playwright__browser_wait_for(time=1.5)` (or skip if last post).
+```json
+{
+  "snapshot_at": "<now ISO 8601 UTC>",
+  "metrics": {
+    "impressions": <n>,
+    "members_reached": <n>,
+    "reactions": <n>,
+    "comments": <n>,
+    "reposts": <n>,
+    "saves": <n>,
+    "sends": <n>,
+    "profile_viewers": <n>,
+    "followers_gained": <n>,
+    "engagement_rate": <float>
+  },
+  "demographics": {
+    "seniority": {...},
+    "job_title": {...},
+    "industry": {...},
+    "company_size": {...},
+    "location": {...},
+    "company": {...}
+  }
+}
+```
 
-13. **On any per-post error**: take a `mcp__playwright__browser_snapshot` (for debug), log the id into a local failures list, and continue with the next post. Don't fail the whole run.
+### 11. Merge into the post file
 
-### 4. Close the tab you opened
+Atomic update via Python heredoc:
+
+```bash
+python3 - <<'PY'
+import json, os, tempfile
+path = "<POST_FILE>"
+week = "<WEEK>"
+snapshot = <inline-json>
+with open(path) as f: data = json.load(f)
+data.setdefault("weeks", {})[week] = snapshot
+fd, tmp = tempfile.mkstemp(prefix=".weeks.", dir=os.path.dirname(path))
+with os.fdopen(fd, "w") as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+    f.write("\n")
+os.replace(tmp, path)
+PY
+```
+
+Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for other weeks are never touched.
+
+If the heredoc bash command exits non-zero → close the tab and emit `STATUS=FAIL REASON=FS`.
+
+### 12. Close the tab
 
 `mcp__playwright__browser_tabs` action `close` with the recorded index.
 
-### 5. Emit the contract
+### 13. Emit the success contract
 
 ```
-WEEK=<YYYY-MM-DD>
-POSTS_MEASURED=<n successfully written>
-POSTS_FAILED=<n failed>
-POSTS_SKIPPED=<n with type:"repost">
-FAILED_IDS=<comma-separated, or "-">
+STATUS=OK
+POST_ID=<id>
+WEEK=<WEEK>
+IMPRESSIONS=<impressions>
+REACTIONS=<reactions>
+COMMENTS=<comments>
 ```
+
+## Failure handling (steps 4–11)
+
+Any throw between scrape and write → take a `mcp__playwright__browser_snapshot` (for debug), close the tab you opened, emit `STATUS=FAIL POST_ID=<id> WEEK=<WEEK> REASON=<class>`.
+
+Classification:
+
+- Login-wall element visible or redirect to `linkedin.com/login` → `AUTH`
+- Network timeout, 429, or blank `main` element → `NETWORK`
+- DOM rendered but regex extracted 0 numeric fields → `SCRAPE`
+- Python heredoc bash failure on the post file → `FS`
+- Anything else → `UNKNOWN`
 
 ## What you must not do
 
-- Do **not** replace an existing browser tab. Always open a new one for your work.
-- Do **not** leave your tab open at the end.
-- Do **not** overwrite snapshots for past weeks. Touch only `weeks[<current WEEK>]`.
-- Do **not** invent demographic numbers. Use `{}` for any dimension you genuinely couldn't scrape.
-- Do **not** retry failed posts inside this run. Surface them in `FAILED_IDS`; the caller decides.
+- Do **not** iterate over `POSTS_DIR`. Scope is exactly one post (the `POST_FILE` argument).
+- Do **not** compute `WEEK`. The caller passes it; you use it verbatim.
+- Do **not** leave your tab open at the end — even on failure.
+- Do **not** touch `weeks[k]` for any `k != WEEK`.
+- Do **not** retry on failure. Return `STATUS=FAIL` and let the caller decide.
 - Do **not** add prose after the final contract block.
-
-## Failure modes
-
-- Login wall / 429 / cards never render at all → take a `browser_snapshot`, close the tab, emit `ERROR=AUTH` (login wall) or `ERROR=NETWORK` (other transport / rate-limit / blank page).
-- Cannot read or write any post file → `ERROR=FS`.
-- Anything else, before any post was measured → `ERROR=UNKNOWN` with a one-paragraph explanation **before** the contract line.

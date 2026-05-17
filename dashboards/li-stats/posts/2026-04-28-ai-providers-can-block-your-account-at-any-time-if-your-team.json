@@ -8,10 +8,10 @@
   "preview": "AI providers can block your account at any time. If your team depends on one, that's a real problem. Nick's post below shows what that actually looks like. Not a new problem either — companies treated",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T19:44:30Z",
       "metrics": {
-        "impressions": 183,
-        "members_reached": 75,
+        "impressions": 192,
+        "members_reached": 76,
         "reactions": 3,
         "comments": 0,
         "reposts": 0,
@@ -19,33 +19,31 @@
         "sends": 0,
         "profile_viewers": 2,
         "followers_gained": 0,
-        "engagement_rate": 1.64
+        "engagement_rate": 1.56
       },
       "demographics": {
         "seniority": {
-          "Senior": 30.7,
-          "Entry": 29.3,
-          "CXO": 13.3,
-          "Owner": 9.3
+          "Senior": 30.3,
+          "Entry": 28.9,
+          "CXO": 13.2,
+          "Owner": 9.2
         },
         "job_title": {
-          "Software Engineer": 13.3
+          "Software Engineer": 11.8
         },
         "industry": {
-          "IT Services and IT Consulting": 34.7,
-          "Software Development": 28.0,
-          "Technology, Information and Internet": 9.3
+          "IT Services and IT Consulting": 35.5,
+          "Software Development": 26.3,
+          "Technology, Information and Internet": 9.2
         },
         "company_size": {
-          "51-200 employees": 22.7,
-          "11-50 employees": 14.7,
-          "1-10 employees": 9.3
+          "51-200 employees": 21.1,
+          "11-50 employees": 15.8,
+          "1-10 employees": 9.2
         },
-        "location": {
-          "Kyiv Metropolitan Area": 8.0
-        },
+        "location": {},
         "company": {
-          "Speed and Function": 9.3
+          "Speed and Function": 9.2
         }
       }
     }

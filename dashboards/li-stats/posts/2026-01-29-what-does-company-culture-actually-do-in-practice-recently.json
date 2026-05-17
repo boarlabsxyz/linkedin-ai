@@ -8,7 +8,7 @@
   "preview": "What does company culture actually do in practice? Recently, I wrote about how hard it is to sell culture as a competitive advantage — even though culture is exactly what our long-term clients highlig",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T19:09:33Z",
       "metrics": {
         "impressions": 548,
         "members_reached": 278,
@@ -23,7 +23,7 @@
       },
       "demographics": {
         "seniority": {
-          "Senior": 32,
+          "Senior": 32.0,
           "Entry": 27.7,
           "Director": 7.6,
           "Manager": 7.6,
@@ -35,7 +35,7 @@
         },
         "industry": {
           "IT Services and IT Consulting": 27.3,
-          "Software Development": 18,
+          "Software Development": 18.0,
           "Technology, Information and Internet": 6.8,
           "Human Resources Services": 3.2
         },

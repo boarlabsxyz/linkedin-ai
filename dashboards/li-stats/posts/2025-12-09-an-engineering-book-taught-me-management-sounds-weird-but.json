@@ -8,7 +8,7 @@
   "preview": "An engineering book taught me management. Sounds weird, but \"𝗔𝗰𝗰𝗲𝗹𝗲𝗿𝗮𝘁𝗲: 𝗧𝗵𝗲 𝗦𝗰𝗶𝗲𝗻𝗰𝗲 𝗼𝗳 𝗟𝗲𝗮𝗻 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲 𝗮𝗻𝗱 𝗗𝗲𝘃𝗢𝗽𝘀\" by Nicole Forsgren, Jez Humble, Gene Kim is",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T18:44:45Z",
       "metrics": {
         "impressions": 494,
         "members_reached": 217,
@@ -42,7 +42,7 @@
           "Technology, Information and Internet": 10.1
         },
         "company_size": {
-          "51-200 employees": 24,
+          "51-200 employees": 24.0,
           "11-50 employees": 16.6,
           "10,001+ employees": 10.6,
           "1001-5000 employees": 8.8,

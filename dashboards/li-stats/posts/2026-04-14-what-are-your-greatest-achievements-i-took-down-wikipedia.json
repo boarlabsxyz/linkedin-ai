@@ -8,9 +8,9 @@
   "preview": "— What are your greatest achievements? — I took down Wikipedia. One day in 2020, Wikipedia was unreachable for a few hours, and that was on me. Back then, I was working as a Senior Solutions Architect",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T19:35:00Z",
       "metrics": {
-        "impressions": 1365,
+        "impressions": 1366,
         "members_reached": 866,
         "reactions": 15,
         "comments": 7,
@@ -54,7 +54,7 @@
           "Copenhagen Metropolitan Area": 6.9,
           "Kyiv Metropolitan Area": 5.8,
           "Lviv": 4.5,
-          "San Francisco Bay Area": 4,
+          "San Francisco Bay Area": 4.0,
           "New York City Metropolitan Area": 3.5
         },
         "company": {

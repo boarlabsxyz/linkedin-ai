@@ -8,7 +8,7 @@
   "preview": "\"Juniors are disappearing. There's no work for them anymore.\" I keep hearing this. And honestly? I'm not convinced. Here's what I'm actually observing: the tool is changing, not the profession. A year",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T18:49:24Z",
       "metrics": {
         "impressions": 1748,
         "members_reached": 1176,
@@ -34,20 +34,20 @@
           "Frontend Developer": 2.5,
           "Project Manager": 2.2,
           "Founder": 2.1,
-          "Chief Executive Officer": 2
+          "Chief Executive Officer": 2.0
         },
         "industry": {
           "IT Services and IT Consulting": 31.1,
           "Software Development": 27.4,
           "Technology, Information and Internet": 7.2,
           "Business Consulting and Services": 2.7,
-          "Financial Services": 2
+          "Financial Services": 2.0
         },
         "company_size": {
           "51-200 employees": 16.4,
           "11-50 employees": 14.2,
           "10,001+ employees": 10.5,
-          "1001-5000 employees": 10,
+          "1001-5000 employees": 10.0,
           "1-10 employees": 8.6
         },
         "location": {

@@ -45,6 +45,7 @@ Your final message must be exactly one of two shapes — no extra prose after.
 WEEK=<YYYY-MM-DD>
 FOLLOWERS=<int>
 POST_IMPRESSIONS_7D=<int>
+ENGAGEMENTS_7D=<int>
 PROFILE_VIEWERS_90D=<int>
 SEARCH_APPEARANCES_7D=<int>
 PAGES_FAILED=<comma-separated short names, or "-">
@@ -351,6 +352,7 @@ Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for ea
 WEEK=<YYYY-MM-DD>
 FOLLOWERS=<int from snapshot.dashboard.followers, or 0 if dashboard failed>
 POST_IMPRESSIONS_7D=<int from snapshot.dashboard.post_impressions_7d, or 0>
+ENGAGEMENTS_7D=<int from snapshot.content_7d.social_engagements_7d, or 0 if content failed>
 PROFILE_VIEWERS_90D=<int from snapshot.dashboard.profile_viewers_90d, or 0>
 SEARCH_APPEARANCES_7D=<int from snapshot.dashboard.search_appearances_previous_week, or 0>
 PAGES_FAILED=<comma-separated short names, or "-">

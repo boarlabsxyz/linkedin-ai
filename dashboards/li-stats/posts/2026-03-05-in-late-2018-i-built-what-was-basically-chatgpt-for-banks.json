@@ -8,7 +8,7 @@
   "preview": "In late 2018, I built what was basically \"ChatGPT for banks\", before ChatGPT existed. A self-hosted system that helped bank employees generate and validate investment and credit contracts in German, t",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T19:19:30Z",
       "metrics": {
         "impressions": 35582,
         "members_reached": 23406,
@@ -24,8 +24,8 @@
       "demographics": {
         "seniority": {
           "Senior": 36.4,
-          "Entry": 25,
-          "Director": 8,
+          "Entry": 25.0,
+          "Director": 8.0,
           "Manager": 6.3,
           "CXO": 4.9
         },

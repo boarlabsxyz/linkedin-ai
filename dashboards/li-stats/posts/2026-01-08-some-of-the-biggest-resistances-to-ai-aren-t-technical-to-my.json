@@ -8,7 +8,7 @@
   "preview": "Some of the biggest resistances to AI aren't technical. To my mind, they're psychological. A few weeks ago, I gave a task to one of our experienced devs. Automation stuff — take content from one chann",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-15T19:03:00Z",
+      "snapshot_at": "2026-05-16T18:55:30Z",
       "metrics": {
         "impressions": 336,
         "members_reached": 87,
@@ -40,7 +40,7 @@
           "11-50 employees": 11.5,
           "1-10 employees": 11.5,
           "201-500 employees": 9.2,
-          "10,001+ employees": 8
+          "10,001+ employees": 8.0
         },
         "location": {
           "Odesa": 6.9,
