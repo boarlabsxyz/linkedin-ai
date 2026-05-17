@@ -22,6 +22,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
 │   ├── skills/                   # Project skills (see below)
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
+├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
 ├── .mcp.json                     # MCP servers: context7, terminal, playwright
 └── CLAUDE.md                     # This file
 ```
@@ -42,7 +43,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 | `awesome-sync-tasks` | Process `[AWESOME] Sync` Google Drive transcripts → create/update ClickUp tasks. |
 | `weekly-priorities` | Process last week's meeting transcripts → update/create personal priorities in ClickUp. |
 | `utilities-youtube-transcript` | Download a YouTube video's transcript via yt-dlp; falls back to Playwright agent on HTTP 429. Spawns `utilities-youtube-transcript-vtt` / `-playwright` sub-agents. |
-| `linkedin-stats` | Snapshot Peter's LinkedIn posts + per-post + account-level weekly analytics into JSON files under `./dashboards/li-stats/` (git-tracked). Spawns `linkedin-stats-gather-posts` (URN discovery), then one `linkedin-stats-gather-metrics` agent **per post** sequentially (post-summary + 6 demographic breakdowns → `weeks[WEEK]`), then `linkedin-stats-gather-account` (dashboard + 4 creator-analytics pages → `account.json`). Parallel fan-out across sub-agents is unsafe with the shared Playwright MCP (no per-call tab targeting). |
+| `linkedin-stats` | Snapshot Peter's LinkedIn posts + per-post + account-level weekly analytics into JSON files under `./dashboards/li-stats/` (git-tracked). Spawns `linkedin-stats-gather-posts` (URN discovery), then one `linkedin-stats-gather-metrics` agent **per post** sequentially (post-summary + 6 demographic breakdowns → `weeks[WEEK]`), then `linkedin-stats-gather-account` (dashboard + 4 creator-analytics pages → `account.json`). Parallel fan-out across sub-agents is unsafe with the shared Playwright MCP (no per-call tab targeting). Driven weekly (Mon 00:00 UTC) by `.github/workflows/linkedin-stats-weekly.yml` via the colocated `run-weekly.sh`, which calls `claude -p --dangerously-skip-permissions`, refreshes both dashboards, then chains `common-pr-commit` + `common-pr-update`. |
 
 ## Dashboards
 
