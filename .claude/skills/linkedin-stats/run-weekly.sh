@@ -25,7 +25,7 @@ BRANCH="chore/linkedin-stats-${WEEK}"
 git fetch origin main
 git checkout -B "$BRANCH" origin/main
 
-echo "gather linkedin stats — TEST MODE: in step 2 (per-post metrics), process ONLY the first 2 post files (oldest first) and skip the rest. Still run step 1 (posts discovery) and step 3 (account gather) normally. This is a quick end-to-end pipeline test." \
+echo "gather linkedin stats" \
   | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
   | jq -r --unbuffered '
       .description
