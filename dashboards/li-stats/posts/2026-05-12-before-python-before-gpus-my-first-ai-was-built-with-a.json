@@ -8,10 +8,10 @@
   "preview": "Before Python, before GPUs my first AI was built with a soldering iron. In the 1990s, a ZX Spectrum an 8-bit home computer showed up in our house. And that was it. Love! One that, honestly, has lasted",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-16T16:59:23Z",
+      "snapshot_at": "2026-05-16T19:52:00Z",
       "metrics": {
-        "impressions": 302,
-        "members_reached": 158,
+        "impressions": 307,
+        "members_reached": 160,
         "reactions": 1,
         "comments": 1,
         "reposts": 0,
@@ -19,42 +19,41 @@
         "sends": 0,
         "profile_viewers": 1,
         "followers_gained": 0,
-        "engagement_rate": 0.66
+        "engagement_rate": 0.65
       },
       "demographics": {
         "seniority": {
-          "Senior": 30.4,
-          "Entry": 29.1,
-          "Director": 10.8,
-          "CXO": 7.0,
-          "Manager": 5.7
+          "Senior": 31.2,
+          "Entry": 28.7,
+          "Director": 11.3,
+          "CXO": 6.9,
+          "Manager": 6.2
         },
         "job_title": {
-          "Software Engineer": 5.1,
-          "Project Manager": 4.4,
-          "Full Stack Engineer": 3.8
+          "Software Engineer": 5.0,
+          "Full Stack Engineer": 3.7,
+          "Project Manager": 3.7
         },
         "industry": {
-          "IT Services and IT Consulting": 20.9,
-          "Aviation and Aerospace Component Manufacturing": 19.0,
-          "Software Development": 15.2,
-          "Technology, Information and Internet": 7.0,
-          "Defense and Space Manufacturing": 3.8
+          "IT Services and IT Consulting": 21.2,
+          "Aviation and Aerospace Component Manufacturing": 20.0,
+          "Software Development": 15.6,
+          "Technology, Information and Internet": 7.5
         },
         "company_size": {
-          "10,001+ employees": 22.2,
-          "51-200 employees": 15.8,
-          "11-50 employees": 10.8,
-          "1-10 employees": 8.2,
-          "201-500 employees": 7.0
+          "10,001+ employees": 22.5,
+          "51-200 employees": 16.3,
+          "11-50 employees": 10.0,
+          "1-10 employees": 7.5,
+          "201-500 employees": 6.9
         },
         "location": {
-          "Berlin Metropolitan Area": 12.0,
-          "Greater Derby Area": 7.0
+          "Berlin Metropolitan Area": 11.3,
+          "Greater Derby Area": 6.9
         },
         "company": {
-          "Rolls-Royce": 10.1,
-          "Speed and Function": 7.6
+          "Rolls-Royce": 11.3,
+          "Speed and Function": 7.5
         }
       }
     }

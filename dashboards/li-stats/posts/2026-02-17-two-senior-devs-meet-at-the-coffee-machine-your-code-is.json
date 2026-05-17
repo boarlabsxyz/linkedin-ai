@@ -8,7 +8,7 @@
   "preview": "Two senior devs meet at the coffee machine. \"Your code is wrong.\" \"No, YOUR code is wrong.\" \"You're using the wrong library.\" \"No, YOU'RE using the wrong library.\" They're probably both right — and th",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-16T14:56:00Z",
+      "snapshot_at": "2026-05-16T19:15:00Z",
       "metrics": {
         "impressions": 38997,
         "members_reached": 24861,
@@ -52,9 +52,9 @@
         },
         "location": {
           "Zagreb Metropolitan Area": 3.4,
-          "London Area, United Kingdom": 2,
-          "Kyiv Metropolitan Area": 2,
-          "Prague Metropolitan Area": 2,
+          "London Area, United Kingdom": 2.0,
+          "Kyiv Metropolitan Area": 2.0,
+          "Prague Metropolitan Area": 2.0,
           "Belgrade Metropolitan Area": 1.9
         },
         "company": {}

@@ -1,26 +1,26 @@
 {
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-16T15:07:36Z",
+      "snapshot_at": "2026-05-17T06:03:41Z",
       "dashboard": {
-        "post_impressions_7d": 775,
-        "post_impressions_delta_pct_7d": 30.8,
+        "post_impressions_7d": 759,
+        "post_impressions_delta_pct_7d": 29.8,
         "followers": 3576,
-        "followers_delta_pct_7d": 0.2,
+        "followers_delta_pct_7d": 0.1,
         "profile_viewers_90d": 350,
         "search_appearances_previous_week": 27
       },
       "content_7d": {
-        "impressions_7d": 775,
-        "impressions_delta_pct": 30.7,
-        "members_reached_7d": 229,
+        "impressions_7d": 759,
+        "impressions_delta_pct": 29.8,
+        "members_reached_7d": 223,
         "social_engagements_7d": 3,
         "reactions_7d": 2,
         "comments_7d": 1,
         "reposts_7d": 0,
         "saves_7d": 0,
         "sends_7d": 0,
-        "link_engagements_7d": 1
+        "link_engagements_7d": 0
       },
       "audience": {
         "total_followers": 3576,
@@ -112,7 +112,7 @@
         "clicks_per_section": {
           "Intro": {
             "count": 84,
-            "pct": 73
+            "pct": 73.0
           },
           "Activity": {
             "count": 19,
@@ -126,7 +126,7 @@
       },
       "profile_views": {
         "viewers_90d": 350,
-        "viewers_delta_pct_7d": 46.0,
+        "viewers_delta_pct_7d": 42.0,
         "highlights": {
           "top_location": "Kyiv Metropolitan Area",
           "top_industry": "Software Development",

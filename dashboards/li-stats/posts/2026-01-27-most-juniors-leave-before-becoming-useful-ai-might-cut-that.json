@@ -8,7 +8,7 @@
   "preview": "𝗠𝗼𝘀𝘁 𝗷𝘂𝗻𝗶𝗼𝗿𝘀 𝗹𝗲𝗮𝘃𝗲 𝗯𝗲𝗳𝗼𝗿𝗲 𝗯𝗲𝗰𝗼𝗺𝗶𝗻𝗴 𝘂𝘀𝗲𝗳𝘂𝗹. 𝗔𝗜 𝗺𝗶𝗴𝗵𝘁 𝗰𝘂𝘁 𝘁𝗵𝗮𝘁 𝘄𝗶𝗻𝗱𝗼𝘄 𝗶𝗻 𝗵𝗮𝗹𝗳. I came across Kent Beck's article about juniors in the AI era",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-16T14:54:00Z",
+      "snapshot_at": "2026-05-16T19:07:30Z",
       "metrics": {
         "impressions": 7986,
         "members_reached": 5688,
@@ -25,7 +25,7 @@
         "seniority": {
           "Senior": 29.3,
           "Entry": 26.1,
-          "Director": 8,
+          "Director": 8.0,
           "Manager": 6.5,
           "CXO": 4.7
         },
@@ -44,20 +44,26 @@
           "Financial Services": 3.3
         },
         "company_size": {
-          "10,001+ employees": 13,
+          "10,001+ employees": 13.0,
           "51-200 employees": 12.6,
           "1001-5000 employees": 11.6,
           "11-50 employees": 11.4,
           "201-500 employees": 8.8
         },
         "location": {
-          "Prague Metropolitan Area": 5,
-          "Ljubljana Metropolitan Area": 4,
+          "Prague Metropolitan Area": 5.0,
+          "Ljubljana Metropolitan Area": 4.0,
           "Sofia Metropolitan Area": 3.7,
           "Zagreb Metropolitan Area": 3.7,
           "Budapest Metropolitan Area": 2.9
         },
-        "company": {}
+        "company": {
+          "EPAM Systems": 1.0,
+          "SoftServe": 1.0,
+          "Speed and Function": 1.0,
+          "IBM": 1.0,
+          "Accenture": 1.0
+        }
       }
     }
   }

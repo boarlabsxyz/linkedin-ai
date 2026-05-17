@@ -8,7 +8,7 @@
   "preview": "One challenging thing in business is explaining something your stakeholders have never actually experienced",
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-16T14:53:00Z",
+      "snapshot_at": "2026-05-16T19:05:00Z",
       "metrics": {
         "impressions": 236,
         "members_reached": 111,
@@ -33,13 +33,13 @@
           "Project Manager": 5.4
         },
         "industry": {
-          "IT Services and IT Consulting": 45,
-          "Software Development": 27
+          "IT Services and IT Consulting": 45.0,
+          "Software Development": 27.0
         },
         "company_size": {
           "51-200 employees": 23.4,
           "11-50 employees": 15.3,
-          "10,001+ employees": 9,
+          "10,001+ employees": 9.0,
           "1001-5000 employees": 7.2,
           "1-10 employees": 5.4
         },
