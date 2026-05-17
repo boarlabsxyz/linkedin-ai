@@ -25,18 +25,6 @@ BRANCH="chore/linkedin-stats-${WEEK}"
 git fetch origin main
 git checkout -B "$BRANCH" origin/main
 
-# --- DEBUG: keychain/session diagnostics ---
-echo "::group::env diagnostics"
-echo "whoami=$(whoami) HOME=$HOME"
-echo "security session:"; security list-keychains 2>&1
-echo "keychain item probe:"
-security find-generic-password -s "Claude Code-credentials" -a "$USER" -w >/dev/null 2>&1 \
-  && echo "  OK: can read Claude Code-credentials" \
-  || echo "  FAIL: cannot read Claude Code-credentials (exit $?)"
-echo "claude version: $(claude --version 2>&1 || echo failed)"
-echo "::endgroup::"
-# --- /DEBUG ---
-
 echo "gather linkedin stats" | claude -p --dangerously-skip-permissions
 
 python3 dashboards/flatten.py
