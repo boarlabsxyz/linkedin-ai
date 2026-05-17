@@ -27,7 +27,7 @@ git checkout -B "$BRANCH" origin/main
 
 echo "gather linkedin stats" \
   | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
-  | jq -r '
+  | jq -r --unbuffered '
       .description
       // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
       // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
