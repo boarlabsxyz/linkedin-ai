@@ -1,19 +1,19 @@
 {
   "weeks": {
     "2026-05-11": {
-      "snapshot_at": "2026-05-17T06:03:41Z",
+      "snapshot_at": "2026-05-17T22:33:59Z",
       "dashboard": {
-        "post_impressions_7d": 759,
-        "post_impressions_delta_pct_7d": 29.8,
+        "post_impressions_7d": 854,
+        "post_impressions_delta_pct_7d": -21.0,
         "followers": 3576,
         "followers_delta_pct_7d": 0.1,
         "profile_viewers_90d": 350,
         "search_appearances_previous_week": 27
       },
       "content_7d": {
-        "impressions_7d": 759,
-        "impressions_delta_pct": 29.8,
-        "members_reached_7d": 223,
+        "impressions_7d": 854,
+        "impressions_delta_pct": -21.0,
+        "members_reached_7d": 237,
         "social_engagements_7d": 3,
         "reactions_7d": 2,
         "comments_7d": 1,
