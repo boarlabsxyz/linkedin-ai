@@ -59,6 +59,59 @@
           "Speed and Function": 6.0
         }
       }
+    },
+    "2026-05-18": {
+      "snapshot_at": "2026-05-18T03:12:51Z",
+      "metrics": {
+        "impressions": 420,
+        "members_reached": 217,
+        "reactions": 3,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.95
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 34.1,
+          "Senior": 26.3,
+          "Director": 6.9,
+          "CXO": 6.0,
+          "Owner": 4.6
+        },
+        "job_title": {
+          "Software Engineer": 10.1,
+          "Frontend Developer": 3.7,
+          "Chief Executive Officer": 3.2,
+          "Product Manager": 2.8,
+          "Project Manager": 2.8
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.8,
+          "Software Development": 24.9,
+          "Technology, Information and Internet": 3.7
+        },
+        "company_size": {
+          "51-200 employees": 18.4,
+          "11-50 employees": 13.8,
+          "1-10 employees": 9.2,
+          "10,001+ employees": 8.8,
+          "1001-5000 employees": 7.8
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 7.4,
+          "Belgrade Metropolitan Area": 6.0,
+          "Zagreb Metropolitan Area": 3.2,
+          "Washington DC-Baltimore Area": 3.2,
+          "Greater Philadelphia": 2.8
+        },
+        "company": {
+          "Speed and Function": 6.0
+        }
+      }
     }
   }
 }

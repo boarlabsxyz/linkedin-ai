@@ -46,6 +46,46 @@
           "Speed and Function": 9.2
         }
       }
+    },
+    "2026-05-18": {
+      "snapshot_at": "2026-05-18T03:07:30Z",
+      "metrics": {
+        "impressions": 198,
+        "members_reached": 76,
+        "reactions": 3,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 2,
+        "followers_gained": 0,
+        "engagement_rate": 1.52
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 30.3,
+          "Entry": 28.9,
+          "CXO": 13.2,
+          "Owner": 9.2
+        },
+        "job_title": {
+          "Software Engineer": 11.8
+        },
+        "industry": {
+          "IT Services and IT Consulting": 35.5,
+          "Software Development": 26.3,
+          "Technology, Information and Internet": 9.2
+        },
+        "company_size": {
+          "51-200 employees": 21.1,
+          "11-50 employees": 15.8,
+          "1-10 employees": 9.2
+        },
+        "location": {},
+        "company": {
+          "Speed and Function": 9.2
+        }
+      }
     }
   }
 }

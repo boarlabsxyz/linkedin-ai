@@ -61,6 +61,61 @@
           "Speed and Function": 4.7
         }
       }
+    },
+    "2026-05-18": {
+      "snapshot_at": "2026-05-18T03:17:30Z",
+      "metrics": {
+        "impressions": 583,
+        "members_reached": 346,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 4,
+        "followers_gained": 0,
+        "engagement_rate": 0.69
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 29.2,
+          "Senior": 27.5,
+          "Director": 8.1,
+          "Owner": 5.8,
+          "CXO": 4.3
+        },
+        "job_title": {
+          "Software Engineer": 10.7,
+          "Project Manager": 3.5,
+          "Full Stack Engineer": 2.9,
+          "Founder": 2.6,
+          "Co-Founder": 2.6
+        },
+        "industry": {
+          "IT Services and IT Consulting": 29.5,
+          "Software Development": 22.0,
+          "Technology, Information and Internet": 5.8,
+          "Industrial Machinery Manufacturing": 2.6,
+          "IT System Custom Software Development": 2.3
+        },
+        "company_size": {
+          "51-200 employees": 19.4,
+          "1-10 employees": 10.7,
+          "201-500 employees": 10.4,
+          "11-50 employees": 10.1,
+          "1001-5000 employees": 9.5
+        },
+        "location": {
+          "Belgrade Metropolitan Area": 7.5,
+          "Ljubljana Metropolitan Area": 7.5,
+          "Zagreb Metropolitan Area": 7.2,
+          "Kyiv Metropolitan Area": 4.0,
+          "Greater Kitchener-Cambridge-Waterloo Metropolitan Area": 3.2
+        },
+        "company": {
+          "Speed and Function": 4.6
+        }
+      }
     }
   }
 }
