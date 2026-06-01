@@ -120,6 +120,65 @@
           "Caliber": 1.0
         }
       }
+    },
+    "2026-06-01": {
+      "snapshot_at": "2026-06-01T02:51:00Z",
+      "metrics": {
+        "impressions": 1370,
+        "members_reached": 867,
+        "reactions": 15,
+        "comments": 7,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 1,
+        "profile_viewers": 7,
+        "followers_gained": 0,
+        "engagement_rate": 1.61
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 33.6,
+          "Entry": 20.6,
+          "Director": 8.5,
+          "CXO": 7.5,
+          "Owner": 5.8
+        },
+        "job_title": {
+          "Software Engineer": 11.1,
+          "Founder": 4.3,
+          "Co-Founder": 3.9,
+          "Frontend Developer": 2.1,
+          "Chief Technology Officer": 1.7
+        },
+        "industry": {
+          "Software Development": 26.6,
+          "IT Services and IT Consulting": 25.5,
+          "Technology, Information and Internet": 10.7,
+          "Hospitals and Health Care": 4.6,
+          "Financial Services": 3.5
+        },
+        "company_size": {
+          "11-50 employees": 14.5,
+          "51-200 employees": 14.3,
+          "10,001+ employees": 14.2,
+          "1-10 employees": 14.2,
+          "1001-5000 employees": 9.2
+        },
+        "location": {
+          "Copenhagen Metropolitan Area": 7.0,
+          "Kyiv Metropolitan Area": 5.9,
+          "Lviv": 4.5,
+          "San Francisco Bay Area": 4.0,
+          "New York City Metropolitan Area": 3.5
+        },
+        "company": {
+          "Speed and Function": 2.2,
+          "CloudLinux": 0,
+          "Amazon": 0,
+          "JetBlue": 0,
+          "Caliber": 0
+        }
+      }
     }
   }
 }

@@ -1,0 +1,70 @@
+{
+  "urn": "urn:li:activity:7464644189239091201",
+  "id": "7464644189239091201",
+  "type": "post",
+  "posted_at": "2026-05-25T11:51:01Z",
+  "posted_date": "2026-05-25",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7464644189239091201/",
+  "preview": "You tell AI \"do the task. But don't delete the production database, DON'T DELETE IT!\" And somewhere in the middle of solving your task, it goes: \"oh man, listen - to actually finish this, I think I sh",
+  "weeks": {
+    "2026-06-01": {
+      "snapshot_at": "2026-06-01T03:36:45Z",
+      "metrics": {
+        "impressions": 3146,
+        "members_reached": 2504,
+        "reactions": 6,
+        "comments": 3,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.29
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 38.8,
+          "Senior": 25.9,
+          "Director": 6.1,
+          "Manager": 4.4,
+          "CXO": 4.3
+        },
+        "job_title": {
+          "Software Engineer": 13.1,
+          "Project Manager": 2.8,
+          "Chief Executive Officer": 2.2,
+          "Full Stack Engineer": 1.8,
+          "Founder": 1.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 23.4,
+          "Software Development": 16.7,
+          "Technology, Information and Internet": 3.4,
+          "Banking": 2.8,
+          "Financial Services": 2.2
+        },
+        "company_size": {
+          "11-50 employees": 14.7,
+          "51-200 employees": 14.3,
+          "1001-5000 employees": 12.5,
+          "1-10 employees": 9.6,
+          "201-500 employees": 9.1
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 19.1,
+          "Belgrade Metropolitan Area": 11.7,
+          "Zagreb Metropolitan Area": 11.5,
+          "Novi Sad Metropolitan Area": 3.9,
+          "Maribor Metropolitan Area": 2.6
+        },
+        "company": {
+          "OTP banka, Slovenija": 1,
+          "NLB d.d.": 1,
+          "Speed and Function": 1,
+          "ASEE": 1,
+          "KING ICT": 1
+        }
+      }
+    }
+  }
+}
