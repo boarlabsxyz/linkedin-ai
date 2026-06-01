@@ -107,6 +107,57 @@
           "Speed and Function": 7.6
         }
       }
+    },
+    "2026-05-25": {
+      "snapshot_at": "2026-05-25T03:51:00Z",
+      "metrics": {
+        "impressions": 352,
+        "members_reached": 187,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.57
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 31.6,
+          "Entry": 28.3,
+          "Director": 10.2,
+          "CXO": 7.5,
+          "Manager": 5.9
+        },
+        "job_title": {
+          "Software Engineer": 5.3,
+          "Project Manager": 3.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 21.9,
+          "Aviation and Aerospace Component Manufacturing": 21.4,
+          "Software Development": 15.0,
+          "Technology, Information and Internet": 7.0,
+          "Business Consulting and Services": 3.2
+        },
+        "company_size": {
+          "10,001+ employees": 23.0,
+          "51-200 employees": 16.0,
+          "11-50 employees": 10.2,
+          "1-10 employees": 7.5,
+          "201-500 employees": 6.4
+        },
+        "location": {
+          "Berlin Metropolitan Area": 15.0,
+          "Greater Derby Area": 5.9,
+          "Lviv": 3.2
+        },
+        "company": {
+          "Rolls-Royce": 11.8,
+          "Speed and Function": 7.0
+        }
+      }
     }
   }
 }

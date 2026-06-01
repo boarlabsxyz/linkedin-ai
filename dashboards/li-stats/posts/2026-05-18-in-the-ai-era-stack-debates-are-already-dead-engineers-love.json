@@ -1,0 +1,66 @@
+{
+  "urn": "urn:li:activity:7462112759053471744",
+  "id": "7462112759053471744",
+  "type": "post",
+  "posted_at": "2026-05-18T12:12:01Z",
+  "posted_date": "2026-05-18",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7462112759053471744/",
+  "preview": "In the AI era, stack debates are already dead. Engineers love arguing: microservices or monolith, TypeScript or Python, Rust or Go. For years I just picked whatever fits the business better. Now, work",
+  "weeks": {
+    "2026-05-25": {
+      "snapshot_at": "2026-05-25T03:57:00Z",
+      "metrics": {
+        "impressions": 431,
+        "members_reached": 319,
+        "reactions": 2,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.46
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 35.7,
+          "Senior": 26.0,
+          "Owner": 6.6,
+          "Director": 5.6,
+          "CXO": 5.6
+        },
+        "job_title": {
+          "Software Engineer": 13.8,
+          "Co-Founder": 4.1,
+          "Founder": 2.8,
+          "Chief Executive Officer": 2.8,
+          "Product Manager": 2.8
+        },
+        "industry": {
+          "Software Development": 25.7,
+          "IT Services and IT Consulting": 24.5,
+          "Technology, Information and Internet": 5.3,
+          "Financial Services": 2.5,
+          "Strategic Management Services": 1.9
+        },
+        "company_size": {
+          "51-200 employees": 16.0,
+          "11-50 employees": 13.2,
+          "1-10 employees": 11.9,
+          "1001-5000 employees": 11.0,
+          "10,001+ employees": 7.8
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 9.7,
+          "Zagreb Metropolitan Area": 8.2,
+          "Belgrade Metropolitan Area": 6.3,
+          "Maribor Metropolitan Area": 2.5,
+          "Kyiv Metropolitan Area": 2.5
+        },
+        "company": {
+          "Speed and Function": 3.1
+        }
+      }
+    }
+  }
+}
