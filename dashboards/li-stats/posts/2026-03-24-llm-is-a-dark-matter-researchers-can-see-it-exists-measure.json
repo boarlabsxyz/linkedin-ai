@@ -183,6 +183,65 @@
           "NDA": 0.5
         }
       }
+    },
+    "2026-06-01": {
+      "snapshot_at": "2026-06-01T02:36:00Z",
+      "metrics": {
+        "impressions": 28336,
+        "members_reached": 20245,
+        "reactions": 19,
+        "comments": 8,
+        "reposts": 0,
+        "saves": 4,
+        "sends": 0,
+        "profile_viewers": 18,
+        "followers_gained": 3,
+        "engagement_rate": 0.1
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 33.6,
+          "Entry": 30.2,
+          "Director": 4.8,
+          "Training": 4.6,
+          "Manager": 3.4
+        },
+        "job_title": {
+          "Software Engineer": 9.1,
+          "Professor": 3.3,
+          "Postdoctoral Researcher": 2.8,
+          "Data Scientist": 2.4,
+          "Founder": 1.6
+        },
+        "industry": {
+          "Software Development": 17.7,
+          "IT Services and IT Consulting": 15.6,
+          "Research Services": 11.7,
+          "Higher Education": 7.5,
+          "Technology, Information and Internet": 6.1
+        },
+        "company_size": {
+          "10,001+ employees": 15.7,
+          "1001-5000 employees": 13.9,
+          "51-200 employees": 11.7,
+          "11-50 employees": 10.8,
+          "201-500 employees": 7.2
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 6.0,
+          "Lviv": 2.4,
+          "San Francisco Bay Area": 2.2,
+          "Greater Paris Metropolitan Region": 2.1,
+          "Zürich Metropolitan Area": 1.8
+        },
+        "company": {
+          "EPAM Systems": 0.5,
+          "SoftServe": 0.5,
+          "Microsoft": 0.5,
+          "GlobalLogic": 0.5,
+          "NDA": 0.5
+        }
+      }
     }
   }
 }

@@ -156,6 +156,56 @@
           "Speed and Function": 9.5
         }
       }
+    },
+    "2026-06-01": {
+      "snapshot_at": "2026-06-01T01:40:00Z",
+      "metrics": {
+        "impressions": 454,
+        "members_reached": 189,
+        "reactions": 9,
+        "comments": 3,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 2.64
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 31.7,
+          "Entry": 29.6,
+          "CXO": 7.4,
+          "Director": 6.9,
+          "Owner": 4.2
+        },
+        "job_title": {
+          "Software Engineer": 12.2,
+          "Co-Founder": 3.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 38.6,
+          "Software Development": 21.7,
+          "Technology, Information and Internet": 10.1,
+          "Business Consulting and Services": 3.2
+        },
+        "company_size": {
+          "51-200 employees": 24.9,
+          "11-50 employees": 14.3,
+          "1-10 employees": 12.7,
+          "10,001+ employees": 6.9,
+          "1001-5000 employees": 6.9
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.1,
+          "Prague Metropolitan Area": 5.3,
+          "Lviv": 4.2,
+          "Wroclaw Metropolitan Area": 3.2
+        },
+        "company": {
+          "Speed and Function": 9.5
+        }
+      }
     }
   }
 }
