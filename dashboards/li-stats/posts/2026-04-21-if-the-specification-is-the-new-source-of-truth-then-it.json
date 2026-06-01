@@ -115,6 +115,60 @@
         }
       }
     },
+    "2026-05-25": {
+      "snapshot_at": "2026-05-25T03:24:09Z",
+      "metrics": {
+        "impressions": 504,
+        "members_reached": 298,
+        "reactions": 2,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 0.6
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 31.5,
+          "Senior": 27.5,
+          "Owner": 6.0,
+          "CXO": 5.4,
+          "Director": 5.0
+        },
+        "job_title": {
+          "Software Engineer": 13.4,
+          "Founder": 4.4,
+          "Co-Founder": 2.7,
+          "Quality Assurance Engineer": 2.3,
+          "Project Manager": 2.3
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.9,
+          "Software Development": 26.5,
+          "Technology, Information and Internet": 9.7
+        },
+        "company_size": {
+          "51-200 employees": 16.8,
+          "11-50 employees": 13.8,
+          "1-10 employees": 13.1,
+          "10,001+ employees": 9.7,
+          "1001-5000 employees": 9.7
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 5.4,
+          "Lviv": 4.7,
+          "Zagreb Metropolitan Area": 4.0,
+          "Belgrade Metropolitan Area": 3.7,
+          "Copenhagen Metropolitan Area": 2.7
+        },
+        "company": {
+          "Speed and Function": 6.4,
+          "EPAM Systems": 2.3
+        }
+      }
+    },
     "2026-06-01": {
       "snapshot_at": "2026-06-01T03:01:30Z",
       "metrics": {

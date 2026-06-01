@@ -109,6 +109,57 @@
         }
       }
     },
+    "2026-05-25": {
+      "snapshot_at": "2026-05-25T02:13:00Z",
+      "metrics": {
+        "impressions": 549,
+        "members_reached": 278,
+        "reactions": 7,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.27
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 32.0,
+          "Entry": 27.7,
+          "Director": 7.6,
+          "Manager": 7.6,
+          "Owner": 3.2
+        },
+        "job_title": {
+          "Software Engineer": 10.4,
+          "Project Manager": 3.2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 27.3,
+          "Software Development": 18.0,
+          "Technology, Information and Internet": 6.8,
+          "Human Resources Services": 3.2
+        },
+        "company_size": {
+          "51-200 employees": 16.9,
+          "11-50 employees": 12.6,
+          "1001-5000 employees": 10.8,
+          "501-1000 employees": 8.3,
+          "10,001+ employees": 7.9
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 3.2,
+          "London Area, United Kingdom": 2.9,
+          "Amsterdam Area": 2.5,
+          "Kyiv Metropolitan Area": 2.5,
+          "Wroclaw Metropolitan Area": 2.5
+        },
+        "company": {
+          "Speed and Function": 6.1
+        }
+      }
+    },
     "2026-06-01": {
       "snapshot_at": "2026-06-01T01:59:55Z",
       "metrics": {
