@@ -10,6 +10,8 @@
 #   4. If anything changed, commit + push + open a PR by reusing the existing
 #      common-pr-commit / common-pr-update scripts (same message format as
 #      manual runs).
+#   5. Squash-merge the PR via common-pr-merge so weekly snapshots don't pile
+#      up and conflict with each other on subsequent runs.
 set -euo pipefail
 
 for cmd in claude python3 node npm gh git jq; do
@@ -50,3 +52,4 @@ fi
 
 ./.claude/skills/common-pr-commit/commit.sh
 ./.claude/skills/common-pr-update/pr-update.sh
+./.claude/skills/common-pr-merge/merge.sh
