@@ -1,66 +1,82 @@
 ---
-title: LinkedIn Stats
+title: LinkedIn Stats — Account
 ---
+
+[Per-post detail →](/posts)
 
 ## Account snapshot (latest week)
 
-```sql account
-select
-  week,
-  followers,
-  post_impressions_7d,
-  profile_viewers_90d,
-  search_appearances_previous_week
+```sql account_latest
+select *
 from li_stats.account_weeks
 order by week desc
 limit 1
 ```
 
-<BigValue data={account} value=followers title="Followers" />
-<BigValue data={account} value=post_impressions_7d title="Post impressions (7d)" />
-<BigValue data={account} value=profile_viewers_90d title="Profile viewers (90d)" />
-<BigValue data={account} value=search_appearances_previous_week title="Search appearances (prev week)" />
+<BigValue data={account_latest} value=followers title="Followers" />
+<BigValue data={account_latest} value=post_impressions_7d title="Post impressions (7d)" />
+<BigValue data={account_latest} value=profile_viewers_90d title="Profile viewers (90d)" />
+<BigValue data={account_latest} value=search_appearances_previous_week title="Search appearances (prev week)" />
 
-## Top 10 posts by impressions (latest week)
+## Trends over time
 
-```sql top_posts
+```sql account_trend
 select
-  p.posted_date,
-  p.preview,
-  w.impressions,
-  w.reactions,
-  w.engagement_rate
-from li_stats.post_weeks w
-join li_stats.posts p on p.id = w.id
-where w.week = (select max(week) from li_stats.post_weeks)
-order by w.impressions desc
+  week,
+  followers,
+  post_impressions_7d,
+  profile_viewers_90d,
+  search_appearances_previous_week,
+  followers_delta_pct_7d
+from li_stats.account_weeks
+order by week
+```
+
+<LineChart data={account_trend} x=week y=followers title="Followers" />
+
+<LineChart data={account_trend} x=week y=post_impressions_7d title="Post impressions (7d)" />
+
+<LineChart data={account_trend} x=week y=profile_viewers_90d title="Profile viewers (90d)" />
+
+<LineChart data={account_trend} x=week y=search_appearances_previous_week title="Search appearances (prev week)" />
+
+## Audience demographics (latest week)
+
+```sql latest_acct_week
+select max(week) as week from li_stats.account_demographics
+```
+
+```sql aud_seniority
+select label, pct
+from li_stats.account_demographics
+where dimension = 'seniority'
+  and week = (select week from ${latest_acct_week})
+order by pct desc
+```
+
+<BarChart data={aud_seniority} x=label y=pct title="Seniority" swapXY=true sort=true />
+
+```sql aud_job
+select label, pct
+from li_stats.account_demographics
+where dimension = 'job_title'
+  and week = (select week from ${latest_acct_week})
+order by pct desc
 limit 10
 ```
 
-<BarChart data={top_posts} x=preview y=impressions sort=true swapXY=true />
+<BarChart data={aud_job} x=label y=pct title="Top job titles" swapXY=true sort=true />
 
-<DataTable data={top_posts} rows=10>
-  <Column id=posted_date title="Posted" />
-  <Column id=preview title="Preview" wrap=true />
-  <Column id=impressions title="Impr." align=right />
-  <Column id=reactions title="React." align=right />
-  <Column id=engagement_rate title="Engagement %" align=right />
-</DataTable>
-
-## Seniority breakdown (latest week, averaged across posts)
-
-```sql seniority
-select
-  label,
-  round(avg(pct), 1) as avg_pct
-from li_stats.post_demographics
-where dimension = 'seniority'
-  and week = (select max(week) from li_stats.post_demographics)
-group by label
-order by avg_pct desc
+```sql aud_location
+select label, pct
+from li_stats.account_demographics
+where dimension = 'location'
+  and week = (select week from ${latest_acct_week})
+order by pct desc
+limit 10
 ```
 
-<BarChart data={seniority} x=label y=avg_pct sort=true />
+<BarChart data={aud_location} x=label y=pct title="Top locations" swapXY=true sort=true />
 
 ## Posts published per month
 

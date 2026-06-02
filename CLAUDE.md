@@ -54,6 +54,8 @@ Two static-site dashboards visualise the LinkedIn analytics that the `linkedin-s
 | `dashboards/evidence/` | Evidence.dev — SQL + Markdown over DuckDB | `npm --prefix dashboards/evidence run dev` |
 | `dashboards/observable/` | Observable Framework — JS + Observable Plot | `npm --prefix dashboards/observable run dev` |
 
+The Observable dashboard is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin-ai/` by the `linkedin-stats-weekly` workflow (`actions/upload-pages-artifact` after the build step + a separate `deploy` job running `actions/deploy-pages`). A second workflow, `.github/workflows/pages-deploy.yml` (manual `workflow_dispatch` only), builds and republishes from current `main` without scraping — use it for ad-hoc re-publishes. Both share the same `pages` concurrency group. The site is served under the `/linkedin-ai/` subpath, set via `base` in `dashboards/observable/observablehq.config.js` — both `npm run dev` and the production build honor it. Pages source must be set to **GitHub Actions** in repo settings.
+
 `dashboards/flatten.py` reads `dashboards/li-stats/{posts/*.json, account.json}`, writes flat CSVs to `dashboards/li-stats/flat/` (canonical, gitignored) and mirrors them into `dashboards/evidence/sources/li_stats/` (Evidence's CSV connector doesn't follow symlinks). Observable's TS data loader reads the JSON directly with no intermediate step. Refresh: `python3 dashboards/flatten.py && npm --prefix dashboards/evidence run sources`.
 
 ## External systems

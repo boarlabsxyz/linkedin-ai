@@ -18,7 +18,7 @@ METRIC_KEYS = ["impressions", "members_reached", "reactions", "comments",
                "reposts", "saves", "sends", "profile_viewers",
                "followers_gained", "engagement_rate"]
 
-posts, post_weeks, post_demographics, account_weeks = [], [], [], []
+posts, post_weeks, post_demographics, account_weeks, account_demographics = [], [], [], [], []
 
 for p in sorted(IN_POSTS.glob("*.json")):
     d = json.loads(p.read_text())
@@ -40,13 +40,18 @@ if IN_ACCOUNT.exists():
     acct = json.loads(IN_ACCOUNT.read_text())
     for week, snap in (acct.get("weeks") or {}).items():
         dash = snap.get("dashboard") or {}
+        aud = snap.get("audience") or {}
         account_weeks.append({
             "week": week,
             "followers": dash.get("followers", 0),
             "post_impressions_7d": dash.get("post_impressions_7d", 0),
             "profile_viewers_90d": dash.get("profile_viewers_90d", 0),
             "search_appearances_previous_week": dash.get("search_appearances_previous_week", 0),
+            "followers_delta_pct_7d": aud.get("followers_delta_pct_7d", 0),
         })
+        for dim, labels in (aud.get("demographics") or {}).items():
+            for label, pct in (labels or {}).items():
+                account_demographics.append({"week": week, "dimension": dim, "label": label, "pct": pct})
 
 OUT_FLAT.mkdir(parents=True, exist_ok=True)
 OUT_EVIDENCE.mkdir(parents=True, exist_ok=True)
@@ -66,6 +71,7 @@ write_csv("posts", posts)
 write_csv("post_weeks", post_weeks)
 write_csv("post_demographics", post_demographics)
 write_csv("account_weeks", account_weeks)
+write_csv("account_demographics", account_demographics)
 
-print(f"posts={len(posts)} post_weeks={len(post_weeks)} demographics={len(post_demographics)} account_weeks={len(account_weeks)}", file=sys.stderr)
+print(f"posts={len(posts)} post_weeks={len(post_weeks)} post_demographics={len(post_demographics)} account_weeks={len(account_weeks)} account_demographics={len(account_demographics)}", file=sys.stderr)
 print(f"wrote to: {OUT_FLAT}/ and {OUT_EVIDENCE}/", file=sys.stderr)
