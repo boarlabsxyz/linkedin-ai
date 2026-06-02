@@ -41,11 +41,12 @@ const myDemos = post_demographics.filter(r => r.id === postId && r.week === late
 ## Weekly metrics
 
 ```js
-function metricChart(fields, label) {
+function metricChart(fields, label, width) {
   const fs = Array.isArray(fields) ? fields : [fields];
   const long = myWeeks.flatMap(row => fs.map(f => ({ week: row.week, metric: f, value: row[f] ?? 0 })));
   return Plot.plot({
-    height: 220,
+    width,
+    height: Math.round(width * 0.34),
     marginLeft: 60,
     y: { label, grid: true },
     x: { label: null, type: "point" },
@@ -60,10 +61,10 @@ function metricChart(fields, label) {
 ```
 
 <div class="grid grid-cols-1">
-  <div class="card"><h2>Impressions</h2>${metricChart("impressions", "Impressions")}</div>
-  <div class="card"><h2>Engagement actions</h2>${metricChart(["reactions","comments","reposts","saves","sends"], "Count")}</div>
-  <div class="card"><h2>Engagement rate</h2>${metricChart("engagement_rate", "%")}</div>
-  <div class="card"><h2>Profile viewers & followers gained</h2>${metricChart(["profile_viewers","followers_gained"], "Count")}</div>
+  <div class="card"><h2>Impressions</h2>${resize((width) => metricChart("impressions", "Impressions", width))}</div>
+  <div class="card"><h2>Engagement actions</h2>${resize((width) => metricChart(["reactions","comments","reposts","saves","sends"], "Count", width))}</div>
+  <div class="card"><h2>Engagement rate</h2>${resize((width) => metricChart("engagement_rate", "%", width))}</div>
+  <div class="card"><h2>Profile viewers & followers gained</h2>${resize((width) => metricChart(["profile_viewers","followers_gained"], "Count", width))}</div>
 </div>
 
 ${Inputs.table(myWeeks, {
@@ -74,16 +75,18 @@ ${Inputs.table(myWeeks, {
 ## Audience demographics (latest week for this post — ${latestWeek ?? "—"})
 
 ```js
-function demoBar(dimension, opts = {}) {
+function demoBar(dimension, opts = {}, width) {
   const rows = myDemos
     .filter(r => r.dimension === dimension)
     .slice()
     .sort((a, b) => b.pct - a.pct)
     .slice(0, opts.limit ?? 999);
   if (!rows.length) return html`<em>No data</em>`;
+  const marginLeft = opts.marginLeft ?? 200;
   return Plot.plot({
-    marginLeft: opts.marginLeft ?? 200,
-    height: opts.height ?? (rows.length * 22 + 60),
+    width: Math.max(width, marginLeft + 120),
+    marginLeft,
+    height: opts.height ?? (rows.length * 38 + 80),
     x: { label: "%", grid: true },
     y: { label: null },
     marks: [
@@ -95,10 +98,10 @@ function demoBar(dimension, opts = {}) {
 ```
 
 <div class="grid grid-cols-1">
-  <div class="card"><h2>Seniority</h2>${demoBar("seniority", {marginLeft: 140})}</div>
-  <div class="card"><h2>Top job titles</h2>${demoBar("job_title", {limit: 10, marginLeft: 240})}</div>
-  <div class="card"><h2>Top industries</h2>${demoBar("industry", {limit: 10, marginLeft: 260})}</div>
-  <div class="card"><h2>Company size</h2>${demoBar("company_size", {marginLeft: 180})}</div>
-  <div class="card"><h2>Top locations</h2>${demoBar("location", {limit: 10, marginLeft: 240})}</div>
-  <div class="card"><h2>Top companies</h2>${demoBar("company", {limit: 10, marginLeft: 240})}</div>
+  <div class="card"><h2>Seniority</h2>${resize((width) => demoBar("seniority", {marginLeft: 140}, width))}</div>
+  <div class="card"><h2>Top job titles</h2>${resize((width) => demoBar("job_title", {limit: 10, marginLeft: 240}, width))}</div>
+  <div class="card"><h2>Top industries</h2>${resize((width) => demoBar("industry", {limit: 10, marginLeft: 260}, width))}</div>
+  <div class="card"><h2>Company size</h2>${resize((width) => demoBar("company_size", {marginLeft: 180}, width))}</div>
+  <div class="card"><h2>Top locations</h2>${resize((width) => demoBar("location", {limit: 10, marginLeft: 240}, width))}</div>
+  <div class="card"><h2>Top companies</h2>${resize((width) => demoBar("company", {limit: 10, marginLeft: 240}, width))}</div>
 </div>

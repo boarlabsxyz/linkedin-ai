@@ -26,9 +26,10 @@ const latestAcctWeek = latestAcct?.week ?? null;
 ## Trends over time
 
 ```js
-function trendChart(field, label) {
+function trendChart(field, label, width) {
   return Plot.plot({
-    height: 220,
+    width,
+    height: Math.round(width * 0.34),
     marginLeft: 60,
     y: { label, grid: true },
     x: { label: null, type: "point" },
@@ -42,23 +43,25 @@ function trendChart(field, label) {
 ```
 
 <div class="grid grid-cols-1">
-  <div class="card"><h2>Followers</h2>${trendChart("followers", "Followers")}</div>
-  <div class="card"><h2>Post impressions (7d)</h2>${trendChart("post_impressions_7d", "Impressions")}</div>
-  <div class="card"><h2>Profile viewers (90d)</h2>${trendChart("profile_viewers_90d", "Viewers")}</div>
-  <div class="card"><h2>Search appearances (prev week)</h2>${trendChart("search_appearances_previous_week", "Appearances")}</div>
+  <div class="card"><h2>Followers</h2>${resize((width) => trendChart("followers", "Followers", width))}</div>
+  <div class="card"><h2>Post impressions (7d)</h2>${resize((width) => trendChart("post_impressions_7d", "Impressions", width))}</div>
+  <div class="card"><h2>Profile viewers (90d)</h2>${resize((width) => trendChart("profile_viewers_90d", "Viewers", width))}</div>
+  <div class="card"><h2>Search appearances (prev week)</h2>${resize((width) => trendChart("search_appearances_previous_week", "Appearances", width))}</div>
 </div>
 
 ## Audience demographics (latest week)
 
 ```js
-function demoBar(dimension, opts = {}) {
+function demoBar(dimension, opts = {}, width) {
   const rows = account_demographics
     .filter(r => r.dimension === dimension && r.week === latestAcctWeek)
     .sort((a, b) => b.pct - a.pct)
     .slice(0, opts.limit ?? 999);
+  const marginLeft = opts.marginLeft ?? 180;
   return Plot.plot({
-    marginLeft: opts.marginLeft ?? 180,
-    height: opts.height ?? (rows.length * 24 + 60),
+    width: Math.max(width, marginLeft + 120),
+    marginLeft,
+    height: opts.height ?? (rows.length * 38 + 80),
     x: { label: "%", grid: true },
     y: { label: null },
     marks: [
@@ -70,9 +73,9 @@ function demoBar(dimension, opts = {}) {
 ```
 
 <div class="grid grid-cols-1">
-  <div class="card"><h2>Seniority</h2>${demoBar("seniority", {marginLeft: 140})}</div>
-  <div class="card"><h2>Top job titles</h2>${demoBar("job_title", {limit: 10, marginLeft: 220})}</div>
-  <div class="card"><h2>Top locations</h2>${demoBar("location", {limit: 10, marginLeft: 220})}</div>
+  <div class="card"><h2>Seniority</h2>${resize((width) => demoBar("seniority", {marginLeft: 140}, width))}</div>
+  <div class="card"><h2>Top job titles</h2>${resize((width) => demoBar("job_title", {limit: 10, marginLeft: 220}, width))}</div>
+  <div class="card"><h2>Top locations</h2>${resize((width) => demoBar("location", {limit: 10, marginLeft: 220}, width))}</div>
 </div>
 
 ## Posts published per month
@@ -92,13 +95,12 @@ const perMonth = (() => {
 })();
 ```
 
-```js
-Plot.plot({
-  height: 280,
+<div class="card">${resize((width) => Plot.plot({
+  width,
+  height: Math.round(width * 0.34),
   marks: [
     Plot.barY(perMonth, { x: "month", y: "posts", fill: "var(--theme-foreground-focus)" }),
     Plot.barY(perMonth, { x: "month", y: "reposts", fill: "var(--theme-foreground-faintest)" }),
     Plot.ruleY([0])
   ]
-})
-```
+}))}</div>
