@@ -59,7 +59,7 @@ function metricChart(fields, label) {
 }
 ```
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1">
   <div class="card"><h2>Impressions</h2>${metricChart("impressions", "Impressions")}</div>
   <div class="card"><h2>Engagement actions</h2>${metricChart(["reactions","comments","reposts","saves","sends"], "Count")}</div>
   <div class="card"><h2>Engagement rate</h2>${metricChart("engagement_rate", "%")}</div>
@@ -94,7 +94,7 @@ function demoBar(dimension, opts = {}) {
 }
 ```
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1">
   <div class="card"><h2>Seniority</h2>${demoBar("seniority", {marginLeft: 140})}</div>
   <div class="card"><h2>Top job titles</h2>${demoBar("job_title", {limit: 10, marginLeft: 240})}</div>
   <div class="card"><h2>Top industries</h2>${demoBar("industry", {limit: 10, marginLeft: 260})}</div>

@@ -13,10 +13,8 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 ├── sources/                      # LinkedIn writing guidance (canonical copies pulled from ClickUp)
 │   ├── tone-of-voice.md          # Tone, taboos, sentence rhythm (Ukrainian)
 │   └── post-instructions.md      # Post structure, mini-brief format, quality formula (Ukrainian)
-├── dashboards/                   # Static-site dashboards + the data they read
+├── dashboards/                   # Static-site dashboard + the data it reads
 │   ├── li-stats/                 # Raw LinkedIn analytics JSON (git-tracked, written by linkedin-stats agents)
-│   ├── flatten.py                # Shared JSON → CSV flattener
-│   ├── evidence/                 # Evidence.dev project (SQL + Markdown over DuckDB)
 │   └── observable/               # Observable Framework project (JS + Observable Plot)
 ├── .claude/
 │   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
@@ -43,20 +41,13 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 | `awesome-sync-tasks` | Process `[AWESOME] Sync` Google Drive transcripts → create/update ClickUp tasks. |
 | `weekly-priorities` | Process last week's meeting transcripts → update/create personal priorities in ClickUp. |
 | `utilities-youtube-transcript` | Download a YouTube video's transcript via yt-dlp; falls back to Playwright agent on HTTP 429. Spawns `utilities-youtube-transcript-vtt` / `-playwright` sub-agents. |
-| `linkedin-stats` | Snapshot Peter's LinkedIn posts + per-post + account-level weekly analytics into JSON files under `./dashboards/li-stats/` (git-tracked). Spawns `linkedin-stats-gather-posts` (URN discovery), then one `linkedin-stats-gather-metrics` agent **per post** sequentially (post-summary + 6 demographic breakdowns → `weeks[WEEK]`), then `linkedin-stats-gather-account` (dashboard + 4 creator-analytics pages → `account.json`). Parallel fan-out across sub-agents is unsafe with the shared Playwright MCP (no per-call tab targeting). Driven weekly (Mon 00:00 UTC) by `.github/workflows/linkedin-stats-weekly.yml` via the colocated `run-weekly.sh`, which calls `claude -p --dangerously-skip-permissions`, refreshes both dashboards, then chains `common-pr-commit` + `common-pr-update` + `common-pr-merge` (auto-merge keeps weekly snapshots from piling up into conflicts). |
+| `linkedin-stats` | Snapshot Peter's LinkedIn posts + per-post + account-level weekly analytics into JSON files under `./dashboards/li-stats/` (git-tracked). Spawns `linkedin-stats-gather-posts` (URN discovery), then one `linkedin-stats-gather-metrics` agent **per post** sequentially (post-summary + 6 demographic breakdowns → `weeks[WEEK]`), then `linkedin-stats-gather-account` (dashboard + 4 creator-analytics pages → `account.json`). Parallel fan-out across sub-agents is unsafe with the shared Playwright MCP (no per-call tab targeting). Driven weekly (Mon 00:00 UTC) by `.github/workflows/linkedin-stats-weekly.yml` via the colocated `run-weekly.sh`, which calls `claude -p --dangerously-skip-permissions`, rebuilds the Observable dashboard, then chains `common-pr-commit` + `common-pr-update` + `common-pr-merge` (auto-merge keeps weekly snapshots from piling up into conflicts). |
 
-## Dashboards
+## Dashboard
 
-Two static-site dashboards visualise the LinkedIn analytics that the `linkedin-stats` skill collects into `dashboards/li-stats/`.
+The Observable Framework dashboard at `dashboards/observable/` visualises the LinkedIn analytics that the `linkedin-stats` skill collects into `dashboards/li-stats/`. Local dev: `npm --prefix dashboards/observable run dev`. Observable's TS data loader at `dashboards/observable/src/data/stats.json.ts` reads the JSON files in `dashboards/li-stats/` directly at build time — no intermediate flattening step.
 
-| Project | Stack | Local dev |
-|---|---|---|
-| `dashboards/evidence/` | Evidence.dev — SQL + Markdown over DuckDB | `npm --prefix dashboards/evidence run dev` |
-| `dashboards/observable/` | Observable Framework — JS + Observable Plot | `npm --prefix dashboards/observable run dev` |
-
-The Observable dashboard is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin-ai/` by the `linkedin-stats-weekly` workflow (`actions/upload-pages-artifact` after the build step + a separate `deploy` job running `actions/deploy-pages`). A second workflow, `.github/workflows/pages-deploy.yml` (manual `workflow_dispatch` only), builds and republishes from current `main` without scraping — use it for ad-hoc re-publishes. Both share the same `pages` concurrency group. The site is served under the `/linkedin-ai/` subpath, set via `base` in `dashboards/observable/observablehq.config.js` — both `npm run dev` and the production build honor it. Pages source must be set to **GitHub Actions** in repo settings.
-
-`dashboards/flatten.py` reads `dashboards/li-stats/{posts/*.json, account.json}`, writes flat CSVs to `dashboards/li-stats/flat/` (canonical, gitignored) and mirrors them into `dashboards/evidence/sources/li_stats/` (Evidence's CSV connector doesn't follow symlinks). Observable's TS data loader reads the JSON directly with no intermediate step. Refresh: `python3 dashboards/flatten.py && npm --prefix dashboards/evidence run sources`.
+The site is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin-ai/` by the `linkedin-stats-weekly` workflow (`actions/upload-pages-artifact` after the build step + a separate `deploy` job running `actions/deploy-pages`). A second workflow, `.github/workflows/pages-deploy.yml` (manual `workflow_dispatch` only), builds and republishes from current `main` without scraping — use it for ad-hoc re-publishes. Both share the same `pages` concurrency group. The site is served under the `/linkedin-ai/` subpath, set via `base` in `dashboards/observable/observablehq.config.js` — both `npm run dev` and the production build honor it. Pages source must be set to **GitHub Actions** in repo settings.
 
 ## External systems
 
