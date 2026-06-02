@@ -5,9 +5,5 @@ tmp/
 
 # Dashboard build artefacts (regenerable from dashboards/li-stats/)
 dashboards/*/node_modules/
-dashboards/evidence/.evidence/
-dashboards/evidence/build/
-dashboards/evidence/sources/li_stats/*.csv
 dashboards/observable/dist/
 dashboards/observable/src/.observablehq/
-dashboards/li-stats/flat/

@@ -6,7 +6,7 @@
 #   1. Branch off origin/main.
 #   2. Invoke the linkedin-stats skill via `claude -p` (writes JSON snapshots
 #      under dashboards/li-stats/).
-#   3. Refresh CSVs + rebuild both dashboards.
+#   3. Rebuild the Observable dashboard.
 #   4. If anything changed, commit + push + open a PR by reusing the existing
 #      common-pr-commit / common-pr-update scripts (same message format as
 #      manual runs).
@@ -14,7 +14,7 @@
 #      up and conflict with each other on subsequent runs.
 set -euo pipefail
 
-for cmd in claude python3 node npm gh git jq; do
+for cmd in claude node npm gh git jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Required command not found in PATH: $cmd" >&2
     exit 1
@@ -35,12 +35,6 @@ echo "gather linkedin stats" \
       // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
       // empty
     '
-
-python3 dashboards/flatten.py
-
-npm --prefix dashboards/evidence ci --prefer-offline --no-audit
-npm --prefix dashboards/evidence run sources
-npm --prefix dashboards/evidence run build
 
 npm --prefix dashboards/observable ci --prefer-offline --no-audit
 npm --prefix dashboards/observable run build

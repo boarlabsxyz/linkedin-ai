@@ -41,7 +41,7 @@ function trendChart(field, label) {
 }
 ```
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1">
   <div class="card"><h2>Followers</h2>${trendChart("followers", "Followers")}</div>
   <div class="card"><h2>Post impressions (7d)</h2>${trendChart("post_impressions_7d", "Impressions")}</div>
   <div class="card"><h2>Profile viewers (90d)</h2>${trendChart("profile_viewers_90d", "Viewers")}</div>
