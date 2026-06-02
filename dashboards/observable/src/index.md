@@ -1,85 +1,79 @@
 ---
-title: LinkedIn Stats
+title: LinkedIn Stats — Account
 ---
 
-# LinkedIn Stats
+# LinkedIn Stats — Account
+
+[Per-post detail →](./posts)
 
 ```js
 const stats = await FileAttachment("data/stats.json").json();
-const { posts, post_weeks, post_demographics, account_weeks } = stats;
-const latestAcctWeek = account_weeks.length ? account_weeks.slice().sort((a, b) => b.week.localeCompare(a.week))[0] : null;
-const latestPostWeek = post_weeks.length ? post_weeks.map(r => r.week).sort().at(-1) : null;
-const previewById = new Map(posts.map(p => [p.id, p.preview]));
-const datedById = new Map(posts.map(p => [p.id, p.posted_date]));
+const { posts, account_weeks, account_demographics } = stats;
+const sortedAcct = account_weeks.slice().sort((a, b) => a.week.localeCompare(b.week));
+const latestAcct = sortedAcct.at(-1);
+const latestAcctWeek = latestAcct?.week ?? null;
 ```
 
-## Account snapshot (latest week — ${latestAcctWeek?.week ?? "—"})
+## Account snapshot (latest week — ${latestAcctWeek ?? "—"})
 
 <div class="grid grid-cols-4">
-  <div class="card"><h2>Followers</h2><span class="big">${latestAcctWeek?.followers?.toLocaleString() ?? "—"}</span></div>
-  <div class="card"><h2>Post impressions (7d)</h2><span class="big">${latestAcctWeek?.post_impressions_7d?.toLocaleString() ?? "—"}</span></div>
-  <div class="card"><h2>Profile viewers (90d)</h2><span class="big">${latestAcctWeek?.profile_viewers_90d?.toLocaleString() ?? "—"}</span></div>
-  <div class="card"><h2>Search appearances (prev week)</h2><span class="big">${latestAcctWeek?.search_appearances_previous_week?.toLocaleString() ?? "—"}</span></div>
+  <div class="card"><h2>Followers</h2><span class="big">${latestAcct?.followers?.toLocaleString() ?? "—"}</span></div>
+  <div class="card"><h2>Post impressions (7d)</h2><span class="big">${latestAcct?.post_impressions_7d?.toLocaleString() ?? "—"}</span></div>
+  <div class="card"><h2>Profile viewers (90d)</h2><span class="big">${latestAcct?.profile_viewers_90d?.toLocaleString() ?? "—"}</span></div>
+  <div class="card"><h2>Search appearances (prev week)</h2><span class="big">${latestAcct?.search_appearances_previous_week?.toLocaleString() ?? "—"}</span></div>
 </div>
 
-## Top 10 posts by impressions (latest week — ${latestPostWeek ?? "—"})
+## Trends over time
 
 ```js
-const top = post_weeks
-  .filter(r => r.week === latestPostWeek)
-  .sort((a, b) => b.impressions - a.impressions)
-  .slice(0, 10)
-  .map(r => ({ ...r, preview: previewById.get(r.id) ?? r.id, posted_date: datedById.get(r.id) ?? "" }));
+function trendChart(field, label) {
+  return Plot.plot({
+    height: 220,
+    marginLeft: 60,
+    y: { label, grid: true },
+    x: { label: null, type: "point" },
+    marks: [
+      Plot.lineY(sortedAcct, { x: "week", y: field, stroke: "var(--theme-foreground-focus)" }),
+      Plot.dot(sortedAcct, { x: "week", y: field, fill: "var(--theme-foreground-focus)" }),
+      Plot.ruleY([0])
+    ]
+  });
+}
 ```
+
+<div class="grid grid-cols-2">
+  <div class="card"><h2>Followers</h2>${trendChart("followers", "Followers")}</div>
+  <div class="card"><h2>Post impressions (7d)</h2>${trendChart("post_impressions_7d", "Impressions")}</div>
+  <div class="card"><h2>Profile viewers (90d)</h2>${trendChart("profile_viewers_90d", "Viewers")}</div>
+  <div class="card"><h2>Search appearances (prev week)</h2>${trendChart("search_appearances_previous_week", "Appearances")}</div>
+</div>
+
+## Audience demographics (latest week)
 
 ```js
-Plot.plot({
-  marginLeft: 320,
-  height: 360,
-  x: { label: "Impressions" },
-  y: { label: null },
-  marks: [
-    Plot.barX(top, { x: "impressions", y: "preview", sort: { y: "x", reverse: true }, fill: "var(--theme-foreground-focus)" }),
-    Plot.text(top, { x: "impressions", y: "preview", text: d => d.impressions.toLocaleString(), dx: 6, textAnchor: "start" })
-  ]
-})
+function demoBar(dimension, opts = {}) {
+  const rows = account_demographics
+    .filter(r => r.dimension === dimension && r.week === latestAcctWeek)
+    .sort((a, b) => b.pct - a.pct)
+    .slice(0, opts.limit ?? 999);
+  return Plot.plot({
+    marginLeft: opts.marginLeft ?? 180,
+    height: opts.height ?? (rows.length * 24 + 60),
+    x: { label: "%", grid: true },
+    y: { label: null },
+    marks: [
+      Plot.barX(rows, { x: "pct", y: "label", sort: { y: "x", reverse: true }, fill: "var(--theme-foreground-focus)" }),
+      Plot.text(rows, { x: "pct", y: "label", text: d => `${d.pct}%`, dx: 6, textAnchor: "start" })
+    ]
+  });
+}
 ```
 
-${Inputs.table(top, {
-  columns: ["posted_date", "preview", "impressions", "reactions", "engagement_rate"],
-  header: { posted_date: "Posted", preview: "Preview", impressions: "Impr.", reactions: "React.", engagement_rate: "Engagement %" },
-  width: { preview: 480 }
-})}
-
-## Seniority breakdown (latest week, averaged across posts)
-
-```js
-const seniorityRows = (() => {
-  const byLabel = new Map();
-  for (const row of post_demographics.filter(r => r.dimension === "seniority" && r.week === latestPostWeek)) {
-    const cur = byLabel.get(row.label) ?? { label: row.label, total: 0, n: 0 };
-    cur.total += row.pct;
-    cur.n += 1;
-    byLabel.set(row.label, cur);
-  }
-  return [...byLabel.values()]
-    .map(({ label, total, n }) => ({ label, avg_pct: +(total / n).toFixed(1) }))
-    .sort((a, b) => b.avg_pct - a.avg_pct);
-})();
-```
-
-```js
-Plot.plot({
-  marginLeft: 140,
-  height: 280,
-  x: { label: "% of impressions" },
-  y: { label: null },
-  marks: [
-    Plot.barX(seniorityRows, { x: "avg_pct", y: "label", sort: { y: "x", reverse: true }, fill: "var(--theme-foreground-focus)" }),
-    Plot.text(seniorityRows, { x: "avg_pct", y: "label", text: d => `${d.avg_pct}%`, dx: 6, textAnchor: "start" })
-  ]
-})
-```
+<div class="grid grid-cols-1">
+  <div class="card"><h2>Seniority</h2>${demoBar("seniority", {marginLeft: 140})}</div>
+  <div class="card"><h2>Top job titles</h2>${demoBar("job_title", {limit: 10, marginLeft: 220})}</div>
+  <div class="card"><h2>Top locations</h2>${demoBar("location", {limit: 10, marginLeft: 220})}</div>
+</div>
 
 ## Posts published per month
 
@@ -87,7 +81,8 @@ Plot.plot({
 const perMonth = (() => {
   const m = new Map();
   for (const p of posts) {
-    const month = p.posted_date.slice(0, 7);
+    const month = (p.posted_date || "").slice(0, 7);
+    if (!month) continue;
     const cur = m.get(month) ?? { month, posts: 0, reposts: 0 };
     cur.posts += 1;
     if (p.type === "repost") cur.reposts += 1;

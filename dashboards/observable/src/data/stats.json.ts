@@ -18,12 +18,14 @@ const METRIC_KEYS = [
 type PostMeta = { id: string; posted_date: string; type: string; preview: string; post_url: string };
 type PostWeek = { id: string; week: string } & Record<string, number>;
 type Demo = { id: string; week: string; dimension: string; label: string; pct: number };
-type AccountWeek = { week: string; followers: number; post_impressions_7d: number; profile_viewers_90d: number; search_appearances_previous_week: number };
+type AccountWeek = { week: string; followers: number; post_impressions_7d: number; profile_viewers_90d: number; search_appearances_previous_week: number; followers_delta_pct_7d: number };
+type AccountDemo = { week: string; dimension: string; label: string; pct: number };
 
 const posts: PostMeta[] = [];
 const post_weeks: PostWeek[] = [];
 const post_demographics: Demo[] = [];
 const account_weeks: AccountWeek[] = [];
+const account_demographics: AccountDemo[] = [];
 
 for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort()) {
   const d = JSON.parse(readFileSync(join(POSTS_DIR, fname), "utf8"));
@@ -51,14 +53,21 @@ try {
   const acct = JSON.parse(readFileSync(ACCOUNT_FILE, "utf8"));
   for (const [week, snap] of Object.entries((acct.weeks ?? {}) as Record<string, any>)) {
     const dash = snap.dashboard ?? {};
+    const aud = snap.audience ?? {};
     account_weeks.push({
       week,
       followers: dash.followers ?? 0,
       post_impressions_7d: dash.post_impressions_7d ?? 0,
       profile_viewers_90d: dash.profile_viewers_90d ?? 0,
       search_appearances_previous_week: dash.search_appearances_previous_week ?? 0,
+      followers_delta_pct_7d: aud.followers_delta_pct_7d ?? 0,
     });
+    for (const [dim, labels] of Object.entries((aud.demographics ?? {}) as Record<string, Record<string, number>>)) {
+      for (const [label, pct] of Object.entries(labels ?? {})) {
+        account_demographics.push({ week, dimension: dim, label, pct: Number(pct) });
+      }
+    }
   }
 } catch { /* account.json optional */ }
 
-process.stdout.write(JSON.stringify({ posts, post_weeks, post_demographics, account_weeks }));
+process.stdout.write(JSON.stringify({ posts, post_weeks, post_demographics, account_weeks, account_demographics }));
