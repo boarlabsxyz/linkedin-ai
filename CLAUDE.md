@@ -16,6 +16,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 ├── dashboards/                   # Static-site dashboard + the data it reads
 │   ├── li-stats/                 # Raw LinkedIn analytics JSON (git-tracked, written by linkedin-stats agents)
 │   └── observable/               # Observable Framework project (JS + Observable Plot)
+├── prompts/                      # Ad-hoc prompt drafts (e.g., plan-mode prompts) — checked in for reuse, not consumed by Claude Code automatically
 ├── .claude/
 │   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
 │   ├── skills/                   # Project skills (see below)
