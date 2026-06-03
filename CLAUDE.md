@@ -22,7 +22,9 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── skills/                   # Project skills (see below)
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
-├── .mcp.json                     # MCP servers: context7, terminal, playwright
+├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana
+├── start.sh                      # Local launcher: sources .env then execs `claude --dangerously-skip-permissions`
+├── .env.example                  # Template for the gitignored .env that start.sh loads
 └── CLAUDE.md                     # This file
 ```
 
@@ -56,7 +58,11 @@ The site is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin
 - **ClickUp** — source of truth for the LinkedIn writing docs (workspace `90151491867`), for AWESOME tasks (list `901522119783` in space `901510520225`), and for personal priorities (list `901522189872`). Skill files contain the specific IDs.
 - **Google Drive** — meeting transcripts. AWESOME single transcripts folder: `14I2yIWsoZ5BTJD-Sqk9nVkU23iC11eYJ`.
 - **Google Calendar** — used by `weekly-priorities` to scope the previous week's meetings.
-- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; needs `GRAFANA_SERVICE_ACCOUNT_TOKEN` exported in the shell that launches Claude Code).
+- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env).
+
+## Local launch
+
+Launch Claude Code via `./start.sh` — it sources the gitignored `.env` (env vars referenced by `.mcp.json`, e.g. `GRAFANA_SERVICE_ACCOUNT_TOKEN`) and execs `claude --dangerously-skip-permissions`. On first checkout, `cp .env.example .env` and fill in the values. Additional CLI args pass through (`./start.sh /some-skill`).
 
 ## Conventions
 
