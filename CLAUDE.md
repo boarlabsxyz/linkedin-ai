@@ -22,6 +22,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── skills/                   # Project skills (see below)
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
+├── .github/scripts/              # CI helper scripts (build-stats-json.mjs: flattens li-stats/*.json into Pages-hosted stats.json for Grafana Infinity)
 ├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana
 ├── start.sh                      # Local launcher: sources .env then execs `claude --dangerously-skip-permissions`
 ├── .env.example                  # Template for the gitignored .env that start.sh loads
@@ -52,6 +53,8 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 The Observable Framework dashboard at `dashboards/observable/` visualises the LinkedIn analytics that the `linkedin-stats` skill collects into `dashboards/li-stats/`. Local dev: `npm --prefix dashboards/observable run dev`. Observable's TS data loader at `dashboards/observable/src/data/stats.json.ts` reads the JSON files in `dashboards/li-stats/` directly at build time — no intermediate flattening step.
 
 The site is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin-ai/` by the `linkedin-stats-weekly` workflow (`actions/upload-pages-artifact` after the build step + a separate `deploy` job running `actions/deploy-pages`). A second workflow, `.github/workflows/pages-deploy.yml` (manual `workflow_dispatch` only), builds and republishes from current `main` without scraping — use it for ad-hoc re-publishes. Both share the same `pages` concurrency group. The site is served under the `/linkedin-ai/` subpath, set via `base` in `dashboards/observable/observablehq.config.js` — both `npm run dev` and the production build honor it. Pages source must be set to **GitHub Actions** in repo settings.
+
+Both workflows also run `node .github/scripts/build-stats-json.mjs --out dashboards/observable/dist/stats.json` before uploading the artifact, publishing a flat payload at `https://boarlabsxyz.github.io/linkedin-ai/stats.json`. This is the feed for the Grafana dashboard at `https://boarlabs.grafana.net/d/kiqz2fk/linkedin-stats` (uid `kiqz2fk`), which reads it via the Infinity datasource (`grafanacloud-infinity`). The script duplicates the flattening logic from `dashboards/observable/src/data/stats.json.ts` in plain ESM JS so CI doesn't need a TS transpile step — keep the two in sync if the payload shape changes. The Grafana dashboard is built/updated via the `mcp__grafana__*` MCP tools (no UI clicks); the spec lives in `prompts/grafana-linkedin-stats-replica.md`.
 
 ## External systems
 
