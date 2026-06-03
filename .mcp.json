@@ -16,6 +16,14 @@
         "--user-data-dir",
         "/Users/peterovchinnikov/Library/Caches/ms-playwright/mcp-chrome-linkedin-ai"
       ]
+    },
+    "grafana": {
+      "command": "uvx",
+      "args": ["mcp-grafana"],
+      "env": {
+        "GRAFANA_URL": "https://boarlabs.grafana.net",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN}"
+      }
     }
   }
 }

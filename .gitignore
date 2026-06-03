@@ -7,3 +7,6 @@ tmp/
 dashboards/*/node_modules/
 dashboards/observable/dist/
 dashboards/observable/src/.observablehq/
+
+# Secrets — loaded by start.sh
+.env
