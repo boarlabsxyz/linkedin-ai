@@ -39,16 +39,27 @@ const post_weeks = [];
 const post_demographics = [];
 const account_weeks = [];
 const account_demographics = [];
+const monthAgg = new Map(); // month -> {posts, reposts}
 
 for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort()) {
   const d = JSON.parse(readFileSync(join(POSTS_DIR, fname), "utf8"));
+  const posted_date = d.posted_date ?? "";
+  const posted_month = posted_date.slice(0, 7);
+  const type = d.type ?? "post";
   posts.push({
     id: d.id,
-    posted_date: d.posted_date ?? "",
-    type: d.type ?? "post",
+    posted_date,
+    posted_month,
+    type,
     preview: (d.preview ?? "").slice(0, 120),
     post_url: d.post_url ?? "",
   });
+  if (posted_month) {
+    const cur = monthAgg.get(posted_month) ?? { month: posted_month, posts: 0, reposts: 0 };
+    cur.posts += 1;
+    if (type === "repost") cur.reposts += 1;
+    monthAgg.set(posted_month, cur);
+  }
   for (const [week, snap] of Object.entries(d.weeks ?? {})) {
     const m = snap.metrics ?? {};
     const row = { id: d.id, week };
@@ -83,9 +94,10 @@ try {
   }
 } catch { /* account.json optional */ }
 
-const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics };
+const posts_per_month = [...monthAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
+const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month };
 
 mkdirSync(dirname(resolve(args.out)), { recursive: true });
 writeFileSync(args.out, JSON.stringify(payload));
 
-console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length}`);
+console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length}`);
