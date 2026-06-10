@@ -24,7 +24,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
 ├── .github/scripts/              # CI helper scripts (build-stats-json.mjs: flattens li-stats/*.json into Pages-hosted stats.json for Grafana Infinity)
-├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana
+├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana, metabase
 ├── start.sh                      # Local launcher: sources .env then execs `claude --dangerously-skip-permissions`
 ├── .env.example                  # Template for the gitignored .env that start.sh loads
 └── CLAUDE.md                     # This file
@@ -66,7 +66,7 @@ Source-of-truth JSONs for both live in `dashboards/grafana/`. The script duplica
 - **ClickUp** — source of truth for the LinkedIn writing docs (workspace `90151491867`), for AWESOME tasks (list `901522119783` in space `901510520225`), and for personal priorities (list `901522189872`). Skill files contain the specific IDs.
 - **Google Drive** — meeting transcripts. AWESOME single transcripts folder: `14I2yIWsoZ5BTJD-Sqk9nVkU23iC11eYJ`.
 - **Google Calendar** — used by `weekly-priorities` to scope the previous week's meetings.
-- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env).
+- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env), `metabase` (feasibility test against a local Metabase Docker container; reads `METABASE_URL` + `METABASE_API_KEY` from `.env`. Local DB volume lives under `metabase/`, which is gitignored).
 
 ## Local launch
 

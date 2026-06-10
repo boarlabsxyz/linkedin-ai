@@ -10,3 +10,6 @@ dashboards/observable/src/.observablehq/
 
 # Secrets — loaded by start.sh
 .env
+
+# Metabase feasibility test — local DB volume + SQLite ingest
+metabase/
