@@ -15,7 +15,8 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   └── post-instructions.md      # Post structure, mini-brief format, quality formula (Ukrainian)
 ├── dashboards/                   # Static-site dashboard + the data it reads
 │   ├── li-stats/                 # Raw LinkedIn analytics JSON (git-tracked, written by linkedin-stats agents)
-│   └── observable/               # Observable Framework project (JS + Observable Plot)
+│   ├── observable/               # Observable Framework project (JS + Observable Plot)
+│   └── grafana/                  # Exported Grafana dashboard JSONs (linkedin-stats.json + linkedin-stats-posts.json) — source-of-truth snapshots
 ├── prompts/                      # Ad-hoc prompt drafts (e.g., plan-mode prompts) — checked in for reuse, not consumed by Claude Code automatically
 ├── .claude/
 │   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
@@ -23,7 +24,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
 ├── .github/scripts/              # CI helper scripts (build-stats-json.mjs: flattens li-stats/*.json into Pages-hosted stats.json for Grafana Infinity)
-├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana
+├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana, metabase
 ├── start.sh                      # Local launcher: sources .env then execs `claude --dangerously-skip-permissions`
 ├── .env.example                  # Template for the gitignored .env that start.sh loads
 └── CLAUDE.md                     # This file
@@ -54,14 +55,18 @@ The Observable Framework dashboard at `dashboards/observable/` visualises the Li
 
 The site is published to GitHub Pages at `https://boarlabsxyz.github.io/linkedin-ai/` by the `linkedin-stats-weekly` workflow (`actions/upload-pages-artifact` after the build step + a separate `deploy` job running `actions/deploy-pages`). A second workflow, `.github/workflows/pages-deploy.yml` (manual `workflow_dispatch` only), builds and republishes from current `main` without scraping — use it for ad-hoc re-publishes. Both share the same `pages` concurrency group. The site is served under the `/linkedin-ai/` subpath, set via `base` in `dashboards/observable/observablehq.config.js` — both `npm run dev` and the production build honor it. Pages source must be set to **GitHub Actions** in repo settings.
 
-Both workflows also run `node .github/scripts/build-stats-json.mjs --out dashboards/observable/dist/stats.json` before uploading the artifact, publishing a flat payload at `https://boarlabsxyz.github.io/linkedin-ai/stats.json`. This is the feed for the Grafana dashboard at `https://boarlabs.grafana.net/d/kiqz2fk/linkedin-stats` (uid `kiqz2fk`), which reads it via the Infinity datasource (`grafanacloud-infinity`). The script duplicates the flattening logic from `dashboards/observable/src/data/stats.json.ts` in plain ESM JS so CI doesn't need a TS transpile step — keep the two in sync if the payload shape changes. The Grafana dashboard is built/updated via the `mcp__grafana__*` MCP tools (no UI clicks); the spec lives in `prompts/grafana-linkedin-stats-replica.md`.
+Both workflows also run `node .github/scripts/build-stats-json.mjs --out dashboards/observable/dist/stats.json` before uploading the artifact, publishing a flat payload at `https://boarlabsxyz.github.io/linkedin-ai/stats.json`. This is the feed for two Grafana dashboards on `https://boarlabs.grafana.net`, both reading via the Infinity datasource (`grafanacloud-infinity`):
+- **`linkedin-stats`** (uid `kiqz2fk`, `/d/kiqz2fk/linkedin-stats`) — Account view: KPIs, trends, audience demographics, posts-per-month. No variables.
+- **`LinkedIn Stats — Per-post`** (uid `linkedin-post`, `/d/linkedin-post/...`) — Per-post view: `$post` Custom variable picker, selected-post text panel, 4 weekly bar charts (Impressions / Engagement actions / Engagement rate / Profile viewers & followers gained), weekly metrics table, 6 audience demographic bars. Per-post charts cap at the first 12 weekly snapshots via `sortBy(week asc) + limit 12`.
+
+Source-of-truth JSONs for both live in `dashboards/grafana/`. The script duplicates the flattening logic from `dashboards/observable/src/data/stats.json.ts` in plain ESM JS so CI doesn't need a TS transpile step — keep the two in sync if the payload shape changes. Dashboards are built/updated via the `mcp__grafana__*` MCP tools (no UI clicks); the original research spec lives in `prompts/grafana-linkedin-stats-replica.md`. Notable Infinity gotchas: backend-mode queries ignore the `filters:[]` array — use `filterExpression: "id == \"${post}\""` and include every filtered field in `columns`. Variable resolution requires Custom variable type with `query` in `display : value, display : value, …` format (the Query variable type silently fails to populate options in Grafana 12 v0alpha1 dashboards). Date strings break `==` parsing — use `contains(week, "2026-06")` instead of `week == "2026-06-01"`.
 
 ## External systems
 
 - **ClickUp** — source of truth for the LinkedIn writing docs (workspace `90151491867`), for AWESOME tasks (list `901522119783` in space `901510520225`), and for personal priorities (list `901522189872`). Skill files contain the specific IDs.
 - **Google Drive** — meeting transcripts. AWESOME single transcripts folder: `14I2yIWsoZ5BTJD-Sqk9nVkU23iC11eYJ`.
 - **Google Calendar** — used by `weekly-priorities` to scope the previous week's meetings.
-- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env).
+- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env), `metabase` (feasibility test against a local Metabase Docker container; reads `METABASE_URL` + `METABASE_API_KEY` from `.env`. Local DB volume lives under `metabase/`, which is gitignored).
 
 ## Local launch
 

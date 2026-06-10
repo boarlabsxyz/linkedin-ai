@@ -24,6 +24,15 @@
         "GRAFANA_URL": "https://boarlabs.grafana.net",
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN}"
       }
+    },
+    "metabase": {
+      "command": "npx",
+      "args": ["-y", "@easecloudio/mcp-metabase-server"],
+      "env": {
+        "METABASE_URL": "${METABASE_URL}",
+        "METABASE_API_KEY": "${METABASE_API_KEY}",
+        "TOOL_MODE": "all"
+      }
     }
   }
 }
