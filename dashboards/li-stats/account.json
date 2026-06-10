@@ -112,7 +112,7 @@
         "clicks_per_section": {
           "Intro": {
             "count": 84,
-            "pct": 73.0
+            "pct": 73
           },
           "Activity": {
             "count": 19,
@@ -126,7 +126,7 @@
       },
       "profile_views": {
         "viewers_90d": 350,
-        "viewers_delta_pct_7d": 42.0,
+        "viewers_delta_pct_7d": 42,
         "highlights": {
           "top_location": "Kyiv Metropolitan Area",
           "top_industry": "Software Development",
@@ -253,7 +253,7 @@
         "clicks_per_section": {
           "Intro": {
             "count": 84,
-            "pct": 73.0
+            "pct": 73
           },
           "Activity": {
             "count": 19,
@@ -267,7 +267,7 @@
       },
       "profile_views": {
         "viewers_90d": 349,
-        "viewers_delta_pct_7d": 57.0,
+        "viewers_delta_pct_7d": 57,
         "highlights": {
           "top_location": "Kyiv Metropolitan Area",
           "top_industry": "Software Development",
@@ -381,7 +381,7 @@
         "all_appearances_7d": 1332,
         "search_appearances_7d": 19,
         "where_appeared": {
-          "posts_pct": 78.0,
+          "posts_pct": 78,
           "comments_pct": 13.9,
           "network_recommendations_pct": 6.7,
           "search_pct": 1.4
@@ -408,7 +408,7 @@
       },
       "profile_views": {
         "viewers_90d": 292,
-        "viewers_delta_pct_7d": 58.0,
+        "viewers_delta_pct_7d": 58,
         "highlights": {
           "top_location": "Kyiv Metropolitan Area",
           "top_industry": "Software Development",
@@ -429,7 +429,7 @@
         "post_impressions_7d": 3066,
         "post_impressions_delta_pct_7d": 486.3,
         "followers": 3577,
-        "followers_delta_pct_7d": 0.0,
+        "followers_delta_pct_7d": 0,
         "profile_viewers_90d": 290,
         "search_appearances_previous_week": 10
       },
@@ -447,7 +447,7 @@
       },
       "audience": {
         "total_followers": 3577,
-        "followers_delta_pct_7d": 0.0,
+        "followers_delta_pct_7d": 0,
         "demographics": {
           "job_title": {
             "Founder": 6,
@@ -549,7 +549,7 @@
       },
       "profile_views": {
         "viewers_90d": 290,
-        "viewers_delta_pct_7d": 20.0,
+        "viewers_delta_pct_7d": 20,
         "highlights": {
           "top_location": "Kyiv Metropolitan Area",
           "top_industry": "Software Development",
@@ -561,6 +561,147 @@
           "BrainerHub Solutions": 5.1,
           "NDA": 5.1,
           "Intellias": 5.1
+        }
+      }
+    },
+    "2026-06-08": {
+      "snapshot_at": "2026-06-08T00:00:00Z",
+      "dashboard": {
+        "post_impressions_7d": 225,
+        "post_impressions_delta_pct_7d": 74.9,
+        "followers": 3580,
+        "followers_delta_pct_7d": 0.1,
+        "profile_viewers_90d": 179,
+        "search_appearances_previous_week": 30
+      },
+      "content_7d": {
+        "impressions_7d": 225,
+        "impressions_delta_pct": 75,
+        "members_reached_7d": 28,
+        "social_engagements_7d": 0,
+        "reactions_7d": 0,
+        "comments_7d": 0,
+        "reposts_7d": 0,
+        "saves_7d": 0,
+        "sends_7d": 0,
+        "link_engagements_7d": 0
+      },
+      "audience": {
+        "total_followers": 3580,
+        "followers_delta_pct_7d": 0,
+        "demographics": {
+          "job_title": {
+            "Founder": 6,
+            "Co-Founder": 5,
+            "Software Engineer": 5,
+            "Chief Executive Officer": 4,
+            "Frontend Developer": 2,
+            "Chief Technology Officer": 2,
+            "Information Technology Recruiter": 2,
+            "Project Manager": 2,
+            "Full Stack Engineer": 1
+          },
+          "location": {
+            "Kyiv Metropolitan Area": 12,
+            "Lviv": 4,
+            "San Francisco Bay Area": 4,
+            "London Area, United Kingdom": 3,
+            "New York City Metropolitan Area": 2,
+            "Odesa": 2,
+            "Warsaw Metropolitan Area": 2,
+            "Kharkiv Metropolitan Area": 2,
+            "Amsterdam Area": 2
+          },
+          "seniority": {
+            "Senior": 29,
+            "Entry": 22,
+            "CXO": 12,
+            "Director": 7,
+            "Owner": 7,
+            "Manager": 4,
+            "Partner": 4,
+            "VP": 3,
+            "Training": 0.5
+          },
+          "company": {
+            "Speed and Function": 1,
+            "NDA": 1,
+            "EPAM Systems": 1,
+            "GlobalLogic": 1,
+            "Capgemini Engineering": 0.5,
+            "Intellias": 0.5,
+            "Stealth Startup": 0.5,
+            "Luxoft": 0.5,
+            "Open Supply Hub": 0.5
+          },
+          "industry": {
+            "IT Services and IT Consulting": 26,
+            "Software Development": 20,
+            "Technology, Information and Internet": 14,
+            "Staffing and Recruiting": 4,
+            "Business Consulting and Services": 2,
+            "Advertising Services": 2,
+            "Financial Services": 2,
+            "Marketing Services": 2,
+            "Human Resources Services": 2,
+            "Technology, Information and Media": 1
+          },
+          "company_size": {
+            "11-50 employees": 20,
+            "2-10 employees": 16,
+            "51-200 employees": 15,
+            "10,001+ employees": 7,
+            "201-500 employees": 6,
+            "1,001-5,000 employees": 6,
+            "501-1,000 employees": 4,
+            "0-1 employees": 2,
+            "5,001-10,000 employees": 2
+          }
+        }
+      },
+      "search_appearances": {
+        "all_appearances_7d": 3344,
+        "search_appearances_7d": 30,
+        "where_appeared": {
+          "posts_pct": 94.1,
+          "comments_pct": 1.5,
+          "network_recommendations_pct": 3.6,
+          "search_pct": 0.5
+        },
+        "profile_engagement": {
+          "impressions_90d": 756,
+          "clicks_90d": 76,
+          "avg_view_time_s": 76
+        },
+        "clicks_per_section": {
+          "Intro": {
+            "count": 49,
+            "pct": 64.5
+          },
+          "Activity": {
+            "count": 17,
+            "pct": 22.4
+          },
+          "Experience": {
+            "count": 10,
+            "pct": 13.2
+          }
+        }
+      },
+      "profile_views": {
+        "viewers_90d": 179,
+        "viewers_delta_pct_7d": 38,
+        "highlights": {
+          "top_location": "Kyiv Metropolitan Area",
+          "top_industry": "IT Services and IT Consulting",
+          "top_company": "Speed and Function"
+        },
+        "top_companies_pct": {
+          "Speed and Function": 37.1,
+          "BrainerHub Solutions": 5.7,
+          "NDA": 5.7,
+          "Open Supply Hub": 5.7,
+          "Metria AB": 2.9
         }
       }
     }

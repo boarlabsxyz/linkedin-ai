@@ -24,7 +24,7 @@
       "demographics": {
         "seniority": {
           "Entry": 35.7,
-          "Senior": 26.0,
+          "Senior": 26,
           "Owner": 6.6,
           "Director": 5.6,
           "CXO": 5.6
@@ -44,10 +44,10 @@
           "Strategic Management Services": 1.9
         },
         "company_size": {
-          "51-200 employees": 16.0,
+          "51-200 employees": 16,
           "11-50 employees": 13.2,
           "1-10 employees": 11.9,
-          "1001-5000 employees": 11.0,
+          "1001-5000 employees": 11,
           "10,001+ employees": 7.8
         },
         "location": {
@@ -88,7 +88,7 @@
           "Software Engineer": 13.9,
           "Co-Founder": 3.6,
           "Founder": 3.3,
-          "Chief Executive Officer": 3.0,
+          "Chief Executive Officer": 3,
           "Frontend Developer": 2.7
         },
         "industry": {
@@ -108,12 +108,67 @@
         "location": {
           "Ljubljana Metropolitan Area": 9.1,
           "Zagreb Metropolitan Area": 8.2,
-          "Belgrade Metropolitan Area": 6.0,
-          "Maribor Metropolitan Area": 3.0,
+          "Belgrade Metropolitan Area": 6,
+          "Maribor Metropolitan Area": 3,
           "Kyiv Metropolitan Area": 2.4
         },
         "company": {
-          "Speed and Function": 3.0
+          "Speed and Function": 3
+        }
+      }
+    },
+    "2026-06-08": {
+      "snapshot_at": "2026-06-08T00:00:00Z",
+      "metrics": {
+        "impressions": 512,
+        "members_reached": 337,
+        "reactions": 3,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.59
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 34.7,
+          "Senior": 26.4,
+          "Owner": 6.2,
+          "Director": 5.6,
+          "CXO": 5.6
+        },
+        "job_title": {
+          "Software Engineer": 13.6,
+          "Co-Founder": 3.6,
+          "Founder": 3,
+          "Product Manager": 3,
+          "Chief Executive Officer": 2.7
+        },
+        "industry": {
+          "Software Development": 25.5,
+          "IT Services and IT Consulting": 25.2,
+          "Technology, Information and Internet": 5.6,
+          "Financial Services": 2.4,
+          "Business Consulting and Services": 2.1
+        },
+        "company_size": {
+          "51-200 employees": 16.6,
+          "11-50 employees": 14.2,
+          "1-10 employees": 11.6,
+          "1001-5000 employees": 10.7,
+          "201-500 employees": 7.7
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 8.9,
+          "Zagreb Metropolitan Area": 8,
+          "Belgrade Metropolitan Area": 5.6,
+          "Maribor Metropolitan Area": 3,
+          "Kyiv Metropolitan Area": 2.4
+        },
+        "company": {
+          "Speed and Function": 3.3
         }
       }
     }
