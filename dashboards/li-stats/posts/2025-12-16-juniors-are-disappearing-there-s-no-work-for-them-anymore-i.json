@@ -34,20 +34,20 @@
           "Frontend Developer": 2.5,
           "Project Manager": 2.2,
           "Founder": 2.1,
-          "Chief Executive Officer": 2.0
+          "Chief Executive Officer": 2
         },
         "industry": {
           "IT Services and IT Consulting": 31.1,
           "Software Development": 27.4,
           "Technology, Information and Internet": 7.2,
           "Business Consulting and Services": 2.7,
-          "Financial Services": 2.0
+          "Financial Services": 2
         },
         "company_size": {
           "51-200 employees": 16.4,
           "11-50 employees": 14.2,
           "10,001+ employees": 10.5,
-          "1001-5000 employees": 10.0,
+          "1001-5000 employees": 10,
           "1-10 employees": 8.6
         },
         "location": {
@@ -89,20 +89,20 @@
           "Frontend Developer": 2.5,
           "Project Manager": 2.2,
           "Founder": 2.1,
-          "Chief Executive Officer": 2.0
+          "Chief Executive Officer": 2
         },
         "industry": {
           "IT Services and IT Consulting": 31.1,
           "Software Development": 27.4,
           "Technology, Information and Internet": 7.2,
           "Business Consulting and Services": 2.7,
-          "Financial Services": 2.0
+          "Financial Services": 2
         },
         "company_size": {
           "51-200 employees": 16.4,
           "11-50 employees": 14.2,
           "10,001+ employees": 10.5,
-          "1001-5000 employees": 10.0,
+          "1001-5000 employees": 10,
           "1-10 employees": 8.6
         },
         "location": {
@@ -144,20 +144,20 @@
           "Frontend Developer": 2.5,
           "Project Manager": 2.2,
           "Founder": 2.1,
-          "Chief Executive Officer": 2.0
+          "Chief Executive Officer": 2
         },
         "industry": {
           "IT Services and IT Consulting": 31.1,
           "Software Development": 27.4,
           "Technology, Information and Internet": 7.2,
           "Business Consulting and Services": 2.7,
-          "Financial Services": 2.0
+          "Financial Services": 2
         },
         "company_size": {
           "51-200 employees": 16.4,
           "11-50 employees": 14.2,
           "10,001+ employees": 10.5,
-          "1001-5000 employees": 10.0,
+          "1001-5000 employees": 10,
           "1-10 employees": 8.6
         },
         "location": {
@@ -199,20 +199,20 @@
           "Frontend Developer": 2.5,
           "Project Manager": 2.2,
           "Founder": 2.1,
-          "Chief Executive Officer": 2.0
+          "Chief Executive Officer": 2
         },
         "industry": {
           "IT Services and IT Consulting": 31.1,
           "Software Development": 27.4,
           "Technology, Information and Internet": 7.2,
           "Business Consulting and Services": 2.7,
-          "Financial Services": 2.0
+          "Financial Services": 2
         },
         "company_size": {
           "51-200 employees": 16.4,
           "11-50 employees": 14.2,
           "10,001+ employees": 10.5,
-          "1001-5000 employees": 10.0,
+          "1001-5000 employees": 10,
           "1-10 employees": 8.6
         },
         "location": {
@@ -224,6 +224,65 @@
         },
         "company": {
           "Speed and Function": 1.6
+        }
+      }
+    },
+    "2026-06-08": {
+      "snapshot_at": "2026-06-08T00:00:00Z",
+      "metrics": {
+        "impressions": 1751,
+        "members_reached": 1176,
+        "reactions": 10,
+        "comments": 5,
+        "reposts": 0,
+        "saves": 1,
+        "sends": 2,
+        "profile_viewers": 3,
+        "followers_gained": 0,
+        "engagement_rate": 0.86
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 32.2,
+          "Senior": 29.4,
+          "CXO": 5.8,
+          "Director": 5.7,
+          "Manager": 3.7
+        },
+        "job_title": {
+          "Software Engineer": 14.2,
+          "Frontend Developer": 2.5,
+          "Project Manager": 2.2,
+          "Founder": 2.1,
+          "Chief Executive Officer": 2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.1,
+          "Software Development": 27.4,
+          "Technology, Information and Internet": 7.2,
+          "Business Consulting and Services": 2.7,
+          "Financial Services": 2
+        },
+        "company_size": {
+          "51-200 employees": 16.4,
+          "11-50 employees": 14.2,
+          "10,001+ employees": 10.5,
+          "1001-5000 employees": 10,
+          "1-10 employees": 8.6
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.4,
+          "Lviv": 3.8,
+          "Zagreb Metropolitan Area": 3.2,
+          "Bratislava Metropolitan Area": 2.6,
+          "Ljubljana Metropolitan Area": 2.6
+        },
+        "company": {
+          "Speed and Function": 1.6,
+          "EPAM Systems": 1,
+          "DataArt": 1,
+          "SoftServe": 1,
+          "GlobalLogic": 1
         }
       }
     }

@@ -26,7 +26,7 @@
           "Entry": 34.1,
           "Senior": 26.3,
           "Director": 6.9,
-          "CXO": 6.0,
+          "CXO": 6,
           "Owner": 4.6
         },
         "job_title": {
@@ -50,13 +50,13 @@
         },
         "location": {
           "Ljubljana Metropolitan Area": 7.4,
-          "Belgrade Metropolitan Area": 6.0,
+          "Belgrade Metropolitan Area": 6,
           "Zagreb Metropolitan Area": 3.2,
           "Washington DC-Baltimore Area": 3.2,
           "Greater Philadelphia": 2.8
         },
         "company": {
-          "Speed and Function": 6.0
+          "Speed and Function": 6
         }
       }
     },
@@ -79,7 +79,7 @@
           "Entry": 34.1,
           "Senior": 26.3,
           "Director": 6.9,
-          "CXO": 6.0,
+          "CXO": 6,
           "Owner": 4.6
         },
         "job_title": {
@@ -103,13 +103,13 @@
         },
         "location": {
           "Ljubljana Metropolitan Area": 7.4,
-          "Belgrade Metropolitan Area": 6.0,
+          "Belgrade Metropolitan Area": 6,
           "Zagreb Metropolitan Area": 3.2,
           "Washington DC-Baltimore Area": 3.2,
           "Greater Philadelphia": 2.8
         },
         "company": {
-          "Speed and Function": 6.0
+          "Speed and Function": 6
         }
       }
     },
@@ -132,7 +132,7 @@
           "Entry": 33.9,
           "Senior": 26.6,
           "Director": 6.9,
-          "CXO": 6.0,
+          "CXO": 6,
           "Owner": 4.6
         },
         "job_title": {
@@ -155,7 +155,7 @@
         },
         "location": {
           "Ljubljana Metropolitan Area": 7.8,
-          "Belgrade Metropolitan Area": 6.0,
+          "Belgrade Metropolitan Area": 6,
           "Zagreb Metropolitan Area": 3.2,
           "Washington DC-Baltimore Area": 2.8,
           "Greater Philadelphia": 2.8
@@ -188,14 +188,67 @@
           "Owner": 4.6
         },
         "job_title": {
-          "Software Engineer": 10.0,
+          "Software Engineer": 10,
           "Frontend Developer": 4.1,
           "Chief Executive Officer": 3.2,
           "Product Manager": 2.7,
           "Project Manager": 2.7
         },
         "industry": {
-          "IT Services and IT Consulting": 32.0,
+          "IT Services and IT Consulting": 32,
+          "Software Development": 24.7,
+          "Technology, Information and Internet": 3.7
+        },
+        "company_size": {
+          "51-200 employees": 18.7,
+          "11-50 employees": 14.2,
+          "1-10 employees": 8.7,
+          "10,001+ employees": 8.2,
+          "1001-5000 employees": 7.8
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 7.3,
+          "Belgrade Metropolitan Area": 5.9,
+          "Zagreb Metropolitan Area": 3.2,
+          "Washington DC-Baltimore Area": 2.7,
+          "Greater Philadelphia": 2.7
+        },
+        "company": {
+          "Speed and Function": 5.5
+        }
+      }
+    },
+    "2026-06-08": {
+      "snapshot_at": "2026-06-08T00:00:00Z",
+      "metrics": {
+        "impressions": 436,
+        "members_reached": 219,
+        "reactions": 3,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.92
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 34.2,
+          "Senior": 26.9,
+          "Director": 6.8,
+          "CXO": 5.9,
+          "Owner": 4.6
+        },
+        "job_title": {
+          "Software Engineer": 10,
+          "Frontend Developer": 4.1,
+          "Chief Executive Officer": 3.2,
+          "Product Manager": 2.7,
+          "Project Manager": 2.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 32,
           "Software Development": 24.7,
           "Technology, Information and Internet": 3.7
         },
