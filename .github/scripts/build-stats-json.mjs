@@ -13,6 +13,7 @@ const REPO_ROOT = resolve(HERE, "..", "..");
 const LI_STATS = join(REPO_ROOT, "dashboards", "li-stats");
 const POSTS_DIR = join(LI_STATS, "posts");
 const ACCOUNT_FILE = join(LI_STATS, "account.json");
+const COMMENTS_FILE = join(LI_STATS, "comments.json");
 
 const METRIC_KEYS = [
   "impressions", "members_reached", "reactions", "comments",
@@ -95,9 +96,27 @@ try {
 } catch { /* account.json optional */ }
 
 const posts_per_month = [...monthAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
-const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month };
+
+const commentsAgg = new Map();
+try {
+  const c = JSON.parse(readFileSync(COMMENTS_FILE, "utf8"));
+  for (const entry of Object.values(c.comments ?? {})) {
+    const month = (entry.commented_at ?? "").slice(0, 7);
+    if (!month) continue;
+    const weeks = entry.weeks ?? {};
+    const sortedWeeks = Object.keys(weeks).sort();
+    const latestReactions = sortedWeeks.length ? (weeks[sortedWeeks[sortedWeeks.length - 1]].reactions ?? 0) : 0;
+    const cur = commentsAgg.get(month) ?? { month, comments_posted: 0, reactions_received: 0 };
+    cur.comments_posted += 1;
+    cur.reactions_received += latestReactions;
+    commentsAgg.set(month, cur);
+  }
+} catch { /* comments.json optional */ }
+const comments_per_month = [...commentsAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
+
+const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month };
 
 mkdirSync(dirname(resolve(args.out)), { recursive: true });
 writeFileSync(args.out, JSON.stringify(payload));
 
-console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length}`);
+console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length} comments_per_month=${comments_per_month.length}`);
