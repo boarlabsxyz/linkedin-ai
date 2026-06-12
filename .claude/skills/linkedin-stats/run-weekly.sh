@@ -6,15 +6,14 @@
 #   1. Branch off origin/main.
 #   2. Invoke the linkedin-stats skill via `claude -p` (writes JSON snapshots
 #      under dashboards/li-stats/).
-#   3. Rebuild the Observable dashboard.
-#   4. If anything changed, commit + push + open a PR by reusing the existing
+#   3. If anything changed, commit + push + open a PR by reusing the existing
 #      common-pr-commit / common-pr-update scripts (same message format as
 #      manual runs).
-#   5. Squash-merge the PR via common-pr-merge so weekly snapshots don't pile
+#   4. Squash-merge the PR via common-pr-merge so weekly snapshots don't pile
 #      up and conflict with each other on subsequent runs.
 set -euo pipefail
 
-for cmd in claude node npm gh git jq; do
+for cmd in claude node gh git jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Required command not found in PATH: $cmd" >&2
     exit 1
@@ -35,9 +34,6 @@ echo "gather linkedin stats" \
       // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
       // empty
     '
-
-npm --prefix dashboards/observable ci --prefer-offline --no-audit
-npm --prefix dashboards/observable run build
 
 if git diff --quiet -- dashboards/li-stats/ && git diff --cached --quiet -- dashboards/li-stats/; then
   echo "No changes under dashboards/li-stats/ after scrape — skipping commit/PR." >&2

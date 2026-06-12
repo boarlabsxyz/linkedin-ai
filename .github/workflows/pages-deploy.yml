@@ -20,15 +20,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: dashboards/observable/package-lock.json
-      - run: npm --prefix dashboards/observable ci --prefer-offline --no-audit
-      - run: npm --prefix dashboards/observable run build
       - name: Emit flat stats.json for Grafana
-        run: node .github/scripts/build-stats-json.mjs --out dashboards/observable/dist/stats.json
+        run: |
+          mkdir -p pages-dist
+          node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dashboards/observable/dist
+          path: pages-dist
 
   deploy:
     needs: build
