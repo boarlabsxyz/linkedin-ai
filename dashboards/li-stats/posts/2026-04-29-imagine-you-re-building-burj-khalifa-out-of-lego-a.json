@@ -269,7 +269,16 @@
         "company": {
           "Speed and Function": 5.5
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Kate Chapman",
+          "author_url": "https://www.linkedin.com/in/untanglingsystems",
+          "text": "I think key will be some level of token efficiency. At least for a while. Perhaps there are two components building towards the future where you are saving requirements and making it as cheap as possible to rebuild the code delivering on them.",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

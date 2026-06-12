@@ -14,7 +14,7 @@ description: >
    ```bash
    WEEK=$(date -u -v-Mon "+%Y-%m-%d" 2>/dev/null || date -u -d "last monday" "+%Y-%m-%d")
    ```
-   List `./dashboards/li-stats/posts/*.json` (sorted, oldest first). Initialize counters `measured=0 failed=0 skipped=0 failed_ids=[]`.
+   List `./dashboards/li-stats/posts/*.json` (sorted, oldest first). Initialize counters `measured=0 failed=0 skipped=0 failed_ids=[] comments_scraped_total=0`.
 
    For each post file, spawn the `linkedin-stats-gather-metrics` agent via the Agent tool, sequentially (one at a time — parallel browser access across sub-agents is not safe with the shared Playwright MCP). The agent's prompt body must contain exactly:
    ```
@@ -23,12 +23,12 @@ description: >
    ```
 
    Parse the agent's KEY=VALUE return and aggregate:
-   - `STATUS=OK`              → `measured++`
+   - `STATUS=OK`              → `measured++`, add `COMMENTS_SCRAPED` to `comments_scraped_total`
    - `STATUS=SKIPPED_REPOST`  → `skipped++`
    - `STATUS=FAIL`            → `failed++`, append `POST_ID` to `failed_ids`
    - `ERROR=...`              → `failed++`, append filename stem to `failed_ids`. Do NOT abort the skill — the next post is independent.
 
-   After all posts complete, the final report uses these aggregates as `POSTS_MEASURED`, `POSTS_FAILED`, `POSTS_SKIPPED`, `FAILED_IDS` (comma-joined, or `-` if empty).
+   After all posts complete, the final report uses these aggregates as `POSTS_MEASURED`, `POSTS_FAILED`, `POSTS_SKIPPED`, `FAILED_IDS` (comma-joined, or `-` if empty), and `COMMENTS_SCRAPED_TOTAL`.
 3. Spawn the `linkedin-stats-gather-account` agent via the Agent tool. It opens Peter's dashboard + four creator-analytics pages (content / audience / search-appearances / profile-views) and appends a week-keyed snapshot to `./dashboards/li-stats/account.json`.
 4. Print a final report combining all three agents' KEY=VALUE contracts. Format:
    ```
@@ -42,11 +42,12 @@ description: >
    - Newest new: <NEWEST_NEW>
 
    Gather post metrics
-   - Week:       <WEEK>
-   - Measured:   <POSTS_MEASURED>
-   - Failed:     <POSTS_FAILED>
-   - Skipped:    <POSTS_SKIPPED>
-   - Failed ids: <FAILED_IDS>
+   - Week:             <WEEK>
+   - Measured:         <POSTS_MEASURED>
+   - Failed:           <POSTS_FAILED>
+   - Skipped:          <POSTS_SKIPPED>
+   - Failed ids:       <FAILED_IDS>
+   - Comments scraped: <COMMENTS_SCRAPED_TOTAL>
 
    Gather account
    - Week:                  <WEEK>

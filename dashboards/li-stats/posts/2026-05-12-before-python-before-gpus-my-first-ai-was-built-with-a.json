@@ -261,7 +261,16 @@
           "Rolls-Royce": 11.4,
           "Speed and Function": 6.7
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Klaus Paul",
+          "author_url": "https://www.linkedin.com/in/klausgpaul",
+          "text": "You'll love this one: https://archive.org/details/artificial-intelligence-on-the-commodore-64 dating back to 1984",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

@@ -270,7 +270,16 @@
         "company": {
           "Speed and Function": 7.8
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Vitalii Honcharenko",
+          "author_url": "https://www.linkedin.com/in/vitaliihoncharenko",
+          "text": "The moment you connect engineering metrics to business outcomes, you stop “shipping code” and start building a real product.",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

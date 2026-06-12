@@ -291,7 +291,23 @@
           "Google": 1.3,
           "Speed and Function": 1.1
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Peter Ovchynnikov",
+          "author_url": "https://www.linkedin.com/in/ovchyn",
+          "text": "Project Vend: Phase two \\ Anthropic\nhttps://www.anthropic.com/research/project-vend-2",
+          "reactions": 0,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Nikolay Mironchenko",
+          "author_url": "https://www.linkedin.com/in/nikolay-mironchenko",
+          "text": "This advice, at first glance, looks like a silver bullet. But it seems a real world is not so simple. For the example, how can I decide the net step at a reception without AI?",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

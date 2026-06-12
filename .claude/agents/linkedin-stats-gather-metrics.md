@@ -2,10 +2,11 @@
 name: linkedin-stats-gather-metrics
 description: >
   For ONE LinkedIn post file passed in via POST_FILE, opens that post's
-  post-summary and demographic-detail analytics pages, scrapes the four
-  cards and six demographic breakdowns, and writes a single entry to that
-  file's `weeks` map keyed by the caller-supplied WEEK. Returns a strict
-  KEY=VALUE contract.
+  post-summary and demographic-detail analytics pages plus the public post
+  URL, scrapes the four cards, six demographic breakdowns, and the list of
+  top-level comments (author + body + engagement), and writes a single entry
+  to that file's `weeks` map keyed by the caller-supplied WEEK. Returns a
+  strict KEY=VALUE contract.
 tools: Bash, Read, Write, Edit, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
 ---
@@ -38,7 +39,21 @@ WEEK=<YYYY-MM-DD>
 IMPRESSIONS=<int>
 REACTIONS=<int>
 COMMENTS=<int>
+COMMENTS_SCRAPED=<int>
 ```
+
+`COMMENTS` is the analytics-reported total (includes replies). `COMMENTS_SCRAPED`
+is the count of top-level comments captured this run — these are stored as the
+`comments` array in `weeks[WEEK]`. NOTE: there are two different things named
+`comments` in this shape:
+- `weeks[WEEK].metrics.comments` — analytics count (integer, includes replies)
+- `weeks[WEEK].comments` — array of top-level comment entries (each with
+  `author_name`, `author_url`, `text`, `reactions`, `replies_count`)
+
+The two numbers (`metrics.comments` vs `len(weeks[WEEK].comments)`) can
+legitimately differ — replies aren't counted in `COMMENTS_SCRAPED`. If the
+scrape fails or the post has zero visible comments, emit `COMMENTS_SCRAPED=0`
+and write `"comments": []`.
 
 **Repost (no analytics page exists):**
 ```
@@ -183,7 +198,126 @@ Map the returned section titles to our six canonical keys (case-insensitive matc
 
 If a dimension is missing from the page, write `{}` for that key — the shape must be uniform across snapshots.
 
-### 10. Build the snapshot object
+### 10. Scrape top-level comments
+
+This step is **mandatory**. Run it for every non-repost post, including ones
+where the analytics-reported `comments` count is 0. The `comments` array
+keeps the `weeks[WEEK]` shape uniform; downstream code expects the key to
+exist on every snapshot.
+
+If a sub-step (navigation, evaluate, click) throws, catch it and set
+`comments = []` — but still write the key, still navigate, still emit
+`COMMENTS_SCRAPED=0`. Do NOT skip step 10 just because step 5's analytics
+card said comments=0; comments from a stale snapshot may still be visible
+on the live post URL, and the shape requirement is unconditional.
+
+#### 10.1 Navigate (same tab) to the public post URL
+
+Use `post_url` straight from the loaded post file:
+`mcp__playwright__browser_navigate` to it. Then:
+
+- `mcp__playwright__browser_wait_for(time=3)` for the page to settle.
+- `mcp__playwright__browser_wait_for(text="Load more comments", time=3)` —
+  falls back to time when there are no more-comments to load (small threads).
+
+#### 10.2 Expand all top-level comments
+
+LinkedIn paginates the top-level list behind a "Load more comments" button at
+the bottom of `.comments-comments-list`. You MUST run this loop until the
+button truly disappears — do NOT stop after a single click. Past runs that
+captured 20/38 commenters on a single post failed because this loop bailed
+early.
+
+```
+for i in 1..30:
+  result = call the click evaluator below
+  if result == 'no-button': break
+  mcp__playwright__browser_wait_for(time=2)
+  topLevelCount = via `browser_evaluate`: number of
+    `article.comments-comment-entity` whose closest
+    `.comments-replies-list, .comments-comment-replies` is null
+  if topLevelCount >= 200: break
+```
+
+Use this click evaluator (returns `"clicked"` or `"no-button"`):
+
+```js
+() => {
+  const btns = Array.from(document.querySelectorAll('button')).filter(b => {
+    if (b.offsetParent === null || b.disabled) return false;
+    const a = b.getAttribute('aria-label') || '';
+    const t = (b.innerText || b.textContent || '').trim();
+    return /^Load more comments$/i.test(a) || /^Load more comments$/i.test(t);
+  });
+  if (btns.length) { btns[0].click(); return 'clicked'; }
+  return 'no-button';
+}
+```
+
+Do NOT click `aria-label*="previous replies"` — those are reply expanders, and
+we don't capture replies in this skill.
+
+#### 10.2.5 Expand "see more" on long comment bodies
+
+LinkedIn truncates long comment bodies at ~150 chars and shows a "…see more"
+button. To capture full text, click each visible expander **inside top-level
+comments only** (skip ones inside `.comments-replies-list`):
+
+```js
+() => {
+  const isTopLevel = (el) =>
+    el && !el.closest('.comments-replies-list, .comments-comment-replies');
+  const btns = Array.from(document.querySelectorAll(
+    'button.comments-comment-item__see-more-text, button.feed-shared-inline-show-more-text__see-more-less-toggle'
+  )).filter(b => isTopLevel(b) && b.offsetParent !== null);
+  btns.forEach(b => b.click());
+  return btns.length;
+}
+```
+
+Wait 1 second after clicking. If the selectors don't match anything (LinkedIn
+DOM may drift), this returns 0 — that's fine; the scrape will still capture
+whatever text is visible, just truncated at the page's "see more" boundary.
+
+#### 10.3 Scrape the top-level comments
+
+**This step is non-negotiable. Do not write your own scrape JS — improvising
+the shape has burned this skill before. Use the canonical scrape file.**
+
+1. **Read the canonical scrape file:**
+   `.claude/agents/linkedin-stats-gather-metrics.scrape-comments.js`.
+   It contains a leading comment block followed by a single arrow function.
+2. **Pass the arrow function (everything from `() => {` to the closing `}`)
+   verbatim to `mcp__playwright__browser_evaluate` as the `function`
+   argument.** Do not edit selectors, key names, ordering, or the
+   `slice(0, 200)` cap. Do not inline a different scrape body.
+3. The evaluator returns an array. Assign it to `comments`. If
+   `browser_evaluate` throws, set `comments = []` and continue.
+
+**Output shape contract — every entry in `comments` MUST have EXACTLY these
+five keys, in this order:**
+
+```
+{ author_name, author_url, text, reactions, replies_count }
+```
+
+No `time_text`. No `headline`. No `name`. No `profile_url`. No `author`. No
+additional fields whatsoever. If your scrape produces a different shape,
+your run is broken — return `comments = []` rather than write a malformed
+entry.
+
+Why the JS lives in a sibling file: prior runs had sub-agents read the spec,
+"understand" what to scrape, and write their own JS that captured different
+fields or invented names like `name`/`profile_url`/`commenters_list`.
+Loading the canonical body via `Read` removes that interpretation gap.
+
+> Note on the DOM classes (already baked into the scrape file): the count
+> elements use `comments-comment-social-bar__reactions-count--cr` /
+> `comments-comment-social-bar__replies-count--cr`. The wrapper bar uses
+> `comments-comment-social-bar--cr` — there is NO bare
+> `.comments-comment-social-bar` class. Don't try to scope by it.
+
+### 11. Build the snapshot object
 
 ```json
 {
@@ -207,11 +341,24 @@ If a dimension is missing from the page, write `{}` for that key — the shape m
     "company_size": {...},
     "location": {...},
     "company": {...}
-  }
+  },
+  "comments": [
+    { "author_name": "...", "author_url": "...", "text": "...", "reactions": 0, "replies_count": 0 },
+    ...
+  ]
 }
 ```
 
-### 11. Merge into the post file
+The `comments` key is **required** on every snapshot. Use `[]` when the
+scrape returned nothing. Do NOT use any other key name (e.g. `commenters`,
+`comments_list`). The literal string is `"comments"`.
+
+Yes — `weeks[WEEK].comments` (the array) and `weeks[WEEK].metrics.comments`
+(the integer count) coexist at different nesting depths in the same snapshot.
+The name overlap is deliberate now that the array entries carry the actual
+comment bodies, not just commenter metadata.
+
+### 12. Merge into the post file
 
 Atomic update via Python heredoc:
 
@@ -235,11 +382,18 @@ Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for ot
 
 If the heredoc bash command exits non-zero → close the tab and emit `STATUS=FAIL REASON=FS`.
 
-### 12. Close the tab
+### 13. Close the tab
 
 `mcp__playwright__browser_tabs` action `close` with the recorded index.
 
-### 13. Emit the success contract
+### 14. Emit the success contract
+
+Before emitting, self-check:
+- Did you write a `comments` key (possibly `[]`) into `weeks[WEEK]`? If not,
+  go back and run step 10 — your run is not complete.
+- Is the key literally `"comments"` (not `"commenters"`, not `"comments_list"`)?
+- Are you about to emit exactly 7 lines? STATUS=OK requires all 7. If you're
+  about to send 6, you skipped `COMMENTS_SCRAPED` — add it.
 
 ```
 STATUS=OK
@@ -247,10 +401,11 @@ POST_ID=<id>
 WEEK=<WEEK>
 IMPRESSIONS=<impressions>
 REACTIONS=<reactions>
-COMMENTS=<comments>
+COMMENTS=<comments-from-metrics>
+COMMENTS_SCRAPED=<len(comments array from step 10)>
 ```
 
-## Failure handling (steps 4–11)
+## Failure handling (steps 4–12)
 
 Any throw between scrape and write → take a `mcp__playwright__browser_snapshot` (for debug), close the tab you opened, emit `STATUS=FAIL POST_ID=<id> WEEK=<WEEK> REASON=<class>`.
 
