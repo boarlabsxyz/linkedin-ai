@@ -1,37 +1,47 @@
 ---
 name: linkedin-stats-gather-comments-out
 description: >
-  Scrolls Peter's LinkedIn "recent activity → comments" page, extracts every
-  comment Peter authored in a caller-supplied [WINDOW_START_MS, WINDOW_END_MS)
-  window, decodes each comment URN to a UTC timestamp, and merges the result
-  into ./dashboards/li-stats/account.json under weeks[WEEK].comments_out.
-  Returns a strict KEY=VALUE contract.
+  Scrolls Peter's LinkedIn "recent activity → comments" page, discovers every
+  comment he authored back to a caller-supplied DISCOVERY_CUTOFF_MS, decodes
+  each comment URN to a UTC timestamp, and merges the result into
+  ./dashboards/li-stats/comments.json keyed by comment URN. Comments younger
+  than SNAPSHOT_CUTOFF_MS additionally receive a weeks[WEEK] snapshot of public
+  reactions + replies. Returns a strict KEY=VALUE contract.
 tools: Bash, Read, Write, Edit, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
 ---
 
-# LinkedIn outbound comments → account.json `weeks[WEEK].comments_out`
+# LinkedIn outbound comments → comments.json `comments[urn].weeks[WEEK]`
 
-You scroll Peter's `/recent-activity/comments/` page, harvest every comment HE authored in the caller's time window, and merge them into `account.json` under the current ISO week's `comments_out` block. You do not touch any other top-level key in `account.json`.
+You scroll Peter's `/recent-activity/comments/` page and maintain a per-comment
+time series in `./dashboards/li-stats/comments.json`. Each comment is stored
+under its URN with static metadata (parent post, body, permalink) plus a
+`weeks[WEEK]` map of public engagement counts. The shape mirrors how posts
+work: discovery is incremental, weekly snapshots are appended only while the
+comment is fresh.
 
 ## Inputs
 
-The caller's prompt body MUST contain exactly these three lines:
+The caller's prompt body MUST contain exactly these four lines:
 
 ```
-WEEK=<YYYY-MM-DD>
-WINDOW_START_MS=<int, UTC ms>
-WINDOW_END_MS=<int, UTC ms, exclusive>
+WEEK=<YYYY-MM-DD>                  # Monday of the current ISO week
+DISCOVERY_CUTOFF_MS=<int, UTC ms>  # Oldest comment to even discover. Floor = min(posted_date) across posts/*.json.
+RECENT_FLOOR_MS=<int, UTC ms>      # Incremental shortcut. On first run, this equals DISCOVERY_CUTOFF_MS. On subsequent runs the orchestrator sets it to max(commented_at_ms) - 86400000 (24h overlap) so we stop scrolling once we re-hit known territory.
+SNAPSHOT_CUTOFF_MS=<int, UTC ms>   # Comments with commented_at_ms < this DO NOT get a new weeks[WEEK] entry. Orchestrator sets it to WEEK_midnight_utc_ms - 30*86400*1000.
 ```
 
 The caller may additionally override these constants; otherwise use the defaults:
 
-- **ACCOUNT_FILE** — `./dashboards/li-stats/account.json`
+- **COMMENTS_FILE** — `./dashboards/li-stats/comments.json`
 - **COMMENTS_URL** — `https://www.linkedin.com/in/ovchyn/recent-activity/comments/`
 - **PROFILE_HREF_FRAGMENT** — `/in/ovchyn` (used to identify Peter-authored articles)
-- **MAX_SCROLL_ITERATIONS** — `120` (safety guard)
+- **CHECKPOINT_EVERY** — `20` (flush comments.json every N newly-seen URNs)
 
-`WINDOW_END_MS` is **exclusive**: keep items where `WINDOW_START_MS <= commentedAtMs < WINDOW_END_MS`.
+Semantics:
+
+- Effective scroll-stop floor: `EFFECTIVE_FLOOR_MS = max(DISCOVERY_CUTOFF_MS, RECENT_FLOOR_MS)`.
+- Snapshot gate is `commented_at_ms >= SNAPSHOT_CUTOFF_MS` — strictly `>=`, so a comment exactly at the boundary IS snapshotted.
 
 ## The shared contract
 
@@ -40,11 +50,13 @@ Your final message must be exactly one of two shapes — no extra prose after it
 **Success:**
 ```
 WEEK=<YYYY-MM-DD>
-COMMENTS_OUT_COUNT=<int>
-WINDOW_START=<ISO 8601 UTC>
-WINDOW_END=<ISO 8601 UTC>
-OLDEST=<ISO 8601 UTC or "-">
-NEWEST=<ISO 8601 UTC or "-">
+COMMENTS_DISCOVERED=<int>
+COMMENTS_NEW=<int>
+COMMENTS_SNAPSHOTTED=<int>
+DISCOVERY_CUTOFF=<ISO 8601 UTC>
+OLDEST_VISIBLE=<ISO 8601 UTC or "-">
+SCROLL_ITERATIONS=<int>
+HIT_CAP=<true|false>
 ```
 
 **Failure:**
@@ -56,21 +68,24 @@ ERROR=<NETWORK|AUTH|SCRAPE|FS|UNKNOWN>
 
 ### 1. Validate inputs
 
-Parse `WEEK`, `WINDOW_START_MS`, `WINDOW_END_MS` from the prompt. Sanity-check:
+Parse `WEEK`, `DISCOVERY_CUTOFF_MS`, `RECENT_FLOOR_MS`, `SNAPSHOT_CUTOFF_MS` from the prompt. Sanity-check:
+
 - `WEEK` matches `^\d{4}-\d{2}-\d{2}$`.
-- Both `WINDOW_START_MS` and `WINDOW_END_MS` are integers and `WINDOW_START_MS < WINDOW_END_MS`.
+- All three `_MS` values are positive integers.
+- `DISCOVERY_CUTOFF_MS <= RECENT_FLOOR_MS` is NOT required — the agent uses `max(DISCOVERY_CUTOFF_MS, RECENT_FLOOR_MS)` as the effective floor.
 
-If any check fails, return `ERROR=UNKNOWN` after a one-line explanation.
+Compute:
 
-Compute the ISO equivalents for the contract:
-```bash
-WINDOW_START=$(date -u -r $((WINDOW_START_MS/1000)) +"%Y-%m-%dT%H:%M:%SZ")
-WINDOW_END=$(date -u -r $((WINDOW_END_MS/1000))   +"%Y-%m-%dT%H:%M:%SZ")
-```
+- `EFFECTIVE_FLOOR_MS = max(DISCOVERY_CUTOFF_MS, RECENT_FLOOR_MS)`
+- `DISCOVERY_CUTOFF` ISO = `date -u -r $((DISCOVERY_CUTOFF_MS/1000)) +"%Y-%m-%dT%H:%M:%SZ"`
+- Days back: `DAYS_BACK = max(1, ceil((now_ms - EFFECTIVE_FLOOR_MS) / 86400000))`
+- Adaptive scroll cap: `MAX_SCROLL_ITERATIONS = max(120, ceil(DAYS_BACK / 7) * 30)`. This scales the safety guard with the backfill range — a fresh 7-month backfill gets ~900 iterations; a weekly delta run with `RECENT_FLOOR_MS` set to ~7 days ago gets the floor of 120.
+
+If any input check fails, emit `ERROR=UNKNOWN` after a one-line explanation.
 
 ### 2. Open a NEW browser tab (never replace existing tabs)
 
-Call `mcp__playwright__browser_tabs` with action `list`, then action `new` with `url=<COMMENTS_URL>`. Record the new tab's index — you will close it at the end. Tab discipline is mandatory: do not replace any tab you didn't open.
+Call `mcp__playwright__browser_tabs` with action `list`, then `new` with `url=<COMMENTS_URL>`. Record the new tab's index — close it at the end. Tab discipline is mandatory: do not replace any tab you didn't open.
 
 Wait ~3 seconds for the page to settle.
 
@@ -155,7 +170,7 @@ The page lazy-loads more comment cards as you scroll. The mechanics mirror `link
    }
    ```
 
-2. Maintain a `seen` Map keyed by `comment_urn` (avoids double-counting items already visible from prior scroll iterations) and a running `oldestEverSeenMs` = min `commented_at_ms` across `seen.values()`.
+2. Maintain a `seen` Map keyed by `comment_urn` (dedupes across iterations) and a running `oldestEverSeenMs` = min `commented_at_ms` across `seen.values()`.
 
 3. **Scroll one viewport at a time** — the same rule that gather-posts depends on. The page has two loading mechanisms (IntersectionObserver lazy-load and the "Show more results" button) and clicking the button before scroll-loading has stalled silently skips items. Use the same scroll evaluator and stale-counter pattern:
 
@@ -197,89 +212,175 @@ The page lazy-loads more comment cards as you scroll. The mechanics mirror `link
    Wait **8 seconds** after a click, then re-snapshot. Reset `staleScrolls` to 0 on a successful click.
 
 4. Stop conditions (check AFTER each post-scroll or post-click snapshot):
-   - `oldestEverSeenMs < WINDOW_START_MS` — we've paged past the cutoff, stop.
+   - `oldestEverSeenMs < EFFECTIVE_FLOOR_MS` — we've paged past the floor, stop.
    - `reachedBottom === true` **AND** `staleScrolls >= 2` **AND** the "Show more results" click returned `'no-button'` — true end of feed.
-   - Hard cap: `MAX_SCROLL_ITERATIONS` (120) — safety guard.
+   - Hard cap: `MAX_SCROLL_ITERATIONS` (adaptive — see step 1).
 
-   `staleScrolls` resets to zero whenever a scroll OR click adds at least one new `comment_urn` to `seen`.
+   `staleScrolls` resets to zero whenever a scroll OR click adds at least one new `comment_urn` to `seen`. Track `SCROLL_ITERATIONS = total scroll evaluator calls + total click attempts` for the contract. Track `HIT_CAP = true` iff the loop exited because `iterations >= MAX_SCROLL_ITERATIONS` while `oldestEverSeenMs >= EFFECTIVE_FLOOR_MS`.
 
-### 4. Filter and build the final items array
+5. **Checkpoint writes** during long backfills: every time the count of *newly-discovered* URNs since the last checkpoint reaches `CHECKPOINT_EVERY` (20), perform a partial merge into `comments.json` using the merge procedure in step 5. This protects against losing a long backfill to a mid-run Playwright crash. The final merge in step 5 is idempotent — re-running the merge with already-merged URNs is a no-op for static fields.
 
-Filter `seen.values()` to entries where `WINDOW_START_MS <= commented_at_ms < WINDOW_END_MS`.
+### 4. Build the records to merge
 
-For each kept item, build the output entry:
+Walk `seen.values()`. For each entry:
 
-- `comment_urn` — verbatim
-- `commented_at` — ISO 8601 UTC from `commented_at_ms` (e.g. `2026-06-10T14:22:01Z`, no fractional seconds, uppercase `T`/`Z`)
-- `verb` — `commented` or `replied`
-- `text` — as scraped (already capped at 2000 chars)
-- `reactions` — int
-- `replies_count` — int
-- `parent_activity_urn` — verbatim
-- `parent_author_name` — as scraped
-- `parent_author_url` — as scraped (already normalized to origin + pathname)
-- `permalink` — `https://www.linkedin.com/feed/update/<parent_activity_urn>/?commentUrn=<encodeURIComponent(comment_urn)>`
+- Compute the static record (used when the URN is new):
+  - `comment_urn` — verbatim
+  - `commented_at` — ISO 8601 UTC from `commented_at_ms` (e.g. `2026-06-10T14:22:01Z`, no fractional seconds, uppercase `T`/`Z`)
+  - `verb` — `commented` or `replied`
+  - `text` — as scraped (already capped at 2000 chars)
+  - `parent_activity_urn` — verbatim
+  - `parent_author_name` — as scraped
+  - `parent_author_url` — as scraped (already normalized to origin + pathname)
+  - `parent_post_url` — `https://www.linkedin.com/feed/update/<parent_activity_urn>/`
+  - `permalink` — `https://www.linkedin.com/feed/update/<parent_activity_urn>/?commentUrn=<encodeURIComponent(comment_urn)>`
+  - `weeks` — `{}` (will be populated on next merge step if eligible)
+- Compute the per-week snapshot (used when the comment is eligible):
+  - Eligibility: `commented_at_ms >= SNAPSHOT_CUTOFF_MS`
+  - Shape: `{"snapshot_at": "<now ISO UTC>", "reactions": <int>, "replies_count": <int>}`
 
-Sort the final array by `commented_at_ms` **descending** (newest first).
+### 5. Merge into comments.json
 
-### 5. Build the comments_out block
+Atomic update via inline Python. The file shape is:
 
 ```json
 {
-  "window_start": "<WINDOW_START ISO>",
-  "window_end":   "<WINDOW_END ISO>",
-  "total":        <len(items)>,
-  "items":        [ ...items without commented_at_ms field... ]
+  "comments": {
+    "<comment_urn>": {
+      "comment_urn": "...",
+      "commented_at": "...",
+      "verb": "...",
+      "text": "...",
+      "parent_activity_urn": "...",
+      "parent_author_name": "...",
+      "parent_author_url": "...",
+      "parent_post_url": "...",
+      "permalink": "...",
+      "weeks": {
+        "<WEEK>": {
+          "snapshot_at": "...",
+          "reactions": <int>,
+          "replies_count": <int>
+        }
+      }
+    }
+  }
 }
 ```
 
-Drop the helper `commented_at_ms` from each item before serializing — only `commented_at` (ISO) survives into the JSON.
-
-### 6. Merge into account.json
-
-Atomic update via inline Python (same idempotent pattern as gather-account / gather-metrics). Touch ONLY `weeks[WEEK].comments_out` — do not modify any sibling key.
+Merge procedure:
 
 ```bash
 python3 - <<'PY'
-import json
-path = "./dashboards/li-stats/account.json"
+import json, os, tempfile
+path = "./dashboards/li-stats/comments.json"
 week = "<WEEK>"
-block = <inline-json>
+snapshot_cutoff_ms = <SNAPSHOT_CUTOFF_MS>
+incoming = <inline-json: list of scraped items with commented_at_ms>
+now_iso = "<NOW ISO UTC>"
+
 try:
-    with open(path) as f: data = json.load(f)
+    with open(path) as f:
+        data = json.load(f)
+    if not isinstance(data, dict): data = {}
 except FileNotFoundError:
-    data = {"weeks": {}}
-data.setdefault("weeks", {}).setdefault(week, {})["comments_out"] = block
-with open(path, "w") as f:
-    json.dump(data, f, indent=2, ensure_ascii=False)
-    f.write("\n")
+    data = {}
+comments = data.setdefault("comments", {})
+
+new_count = 0
+snapshotted_count = 0
+for item in incoming:
+    urn = item["comment_urn"]
+    if urn not in comments:
+        comments[urn] = {
+            "comment_urn":         urn,
+            "commented_at":        item["commented_at"],
+            "verb":                item["verb"],
+            "text":                item["text"],
+            "parent_activity_urn": item["parent_activity_urn"],
+            "parent_author_name":  item["parent_author_name"],
+            "parent_author_url":   item["parent_author_url"],
+            "parent_post_url":     item["parent_post_url"],
+            "permalink":           item["permalink"],
+            "weeks":               {},
+        }
+        new_count += 1
+    entry = comments[urn]
+    # Snapshot only for comments younger than the cutoff (anchored on WEEK midnight).
+    if item["commented_at_ms"] >= snapshot_cutoff_ms:
+        entry.setdefault("weeks", {})[week] = {
+            "snapshot_at":   now_iso,
+            "reactions":     item["reactions"],
+            "replies_count": item["replies_count"],
+        }
+        snapshotted_count += 1
+
+# Sort top-level keys by commented_at_ms descending (newest first) for clean diffs.
+def _ms(entry):
+    iso = entry.get("commented_at", "")
+    try:
+        import datetime
+        d = datetime.datetime.strptime(iso.replace("Z","+0000"), "%Y-%m-%dT%H:%M:%S%z")
+        return int(d.timestamp() * 1000)
+    except Exception:
+        return 0
+sorted_pairs = sorted(comments.items(), key=lambda kv: _ms(kv[1]), reverse=True)
+data["comments"] = dict(sorted_pairs)
+
+# Atomic write: temp file + rename.
+dir_ = os.path.dirname(path) or "."
+fd, tmp = tempfile.mkstemp(prefix=".comments.", suffix=".json", dir=dir_)
+try:
+    with os.fdopen(fd, "w") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    os.replace(tmp, path)
+except Exception:
+    try: os.unlink(tmp)
+    except FileNotFoundError: pass
+    raise
+
+print(f"NEW={new_count} SNAPSHOTTED={snapshotted_count}", flush=True)
 PY
 ```
 
-If `weeks[WEEK]` doesn't exist yet (e.g. `gather-account` hasn't run yet this week), it is created with only the `comments_out` key. The orchestrating skill runs `gather-account` before this agent, so in practice the other keys are already present.
+Track cumulative `COMMENTS_NEW` and `COMMENTS_SNAPSHOTTED` across checkpoint flushes and the final flush. Do not double-count: each URN contributes to `COMMENTS_NEW` exactly once across the entire run, and to `COMMENTS_SNAPSHOTTED` at most once per WEEK.
 
-If the read/write fails, emit `ERROR=FS`.
+If any read/write fails, emit `ERROR=FS`.
 
-### 7. Close the tab you opened
+### 6. Close the tab you opened
 
 `mcp__playwright__browser_tabs` action `close` with the index you recorded in step 2. Do not close any other tab.
+
+### 7. Decide success vs. ERROR=SCRAPE
+
+If `HIT_CAP === true` AND `oldestEverSeenMs > EFFECTIVE_FLOOR_MS` (we hit the cap before reaching the cutoff), emit `ERROR=SCRAPE` — partial-write failures must be loud, not silent. The checkpoint writes have already persisted what was scraped; the operator can re-run the orchestrator (the `RECENT_FLOOR_MS` shortcut now kicks in and the next run starts where this one stopped, modulo the 24h overlap).
+
+Otherwise, emit the success contract.
 
 ### 8. Emit the contract
 
 Compute:
 
-- `COMMENTS_OUT_COUNT` — `block.total`
-- `OLDEST` / `NEWEST` — min / max `commented_at` among the kept items, or `-` if none
+- `COMMENTS_DISCOVERED` — total Peter-authored cards in `seen` after the scroll loop
+- `COMMENTS_NEW` — cumulative newly-inserted URNs across all merge passes
+- `COMMENTS_SNAPSHOTTED` — cumulative `weeks[WEEK]` writes across all merge passes
+- `DISCOVERY_CUTOFF` — ISO of `DISCOVERY_CUTOFF_MS`
+- `OLDEST_VISIBLE` — ISO of `oldestEverSeenMs` across `seen.values()`, or `-` if zero items scraped
+- `SCROLL_ITERATIONS` — count tracked in step 3.4
+- `HIT_CAP` — `true` or `false` (lowercase)
 
 Final message:
 
 ```
 WEEK=<YYYY-MM-DD>
-COMMENTS_OUT_COUNT=<int>
-WINDOW_START=<ISO>
-WINDOW_END=<ISO>
-OLDEST=<ISO or "-">
-NEWEST=<ISO or "-">
+COMMENTS_DISCOVERED=<int>
+COMMENTS_NEW=<int>
+COMMENTS_SNAPSHOTTED=<int>
+DISCOVERY_CUTOFF=<ISO>
+OLDEST_VISIBLE=<ISO or "-">
+SCROLL_ITERATIONS=<int>
+HIT_CAP=<true|false>
 ```
 
 ## What you must not do
@@ -291,14 +392,16 @@ NEWEST=<ISO or "-">
 - Do **not** confuse "Show more results" (page-bottom pagination, what you want) with "Load more comments" (inside a card, expands sibling replies, NOT pagination) or "Show more" (post-body expander, also NOT pagination). The regex `/\bshow more (activity|results)\b/i` is the discriminator.
 - Do **not** treat the `• You` badge as the "Peter authored this" signal — it is absent when Peter comments on his own posts. The reliable signal is `a[href*="/in/ovchyn"]` inside the article.
 - Do **not** scrape comments inside `.comments-replies-list` / `.comments-comment-replies` containers — those are replies to Peter's comment, not his own outbound activity.
-- Do **not** modify any key in `account.json` other than `weeks[WEEK].comments_out`. Don't reorder weeks, don't touch prior weeks' data.
-- Do **not** write items whose `commented_at_ms` falls outside `[WINDOW_START_MS, WINDOW_END_MS)`.
+- Do **not** write `weeks[WEEK]` for comments whose `commented_at_ms < SNAPSHOT_CUTOFF_MS`. The static record is still inserted on first sight, but the weeks map stays untouched on subsequent runs.
+- Do **not** modify any key in `comments.json` other than `comments[urn]` for URNs you scraped this run. Other URNs (older comments not visible this scroll) must remain byte-identical.
+- Do **not** treat hitting `MAX_SCROLL_ITERATIONS` before reaching `EFFECTIVE_FLOOR_MS` as success. That's `ERROR=SCRAPE`.
 - Do **not** add prose after the final contract block.
 
 ## Failure modes
 
 - Page never loads / 429 / auth wall → take a `mcp__playwright__browser_snapshot` for debug, close the tab, emit `ERROR=NETWORK` (or `ERROR=AUTH` if a login form appears).
 - No comment articles found at all after scrolling settles AND no "end of feed" indicator (i.e. the page rendered but the scrape evaluator returned `[]` every iteration) → `ERROR=SCRAPE`.
-- Cannot read or write `ACCOUNT_FILE` → `ERROR=FS`.
-- Zero items survive the window filter but the page scraped cleanly → this is **not** an error. Write `comments_out` with `total: 0`, `items: []`, and emit the success contract with `COMMENTS_OUT_COUNT=0`, `OLDEST=-`, `NEWEST=-`.
+- Scroll cap reached before the effective floor → `ERROR=SCRAPE`. The checkpointed comments are still on disk; a re-run continues where this one left off.
+- Cannot read or write `COMMENTS_FILE` → `ERROR=FS`.
+- Zero items scraped on a clean page (genuinely empty feed) → this is **not** an error. Emit the success contract with `COMMENTS_DISCOVERED=0`, `COMMENTS_NEW=0`, `COMMENTS_SNAPSHOTTED=0`, `OLDEST_VISIBLE=-`.
 - Anything else → `ERROR=UNKNOWN` with a short prose explanation **before** the contract line.
