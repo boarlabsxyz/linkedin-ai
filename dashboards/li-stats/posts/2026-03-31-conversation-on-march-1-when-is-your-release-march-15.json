@@ -282,7 +282,16 @@
           "SoftServe": 0,
           "SAP": 0
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Vitaly Gapontsev",
+          "author_url": "https://www.linkedin.com/in/vitaly-gapontsev",
+          "text": "",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

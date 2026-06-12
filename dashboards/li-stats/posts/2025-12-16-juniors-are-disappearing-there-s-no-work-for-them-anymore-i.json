@@ -284,7 +284,23 @@
           "SoftServe": 1,
           "GlobalLogic": 1
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Adi Stan",
+          "author_url": "https://www.linkedin.com/in/adistan",
+          "text": "The paper synthesizes personal theoretical research and data analysis (including the GitKraken 2025, DORA, and McKinsey reports) to demonstrate that AI adoption is not uniform, but generates three distinct cognitive classes:\nL1 (Passengers): Dependent users, characterized by cognitive atrophy and the \"uncertainty-reassurance cycle\".\nL2 (Operators): Clerks who maintain existing systems but are at maximum risk from automation.\nL3 (Architects): A small elite that enters into symbiosis with AI (Homo Symbioticus), achieving exponential productivity gains.\n\nTHE AGE OF COGNITIVE DIVERGENCE\n\nhttps://zenodo.org/records/17965801",
+          "reactions": 0,
+          "replies_count": 2
+        },
+        {
+          "author_name": "Rudolf Grujbár",
+          "author_url": "https://www.linkedin.com/in/rgrujbar",
+          "text": "precisely, in fact its new role of senior roles to help juniors with broadening architectural vision from the beginning and prepare them to new ways the role is pivoting to.",
+          "reactions": 0,
+          "replies_count": 1
+        }
+      ]
     }
   }
 }

@@ -280,7 +280,16 @@
           "SoftServe": 1,
           "Self Employed": 1
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Kent Gregoire",
+          "author_url": "https://www.linkedin.com/in/kentgregoire",
+          "text": "Spot on, my friend. AI is an incredible accelerator, but it doesn't care if you're accelerating toward a cliff. The real value is using that saved time to stress-test the riskiest assumptions before building, as AI only helps you ship failure at record speed.",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

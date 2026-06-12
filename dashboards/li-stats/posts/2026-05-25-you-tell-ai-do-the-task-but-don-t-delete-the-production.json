@@ -123,7 +123,16 @@
           "HTEC": 1,
           "NCR Voyix": 1
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Pravin Dhayfule",
+          "author_url": "https://www.linkedin.com/in/dhayfule",
+          "text": "Peter Ovchynnikov but why even allow AI to directly touch the codebase?\n\nAnd why not mentor AI for ethical behaviour and follow code of conduct?",
+          "reactions": 0,
+          "replies_count": 2
+        }
+      ]
     }
   }
 }

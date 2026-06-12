@@ -279,7 +279,30 @@
           "Stealth Startup": 1,
           "Microsoft": 1
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Valerie Tsarenko 🇺🇦",
+          "author_url": "https://www.linkedin.com/in/valerietsarenko",
+          "text": "100%. Early user access to a product quickly shifts development from hypotheses to real-world application. It provides live feedback, highlights actual usage scenarios, and helps teams make more accurate product decisions from the very beginning.",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Olga Minko",
+          "author_url": "https://www.linkedin.com/in/olivia-mltn",
+          "text": "A good test for any early product: can someone try it without you being there? If not, you're probably still building infrastructure, not a product.",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Ali F.",
+          "author_url": "https://www.linkedin.com/in/ali-f-2b4540227",
+          "text": "This is so true. If someone outside your environment can't use it, it's not a product yet it's just a demo. Distribution and usability should start way earlier than most founders think.",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

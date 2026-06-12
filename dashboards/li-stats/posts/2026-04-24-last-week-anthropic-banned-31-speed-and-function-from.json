@@ -280,7 +280,37 @@
         "company": {
           "Speed and Function": 2.9
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Félix Jofré",
+          "author_url": "https://www.linkedin.com/in/felixjofre",
+          "text": "Thanks for sharing Peter and I'm sorry you're all going through this, but it's so valuable you share. I guess the lesson is never give too much power to a single provider, even less when their business model is a bubble built by vc, no matter how unbelievable the value seems like. I hope you're new structure works out and good on you on not letting these dependencies get anywhere near critical al client delivery.",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Andrii Rozhylo",
+          "author_url": "https://www.linkedin.com/in/arozhylo",
+          "text": "This could be titled like: \"From ambassadors to haters - how to kill your brand in one day\"",
+          "reactions": 4,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Alex Ost",
+          "author_url": "https://www.linkedin.com/in/alex-ost-sf",
+          "text": "There is never two many backups/copies/plans-B-C, etc.",
+          "reactions": 2,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Anne Cantera",
+          "author_url": "https://www.linkedin.com/in/anne-cantera",
+          "text": "Was thinking about this last week. https://www.linkedin.com/posts/anne-cantera_ok-team-this-one-is-going-to-need-input-activity-7450968320884961282-tTzg?utm_source=share&utm_medium=member_android&rcm=ACoAADJQAdwBuIZKHtnP19CSFRTw-IX0k0yq68A",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

@@ -270,7 +270,30 @@
           "New York City Metropolitan Area": 2.4
         },
         "company": {}
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Roman Cipov",
+          "author_url": "https://www.linkedin.com/in/roman-cipov-167aba53",
+          "text": "great analogy! When I hear someone say \"we are F1 of XYZ\" I always chuckle a bit...as there are literally like 30 people on this world able to drive F1 car on it's limit to get the most of it....you see the point? 😊",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Ronald Schranz",
+          "author_url": "https://www.linkedin.com/in/ronald-schranz-0585b7b",
+          "text": "Na mal schauen, wie die Rennstrecke aussieht. Auf einem Gocart Kurs gewinnt „us“. :-)",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Calvin Fuss",
+          "author_url": "https://www.linkedin.com/in/calvinfuss",
+          "text": "Love this Peter. Great reminder to 'nichify' and not get disheartened by the big players.",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

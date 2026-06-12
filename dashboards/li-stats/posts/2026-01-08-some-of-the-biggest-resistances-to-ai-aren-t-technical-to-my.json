@@ -235,7 +235,16 @@
         "company": {
           "Speed and Function": 17.2
         }
-      }
+      },
+      "comments": [
+        {
+          "author_name": "Kate Chapman",
+          "author_url": "https://www.linkedin.com/in/untanglingsystems",
+          "text": "Exactly, the first round isn't the final round when working with AI to code. People often plan the AI, but are they using the tool in an optimal way? It is easier for someone that doesn't have 10 years of experience I think though. Habits are deep and it can feel easier to do it themselves. I wonder how the senior dev would be with a junior dev that didn't do it their way.",
+          "reactions": 1,
+          "replies_count": 2
+        }
+      ]
     }
   }
 }
