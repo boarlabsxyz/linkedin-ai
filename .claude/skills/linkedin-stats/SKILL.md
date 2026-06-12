@@ -30,7 +30,18 @@ description: >
 
    After all posts complete, the final report uses these aggregates as `POSTS_MEASURED`, `POSTS_FAILED`, `POSTS_SKIPPED`, `FAILED_IDS` (comma-joined, or `-` if empty), and `COMMENTS_SCRAPED_TOTAL`.
 3. Spawn the `linkedin-stats-gather-account` agent via the Agent tool. It opens Peter's dashboard + four creator-analytics pages (content / audience / search-appearances / profile-views) and appends a week-keyed snapshot to `./dashboards/li-stats/account.json`.
-4. Print a final report combining all three agents' KEY=VALUE contracts. Format:
+4. Compute the trailing 7-day window (full 7 calendar days ending at this-morning's local midnight) and spawn the `linkedin-stats-gather-comments-out` agent. It scrolls Peter's `/recent-activity/comments/` page, decodes each comment URN to a UTC timestamp, filters to the window, and merges the result into `./dashboards/li-stats/account.json` under `weeks[WEEK].comments_out`.
+   ```bash
+   WINDOW_END_MS=$(node -e 'const d=new Date(); d.setHours(0,0,0,0); console.log(d.getTime())')
+   WINDOW_START_MS=$((WINDOW_END_MS - 7*86400*1000))
+   ```
+   The agent's prompt body must contain exactly:
+   ```
+   WEEK=<WEEK>
+   WINDOW_START_MS=<WINDOW_START_MS>
+   WINDOW_END_MS=<WINDOW_END_MS>
+   ```
+5. Print a final report combining all four agents' KEY=VALUE contracts. Format:
    ```
    ### LinkedIn Stats — <YYYY-MM-DD>
 
@@ -56,5 +67,13 @@ description: >
    - Profile viewers 90d:   <PROFILE_VIEWERS_90D>
    - Search appearances 7d: <SEARCH_APPEARANCES_7D>
    - Pages failed:          <PAGES_FAILED>
+
+   Gather outbound comments
+   - Week:         <WEEK>
+   - Count:        <COMMENTS_OUT_COUNT>
+   - Window start: <WINDOW_START>
+   - Window end:   <WINDOW_END>
+   - Oldest:       <OLDEST>
+   - Newest:       <NEWEST>
    ```
-   Steps run sequentially. If step 1 or step 3's agent returns `ERROR=<...>`, include the error line verbatim and stop without spawning subsequent steps. Per-post `ERROR=` returns inside step 2 are aggregated into `POSTS_FAILED` / `FAILED_IDS` and do NOT abort the skill.
+   Steps run sequentially. If step 1 or step 3's agent returns `ERROR=<...>`, include the error line verbatim and stop without spawning subsequent steps. If step 4's agent returns `ERROR=<...>`, include it verbatim in the report — the snapshot from step 3 is already persisted, so don't roll anything back. Per-post `ERROR=` returns inside step 2 are aggregated into `POSTS_FAILED` / `FAILED_IDS` and do NOT abort the skill.
