@@ -1688,6 +1688,158 @@
           }
         }
       ]
+    },
+    {
+      "id": 17,
+      "title": "Plotly: scatter + linear fit",
+      "type": "ae3e-plotly-panel",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "posts_in_month",
+              "text": "posts_in_month",
+              "type": "number"
+            },
+            {
+              "selector": "impressions",
+              "text": "impressions",
+              "type": "number"
+            },
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "posted_date",
+              "text": "posted_date",
+              "type": "string"
+            },
+            {
+              "selector": "type",
+              "text": "type",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "correlation_points",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "options": {
+        "data": "[]",
+        "layout": "{}",
+        "configuration": "{\"displayModeBar\": false}",
+        "onclick": "",
+        "script": "// ae3e-plotly-panel script — scatter + linear regression\nconst fields = (data && data.series && data.series[0] && data.series[0].fields) || [];\nconst get = (name) => {\n  const f = fields.find(x => x.name === name);\n  if (!f) return [];\n  const v = f.values;\n  if (Array.isArray(v)) return v;\n  if (v && typeof v.toArray === 'function') return v.toArray();\n  return Array.from(v || []);\n};\n\nconst xs = get('posts_in_month');\nconst ys = get('impressions');\nconst ids = get('id');\nconst dates = get('posted_date');\nconst types = get('type');\n\nconst n = xs.length;\nlet sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;\nfor (let i = 0; i < n; i++) {\n  sumX += xs[i]; sumY += ys[i];\n  sumXY += xs[i] * ys[i]; sumX2 += xs[i] * xs[i];\n}\nconst denom = n * sumX2 - sumX * sumX;\nconst slope = denom ? (n * sumXY - sumX * sumY) / denom : 0;\nconst intercept = n ? (sumY - slope * sumX) / n : 0;\n\nconst meanX = n ? sumX / n : 0;\nconst meanY = n ? sumY / n : 0;\nlet num = 0, dx2 = 0, dy2 = 0;\nfor (let i = 0; i < n; i++) {\n  const dx = xs[i] - meanX, dy = ys[i] - meanY;\n  num += dx * dy; dx2 += dx * dx; dy2 += dy * dy;\n}\nconst r = (dx2 && dy2) ? num / Math.sqrt(dx2 * dy2) : 0;\n\nconst xMin = xs.length ? Math.min(...xs) : 0;\nconst xMax = xs.length ? Math.max(...xs) : 1;\n\nreturn {\n  data: [\n    {\n      x: xs, y: ys, mode: 'markers', type: 'scatter', name: 'Posts',\n      text: ids.map((id, i) => (dates[i] || '') + ' • ' + (types[i] || '') + ' • id=' + id),\n      hovertemplate: 'Posts in month: %{x}<br>Impressions: %{y:,}<br>%{text}<extra></extra>',\n      marker: { size: 10, color: '#5794f2', opacity: 0.75, line: { width: 1, color: '#3a6dbf' } }\n    },\n    {\n      x: [xMin, xMax], y: [slope * xMin + intercept, slope * xMax + intercept],\n      mode: 'lines', type: 'scatter',\n      name: 'Linear fit (slope ' + slope.toFixed(0) + '/post, r=' + r.toFixed(2) + ')',\n      line: { color: '#ff7f0e', width: 2, dash: 'dash' }\n    }\n  ],\n  layout: {\n    xaxis: { title: { text: 'Posts published that month' }, gridcolor: '#444', dtick: 1 },\n    yaxis: { title: { text: 'Impressions (latest snapshot)' }, gridcolor: '#444' },\n    showlegend: true,\n    legend: { orientation: 'h', y: -0.2, x: 0 },\n    plot_bgcolor: 'rgba(0,0,0,0)', paper_bgcolor: 'rgba(0,0,0,0)',\n    font: { color: '#ccc' },\n    margin: { l: 60, r: 20, t: 20, b: 80 }\n  }\n};\n"
+      }
+    },
+    {
+      "id": 18,
+      "title": "XY Chart (native): scatter only — no built-in trend line",
+      "type": "xychart",
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "columns": [
+            {
+              "selector": "posts_in_month",
+              "text": "posts_in_month",
+              "type": "number"
+            },
+            {
+              "selector": "impressions",
+              "text": "impressions",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "root_selector": "correlation_points",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "options": {
+        "seriesMapping": "auto",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "posts_in_month": 0,
+              "impressions": 1
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {}
+        },
+        "overrides": []
+      }
     }
   ],
   "refresh": "",

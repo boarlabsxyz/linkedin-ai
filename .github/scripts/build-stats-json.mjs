@@ -41,6 +41,7 @@ const post_demographics = [];
 const account_weeks = [];
 const account_demographics = [];
 const monthAgg = new Map(); // month -> {posts, reposts}
+const postLatestImpressions = new Map(); // post id -> latest snapshot impressions
 
 for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort()) {
   const d = JSON.parse(readFileSync(join(POSTS_DIR, fname), "utf8"));
@@ -55,12 +56,8 @@ for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort
     preview: (d.preview ?? "").slice(0, 120),
     post_url: d.post_url ?? "",
   });
-  if (posted_month) {
-    const cur = monthAgg.get(posted_month) ?? { month: posted_month, posts: 0, reposts: 0 };
-    cur.posts += 1;
-    if (type === "repost") cur.reposts += 1;
-    monthAgg.set(posted_month, cur);
-  }
+  let latestWeek = "";
+  let latestImpressions = 0;
   for (const [week, snap] of Object.entries(d.weeks ?? {})) {
     const m = snap.metrics ?? {};
     const row = { id: d.id, week };
@@ -71,8 +68,49 @@ for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort
         post_demographics.push({ id: d.id, week, dimension: dim, label, pct: Number(pct) });
       }
     }
+    if (week > latestWeek) { latestWeek = week; latestImpressions = m.impressions ?? 0; }
+  }
+  postLatestImpressions.set(d.id, latestImpressions);
+  if (posted_month) {
+    const cur = monthAgg.get(posted_month) ?? { month: posted_month, posts: 0, reposts: 0, total_impressions: 0 };
+    cur.posts += 1;
+    if (type === "repost") cur.reposts += 1;
+    cur.total_impressions += latestImpressions;
+    monthAgg.set(posted_month, cur);
   }
 }
+
+const correlation_points = posts
+  .filter(p => p.posted_month && monthAgg.has(p.posted_month))
+  .map(p => ({
+    id: p.id,
+    posted_date: p.posted_date,
+    posted_month: p.posted_month,
+    type: p.type,
+    posts_in_month: monthAgg.get(p.posted_month).posts,
+    impressions: postLatestImpressions.get(p.id) ?? 0,
+  }));
+
+// OLS linear regression of impressions on posts_in_month — two endpoints for XY Chart line series.
+const correlation_trend = (() => {
+  const n = correlation_points.length;
+  if (!n) return [];
+  let sx = 0, sy = 0, sxy = 0, sx2 = 0;
+  for (const p of correlation_points) {
+    sx += p.posts_in_month; sy += p.impressions;
+    sxy += p.posts_in_month * p.impressions;
+    sx2 += p.posts_in_month * p.posts_in_month;
+  }
+  const denom = n * sx2 - sx * sx;
+  const slope = denom ? (n * sxy - sx * sy) / denom : 0;
+  const intercept = (sy - slope * sx) / n;
+  const xs = correlation_points.map(p => p.posts_in_month);
+  const xMin = Math.min(...xs), xMax = Math.max(...xs);
+  return [
+    { posts_in_month: xMin, impressions: Math.round(slope * xMin + intercept) },
+    { posts_in_month: xMax, impressions: Math.round(slope * xMax + intercept) },
+  ];
+})();
 
 try {
   const acct = JSON.parse(readFileSync(ACCOUNT_FILE, "utf8"));
@@ -95,7 +133,9 @@ try {
   }
 } catch { /* account.json optional */ }
 
-const posts_per_month = [...monthAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
+const posts_per_month = [...monthAgg.values()]
+  .map(m => ({ ...m, avg_impressions_per_post: m.posts > 0 ? Math.round(m.total_impressions / m.posts) : 0 }))
+  .sort((a, b) => a.month.localeCompare(b.month));
 
 const commentsAgg = new Map();
 try {
@@ -115,9 +155,9 @@ try {
 } catch { /* comments.json optional */ }
 const comments_per_month = [...commentsAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
 
-const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month };
+const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month, correlation_points, correlation_trend };
 
 mkdirSync(dirname(resolve(args.out)), { recursive: true });
 writeFileSync(args.out, JSON.stringify(payload));
 
-console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length} comments_per_month=${comments_per_month.length}`);
+console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length} comments_per_month=${comments_per_month.length} correlation_points=${correlation_points.length}`);
