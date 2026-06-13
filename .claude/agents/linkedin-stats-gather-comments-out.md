@@ -101,10 +101,10 @@ The page lazy-loads more comment cards as you scroll. The mechanics mirror `link
 
 3. The evaluator returns `{ newItems, totalSeen, oldestEverMs }`. Append `newItems` (an array, may be empty) to a local `pendingMerge` list. Record `totalSeen` and `oldestEverMs` for stop-condition checks.
 
-**Output shape contract — every entry in `newItems` MUST have EXACTLY these 12 fields, in this order:**
+**Output shape contract — every entry in `newItems` MUST have EXACTLY these 13 fields, in this order:**
 
 ```
-{ comment_urn, commented_at_ms, verb, text, comment_author_name, comment_author_url, post_urn, post_url, post_author_name, post_author_url, reactions, replies_count }
+{ comment_urn, commented_at_ms, verb, text, comment_author_name, comment_author_url, post_urn, post_url, post_author_name, post_author_url, reactions, replies_count, impressions }
 ```
 
 No `parent_activity_urn`. No `parent_author_name`. No `parent_author_url`. No `parent_post_url`. No `permalink` (the merge code in step 4 computes it). No `commented_at` ISO string (the merge code derives it from `commented_at_ms`). No `author` / `author_name` shorthand. No additional fields whatsoever. If the scrape body you load produces a different shape your run is broken — set `newItems = []` and continue rather than write a malformed entry.
@@ -186,7 +186,8 @@ Atomic update via inline Python. The file shape is:
         "<WEEK>": {
           "snapshot_at": "...",
           "reactions": <int>,
-          "replies_count": <int>
+          "replies_count": <int>,
+          "impressions": <int>
         }
       }
     }
@@ -204,7 +205,7 @@ from urllib.parse import quote
 path = "./dashboards/li-stats/comments.json"
 week = "<WEEK>"
 snapshot_cutoff_ms = <SNAPSHOT_CUTOFF_MS>
-# `incoming` is the pendingMerge list verbatim — each item has the 12 fields
+# `incoming` is the pendingMerge list verbatim — each item has the 13 fields
 # the scrape file declares, with commented_at_ms (int) and NO permalink / NO
 # commented_at ISO. We derive those below.
 incoming = <inline-json>
@@ -222,7 +223,7 @@ REQUIRED = {"comment_urn", "commented_at_ms", "verb", "text",
             "comment_author_name", "comment_author_url",
             "post_urn", "post_url",
             "post_author_name", "post_author_url",
-            "reactions", "replies_count"}
+            "reactions", "replies_count", "impressions"}
 for item in incoming:
     missing = REQUIRED - set(item.keys())
     if missing:
@@ -265,6 +266,7 @@ for item in incoming:
             "snapshot_at":   now_iso,
             "reactions":     item["reactions"],
             "replies_count": item["replies_count"],
+            "impressions":   item["impressions"],
         }
         snapshotted_count += 1
 
