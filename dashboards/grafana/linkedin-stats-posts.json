@@ -1,6 +1,19 @@
 {
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
@@ -22,10 +35,6 @@
   "liveNow": false,
   "panels": [
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 4,
         "w": 24,
@@ -37,6 +46,8 @@
         "content": "### ${post:text}\n\nValue (post id): `${post}`",
         "mode": "markdown"
       },
+      "pluginVersion": "",
+      "targets": [],
       "title": "Selected post",
       "type": "text"
     },
@@ -100,6 +111,7 @@
         },
         "xField": "week"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -234,6 +246,7 @@
         },
         "xField": "week"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -392,6 +405,7 @@
         },
         "xField": "week"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -526,6 +540,7 @@
         },
         "xField": "week"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -653,6 +668,7 @@
         },
         "showHeader": true
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -782,8 +798,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -809,6 +824,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -947,8 +963,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -974,6 +989,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -1118,8 +1134,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -1145,6 +1160,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -1289,8 +1305,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -1316,6 +1331,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -1454,8 +1470,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -1481,6 +1496,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -1625,8 +1641,7 @@
             "orientation": "horizontal"
           },
           "unit": "percent"
-        },
-        "overrides": []
+        }
       },
       "gridPos": {
         "h": 10,
@@ -1652,6 +1667,7 @@
         },
         "xField": "label"
       },
+      "pluginVersion": "",
       "targets": [
         {
           "columns": [
@@ -1779,19 +1795,21 @@
       "type": "barchart"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 42,
   "tags": [
     "linkedin"
   ],
   "templating": {
     "list": [
       {
+        "allowCustomValue": true,
         "current": {
-          "selected": true,
           "text": "2026-05-25 — You tell AI \"do the task. But don't delete the production da",
           "value": "7464644189239091201"
         },
+        "hide": 0,
         "includeAll": false,
         "label": "Post",
         "multi": false,
@@ -1979,6 +1997,7 @@
           }
         ],
         "query": "2026-05-25 — You tell AI \"do the task. But don't delete the  : 7464644189239091201, 2026-05-18 — In the AI era stack debates are already dead. E : 7462112759053471744, 2026-05-12 — Before Python before GPUs my first AI was built : 7459938935289569280, 2026-05-05 — If you want AI not to fire you delegate more to : 7457394670176788480, 2026-04-29 — Imagine you're building Burj Khalifa out of Leg : 7455199959148208129, 2026-04-28 — AI providers can block your account at any time : 7454986157144203265, 2026-04-24 — Last week Anthropic banned 31 Speed and Functio : 7453510493186560000, 2026-04-21 — Funny. I spent two years competing with OpenAI  : 7452456886655762433, 2026-04-21 — If the specification is the new source of truth : 7452326158773366784, 2026-04-14 — — What are your greatest achievements? — I took : 7449791320329547776, 2026-04-08 — Deployment frequency lead time mean time to res : 7447607429929844736, 2026-03-31 — Conversation on March 1 — When is your release? : 7444715876454641664, 2026-03-24 — LLM is a \"dark matter\" researchers can see it e : 7442194260919050240, 2026-03-10 — Most technical founders I know can demo their p : 7437132495038603264, 2026-03-08 — If you're curious how an LLM's inner workings r : 7436445465140899840, 2026-03-05 — In late 2018 I built what was basically \"ChatGP : 7435303858349760512, 2026-02-24 — AI doesn't argue with your bad ideas. Whether y : 7432043122894761984, 2026-02-17 — Two senior devs meet at the coffee machine. \"Yo : 7429507665682391040, 2026-02-12 — AI ran a vending machine in SF. Lost money had  : 7427694719650058240, 2026-01-29 — What does company culture actually do in practi : 7422633195491454976, 2026-01-27 — Most juniors leave before becoming useful. AI m : 7421897520596893696, 2026-01-22 — One challenging thing in business is explaining : 7420113588977192960, 2026-01-20 — Looking for like-minded people! Someone thinkin : 7419357068798832641, 2026-01-15 — Once again about AI adoption — what people are  : 7417559662964891649, 2026-01-13 — I sold my first company for $70K. Then blew eve : 7416843539956797440, 2026-01-10 — Don't post often. But this felt worth sharing.  : 7415704361466671104, 2026-01-08 — Some of the biggest resistances to AI aren't te : 7415030743866929153, 2026-01-06 — One can't be a leader while judging others for  : 7414311440871833601, 2025-12-18 — I started exploring AI when I was still at scho : 7407414588624998400, 2025-12-16 — \"Juniors are disappearing. There's no work for  : 7406707512676147201, 2025-12-11 — \"Yes you told me. I just didn't do it.\" That's  : 7404885926641963008, 2025-12-09 — An engineering book taught me management. Sound : 7404153601205473280, 2025-12-04 — Imagine you're building Burj Khalifa out of Leg : 7402388577843605504, 2025-12-02 — Conversation on April 1 — When is your release? : 7401633143939575808, 2025-11-25 — Deploy early saves startups more often than a s : 7399100453231386624, 2025-11-11 — Attending the United Nations Forum on Business  : 7394110933008216065",
+        "skipUrlSync": false,
         "type": "custom"
       }
     ]
@@ -1987,7 +2006,20 @@
     "from": "now-180d",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
   "timezone": "browser",
   "title": "LinkedIn Stats — Per-post",
   "uid": "linkedin-post"
