@@ -25,7 +25,8 @@
 //         post_author_name:    <string>,
 //         post_author_url:     <string, normalized origin+pathname>,
 //         reactions:           <int>,
-//         replies_count:       <int>
+//         replies_count:       <int>,
+//         impressions:         <int>
 //       },
 //       ...
 //     ],
@@ -33,7 +34,7 @@
 //     oldestEverMs: <int | null, min commented_at_ms across totalSeen>
 //   }
 //
-// Every newItems entry MUST contain EXACTLY these 12 fields, in this order.
+// Every newItems entry MUST contain EXACTLY these 13 fields, in this order.
 // No `parent_*`. No `permalink`. No `commented_at` (the ms version is what
 // the merge code converts to ISO). Permalink is computed in Python, not
 // here. If the scraper produces a different shape your run is broken —
@@ -87,11 +88,21 @@
 
     const articles = Array.from(li.querySelectorAll('article.comments-comment-entity[data-id^="urn:li:comment:"]'));
     for (const a of articles) {
-      const authorLink = a.querySelector(`a[href*="${PROFILE_FRAG}"]`);
-      if (!authorLink) continue;
-
       const dataId = a.getAttribute('data-id') || '';
       if (seen.has(dataId)) continue;
+
+      // Comment author block — .comments-comment-meta__container.
+      //   .comments-comment-meta__description-container → A with href
+      //   .comments-comment-meta__description            → H3 like "Peter Ovchynnikov\n   • You"
+      // The author URL is the SINGLE source of truth for "Peter authored this".
+      // A bare `a[href*="/in/ovchyn"]` probe over the whole article would also
+      // match @-mentions of Peter inside someone else's comment.
+      const cm = a.querySelector('.comments-comment-meta__container');
+      const descLink = cm?.querySelector('.comments-comment-meta__description-container');
+      const descEl   = cm?.querySelector('.comments-comment-meta__description');
+      const commentAuthorUrl  = normHref(descLink?.getAttribute('href') || '');
+      if (!commentAuthorUrl.includes(PROFILE_FRAG)) continue;
+      const commentAuthorName = firstLine(descEl?.innerText || descLink?.innerText || '');
 
       const m = dataId.match(/urn:li:comment:\(activity:\d+,(\d+)\)/);
       if (!m) continue;
@@ -108,19 +119,12 @@
         .find(el => !el.closest('.comments-replies-list, .comments-comment-replies'));
       const repliesEl = Array.from(a.querySelectorAll('.comments-comment-social-bar__replies-count--cr'))
         .find(el => !el.closest('.comments-replies-list, .comments-comment-replies'));
+      const impEl = Array.from(a.querySelectorAll('.comments-comment-social-bar__impressions-count'))
+        .find(el => !el.closest('.comments-replies-list, .comments-comment-replies'));
       const parseInt0 = (s) => {
         const mm = (s || '').replace(/,/g, '').match(/\d+/);
         return mm ? parseInt(mm[0], 10) : 0;
       };
-
-      // Comment author block — .comments-comment-meta__container.
-      //   .comments-comment-meta__description-container → A with href
-      //   .comments-comment-meta__description            → H3 like "Peter Ovchynnikov\n   • You"
-      const cm = a.querySelector('.comments-comment-meta__container');
-      const descLink = cm?.querySelector('.comments-comment-meta__description-container');
-      const descEl   = cm?.querySelector('.comments-comment-meta__description');
-      const commentAuthorUrl  = normHref((descLink || authorLink)?.getAttribute('href') || '');
-      const commentAuthorName = firstLine(descEl?.innerText || descLink?.innerText || authorLink?.innerText || '');
 
       const item = {
         comment_urn:         dataId,
@@ -135,6 +139,7 @@
         post_author_url:     postAuthorUrl,
         reactions:           parseInt0(reactEl?.textContent),
         replies_count:       parseInt0(repliesEl?.textContent),
+        impressions:         parseInt0(impEl?.textContent),
       };
       seen.set(dataId, commentedAtMs);
       newItems.push(item);

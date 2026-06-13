@@ -14,9 +14,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7471134819586985984/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7470539309444657152%2C7471134804680364032%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
+          "replies_count": 0,
+          "impressions": 40
         }
       }
     },
@@ -34,9 +35,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7471126392777396224/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7470518874392879104%2C7471126333943713793%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
+          "replies_count": 0,
+          "impressions": 41
         }
       }
     },
@@ -54,9 +56,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7471124927228739584/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7470518874392879104%2C7471124872010551296%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
+          "replies_count": 0,
+          "impressions": 36
         }
       }
     },
@@ -74,29 +77,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7470835175111938048/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7470834593185624065%2C7470835123442118656%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
-        }
-      }
-    },
-    "urn:li:comment:(activity:7468657199297355777,7468663967280926720)": {
-      "comment_urn": "urn:li:comment:(activity:7468657199297355777,7468663967280926720)",
-      "commented_at": "2026-06-05T14:04:10Z",
-      "verb": "commented",
-      "text": "",
-      "comment_author_name": "Olga Mykhailova (Michai)",
-      "comment_author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
-      "post_urn": "urn:li:activity:7468661946834268160",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7468661946834268160/",
-      "post_author_name": "Olga Mykhailova (Michai)",
-      "post_author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7468661946834268160/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7468657199297355777%2C7468663967280926720%29",
-      "weeks": {
-        "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
-          "reactions": 0,
-          "replies_count": 0
+          "replies_count": 0,
+          "impressions": 60
         }
       }
     },
@@ -114,9 +98,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7468661946834268160/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7468657199297355777%2C7468661880673296385%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 6,
-          "replies_count": 1
+          "replies_count": 1,
+          "impressions": 154
         }
       }
     },
@@ -134,29 +119,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7466131978350907393/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7464644189239091201%2C7466131914438008832%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
-        }
-      }
-    },
-    "urn:li:comment:(activity:7464644189239091201,7464923016796459008)": {
-      "comment_urn": "urn:li:comment:(activity:7464644189239091201,7464923016796459008)",
-      "commented_at": "2026-05-26T06:18:58Z",
-      "verb": "commented",
-      "text": "Peter Ovchynnikov but why even allow AI to directly touch the codebase?\n\nAnd why not mentor AI for ethical behaviour and follow code of conduct?",
-      "comment_author_name": "Pravin Dhayfule",
-      "comment_author_url": "https://www.linkedin.com/in/dhayfule",
-      "post_urn": "urn:li:activity:7466131978350907393",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7466131978350907393/",
-      "post_author_name": "Peter Ovchynnikov",
-      "post_author_url": "https://www.linkedin.com/in/ovchyn",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7466131978350907393/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7464644189239091201%2C7464923016796459008%29",
-      "weeks": {
-        "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
-          "reactions": 0,
-          "replies_count": 2
+          "replies_count": 0,
+          "impressions": 0
         }
       }
     },
@@ -174,9 +140,10 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7462739055420719105/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7462375087472803841%2C7462592079404388352%29",
       "weeks": {
         "2026-06-08": {
-          "snapshot_at": "2026-06-12T22:19:06Z",
+          "snapshot_at": "2026-06-13T07:34:04Z",
           "reactions": 0,
-          "replies_count": 0
+          "replies_count": 0,
+          "impressions": 32
         }
       }
     },
@@ -220,20 +187,6 @@
       "post_author_name": "Nick Gluzdov",
       "post_author_url": "https://www.linkedin.com/in/gluzd",
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7454921309119078400/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7454892308568764417%2C7454921304845189123%29",
-      "weeks": {}
-    },
-    "urn:li:comment:(activity:7452399627221409792,7452714303909978114)": {
-      "comment_urn": "urn:li:comment:(activity:7452399627221409792,7452714303909978114)",
-      "commented_at": "2026-04-22T13:45:54Z",
-      "verb": "commented",
-      "text": "",
-      "comment_author_name": "Olga Mykhailova (Michai)",
-      "comment_author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
-      "post_urn": "urn:li:activity:7452457104751280128",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452457104751280128/",
-      "post_author_name": "Olga Mykhailova (Michai)",
-      "post_author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7452457104751280128/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7452399627221409792%2C7452714303909978114%29",
       "weeks": {}
     },
     "urn:li:comment:(activity:7452399627221409792,7452457086497570816)": {
@@ -306,34 +259,6 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7449848697825353728/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7449791320329547776%2C7449848656775585792%29",
       "weeks": {}
     },
-    "urn:li:comment:(activity:7449791320329547776,7449803321902559232)": {
-      "comment_urn": "urn:li:comment:(activity:7449791320329547776,7449803321902559232)",
-      "commented_at": "2026-04-14T12:58:42Z",
-      "verb": "commented",
-      "text": "I think many of us have an 'accidentally made enwiki unreachable' story somewhere... almost a rite of passage!",
-      "comment_author_name": "Nimish Gåtam",
-      "comment_author_url": "https://www.linkedin.com/in/nimish-g%C3%A5tam-44125512",
-      "post_urn": "urn:li:activity:7449848697825353728",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449848697825353728/",
-      "post_author_name": "Peter Ovchynnikov",
-      "post_author_url": "https://www.linkedin.com/in/ovchyn",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7449848697825353728/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7449791320329547776%2C7449803321902559232%29",
-      "weeks": {}
-    },
-    "urn:li:comment:(activity:7444403975153590272,7444519604170698752)": {
-      "comment_urn": "urn:li:comment:(activity:7444403975153590272,7444519604170698752)",
-      "commented_at": "2026-03-30T23:03:06Z",
-      "verb": "commented",
-      "text": "",
-      "comment_author_name": "Arty Starr",
-      "comment_author_url": "https://www.linkedin.com/in/artystarr",
-      "post_urn": "urn:li:activity:7444485377937121280",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7444485377937121280/",
-      "post_author_name": "Margaret-Anne Storey",
-      "post_author_url": "https://www.linkedin.com/in/margaret-anne-storey",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7444485377937121280/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7444403975153590272%2C7444519604170698752%29",
-      "weeks": {}
-    },
     "urn:li:comment:(activity:7444403975153590272,7444485355430506496)": {
       "comment_urn": "urn:li:comment:(activity:7444403975153590272,7444485355430506496)",
       "commented_at": "2026-03-30T20:47:00Z",
@@ -362,20 +287,6 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442893133878558720/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442893084218241024%29",
       "weeks": {}
     },
-    "urn:li:comment:(activity:7442194260919050240,7442857389055332352)": {
-      "comment_urn": "urn:li:comment:(activity:7442194260919050240,7442857389055332352)",
-      "commented_at": "2026-03-26T08:58:03Z",
-      "verb": "commented",
-      "text": "When you work a lot with models, with time, a certain internal feeling appears, as if you already know in advance what response will come from the system, so you adjust your prompt in a way that steers that response in the direction you need.\n\nHope is what drives us when we launch a new AI process for the first time. But after a few iterations this feeling starts to emerge. \n\nLook deeper within yourself 🧘😇",
-      "comment_author_name": "Andrii Rozhylo",
-      "comment_author_url": "https://www.linkedin.com/in/arozhylo",
-      "post_urn": "urn:li:activity:7442893133878558720",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7442893133878558720/",
-      "post_author_name": "Peter Ovchynnikov",
-      "post_author_url": "https://www.linkedin.com/in/ovchyn",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442893133878558720/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442857389055332352%29",
-      "weeks": {}
-    },
     "urn:li:comment:(activity:7442194260919050240,7442501592597159936)": {
       "comment_urn": "urn:li:comment:(activity:7442194260919050240,7442501592597159936)",
       "commented_at": "2026-03-25T09:24:14Z",
@@ -402,20 +313,6 @@
       "post_author_name": "Peter Ovchynnikov",
       "post_author_url": "https://www.linkedin.com/in/ovchyn",
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442499067785510912/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442499023938220032%29",
-      "weeks": {}
-    },
-    "urn:li:comment:(activity:7442194260919050240,7442492363777810432)": {
-      "comment_urn": "urn:li:comment:(activity:7442194260919050240,7442492363777810432)",
-      "commented_at": "2026-03-25T08:47:34Z",
-      "verb": "commented",
-      "text": "We know what LLM are : a stochastic generator of words (token) given a context (a prompt and the trained weights).",
-      "comment_author_name": "jerome SUSGIN",
-      "comment_author_url": "https://www.linkedin.com/in/jerome-susgin-b06b3b174",
-      "post_urn": "urn:li:activity:7442499067785510912",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7442499067785510912/",
-      "post_author_name": "Peter Ovchynnikov",
-      "post_author_url": "https://www.linkedin.com/in/ovchyn",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442499067785510912/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442492363777810432%29",
       "weeks": {}
     },
     "urn:li:comment:(activity:7441972783561187328,7442309091198410752)": {
@@ -460,20 +357,6 @@
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442291360247992321/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442282492830597122%2C7442291312818774016%29",
       "weeks": {}
     },
-    "urn:li:comment:(activity:7442194260919050240,7442238230151770115)": {
-      "comment_urn": "urn:li:comment:(activity:7442194260919050240,7442238230151770115)",
-      "commented_at": "2026-03-24T15:57:44Z",
-      "verb": "commented",
-      "text": "In the eighties researchers hypothized that neural networks could one day produce intelligent behaviour. Back then they only could run tiny perceptrons, but the intuition was there. In recent years it has been proved right. So I believe that, yes, we don't fully understand the magic, but it doesn't come from pure empirism. It is by design.",
-      "comment_author_name": "Gianluigi Fliri",
-      "comment_author_url": "https://www.linkedin.com/in/gianluigi-fliri",
-      "post_urn": "urn:li:activity:7442501609454206977",
-      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7442501609454206977/",
-      "post_author_name": "Peter Ovchynnikov",
-      "post_author_url": "https://www.linkedin.com/in/ovchyn",
-      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442501609454206977/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442238230151770115%29",
-      "weeks": {}
-    },
     "urn:li:comment:(activity:7442194260919050240,7442195133925597184)": {
       "comment_urn": "urn:li:comment:(activity:7442194260919050240,7442195133925597184)",
       "commented_at": "2026-03-24T13:06:29Z",
@@ -486,6 +369,104 @@
       "post_author_name": "Peter Ovchynnikov",
       "post_author_url": "https://www.linkedin.com/in/ovchyn",
       "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7442195148060520448/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442194260919050240%2C7442195133925597184%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7432772025972269056,7432809002146746368)": {
+      "comment_urn": "urn:li:comment:(activity:7432772025972269056,7432809002146746368)",
+      "commented_at": "2026-02-26T15:29:21Z",
+      "verb": "commented",
+      "text": "That's the thing about culture — it's hard to understand how it works until you find yourself inside.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7432809068559421440",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7432809068559421440/",
+      "post_author_name": "Andrii Rozhylo",
+      "post_author_url": "https://www.linkedin.com/in/arozhylo",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7432809068559421440/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7432772025972269056%2C7432809002146746368%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429873498774233088,7430571119608221697)": {
+      "comment_urn": "urn:li:comment:(activity:7429873498774233088,7430571119608221697)",
+      "commented_at": "2026-02-20T11:16:48Z",
+      "verb": "commented",
+      "text": "I wouldn't ignore automation.\n\nFirst think what to eliminate. Then what to automate. \n\nHow about this?",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7430571124993761280",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7430571124993761280/",
+      "post_author_name": "Yurii Kinakh",
+      "post_author_url": "https://www.linkedin.com/in/yurii-kinakh",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7430571124993761280/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429873498774233088%2C7430571119608221697%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429507665682391040,7429967605924438016)": {
+      "comment_urn": "urn:li:comment:(activity:7429507665682391040,7429967605924438016)",
+      "commented_at": "2026-02-18T19:18:39Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7429967652057583616",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7429967652057583616/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7429967652057583616/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429507665682391040%2C7429967605924438016%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429507665682391040,7429960246002880512)": {
+      "comment_urn": "urn:li:comment:(activity:7429507665682391040,7429960246002880512)",
+      "commented_at": "2026-02-18T18:49:24Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7429960442569166848",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7429960442569166848/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7429960442569166848/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429507665682391040%2C7429960246002880512%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429507665682391040,7429960089987534848)": {
+      "comment_urn": "urn:li:comment:(activity:7429507665682391040,7429960089987534848)",
+      "commented_at": "2026-02-18T18:48:47Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7429960126754820096",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7429960126754820096/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7429960126754820096/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429507665682391040%2C7429960089987534848%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429507665682391040,7429880397083172864)": {
+      "comment_urn": "urn:li:comment:(activity:7429507665682391040,7429880397083172864)",
+      "commented_at": "2026-02-18T13:32:07Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7429880422370545665",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7429880422370545665/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7429880422370545665/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429507665682391040%2C7429880397083172864%29",
+      "weeks": {}
+    },
+    "urn:li:comment:(activity:7429507665682391040,7429806736707878912)": {
+      "comment_urn": "urn:li:comment:(activity:7429507665682391040,7429806736707878912)",
+      "commented_at": "2026-02-18T08:39:25Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7429885644086222848",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7429885644086222848/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7429885644086222848/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7429507665682391040%2C7429806736707878912%29",
       "weeks": {}
     }
   }
