@@ -1419,7 +1419,7 @@
       "type": "barchart",
       "gridPos": {
         "h": 8,
-        "w": 12,
+        "w": 8,
         "x": 0,
         "y": 39
       },
@@ -1511,8 +1511,8 @@
       "type": "barchart",
       "gridPos": {
         "h": 8,
-        "w": 12,
-        "x": 12,
+        "w": 8,
+        "x": 8,
         "y": 39
       },
       "datasource": {
@@ -1590,6 +1590,98 @@
             "excludeByName": {},
             "indexByName": {
               "Reactions": 1,
+              "month": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Impressions on my comments per month",
+      "type": "barchart",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 39
+      },
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "lineWidth": 1
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "barWidth": 0.7,
+        "groupWidth": 0.7,
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xField": "month"
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "month",
+              "text": "month",
+              "type": "string"
+            },
+            {
+              "selector": "impressions_received",
+              "text": "Impressions",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "comments_per_month",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Impressions": 1,
               "month": 0
             },
             "renameByName": {}

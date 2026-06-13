@@ -105,10 +105,11 @@ try {
     if (!month) continue;
     const weeks = entry.weeks ?? {};
     const sortedWeeks = Object.keys(weeks).sort();
-    const latestReactions = sortedWeeks.length ? (weeks[sortedWeeks[sortedWeeks.length - 1]].reactions ?? 0) : 0;
-    const cur = commentsAgg.get(month) ?? { month, comments_posted: 0, reactions_received: 0 };
+    const latestSnap = sortedWeeks.length ? weeks[sortedWeeks[sortedWeeks.length - 1]] : {};
+    const cur = commentsAgg.get(month) ?? { month, comments_posted: 0, reactions_received: 0, impressions_received: 0 };
     cur.comments_posted += 1;
-    cur.reactions_received += latestReactions;
+    cur.reactions_received += latestSnap.reactions ?? 0;
+    cur.impressions_received += latestSnap.impressions ?? 0;
     commentsAgg.set(month, cur);
   }
 } catch { /* comments.json optional */ }

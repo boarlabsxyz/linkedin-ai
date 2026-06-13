@@ -57,7 +57,7 @@ Two workflows publish the file (both share the `pages` concurrency group, both r
 - `.github/workflows/pages-deploy.yml` — manual `workflow_dispatch`: republishes `stats.json` from current `main` without scraping.
 
 The two Grafana dashboards:
-- **`linkedin-stats`** (uid `kiqz2fk`, `/d/kiqz2fk/linkedin-stats`) — Account view: KPIs, trends, audience demographics, posts-per-month, comments-per-month (count + reactions). No variables.
+- **`linkedin-stats`** (uid `kiqz2fk`, `/d/kiqz2fk/linkedin-stats`) — Account view: KPIs, trends, audience demographics, posts-per-month, comments-per-month (count + reactions + impressions). No variables.
 - **`LinkedIn Stats — Per-post`** (uid `linkedin-post`, `/d/linkedin-post/...`) — Per-post view: `$post` Custom variable picker, selected-post text panel, 4 weekly bar charts (Impressions / Engagement actions / Engagement rate / Profile viewers & followers gained), weekly metrics table, 6 audience demographic bars. Per-post charts cap at the first 12 weekly snapshots via `sortBy(week asc) + limit 12`.
 
 Source-of-truth JSONs for both dashboards live in `dashboards/grafana/`. Dashboards are built/updated via the `mcp__grafana__*` MCP tools (no UI clicks); the original research spec lives in `prompts/grafana-linkedin-stats-replica.md`. Notable Infinity gotchas: backend-mode queries ignore the `filters:[]` array — use `filterExpression: "id == \"${post}\""` and include every filtered field in `columns`. Variable resolution requires Custom variable type with `query` in `display : value, display : value, …` format (the Query variable type silently fails to populate options in Grafana 12 v0alpha1 dashboards). Date strings break `==` parsing — use `contains(week, "2026-06")` instead of `week == "2026-06-01"`.
