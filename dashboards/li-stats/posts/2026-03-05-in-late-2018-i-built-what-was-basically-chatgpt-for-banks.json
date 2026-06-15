@@ -294,6 +294,88 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-06-15": {
+      "snapshot_at": "2026-06-15T17:01:00Z",
+      "metrics": {
+        "impressions": 35608,
+        "members_reached": 23407,
+        "reactions": 26,
+        "comments": 3,
+        "reposts": 1,
+        "saves": 3,
+        "sends": 1,
+        "profile_viewers": 93,
+        "followers_gained": 3,
+        "engagement_rate": 0.08
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 36.4,
+          "Entry": 24.9,
+          "Director": 8.0,
+          "Manager": 6.3,
+          "CXO": 4.8
+        },
+        "job_title": {
+          "Software Engineer": 14.7,
+          "Founder": 2.4,
+          "Co-Founder": 2.1,
+          "Full Stack Engineer": 1.7,
+          "Product Manager": 1.4
+        },
+        "industry": {
+          "IT Services and IT Consulting": 26.6,
+          "Software Development": 24.7,
+          "Financial Services": 9.5,
+          "Technology, Information and Internet": 7.5,
+          "Banking": 2.9
+        },
+        "company_size": {
+          "10,001+ employees": 19.6,
+          "1001-5000 employees": 13.5,
+          "51-200 employees": 12.6,
+          "11-50 employees": 11.1,
+          "1-10 employees": 7.8
+        },
+        "location": {
+          "London Area, United Kingdom": 6.7,
+          "Zürich Metropolitan Area": 3.1,
+          "Kyiv Metropolitan Area": 2.7,
+          "Amsterdam Area": 2.5,
+          "New York City Metropolitan Area": 2.4
+        },
+        "company": {
+          "EPAM Systems": 1,
+          "Google": 1,
+          "Microsoft": 1,
+          "Deloitte": 1,
+          "Amazon": 1
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Roman Cipov",
+          "author_url": "https://www.linkedin.com/in/roman-cipov-167aba53",
+          "text": "great analogy! When I hear someone say \"we are F1 of XYZ\" I always chuckle a bit...as there are literally like 30 people on this world able to drive F1 car on it's limit to get the most of it....you see the point? 😊",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Ronald Schranz",
+          "author_url": "https://www.linkedin.com/in/ronald-schranz-0585b7b",
+          "text": "Na mal schauen, wie die Rennstrecke aussieht. Auf einem Gocart Kurs gewinnt „us“. :-)",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Calvin Fuss",
+          "author_url": "https://www.linkedin.com/in/calvinfuss",
+          "text": "Love this Peter. Great reminder to 'nichify' and not get disheartened by the big players.",
+          "reactions": 1,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }
