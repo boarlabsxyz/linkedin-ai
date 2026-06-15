@@ -301,6 +301,77 @@
           "replies_count": 1
         }
       ]
+    },
+    "2026-06-15": {
+      "snapshot_at": "2026-06-15T15:09:00Z",
+      "metrics": {
+        "impressions": 1762,
+        "members_reached": 1176,
+        "reactions": 10,
+        "comments": 5,
+        "reposts": 0,
+        "saves": 1,
+        "sends": 2,
+        "profile_viewers": 3,
+        "followers_gained": 0,
+        "engagement_rate": 0.85
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 32.2,
+          "Senior": 29.4,
+          "CXO": 5.8,
+          "Director": 5.7,
+          "Manager": 3.7
+        },
+        "job_title": {
+          "Software Engineer": 14.2,
+          "Frontend Developer": 2.5,
+          "Project Manager": 2.2,
+          "Founder": 2.1,
+          "Chief Executive Officer": 2.0
+        },
+        "industry": {
+          "IT Services and IT Consulting": 31.1,
+          "Software Development": 27.4,
+          "Technology, Information and Internet": 7.2,
+          "Business Consulting and Services": 2.7,
+          "Financial Services": 2.0
+        },
+        "company_size": {
+          "51-200 employees": 16.4,
+          "11-50 employees": 14.2,
+          "10,001+ employees": 10.5,
+          "1001-5000 employees": 10.0,
+          "1-10 employees": 8.6
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.4,
+          "Lviv": 3.8,
+          "Zagreb Metropolitan Area": 3.2,
+          "Bratislava Metropolitan Area": 2.6,
+          "Ljubljana Metropolitan Area": 2.6
+        },
+        "company": {
+          "Speed and Function": 1.6
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Adi Stan",
+          "author_url": "https://www.linkedin.com/in/adistan",
+          "text": "The paper synthesizes personal theoretical research and data analysis (including the GitKraken 2025, DORA, and McKinsey reports) to demonstrate that AI adoption is not uniform, but generates three distinct cognitive classes:\nL1 (Passengers): Dependent users, characterized by cognitive atrophy and the \"uncertainty-reassurance cycle\".\nL2 (Operators): Clerks who maintain existing systems but are at maximum risk from automation.\nL3 (Architects): A small elite that enters into symbiosis with AI (Homo Symbioticus), achieving exponential productivity gains.\n\nTHE AGE OF COGNITIVE DIVERGENCE\n\nhttps://zenodo.org/records/17965801",
+          "reactions": 0,
+          "replies_count": 2
+        },
+        {
+          "author_name": "Rudolf Grujbár",
+          "author_url": "https://www.linkedin.com/in/rgrujbar",
+          "text": "precisely, in fact its new role of senior roles to help juniors with broadening architectural vision from the beginning and prepare them to new ways the role is pivoting to.",
+          "reactions": 0,
+          "replies_count": 1
+        }
+      ]
     }
   }
 }
