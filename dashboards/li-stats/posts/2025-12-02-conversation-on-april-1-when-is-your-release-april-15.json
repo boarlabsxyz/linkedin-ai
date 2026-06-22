@@ -338,6 +338,62 @@
         }
       },
       "comments": []
+    },
+    "2026-06-22": {
+      "snapshot_at": "2026-06-22T12:05:00Z",
+      "metrics": {
+        "impressions": 670,
+        "members_reached": 298,
+        "reactions": 6,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 3,
+        "followers_gained": 0,
+        "engagement_rate": 0.9
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 33.2,
+          "Senior": 30.2,
+          "Director": 6.4,
+          "CXO": 5.4,
+          "Owner": 4.4
+        },
+        "job_title": {
+          "Software Engineer": 13.4,
+          "Frontend Developer": 4.7,
+          "Founder": 4.0,
+          "iOS Developer": 3.7,
+          "Quality Assurance Engineer": 2.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 38.9,
+          "Software Development": 23.5,
+          "Technology, Information and Internet": 8.4,
+          "Business Consulting and Services": 2.3,
+          "Strategic Management Services": 2.0
+        },
+        "company_size": {
+          "51-200 employees": 19.8,
+          "11-50 employees": 19.1,
+          "1001-5000 employees": 9.4,
+          "1-10 employees": 8.4,
+          "10,001+ employees": 7.4
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 12.4,
+          "Lviv": 6.0,
+          "Wroclaw Metropolitan Area": 2.7,
+          "Odesa": 2.3,
+          "Amsterdam Area": 2.0
+        },
+        "company": {
+          "Speed and Function": 5.4
+        }
+      },
+      "comments": []
     }
   }
 }

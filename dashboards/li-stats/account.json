@@ -845,6 +845,147 @@
           "Lviv IT Cluster": 2.9
         }
       }
+    },
+    "2026-06-22": {
+      "snapshot_at": "2026-06-22T17:06:02Z",
+      "dashboard": {
+        "post_impressions_7d": 269,
+        "post_impressions_delta_pct_7d": -69.1,
+        "followers": 3588,
+        "followers_delta_pct_7d": 0.2,
+        "profile_viewers_90d": 177,
+        "search_appearances_previous_week": 20
+      },
+      "content_7d": {
+        "impressions_7d": 269,
+        "impressions_delta_pct": -69.1,
+        "members_reached_7d": 116,
+        "social_engagements_7d": 2,
+        "reactions_7d": 2,
+        "comments_7d": 0,
+        "reposts_7d": 0,
+        "saves_7d": 0,
+        "sends_7d": 0,
+        "link_engagements_7d": 0
+      },
+      "audience": {
+        "total_followers": 3588,
+        "followers_delta_pct_7d": 0.0,
+        "demographics": {
+          "job_title": {
+            "Founder": 6,
+            "Co-Founder": 6,
+            "Software Engineer": 4,
+            "Chief Executive Officer": 4,
+            "Frontend Developer": 2,
+            "Chief Technology Officer": 2,
+            "Information Technology Recruiter": 2,
+            "Project Manager": 2,
+            "Full Stack Engineer": 2
+          },
+          "location": {
+            "Kyiv Metropolitan Area": 12,
+            "Lviv": 4,
+            "San Francisco Bay Area": 4,
+            "London Area, United Kingdom": 3,
+            "New York City Metropolitan Area": 2,
+            "Odesa": 2,
+            "Warsaw Metropolitan Area": 2,
+            "Kharkiv Metropolitan Area": 2,
+            "Amsterdam Area": 2
+          },
+          "seniority": {
+            "Senior": 29,
+            "Entry": 22,
+            "CXO": 12,
+            "Owner": 7,
+            "Director": 7,
+            "Manager": 4,
+            "Partner": 4,
+            "VP": 2,
+            "Training": 0.5
+          },
+          "company": {
+            "Speed and Function": 1,
+            "NDA": 1,
+            "EPAM Systems": 1,
+            "GlobalLogic": 1,
+            "Intellias": 0.5,
+            "Capgemini Engineering": 0.5,
+            "Stealth Startup": 0.5,
+            "Luxoft": 0.5,
+            "Open Supply Hub": 0.5
+          },
+          "industry": {
+            "IT Services and IT Consulting": 26,
+            "Software Development": 20,
+            "Technology, Information and Internet": 14,
+            "Staffing and Recruiting": 4,
+            "Business Consulting and Services": 2,
+            "Advertising Services": 2,
+            "Financial Services": 2,
+            "Marketing Services": 2,
+            "Human Resources Services": 2,
+            "Technology, Information and Media": 1
+          },
+          "company_size": {
+            "11-50 employees": 20,
+            "2-10 employees": 16,
+            "51-200 employees": 15,
+            "10,001+ employees": 7,
+            "201-500 employees": 6,
+            "1,001-5,000 employees": 6,
+            "501-1,000 employees": 4,
+            "0-1 employees": 2,
+            "5,001-10,000 employees": 2
+          }
+        }
+      },
+      "search_appearances": {
+        "all_appearances_7d": 1672,
+        "search_appearances_7d": 20,
+        "where_appeared": {
+          "posts_pct": 51.2,
+          "comments_pct": 35.9,
+          "network_recommendations_pct": 11.7,
+          "search_pct": 1.2
+        },
+        "profile_engagement": {
+          "impressions_90d": 741,
+          "clicks_90d": 60,
+          "avg_view_time_s": 71
+        },
+        "clicks_per_section": {
+          "Intro": {
+            "count": 33,
+            "pct": 55.0
+          },
+          "Activity": {
+            "count": 19,
+            "pct": 31.7
+          },
+          "Experience": {
+            "count": 8,
+            "pct": 13.3
+          }
+        }
+      },
+      "profile_views": {
+        "viewers_90d": 177,
+        "viewers_delta_pct_7d": 50.0,
+        "highlights": {
+          "top_location": "Kyiv Metropolitan Area",
+          "top_industry": "IT Services and IT Consulting",
+          "top_company": "Speed and Function"
+        },
+        "top_companies_pct": {
+          "Speed and Function": 38.2,
+          "Open Supply Hub": 5.9,
+          "NDA": 5.9,
+          "Lviv IT Cluster": 2.9,
+          "Bedrock Labs": 2.9
+        }
+      }
     }
   }
 }

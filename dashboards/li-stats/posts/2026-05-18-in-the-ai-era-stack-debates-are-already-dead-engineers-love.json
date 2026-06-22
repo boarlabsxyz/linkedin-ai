@@ -228,6 +228,62 @@
         }
       },
       "comments": []
+    },
+    "2026-06-22": {
+      "snapshot_at": "2026-06-22T16:25:00Z",
+      "metrics": {
+        "impressions": 545,
+        "members_reached": 339,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.73
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 34.5,
+          "Senior": 26.5,
+          "Owner": 6.5,
+          "Director": 5.6,
+          "CXO": 5.6
+        },
+        "job_title": {
+          "Software Engineer": 13.9,
+          "Co-Founder": 4.1,
+          "Founder": 2.9,
+          "Frontend Developer": 2.7,
+          "Chief Executive Officer": 2.7
+        },
+        "industry": {
+          "Software Development": 25.7,
+          "IT Services and IT Consulting": 25.4,
+          "Technology, Information and Internet": 5.6,
+          "Financial Services": 2.7,
+          "Business Consulting and Services": 2.1
+        },
+        "company_size": {
+          "51-200 employees": 16.5,
+          "11-50 employees": 14.2,
+          "1-10 employees": 12.1,
+          "1001-5000 employees": 10.9,
+          "201-500 employees": 7.7
+        },
+        "location": {
+          "Ljubljana Metropolitan Area": 8.8,
+          "Zagreb Metropolitan Area": 8.0,
+          "Belgrade Metropolitan Area": 5.9,
+          "Maribor Metropolitan Area": 2.9,
+          "Kyiv Metropolitan Area": 2.7
+        },
+        "company": {
+          "Speed and Function": 3.2
+        }
+      },
+      "comments": []
     }
   }
 }
