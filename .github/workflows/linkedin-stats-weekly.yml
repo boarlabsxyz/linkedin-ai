@@ -29,22 +29,26 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: ./.claude/skills/linkedin-stats/run-weekly.sh
-      - name: Emit flat stats.json for Grafana
-        run: |
-          mkdir -p pages-dist
-          node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json
-      - name: Upload Pages artifact (stats.json only)
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: pages-dist
 
-  deploy:
+  publish:
     needs: scrape
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Emit flat stats.json for Grafana
+        run: |
+          mkdir -p pages-dist
+          node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-dist
+      - id: deployment
         uses: actions/deploy-pages@v4

@@ -53,7 +53,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 LinkedIn analytics are visualised in two Grafana Cloud dashboards on `https://boarlabs.grafana.net`. The data is collected by the `linkedin-stats` skill into JSON under `dashboards/li-stats/`, flattened to a single payload by `.github/scripts/build-stats-json.mjs`, and published to GitHub Pages as the sole file at `https://boarlabsxyz.github.io/linkedin-ai/stats.json`. Grafana reads it via the Infinity datasource (`grafanacloud-infinity`).
 
 Two workflows publish the file (both share the `pages` concurrency group, both require Pages source = **GitHub Actions** in repo settings):
-- `.github/workflows/linkedin-stats-weekly.yml` — Mon 00:00 UTC: scrapes fresh data, then `mkdir pages-dist && node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json` → uploads `pages-dist` via `actions/upload-pages-artifact` → `actions/deploy-pages`.
+- `.github/workflows/linkedin-stats-weekly.yml` — Mon 00:00 UTC. Two jobs: `scrape` runs on the self-hosted Mac and ends after `run-weekly.sh` lands the new JSONs on `main`; `publish` (`needs: scrape`) runs on `ubuntu-latest`, checks out fresh `main`, builds `stats.json`, uploads via `actions/upload-pages-artifact`, deploys via `actions/deploy-pages`. The Mac runner no longer runs `actions/upload-pages-artifact` (which requires `gtar`).
 - `.github/workflows/pages-deploy.yml` — manual `workflow_dispatch`: republishes `stats.json` from current `main` without scraping.
 
 The two Grafana dashboards:
