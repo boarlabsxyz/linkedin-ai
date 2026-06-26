@@ -17,8 +17,11 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── li-stats/                 # Raw LinkedIn analytics JSON (git-tracked, written by linkedin-stats agents)
 │   └── grafana/                  # Exported Grafana dashboard JSONs (linkedin-stats.json + linkedin-stats-posts.json) — source-of-truth snapshots
 ├── prompts/                      # Ad-hoc prompt drafts (e.g., plan-mode prompts) — checked in for reuse, not consumed by Claude Code automatically
+├── doc/                          # Project documentation
+│   └── history/                  # Auto-captured conversation transcripts written by the hooks below (one .md per session, named <UTC-ts>-<slug>.md)
 ├── .claude/
-│   ├── settings.json             # Permission allowlist (git, gh, mkdir, rm ./tmp/*, cat, echo)
+│   ├── settings.json             # Permission allowlist + hooks config (SessionStart / UserPromptSubmit / Stop)
+│   ├── hooks/                    # Conversation-history hooks: prompt-submit.sh, assistant-stop.sh, session-start.sh, lib.sh
 │   ├── skills/                   # Project skills (see below)
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
@@ -53,7 +56,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Multi-step skills with detailed
 LinkedIn analytics are visualised in two Grafana Cloud dashboards on `https://boarlabs.grafana.net`. The data is collected by the `linkedin-stats` skill into JSON under `dashboards/li-stats/`, flattened to a single payload by `.github/scripts/build-stats-json.mjs`, and published to GitHub Pages as the sole file at `https://boarlabsxyz.github.io/linkedin-ai/stats.json`. Grafana reads it via the Infinity datasource (`grafanacloud-infinity`).
 
 Two workflows publish the file (both share the `pages` concurrency group, both require Pages source = **GitHub Actions** in repo settings):
-- `.github/workflows/linkedin-stats-weekly.yml` — Mon 00:00 UTC: scrapes fresh data, then `mkdir pages-dist && node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json` → uploads `pages-dist` via `actions/upload-pages-artifact` → `actions/deploy-pages`.
+- `.github/workflows/linkedin-stats-weekly.yml` — Mon 00:00 UTC. Two jobs: `scrape` runs on the self-hosted Mac and ends after `run-weekly.sh` lands the new JSONs on `main`; `publish` (`needs: scrape`) runs on `ubuntu-latest`, checks out fresh `main`, builds `stats.json`, uploads via `actions/upload-pages-artifact`, deploys via `actions/deploy-pages`. The Mac runner no longer runs `actions/upload-pages-artifact` (which requires `gtar`).
 - `.github/workflows/pages-deploy.yml` — manual `workflow_dispatch`: republishes `stats.json` from current `main` without scraping.
 
 The two Grafana dashboards:
@@ -82,6 +85,7 @@ Launch Claude Code via `./start.sh` — it sources the gitignored `.env` (env va
 - **Transcript language:** AWESOME Sync and weekly meeting transcripts are in Russian/Ukrainian; ClickUp output is always in English with consistent transliteration (e.g., always "Petro", not sometimes "Peter").
 - **Temp files:** use `./tmp/` and clean up afterward. Listed in `.gitignore`.
 - **ClickUp writes need validation:** AWESOME and weekly-priorities both validate every extracted item one-by-one before writing — auto-generated tasks/priorities are noisy and require human judgment.
+- **Conversation-history hooks:** `.claude/hooks/` auto-writes every session's transcript to `doc/history/<UTC-ts>-<slug>.md` — one `## user` block per prompt, one `## claude` block per assistant text block, plus `## claude (asked)` / `## user (answered)` for AskUserQuestion exchanges (parsed from the JSONL transcript since `PostToolUse` doesn't fire for that tool — see [#12605](https://github.com/anthropics/claude-code/issues/12605)). Tool calls (Bash/Read/Edit/Write/…) are intentionally skipped to keep the file a Q&A transcript. `tmp/history-current` is the sentinel naming the active file.
 
 ## Git workflow rules
 
