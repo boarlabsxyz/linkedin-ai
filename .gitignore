@@ -2,6 +2,7 @@
 .claude/worktrees/
 /weekly-priorities/
 tmp/
+doc/history/
 
 # Dashboard build artefacts (regenerable from dashboards/li-stats/)
 dashboards/*/node_modules/
