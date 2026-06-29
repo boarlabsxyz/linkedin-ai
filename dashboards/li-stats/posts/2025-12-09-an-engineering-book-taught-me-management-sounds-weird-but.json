@@ -404,6 +404,68 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-06-29": {
+      "snapshot_at": "2026-06-29T01:20:00Z",
+      "metrics": {
+        "impressions": 502,
+        "members_reached": 217,
+        "reactions": 7,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 1.59
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 32.7,
+          "Entry": 32.3,
+          "Director": 6.5,
+          "Owner": 5.1,
+          "VP": 4.1
+        },
+        "job_title": {
+          "Software Engineer": 20.7,
+          "Founder": 3.7,
+          "Frontend Developer": 2.8,
+          "Full Stack Engineer": 2.8,
+          "Project Manager": 2.8
+        },
+        "industry": {
+          "IT Services and IT Consulting": 35.5,
+          "Software Development": 30.9,
+          "Technology, Information and Internet": 10.1
+        },
+        "company_size": {
+          "51-200 employees": 24.0,
+          "11-50 employees": 16.6,
+          "10,001+ employees": 10.6,
+          "1001-5000 employees": 8.8,
+          "1-10 employees": 7.4
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 10.1,
+          "Lviv": 6.9,
+          "Prague Metropolitan Area": 3.2,
+          "Wroclaw Metropolitan Area": 3.2,
+          "Amsterdam Area": 2.8
+        },
+        "company": {
+          "Speed and Function": 7.8
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Vitalii Honcharenko",
+          "author_url": "https://www.linkedin.com/in/vitaliihoncharenko",
+          "text": "The moment you connect engineering metrics to business outcomes, you stop “shipping code” and start building a real product.",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }
