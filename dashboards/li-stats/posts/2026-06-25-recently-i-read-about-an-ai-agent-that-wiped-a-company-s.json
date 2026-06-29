@@ -1,0 +1,55 @@
+{
+  "urn": "urn:li:activity:7475878949659688961",
+  "id": "7475878949659688961",
+  "type": "post",
+  "posted_at": "2026-06-25T11:53:56Z",
+  "posted_date": "2026-06-25",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7475878949659688961/",
+  "preview": "Recently I read about an AI agent that wiped a company's prod database, and it made a lot of noise. The takes were all the same: the tool is reckless, you can't trust it. 🤖 It happens at smaller scale",
+  "weeks": {
+    "2026-06-29": {
+      "snapshot_at": "2026-06-29T06:06:18Z",
+      "metrics": {
+        "impressions": 177,
+        "members_reached": 99,
+        "reactions": 3,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.69
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 37.4,
+          "Entry": 33.3,
+          "Director": 7.1
+        },
+        "job_title": {
+          "Software Engineer": 27.3
+        },
+        "industry": {
+          "IT Services and IT Consulting": 36.4,
+          "Software Development": 36.4,
+          "Technology, Information and Internet": 8.1
+        },
+        "company_size": {
+          "51-200 employees": 19.2,
+          "10,001+ employees": 17.2,
+          "1001-5000 employees": 11.1,
+          "11-50 employees": 10.1,
+          "501-1000 employees": 7.1
+        },
+        "location": {
+          "Greater Bengaluru Area": 7.1
+        },
+        "company": {
+          "Speed and Function": 10.1
+        }
+      },
+      "comments": []
+    }
+  }
+}

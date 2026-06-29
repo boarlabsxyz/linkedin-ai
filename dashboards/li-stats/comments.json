@@ -1,5 +1,89 @@
 {
   "comments": {
+    "urn:li:comment:(activity:7475963220797595650,7475992292089217025)": {
+      "comment_urn": "urn:li:comment:(activity:7475963220797595650,7475992292089217025)",
+      "commented_at": "2026-06-25T19:24:19Z",
+      "verb": "commented",
+      "text": "I'm not sure if you used AI it would make this blog less valuable for me.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7475992357855977472",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7475992357855977472/",
+      "post_author_name": "Marc Brooker",
+      "post_author_url": "https://www.linkedin.com/in/marc-brooker-b431772b",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7475992357855977472/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7475963220797595650%2C7475992292089217025%29",
+      "weeks": {
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 1,
+          "replies_count": 0,
+          "impressions": 280
+        }
+      }
+    },
+    "urn:li:comment:(activity:7475507577074696193,7475567936775303168)": {
+      "comment_urn": "urn:li:comment:(activity:7475507577074696193,7475567936775303168)",
+      "commented_at": "2026-06-24T15:18:05Z",
+      "verb": "commented",
+      "text": "",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7475568002839662592",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7475568002839662592/",
+      "post_author_name": "Peter Ovchynnikov",
+      "post_author_url": "https://www.linkedin.com/in/ovchyn",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7475568002839662592/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7475507577074696193%2C7475567936775303168%29",
+      "weeks": {
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 0
+        }
+      }
+    },
+    "urn:li:comment:(activity:7472372860817178624,7475514742158184448)": {
+      "comment_urn": "urn:li:comment:(activity:7472372860817178624,7475514742158184448)",
+      "commented_at": "2026-06-24T11:46:42Z",
+      "verb": "commented",
+      "text": "Thank you for a nice read, it caught my attention and made me think.\nThe whole idea is built on catching the wrong turn early. But those two hours after the agent veers off aren't my two hours, they're the agent's. It costs some tokens, sure, yet the time isn't mine to protect, so the stage where I catch the mistake matters far less than it feels like. Also in the first two minutes I usually can't even tell whether the run is going wrong or going somewhere I didn't expect. \n\nmaybe half the times I jump in to \"fix\" the agent, I later find it was right and I was wrong. It took that path because the API call I assumed existed doesn't, and it already knew that. I only learn this by asking it why it went there, not by hitting Escape at minute two. So for me the truth comes out of talking to the run, not steering it.\n\nThat's why I'd put the effort somewhere else: self-validation before the PR. Let the agent check its own work in the gap between the wrong turn and the diff, so it can correct itself.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7475514769328955392",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7475514769328955392/",
+      "post_author_name": "Greg Ceccarelli",
+      "post_author_url": "https://www.linkedin.com/in/gregceccarelli",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7475514769328955392/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7472372860817178624%2C7475514742158184448%29",
+      "weeks": {
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 18
+        }
+      }
+    },
+    "urn:li:comment:(activity:7472754904965644289,7475511815591051264)": {
+      "comment_urn": "urn:li:comment:(activity:7472754904965644289,7475511815591051264)",
+      "commented_at": "2026-06-24T11:35:05Z",
+      "verb": "commented",
+      "text": "The local-agent bit is the real one here. Once the thing runs on someone's laptop there's no cloud-side box to hide it in, and most tooling still pretends there is. We've sort of got a working AI now. The next year is about keeping it in check and figuring out what the guardrails even are. You just showed one of the more concrete examples of where this is actually heading. Thanks!",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7475511841956360192",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7475511841956360192/",
+      "post_author_name": "Marc Brooker",
+      "post_author_url": "https://www.linkedin.com/in/marc-brooker-b431772b",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7475511841956360192/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7472754904965644289%2C7475511815591051264%29",
+      "weeks": {
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 31
+        }
+      }
+    },
     "urn:li:comment:(activity:7470539309444657152,7471134804680364032)": {
       "comment_urn": "urn:li:comment:(activity:7470539309444657152,7471134804680364032)",
       "commented_at": "2026-06-12T09:42:24Z",
@@ -30,6 +114,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 75
+        },
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 90
         }
       }
     },
@@ -63,6 +153,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 60
+        },
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 68
         }
       }
     },
@@ -96,6 +192,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 61
+        },
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 66
         }
       }
     },
@@ -129,6 +231,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 67
+        },
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 70
         }
       }
     },
@@ -162,6 +270,12 @@
           "reactions": 6,
           "replies_count": 1,
           "impressions": 166
+        },
+        "2026-06-29": {
+          "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 6,
+          "replies_count": 1,
+          "impressions": 169
         }
       }
     },

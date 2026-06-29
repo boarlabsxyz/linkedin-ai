@@ -393,6 +393,67 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-06-29": {
+      "snapshot_at": "2026-06-29T05:17:00Z",
+      "metrics": {
+        "impressions": 416,
+        "members_reached": 193,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.48
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 32.1,
+          "Entry": 28.0,
+          "Director": 9.3,
+          "CXO": 7.3,
+          "Manager": 5.7
+        },
+        "job_title": {
+          "Software Engineer": 6.7,
+          "Project Manager": 3.6,
+          "Full Stack Engineer": 3.1
+        },
+        "industry": {
+          "IT Services and IT Consulting": 22.3,
+          "Aviation and Aerospace Component Manufacturing": 20.7,
+          "Software Development": 16.6,
+          "Technology, Information and Internet": 6.7,
+          "Business Consulting and Services": 3.6
+        },
+        "company_size": {
+          "10,001+ employees": 23.8,
+          "51-200 employees": 16.1,
+          "11-50 employees": 10.4,
+          "1-10 employees": 6.7,
+          "201-500 employees": 6.7
+        },
+        "location": {
+          "Berlin Metropolitan Area": 14.5,
+          "Greater Derby Area": 5.7,
+          "Lviv": 3.1
+        },
+        "company": {
+          "Rolls-Royce": 11.4,
+          "Speed and Function": 6.7
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Klaus Paul",
+          "author_url": "https://www.linkedin.com/in/klausgpaul",
+          "text": "You'll love this one: https://archive.org/details/artificial-intelligence-on-the-commodore-64 dating back to 1984",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }
