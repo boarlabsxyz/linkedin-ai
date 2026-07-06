@@ -76,6 +76,10 @@ Source-of-truth JSONs for both dashboards live in `dashboards/grafana/`. Dashboa
 
 Launch Claude Code via `./start.sh` — it sources the gitignored `.env` (env vars referenced by `.mcp.json`, e.g. `GRAFANA_SERVICE_ACCOUNT_TOKEN`) and execs `claude --dangerously-skip-permissions`. On first checkout, `cp .env.example .env` and fill in the values. Additional CLI args pass through (`./start.sh /some-skill`).
 
+## Self-hosted runner (PetersMacStudio)
+
+Workflows tagged `runs-on: [self-hosted, macOS]` execute on Peter's Mac Studio via the actions/runner LaunchAgent at `~/Library/LaunchAgents/actions.runner.boarlabsxyz.PetersMacStudio.plist`. Runner install dir: `/Users/peterovchinnikov/github_runner/actions-linkedin-ai/`. The runner reads Claude Code's OAuth from the login keychain (`Claude Code-credentials`), which carries the `user:mcp_servers` scope — so `claude -p` sees the same claude.ai account-level connectors (Slack, Gmail, GDrive, ClickUp, HubSpot, …) that interactive Claude sees, without any `.mcp.json` bot-token duplication. **Do NOT pass `CLAUDE_CODE_OAUTH_TOKEN` to `claude -p` steps** — the setup-token env is inference-only and strips connectors ([anthropics/claude-code#62556](https://github.com/anthropics/claude-code/issues/62556)). The plist must have `<key>SessionCreate</key><false/>` (default stock value is `true`, which puts the process in its own security session and blocks login-keychain reads → `Not logged in`). After editing the plist, restart via `./svc.sh stop` in the runner dir. LaunchAgents die on logout, so Peter must stay logged in on the Mac Studio (auto-login OK; login keychain stays unlocked via `security show-keychain-info login.keychain-db` → `no-timeout`).
+
 ## Conventions
 
 - **Skill scope:** if a workflow has more than ~50 lines of detail, split sub-guidance into `references/` files next to the SKILL.md. Keep SKILL.md focused on flow + constants.

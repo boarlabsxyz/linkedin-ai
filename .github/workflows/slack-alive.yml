@@ -14,7 +14,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Post "I'm alive" to Slack via claude -p (Slack MCP only)
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           PROMPT: |
             Post the message: I'm alive
             to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
