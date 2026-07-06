@@ -1,0 +1,26 @@
+name: slack-alive
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: [self-hosted, macOS]
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post "I'm alive" to Slack via claude -p
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          echo 'post message "I'"'"'m alive" to https://spdfn.slack.com/archives/C0BF606R4N7' \
+            | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
+            | jq -r --unbuffered '
+                .description
+                // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
+                // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
+                // empty
+              '
