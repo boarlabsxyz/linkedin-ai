@@ -56,6 +56,22 @@ jobs:
             fi
           done
 
+      - name: Full env dump (redacted values, sorted keys)
+        run: |
+          echo "==== env (values replaced with <LEN=n>, keys sorted) ===="
+          env -0 | tr '\0' '\n' | awk -F= '
+            { key=$1; sub(/^[^=]*=/,"",$0); val=$0;
+              # redact suspicious keys entirely
+              if (key ~ /(TOKEN|SECRET|KEY|PASSWORD|AUTHZ|AUTHORIZATION|COOKIE|CREDENTIAL|SESSION|APIKEY|OAUTH|BEARER)/) {
+                printf "%s=<REDACTED:LEN=%d>\n", key, length(val);
+              } else if (length(val) > 200) {
+                printf "%s=<LONG:LEN=%d>: %s...\n", key, length(val), substr(val,1,200);
+              } else {
+                printf "%s=%s\n", key, val;
+              }
+            }
+          ' | sort
+
       - name: What MCP servers does claude -p actually see
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
