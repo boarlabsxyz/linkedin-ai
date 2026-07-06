@@ -102,3 +102,38 @@ jobs:
                   // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
                   // empty
                 ' || echo "(step exited non-zero — likely no valid OAuth in ~/.claude.json for headless mode)"
+
+      - name: Can claude read keychain? probe security tool + claude-code items
+        run: |
+          echo "==== login keychain unlock status ===="
+          security show-keychain-info login.keychain-db 2>&1 | head
+          echo
+          echo "==== claude-code-related keychain items (names only) ===="
+          security dump-keychain 2>/dev/null | awk '/0x00000007|"svce"|"acct"/' | grep -iE 'claude|anthropic' | head -20 || echo "(none listed / no read access)"
+          echo
+          echo "==== specific lookups (Claude Code / Anthropic) ===="
+          for SVC in "Claude Code" "Claude Code-credentials" "Anthropic" "anthropic-oauth"; do
+            printf 'svc=%q → ' "$SVC"
+            security find-generic-password -s "$SVC" 2>&1 | head -1
+          done
+
+      - name: Try faked parent env — set CLAUDE_CODE_* to arbitrary values and see if connectors appear
+        run: |
+          unset CLAUDE_CODE_OAUTH_TOKEN
+          export CLAUDECODE=1
+          export CLAUDE_CODE_ENTRYPOINT=cli
+          export CLAUDE_CODE_EXECPATH=$(which claude)
+          export CLAUDE_CODE_SESSION_ID=$(uuidgen | tr '[:upper:]' '[:lower:]')
+          export CLAUDE_CODE_SSE_PORT=46252
+          echo "-- env markers now set --"
+          env | grep -E '^(CLAUDECODE|CLAUDE_CODE_)' | sort
+          echo
+          echo "-- MCP list --"
+          echo 'List every MCP server currently registered. Reply with a compact JSON array only, then STOP.' \
+            | claude -p --dangerously-skip-permissions --output-format stream-json --verbose 2>&1 \
+              | jq -r --unbuffered '
+                  .description
+                  // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
+                  // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
+                  // empty
+                ' || echo "(non-zero exit)"
