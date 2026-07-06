@@ -1,10 +1,16 @@
 name: slack-alive
 
 on:
+  schedule:
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: slack-alive
+  cancel-in-progress: false
 
 jobs:
   ping:
@@ -12,19 +18,19 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - name: Post "I'm alive" to Slack via claude -p (Slack MCP only)
-        env:
-          PROMPT: |
-            Post the message: I'm alive
-            to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
-            (channel ID = C0BF606R4N7 — the segment after /archives/).
-
-            Rules:
-            - You MUST use the Slack MCP tool mcp__claude_ai_Slack__postMessage.
-            - Do NOT use Playwright, a browser, curl, a webhook, or any other fallback. There is no browser session and no bot token on this runner.
-            - The Slack MCP connector loads a few seconds after the process starts. If your first postMessage call fails because the tool is not yet registered, wait ~3 seconds and try again. Retry up to 3 times before giving up.
-            - Once the message is posted successfully, reply with a single line: POSTED ts=<message_ts> and stop.
+      - name: Post hourly heartbeat to Slack via claude -p (Slack MCP only)
         run: |
+          TS=$(date -u '+%Y-%m-%d %H:%M UTC')
+          PROMPT="Post the message: Heartbeat $TS
+          to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
+          (channel ID = C0BF606R4N7 — the segment after /archives/).
+
+          Rules:
+          - You MUST use the Slack MCP tool mcp__claude_ai_Slack__postMessage.
+          - Do NOT use Playwright, a browser, curl, a webhook, or any other fallback.
+          - The Slack MCP connector loads a few seconds after the process starts. If your first postMessage call fails because the tool is not yet registered, wait ~3 seconds and try again. Retry up to 3 times before giving up.
+          - Once the message is posted successfully, reply with a single line: POSTED ts=<message_ts> and stop."
+
           printf '%s' "$PROMPT" | claude -p \
               --dangerously-skip-permissions \
               --allowed-tools "mcp__claude_ai_Slack__postMessage,mcp__claude_ai_Slack__listChannels" \
