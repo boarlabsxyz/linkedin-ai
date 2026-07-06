@@ -15,21 +15,18 @@ jobs:
       - name: Post "I'm alive" to Slack via claude -p (Slack MCP only)
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          PROMPT: |
+            Post the message: I'm alive
+            to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
+            (channel ID = C0BF606R4N7 — the segment after /archives/).
+
+            Rules:
+            - You MUST use the Slack MCP tool mcp__claude_ai_Slack__postMessage.
+            - Do NOT use Playwright, a browser, curl, a webhook, or any other fallback. There is no browser session and no bot token on this runner.
+            - The Slack MCP connector loads a few seconds after the process starts. If your first postMessage call fails because the tool is not yet registered, wait ~3 seconds and try again. Retry up to 3 times before giving up.
+            - Once the message is posted successfully, reply with a single line: POSTED ts=<message_ts> and stop.
         run: |
-          PROMPT=$(cat <<'EOF'
-          Post the message: I'm alive
-          to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
-          (channel ID = C0BF606R4N7 — the segment after /archives/).
-
-          Rules — read carefully:
-          - You MUST use the Slack MCP tool `mcp__claude_ai_Slack__postMessage`.
-          - Do NOT use Playwright, a browser, curl, a webhook, or any other fallback. There is no browser session and no bot token on this runner.
-          - The Slack MCP connector loads a few seconds after the process starts. If your first `postMessage` call fails because the tool is not yet registered, wait ~3 seconds and try again. Retry up to 3 times before giving up.
-          - Once the message is posted successfully, reply with a single line: `POSTED ts=<message_ts>` and stop.
-          EOF
-          )
-
-          echo "$PROMPT" | claude -p \
+          printf '%s' "$PROMPT" | claude -p \
               --dangerously-skip-permissions \
               --allowed-tools "mcp__claude_ai_Slack__postMessage,mcp__claude_ai_Slack__listChannels" \
               --disallowed-tools "mcp__playwright__browser_navigate,mcp__playwright__browser_click,mcp__playwright__browser_type,mcp__playwright__browser_evaluate,mcp__playwright__browser_snapshot,mcp__playwright__browser_wait_for,mcp__playwright__browser_tabs,mcp__playwright__browser_press_key,Bash,WebFetch,WebSearch" \
