@@ -10,9 +10,10 @@
 # login-window security session and can read the keychain.
 set -euo pipefail
 
-TS=$(date -u '+%Y-%m-%d %H:%M UTC')
+TS=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+HOST=$(hostname -s)
 
-PROMPT="Post the message: Heartbeat $TS
+PROMPT="Post the message: Heartbeat (source=launchd, host=$HOST) $TS
 to the Slack channel with URL: https://spdfn.slack.com/archives/C0BF606R4N7
 (channel ID = C0BF606R4N7 — the segment after /archives/).
 
