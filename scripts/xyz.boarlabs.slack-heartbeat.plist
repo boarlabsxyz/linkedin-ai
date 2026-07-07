@@ -5,13 +5,14 @@
     <key>Label</key>
     <string>xyz.boarlabs.slack-heartbeat</string>
 
+    <key>WorkingDirectory</key>
+    <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/worker</string>
+
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/peterovchinnikov/work/ai/linkedin-ai/scripts/slack-heartbeat.sh</string>
+        <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/worker/scripts/cron-wrapper.sh</string>
+        <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/worker/scripts/slack-heartbeat.sh</string>
     </array>
-
-    <key>WorkingDirectory</key>
-    <string>/Users/peterovchinnikov/work/ai/linkedin-ai</string>
 
     <key>StartCalendarInterval</key>
     <dict>
@@ -26,9 +27,9 @@
     </dict>
 
     <key>StandardOutPath</key>
-    <string>/Users/peterovchinnikov/Library/Logs/slack-heartbeat.out.log</string>
+    <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/logs/slack-heartbeat.out.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/peterovchinnikov/Library/Logs/slack-heartbeat.err.log</string>
+    <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/logs/slack-heartbeat.err.log</string>
 
     <key>SessionCreate</key>
     <false/>
