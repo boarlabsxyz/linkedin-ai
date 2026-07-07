@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>xyz.boarlabs.slack-heartbeat</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/peterovchinnikov/work/ai/linkedin-ai/scripts/slack-heartbeat.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/peterovchinnikov/work/ai/linkedin-ai</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/peterovchinnikov/Library/Logs/slack-heartbeat.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/peterovchinnikov/Library/Logs/slack-heartbeat.err.log</string>
+
+    <key>SessionCreate</key>
+    <false/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
