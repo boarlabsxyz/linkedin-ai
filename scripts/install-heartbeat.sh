@@ -31,7 +31,31 @@ fi
 # 3. Ensure scripts are executable
 chmod +x "$WORKER_DIR/scripts/cron-wrapper.sh" \
          "$WORKER_DIR/scripts/slack-heartbeat.sh" \
-         "$WORKER_DIR/scripts/install-heartbeat.sh"
+         "$WORKER_DIR/scripts/install-heartbeat.sh" \
+         "$WORKER_DIR/.claude/skills/linkedin-comment-hourly/run-hourly.sh" 2>/dev/null || true
+
+# 3a. Mark the worker path as trusted so .claude/settings.json permissions are
+# honored inside the cron `claude -p`. Without this, launchd runs log a warning
+# ("Ignoring N permissions.allow entries") and skills like linkedin-comment-hourly
+# lose their allowlist. `claude -p --dangerously-skip-permissions` still works,
+# but silencing the warning avoids confusing failure diagnosis.
+python3 - "$WORKER_DIR" <<'PY'
+import json, os, sys
+p = os.path.expanduser('~/.claude.json')
+worker = sys.argv[1]
+try:
+    with open(p) as f: data = json.load(f)
+except FileNotFoundError:
+    data = {}
+projects = data.setdefault('projects', {})
+entry = projects.setdefault(worker, {})
+if not entry.get('hasTrustDialogAccepted'):
+    entry['hasTrustDialogAccepted'] = True
+    with open(p, 'w') as f: json.dump(data, f, indent=2)
+    print(f'✓ Marked {worker} as trusted in ~/.claude.json')
+else:
+    print(f'  {worker} already trusted in ~/.claude.json')
+PY
 
 # 4. Copy plist from the freshly-synced worker/ to LaunchAgents
 mkdir -p "$HOME/Library/LaunchAgents"

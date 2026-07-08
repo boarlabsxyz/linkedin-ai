@@ -17,8 +17,9 @@ You are Agent 2 of the linkedin-comment-hourly pipeline. The orchestrator hands 
 ## Inputs (in the caller's prompt)
 
 ```
-POST_URN=urn:li:activity:<id>
-POST_URL=https://www.linkedin.com/feed/update/<urn>/
+POST_KEY=<author-slug>-<body-hash8>       # synthetic key (LinkedIn strips URNs from the home feed DOM)
+POST_URN=<urn or "-">                     # rarely available on the home feed
+POST_URL=<author profile URL or "-">      # fallback when URN missing
 POST_AUTHOR=<author full name>
 POST_HEADLINE=<author headline>
 POST_TEXT_B64=<base64-encoded post body>
