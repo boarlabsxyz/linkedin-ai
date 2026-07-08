@@ -74,31 +74,58 @@ For each of the `POSTS_FOUND` posts, **sequentially** (never in parallel — GDr
      "variants": [
        { "strategy_label": "<label>", "comment": "<decoded comment>", "rationale": "<one line>" }
      ],
+     "slack_summary": null,
      "slack_ts": null,
+     "slack_thread": {
+       "post_reply_ts": null,
+       "draft_reply_ts": []
+     },
      "slack_error": null
    }
    ```
 
-4. Format a Slack message (mrkdwn). If `POST_URL` was `-` (URN not extractable), use the author profile URL instead — Peter can navigate from there:
+4. **Post a compact summary to the main channel**, then thread the details underneath. First compose a one-line summary of the post yourself (what is this post about? — ≤150 chars, plain English, no marketing words). Then:
+
+   **4a. Main-channel message** — `mcp__claude_ai_Slack__postMessage` with `channel_id=C0BF606R4N7`, body:
 
    ```
-   📌 <post_url or author_profile_url>
-   👤 <author_name> — <author_headline>
+   📌 *<author_name>* — <author_headline>
+   _<one-line summary of the post>_
+   ```
 
-   > <first ~200 chars of post_text, single line, no newlines>
+   Capture the returned `ts` — call it `parent_ts`. Store it in the JSON as `slack_ts`.
 
-   *Draft 1 — <strategy_label>*
+   **4b. Thread reply — the post itself** — `mcp__claude_ai_Slack__replyInThread` (or `postMessage` with `thread_ts=parent_ts`) with body:
+
+   ```
+   🔗 <post_url or author_profile_url>
+
+   > <full post_text — no truncation; wrap in a quote block>
+   ```
+
+   **4c. Thread reply — one message per draft** — for each variant, post a separate thread reply:
+
+   ```
+   *Draft <i> — <strategy_label>*
    <comment text>
    _Rationale: <one line>_
-
-   *Draft 2 — <strategy_label>*
-   ...
    ```
 
-5. Call `mcp__claude_ai_Slack__postMessage` with `channel_id=C0BF606R4N7` and the formatted body.
+5. Capture each reply's `ts` and record them all in the JSON file:
 
-   - On success: patch the JSON file — set `slack_ts` to the returned `ts`.
-   - On failure: patch the JSON file — set `slack_error` to a one-line message, leave `slack_ts: null`. Continue with the next post.
+   ```json
+   {
+     ...,
+     "slack_ts": "<parent_ts>",
+     "slack_thread": {
+       "post_reply_ts": "<ts of 4b>",
+       "draft_reply_ts": ["<ts of first draft>", "<ts of second draft>", ...]
+     },
+     "slack_error": null
+   }
+   ```
+
+   On any failure: patch the JSON file — set `slack_error` to a one-line message. Continue with the next post.
 
 ### Step 3 — Emit the final report
 
