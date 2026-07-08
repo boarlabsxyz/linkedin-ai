@@ -23,6 +23,11 @@ shift
 git fetch origin main --quiet
 git checkout -q -B main origin/main 2>/dev/null || git checkout -q main
 git reset --hard origin/main --quiet
+# reset --hard only touches TRACKED files; a previously-interrupted fire can
+# leave untracked output (e.g. linkedin-compain/*.json) behind, which the
+# run-hourly.sh `git status --porcelain` check would then commit as if it were
+# this fire's work. Clean untracked files + dirs so every fire starts pristine.
+git clean -fd --quiet
 
 # Chain to the requested job. Fresh copy is now on disk.
 exec "$TARGET" "$@"
