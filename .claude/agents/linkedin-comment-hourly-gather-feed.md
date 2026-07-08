@@ -242,26 +242,37 @@ For each card:
 
 #### Append helper (filtered entries)
 
-Both off-topic and already-commented use the same read-modify-write. `<COMMENTS_FILE>` is a JSON array; append one object built with `jq -n` (so text, quotes, and newlines are encoded safely — never hand-write JSON). `disposition` is `off-topic` or `already-commented`; `reason` is your one-line classification note (for already-commented, use `"already-commented"`):
+Both off-topic and already-commented use the same read-modify-write. `<COMMENTS_FILE>` is a JSON array; append one object built with `jq -n` (so text, quotes, and newlines are encoded safely — never hand-write JSON). `disposition` is `off-topic` or `already-commented`; `reason` is your one-line classification note (for already-commented, use `"already-commented"`).
 
-```bash
-NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
-entry=$(jq -n \
-  --arg key "$key" --arg urn "$urn" --arg url "$authorUrl" \
-  --arg author "$author" --arg headline "$headline" --arg time "$timeAgo" \
-  --arg text "$bodyText" --arg now "$NOW" \
-  --arg disp "$disposition" --arg reason "$reason" \
-  '{key:$key, urn:(if $urn=="" or $urn=="-" then null else $urn end),
-    post_url:(if $url=="" then null else $url end),
-    author_name:$author, author_headline:$headline, time_ago:$time,
-    post_text:$text, scraped_at:$now, disposition:$disp, reason:$reason,
-    variants:[], slack_summary:null, slack_ts:null,
-    slack_thread:{post_reply_ts:null, draft_reply_ts:[]}, slack_error:null}')
-tmp=$(mktemp)
-jq --argjson e "$entry" '. + [$e]' "<COMMENTS_FILE>" > "$tmp" && mv "$tmp" "<COMMENTS_FILE>"
-```
+**`post_text` is MANDATORY and must be the card's full scraped body — the exact `bodyText` you just classified, never empty and never a summary.** Passing multi-line body text through a shell variable is unreliable, so write it to a temp file first and read it with `jq --rawfile` (same fail-safe discipline the draft agent uses for base64):
 
-The full `post_text` is stored on every filtered entry so a later run (or a human) can re-evaluate the classification without re-scraping.
+1. Write the card's exact `bodyText` to `./tmp/filtered-<key>.txt` with the **Write tool** (exact bytes — no shell quoting).
+2. Build and append the entry, reading the body via `--rawfile`:
+
+   ```bash
+   NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+   entry=$(jq -n \
+     --arg key "$key" --arg urn "$urn" --arg url "$authorUrl" \
+     --arg author "$author" --arg headline "$headline" --arg time "$timeAgo" \
+     --rawfile text "./tmp/filtered-<key>.txt" --arg now "$NOW" \
+     --arg disp "$disposition" --arg reason "$reason" \
+     '{key:$key, urn:(if $urn=="" or $urn=="-" then null else $urn end),
+       post_url:(if $url=="" then null else $url end),
+       author_name:$author, author_headline:$headline, time_ago:$time,
+       post_text:($text|sub("\n+$";"")), scraped_at:$now, disposition:$disp, reason:$reason,
+       variants:[], slack_summary:null, slack_ts:null,
+       slack_thread:{post_reply_ts:null, draft_reply_ts:[]}, slack_error:null}')
+   # Guard: refuse to append an entry whose post_text came out empty.
+   if [ "$(printf '%s' "$entry" | jq -r '.post_text|length')" -eq 0 ]; then
+     echo "EMPTY_POST_TEXT for $key — re-scrape the card body before appending" >&2
+   else
+     tmp=$(mktemp); jq --argjson e "$entry" '. + [$e]' "<COMMENTS_FILE>" > "$tmp" && mv "$tmp" "<COMMENTS_FILE>"
+   fi
+   ```
+
+3. Clean up: `rm -f "./tmp/filtered-<key>.txt"`.
+
+Storing the full `post_text` on every filtered entry is what lets a later run (or a human) re-classify after tuning `interests.md` **without re-scraping** — so an entry that trips the `EMPTY_POST_TEXT` guard must be fixed (re-scrape the body), not written empty.
 
 #### 3b. Expand truncated bodies
 
@@ -330,6 +341,7 @@ Final message shape (see contract at top).
 - Do **not** classify without reading `interests.md`.
 - Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.
 - Do **not** hand-write JSON into `<COMMENTS_FILE>` — always build entries with `jq -n` and append with `jq '. + [$e]'`, so the array never gets corrupted.
+- Do **not** append a filtered entry with an empty `post_text`. It MUST carry the full scraped body (via `--rawfile`); if the guard prints `EMPTY_POST_TEXT`, re-scrape the card body and retry rather than writing a textless entry.
 - Do **not** add prose after the final contract block.
 
 ## Failure modes
