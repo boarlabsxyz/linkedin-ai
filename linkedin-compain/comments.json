@@ -1792,5 +1792,285 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "charly-wargnier-bf89ffda",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/charlywargnier/",
+    "author_name": "Charly Wargnier",
+    "author_headline": "Ex-Streamlit / Ex-Snowflake Maestro 🪄  • Sharing insights on AI agents, LLMs, Data Science • 174K followers on X → @Datachaz",
+    "time_ago": "6h",
+    "post_text": "humans shouldn't have to live like this\n106\n19\n4",
+    "scraped_at": "2026-07-08T19:48:06Z",
+    "disposition": "off-topic",
+    "reason": "body too vague — no AI or startup substance extractable from text alone",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-f94a3b28",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "45m",
+    "post_text": "Ми впевнено рухаємося до нашої цілі, і щойно збір перетне межу у 8 млн грн, ми розіграємо розкішний сет від компанії Geniusee ⚡\nКомусь із вас дістанеться програвач вінілу Pro-Ject A2 2M Red — Black та крута акустика Klipsch Reference R-40PM Black 😎\nДавайте пришвидшимо цей момент! Підкиньте донатів для «Хартії».\nКожні 300 грн дають один квиток у розіграші:\n👉 https://dou.ua/goto/6XGZ\n📌Якщо донатиш на банку не з Моно — обов'язково залиш контактні дані в коментарі до платежу\nДетальніше про збір та умови розіграшу, можна побачити тут:\n👉 https://dou.ua/goto/TdBw\n… more\nShow translation\n1\n​\n​",
+    "scraped_at": "2026-07-08T19:48:14Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian army fundraising/charity raffle — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dr-dereck-mush-md-mba-cb05699d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/dereckmush/",
+    "author_name": "Dr. Dereck Mush, MD, MBA",
+    "author_headline": "CEO @Teknon / Smart people and capable businesses keep losing to louder ones. I fix that. → Helped 300+ leaders Package, Position, & Sell their Expertise | Scaled by AI Systems | HealthTech 🧬",
+    "time_ago": "8h",
+    "post_text": "Doctor salaries vary dramatically around the world. Which country surprised you the most? How much do doctors earn in your country?\n17\n6\n​",
+    "scraped_at": "2026-07-08T19:48:23Z",
+    "disposition": "off-topic",
+    "reason": "doctor salary survey — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-bdfada69",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "5h",
+    "post_text": "США можуть дозволити Україні виробляти ракети для систем Patriot і передати відповідні технології. За словами Трампа, американська сторона також готова допомогти зі створенням виробничих потужностей\nShow translation\nСША дозволять Україні виробляти ракети для Patriot\nСША дозволять Україні виробляти ракети для Patriot\ndou.ua\n8\n​\n​",
+    "scraped_at": "2026-07-08T19:53:19Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian defense news (Patriot missile production) — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jonathan-schneider-c58e67ac",
+    "urn": "urn:li:activity:7478074531094548482",
+    "post_url": "https://www.linkedin.com/in/jonkschneider/",
+    "author_name": "Jonathan Schneider",
+    "author_headline": "Co-founder @ Moderne | Java Champion | founder OpenRewrite - OSS automated refactoring",
+    "time_ago": "1w",
+    "post_text": "Ouch. That's cold. 6 months after the \"nobody looks at the IDE anymore\" trend, one missing bang and it's like CC doesn't even know that IntelliJ exists, haha.\nThe reality is though, I'm looking more and more at the IDE. At a minimum, I'm finding I need to cut absurdly verbose comments everywhere. The comment pattern that I feel is particularly detrimental is the one that basically records what the code USED to do, or did in some iteration towards the final design, not what it CURRENTLY does. So there is a token record of discarded ideas that jointly serve as a kind of gravity well sucking a model back to those discarded ideas.\nStrangely the better the model gets, the more convoluted the code is getting. A lot of folks are saying it doesn't matter, that engineers should move up the stack and become product managers and designers and even that models should stop writing in human-centric programming languages altogether.\nI went through a phase where I used Zed just because it was faster to ! start from a CC session. It's faster though because it's far less capable. So I've boomeranged a bit. Slow is smooth, smooth is fast.",
+    "scraped_at": "2026-07-08T20:06:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"gravity well\" framing is precise — stale comments don't just confuse, they actively pull the model toward discarded states.\n\nWhat strikes me is that this is a context problem, not a comment problem. The model reads whatever you give it, and if the codebase is the primary context, it inherits every scar of every iteration. The question I keep sitting with: what if the model's primary context wasn't the code at all? If behavior specs were the source of truth and code was regenerable on demand, stale comments become irrelevant — there's nothing for them to haunt. The \"slow is smooth\" logic you ended with might apply one level up too: slow down on keeping code as the canonical artifact, and the rest gets smoother.",
+        "rationale": "Lifts the conversation to whether code-as-context is itself the problem, adjacent to True BDD without pitching."
+      },
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "The paradox you name — better model, more convoluted code — is something I'm watching too, and I think the direction of causality matters here.\n\nMy read: the model isn't getting worse as it improves. It's getting better at exploring the full possibility space the context gives it. And if that context is a codebase with residual comments from three design iterations, \"better\" means more thorough exploration of dead ends. The model is doing exactly what it should — it's just that code+comments is a lossy, accumulative format that encodes history alongside intent, and models can't always tell the difference.\n\nCurious whether your \"cut the verbose comments\" heuristic is solving it, or just delaying the same problem until the next iteration cycle adds new sediment.",
+        "rationale": "Reframes the better-model-worse-code paradox as a context-format problem, ends with a challenging question."
+      },
+      {
+        "strategy_label": "Clarifying question rooted in the topic",
+        "comment": "The Zed phase resonates — I went through something similar evaluating lighter tools purely on session startup time, then boomeranged for the same reason you did.\n\nOne thing I'm curious about: when you say you're \"looking more and more at the IDE,\" what does your context curation workflow actually look like before handing off to CC? Are you manually pruning files from context, or relying on CC to figure out what's relevant? Because the gravity well you describe feels like it compounds fast when the model is also the one deciding what to read.",
+        "rationale": "Surfaces the unaddressed context-curation workflow variable, invites a concrete answer."
+      }
+    ],
+    "slack_summary": "On returning to the IDE in the agent era: stale/verbose code comments act as a gravity well pulling AI models back toward discarded design iterations.",
+    "slack_ts": "1783541223.350059",
+    "slack_thread": {
+      "post_reply_ts": "1783541232.401849",
+      "draft_reply_ts": [
+        "1783541239.623609",
+        "1783541249.451959",
+        "1783541255.487079"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "sebastian-huckleberry-059f88aa",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/sebastianhuckleberry/",
+    "author_name": "Sebastian Huckleberry",
+    "author_headline": "Helping teams capture the decisions AI coding agents forget",
+    "time_ago": "1d",
+    "post_text": "\"F*** your skills\" is the joke. \"And mine too\" is the point.\nWe stopped shipping production software without tests. But we're still deploying production-grade behavior into agents with little more than lucky runs, screenshots, and folklore.\nIf we're going to ship reusable agent behavior - skills, instructions, tools, and workflow habits - we need to test it like code: tasks, rubrics, trajectories, comparisons, regressions, and promotion evidence.\nThat's what `runme eval` makes easy: local evals, clear evidence, and safer promotion. Link's in the comments.",
+    "scraped_at": "2026-07-08T20:11:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"folklore\" framing is the right diagnosis — most teams couldn't tell you whether the agent behavior they shipped last month still holds after the last model update.\n\nOne thing I keep running into: if the same LLM that generates the behavior also authors the rubric, the rubric inherits the same blind spots. The agent passes its own test not because it's correct but because both sides share the same interpretation of the task. It's the classic \"student writes the exam\" problem, and I don't see it going away just by adding more evals. Does runme eval address the rubric-authorship question at all, or is that still left to the human?",
+        "rationale": "Sharpens the post into the rubric-authorship open problem Petro has written about publicly."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The analogy to shipping production software without tests is a good one — \"lucky runs and folklore\" describes the state of things pretty accurately.\n\nCurious about the trajectory comparison piece specifically. When the agent's intermediate steps are non-deterministic between runs — same input, legitimately different paths to the same output — how does runme eval decide whether a trajectory changed for a bad reason or just varied within acceptable range? That boundary seems like the hardest part to define without collapsing back into \"does the final output look right.\"",
+        "rationale": "Targets the trajectory-comparison vocabulary with a design question requiring real technical depth."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The problem statement is exactly right — we treat agent behavior as something you observe rather than something you specify, and that's exactly where the trouble starts.\n\nWhere I'd push back slightly: testing against rubrics only helps if the rubric is itself a stable artifact. In my experience the rubric tends to drift the same way the behavior does — someone tweaks the instructions, the rubric implicitly changes, and nobody notices until a regression shows up that the old rubric wouldn't have caught anyway. The testing layer needs a source of truth above it, not just below it. Otherwise you're measuring against a moving target and calling it evidence.",
+        "rationale": "Argues the rubric itself needs a source of truth above it, building on Petro behavior-spec thesis."
+      }
+    ],
+    "slack_summary": "Argues we ship reusable agent behavior on lucky runs and folklore and should test it like code — with rubrics, trajectories, and regressions.",
+    "slack_ts": "1783541483.259189",
+    "slack_thread": {
+      "post_reply_ts": "1783541488.944909",
+      "draft_reply_ts": [
+        "1783541495.993629",
+        "1783541502.605039",
+        "1783541509.673569"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "todd-p-michaud-2ac983d0",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/tpmichaud/",
+    "author_name": "Todd P. Michaud",
+    "author_headline": "CEO, HuLoop | Board Member | AI-Powered Work Optimization",
+    "time_ago": "4h",
+    "post_text": "Why do so many AI initiatives fail?\nIt's usually not because of the AI. It's because organizations try to layer AI on top of broken work.\nIn the latest edition of The Work Intelligence Loop, I share key insights from my conversation with Giorgio Zampirolo and Daria Rudnik on why successful AI adoption starts with fixing work, establishing clear ownership, and bringing employees along on the journey.\nOne takeaway that really stood out: The organizations seeing the greatest ROI from AI aren't the ones with the most AI tools. They're the ones that redesigned how work gets done first.\nIf you're leading AI, automation, digital transformation, or operations, I think you'll find this conversation valuable.\nListen to Episode 8 here: https://lnkd.in/gKgzxnMb\nI'd love to hear your perspective: What's the biggest obstacle to successful AI adoption in your organization?\n#ArtificialIntelligence #AI #FutureOfWork #DigitalTransformation #WorkOrchestration #IntelligentAutomation #AIGovernance #Leadership #BusinessTransformation #Innovation #ChangeManagement #TheWorkIntelligenceLoop\n",
+    "scraped_at": "2026-07-08T20:13:48Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The organizations seeing the greatest ROI aren't the ones with the most AI tools — that framing cuts through a lot of noise.\n\nWhat I'm curious about: when you say \"redesigned how work gets done first,\" what did that actually look like in the cases you saw? Were these orgs doing formal process mapping, or something less structured — more like a team deciding which decisions stay human and which don't? The reason I ask is that \"fix the work first\" can mean very different things depending on whether the broken part is process, ownership, or just unclear requirements — and the interventions are pretty different.",
+        "rationale": "The post leaves what redesign work actually means unaddressed — the real question practitioners face."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"layering AI on broken work\" diagnosis is right, and I'd add one split that changes the fix.\n\nThere's broken work where the process is chaotic or unclear — and there's broken work where the process is actually fine but the requirements aren't captured anywhere a machine can use. We had clients at Speed & Function who had clear, functional workflows, and still couldn't get AI to help them reliably — because nobody had ever written down what \"correct\" looks like in a way that isn't stuck in someone's head. The AI adoption failure in those cases wasn't a process problem, it was a specification problem. Both land under \"fix the work first,\" but the interventions are pretty different.",
+        "rationale": "Adds a process-vs-specification split grounded in Petro Speed & Function client experience."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "Redesigning the work before adding AI is the right call. The uncomfortable question is: how many orgs actually know what their work process is before they experiment?\n\nIn my experience, a surprising number of teams only discover their real workflow — the one that actually runs, not the one in the process doc — by watching where the AI fails. So there's a version of \"layer AI on broken work, watch it break badly, then redesign\" that is actually a reasonable path to discovering what needs fixing. Not the most efficient path. But probably more common than the \"fix first, then add AI\" narrative suggests.",
+        "rationale": "Challenges the assumption orgs know their real workflow before adding AI."
+      }
+    ],
+    "slack_summary": "Argues most AI initiatives fail not because of the AI but because orgs layer it on broken work; biggest ROI comes from redesigning how work gets done first.",
+    "slack_ts": "1783541635.968859",
+    "slack_thread": {
+      "post_reply_ts": "1783541643.201579",
+      "draft_reply_ts": [
+        "1783541649.591809",
+        "1783541657.847399",
+        "1783541664.366419"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "samuel-smeys-8ab9560c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/samuelsmeys/",
+    "author_name": "Samuel Smeys",
+    "author_headline": "AI-Native ATS | YCW25 Co-Founder & CTO Spott",
+    "time_ago": "9h",
+    "post_text": "Claude Fable 5 changed how our engineers work.\nAnd it's exactly why we won't be paying for it, for now.\nAnthropic makes it pay-as-you-go only later this week. At $10 in / $50 out per million tokens (x2 Opus), running it raw isn't an option. One heavy prompt ate our weekly limit.\nThe price forced a workflow: use a cheaper model to plan and scope, then hand the expensive model only the tightly-scoped execution step.\nThe result: 50-80% fewer Fable tokens, same capability. The workflow matters more than which model sits in the senior seat. Put Opus there and day to day, we barely feel the difference.\nFable is a step up at finding intricate bugs and understanding complex implementations. But not the step change that justifies double.\nThe model goes. The workflow stays.",
+    "scraped_at": "2026-07-08T20:16:19Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "We ran into almost the same thing. Fable wasn't the step-change on every task we expected — and when we dug in, we realized that what Fable is genuinely better at (intricate bug tracing, understanding complex implementation context) is a specific, separable step. Everything leading up to that — scoping, decomposition, deciding what's even worth running through the expensive model — cheaper models handle just as well.\n\nThe uncomfortable implication for me: if a workflow upgrade delivers 50-80% of the cost savings, that's not a Fable problem. That's a sign we were running all our expensive models without real task decomposition before. The constraint revealed the architecture we should have built anyway.",
+        "rationale": "Petro team had the same Fable-isn-t-breakthrough experience; adds practitioner confirmation and the implication the workflow gap predated Fable."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The forced-workflow-by-price-constraint is a real pattern — I've seen it produce better systems than intentional design, because the constraint kills optionality before you get attached to it.\n\nOne thing I keep turning over: this workflow is optimized for today's price gap between a frontier and a mid-tier model. The planning/scoping step works because the mid-tier is genuinely cheaper AND good enough for decomposition.\n\nWhat's your failure mode if the next model is strong at both steps at a cost close to what your scoping model costs today? Does the two-stage workflow survive, or does it collapse back into \"just use the one model\" and you rebuild the process again? I'm not sure the workflow is durable — it might just be the current cost curve wearing the disguise of a design principle.",
+        "rationale": "Challenges the durability of the workflow-vs-model framing — does the design principle survive the next price drop?"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 50-80% token reduction from workflow design alone — before any model swap — is the part that stands out.\n\nCurious what the handoff looks like between the scoping step and the execution step in practice. Is the scope document a free-form plan, a structured prompt template, something else? The reason I ask: in my experience the interface between the planning step and the execution step is where almost all the quality variance lives — the expensive model is only as good as the tightness of what it receives. If that interface is fuzzy, you get the token savings but also absorb a lot of the quality loss there rather than at the model level.",
+        "rationale": "Gets at the omitted operational detail — the planning-to-execution interface is where quality variance lives."
+      }
+    ],
+    "slack_summary": "Fable 5's price forced a two-stage workflow (cheap model to plan, expensive for tightly-scoped execution), cutting tokens 50-80% at same capability — workflow over model.",
+    "slack_ts": "1783541788.005589",
+    "slack_thread": {
+      "post_reply_ts": "1783541794.787679",
+      "draft_reply_ts": [
+        "1783541801.510739",
+        "1783541808.984959",
+        "1783541815.870579"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-rauch-7515d2d0",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rauchg/",
+    "author_name": "Guillermo Rauch",
+    "author_headline": "CEO at Vercel",
+    "time_ago": "3d",
+    "post_text": "🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.\nFascinating to see the fluctuations among the labs, Anthropic's dominance, and the rise of open weight AI.\n",
+    "scraped_at": "2026-07-08T20:18:28Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The open-weight rise is the part of this that surprises me most — it doesn't get discussed as much as the frontier lab race does.\n\nCurious about the shape of that growth: is it concentrated in a handful of models (Llama, Mistral), or spread across many? And does the usage pattern look more like cost-sensitive production workloads or experimental side projects? The answer would tell a lot about whether this is a lasting rebalancing or a current-generation blip.",
+        "rationale": "Pushes for structure behind the open-weight trend — concentration vs spread, production vs experimental."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Anthropic's dominance in a developer-facing gateway is a strong signal — developers tend to stick with whatever holds up under real production load.\n\nThe thing I'd sit with here is whether \"developer mindshare on a gateway\" and \"long-term enterprise contract wins\" are actually measuring the same thing. Developers choose what ships fastest; procurement teams choose what they can defend to a CISO. If those two populations diverge, what looks like dominance today becomes a more fragmented picture in 18 months. Has the Vercel data shown any movement in the enterprise vs. self-serve split?",
+        "rationale": "Questions whether developer gateway dominance actually tracks enterprise wins."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "The fluctuations among labs are genuinely hard to predict — 18 months ago the working assumption was that GPT-4-class models would hold most of the developer usage.\n\nWhat actually shifted in that window, from where I sit, isn't just model quality — it's API reliability and price-per-token, both of which moved a lot. My read on Anthropic's share: Claude 3 Opus was expensive enough to push teams toward alternatives, then Haiku made the economics land, and usage followed. Would be curious whether the Vercel data shows any correlation between pricing inflection points and market-share moves across labs.",
+        "rationale": "Proposes a pricing-driven hypothesis for Anthropic share, inviting confirm/correct on Vercel data."
+      }
+    ],
+    "slack_summary": "Shares an animated token spend race from Vercel AI Gateway usage — fluctuations among labs, Anthropic's dominance, and the rise of open-weight AI.",
+    "slack_ts": "1783541914.915389",
+    "slack_thread": {
+      "post_reply_ts": "1783541921.690189",
+      "draft_reply_ts": [
+        "1783541928.711749",
+        "1783541937.678719",
+        "1783541944.059549"
+      ]
+    },
+    "slack_error": null
   }
 ]
