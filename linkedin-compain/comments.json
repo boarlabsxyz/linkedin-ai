@@ -1018,5 +1018,245 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "shivam-gupta-64a4b245",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/shivam-gupta99/",
+    "author_name": "Shivam Gupta",
+    "author_headline": "Helping founders attract inbound clients with AI-powered content & LinkedIn strategy · Worked with 800+ brands · DM for a free audit",
+    "time_ago": "2h",
+    "post_text": "Most People Take Months to Find a Remote Job.\nSo I compiled the best remote job websites for you.\nWhether you're a freelancer, a digital nomad, or simply looking for more flexibility, these sites have it all!\n1. SolidGigs\nIt helps streamline your job hunting. A monthly membership fee grants you access to a huge resource library with courses, interviews, templates, scripts, and other tools, all with the focus of helping you land more freelance jobs.\nhttps://solidgigs.com\n2. JustRemote\nTheir platform is built specifically for people to discover the best remote job opportunities from around the world, without a focus on a particular location or region\nhttps://justremote.co\n3. Dynamite Jobs\nOver 100+ quality remote jobs are added each week to the platform—and searching for the one you want is customizable with the site's variety of filters and functionality.\nhttps://dynamitejobs.com/\n4. Remotive\nYou can search through all categories, including marketing. It's easy to see when a job has been posted, where it is located, and what speciality it falls under.\nhttps://remotive.com/\n5. Wellfound\nGreat features of this remote jobs website include discretion and salary transparency.\nhttps://wellfound.com/\n6. The Muse\nIt allows users to filter for remote positions and provides resources like career coaching and company profiles to help them land the job.\nhttps://www.themuse.com/\n7. Toptal\nToptal's primary focus is placing talented freelancers working remotely for clients like Shopify, and Thumbtack.\nhttps://www.toptal.com/\n8. Workew\nYou can bookmark specific remote jobs that sound appealing as you browse, and even sign up for Twitter notifications so you'll be alerted as soon as a new remote job hits the market.\nhttps://workew.com/\n9. Himalayas\nIt has a powerful visa and time zone filter that makes it simple to find the most carefully curated remote jobs.\nhttps://himalayas.app/\n10. Jooble\nA global employment platform in 60+ countries, connecting job seekers with opportunities from 140,000+ sources.\nhttps://jooble.org\nLinkedIn LinkedIn for Marketing\n… more\nHow to get Remote Jobs\n·\n5 pages\n30\n5\n1",
+    "scraped_at": "2026-07-08T15:49:48Z",
+    "disposition": "off-topic",
+    "reason": "Generic remote job websites list, no AI or startup-building content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "viktoriia-prydatko-57c4ecfb",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/viktoriyaprydatko/",
+    "author_name": "Viktoriia Prydatko",
+    "author_headline": "Executive Search & Tech Recruiting | Product Company Hiring | Senior & Complex Roles | Executive search | Talent acquisition partner | Recruitment Agency Founder",
+    "time_ago": "8h",
+    "post_text": "15 липня о 20:00 за Києвом зустрінемось з Анна Король, засновницею та CEO CORE Team. Будемо чесно та простими словами говорити про роботу в Miltech/Defense Tech, а саме:\n- Чому це не \"нова ІТшка\" і чим вона відрізняється від ІТ?\n- Кого шукає Defense Tech?\n- Як зайти в   Defense Tech, якщо пропустили момент \"беруть без досвіду усіх\"?\n- Стандартні умови роботи в Defense Tech: офлайн vs гібрид/ремоут? Які зарплати?\n- Security screening: як виглядає і поради, як його пройти?\n- Що у Defense Tech мають на увазі, коли запитують кандидатів про мотивацію?\n\nПрямий ефір буде прямо тут в LinkedIn. Настикайте \"відвідати\", і вам прийде нагадування про початок.\n… more\n\nShow translation\n\nWed, Jul 15, 7:00 PM\n\nПро роботу в Miltech & Defense\n\n LinkedIn Live\n\nAnna Korol and 23 other attendees\n\nView event\n21\n​\n2",
+    "scraped_at": "2026-07-08T15:55:21Z",
+    "disposition": "off-topic",
+    "reason": "LinkedIn Live event about Miltech/Defense Tech careers in Ukraine, no AI or startup-building content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "mik-kersten-37365bd7",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/mikkersten/",
+    "author_name": "Mik Kersten",
+    "author_headline": "Author of Project to Product and Output to Outcome | Researcher | Technology Advisor",
+    "time_ago": "12h",
+    "post_text": "Output to Outcome launches July 14.\nI'm delighted that Gene Kim will be joining me live on Substack at 11am PT that same day to discuss the ideas behind the book and what they mean for leaders navigating the Age of AI.\nWe'll talk about why AI-amplified output is not enough, why the operating model is becoming the bottleneck, and what happens when agents outrun the org chart.\nTune in here: https://lnkd.in/gDGPwg6H\n… more\n97\n5\n2",
+    "scraped_at": "2026-07-08T16:08:34Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"operating model is becoming the bottleneck\" framing is the right one to focus on — most of the AI-in-engineering conversation is still stuck on throughput metrics.\n\nSpecifically curious what you mean by \"agents outrun the org chart.\" Do you mean the decision latency of the org (approvals, escalations, policy gates) or something structural — the team topology itself not matching how work actually flows when agents are involved? The fix looks very different depending on which one is the real constraint.",
+        "rationale": "Forces Mik to distinguish decision-latency vs structural topology in the \"agents outrun the org chart\" claim."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing \"AI-amplified output is not enough\" is exactly right, and it's good someone is saying it clearly in 2026.\n\nThe operating model becoming the bottleneck assumes the spec/requirements layer above it is solid. In most companies it isn't — and agents don't fix that; they amplify the drift. If the intent isn't captured precisely enough for a human to build from, it's not captured precisely enough for an agent to build from either. So fixing the operating model might just expose the next bottleneck upstream. Curious whether the book addresses that layer, or whether the scope is deliberately the org side of the constraint.",
+        "rationale": "Points to the spec/intent layer above the operating model as the un-examined bottleneck."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"AI-amplified output is not enough\" — agreed, and it's a thesis that needs to be heard more loudly.\n\nI'd push back slightly on \"operating model is the bottleneck\" as the primary frame though. From what I've seen, the operating model is often a symptom — the deeper constraint is where the source of truth lives. As long as code is the authoritative record of what a system does, every layer above it (reviews, approvals, PM-to-engineer handoffs) has to stay human-heavy, because humans are the ones who can read code under pressure. The operating model gets fixed last, after the artifact problem gets fixed first. Curious whether the book sequences the interventions that way, or argues the org change can precede the tooling change.",
+        "rationale": "Petro's counter-position: the source-of-truth/artifact problem precedes the org-model problem."
+      }
+    ],
+    "slack_summary": "Announcing his book \"Output to Outcome\" (July 14) + live Substack chat with Gene Kim on why AI-amplified output isn't enough and the operating model is the bottleneck.",
+    "slack_ts": "1783526927.924719",
+    "slack_thread": {
+      "post_reply_ts": "1783526934.768649",
+      "draft_reply_ts": [
+        "1783526944.318379",
+        "1783526952.459989",
+        "1783526958.968579"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "varun-saini-cf4e206d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/varun-saini-io/",
+    "author_name": "Varun Saini",
+    "author_headline": "Product & Engineering Executive | VP Engineering @ Rippling — Data, AI & Insights | Co-founder, Inference.io | Ex-ThoughtSpot, Tableau, Microsoft | Angel Investor",
+    "time_ago": "1h",
+    "post_text": "We launched Rippling Data Cloud recently, after three years of building.\nI've been thinking about what actually made this team work, and the kind of people who thrive in an environment like this one.\nSo I wrote it up: what the work feels like, what the culture asks of people, and what I owe the team in return.\nIf you're considering Rippling, or know someone who should be, worth a read.\nOpen roles are in the first comment. Or just DM me.\nRippling\n… more\nWhat the Job Description Can't Tell You\nVarun Saini\n32\n3\n3",
+    "scraped_at": "2026-07-08T16:14:43Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"what I owe the team in return\" framing is the part most culture writeups skip — it's easier to describe what the environment demands than to say what you're responsible for giving back.\n\nIn three years of building, what was the thing the culture asked of people that most surprised you — something that filtered out candidates who looked strong on paper but genuinely didn't fit?",
+        "rationale": "Targets the least-discussed line (\"what I owe the team in return\") and asks for the concrete culture filter paper credentials can't reveal."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Three years to one launch — that patience is already a culture signal before you write a single word about it.\n\nThe post tells the story of people who thrived. But every environment that genuinely asks a lot also has people who didn't make it through — not because they were weak, but because the fit was wrong. That graveyard rarely makes it into the writeup. Do you think naming that cost is part of being honest about what the culture is, or does it risk scaring off the right people?",
+        "rationale": "Pulls to the untold side of culture writeups — the people the environment filtered out — with a genuine editorial question."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Congrats on the launch — three years is a long hold in an environment where most data platform projects either pivot or get cancelled inside 18 months.\n\nThe line that interests me most is \"what I owe the team in return.\" In my experience running teams on multi-year builds, the answer to that question tends to shift over the course of the project — what the team needs in year one (clarity, air cover, fast decisions) isn't quite what they need in year three (recognition, room to own the thing). Did the nature of what you owed them change over the timeline, or did it stay relatively constant?",
+        "rationale": "Grounds the point in an 18-month data-platform attrition benchmark and asks how leadership obligations shift over a multi-year build."
+      }
+    ],
+    "slack_summary": "Reflecting on 3 years building Rippling Data Cloud — what made the team work, what the culture asks of people, and a recruiting call for open roles.",
+    "slack_ts": "1783527288.913699",
+    "slack_thread": {
+      "post_reply_ts": "1783527294.158279",
+      "draft_reply_ts": [
+        "1783527300.425899",
+        "1783527308.149049",
+        "1783527315.836249"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jonathan-schneider-5589a66e",
+    "urn": "urn:li:activity:7478074531094548482",
+    "post_url": "https://www.linkedin.com/in/jonkschneider/",
+    "author_name": "Jonathan Schneider",
+    "author_headline": "Co-founder @ Moderne | Java Champion | founder OpenRewrite - OSS automated refactoring",
+    "time_ago": "1w",
+    "post_text": "Ouch. That's cold. 6 months after the \"nobody looks at the IDE anymore\" trend, one missing bang and it's like CC doesn't even know that IntelliJ exists, haha.\nThe reality is though, I'm looking more and more at the IDE. At a minimum, I'm finding I need to cut absurdly verbose comments everywhere. The comment pattern that I feel is particularly detrimental is the one that basically records what the code USED to do, or did in some iteration towards the final design, not what it CURRENTLY does. So there is a token record of discarded ideas that jointly serve as a kind of gravity well sucking a model back to those discarded ideas.\nStrangely the better the model gets, the more convoluted the code is getting. A lot of folks are saying it doesn't matter, that engineers should move up the stack and become product managers and designers and even that models should stop writing in human-centric programming languages altogether.\nI went through a phase where I used Zed just because it was faster to ! start from a CC session. It's faster though because it's far less capable. So I've boomeranged a bit. Slow is smooth, smooth is fast.\n… more",
+    "scraped_at": "2026-07-08T16:23:18Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"gravity well\" framing is sharp — comments that record discarded paths are genuinely worse than no comments, because they look like intent to the model.\n\nMy read on it though is slightly different: the problem isn't the comments per se, it's that the model has no way to distinguish \"this comment describes current intent\" from \"this comment describes a rejected iteration.\" Both look like context. Pruning the bad ones manually is the symptom fix; the structural issue is that code — with all its accumulated commentary — is still the source of truth the model reads. If the spec were the source of truth and code were regenerable from it, the gravity well disappears: you just regenerate from clean specs instead of inheriting the scar tissue.\n\nWhat's your take on whether IDE-side hygiene can keep up with the velocity at which an agentic session accumulates that cruft? It feels like a treadmill that gets faster the more capable the model becomes.",
+        "rationale": "Agrees with the gravity-well framing then reframes: the structural issue is code-as-source-of-truth, not comment hygiene."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The observation that better models produce more convoluted code is counterintuitive but tracks with what I've been seeing too.\n\nThe framing I'd put on it: the more capable the model, the more faithfully it reproduces everything in context — including the discarded paths recorded in those comments. So you get a higher-fidelity rendering of all the noise, not just the signal. The model isn't confused; it's doing exactly what it's supposed to do with the context it has.\n\nWhich makes me wonder: is the right response to clean the context, or to reconsider what gets treated as context at all? At some point, keeping code (plus its accumulated commentary) as the primary artifact the model reads might be the category error — not the comment hygiene.",
+        "rationale": "Picks up \"better model = more convoluted code\" and asks whether code-as-context itself is the category error."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The boomerang from Zed back to IntelliJ makes sense — faster to start doesn't mean faster to finish.\n\nCurious about the OpenRewrite angle here though: is there a version of this where automated refactoring becomes part of CI hygiene for AI-native teams? Not hand-editing stale comments in the IDE one by one, but treating \"comments that describe what the code used to do rather than what it currently does\" as a detectable pattern — and pruning them on merge, the same way you'd run a linter. Feels like it could be written as a recipe. Has anyone in the OpenRewrite ecosystem tried formalizing that pattern?",
+        "rationale": "Engages Jonathan on his own turf (OpenRewrite) — could stale-comment pruning be a CI recipe?"
+      }
+    ],
+    "slack_summary": "Argues AI-generated code accumulates \"gravity well\" comments recording discarded ideas — and that better models paradoxically produce more convoluted code; he's back to leaning on the IDE.",
+    "slack_ts": "1783527805.916009",
+    "slack_thread": {
+      "post_reply_ts": "1783527813.833179",
+      "draft_reply_ts": [
+        "1783527824.377629",
+        "1783527831.156139",
+        "1783527839.144579"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ashwin-raghav-mohan-ganesh-77c7b4d3",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/ashwinraghav/",
+    "author_name": "Ashwin Raghav Mohan Ganesh",
+    "author_headline": "Doer of things. (Prev: Google, IDX, Firebase, Fabric (acq by Google), Twitter, Crashlytics (acq by Twitter), Zynga, Thoughtworks, Intel) | Engineer | Investor",
+    "time_ago": "3h",
+    "post_text": "I ran an experiment trying to show LLMs are bad at writing formal specs.\nI was wrong (mostly). But it revealed where the real bottleneck is.\nWhen I asked current models to write formal specifications in Dafny for small functions, the specs caught bugs about as well as generated test suites did, once they verified at all.\nThe catch is \"once they verified.\" Only about half the spec attempts did. And that was a bare setup: single shot, no tools, no chance to read the verifier error and try again. So it's a floor, not a ceiling.\nThe interesting part is which tasks failed. Not the algorithmically hard ones. The ones where the model first had to formalize a concept before it could even state the property.\nSo I ran a cleaner test. Same requirement, two setups:\n→ Model invents the domain from scratch (what an account is, what conservation of money means), then writes the spec\n→ I hand it a small verified library that already defines those things, and it just writes the spec on top\nTwo results, both directional (small samples):\n→ Giving the model the formalized domain raised correct specs from ~0.67 to ~0.77. On a money-ledger conservation task specifically: 0.25 to 0.92.\n→ Using a newer model did not help. Across three recent Claude versions, the from-scratch number stayed flat at ~0.67.\nThis lines up with VeriSoftBench, where frontier models solve roughly a third of proofs on actual software repositories, versus ~90% on math backed by Mathlib.\nMathematics has Mathlib. The whole domain, formalized once, reusable.\nSoftware doesn't. Neither does finance, healthcare, or law.\nIf that's the real bottleneck, the company that wins at vertical formal verification isn't the one waiting for a bigger model. It's the one that builds and owns the formalized domain.\nAt Unbound, we believe that the model becomes the cheap layer on top. Whoever owns the domain formalization owns the hard, durable part.\nCaveats: small samples, one model vendor, three bugs in my own scoring before I trusted the numbers. This is a hypothesis I now hold more firmly, not a proof.\nFull writeup with methodology, per-domain breakdown, and the scoring mistakes in the article. Thanks for the review Ranjan Rajagopalan.\nLinks in first comment\n… more",
+    "scraped_at": "2026-07-08T16:33:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 0.25 → 0.92 jump on the money-ledger task when you hand the model a pre-verified domain library is the most striking number in this post.\n\nOne thing I'm curious about: who builds the first verified domain library for a new vertical? Bootstrapping it from scratch seems to put you back in the same problem — the model has to formalize from scratch to produce the initial library, which is exactly the failure mode you measured. Is the answer \"a small team of humans formalizes it manually once,\" or is there a way to get the model to help with that first step without running into the same wall?",
+        "rationale": "Targets the cold-start gap: who builds the first verified domain library, since bootstrapping hits the same failure mode?"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The Mathlib parallel is the right frame — math solved the bottleneck by formalizing the domain once, reusably, and it unlocked a step change in proof automation.\n\nBut Mathlib took decades and a dedicated community to reach critical mass, and mathematical axioms don't ship product updates. Software domains change quarterly — sometimes weekly. What's the theory for keeping the formalized domain in sync when the underlying business logic shifts? A stale or incomplete domain library for finance might produce specs that verify cleanly against the wrong model of the world, which seems worse than a failed verification you can catch.",
+        "rationale": "Accepts the Mathlib analogy but exposes domain mutability — software domains change; math axioms don't."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The flat ~0.67 across three Claude versions is the most honest number here — it cleanly rules out \"wait for a bigger model\" as a strategy.\n\nOne thing I'd push back on slightly: the framing assumes the missing layer is formalized domain types (what an account is). My read, from working on behavior-driven specs, is that the harder gap is formalized behavior — what the system must do in each state, not just what the data looks like. Domain types help a lot, and your numbers show it. But without formalized behavioral postconditions as the source of truth, you can still end up with specs that verify against a correct-looking domain model while missing the actual invariants the business cares about. Curious whether your verified library covered behavioral postconditions or mainly data structure definitions.",
+        "rationale": "Petro's True BDD thesis: formalized behavior (postconditions), not just domain types, is the durable source of truth."
+      }
+    ],
+    "slack_summary": "Ran an experiment on LLMs writing formal specs (Dafny): handing the model a pre-verified domain library lifted correctness dramatically, and bigger models didn't help — the durable moat is owning the formalized domain.",
+    "slack_ts": "1783528433.972219",
+    "slack_thread": {
+      "post_reply_ts": "1783528449.859199",
+      "draft_reply_ts": [
+        "1783528458.052179",
+        "1783528464.605239",
+        "1783528471.519619"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "raj-bharathi-94470b15",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rajbharathi/",
+    "author_name": "Raj Bharathi",
+    "author_headline": "CEO @KronosX AI | Building the agentic data layer that makes Healthcare AI-Ready.",
+    "time_ago": "1d",
+    "post_text": "Before AI can transform healthcare, it has to understand healthcare.\nThat's where most organizations get stuck.\nThe conversation today is dominated by bigger models, smarter agents, and new capabilities.\nBut after spending years working with health plans and building KronosX AI, I realized that biggest challenge isn't the AI, It's the data foundation underneath it.\nIn my latest newsletter, I share why AI-Ready Data is becoming the real competitive advantage, why infrastructure is quietly becoming the biggest AI investment, and what healthcare organizations need to get right before AI can create meaningful value.\nIf you're building, buying, or deploying AI in healthcare, I'd love to hear whether you've seen the same challenges.\nLink to the newsletter below.\n… more\nInside KronosX\nSubscribe\nHealthcare has more AI than ever. So why aren't we seeing better outcomes?\nRaj Bharathi\n210\n40\n3",
+    "scraped_at": "2026-07-08T16:38:01Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing that data foundation is the real blocker — not the model — matches what we've seen in every domain where AI gets deployed against legacy systems.\n\nCurious what you've found is the actual shape of \"not AI-ready\" in health plans specifically. Is it mostly a data quality problem (missing values, inconsistent coding), a schema problem (no shared ontology across payers and providers), or an access/permissions problem (the data exists but nobody can legally move it)? My guess is the hardest cases aren't any one of these — they're all three at once, which means \"fix the data foundation\" is actually three separate workstreams with different stakeholders. What's your experience?",
+        "rationale": "Sharpens the vague \"not AI-ready\" claim into quality vs schema vs access — three workstreams with different stakeholders."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The point that AI-ready data is quietly becoming the biggest AI investment holds up — every serious AI deployment eventually hits the data wall.\n\nThe question I keep coming back to: is \"AI-ready data\" actually an infrastructure problem, or is it a power problem? In healthcare, the entities that generate the richest data (providers, payers, PBMs) are often not the entities that benefit most from sharing it. You can build the cleanest data layer in the world, but if the incentive to expose it doesn't exist, the pipeline stays empty. What's your read — are the orgs you work with stuck on the technical side, or is the political/contractual side the harder unlock?",
+        "rationale": "Reframes AI-ready data as a power/incentive problem, not just infrastructure — who owns the data vs who benefits from sharing."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"Data foundation before AI\" is right in the general case, and the healthcare graveyard is full of pilots that died on dirty data.\n\nThat said — some of the clearest healthcare AI wins I've seen written up have come from severely constraining the problem scope rather than cleaning the underlying data first. Prior auth triage on a single payer's claim schema. Discharge summary extraction from one hospital's Epic instance. In both cases, the scope was narrow enough that \"good enough\" data was actually good enough. The data foundation thesis holds at scale — but I'd push back on it as a prerequisite for any value. Sometimes the right move is to find the one workflow where your data is already clean and prove the model there, then use that win to fund the data cleanup. Curious if you've seen that pattern work, or if you'd argue it creates more technical debt than it's worth.",
+        "rationale": "Counters \"data foundation as prerequisite for any value\" — narrow-scope wins on already-clean data can fund the cleanup."
+      }
+    ],
+    "slack_summary": "Argues the real blocker for healthcare AI isn't model capability but the data foundation underneath — \"AI-Ready Data\" is the emerging competitive advantage (newsletter promo).",
+    "slack_ts": "1783528688.922789",
+    "slack_thread": {
+      "post_reply_ts": "1783528697.349739",
+      "draft_reply_ts": [
+        "1783528705.988029",
+        "1783528713.494949",
+        "1783528724.149969"
+      ]
+    },
+    "slack_error": null
   }
 ]
