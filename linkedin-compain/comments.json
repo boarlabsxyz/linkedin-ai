@@ -798,5 +798,225 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "raj-bharathi-aa2ec1fb",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rajbharathi/",
+    "author_name": "Raj Bharathi",
+    "author_headline": "CEO @KronosX AI | Building the agentic data layer that makes Healthcare AI-Ready.",
+    "time_ago": "4d",
+    "post_text": "US250 and still the Land of Opportunity. 🇺🇸\nCame to DC yesterday and loved seeing the city filled with people who had come to celebrate it.\nFor entrepreneurs, the U.S. is still the place for great ambition and a country that rewards conviction.\nAt 250 years old, it is still the place that bets on people who bet on themselves.\nI undoubtedly believe category-defining companies can be built here.\nThat is why KronosX AI is built here.\nA few moments from DC.\nHighlight: watching the F-22 Raptor fly sorties up close.\n… more\n+3\n28\n3\n​",
+    "scraped_at": "2026-07-08T14:52:41Z",
+    "disposition": "off-topic",
+    "reason": "Primarily a patriotic/personal celebration post (US 250th anniversary in DC), only briefly mentions his AI startup with no substantive AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kent-beck-f687f24c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/kentbeck/",
+    "author_name": "Kent Beck",
+    "author_headline": "Of the handful of people who have shaped how we build software, Kent is the raised middle finger  · Tidy first? · Thinkies · Augmented development",
+    "time_ago": "14m",
+    "post_text": "If software quality works like proof-of-work, where more compute finds more bugs and more speed, then the best software is whatever had the most compute poured into it. So the real moat might not be cleverness. It might be gigawatts.\n\"So what you're suggesting,\" I said, \"is there's a moat, and it's gigawatts.\"\nIt's the bet the frontier labs might be quietly making, that more problems get solved by brute force. He also said he doesn't know how much to believe it. Neither do I. But if it's right, the plumber can still write his own B-tree. He just can't afford the 400 gigawatt-hours that prove it's the best one.\n… more\n1\n​\n​",
+    "scraped_at": "2026-07-08T15:04:16Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The gigawatt-as-moat framing feels right when you're building for breadth. The trouble is that domain specificity breaks the proof-of-work analogy.\n\nWe ran a GenAI system for German banking from 2018 to 2023 — pre-ChatGPT, team of 17, contracts worth maybe $30K. ChatGPT had billions of dollars of compute behind it and yet our narrowly-trained system outperformed it on that specific task until mid-2025. The B-tree the plumber writes for his actual pipes, with domain constraints baked in, may genuinely be better than the B-tree proved optimal by 400 gigawatt-hours on the wrong distribution.\n\nThe moat might be gigawatts or an unfair advantage in domain signal — and the second one is still affordable.",
+        "rationale": "Grounds disagreement in Petro BankAI story: narrow low-compute system beat a frontier model on the specific task"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The proof-of-work analogy is interesting precisely because it separates finding bugs from specifying what \"correct\" means.\n\nProof-of-work can find the optimal B-tree given a fitness function — but who writes the fitness function? If that definition stays the domain expert's job, then the compute moat applies to verification, not to specification. And if specification is where most production bugs actually live, the gigawatts may be buying the wrong thing.\n\nCurious whether your framing assumes the fitness function is known — or whether that's the buried assumption.",
+        "rationale": "Shifts debate from how much compute to compute for what by surfacing the fitness-function problem"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The analogy holds if \"quality\" can be fully operationalized as a loss function the compute can optimize against.\n\nMy experience in production GenAI is that the hardest bugs are the ones where nobody wrote the test — not because testing is expensive, but because the correct behavior was never specified precisely enough to be testable. Does the proof-of-work model assume that specification problem is already solved, or is compute supposed to help there too?",
+        "rationale": "Surfaces the buried assumption that quality is fully measurable, grounded in production GenAI experience"
+      }
+    ],
+    "slack_summary": "Muses that software's real moat may be raw compute (gigawatts) rather than cleverness — if quality scales like proof-of-work.",
+    "slack_ts": "1783523071.936199",
+    "slack_thread": {
+      "post_reply_ts": "1783523078.698949",
+      "draft_reply_ts": [
+        "1783523087.682519",
+        "1783523094.681749",
+        "1783523100.232449"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "luca-bonmassar-50f65526",
+    "urn": "urn:li:ugcPost:7480433425032744960",
+    "post_url": "https://www.linkedin.com/in/lucabonmassar/",
+    "author_name": "Luca Bonmassar",
+    "author_headline": "CTO at Checkr | Engineering leader across Fintech, Crypto & AI | 3x Founder (acquired) | Ex-Coinbase VP, Citadel",
+    "time_ago": "1h",
+    "post_text": "I told 300+ engineers at Checkr, Inc. to stop looking for what's wrong during code reviews.\nMost of the code we write is now generated by AI. There are more code changes than ever, and most of them are correct. After reviewing hundreds of clean changes, it's easy to approve the next one without reading it carefully.\nPeople aren't being lazy. When nothing goes wrong for a long time, you naturally stop expecting problems.\nIt reminds me of Air France Flight 447.\nThe pilots had relied on autopilot for so long that, when it suddenly failed, they weren't ready to take over. The plane could have been saved, but it wasn't.\nThe same thing happens with AI.\nWhen automation works well for long enough, people stop paying close attention.\nSo we changed the review process.\nInstead of asking engineers to search through thousands of lines of code for anything that might be wrong, we let an AI agent review the code first. It points out the parts that look risky, like memory handling or security. The reviewer starts there instead of looking everywhere.\nIt's much easier to stay focused when you know where to look.\nAfter making this change, we saw about a 10% drop in missed issues during code review.\nI don't expect AI to catch every bug. It's just one layer of protection.\nThe goal is to help people focus their attention where it matters most.\n… more\n9\n2\n​",
+    "scraped_at": "2026-07-08T15:11:26Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The Flight 447 analogy is precise — autopilot competence and human competence degrade in exact proportion to each other.\n\nOne thing I keep turning over: the AI agent doing the first-pass review is also making judgment calls — about what counts as \"risky,\" what's memory-handling and what's benign. Who reviews those calls? If engineers are already primed to approve clean-looking changes, are they equally primed to trust the AI's triage without reading the parts it didn't flag? The complacency risk seems like it moves one layer up rather than disappears.",
+        "rationale": "Surfaces the meta-complacency risk — engineers trusting AI triage is one layer above trusting the code"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 10% drop in missed issues is a real number in a space where most people are still guessing — that's worth paying attention to.\n\nCurious what the AI reviewer tends to miss. Specifically: are the misses random noise, or do they cluster around a particular class of issue — say, logic errors that look syntactically clean, or anything touching business rules the AI has no context on? The difference matters a lot for knowing whether the remaining 90% is a calibration problem or a ceiling.",
+        "rationale": "Probes the AI reviewer failure profile behind the concrete 10% number — noise vs systematic blind spots"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Using AI to triage review attention is genuinely smart, and the 10% improvement is real signal.\n\nThe thing I'd push on: this approach improves human reviewers catching AI-generated bugs, but the underlying failure modes of AI code generation are structurally different from human ones. Code review as a practice was built to catch human mistakes — patterns we've spent decades learning to recognize. What the AI flags as \"risky memory handling\" is still filtered through its own blind spots, which aren't the same shape as human blind spots. My read is that the triage layer helps significantly, but we're still in the early innings of understanding what safeguards AI-generated code actually needs. What's been your biggest surprise about the types of issues the AI reviewer catches vs. misses?",
+        "rationale": "Grounds Petro position that code review was built for human failure modes, not AI ones; ends with open question"
+      }
+    ],
+    "slack_summary": "Told 300+ engineers to stop hunting for bugs in reviews; an AI agent triages risky code first, cutting missed issues ~10%.",
+    "slack_ts": "1783523491.513569",
+    "slack_thread": {
+      "post_reply_ts": "1783523500.117369",
+      "draft_reply_ts": [
+        "1783523507.338769",
+        "1783523516.115629",
+        "1783523523.936549"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "martin-fowler-9f6884c3",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/martin-fowler-com/",
+    "author_name": "Martin Fowler",
+    "author_headline": "Author of Refactoring, hosts martinfowler.com, Thoughtworker",
+    "time_ago": "15m",
+    "post_text": "After setting out her factors of viability, Birgitta Boeckeler now reports on her experiences with local LLMs for programming. She compares them with two standard tasks and tries the best LLM in day-to-day use\nhttps://lnkd.in/eekRQGZc\n… more\nExperiences with local models for coding\nExperiences with local models for coding\nmartinfowler.com\n14\n1\n1",
+    "scraped_at": "2026-07-08T15:16:58Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Birgitta's framing of viability factors first, experience second, is exactly the right sequencing — most local-LLM writeups skip straight to benchmarks and miss the \"is this even the right problem\" layer.\n\nCurious about the two standard tasks she used as the comparison baseline. Were they greenfield generation tasks, or something closer to comprehension and edit tasks on existing code? My intuition is that the gap to hosted models closes much faster on the former than the latter — but I'd love to see whether her day-to-day experience confirms or breaks that.",
+        "rationale": "Post names two standard tasks without specifying them; asks whether they were greenfield vs comprehension/edit tasks"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The two-part structure here is solid — setting viability criteria before running the experiment means the conclusions actually mean something, rather than post-hoc rationalization of whatever result came out.\n\nThe question I'd push on: what's the failure mode if the local model you've settled on doesn't keep pace with frontier improvements? Hosted models ship capability jumps every few months. Local deployment freezes you at a point in time, and the gap can compound faster than your update cadence. Is there a natural re-evaluation trigger built into how she's using it, or does \"it works well enough today\" quietly become the permanent setting?",
+        "rationale": "Surfaces capability-drift risk of a frozen local deployment and whether a re-evaluation trigger exists"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Good to see a structured, criteria-first report rather than another vibe-check on whatever model is trending this week.\n\nOne thing I'd want to see quantified in this kind of comparison: the hardware cost amortized per developer. Running a capable local model well enough to be genuinely useful for coding still requires a machine in the M-series or high-VRAM GPU range — which isn't nothing, especially for a team. The privacy and latency wins are real, but the \"local is cheaper\" assumption deserves the same empirical treatment she gave to the task benchmarks. Has she done that math, or is it still in the \"we believe this is favorable\" category?",
+        "rationale": "Pushes on the unquantified hardware-cost-per-developer assumption behind local-is-cheaper, in Petro name-the-tradeoffs voice"
+      }
+    ],
+    "slack_summary": "Shares Birgitta Boeckeler's write-up on local LLMs for coding: viability factors first, then a comparison on two standard tasks and daily use.",
+    "slack_ts": "1783523827.155059",
+    "slack_thread": {
+      "post_reply_ts": "1783523832.955409",
+      "draft_reply_ts": [
+        "1783523841.277739",
+        "1783523847.495189",
+        "1783523856.110499"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tim-stoddart-46f8ca80",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/tim-stodz/",
+    "author_name": "Tim Stoddart",
+    "author_headline": "I build boring online businesses. $20M+ in revenue (mostly in healthcare). Read my newsletter for deeper ideas that move the needle ↓",
+    "time_ago": "3h",
+    "post_text": "People: \"Use AI for everything. It's amazing.\"\nThose same people:\n\"Time travel sounds fascinating. Such a great project to be working on. Anyway, want to hire me?\"\nAs I've been saying here and in my newsletter:\nThe biggest opportunity in AI is getting recommended by it, and the second biggest is using it in your processes with *smart* strategy (aka not at all like this screenshot).\nKnow when to use it, how to use it, and how to get found on it.\nThat's how you win.\nP.S. I had trouble tagging Nick here to credit, but he seems great. Check him out.\n… more\n601\n213\n1",
+    "scraped_at": "2026-07-08T15:22:13Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The contrast you drew nails a real pattern — people who talk about AI as a career signal but haven't touched the actual leverage points.\n\nCurious about the first opportunity you named though. \"Getting recommended by AI\" — what do you think actually drives that in practice? Is it the usual authority signals (backlinks, citations, domain age) translated to LLM training data, or something structurally different from SEO? Most of the GEO advice I've seen is still pretty hand-wavy, and I'm not sure practitioners know what they're actually optimizing for yet.",
+        "rationale": "Probes the unspecified mechanism behind getting recommended by AI — training-data signals vs SEO signals"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The screenshot is a good illustration of the gap between using AI as a signal and using it as a tool.\n\nI'd push back slightly on the ranking though. For most builders, \"getting recommended by AI\" is a mostly passive outcome that follows from having genuine depth on a topic — you can't really manufacture it faster than you can manufacture Google authority. The second opportunity — smart process integration — is the one people can actually act on this week. I'd flip the order: earn the recommendation by becoming the kind of practitioner AI actually wants to surface, not by optimizing for the recommendation itself.",
+        "rationale": "Argues AI recommendation is a passive outcome of genuine depth; flips the ranking to prioritize process integration"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Good frame. The screenshot is a clean example of treating AI fluency as a credential rather than a capability.\n\nOne thing I keep seeing in practice: the \"smart strategy\" part you mention is almost always the harder sell internally. People buy into AI in principle but then hand it a task end-to-end with no scaffolding and wonder why it drifts. What's the failure mode you see most in the businesses you work with — wrong task selection, or a wrong process design around the task?",
+        "rationale": "Asks which failure mode dominates — wrong task selection vs wrong process design — grounded in Petro orchestration experience"
+      }
+    ],
+    "slack_summary": "Argues the two biggest AI opportunities are getting recommended by AI and using it in your processes with smart strategy — not treating fluency as a credential.",
+    "slack_ts": "1783524138.666929",
+    "slack_thread": {
+      "post_reply_ts": "1783524144.600419",
+      "draft_reply_ts": [
+        "1783524155.092159",
+        "1783524162.422289",
+        "1783524170.953559"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "matej-senozetnik-84772746",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/matejsenozetnik/",
+    "author_name": "Matej Senožetnik",
+    "author_headline": "Founder @MS Innovation Hub | AI & Custom Software | We're Hiring Developers Passionate About AI",
+    "time_ago": "1d",
+    "post_text": "I think the hardest part of building software has changed. 🤔\nA few years ago, the biggest challenge was simply getting an idea built.\nYou needed developers, time, budget, and a lot of patience. Execution was the bottleneck.\nToday, that's no longer true.\nWith AI, you can build prototypes, automate workflows, or even launch an MVP in days instead of months.\nBut after working with companies across manufacturing, logistics, and other industries, I've realized something.\nBuilding the solution is no longer the difficult part.\nGetting people to actually use it is.\nI've seen technically great solutions fail because they didn't fit into the way people work. At the same time, I've seen relatively simple tools create huge value because they solved one annoying problem that employees faced every day.\nThat's why most of our conversations with clients don't start with AI.\nThey start with questions like:\n👉 Where do people lose the most time?\n👉 Which process frustrates employees the most?\n👉 What information are people constantly searching for?\nOnly after we understand that do we start talking about technology.\nAI has dramatically reduced the cost of building software.\nIt hasn't reduced the cost of understanding people.\nAnd I think that's becoming the real competitive advantage.\nThe companies that win won't necessarily be the ones building the most AI.\nThey'll be the ones building AI that people actually want to use.\nHave you seen this in your own company?\n#ArtificialIntelligence #DigitalTransformation #BusinessTransformation #ProcessImprovement #Operations #Manufacturing #Leadership #MSiHub\n… more\n556\n42\n24",
+    "scraped_at": "2026-07-08T15:29:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "That line — \"AI hasn't reduced the cost of understanding people\" — is the one that sticks. We ran into this with a client a while back: a gamified health app, significant budget, a year and a half of solid execution. Two months after launch, it shut down. A year later, a competitor launched the same core idea — but they'd built a proper feedback loop with users first. Took off to millions of users. The delta wasn't the technology.\n\nThe bitter irony for AI-era teams is that the speed gain makes the wrong thing arrive faster. Before, slow execution gave you time to course-correct. Now the misalignment lands at your feet in days.",
+        "rationale": "Petro ReSelf client story maps onto Matej thesis — failed adoption despite solid execution; adds a concrete counterexample"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The shift from \"can we build it?\" to \"will people use it?\" is the right reframing. Your three diagnostic questions are also exactly right — and I've seen conversations stall precisely because nobody asks them before scoping begins.\n\nBut here's what I keep wondering: AI is increasingly decent at the discovery questions too — synthesizing user interviews, flagging friction points, mapping process flows. If that cost also drops, does the bottleneck move again? Or is the hard part not data collection but the organizational will to act on what you find?",
+        "rationale": "Asks whether AI can automate the discovery side too, pulling the conversation to a sharper unresolved place"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Adoption is the symptom. In my experience, the root sits one step earlier — the decision to build this specific thing at all. When execution was slow and expensive, the cost of building the wrong thing was a natural forcing function. Teams had to argue the idea out before committing months. AI removed that friction. Now you can build the wrong thing in a week, ship it to users who don't want it, and call it an adoption problem.\n\nYour three questions are exactly the right diagnostic. I'd just add a fourth: whose job is it to ask them? In most orgs I've seen, nobody formally owns that question — it falls between product, engineering, and ops.",
+        "rationale": "Argues adoption is downstream of a prior build-decision failure; surfaces an org-ownership gap"
+      }
+    ],
+    "slack_summary": "Argues AI made building software cheap, but getting people to actually use it is now the hard part — understanding people is the real competitive advantage.",
+    "slack_ts": "1783524590.527099",
+    "slack_thread": {
+      "post_reply_ts": "1783524600.857759",
+      "draft_reply_ts": [
+        "1783524607.515189",
+        "1783524613.600769",
+        "1783524621.279109"
+      ]
+    },
+    "slack_error": null
   }
 ]
