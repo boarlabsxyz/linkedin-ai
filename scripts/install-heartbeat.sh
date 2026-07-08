@@ -26,6 +26,9 @@ else
     git -C "$WORKER_DIR" fetch origin main
     git -C "$WORKER_DIR" checkout -B main origin/main
     git -C "$WORKER_DIR" reset --hard origin/main
+    # Drop untracked leftovers from an interrupted fire (reset --hard keeps them),
+    # matching cron-wrapper.sh so a repaired worker starts pristine.
+    git -C "$WORKER_DIR" clean -fd
 fi
 
 # 3. Ensure scripts are executable
