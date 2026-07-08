@@ -1,0 +1,37 @@
+{
+  "key": "ethan-mollick-25121e0f",
+  "urn": null,
+  "post_url": "https://www.linkedin.com/in/emollick/",
+  "author_name": "Ethan Mollick",
+  "author_headline": "Associate Professor at The Wharton School. Author of Co-Intelligence",
+  "post_text": "I had Fable build another thing I always wanted, a full procedural fantasy kingdom generator with economics, trade routes, population growth, wars, lineages, disasters, geography, and occasional dragons. First, I worked with it on a plan, then it made it happen.\n\nYou can play it here: https://lnkd.in/eXx83n4t\n\n11 page prompt: https://lnkd.in/epZRiqeD",
+  "scraped_at": "2026-07-08T09:17:43Z",
+  "variants": [
+    {
+      "strategy_label": "Clarifying question",
+      "comment": "The 11-page prompt is the part that caught my attention most — sharing the actual design document alongside the playable result is a rare move.\n\nCurious how Fable handles prompt drift over time: once the world starts generating its own history (wars, lineages, disasters accumulating), does the 11-page prompt stay the authoritative source of truth for what the simulation should be, or does the generated state gradually take over as the real spec? Wondering if you've tried feeding the evolved world state back into a revised prompt, or whether that loop even makes sense in Fable's model.",
+      "rationale": "The 11-page prompt is the real artifact and raises a genuine open question about whether the prompt or the generated world state becomes the source of truth as simulation history accumulates."
+    },
+    {
+      "strategy_label": "Provocative question",
+      "comment": "The \"worked on a plan first, then it made it happen\" framing is the interesting part here — most people skip straight to prompting for output and skip the planning pass entirely.\n\nWhat's the failure mode you'd worry about as the simulation runs longer? My read is that the 11-page prompt embeds assumptions about how economies and lineages interact that probably hold for the first few generations but could drift as edge cases compound. Does Fable have a way to surface when the generated world state starts contradicting the design intent baked into the prompt — or is that a feature, not a bug?",
+      "rationale": "The plan-first then execute workflow is slightly under-examined; pushing on the failure mode when simulation state diverges from prompt assumptions pulls the conversation into sharper territory."
+    },
+    {
+      "strategy_label": "Disagree and argue your position",
+      "comment": "Sharing the 11-page prompt alongside the playable demo is the right call — the prompt is the actual design artifact, the generated world is just one instantiation of it.\n\nThis is worth sitting with: most people will spend 20 minutes playing the kingdom generator and zero minutes reading the prompt. But the prompt is what encodes the economics model, the disaster logic, the lineage rules. The world is disposable; the prompt is what you'd version-control. There's something here about where authorship lives when the output is procedurally generated — the author of the simulation is whoever wrote the 11 pages, not whoever clicked \"generate.\"",
+      "rationale": "Reframes the post's center of gravity from the playable world to the prompt-as-design-document, arguing the prompt is the persistent artifact and the generated world is disposable."
+    }
+  ],
+  "slack_summary": "Used Fable to build a playable procedural fantasy kingdom generator, and shared both the game and the full 11-page prompt behind it.",
+  "slack_ts": "1783502276.386279",
+  "slack_thread": {
+    "post_reply_ts": "1783502281.704929",
+    "draft_reply_ts": [
+      "1783502288.476979",
+      "1783502294.474819",
+      "1783502302.742079"
+    ]
+  },
+  "slack_error": null
+}
