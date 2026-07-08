@@ -358,5 +358,285 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "dou-34da2148",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "4h",
+    "post_text": "Топ компаній, які розмістили найбільше вакансій на DOU у першому півріччі\nАналітика про ринок праці 👉 https://dou.ua/goto/h0nM\nShow translation\n13\n1\n​",
+    "scraped_at": "2026-07-08T13:17:40Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian job market analytics post — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "michael-m-e12b7d6e",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/makarov-mm/",
+    "author_name": "Michael M.",
+    "author_headline": "Software Engineer. Physicist. Mathematician.",
+    "time_ago": "3d",
+    "post_text": "Connect\nLast week I wrote boids in Erlang with ASCII rendering in the terminal. Several people asked: why not real graphics? Fair. So I split the project in two - and put my two worlds into one codebase. The server is an Erlang node. Every boid is a separate supervised process with its own state. The simulation is nothing but messages between processes - no shared memory exists anywhere. The client is a macOS app: Swift + Metal, instanced rendering, one triangle per boid rotated by its heading in the vertex shader.\nBetween them: TCP and a tiny binary protocol. And here is my favorite detail. Each boid on the wire is {x, y, vx, vy} as four little-endian float32 - which is byte-for-byte the memory layout of float4 in Metal Shading Language. The client receives a frame and does a single memcpy into the GPU instance buffer. The wire format IS the GPU format. No parsing, no conversion, nothing.\nThe demo is still my favorite party trick. Press K: the app sends one byte, the server runs exit(Pid, kill) on a random boid process. The supervisor restarts it within microseconds - on screen the boid just teleports to a new position. The flock never notices. Population: unchanged. That last part confused me for a moment during testing: kill a boid, spawn a boid, and the count goes UP by one. Of course it does. In OTP, a crash is not a removal. A permanent child cannot be killed out of existence - only supervisor:terminate_child/2 removes it administratively. \"Killed\" and \"dismissed\" are different operations, and the runtime enforces the difference. Two programs, two paradigms: the GPU side optimized for throughput, the BEAM side optimized for survival, meeting over a 16-byte-per-boid protocol. Zero external dependencies on either side.\n#Erlang #BEAM #Swift #Metal #GPU #ActorModel #ConcurrentProgramming\n… more\n37\n3\n3",
+    "scraped_at": "2026-07-08T13:17:49Z",
+    "disposition": "off-topic",
+    "reason": "Systems programming (Erlang/BEAM + Swift/Metal) post with no AI or startup angle",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "charly-wargnier-6a3fb217",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/charlywargnier/",
+    "author_name": "Charly Wargnier",
+    "author_headline": "Ex-Streamlit / Ex-Snowflake Maestro — Sharing insights on AI agents, LLMs, Data Science",
+    "time_ago": "1d",
+    "post_text": "someone asked Fable 5 to build Fable 6.\nFable 5's answer: \"Sure. Do you have a small country's power grid?\" 😱\n589\n32\n7",
+    "scraped_at": "2026-07-08T13:22:22Z",
+    "disposition": "off-topic",
+    "reason": "Single-line AI humor post with no substantive AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "raj-bharathi-0d74999a",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rajbharathi/",
+    "author_name": "Raj Bharathi",
+    "author_headline": "CEO @KronosX AI | Building the agentic data layer that makes Healthcare AI-Ready.",
+    "time_ago": "3d",
+    "post_text": "US250 and still the Land of Opportunity. 🇺🇸\nCame to DC yesterday and loved seeing the city filled with people who had come to celebrate it.\nFor entrepreneurs, the U.S. is still the place for great ambition and a country that rewards conviction.\nAt 250 years old, it is still the place that bets on people who bet on themselves.\nI undoubtedly believe category-defining companies can be built here.\nThat is why KronosX AI is built here.\nA few moments from DC.\nHighlight: watching the F-22 Raptor fly sorties up close.\n… more\n+3\n28\n3\n​",
+    "scraped_at": "2026-07-08T13:22:28Z",
+    "disposition": "off-topic",
+    "reason": "US 250th anniversary patriotic post with personal moments — no AI or startup content despite author being an AI CEO",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "the-pragmatic-engineer-838bcb80",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/the-pragmatic-engineer/posts/",
+    "author_name": "The Pragmatic Engineer",
+    "author_headline": "Learn more",
+    "time_ago": "19h",
+    "post_text": "\"Hiring managers are saying that highly-skilled talent (typically senior+ engineers) is not available to be recruited, at the same time as experienced, proven professionals find their applications ignored by employers.\nWhat seems paradoxical here is how both can be true.\"\nMore in today's deepdive: https://lnkd.in/gfHJXDyg\n… more\n100\n5\n5",
+    "scraped_at": "2026-07-08T13:29:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing of \"paradox\" is doing a lot of work here. The question I'd push on: when hiring managers say senior talent \"isn't available,\" are they talking about inbound pipeline, referral reach, or cold outreach conversion? Because those three channels have very different explanations for why they're broken right now, and treating them as one thing makes the diagnosis harder.",
+        "rationale": "Splits vague \"unavailable\" into three concrete hiring channels to force a sharper diagnosis."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The tension looks paradoxical until you separate two things: \"not available on the open market\" vs. \"not available to be recruited.\" Senior engineers with strong track records rarely post their CVs — they get moved by relationships, referrals, and reputation. If a hiring manager's primary motion is posting a JD and filtering applications, they will genuinely not find that talent.\n\nThe senior engineer, meanwhile, is sending applications into an ATS that was calibrated for a different hiring volume and getting zero signal back. Both are experiencing real friction; they're just on different tracks entirely.",
+        "rationale": "Resolves the paradox by naming the open-market vs. relationship-recruited split."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The setup is sharp. One thing I'd want to know: are the \"experienced professionals\" who can't get responses applying to roles at companies that say they can't find senior engineers — or is it two completely different segments of the market talking past each other? The answer changes what's actually being diagnosed here.",
+        "rationale": "Tests whether the paradox is one data set or two separate market segments."
+      }
+    ],
+    "slack_summary": "Why hiring managers say senior engineers are unavailable while experienced pros get ignored — and how both can be true.",
+    "slack_ts": "1783517394.385539",
+    "slack_thread": {
+      "post_reply_ts": "1783517399.873099",
+      "draft_reply_ts": [
+        "1783517406.529409",
+        "1783517414.712519",
+        "1783517419.826589"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrew-n-bb7fb888",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/andrewnovykov/",
+    "author_name": "Andrew N.",
+    "author_headline": "AI Agent Engineer for QA and Dev teams, Building Endorphin AI and Robots",
+    "time_ago": "18h",
+    "post_text": "You know what a great prompt looks like — and you never write one.\nNot because you can't. You've read every guide. You could list the parts in your sleep: role, context, constraints, output format, the edge cases, an example or two.\nThen you open Claude and type six words. No stack, no priorities, no output shape. It works well enough, so you re-roll it three times and call that \"iterating.\"\nThat's the bad prompt. It's the one every senior engineer actually types — because the good one costs 90 seconds of specification you'll never spend at 9am.\nThe good prompt is a different species. It names the stack. It ranks what matters. It pins the output format so Claude stops guessing. It reads like a spec, because it is one. You know exactly how to write it. You just won't.\nSo stop writing prompts.\nI type one line — /prompt-expert, then what I want — and the skill interviews me. Stack? Risks? Severity buckets? Output shape? The four questions I'm too lazy to answer unprompted. Then it hands back the good prompt, fully specified, because it asked instead of assumed.\nThe move was never \"write a better prompt.\" It's refusing to write the prompt at all, and building an agent that interviews you to do it.\nAnd yes — you're using Claude to write the prompt you're about to hand Claude. That's not the bug. That's the whole point.\n👉 It ships as a Claude Code skill in my agent kit -> https://lnkd.in/ggd4S2yb\n#PromptEngineering #ClaudeCode #AIEngineering #AgenticAI #SoftwareEngineering\n… more\n13\n2",
+    "scraped_at": "2026-07-08T13:39:36Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"re-roll it three times and call that iterating\" line is accurate — I've watched senior engineers do exactly that, myself included.\n\nMy different read: the problem isn't prompt laziness, it's a category error. Constraints don't belong in the prompt at all. When I was building BankAI — a self-hosted GenAI system for a German bank, pre-ChatGPT — we learned this the hard way. Beautiful prompts with clear rules got ignored selectively. What actually worked was moving constraints into a deterministic orchestration layer: AI handles the creative step, a dumb-but-obedient wrapper decides what's allowed to happen next. The prompt stays short because it carries intent, not policy.\n\nThe interview-agent is a clever fix for the specification problem, but it still produces a long system prompt at the end. You've outsourced the writing; the constraints still live in text the model can drift on. Curious whether that's a deliberate tradeoff or something you've hit in practice.",
+        "rationale": "Counter-position from BankAI experience: constraints belong in deterministic orchestration, not the prompt."
+      },
+      {
+        "strategy_label": "Clarifying question rooted in the topic",
+        "comment": "The \"interview instead of write\" framing is the right reframe — the spec is the thing, not the prompt syntax.\n\nGenuine question on the output: is the fully-specified prompt meant to be a reusable template, or a one-shot artifact you discard after the session? Because if the stack changes next sprint — new service, different severity model — does the agent re-interview you from scratch, or do you end up hand-maintaining the generated prompt the way you'd maintain any other spec? Curious how that plays out over a few weeks of active use.",
+        "rationale": "Pulls at the unaddressed lifecycle/maintenance gap of the generated prompt."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"you're using Claude to write the prompt you'll hand Claude\" admission is the honest part most people skip past.\n\nOne thing I keep turning over: the interview agent's questions are themselves a spec — Stack? Risks? Severity buckets? Output shape? — and those four questions encode assumptions about what matters for your use case today. When the model shifts, or the task domain changes, the interviewer's mental model gets stale before the prompts do. You end up with a well-specified prompt for yesterday's problem. Who updates the interviewer?",
+        "rationale": "Surfaces the interviewer own assumptions as a second-order spec that also ages out."
+      }
+    ],
+    "slack_summary": "Engineers know what a great prompt looks like but never write one — so he built a Claude Code skill that interviews you to produce the spec.",
+    "slack_ts": "1783517983.696439",
+    "slack_thread": {
+      "post_reply_ts": "1783517994.456349",
+      "draft_reply_ts": [
+        "1783518003.285229",
+        "1783518008.937339",
+        "1783518015.626159"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tessl-5e0b05a5",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/tesslio/posts/",
+    "author_name": "Tessl",
+    "author_headline": "",
+    "time_ago": "3h",
+    "post_text": "AI can generate skills in seconds.\nThe difficult part is knowing whether those changes are actually ready to merge.\nTessl introduces the new Tessl Review, a major upgrade that helps teams review AI-generated skill changes against the standards that matter to their organisation.\nEvery team has a different idea of what \"good\" looks like. Some care about architecture patterns, others prioritise security, coding conventions, domain-specific requirements, or internal best practices. A single default score can't capture all of that.\nWith custom review rubrics, you can define your own review criteria and evaluate skills against your team's standards, not somebody else's.\nThe new review experience also brings more accurate agentic reviews, a shared history of review runs, and tessl review fix to help improve skills that don't meet the quality bar.\nBecause faster software delivery shouldn't come at the cost of quality.\nRead the blog to learn how Tessl Review helps teams build, review, and improve skills with confidence.\nhttps://lnkd.in/gnxgtHny\n… more\n5\n2",
+    "scraped_at": "2026-07-08T13:46:07Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing here is right: the hard part isn't generating the change, it's knowing whether it's ready to ship.\n\nThe thing I'm curious about is rubric drift. A team writes their rubrics based on what they care about today — architecture patterns, security conventions, whatever it is. Six months later, the codebase has evolved, the team's priorities have shifted, but the rubric hasn't. Who catches that? Does Tessl surface any signal that a rubric is becoming stale, or is that entirely on the team to audit manually?",
+        "rationale": "Surfaces a genuine open question (rubric maintenance) the post does not address, inviting a specific technical response."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Agreed that a single default score can't capture what \"good\" means across different teams — that's the right problem to name.\n\nThe question I'd push on: rubrics encode what a team knows it cares about. But AI-generated changes sometimes fail in ways teams haven't seen before — patterns that wouldn't have been written into any rubric because they haven't happened yet. Custom rubrics are great at catching known failure modes. What's the plan for the unknown ones? Is there any agentic layer in the review that can flag \"this looks unusual for this codebase\" even when no rubric covers it?",
+        "rationale": "Pushes into a real blind spot — rubrics cover known failure modes, but AI-generated code can fail in novel ways no rubric anticipates."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Custom rubrics make a lot of sense — not every team should be graded against the same default. And the \"review fix\" feature to help skills that don't meet the bar is an interesting loop to close.\n\nOne thing I'd be interested in: when the AI generates the skill and also runs the review against a rubric, you're partially asking the same system to evaluate its own output. The rubric adds structure, but if the AI authored both the change and the interpretation of whether it passes, is there enough independence in that loop? Curious how you've thought about that separation.",
+        "rationale": "Probes the independence-of-evaluation problem (same AI generating and reviewing) without restating a published post."
+      }
+    ],
+    "slack_summary": "Launches Tessl Review with custom rubrics so teams can evaluate AI-generated skill changes against their own standards before merging.",
+    "slack_ts": "1783518372.666899",
+    "slack_thread": {
+      "post_reply_ts": "1783518382.068179",
+      "draft_reply_ts": [
+        "1783518388.723169",
+        "1783518396.901619",
+        "1783518403.986939"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "adam-warski-7d552d9c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/adamwarski/",
+    "author_name": "Adam Warski",
+    "author_headline": "Head of R&D at SoftwareMill, a division of VirtusLab; Software Engineer; Distributed Systems & Scala Expert; OSS Developer",
+    "time_ago": "1d",
+    "post_text": "Should code reviews still be a separate stage in the software development process?\nCode reviews used to be heavyweight: they required involving another human, which is an expensive and slow process.\nBut when agents review the code of other agents (or humans), that's no longer the case. It's trivial to run code reviews on-demand, multiple times, until all the problems are fixed.\nHence, can code reviews become just another quality gate in software development, alongside compilers, linters, and static analysis tools like Sonar?\nThat's definitely my experience. I always self-reviewed code before handing it over for further review, so the agentic review loop resembles that. But now, we can review using \"fresh\" agents or completely different models. So for me, code review used to be an end-of-the-line process, a final quality check. Now it's just a part of the iteration.\nWhich also brings the question: do we need specialized code review systems? Or is a refined prompt, or a lightweight CLI tool enough?\n(As a side note: code reviews have always been close to my heart; one of our first (failed) startups was CodeBrag - a per-commit code-review tool. Some of the ideas were implemented on GitHub later, so, as always, we've been ahead of our time! ;) )\n… more\n19\n21\n1",
+    "scraped_at": "2026-07-08T13:51:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The agentic review loop collapsing the \"wait-for-a-human\" bottleneck is real and the analogy to self-review before handoff lands well.\n\nOne thing I keep running into: reviewing and trusting the review are different problems. If the agent reviewing the diff was drawn from the same model family as the agent that wrote it, they share blind spots. You catch style issues, obvious logic errors, missing edge cases the training distribution covers — but the systematic failure modes of that model class slip through both passes. It's a bit like asking two students who memorized the same textbook to proofread each other's exam answers.\n\nThe question your post raises — specialized system vs. refined prompt — probably hinges on this. A prompt is enough if what you need is \"catch what a different pass would catch.\" A specialized system starts making sense when you need to verify behaviour that the generating agent can't self-validate. What's your read on where the line actually is?",
+        "rationale": "Argues Petro's documented position (agent review shares model blind spots) in fresh framing without contradicting it."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Framing code review as a quality gate rather than a handoff stage feels right — the heavyweight part was always the human scheduling, not the review itself.\n\nThe question that keeps me honest: what does an agent reviewer actually catch that a compiler or linter misses, and what does it systematically miss that a human reviewer catches? If those two lists mostly overlap with what static analysis already covers, the value of agentic review is convenience, not coverage. If they diverge sharply — especially on the \"what it misses\" side — then a refined prompt probably isn't enough, because you'd be optimizing for the wrong failure mode.\n\nHave you found cases where the agent flagged something that would have slipped past Sonar but a human would have caught it differently — or the reverse?",
+        "rationale": "Pulls the conversation into coverage-vs-convenience — what agent review catches vs. systematically misses."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The point about \"fresh agents or completely different models\" reviewing the same diff is the interesting part — cross-model validation is underused.\n\nOne variable your post leaves open: when the reviewing agent flags a problem and hands back to the generating agent, does the generating agent fix-then-return to the reviewer in the same session, or does it start a new context each time? Because if it's the same session, the reviewer's earlier framing leaks into the fix — you lose the \"fresh eyes\" benefit partway through the loop. If it's a new context each pass, the cost structure changes significantly. Curious whether that distinction showed up in your experience with CodeBrag's design, or whether the per-commit scope kept it contained.",
+        "rationale": "Surfaces context-leakage in the fix-then-reverify loop and ties it back to Adam's CodeBrag."
+      }
+    ],
+    "slack_summary": "Argues that with agents reviewing agents, code review stops being a separate handoff stage and becomes just another quality gate in the loop.",
+    "slack_ts": "1783518710.120359",
+    "slack_thread": {
+      "post_reply_ts": "1783518718.705469",
+      "draft_reply_ts": [
+        "1783518726.711819",
+        "1783518735.296269",
+        "1783518742.192749"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-rauch-c55a1815",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rauchg/",
+    "author_name": "Guillermo Rauch",
+    "author_headline": "CEO at Vercel",
+    "time_ago": "3d",
+    "post_text": "🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.\nFascinating to see the fluctuations among the labs, Anthropic's dominance, and the rise of open weight AI.\n… more\n297\n25\n13",
+    "scraped_at": "2026-07-08T13:56:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The infrastructure-level view is the honest one — benchmark leaderboards tell you what labs want you to believe, token spend tells you what developers actually reach for.\n\nCurious about the fluctuations you mentioned: are the swings between labs correlated with model release cycles, or do pricing changes move the needle faster? From the outside it's hard to tell whether a lab drops in share because a competitor shipped something better, or just because they cut rates and developers load-tested the alternative.",
+        "rationale": "Post names fluctuations among labs but not the driver; asks release-cycle vs pricing to get a concrete answer."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Trillions of tokens is the kind of scale where single-provider dominance starts feeling like a systemic risk, not just a market share story.\n\nIf Anthropic is taking the lion's share of developer token spend and then makes a sudden pricing or capacity move, how much of that hits gateway users before the routing layer can absorb it? Curious whether the AI Gateway's provider-agnostic design is already being stress-tested on that, or whether concentration is still comfortable enough that no one's actually switched under pressure.",
+        "rationale": "Reframes Anthropic dominance at trillion-token scale as a systemic-risk / gateway stress-test question."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "Infrastructure-level token spend is a better signal than any benchmark — glad someone with the data is publishing it.\n\nA year ago the working assumption was OpenAI's developer mindshare was untouchable. Anthropic's dominance here suggests the real flip happened somewhere in the coding-assistant wave — Claude Sonnet becoming the default model for coding agents shifted where the tokens land, not the chat leaderboard. My read, at least. Curious if the data supports that or if the shift was broader across use cases.",
+        "rationale": "Proposes the coding-agent wave as the hypothesis behind Anthropic dominance, inviting Vercel data to confirm/correct."
+      }
+    ],
+    "slack_summary": "Shares an animated token-spend race from lifetime Vercel AI Gateway usage, showing Anthropic dominance and the rise of open-weight AI.",
+    "slack_ts": "1783519008.920929",
+    "slack_thread": {
+      "post_reply_ts": "1783519016.759709",
+      "draft_reply_ts": [
+        "1783519024.188179",
+        "1783519030.568969",
+        "1783519039.747239"
+      ]
+    },
+    "slack_error": null
   }
 ]
