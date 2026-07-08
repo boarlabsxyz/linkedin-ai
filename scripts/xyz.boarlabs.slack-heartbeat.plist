@@ -15,10 +15,24 @@
     </array>
 
     <key>StartCalendarInterval</key>
-    <dict>
-        <key>Minute</key>
-        <integer>15</integer>
-    </dict>
+    <array>
+        <dict>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+        <dict>
+            <key>Minute</key>
+            <integer>15</integer>
+        </dict>
+        <dict>
+            <key>Minute</key>
+            <integer>30</integer>
+        </dict>
+        <dict>
+            <key>Minute</key>
+            <integer>45</integer>
+        </dict>
+    </array>
 
     <key>EnvironmentVariables</key>
     <dict>
