@@ -26,6 +26,13 @@ Reusable prompt for generating LinkedIn comments on behalf of **Petro Ovchynnyko
 
 The skill expects a LinkedIn post URL or, failing that, pasted post text. If only a URL is provided, load the post in a logged-in browser via Playwright MCP (Step 1). If the user pastes the text directly, skip Step 1 and use the pasted text verbatim.
 
+### Reference-source mode: LIVE vs CACHED
+
+The Step 2 pre-work checklist needs four reference sources (Posted, Transcripts, ICP, True BDD). There are two ways to read them:
+
+- **LIVE mode (default — standalone use):** read them from Google Drive via the MCP tools, using the IDs in the Constants table.
+- **CACHED-REFS mode:** if the caller's prompt includes a `REF_CACHE` path (the linkedin-comment-hourly pipeline always does), read the reference sources from **local files under that directory** and make **zero** Google Drive / GDoc calls. This is what lets the pipeline draft many posts in parallel. Cache layout: `icp.md`, `true-bdd.md`, `posted.md`, `transcripts/INDEX.md` (a `<date>\t<snippet>` line per transcript), and `transcripts/<date>.md` (full transcripts). Read `INDEX.md` to pick a relevant transcript for a Strategy 3 story, then read that one local file.
+
 ## Flow
 
 ### Step 1 — Load the post (Playwright)
@@ -42,14 +49,14 @@ If the post is gated, requires login that hasn't happened, or fails to render, s
 
 ### Step 2 — Pre-work checklist (mandatory before drafting)
 
-Before writing a single line of comment, do all of the following:
+Before writing a single line of comment, do all of the following. **In CACHED-REFS mode, every "read"/"search" below means a local file under `REF_CACHE` — issue no Google Drive / GDoc calls.**
 
 - **Read the post carefully.** Identify the author's main claim, the supporting points, the implied audience, and any open questions or tensions in the text.
-- **Check what Petro already said publicly.** Search the Posted folder (`1J_c1cWZ_kzPd_WrKsO_5fh-ud68seGOy`) for posts on related themes using `mcp__claude_ai_GDrive__listFolderContents` and `mcp__claude_ai_GDoc__readGoogleDoc` (or search via `mcp__claude_ai_GDoc__searchGoogleDocs`). The comment must not contradict a public position Petro has already stated.
-- **Check transcripts when a personal example is needed.** If Strategy 3 (personal experience) is the best fit, search the Transcripts folder (`13edYDnaAbHJN28gr9p-WK5dz-Qhi1th7`) for a real story from Petro's life or work. Do NOT invent experiences. If no relevant transcript exists, switch to another strategy.
-- **Check the ICP doc and True BDD factsheet** to confirm the post's author is (or is adjacent to) Petro's priority audience — this affects tone and depth. Read with `mcp__claude_ai_GDoc__readGoogleDoc` using the IDs above.
+- **Check what Petro already said publicly.** — LIVE: search the Posted folder (`1J_c1cWZ_kzPd_WrKsO_5fh-ud68seGOy`) via `mcp__claude_ai_GDrive__listFolderContents` + `mcp__claude_ai_GDoc__readGoogleDoc`. CACHED: read `REF_CACHE/posted.md`. The comment must not contradict a public position Petro has already stated.
+- **Check transcripts when a personal example is needed.** If Strategy 3 (personal experience) is the best fit — LIVE: search the Transcripts folder (`13edYDnaAbHJN28gr9p-WK5dz-Qhi1th7`). CACHED: scan `REF_CACHE/transcripts/INDEX.md` for a relevant date/snippet, then read that single `REF_CACHE/transcripts/<date>.md`. Do NOT invent experiences. If no relevant transcript exists, switch to another strategy.
+- **Check the ICP doc and True BDD factsheet** to confirm the post's author is (or is adjacent to) Petro's priority audience — this affects tone and depth. LIVE: `mcp__claude_ai_GDoc__readGoogleDoc` with the IDs above. CACHED: read `REF_CACHE/icp.md` and `REF_CACHE/true-bdd.md`.
 
-If any of these searches surface a conflict (Petro publicly took the opposite view; he already commented elsewhere; the experience attributed to him isn't supported by a transcript), **flag it before producing the comment**.
+If any of these surface a conflict (Petro publicly took the opposite view; he already commented elsewhere; the experience attributed to him isn't supported by a transcript), **flag it before producing the comment**.
 
 ### Step 3 — Pick strategies and draft variants
 

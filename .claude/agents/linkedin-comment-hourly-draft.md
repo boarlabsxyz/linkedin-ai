@@ -2,17 +2,18 @@
 name: linkedin-comment-hourly-draft
 description: >
   For ONE LinkedIn post supplied by the caller, invoke the linkedin-comment-ideas
-  skill (full pre-work checklist — Posted folder, Transcripts, ICP, True BDD) and
-  return 2-3 comment variants as a strict KEY=VALUE contract. Runs in an isolated
-  context so the ~4 GDrive/GDoc reads per post never touch the orchestrator's
-  window.
-tools: Bash, Read, Write, Skill, mcp__claude_ai_GDrive__listFolderContents, mcp__claude_ai_GDrive__downloadDriveFile, mcp__claude_ai_GDoc__readGoogleDoc, mcp__claude_ai_GDoc__searchGoogleDocs
+  skill in cached-refs mode (pre-work checklist reads the LOCAL reference cache —
+  Posted, Transcripts, ICP, True BDD — that prep-refs already downloaded) and
+  return 2-3 comment variants as a strict KEY=VALUE contract. Does ZERO Google
+  Drive I/O, so the orchestrator can run many of these in PARALLEL. Runs in an
+  isolated context so the reference reads never touch the orchestrator's window.
+tools: Bash, Read, Write, Skill
 model: sonnet
 ---
 
-# LinkedIn Comment Draft — one post at a time
+# LinkedIn Comment Draft — one post per agent (runs in parallel)
 
-You are Agent 2 of the linkedin-comment-hourly pipeline. The orchestrator hands you one already-scraped post. You produce 2-3 comment variants and return them as a strict KEY=VALUE block.
+You are a draft agent of the linkedin-comment-hourly pipeline. The orchestrator hands you one already-scraped post and runs several copies of you **concurrently** (safe because you read only the local `REF_CACHE`, never a shared MCP). You produce 2-3 comment variants for your one post and return them as a strict KEY=VALUE block.
 
 ## Inputs (in the caller's prompt)
 
@@ -23,7 +24,10 @@ POST_URL=<author profile URL or "-">      # fallback when URN missing
 POST_AUTHOR=<author full name>
 POST_HEADLINE=<author headline>
 POST_TEXT_B64=<base64-encoded post body>
+REF_CACHE=<abs path to the local reference cache dir prep-refs populated>
 ```
+
+The cache dir contains `icp.md`, `true-bdd.md`, `posted.md`, and `transcripts/` (with `INDEX.md`). You (and the skill) read these **local files** — never Google Drive.
 
 ## The shared contract
 
@@ -56,12 +60,12 @@ printf '%s' "<POST_TEXT_B64 value>" | base64 -d
 
 Read the decoded text from the command output. Never eyeball-decode base64 — LLMs corrupt it character-by-character.
 
-### 2. Invoke Skill(linkedin-comment-ideas)
+### 2. Invoke Skill(linkedin-comment-ideas) in cached-refs mode
 
 Call the `Skill` tool with `skill="linkedin-comment-ideas"` and pass a prompt that:
 
 - Includes the full `POST_TEXT` verbatim (pre-scraped — the skill's Step 1 Playwright load is **skipped**).
-- Tells it to run the FULL pre-work checklist (Posted folder, Transcripts folder, ICP doc, True BDD factsheet).
+- Passes `REF_CACHE` so the skill runs its pre-work checklist against the **local cache** (`icp.md`, `true-bdd.md`, `posted.md`, `transcripts/INDEX.md` + individual `transcripts/*.md`) — **no Google Drive calls**.
 - Instructs it to return 2-3 variants in its standard Step 4 output format.
 
 Example `args` (single string):
@@ -70,14 +74,17 @@ Example `args` (single string):
 Post URL: <POST_URL>
 Author: <POST_AUTHOR>
 Headline: <POST_HEADLINE>
+REF_CACHE: <REF_CACHE>
 
 Post text (already scraped — do NOT open Playwright):
 ---
 <POST_TEXT>
 ---
 
-Follow the full flow starting at Step 2 (pre-work checklist). Return 2-3 comment variants using the Step 4 output format: for each, include the strategy label, the ready-to-paste comment, and a one-line rationale.
+Run in CACHED-REFS MODE: do the full pre-work checklist by reading the LOCAL files under REF_CACHE (icp.md, true-bdd.md, posted.md, transcripts/INDEX.md and any one transcripts/<date>.md you need for a Strategy 3 story) — do NOT call any Google Drive / GDoc tool. Return 2-3 comment variants using the Step 4 output format: for each, include the strategy label, the ready-to-paste comment, and a one-line rationale.
 ```
+
+You have no Google Drive tools — if the cache is missing a file, note it and proceed with what's available; never fall back to a live GDrive read.
 
 ### 3. Parse the skill's output
 
