@@ -258,5 +258,105 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "juan-cruz-martinez-202d5fa5",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/jcmartinezdev/",
+    "author_name": "Juan Cruz Martinez",
+    "author_headline": "Deep dives on engineering careers and AI's real impact on developers. Writing The Long Commit on Substack. 20 yrs building software. Sr. Manager, Content @ Auth0.",
+    "time_ago": "1d",
+    "post_text": "",
+    "scraped_at": "2026-07-08T10:33:53Z",
+    "disposition": "off-topic",
+    "reason": "Generic developer burnout/motivational post with no AI or startup-specific content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tessl-f7f59504",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/tesslio/posts/",
+    "author_name": "Tessl",
+    "author_headline": "",
+    "time_ago": "16m",
+    "post_text": "AI can generate skills in seconds.\nThe difficult part is knowing whether those changes are actually ready to merge.\nTessl introduces the new Tessl Review, a major upgrade that helps teams review AI-generated skill changes against the standards that matter to their organisation.\nEvery team has a different idea of what \"good\" looks like. Some care about architecture patterns, others prioritise security, coding conventions, domain-specific requirements, or internal best practices. A single default score can't capture all of that.\nWith custom review rubrics, you can define your own review criteria and evaluate skills against your team's standards, not somebody else's.\nThe new review experience also brings more accurate agentic reviews, a shared history of review runs, and tessl review fix to help improve skills that don't meet the quality bar.\nBecause faster software delivery shouldn't come at the cost of quality.\nRead the blog to learn how Tessl Review helps teams build, review, and improve skills with confidence.\nhttps://lnkd.in/gnxgtHny",
+    "scraped_at": "2026-07-08T10:40:56Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The rubrics point is the real unlock here — a \"good\" score meaning something different for a fintech team vs a data pipeline team vs an OSS lib is exactly the right problem to name.\n\nCurious how the rubric evaluation works under the hood: does Tessl Review run the rubric as an LLM judge against the skill diff, or is there something more deterministic involved? The failure mode I'd worry about is rubric drift — the LLM grades the same change differently on Monday vs Friday, which means your quality bar shifts without anyone noticing. Has that come up in testing?",
+        "rationale": "Tessl's post leaves the rubric evaluation mechanism unaddressed — an LLM-judge implementation has a well-known non-determinism problem that directly undercuts the quality-gate promise, making this the sharpest specific question to ask."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Custom review rubrics fix a real thing — org-specific standards can't be encoded in a generic score, and teams waste time arguing about whether AI output meets \"their\" bar rather than a shared one.\n\nThe thing I keep turning over: if the spec is the source of truth, shouldn't the spec itself be the rubric? The review question then becomes \"does the generated skill match the spec\" — deterministic, not LLM-judged. Custom rubrics are a good answer for the world where code stays the source of truth. But if that assumption ever shifts, the rubric layer dissolves. Is the Tessl bet that code stays the source of truth indefinitely, or is the rubric a bridge while model reliability catches up?",
+        "rationale": "Pulls the conversation into Petro's core thesis territory (spec as source of truth) without pitching TrueBDD by name — frames it as a genuine strategic question about Tessl's long-term architecture bet."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The observation that faster delivery shouldn't come at the cost of quality is one worth defending — most \"ship fast, fix later\" arguments quietly assume the cost of \"later\" is manageable, which is usually wrong.\n\nWhere I'd push back a little: custom rubrics still assume someone needs to evaluate the generated code against those rubrics. That keeps review on the critical path — the rubric makes it smarter but not necessarily faster. The alternative bet is to move the source of truth to the spec and reduce the review surface rather than improve it: if the spec is what's reviewed and the code is derived from it, you're not grading the output, you're grading the input. Both are real bets. Curious whether Tessl sees rubrics as the long-term answer or a bridge while underlying model reliability closes the gap.",
+        "rationale": "Engages Tessl's implicit assumption (code stays the source of truth, therefore review stays on the critical path) from Petro's documented contrarian position, without dismissing their work or naming TrueBDD as a competitor."
+      }
+    ],
+    "slack_summary": "Tessl launches \"Tessl Review\" — custom rubrics that let teams grade AI-generated code changes against their own org-specific standards instead of one generic score.",
+    "slack_ts": "1783507266.360249",
+    "slack_thread": {
+      "post_reply_ts": "1783507274.502419",
+      "draft_reply_ts": [
+        "1783507281.363079",
+        "1783507290.198409",
+        "1783507297.173369"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jonathan-schneider-549cb907",
+    "urn": "urn:li:activity:7478074531094548482",
+    "post_url": "https://www.linkedin.com/in/jonkschneider/",
+    "author_name": "Jonathan Schneider",
+    "author_headline": "Co-founder @ Moderne | Java Champion | founder OpenRewrite - OSS automated refactoring",
+    "time_ago": "6d",
+    "post_text": "Ouch. That's cold. 6 months after the \"nobody looks at the IDE anymore\" trend, one missing bang and it's like CC doesn't even know that IntelliJ exists, haha.\nThe reality is though, I'm looking more and more at the IDE. At a minimum, I'm finding I need to cut absurdly verbose comments everywhere. The comment pattern that I feel is particularly detrimental is the one that basically records what the code USED to do, or did in some iteration towards the final design, not what it CURRENTLY does. So there is a token record of discarded ideas that jointly serve as a kind of gravity well sucking a model back to those discarded ideas.\nStrangely the better the model gets, the more convoluted the code is getting. A lot of folks are saying it doesn't matter, that engineers should move up the stack and become product managers and designers and even that models should stop writing in human-centric programming languages altogether.\nI went through a phase where I used Zed just because it was faster to ! start from a CC session. It's faster though because it's far less capable. So I've boomeranged a bit. Slow is smooth, smooth is fast.",
+    "scraped_at": "2026-07-08T10:47:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"gravity well of discarded ideas\" is the most precise framing of this problem I've seen — stale comments aren't just noise, they're literally attractor states that pull the next generation toward decisions that were already rejected.\n\nCurious what you've landed on as the actual remedy. Is it a deletion discipline (if a comment describes what code used to do, it gets cut immediately), or are you experimenting with a structured format that makes the model-facing intent explicit rather than archaeological?",
+        "rationale": "Jonathan identified a sharp mechanism; asking what fix he's found in practice extends his thought without flattering."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"better the model, the more convoluted the code\" observation is real and I think under-examined. The model doesn't just accept the context you give it — it tries to be consistent with it, so a codebase full of half-baked iterations becomes a very persuasive prior.\n\nThe part I'd push on: is pruning comments in the IDE the right intervention, or is it a symptom that we're still treating code as the ground truth the model reasons from? If the spec were the source of truth and code were genuinely disposable — regenerated from spec rather than incrementally patched — the comment archaeology problem mostly disappears. The question is whether the \"slow is smooth\" answer is \"better IDE hygiene\" or \"wrong layer altogether.\"",
+        "rationale": "Pushes on whether IDE pruning solves the root cause or patches a symptom, opening the spec-as-source-of-truth angle without pitching TrueBDD."
+      },
+      {
+        "strategy_label": "Disagree and argue",
+        "comment": "The boomerang back to the IDE makes sense — at some point you need eyes on what's actually in the file, not just what the model tells you is there.\n\nWhere I'd push back slightly: the \"cut verbose comments\" workflow feels like a patch on a deeper issue. Code is being used as the model's memory — and commented-out iteration history is just the most visible symptom. The underlying problem is that the model's context is the code, so everything that accumulates in the code (including ghost comments) becomes its worldview. I'm skeptical the solution scales past \"discipline.\" At some point the pressure is to stop treating code as the source of truth at all — let the spec carry that weight and treat the code as something you can delete and regenerate. Whether that's practical today is a different question, but the trend Jonathan describes seems to push in that direction whether we intend it to or not.",
+        "rationale": "Frames Petro's core thesis (code is disposable, spec is source of truth) as a genuine counter-position to comment hygiene as the fix, without naming TrueBDD."
+      }
+    ],
+    "slack_summary": "Reflects that he's back to looking at the IDE more, mainly to cut AI-generated stale comments that record what code used to do and pull the model back toward discarded ideas.",
+    "slack_ts": "1783507683.481139",
+    "slack_thread": {
+      "post_reply_ts": "1783507691.704979",
+      "draft_reply_ts": [
+        "1783507699.145399",
+        "1783507705.800139",
+        "1783507713.414309"
+      ]
+    },
+    "slack_error": null
   }
 ]
