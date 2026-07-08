@@ -2346,5 +2346,245 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "-7b110c1b",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/anastasiazherebetska-hrr/",
+    "author_name": "🇺🇦 Anastasia Zherebetska",
+    "author_headline": "We're hiring! HR Generalist at Bliscore 🦖",
+    "time_ago": "4h",
+    "post_text": "Connect\n👌🏼\n100\n8\n​",
+    "scraped_at": "2026-07-08T21:18:23Z",
+    "disposition": "off-topic",
+    "reason": "HR hiring post with no AI or startup content; body nearly empty after scrape",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "shivam-gupta-51669a3d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/shivam-gupta99/",
+    "author_name": "Shivam Gupta",
+    "author_headline": "Helping founders attract inbound clients with AI-powered content & LinkedIn strategy · Worked with 800+ brands · DM for a free audit",
+    "time_ago": "8h",
+    "post_text": "Most People Take Months to Find a Remote Job.\nSo I compiled the best remote job websites for you.\nWhether you're a freelancer, a digital nomad, or simply looking for more flexibility, these sites have it all!\n1. SolidGigs\nIt helps streamline your job hunting. A monthly membership fee grants you access to a huge resource library with courses, interviews, templates, scripts, and other tools, all with the focus of helping you land more freelance jobs.\nhttps://solidgigs.com\n2. JustRemote\nTheir platform is built specifically for people to discover the best remote job opportunities from around the world, without a focus on a particular location or region\nhttps://justremote.co\n3. Dynamite Jobs\nOver 100+ quality remote jobs are added each week to the platform—and searching for the one you want is customizable with the site's variety of filters and functionality.\nhttps://dynamitejobs.com/\n4. Remotive\nYou can search through all categories, including marketing. It's easy to see when a job has been posted, where it is located, and what speciality it falls under.\nhttps://remotive.com/\n5. Wellfound\nGreat features of this remote jobs website include discretion and salary transparency.\nhttps://wellfound.com/\n6. The Muse\nIt allows users to filter for remote positions and provides resources like career coaching and company profiles to help them land the job.\nhttps://www.themuse.com/\n7. Toptal\nToptal's primary focus is placing talented freelancers working remotely for clients like Shopify, and Thumbtack.\nhttps://www.toptal.com/\n8. Workew\nYou can bookmark specific remote jobs that sound appealing as you browse, and even sign up for Twitter notifications so you'll be alerted as soon as a new remote job hits the market.\nhttps://workew.com/\n9. Himalayas\nIt has a powerful visa and time zone filter that makes it simple to find the most carefully curated remote jobs.\nhttps://himalayas.app/\n10. Jooble\nA global employment platform in 60+ countries, connecting job seekers with opportunities from 140,000+ sources.\nhttps://jooble.org\nLinkedIn LinkedIn for Marketing",
+    "scraped_at": "2026-07-08T21:18:31Z",
+    "disposition": "off-topic",
+    "reason": "Remote job board list post with no AI or startup content; generic job-hunting resource roundup",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ricardo-rosas-c16cef22",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rgrosas/",
+    "author_name": "Ricardo Rosas",
+    "author_headline": "Computer Scientist | Storyteller | Solution Finder | Problem Solver",
+    "time_ago": "1d",
+    "post_text": "A lot of the conversation around AI is still being framed through the wrong lens.\n\nWe look at images like this and immediately jump to the fear-based narrative:\n- \"AI will replace prompt engineers.\"\n- \"AI will replace developers.\"\n-  \"AI agents will replace entire teams.\"\n-  \"Eventually nobody will be needed.\"\n\nI do not think that is the future we are actually heading toward.\n\nAI is not a panacea. It is not the solution to every problem. It is a tool in our belt, and like every tool, its value depends on whether we use it for the right application.\n\nA hammer is extremely useful, but not if the problem requires a screwdriver.\nA calculator is powerful, but not if the real issue is understanding the business model.\n\nAn AI agent can automate steps, but it cannot magically fix unclear processes, poor data quality, broken governance, or bad decision-making.\n\nThe real shift is not \"humans versus AI.\"\n\nThe real shift is \"humans who know how to apply AI correctly versus humans who use AI blindly.\"\n\nThe next wave of value will come from people who can understand the problem, design the process, apply the right technology, validate the outcome, and know when AI should not be used at all.\n\nThat is why I see AI less as a replacement for expertise and more as an amplifier of it.\n\nThe future will not belong to people who simply \"use AI.\"\n\n It will belong to people who understand where AI fits, where it does not, and how to connect it responsibly to real business outcomes.\n\n#AI #ArtificialIntelligence #Automation #DigitalTransformation #AgenticAI #TechnologyStrategy #FutureOfWork",
+    "scraped_at": "2026-07-08T21:33:52Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"amplifier of expertise\" framing is the right one — and the corollary that often goes unsaid is what gets me.\n\nAn AI agent can automate steps, but it cannot magically fix unclear processes. That's exactly right — but I'd take it one layer further: most organisations don't have unclear processes because nobody documented them. They have unclear processes because nobody has ever been forced to articulate them precisely enough for anyone else to follow. AI doesn't just expose that gap, it makes the cost of it visible in weeks instead of years. You hire an agent, it does something plausible but wrong, and you realise the real problem was that you couldn't define \"right\" in the first place.\n\nWhat does \"applying AI correctly\" actually mean in that moment — do you start by fixing the process, or by finding the one narrow slice where the process is already clear enough to automate?",
+        "rationale": "Right but stops short — pushes the 'AI can't fix unclear processes' point one layer deeper."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The line \"know when AI should not be used at all\" is the one I'd love to hear unpacked more.\n\nIn my experience running a GenAI product inside a German bank before ChatGPT existed, the decision to not use AI on something was never obvious in advance — it only became obvious after you'd tried and hit the failure mode. We used AI for contract generation and validation; we explicitly chose not to use it for anything that touched compliance sign-off, because the cost of a plausible-but-wrong output there was too high. But that call came from months of watching where it failed, not from a framework we had upfront.\n\nWhat's the signal you'd point to? Is it a property of the domain, the data quality, the governance setup — or is it something you mostly learn by burning your hand once?",
+        "rationale": "Grounds the 'know when not to use AI' ask in the BankAI experience."
+      },
+      {
+        "strategy_label": "Share personal experience",
+        "comment": "The point about broken governance and poor data quality surviving AI automation is one I've seen play out in a pretty literal way.\n\nAnthropic ran an experiment called Project Vend — an AI agent managing a real vending machine, handling inventory, pricing, and trying to turn a profit. Phase one: consistent losses, identity crises, and employees tricking it into selling tungsten cubes at a loss. What actually made it profitable wasn't a smarter model or a better prompt — it was a CRM system, checklists, and rigid purchasing rules. Classic deterministic scaffolding. The AI did the creative work inside those rails; the boring bureaucratic structure was what kept it from going sideways.\n\nYour point lands the same way: the value isn't in the AI, it's in whether the system it's plugged into is actually governed well enough to use it. Most aren't, and AI makes that visible faster than any previous tool.",
+        "rationale": "Project Vend illustrates the governance/data-quality point concretely."
+      }
+    ],
+    "slack_summary": "AI isn't a panacea — value comes from people who know where AI fits, where it doesn't, and when not to use it at all.",
+    "slack_ts": "1783546443.972519",
+    "slack_thread": {
+      "post_reply_ts": "1783546453.472519",
+      "draft_reply_ts": [
+        "1783546461.548719",
+        "1783546468.637439",
+        "1783546476.548069"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jonathan-schneider-61634568",
+    "urn": "urn:li:activity:7478074531094548482",
+    "post_url": "https://www.linkedin.com/in/jonkschneider/",
+    "author_name": "Jonathan Schneider",
+    "author_headline": "Co-founder @ Moderne | Java Champion | founder OpenRewrite - OSS automated refactoring",
+    "time_ago": "1w",
+    "post_text": "Ouch. That's cold. 6 months after the \"nobody looks at the IDE anymore\" trend, one missing bang and it's like CC doesn't even know that IntelliJ exists, haha.\nThe reality is though, I'm looking more and more at the IDE. At a minimum, I'm finding I need to cut absurdly verbose comments everywhere. The comment pattern that I feel is particularly detrimental is the one that basically records what the code USED to do, or did in some iteration towards the final design, not what it CURRENTLY does. So there is a token record of discarded ideas that jointly serve as a kind of gravity well sucking a model back to those discarded ideas.\nStrangely the better the model gets, the more convoluted the code is getting. A lot of folks are saying it doesn't matter, that engineers should move up the stack and become product managers and designers and even that models should stop writing in human-centric programming languages altogether.\nI went through a phase where I used Zed just because it was faster to ! start from a CC session. It's faster though because it's far less capable. So I've boomeranged a bit. Slow is smooth, smooth is fast.",
+    "scraped_at": "2026-07-08T21:36:48Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"gravity well of discarded ideas\" is the right framing — I've been trying to articulate that exact problem for months.\n\nWhere I'd push back slightly: manually pruning stale comments treats the symptom. The gravity well exists because inline comments are the only persistent documentation the model ever sees — so of course it orbits them. The fix I keep coming back to is getting the model to read from a behavioral spec instead, where what a thing is supposed to do now is the only record that exists, and every past iteration is simply gone. Then there's no discarded-idea sediment to get pulled into.\n\nThe manual IDE pass might be unavoidable as a short-term tactic, but I'd be curious whether you see it becoming a permanent part of the workflow or a symptom of a context-management layer that doesn't exist yet.",
+        "rationale": "Petro's spec-as-source-of-truth position eliminates the gravity well by design, not maintenance."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "The Zed-to-IntelliJ boomerang makes complete sense — faster to start is not the same as faster to finish, and the gap becomes more visible as the model gets more capable.\n\n\"Slow is smooth, smooth is fast\" is right. But I'd ask whether the equilibrium you've landed on is stable or transitional. The IDE is doing something real: giving you a place to exercise judgment about what context the model should see. What happens if that context-curation layer moves up — if instead of pruning comments in the IDE, the model is pointed at a live spec that only ever describes current behavior and carries no sediment from past iterations? Does the IDE role shrink again, or does it just shift to a different kind of steering?",
+        "rationale": "Pushes on whether the IDE return is a stable equilibrium or transitional."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The observation that better models make more convoluted code is one of the few honest things being said about current AI-assisted development — most people haven't named it yet.\n\nOne question on the gravity-well mechanism: when you find a comment that records what the code used to do, does deleting the comment actually remove the pull, or does the model reconstruct the old intent from the surrounding code anyway? Asking because if the convoluted code is itself the residue of those discarded iterations — not just the comments labeling them — then the gravity well might be in the code structure, not the comments. Curious what you see when you actually clean a section and re-run the model on it.",
+        "rationale": "Asks whether the gravity well is in the comments or the code structure itself."
+      }
+    ],
+    "slack_summary": "After the 'nobody looks at the IDE anymore' hype, he's back in the IDE — cutting AI's verbose stale comments, noticing better models write more convoluted code.",
+    "slack_ts": "1783546615.017739",
+    "slack_thread": {
+      "post_reply_ts": "1783546624.346759",
+      "draft_reply_ts": [
+        "1783546631.396999",
+        "1783546638.240029",
+        "1783546644.854459"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "adarsh-tadimari-86199e18",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/adarsh-tadimari/",
+    "author_name": "Adarsh Tadimari",
+    "author_headline": "CTO @ Plotline",
+    "time_ago": "2d",
+    "post_text": "You don't rise to the level of AI models. You fall to the level of your test suite.\nI spent the whole weekend watching agents rip through our backlog using Fable. I had one uncomfortable question: How much of this can we actually merge without reading it? 🤦‍♂️ That answer had nothing to do with the model, the ceiling was our infrastructure: what our systems could prove without a human staring at a diff.\nWe can raise this ceiling in 3 stages:\n1.  AI writes, humans verify. You review code\n2. AI verifies its own work and attaches it's work proof. You review screenshots and test runs.\n3. The closed loop where you let agents ship. You prioritize ideas.\nEach stage is unlocked by infrastructure, not the next model launch. Wrote a checklist for each stage, including what to build as a team to progress through the stages.\nIf the AI models got 10X better tomorrow, would your test suite let you ship any faster?",
+    "scraped_at": "2026-07-08T21:39:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The infrastructure-not-model framing is exactly right — every team I've watched hit the same ceiling, and it had nothing to do with which model was running.\n\nBut Stage 3 surfaces a question your framing leaves open. A closed-loop test suite proves code matches spec. What proves the spec matches intent? When agents are shipping fast enough that humans stop reading diffs, the bottleneck shifts upstream — not to the test runner, but to whatever the tests are written against. If that's still an informal pile of tickets, you've traded one human bottleneck for a quieter one.",
+        "rationale": "Exposes the next ceiling (spec-to-intent gap) Stage 3 doesn't address."
+      },
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "The 3-stage model is a clean way to think about this — and you're right that Stage 1→2 is where most teams are actually stuck right now, not for lack of model capability.\n\nWhere I'd push back slightly is on Stage 3 as the ceiling. A closed loop verifies that code does what the spec says. But when agents are moving fast, spec drift becomes the new accumulating debt — the loop closes on correctness but stays open on relevance. Which makes me wonder whether the real unlock isn't just better test infrastructure, but whether the spec itself is machine-readable enough to serve as the ground truth agents write against, not just the thing humans typed into Jira.",
+        "rationale": "Introduces spec drift as the post-Stage-3 bottleneck, grounded in source-of-truth position."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"The ceiling was our infrastructure, not the model\" — that's the uncomfortable truth most AI-assisted teams haven't named yet.\n\nCurious about the Stage 1→2 jump specifically: what did the \"work proof\" look like for the agents running through your backlog? Screenshots and test runs is the right idea, but in practice those can be gamed by an agent that knows how to make a green CI pass without the thing actually working end-to-end. Did you have to build verification that was structurally harder to satisfy than the underlying task, or did the existing test suite already have enough coverage that you trusted the proof?",
+        "rationale": "Drills into proof-gaming by the agent in the Stage 1→2 transition."
+      }
+    ],
+    "slack_summary": "The ceiling on how much AI-generated code you can merge isn't the model — it's your test/verification infrastructure, unlocked in 3 stages.",
+    "slack_ts": "1783546762.653149",
+    "slack_thread": {
+      "post_reply_ts": "1783546769.903489",
+      "draft_reply_ts": [
+        "1783546776.633519",
+        "1783546783.881589",
+        "1783546790.581099"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ara-khan-99810c96",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "3h",
+    "post_text": "There is no AI lab that I want to root for as hard as I want to root for Prime.\nIf there's any savior of \"Open\" AI left in the US, it's them.\nhttps://lnkd.in/gTAivA78",
+    "scraped_at": "2026-07-08T21:40:59Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"Open\" in scare quotes says a lot — it's doing a lot of work in that one sentence.\n\nCurious what specifically makes Prime stand out for you on this. Is it the model weights, the governance structure, the research culture, or something else? \"Open\" means pretty different things depending on who's defining it, and most labs that start with the word quietly walk it back once scale gets expensive.",
+        "rationale": "A focused question on what 'open' actually means for Prime invites Ara to elaborate."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Rooting for an AI lab that actually keeps weights open is a reasonable bet right now.\n\nThe harder question is whether any lab can stay genuinely open once the compute bills hit a certain number. \"Open\" tends to drift toward \"open for research use, closed for commercial\" the moment investors show up. What gives you confidence Prime holds the line as they scale? Genuine question — I'd like to be wrong about this one.",
+        "rationale": "Pulls toward the structural tension every 'open' lab faces as compute costs scale."
+      },
+      {
+        "strategy_label": "Provocative question (trend framing)",
+        "comment": "The framing of a single lab as the \"savior\" of open AI is interesting — and I think it tells you something about how consolidated this space has gotten.\n\nTwo years ago there were maybe five or six serious open-weight efforts worth watching. Now the honest list is shorter, and most of the others have found some form of commercial gate on the good stuff. What's Prime doing structurally that makes you think they won't follow the same path once the compute costs compound?",
+        "rationale": "Reframes with a consolidation trend, pushes Ara to defend Prime structurally."
+      }
+    ],
+    "slack_summary": "Rooting hard for Prime as the last real savior of 'Open' AI left in the US.",
+    "slack_ts": "1783546864.332399",
+    "slack_thread": {
+      "post_reply_ts": "1783546869.452289",
+      "draft_reply_ts": [
+        "1783546875.317729",
+        "1783546881.236839",
+        "1783546887.784449"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "samuel-wiskow-8c40a3ca",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/sjwiskow/",
+    "author_name": "Samuel Wiskow",
+    "author_headline": "Principal PM - GitLab.com @ GitLab | Ex P&G",
+    "time_ago": "5h",
+    "post_text": "AI Agents are undoubtedly super valuable, but can you use them on your legacy code and accelerate that slow, risky work?\nThe answer is yes - you can read about how we did it using GitLab and Duo Agent Platform in my latest post on the GitLab Blog.\nhttps://lnkd.in/eNK2y7hV",
+    "scraped_at": "2026-07-08T21:42:56Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing of \"slow, risky work\" is the honest part — most teams I've seen underestimate the risk side, not the slow side.\n\nCurious what the agent's biggest failure mode was on the legacy codebase. Specifically: when the agent couldn't infer intent from the code alone — no docs, no tests, just the implementation — did you end up feeding it more context by hand, or did the Duo platform have a way to surface that automatically?",
+        "rationale": "Post leaves the key variable — how the agent handles missing intent — unaddressed."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Yes to the value, but the \"yes you can\" answer is doing a lot of heavy lifting here.\n\nThe case that worries me is legacy code where the intent was never written down — no specs, no tests, just implementation that outlived the people who wrote it. An agent can read the code, but it can only infer what the code does, not what it was supposed to do. Those are different things, and the gap is exactly where the \"risky\" part of the work lives.\n\nWhat does the Duo Agent Platform do when it runs into that gap — does it surface the ambiguity, or does it make a judgment call and move on?",
+        "rationale": "Pulls attention to the intent-vs-implementation gap the blog post likely doesn't resolve."
+      },
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "Appreciate you being direct about the \"risky\" part — that word usually disappears in this kind of content.\n\nOne thing I'd push back on slightly: the answer is yes only if the legacy codebase has enough behavioral signal for the agent to work from. In my experience with GenAI on complex documents, an agent is only as trustworthy as the context it can anchor to. Code that has no tests, no specs, and no documentation essentially asks the agent to reverse-engineer intent from implementation — which is a different problem from acceleration, it's closer to archaeology. Have you seen a pattern for what separates the \"yes it worked\" cases from the ones that quietly produced correct-looking but wrong changes?",
+        "rationale": "Petro's GenAI experience gives standing to name the 'behavioral signal' precondition."
+      }
+    ],
+    "slack_summary": "Yes, you can point AI agents at slow, risky legacy-code work — writeup on how they did it with GitLab Duo Agent Platform.",
+    "slack_ts": "1783546982.026639",
+    "slack_thread": {
+      "post_reply_ts": "1783546987.796599",
+      "draft_reply_ts": [
+        "1783546993.629979",
+        "1783547000.121079",
+        "1783547007.145299"
+      ]
+    },
+    "slack_error": null
   }
 ]
