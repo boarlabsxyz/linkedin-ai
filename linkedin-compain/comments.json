@@ -1552,5 +1552,245 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "lenny-rachitsky-9cf49d8b",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/lennyrachitsky/",
+    "author_name": "Lenny Rachitsky",
+    "author_headline": "Deeply researched product, growth, and career advice",
+    "time_ago": "5h",
+    "post_text": "Managers are the biggest lever for happiness at work\n\"Tech workers with an extremely effective manager report much higher job enjoyment and dramatically lower burnout than those with an ineffective one.\nYet only 25.5% of tech workers rate their manager as highly effective, while 36.5% rate theirs as ineffective.\"\nFull report: https://lnkd.in/gKq4E2uC\n… more\n813\n98\n39",
+    "scraped_at": "2026-07-08T19:03:13Z",
+    "disposition": "off-topic",
+    "reason": "Generic manager effectiveness survey — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "shivam-gupta-4d9f81fc",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/shivam-gupta99/",
+    "author_name": "Shivam Gupta",
+    "author_headline": "Helping founders attract inbound clients with AI-powered content & LinkedIn strategy · Worked with 800+ brands · DM for a free audit",
+    "time_ago": "6h",
+    "post_text": "Most People Take Months to Find a Remote Job.\nSo I compiled the best remote job websites for you.\nWhether you're a freelancer, a digital nomad, or simply looking for more flexibility, these sites have it all!\n1. SolidGigs\nIt helps streamline your job hunting. A monthly membership fee grants you access to a huge resource library with courses, interviews, templates, scripts, and other tools, all with the focus of helping you land more freelance jobs.\nhttps://solidgigs.com\n2. JustRemote\nTheir platform is built specifically for people to discover the best remote job opportunities from around the world, without a focus on a particular location or region\nhttps://justremote.co\n3. Dynamite Jobs\nOver 100+ quality remote jobs are added each week to the platform—and searching for the one you want is customizable with the site's variety of filters and functionality.\nhttps://dynamitejobs.com/\n4. Remotive\nYou can search through all categories, including marketing. It's easy to see when a job has been posted, where it is located, and what speciality it falls under.\nhttps://remotive.com/\n5. Wellfound\nGreat features of this remote jobs website include discretion and salary transparency.\nhttps://wellfound.com/\n6. The Muse\nIt allows users to filter for remote positions and provides resources like career coaching and company profiles to help them land the job.\nhttps://www.themuse.com/\n7. Toptal\nToptal's primary focus is placing talented freelancers working remotely for clients like Shopify, and Thumbtack.\nhttps://www.toptal.com/\n8. Workew\nYou can bookmark specific remote jobs that sound appealing as you browse, and even sign up for Twitter notifications so you'll be alerted as soon as a new remote job hits the market.\nhttps://workew.com/\n9. Himalayas\nIt has a powerful visa and time zone filter that makes it simple to find the most carefully curated remote jobs.\nhttps://himalayas.app/\n10. Jooble\nA global employment platform in 60+ countries, connecting job seekers with opportunities from 140,000+ sources.\nhttps://jooble.org\nLinkedIn LinkedIn for Marketing\n… more\nHow to get Remote Jobs\n·\n5 pages\n63\n5\n2",
+    "scraped_at": "2026-07-08T19:03:41Z",
+    "disposition": "off-topic",
+    "reason": "Remote job websites list — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "rob-zuber-70c14b70",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/robzuber/",
+    "author_name": "Rob Zuber",
+    "author_headline": "CTO at CircleCI",
+    "time_ago": "2h",
+    "post_text": "For decades, we treated CI as the first place code got validated.\nWrite code → Push it → Let CI tell you what broke\nThat workflow made sense when humans were writing code.\nToday, we're asking delivery systems built for human-paced development to validate machine-paced development.\nThe data suggests the teams that adapt first are pulling away. The top 5% now ship 9x more validated code than the median team, up from 8x last quarter. The difference isn't that they're generating dramatically more code. It's that they know much sooner whether a change is ready to move forward.\nEvery time an agent waits several minutes for CI to report a lint error or a failing unit test, you've created unnecessary work. The agent reloads context, reprocesses information, and tries again. Those retries add up quickly. In our modeling, a 50-developer team operating at agentic pace can spend roughly $900,000 a year just getting code through validation.\nAnd most of that cost comes from finding routine problems too late.\nThe days of using CI to discover lint errors is behind us. It's now where we prove that software is ready for production.\n… more\n11\n1",
+    "scraped_at": "2026-07-08T19:20:46Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing of CI shifting from \"discovery\" to \"proof\" is sharp — that distinction reframes the whole toolchain conversation.\n\nBut if routine checks leave CI, where do they live? Pre-commit hooks and local linters have existed for decades and most teams underuse them. The gap you're describing isn't really about CI's timing — it's that validation responsibility never got pushed early enough in the first place, even for human developers. Agentic pace just makes the cost of that gap legible in dollars.\n\nWhat's your read: is this a CI redesign problem, or a \"validation should have always happened earlier\" problem that agents are just finally forcing teams to take seriously?",
+        "rationale": "Questions whether the real fix is CI itself or where validation responsibility sits — a sharper reframe"
+      },
+      {
+        "strategy_label": "Clarifying question rooted in the topic",
+        "comment": "The $900K estimate for a 50-dev team operating at agentic pace cuts through the hand-wavy \"agents are expensive\" conversation with actual numbers.\n\nCurious what assumptions drive that model most — is it primarily context reload cost (tokens plus latency per retry), or is it the wall-clock wait that blocks the agent from parallelizing other work during the CI queue? The two lead to pretty different architecture fixes: one pushes you toward faster, smarter in-process checks; the other toward CI that can report back incrementally rather than after a full run. Wondering which lever your data says moves the needle more.",
+        "rationale": "Teases out which cost driver dominates the $900K model, pointing to a concrete architecture conversation"
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "The 9x validated code throughput for top-5% teams, up from 8x last quarter, is a tighter compression than I'd have expected in a single quarter.\n\nWorth noting that the Accelerate research (Forsgren et al.) showed a similar stratification pattern in DORA elite vs low performers — but that gap took years to widen meaningfully, not quarters. If it's moving this fast now, my guess is the separating variable isn't tooling adoption speed at all — it's whether the team restructured their validation architecture first, then adopted agents, vs. layering agents on top of the old CI pipeline and hoping. Would be curious whether your data segments those two paths.",
+        "rationale": "References Forsgren/DORA to question what the separating variable actually is"
+      }
+    ],
+    "slack_summary": "CI is shifting from where you discover bugs to where you prove code is production-ready — agentic-pace teams pay ~$900K/yr finding routine problems too late.",
+    "slack_ts": "1783538454.235909",
+    "slack_thread": {
+      "post_reply_ts": "1783538463.577699",
+      "draft_reply_ts": [
+        "1783538472.662309",
+        "1783538475.656569",
+        "1783538478.949069"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kimeshan-naidoo-a8a413df",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/kimeshan/",
+    "author_name": "Kimeshan Naidoo",
+    "author_headline": "Co-Founder & CTO Familiar",
+    "time_ago": "1d",
+    "post_text": "P.S. \"No AI generated slosh, think and write please.\"\nIt's quite sad that I need to add this postscript to pretty much every email, Slack message or communication that I send these days.\nWhat most people don't realise: writing forces you to think, and thinking forces you to write better. If you can think, you can write. If you can't think, you can't write.\nIf you're outsourcing writing to AI, you're outsourcing thinking too.\nThe reason why we'll need UBI in the future is not because AI will replace jobs, it's because most people's brain and ability to think is atrophying at the speed of light right now.\nDon't let this happen to you. Make sure you write and think every day.\n… more\n21\n3\n1",
+    "scraped_at": "2026-07-08T19:23:22Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The writing-forces-thinking loop is real — I've seen it both ways in my own work.\n\nThe part I'd push on slightly: \"AI-generated writing\" and \"outsourced thinking\" aren't the same thing, though they often travel together. Someone who prompts AI, reads the output, argues with it, restructures it, and ends up somewhere different from what it produced — they used AI as a drafting layer but kept the thinking. Someone who accepts the first output and hits send — they did outsource. From the outside both look identical.\n\nThe atrophy risk you're describing is real, but the cause isn't the tool, it's the posture. Which makes your P.S. understandable, but I suspect the people who actually need it are also the ones who won't notice it matters.",
+        "rationale": "Separates AI-generated writing from outsourced thinking — the cause is posture, not the tool"
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "The framing of writing-as-thinking is something I keep coming back to — it's one of the cleaner arguments against the \"just use AI for everything\" crowd.\n\nThe UBI claim is what I'd love to stress-test though. Is there actual evidence of cognitive atrophy at scale, or is this pattern-matching from what we see in our own networks? The people who read posts like this and add a P.S. to their emails are, by definition, not the ones who switched their thinking off. I wonder if the atrophy risk is real but unevenly distributed — not a tide that lifts all boats down, but a gap that widens between people who still do the work and people who stopped. Which might be a more uncomfortable conclusion than UBI.",
+        "rationale": "Stress-tests the UBI/cognitive-atrophy claim — the weakest part of a strong post"
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The observation about needing that P.S. on every communication resonates — something has clearly shifted in what people consider acceptable to send without editing.\n\nCurious what the actual signal is for you: is it the writing quality itself that's dropped, or is it something more subtle — that the ideas behind the writing got shallower? Because those are different problems. Bad writing from AI is visible and fixable. Shallow thinking dressed in fluent prose is harder to catch, and that version of outsourcing might be the one worth actually worrying about.",
+        "rationale": "Distinguishes surface writing quality from depth of ideas — a variable he hasn't addressed"
+      }
+    ],
+    "slack_summary": "Argues that outsourcing writing to AI means outsourcing thinking, and warns cognitive atrophy — not job loss — is the real reason we'll need UBI.",
+    "slack_ts": "1783538609.389889",
+    "slack_thread": {
+      "post_reply_ts": "1783538615.917269",
+      "draft_reply_ts": [
+        "1783538625.358499",
+        "1783538628.748959",
+        "1783538631.586929"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tricia-mart-inez-saab-18cd84c7",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/tricianmartinez/",
+    "author_name": "Tricia Martínez-Saab",
+    "author_headline": "Founder & CEO, Dapple | Building the Enterprise OS Cloud | The Operating System for Enterprise AI",
+    "time_ago": "2h",
+    "post_text": "Every infrastructure cycle has a defining abstraction.\nMainframes abstracted hardware.\nVMware abstracted servers.\nAWS abstracted data centers.\nAI needs its own abstraction layer.\nBuying GPUs is the easy part.\nOperating AI across clouds, private infrastructure, sovereign environments, and enterprise security requirements is where the complexity begins.\nThat's the layer we're building at Dapple.\nNot another GPU cloud.\nThe operating layer for enterprise AI.\nHere's a clip from AI in the AM where we unpack why this matters.\n… more\n10\n\n1",
+    "scraped_at": "2026-07-08T19:25:51Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "The \"buying GPUs is the easy part\" line lands because it's exactly what we discovered the hard way.\n\nWhen building BankAI — a self-hosted GenAI for a German bank, pre-ChatGPT — we thought the hard part was the model. It wasn't. The model was maybe 20% of the effort. The other 80% was: data never leaves the sovereign boundary, here's the audit trail for every inference, the model has to run inside an air-gapped environment, and by the way, five different security teams need to sign off before it touches anything real. We were building that operating layer by accident, without a name for it.\n\nThe \"operating layer\" framing is exactly right — and the market will probably need several attempts to get it right, the same way VMware took years to become the default answer to server sprawl.",
+        "rationale": "BankAI was exactly this operating layer built by accident — sovereign, air-gapped, pre-ChatGPT"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The infrastructure abstraction pattern — Mainframes, VMware, AWS — is a clean frame and the analogy holds.\n\nOne thing it raises for me: each previous abstraction had a clear unit of what it was abstracting — hardware slots, VMs, data-center capacity. What's the unit here? In an enterprise, \"one AI workload\" is surprisingly fuzzy — an agent run, a model serving endpoint, a pipeline with five chained calls and a human-in-the-loop checkpoint. VMware's value became obvious once \"a VM\" was a clear thing to isolate and move around.\n\nWhat's the moment when \"an AI workload\" becomes well-defined enough that the operating layer snaps into place — is that a solved problem at Dapple, or still an open question?",
+        "rationale": "Asks what the primitive unit of an AI workload is — a real open question for the abstraction analogy"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The sovereign environments and enterprise security piece is the most honest part of this — those two constraints alone rule out most generic GPU cloud offerings.\n\nCurious how Dapple handles the genuinely air-gapped case: no outbound network, models on hardware the client owns, attestation chains fully under client control. That's a real segment — regulated financials, defense-adjacent, some healthcare — and it's where most \"enterprise AI operating layers\" hit a wall because their control plane still needs a SaaS callback somewhere. Is that in scope, or does Dapple's architecture assume at least some connectivity back to a hosted control plane?",
+        "rationale": "Targets the air-gapped/sovereign claim — where most enterprise AI control planes silently break"
+      }
+    ],
+    "slack_summary": "Argues every infrastructure cycle has a defining abstraction and AI needs its own operating layer — buying GPUs is easy; operating AI across sovereign/enterprise environments is the hard part Dapple is building.",
+    "slack_ts": "1783538770.676579",
+    "slack_thread": {
+      "post_reply_ts": "1783538776.647219",
+      "draft_reply_ts": [
+        "1783538784.548229",
+        "1783538788.164889",
+        "1783538791.280209"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "sebastian-huckleberry-f234fbba",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/sebastianhuckleberry/",
+    "author_name": "Sebastian Huckleberry",
+    "author_headline": "Helping teams capture the decisions AI coding agents forget",
+    "time_ago": "1d",
+    "post_text": "\"F*** your skills\" is the joke. \"And mine too\" is the point.\nWe stopped shipping production software without tests. But we're still deploying production-grade behavior into agents with little more than lucky runs, screenshots, and folklore.\nIf we're going to ship reusable agent behavior - skills, instructions, tools, and workflow habits - we need to test it like code: tasks, rubrics, trajectories, comparisons, regressions, and promotion evidence.\nThat's what `runme eval` makes easy: local evals, clear evidence, and safer promotion. Link's in the comments.\n… more\n13\n1",
+    "scraped_at": "2026-07-08T19:28:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The parallel to production software without tests is the right one to make.\n\nOne question I can't shake: who writes the rubrics? If the same coding agent that produced the skill also drafts the eval tasks and rubrics, you get the same blind spots in both. The agent will naturally write rubrics that test the behavior it knows how to produce — not the behavior the spec actually requires. It's the same problem we've been wrestling with on the validation side: when the same LLM generates both the thing and the check, passing isn't evidence of correctness, it's evidence of consistency.\n\nCurious whether runme eval has a story for rubric authorship — whether it assumes a human writes them, or whether there's a way to break the circularity when you're running fully automated.",
+        "rationale": "Surfaces the rubric-authorship circularity — if the agent writes both skill and rubric, passing means consistency not correctness"
+      },
+      {
+        "strategy_label": "Disagree and argue your position (soft counter)",
+        "comment": "Solid framing — \"lucky runs, screenshots, and folklore\" is exactly the state of most agent pipelines I've seen, including ones shipping to real users.\n\nThe thing that keeps me uncomfortable is what happens when the eval passes but the spec was wrong. Evals verify that behavior is consistent and reproducible — which is necessary but not sufficient. You can have a perfectly green eval suite for an agent that consistently does the wrong thing, because the rubric was written against the observed behavior rather than the intended behavior. We had something like this at the Bank.ai side: our German document validation passed internal checks reliably, and we only discovered a class of edge cases when a client's real documents surfaced patterns our rubrics never covered.\n\nDoes runme eval have a concept of a behavioral contract that lives above the rubric level — something that can survive a model upgrade without needing a full rubric rewrite?",
+        "rationale": "Evals verify consistency not correctness; grounded in a concrete Bank.ai edge-case discovery"
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The analogy holds, and I wish more people in the agent space were making it explicitly.\n\nHere is the part that worries me though: with production software, tests validate behavior against a spec that exists independently of the code. The code can be wrong; the spec is the judge. With agent skills, if the rubric is written by the same person (or agent) who wrote the skill, the rubric can encode the same misunderstanding. You end up with a green eval for behavior that shouldn't have been shipped in the first place — which is worse than folklore, because at least folklore doesn't give you false confidence.\n\nThe fix we reached in document generation was keeping a separate behavioral contract — written before the implementation, reviewed by domain people who didn't write the skill. Evals then ran against that contract, not against what the implementation happened to do. Slower, but it's the only way to break the circularity. Curious whether that distinction shows up in how runme eval is designed.",
+        "rationale": "Bank.ai fix — a separate behavioral contract written before implementation, reviewed by non-authors"
+      }
+    ],
+    "slack_summary": "Argues we stopped shipping software without tests but still deploy agent behavior on lucky runs and folklore — reusable agent behavior should be tested like code, which is what runme eval enables.",
+    "slack_ts": "1783538940.979949",
+    "slack_thread": {
+      "post_reply_ts": "1783538949.614669",
+      "draft_reply_ts": [
+        "1783538956.872439",
+        "1783538960.850749",
+        "1783538965.120939"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "claude-21d8dc1c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/claude/posts/",
+    "author_name": "Claude",
+    "author_headline": "",
+    "time_ago": "2h",
+    "post_text": "We analyzed a sample of 1.2 million anonymized Claude Cowork sessions and found that more than 90% fell outside software development. Most of it is everyday knowledge work.\nThe biggest share is what we'd call the work around the work: drafting a status update, building a slide deck, or condensing research into a single report. These tasks move projects forward and keep businesses running, but are rarely a person's core responsibility.\nPeople are handing that work to Claude Cowork and spending the recovered time on the parts of the job that need their judgment. A hiring manager might use it for interview scheduling and feedback summaries, freeing up time for conversations with candidates.\nRead the full analysis: https://lnkd.in/dG9yP6_F\n… more\n929\n42\n45",
+    "scraped_at": "2026-07-08T19:31:23Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 90%-outside-software figure is the kind of data point that reframes a product's positioning entirely — most AI tooling has been built with devs in mind, so this distribution is genuinely surprising.\n\nCurious whether your data surfaces a meaningful split within that knowledge-work bucket: how much is mechanical overhead (reformatting, summarizing, scheduling) versus lighter judgment work (synthesizing, deciding, proposing)? That distinction matters for understanding where the recovered time actually lands, and whether it's being reinvested or just absorbed by the next queue.",
+        "rationale": "Asks for the mechanical-vs-judgment split inside the knowledge-work bucket — where the recovered time actually lands"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"work around the work\" framing is clean and I think accurate for where most people are right now.\n\nBut that label assumes the boundary between admin overhead and judgment work is reasonably stable. If AI keeps getting better at scheduling, summarizing, and structuring — at what point does it start absorbing tasks we currently call judgment? The hiring manager example is interesting: feedback summaries feel like overhead today, but evaluating candidates from those summaries is judgment. How far is that line going to hold before the two categories start collapsing into each other?",
+        "rationale": "Pushes on the assumed stable admin/judgment boundary that AI capability growth is actively eroding"
+      },
+      {
+        "strategy_label": "Reference prior data or trends",
+        "comment": "The 90% non-dev finding matches what we saw when we automated document generation for a German bank between 2018 and 2023 — the vast majority of the load was exactly this kind of knowledge overhead: drafting loan agreements, validating investment contracts, reformatting regulatory filings. People were genuinely relieved to hand it off.\n\nWhat changed at the bank wasn't headcount. The bottleneck shifted upstream to the judgment calls — which terms to propose, which clients to flag, which exceptions needed a human read. The work didn't shrink; it relocated. Curious whether your session data shows any signal of that pattern at scale, or whether most users are still in the early \"recovery\" phase where they haven't yet hit the new bottleneck.",
+        "rationale": "BankAI knowledge-overhead automation showed the bottleneck relocates upstream to judgment, not shrinks"
+      }
+    ],
+    "slack_summary": "Analysis of 1.2M anonymized Claude Cowork sessions found 90%+ fell outside software development — mostly 'the work around the work' (status updates, decks, research), freeing people for judgment-heavy tasks.",
+    "slack_ts": "1783539089.574999",
+    "slack_thread": {
+      "post_reply_ts": "1783539096.572089",
+      "draft_reply_ts": [
+        "1783539105.257159",
+        "1783539108.274419",
+        "1783539111.843439"
+      ]
+    },
+    "slack_error": null
   }
 ]
