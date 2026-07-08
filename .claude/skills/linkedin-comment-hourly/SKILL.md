@@ -37,7 +37,7 @@ MAX_SCROLL_ITERATIONS=80
 INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
 ```
 
-Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`.
+Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URN` is `-` when not extractable (LinkedIn strips URNs from the home feed DOM as of 2026-07); `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier used as filename stem.
 
 If `POSTS_FOUND=0` (or the agent returns `ERROR=<...>`), emit the failure line, do NOT spawn Step 2, and stop. The shell driver's `git diff --quiet` check skips the commit.
 
@@ -48,8 +48,9 @@ For each of the `POSTS_FOUND` posts, **sequentially** (never in parallel — GDr
 1. Spawn `linkedin-comment-hourly-draft` via the Agent tool. Its prompt body:
 
    ```
-   POST_URN=<urn>
-   POST_URL=<url>
+   POST_KEY=<synthetic key from Agent 1>
+   POST_URN=<urn or "-">
+   POST_URL=<author profile url or "-">
    POST_AUTHOR=<author_name>
    POST_HEADLINE=<author_headline>
    POST_TEXT_B64=<base64 post text>
@@ -57,15 +58,15 @@ For each of the `POSTS_FOUND` posts, **sequentially** (never in parallel — GDr
 
    Parse the KEY=VALUE return. If `ERROR=<...>`, skip this post (log the failure inline) and continue with the next.
 
-2. Decode each variant's `VARIANT_<i>_COMMENT_B64`. Build a slug from the URN: `urn:li:activity:<id>` → `urn-li-activity-<id>` (colons become dashes; keeps macOS/Linux happy).
+2. Decode each variant's `VARIANT_<i>_COMMENT_B64`. The output filename uses the synthetic key from Agent 1 (`<author-slug>-<body-hash8>`), not the URN, because the home feed strips URNs.
 
-3. Write `./linkedin-compain/comments/urn-li-activity-<id>.json`:
+3. Write `./linkedin-compain/comments/<POST_KEY>.json`:
 
    ```json
    {
-     "urn": "urn:li:activity:<id>",
-     "id": "<id>",
-     "post_url": "<url>",
+     "key": "<POST_KEY>",
+     "urn": "<urn or null>",
+     "post_url": "<url or null>",
      "author_name": "<name>",
      "author_headline": "<headline>",
      "post_text": "<decoded text>",
@@ -78,10 +79,10 @@ For each of the `POSTS_FOUND` posts, **sequentially** (never in parallel — GDr
    }
    ```
 
-4. Format a Slack message (mrkdwn):
+4. Format a Slack message (mrkdwn). If `POST_URL` was `-` (URN not extractable), use the author profile URL instead — Peter can navigate from there:
 
    ```
-   📌 <post_url>
+   📌 <post_url or author_profile_url>
    👤 <author_name> — <author_headline>
 
    > <first ~200 chars of post_text, single line, no newlines>
@@ -107,6 +108,7 @@ Posts drafted:            <n> / 5
 Off-topic skipped:        <POSTS_OFF_TOPIC>
 Already-commented skipped: <POSTS_ALREADY_COMMENTED>
 Reposts skipped:          <POSTS_REPOSTS_SKIPPED>
+Promoted skipped:         <POSTS_PROMOTED_SKIPPED>
 Feed exhausted:           <FEED_EXHAUSTED>
 Slack messages posted:    <n>
 Slack failures:           <n>

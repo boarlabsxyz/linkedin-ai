@@ -27,6 +27,13 @@ BRANCH="chore/linkedin-comments-${TS}"
 git fetch origin main
 git checkout -B "$BRANCH" origin/main
 
+# CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 disables the 10-minute background-task
+# kill switch. The 5-post drafting pipeline (Playwright + 5 × GDrive checklist)
+# reliably exceeds 10 minutes; without this, cycle 1 got SIGTERMed mid-scrape
+# and shipped nothing. launchd's at-most-one-instance guarantee prevents overlap
+# even if a fire runs longer than the 15-min interval.
+export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
+
 echo "run linkedin comment hourly" \
   | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
   | jq -r --unbuffered '

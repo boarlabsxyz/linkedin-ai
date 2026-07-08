@@ -17,7 +17,7 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 │   ├── li-stats/                 # Raw LinkedIn analytics JSON (git-tracked, written by linkedin-stats agents)
 │   └── grafana/                  # Exported Grafana dashboard JSONs (linkedin-stats.json + linkedin-stats-posts.json) — source-of-truth snapshots
 ├── linkedin-compain/             # Every-15-min LinkedIn comment-ideas outputs (written by linkedin-comment-hourly)
-│   └── comments/                 # One JSON per post: {urn, post_url, author, post_text, variants[], slack_ts}. Also holds `.off-topic.json` and `.already-commented.json` markers used as a seen-set.
+│   └── comments/                 # One JSON per post: {key, urn?, post_url?, author, post_text, variants[], slack_ts}. Filenames use the synthetic `<author-slug>-<body-hash8>` key because LinkedIn strips URNs from the home-feed DOM (obfuscated CSS classes, no data-urn as of 2026-07). Also holds `<key>.off-topic.json` and `<key>.already-commented.json` markers used as a seen-set.
 ├── prompts/                      # Ad-hoc prompt drafts (e.g., plan-mode prompts) — checked in for reuse, not consumed by Claude Code automatically
 ├── doc/                          # Project documentation
 │   └── history/                  # Auto-captured conversation transcripts written by the hooks below (one .md per session, named <UTC-ts>-<slug>.md)
