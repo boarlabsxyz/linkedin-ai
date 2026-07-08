@@ -1,0 +1,262 @@
+[
+  {
+    "key": "dou-db91f5b7",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": null,
+    "time_ago": null,
+    "post_text": "",
+    "scraped_at": "2026-07-08T09:04:43Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian tech job market stats — hardware/embedded/frontend vacancy trends, no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "oleh-marynchuk-e7c60476",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/oleh-m-recruiter/en/",
+    "author_name": "Oleh Marynchuk",
+    "author_headline": null,
+    "time_ago": null,
+    "post_text": "",
+    "scraped_at": "2026-07-08T09:09:16Z",
+    "disposition": "off-topic",
+    "reason": "Recruitment tactics for Threads platform — HR topic with no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "yaroslav-sherstiuk-81e16cc3",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/yaroslavsherstiuk/en/",
+    "author_name": "Yaroslav Sherstiuk",
+    "author_headline": null,
+    "time_ago": null,
+    "post_text": "",
+    "scraped_at": "2026-07-08T09:09:16Z",
+    "disposition": "off-topic",
+    "reason": "Military MDMP battle planning with AI agents — interesting AI angle but primary context is military operations, not AI engineering or startups",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ethan-mollick-25121e0f",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/emollick/",
+    "author_name": "Ethan Mollick",
+    "author_headline": "Associate Professor at The Wharton School. Author of Co-Intelligence",
+    "time_ago": null,
+    "post_text": "I had Fable build another thing I always wanted, a full procedural fantasy kingdom generator with economics, trade routes, population growth, wars, lineages, disasters, geography, and occasional dragons. First, I worked with it on a plan, then it made it happen.\n\nYou can play it here: https://lnkd.in/eXx83n4t\n\n11 page prompt: https://lnkd.in/epZRiqeD",
+    "scraped_at": "2026-07-08T09:17:43Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 11-page prompt is the part that caught my attention most — sharing the actual design document alongside the playable result is a rare move.\n\nCurious how Fable handles prompt drift over time: once the world starts generating its own history (wars, lineages, disasters accumulating), does the 11-page prompt stay the authoritative source of truth for what the simulation should be, or does the generated state gradually take over as the real spec? Wondering if you've tried feeding the evolved world state back into a revised prompt, or whether that loop even makes sense in Fable's model.",
+        "rationale": "The 11-page prompt is the real artifact and raises a genuine open question about whether the prompt or the generated world state becomes the source of truth as simulation history accumulates."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"worked on a plan first, then it made it happen\" framing is the interesting part here — most people skip straight to prompting for output and skip the planning pass entirely.\n\nWhat's the failure mode you'd worry about as the simulation runs longer? My read is that the 11-page prompt embeds assumptions about how economies and lineages interact that probably hold for the first few generations but could drift as edge cases compound. Does Fable have a way to surface when the generated world state starts contradicting the design intent baked into the prompt — or is that a feature, not a bug?",
+        "rationale": "The plan-first then execute workflow is slightly under-examined; pushing on the failure mode when simulation state diverges from prompt assumptions pulls the conversation into sharper territory."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Sharing the 11-page prompt alongside the playable demo is the right call — the prompt is the actual design artifact, the generated world is just one instantiation of it.\n\nThis is worth sitting with: most people will spend 20 minutes playing the kingdom generator and zero minutes reading the prompt. But the prompt is what encodes the economics model, the disaster logic, the lineage rules. The world is disposable; the prompt is what you'd version-control. There's something here about where authorship lives when the output is procedurally generated — the author of the simulation is whoever wrote the 11 pages, not whoever clicked \"generate.\"",
+        "rationale": "Reframes the post's center of gravity from the playable world to the prompt-as-design-document, arguing the prompt is the persistent artifact and the generated world is disposable."
+      }
+    ],
+    "slack_summary": "Used Fable to build a playable procedural fantasy kingdom generator, and shared both the game and the full 11-page prompt behind it.",
+    "slack_ts": "1783502276.386279",
+    "slack_thread": {
+      "post_reply_ts": "1783502281.704929",
+      "draft_reply_ts": [
+        "1783502288.476979",
+        "1783502294.474819",
+        "1783502302.742079"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "john-ferguson-smart-632a7471",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/john-ferguson-smart/",
+    "author_name": "John Ferguson Smart",
+    "author_headline": "I help teams use AI coding tools without losing control of requirements, tests, architecture and quality | BDD, TDD & Test Automation Expert | Author of BDD in Action",
+    "time_ago": null,
+    "post_text": "Honest question for the BDD crowd: do we still need Gherkin? Spec-driven development needs executable specifications, and Gherkin (Given/When/Then) has been the default way to write them for years.\nBut I keep wondering whether it's still earning its place.\nOn the one hand, non-developers can read it, it doubles as living documentation, and the format forces clear thinking about preconditions and outcomes.\nBut on the other hand: it's a layer on top of your step definitions, and plenty of teams write Gherkin no business stakeholder ever reads. If your acceptance tests are written to be readable anyway, you get the living documentation without the extra layer.\nAI complicates things a bit more. AI can turn examples into Gherkin, but it's still pretty rubbish at writing _good_ Gherkin. It's usually capable, though, of turning examples straight into clean, readable acceptance tests. So is the Gherkin step adding understanding, or just translation overhead?\nI don't have a settled answer. Where do you land: does Gherkin still pull its weight, or has readable, code-based living documentation made it optional?",
+    "scraped_at": "2026-07-08T09:25:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The framing of Gherkin as a readability layer is the right lens — but I'd push back on the conclusion it leads to.\n\nThe case against Gherkin usually runs: stakeholders don't read it anyway, so it's just ceremony on top of step definitions. Fair. But I think that argument confuses the artifact with the process. Gherkin's real value was never the file — it was forcing a structured conversation about preconditions and outcomes before anyone touched code. That conversation is what produces the examples. If AI now turns those examples straight into tests, fine, but someone still has to have the conversation that generates the examples in the first place. Gherkin made that mandatory; dropping it doesn't make the conversation happen automatically.\n\nWhere I'm genuinely uncertain: does AI change who needs to be in that conversation? If a product manager can now describe an example in plain prose and an AI turns it into a working test, Gherkin starts to look like a format tax paid by engineers for a collaboration problem that could be solved differently. Curious whether your experience with teams using AI coding tools has shifted where you see that conversation breaking down — at the example-gathering stage, or later?",
+        "rationale": "John leaves room for disagreement; Petro's True BDD thesis (conversation over artifact) gives a genuine counter-position to the readability-layer framing without being hostile."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "The point about AI generating clean, readable acceptance tests directly from examples is the one that keeps nagging at me too.\n\nBut here's what I keep coming back to: the bottleneck was never the format. It was the quality of the examples themselves. If a team writes vague examples, AI produces clean tests for vague behavior — and they pass, because the system does exactly what the bad example described. Gherkin's structured syntax at least created friction at the source, forcing people to be specific about \"given this exact state\" rather than \"given the user is logged in somehow.\" Does readable, code-based living documentation have an equivalent forcing function, or does it just make it easier to be confidently wrong?",
+        "rationale": "The post debates the format around examples but assumes example quality is a given; this question pulls that blindspot into focus."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The observation that plenty of teams write Gherkin no business stakeholder ever reads is the one that deserves more scrutiny — because it might be diagnosing the wrong problem.\n\nWhen stakeholders don't read Gherkin, is it because the format is wrong, or because the Gherkin was never actually shown to them — never used as the conversation artifact it was designed to be, and instead written post-hoc by developers as a test-scripting language dressed up in Given/When/Then? In that case, replacing Gherkin with readable code-based tests doesn't solve the underlying collaboration gap; it just removes one more reason to have the conversation. Curious whether the teams you're seeing ditch Gherkin successfully had already solved that collaboration problem by other means, or whether they're just skipping the part where product and engineering align on behavior before writing anything.",
+        "rationale": "The 'stakeholders don't read it' claim has an unexamined variable — was Gherkin used as a collaboration tool at all? Targets that gap and invites John's field observation."
+      }
+    ],
+    "slack_summary": "Asks the BDD community whether Gherkin (Given/When/Then) still earns its place now that AI can turn examples straight into clean, readable acceptance tests.",
+    "slack_ts": "1783502720.075619",
+    "slack_thread": {
+      "post_reply_ts": "1783502727.799189",
+      "draft_reply_ts": [
+        "1783502742.872209",
+        "1783502750.050859",
+        "1783502758.407339"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "steve-hostettler-phd-3af6be46",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/stevehostettler/",
+    "author_name": "Steve Hostettler, PhD",
+    "author_headline": "Senior Technology Leader | Technology at the Service of the Business | Experienced in leading and scaling large technology organizations | Startup Advisor | Adjunct lecturer at the University of Geneva",
+    "time_ago": null,
+    "post_text": "AI is making development faster.\n\nSo why are many teams not seeing the productivity multiplier they expected?\nMy current hypothesis: because development (specifications, architecture, coding, testing) was not the only bottleneck. It was just hiding the others.\n\nAs AI accelerates local execution, the real constraints become much more visible: dependencies between teams, handoffs between roles, unclear product intent, enterprise platform queues, late validation, and component-based task splitting.\n\nIn other words, AI does not automatically improve flow. It accelerates the work until the work hits the organizational wall.\n\nI wrote a longer article on this through the lens of Spec Driven Development and Agentic PDLC : \"L'enfer, c'est les autres\" : Why AI Exposes Dependency Management as the Real Bottleneck in Software Delivery\n\nCurious where others are seeing the bottleneck move: coding, requirements, dependencies, platform self-service, or organizational design?",
+    "scraped_at": "2026-07-08T09:31:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that coding was hiding the real constraints — the moment the \"easy\" part gets fast, everything downstream becomes visible.\n\nWhere I'd push back slightly: \"unclear product intent\" isn't just an organizational problem — it's a spec problem that predates the handoff. When the spec isn't the source of truth, intent leaks at every translation step: PM to engineer, engineer to AI, AI to code. You get faster execution of the wrong thing. So in my experience the bottleneck isn't just dependencies between teams, it's that the artifact carrying intent (the spec) degrades before it reaches anyone who could act on it.\n\nWhich makes me curious about your Agentic PDLC framing specifically: when you say spec-driven development, do you mean spec-as-source (the spec is the artifact you edit, code gets derived) or spec-as-kickoff (the spec starts the work, then code takes over)? Because those two have very different answers to the dependency problem.",
+        "rationale": "Sharpens Steve's 'org bottleneck' claim by reframing unclear product intent as a spec-degradation problem upstream of any handoff — directly on Petro's public thesis."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"organizational wall\" framing is exactly right — AI doesn't improve flow, it makes the ceiling visible faster.\n\nHere's the question that sits in the back of my head though: if agentic PDLC is the proposed fix — autonomous agents spanning the full delivery lifecycle — doesn't that require those same org dependencies to be machine-readable? An agent hitting a handoff between teams still needs to know who to ask, what to ask for, and when the answer is good enough. That's not a tooling problem, it's a governance problem. And governance tends to move at the speed of the slowest stakeholder, not the fastest model. So what does \"agentic PDLC\" actually mean when the process it's automating is itself political?",
+        "rationale": "Pulls the conversation into its sharpest unexamined tension — agentic PDLC solving org bottlenecks requires those bottlenecks to be machine-readable, which they are not."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"development was hiding the other bottlenecks\" observation is the clearest way I've seen this put.\n\nYou list five candidates for where the bottleneck moves: coding, requirements, dependencies, platform self-service, organizational design. Given that you work across both enterprise orgs and startups as an advisor — do you see the bottleneck landing in different places depending on company size? My intuition is that in startups the constraint shifts to requirements clarity almost immediately, while in enterprise it's the dependency/platform queues that dominate. Curious whether that maps to what you're seeing or whether organizational design cuts across both.",
+        "rationale": "Exploits Steve's dual position as enterprise tech leader and startup advisor to ask a question requiring real comparative experience."
+      }
+    ],
+    "slack_summary": "Argues AI speeds up coding but doesn't improve flow — it just exposes the real bottlenecks (team dependencies, handoffs, unclear intent) as the organizational wall.",
+    "slack_ts": "1783503123.093079",
+    "slack_thread": {
+      "post_reply_ts": "1783503130.651579",
+      "draft_reply_ts": [
+        "1783503138.556529",
+        "1783503145.783709",
+        "1783503153.327019"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "chris-ford-361550d9",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/ctford/",
+    "author_name": "Chris Ford",
+    "author_headline": "Technology Director",
+    "time_ago": null,
+    "post_text": "From a thing I'm writing (news soon):\n\n\"When code becomes cheaper, you get a lot more of it. However, code that's easier to produce isn't automatically easier to guide to a high-quality outcome. To harness agentic coding at scale, you have to encode your intent so that it's available to coding agents.\n\nThat's where spec-driven development (SDD) comes in. A specification or spec is a harness that describes qualities that the solution must have. Spec-driven development is a software engineering approach where a spec is the primary artifact from which the implementation flows. Effective spec-driven development is about channeling intent into the code-generation process, suggesting possibilities, and constraining solutions.\n\nEarly adopters of spec-driven development with coding agents focused on unstructured Markdown as a way to build specs, but natural language is too imprecise to reliably specify systems at scale on its own. To effectively capture your expectations, your spec should make use of a variety of formats. Spec-driven development includes any kind of artefact that can guide and constrain code generation — not only Markdown, but contracts, models, examples, and tests.\"",
+    "scraped_at": "2026-07-08T09:36:39Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The point about intent encoding being the real bottleneck is one I keep running into — more code volume just makes the guidance problem more visible, not more tractable.\n\nOne thing your framing leaves open: what validates the spec itself? You describe the spec as the harness that constrains code generation, but in practice I've found that the same LLM that generates the code often generated (or refined) the spec too. When both artifacts come from the same model, passing tests aren't strong evidence that the intent was captured correctly — they're evidence that the model's interpretation of the spec was self-consistent. Curious whether you see a practical answer to that, or whether this is one of the things the piece addresses.",
+        "rationale": "Opens a precise, unresolved question in Chris's framing (LLM-generated spec validated by LLM-generated tests) without contradicting his thesis."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The multi-format point lands well — contracts, models, examples, and tests each carry intent that prose can't.\n\nThe harder question underneath it: what happens to the spec once the code exists? Most of the tools and practices I've seen treat the spec as the primary artifact at project start, but the code quietly becomes the source of truth the moment an agent (or a human) edits it directly. The spec becomes aspirational documentation rather than a constraint. So the real design challenge might not be \"how do we write better specs\" but \"how do we make editing the code directly more expensive than editing the spec.\" Does your piece go there?",
+        "rationale": "Sharpens a blindspot — spec primacy at generation time vs. at iteration time — with a reframe that's contrarian but not hostile."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed on the Markdown-only path — natural language gives agents too much interpretive freedom, and at scale that freedom accumulates into drift.\n\nOne tension I'd push on: the framing here is that the spec is the artifact from which implementation flows, which is true at generation time. But what's the failure mode at iteration time? When a stakeholder asks for a change and the developer edits the code directly — or an agent does — the spec stops being the primary artifact without anyone deciding that. The interesting spec-driven designs I've seen have to answer the question of whether editing the code is even permitted, or whether all changes must come through the spec. That boundary is where \"spec-driven\" separates into quite different things in practice.",
+        "rationale": "Introduces the spec-anchored vs. spec-as-source divide as a counter-framing, adding a specific boundary the post doesn't draw."
+      }
+    ],
+    "slack_summary": "Previews a piece on spec-driven development: to scale agentic coding you must encode intent as the primary artifact, using not just Markdown but contracts, models, examples, and tests.",
+    "slack_ts": "1783503405.588099",
+    "slack_thread": {
+      "post_reply_ts": "1783503414.931289",
+      "draft_reply_ts": [
+        "1783503421.753539",
+        "1783503428.334889",
+        "1783503435.795239"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "bryan-finster-34f4c3eb",
+    "urn": "urn:li:share:7475511946310717440",
+    "post_url": "https://www.linkedin.com/in/bryan-finster/",
+    "author_name": "Bryan Finster",
+    "author_headline": "Developer - MinimumCD.org co-author, SADMF.com certified",
+    "time_ago": null,
+    "post_text": "This repository has never been reviewed by me. It's 100% maintained by robots. It was built from \"this is what I need\" and \"this isn't working as expected. Here's what good looks like.\" while using my code review and test design review skills.\nhttps://lnkd.in/gB9Mpfqb\nHere's the experiment:\nSome people claim building things this way will result in  unmaintInable garbage and growing tech debt.\nCode review it and demonstrate the claim.",
+    "scraped_at": "2026-07-08T09:42:03Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The challenge is a good one — code review is exactly the right pressure test here, not vibes-based \"it feels messy.\"\n\nThe variable I'd add though: the quality of human feedback you're providing isn't free. \"Here's what good looks like\" presupposes someone who already knows what good looks like — you're essentially running a spec-as-feedback loop with a strong senior reviewer in the chair. The question that would really break or validate the experiment is: what does the maintainability curve look like if the human in the loop is a mid-level engineer who's learned to accept whatever AI produces? Because then you're not testing \"can robots maintain a codebase\" — you're testing \"can a strong human steer robots to maintain a codebase,\" which is a narrower and more honest claim.",
+        "rationale": "Surfaces the hidden variable (expert human in the loop) that the experiment conflates with 'robots maintaining code,' pushing Bryan toward a sharper claim boundary."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The experiment is fair, and I think the people predicting garbage will mostly be wrong — for the wrong reasons.\n\nMy counter to the \"growing tech debt\" crowd isn't about code quality, it's about determinism over time. If two robots build from the same feedback history, do they produce consistent behaviour? Because if the answer is \"kind of,\" then the code is still the source of truth, and someone still has to review everything it produces — which means the human is still the bottleneck. The maintainability question and the consistency question look the same on day one and diverge badly by month six. Curious whether you've seen that show up yet in this repo.",
+        "rationale": "Brings Petro's thesis (determinism over time is the real test, not day-one code quality) into the debate, adding a concrete dimension beyond what the challengers measure."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Setting up a public code review as the burden-of-proof mechanism is the right move — claims about unmaintainability tend to evaporate when you have to show the specific line where it breaks down.\n\nOne thing I'm curious about: when you say you're using your \"code review and test design review skills\" as the steering mechanism — how explicit is that feedback? Are you writing it as structured acceptance criteria, or is it more conversational? Asking because the feedback format seems like it could be the actual variable that determines whether this stays coherent as the codebase grows.",
+        "rationale": "Targets the unexamined input format (structured vs. conversational feedback) as the variable Bryan hasn't addressed."
+      }
+    ],
+    "slack_summary": "Shares a repo he's never reviewed, 100% maintained by AI agents, and challenges skeptics to code-review it and prove the 'unmaintainable garbage / tech debt' claim.",
+    "slack_ts": "1783503730.382419",
+    "slack_thread": {
+      "post_reply_ts": "1783503736.638579",
+      "draft_reply_ts": [
+        "1783503743.724039",
+        "1783503751.258119",
+        "1783503763.224989"
+      ]
+    },
+    "slack_error": null
+  }
+]

@@ -6,9 +6,9 @@ description: >
   CSS classes and no data-urn attributes as of 2026), classifies each card
   against interests.md, filters out already-seen / already-commented / repost /
   promoted / off-topic cards, and returns exactly TARGET_COUNT post structs (or
-  fewer if the feed truly ends). Writes marker files under SEEN_DIR for
-  off-topic and already-commented cards so the next fire doesn't reclassify
-  them. Returns a strict KEY=VALUE contract.
+  fewer if the feed truly ends). Appends off-topic and already-commented entries
+  (with full post text) to the single COMMENTS_FILE array so the next fire
+  doesn't reclassify them. Returns a strict KEY=VALUE contract.
 tools: Bash, Read, Write, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
 ---
@@ -31,7 +31,7 @@ The URN is best-effort — populated when we can find `urn:li:(activity|ugcPost|
 
 ## Inputs (passed in the caller's prompt)
 
-- **SEEN_DIR** — folder containing all previously handled post markers. Default: `./linkedin-compain/comments/`
+- **COMMENTS_FILE** — the single JSON-array file holding every handled post (drafted + filtered), one object per post. Doubles as the cross-fire seen-set. Default: `./linkedin-compain/comments.json`
 - **TARGET_COUNT** — how many good posts to return. Default: `5`.
 - **MAX_SCROLL_ITERATIONS** — safety cap. Default: `80`.
 - **INTERESTS_FILE** — path to the interest classification categories. Default: `.claude/skills/linkedin-comment-hourly/interests.md`.
@@ -72,13 +72,21 @@ ERROR=<NETWORK|AUTH|SCRAPE|FS|UNKNOWN>
 
 ### 1. Load interests + seen-set
 
+Ensure the comments file exists (an empty JSON array if this is the first fire):
+
 ```bash
-mkdir -p <SEEN_DIR>
+[ -f "<COMMENTS_FILE>" ] || printf '[]\n' > "<COMMENTS_FILE>"
 ```
 
 Read `INTERESTS_FILE` (via the Read tool) and hold its categories in mind — you'll use them to classify each candidate post inline (no tool call needed, you're the classifier).
 
-Build the seen-set by listing filenames under `<SEEN_DIR>`. The seen-key is the filename stem before any `.` suffix — matches `<key>.json`, `<key>.off-topic.json`, `<key>.already-commented.json`, or the legacy `urn-li-activity-<id>*.json` markers from earlier fires. Store the set of stems.
+Build the seen-set from the keys already recorded in `<COMMENTS_FILE>` — one line per key:
+
+```bash
+jq -r '.[].key' "<COMMENTS_FILE>"
+```
+
+Store the returned keys as the seen-set. Every entry in the file (drafted, off-topic, or already-commented) counts — a key present here means the post was handled on a prior fire and must be skipped. `repost` / `promoted` cards are never written to the file, so they never enter the seen-set (they may legitimately reappear as originals later).
 
 ### 2. Open a NEW browser tab
 
@@ -218,8 +226,8 @@ Run this via `mcp__playwright__browser_evaluate`:
 
 For each card:
 
-1. **Skip if promoted** → `promotedSkippedCount++`. No marker file (promoted cards rotate and are not stable identifiers).
-2. **Skip if repost** → `repostsSkippedCount++`. No marker (may reappear as original later).
+1. **Skip if promoted** → `promotedSkippedCount++`. Not written to `<COMMENTS_FILE>` (promoted cards rotate and are not stable identifiers).
+2. **Skip if repost** → `repostsSkippedCount++`. Not written (may reappear as original later).
 3. Build the synthetic key: `key = author-slug + '-' + body-hash8` via Bash:
    ```bash
    author_slug=$(printf '%s' "$author" | iconv -t ASCII//TRANSLIT 2>/dev/null | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g; s/--*/-/g; s/^-//; s/-$//' | cut -c1-40)
@@ -227,16 +235,33 @@ For each card:
    key="${author_slug}-${body_hash}"
    ```
 4. **Skip if key in seen-set OR in seenInRun** (silent).
-5. **Skip if already-commented** → `alreadyCommentedCount++` and write marker `<SEEN_DIR>/<key>.already-commented.json`:
-   ```json
-   { "key": "<key>", "urn": "<urn or null>", "post_url_hint": "<authorUrl>", "author_name": "<author>", "scraped_at": "<ISO 8601 UTC now>", "reason": "already-commented" }
-   ```
+5. **Skip if already-commented** → `alreadyCommentedCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"already-commented"` (see the append helper below), then add the key to `seenInRun`.
 6. **Classify** the body text against `interests.md` categories. Bias toward inclusion.
-7. **Off-topic** → `offTopicCount++` and write `<SEEN_DIR>/<key>.off-topic.json`:
-   ```json
-   { "key": "<key>", "urn": "<urn or null>", "post_url_hint": "<authorUrl>", "author_name": "<author>", "scraped_at": "<ISO 8601 UTC now>", "off_topic_reason": "<one line>" }
-   ```
-8. **Relevant** → append `{ key, urn, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`.
+7. **Off-topic** → `offTopicCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"off-topic"` and a one-line `reason`, then add the key to `seenInRun`.
+8. **Relevant** → append `{ key, urn, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
+
+#### Append helper (filtered entries)
+
+Both off-topic and already-commented use the same read-modify-write. `<COMMENTS_FILE>` is a JSON array; append one object built with `jq -n` (so text, quotes, and newlines are encoded safely — never hand-write JSON). `disposition` is `off-topic` or `already-commented`; `reason` is your one-line classification note (for already-commented, use `"already-commented"`):
+
+```bash
+NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+entry=$(jq -n \
+  --arg key "$key" --arg urn "$urn" --arg url "$authorUrl" \
+  --arg author "$author" --arg headline "$headline" --arg time "$timeAgo" \
+  --arg text "$bodyText" --arg now "$NOW" \
+  --arg disp "$disposition" --arg reason "$reason" \
+  '{key:$key, urn:(if $urn=="" or $urn=="-" then null else $urn end),
+    post_url:(if $url=="" then null else $url end),
+    author_name:$author, author_headline:$headline, time_ago:$time,
+    post_text:$text, scraped_at:$now, disposition:$disp, reason:$reason,
+    variants:[], slack_summary:null, slack_ts:null,
+    slack_thread:{post_reply_ts:null, draft_reply_ts:[]}, slack_error:null}')
+tmp=$(mktemp)
+jq --argjson e "$entry" '. + [$e]' "<COMMENTS_FILE>" > "$tmp" && mv "$tmp" "<COMMENTS_FILE>"
+```
+
+The full `post_text` is stored on every filtered entry so a later run (or a human) can re-evaluate the classification without re-scraping.
 
 #### 3b. Expand truncated bodies
 
@@ -303,12 +328,13 @@ Final message shape (see contract at top).
 - Do **not** invent URNs. Populate `POST_i_URN=-` when not found; the orchestrator handles the null case.
 - Do **not** invent post text. If you can't scrape a card cleanly, skip it.
 - Do **not** classify without reading `interests.md`.
-- Do **not** write markers for promoted or repost cards. They're not stable identifiers.
+- Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.
+- Do **not** hand-write JSON into `<COMMENTS_FILE>` — always build entries with `jq -n` and append with `jq '. + [$e]'`, so the array never gets corrupted.
 - Do **not** add prose after the final contract block.
 
 ## Failure modes
 
 - Page never loads / 429 / auth wall → snapshot for debug, close tab, emit `ERROR=NETWORK` (or `ERROR=AUTH` if a login form appears).
 - No `button[aria-label*="control menu"]` buttons found at all → `ERROR=SCRAPE`.
-- `mkdir` / `Write` fails → `ERROR=FS`.
+- Cannot read or append to `<COMMENTS_FILE>` (jq error, unwritable path) → `ERROR=FS`.
 - Anything else → `ERROR=UNKNOWN` with a short prose explanation **before** the contract line.
