@@ -638,5 +638,165 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "tessl-a7452bc4",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/tesslio/posts/",
+    "author_name": "Tessl",
+    "author_headline": "",
+    "time_ago": "3h",
+    "post_text": "AI can generate skills in seconds.\nThe difficult part is knowing whether those changes are actually ready to merge.\nTessl introduces the new Tessl Review, a major upgrade that helps teams review AI-generated skill changes against the standards that matter to their organisation.\nEvery team has a different idea of what \"good\" looks like. Some care about architecture patterns, others prioritise security, coding conventions, domain-specific requirements, or internal best practices. A single default score can't capture all of that.\nWith custom review rubrics, you can define your own review criteria and evaluate skills against your team's standards, not somebody else's.\nThe new review experience also brings more accurate agentic reviews, a shared history of review runs, and tessl review fix to help improve skills that don't meet the quality bar.\nBecause faster software delivery shouldn't come at the cost of quality.\nRead the blog to learn how Tessl Review helps teams build, review, and improve skills with confidence.\nhttps://lnkd.in/gnxgtHny",
+    "scraped_at": "2026-07-08T14:15:29Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing is right — a single default score can't capture what \"good\" means across teams, and the rubric direction is the honest answer to that.\n\nOne thing I keep wondering about with custom rubrics: who validates the rubric itself? A team defines their criteria, the rubric runs, skills get a score — but if the rubric has a blind spot (say, it checks architecture patterns but under-weights a security assumption the team made three years ago), the review passes clean and no one notices until a merge that shouldn't have happened. You're essentially adding a layer of policy that carries its own drift problem. What's the mechanism in Tessl Review for catching when the rubric itself is out of date?",
+        "rationale": "Post solves universal-scores-dont-fit but leaves the rubric-drift meta-problem open; pushes to a sharper place."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Agreed that the bottleneck is the review step, not the generation step — and that \"not somebody else's standards\" is the right design principle.\n\nCurious what \"more accurate agentic reviews\" means concretely. What was the failure mode of the previous version that this upgrades? Asking because agentic review can fail in a few different ways — missing context about intent vs. implementation, over-indexing on style over correctness, hallucinating a rubric criterion as satisfied — and knowing which one you improved against would tell me a lot about where the hard problem actually sits.",
+        "rationale": "'More accurate agentic reviews' is a claim without a named tradeoff; a specific question forces the author to show their work."
+      },
+      {
+        "strategy_label": "Disagree",
+        "comment": "Custom rubrics solving the \"one score doesn't fit all teams\" problem — yes, that's the right diagnosis.\n\nThe part I'd push back on is whether rubrics shift the bottleneck or just rename it. If a team has to define, maintain, and update their rubric over time, that's meaningful work — and the harder the codebase, the more precise the rubric needs to be to catch real issues. My working hypothesis is that as long as the rubric lives in prose (however well-structured), you still need a human to judge edge cases the rubric didn't anticipate. The review burden doesn't go away; it moves one level up. What would it take for the rubric itself to be machine-verifiable, so the loop closes without a human in the way?",
+        "rationale": "Petro's published position (review remains the bottleneck) gives standing to argue rubrics shift the burden up, not away."
+      }
+    ],
+    "slack_summary": "Tessl launches Tessl Review — custom rubrics that check AI-generated skill changes against each team's own definition of good before merge.",
+    "slack_ts": "1783520140.042339",
+    "slack_thread": {
+      "post_reply_ts": "1783520149.536999",
+      "draft_reply_ts": [
+        "1783520159.495339",
+        "1783520165.546469",
+        "1783520173.495789"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jonathan-schneider-ecc177f5",
+    "urn": "urn:li:activity:7478074531094548482",
+    "post_url": "https://www.linkedin.com/in/jonkschneider/",
+    "author_name": "Jonathan Schneider",
+    "author_headline": "Co-founder @ Moderne | Java Champion | founder OpenRewrite - OSS automated refactoring",
+    "time_ago": "1w",
+    "post_text": "Ouch. That's cold. 6 months after the \"nobody looks at the IDE anymore\" trend, one missing bang and it's like CC doesn't even know that IntelliJ exists, haha.\nThe reality is though, I'm looking more and more at the IDE. At a minimum, I'm finding I need to cut absurdly verbose comments everywhere. The comment pattern that I feel is particularly detrimental is the one that basically records what the code USED to do, or did in some iteration towards the final design, not what it CURRENTLY does. So there is a token record of discarded ideas that jointly serve as a kind of gravity well sucking a model back to those discarded ideas.\nStrangely the better the model gets, the more convoluted the code is getting. A lot of folks are saying it doesn't matter, that engineers should move up the stack and become product managers and designers and even that models should stop writing in human-centric programming languages altogether.\nI went through a phase where I used Zed just because it was faster to ! start from a CC session. It's faster though because it's far less capable. So I've boomeranged a bit. Slow is smooth, smooth is fast.",
+    "scraped_at": "2026-07-08T14:25:50Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"gravity well of discarded ideas\" framing is the most precise diagnosis of this problem I've read. A stale comment recording what the code used to do isn't noise — from the model's perspective, it's a signal, and a confident one.\n\nWhich makes me wonder: is the actual problem the capable IDE, or is it that inline comments are the closest thing the model has to a source of truth — and that source of truth happens to be contaminated? Cutting verbose comments is a patch. The failure mode you're describing sounds more like what happens when history lives inside the file instead of somewhere the model can read it before touching anything. What's your read on whether the problem survives if you give the model a clean spec document and strip comments entirely?",
+        "rationale": "Pulls the conversation past the IDE debate into the real unaddressed variable — whether moving the source of truth out of the file eliminates the gravity well entirely."
+      },
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "The gravity well observation is right, and it points at something most people are still walking past. A comment recording what the code used to do isn't an inert artifact — the model treats it as documentation. So the pull isn't random noise; it's the model being faithful to the wrong source of truth.\n\nI'd push back slightly on \"slow is smooth\" as the conclusion, though. Switching back to a capable IDE still leaves the same stale comment problem in the files — just with better tooling around it. The bet I'd make is that the real fix isn't IDE choice but source of truth: move the intent somewhere structured (a spec, a behavior doc, anything versioned outside the code) that the model reads first, so the inline comment stops being the most authoritative thing in context. Then the gravity well collapses because there's a stronger attractor. Curious whether you've experimented with that direction or if it feels like it trades one class of problem for another.",
+        "rationale": "Engages directly with Jonathan's 'slow is smooth' conclusion and redirects the diagnosis toward source-of-truth architecture, consistent with Petro's public thesis."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The gravity well framing is sharp — and it's a different problem than \"the model is bad at code.\" It's that the model is good at reading what's in front of it, and what's in front of it is a record of things you already decided not to do.\n\nCurious how far you've pushed the comment-cutting: if you stripped inline comments almost entirely and instead gave the model a short external spec file describing current intent before every session, does the convoluted-code tendency go away, or does it find other things to anchor on? Asking because that seems like the natural experiment to isolate whether the gravity well is specifically a comment problem or a \"model needs some prior context and will use whatever's available\" problem.",
+        "rationale": "Surfaces the specific unexamined variable (external spec vs inline comments) with enough precision that answering requires Jonathan to have actually tried it."
+      }
+    ],
+    "slack_summary": "Argues stale 'what the code used to do' comments act as a gravity well pulling AI models back to discarded designs; he's looking at the IDE more, not less.",
+    "slack_ts": "1783520757.332119",
+    "slack_thread": {
+      "post_reply_ts": "1783520770.718279",
+      "draft_reply_ts": [
+        "1783520784.969549",
+        "1783520796.093179",
+        "1783520803.891799"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "raj-bharathi-01c6b025",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rajbharathi/",
+    "author_name": "Raj Bharathi",
+    "author_headline": "CEO @KronosX AI | Building the agentic data layer that makes Healthcare AI-Ready.",
+    "time_ago": "1d",
+    "post_text": "Before AI can transform healthcare, it has to understand healthcare.\nThat's where most organizations get stuck.\nThe conversation today is dominated by bigger models, smarter agents, and new capabilities.\nBut after spending years working with health plans and building KronosX AI, I realized that biggest challenge isn't the AI, It's the data foundation underneath it.\nIn my latest newsletter, I share why AI-Ready Data is becoming the real competitive advantage, why infrastructure is quietly becoming the biggest AI investment, and what healthcare organizations need to get right before AI can create meaningful value.\nIf you're building, buying, or deploying AI in healthcare, I'd love to hear whether you've seen the same challenges.\nLink to the newsletter below.",
+    "scraped_at": "2026-07-08T14:32:41Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "We built a similar thing in banking before ChatGPT — a self-hosted GenAI trained on several million German-language loan and investment documents. The gap between our go-kart and GPT-4's Formula 1 car was enormous, and yet ours held up better for that specific task for years. The reason was exactly what you're describing: the model \"understood\" German banking documents because every training example, every validation loop, every failure mode was shaped around that domain's data structure.\n\nHealthcare is a harder version of the same problem. Banking has messy data; healthcare has messy data plus regulatory constraints on how you can even touch it. I'd be curious what you've found to be the hardest part of the \"AI-Ready\" step — is it the schema normalization, the consent and access layer, or something you didn't see coming until you were deep in it?",
+        "rationale": "Petro's BankAI experience (documented 05.03.2026 post) is a direct analogue — domain-specific AI winning because of how the data was shaped, which is exactly Raj's thesis applied to healthcare."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing \"AI-Ready Data\" resonates — the model is rarely the bottleneck, the data contract underneath it usually is.\n\nOne thing I'm curious about: when you say \"AI-Ready,\" do you mean the data needs to be structured and labeled so a model can consume it, or something deeper — like a semantic layer that encodes healthcare-specific relationships (diagnoses, procedures, payer logic) so the AI doesn't have to hallucinate them from general pretraining? Those feel like two very different problems, and the second one is an order of magnitude harder to sell as infrastructure investment.",
+        "rationale": "The post uses 'AI-Ready Data' as a given without defining it — asking Raj to distinguish structural labeling from semantic encoding forces a more precise conversation."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The infrastructure argument is solid, and I think you're right that it's underweighted in the current conversation.\n\nThe question I'd push on: data infrastructure in healthcare tends to get built once and then become organizational bedrock — which means the early movers don't just get a head start, they potentially lock in the ontology that every downstream AI application inherits. Is that a feature or a bug? Because if the ontology is wrong, or if it bakes in historical biases in how conditions are coded, \"AI-Ready\" might just mean \"faster propagation of existing structural problems.\"",
+        "rationale": "The post celebrates early infrastructure investment but doesn't examine the risk of locking in a flawed ontology — surfacing this sharpens the conversation without being hostile."
+      }
+    ],
+    "slack_summary": "Argues healthcare AI's real bottleneck isn't the models but the 'AI-Ready' data foundation underneath, which he sees becoming the biggest quiet AI investment.",
+    "slack_ts": "1783521172.752049",
+    "slack_thread": {
+      "post_reply_ts": "1783521180.521599",
+      "draft_reply_ts": [
+        "1783521188.855279",
+        "1783521204.478289",
+        "1783521210.900319"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "matej-senozetnik-1637311f",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/matejsenozetnik/",
+    "author_name": "Matej Senožetnik",
+    "author_headline": "Founder @MS Innovation Hub | AI & Custom Software | We're Hiring Developers Passionate About AI",
+    "time_ago": "1d",
+    "post_text": "I think the hardest part of building software has changed. 🤔\nA few years ago, the biggest challenge was simply getting an idea built.\nYou needed developers, time, budget, and a lot of patience. Execution was the bottleneck.\nToday, that's no longer true.\nWith AI, you can build prototypes, automate workflows, or even launch an MVP in days instead of months.\nBut after working with companies across manufacturing, logistics, and other industries, I've realized something.\nBuilding the solution is no longer the difficult part.\nGetting people to actually use it is.\nI've seen technically great solutions fail because they didn't fit into the way people work. At the same time, I've seen relatively simple tools create huge value because they solved one annoying problem that employees faced every day.\nThat's why most of our conversations with clients don't start with AI.\nThey start with questions like:\n👉 Where do people lose the most time?\n👉 Which process frustrates employees the most?\n👉 What information are people constantly searching for?\nOnly after we understand that do we start talking about technology.\nAI has dramatically reduced the cost of building software.\nIt hasn't reduced the cost of understanding people.\nAnd I think that's becoming the real competitive advantage.\nThe companies that win won't necessarily be the ones building the most AI.\nThey'll be the ones building AI that people actually want to use.\nHave you seen this in your own company?\n#ArtificialIntelligence #DigitalTransformation #BusinessTransformation #ProcessImprovement #Operations #Manufacturing #Leadership #MSiHub",
+    "scraped_at": "2026-07-08T14:39:07Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The shift from \"execution is the bottleneck\" to \"adoption is the bottleneck\" is something I keep watching play out across the teams we work with — and you've named it cleanly.\n\nWhat I'm curious about: how do you run those discovery conversations in practice? The three questions you list (where do people lose time, what frustrates them, what are they always searching for) — are you doing structured process observation on-site, or is this mostly interviews? I ask because we've found that what people say in a conversation and what they actually do in front of a screen diverge pretty significantly, especially in manufacturing contexts where the workaround is so habitual nobody thinks to mention it.",
+        "rationale": "The post names the right questions to ask but doesn't say how — this pulls the conversation into the methodology gap that matters most for practitioners."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"AI has dramatically reduced the cost of building software. It hasn't reduced the cost of understanding people.\" — that's the most precise sentence I've read on this topic in months.\n\nOne thing I'd push on though: if building got cheap and fast, there's a risk that the slow feedback loops that used to teach us what people actually needed get compressed too. When a prototype took six months, you had to talk to users for those six months. When it takes two weeks, you can skip that and just ship — and call the silence \"validation.\" The bottleneck shifting to adoption might partly be a symptom of moving so fast that we're learning less along the way, not just building the wrong things.",
+        "rationale": "The post is optimistic about AI's role but misses that speed-to-build may compress the learning loops that built institutional knowledge about users — a sharper angle without being hostile."
+      },
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "Agree that execution is no longer the bottleneck — and the framing around \"understanding people\" being the real moat holds up in our work too.\n\nI'd add one complication though: not all companies that build AI people want to use will actually stay ahead, because \"want to use\" is a moving target. I've seen a pattern where teams ship something employees genuinely adopt, feel satisfied, then 18 months later the tool is shelf-ware again — not because it got worse, but because what people needed evolved and nobody had a process for catching that. Building AI people want to use is the entry requirement. Having a system that keeps learning what they want after deployment might be the actual competitive advantage.",
+        "rationale": "The post's conclusion is right but incomplete — the real differentiator is a continuous learning loop post-deployment, not just the initial fit."
+      }
+    ],
+    "slack_summary": "Argues AI made building software cheap, so the hard part is now adoption — getting people to use it; understanding people is the real competitive advantage.",
+    "slack_ts": "1783521556.160359",
+    "slack_thread": {
+      "post_reply_ts": "1783521566.682149",
+      "draft_reply_ts": [
+        "1783521574.266889",
+        "1783521581.713759",
+        "1783521593.491009"
+      ]
+    },
+    "slack_error": null
   }
 ]
