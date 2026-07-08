@@ -6,7 +6,7 @@ description: >
   return 2-3 comment variants as a strict KEY=VALUE contract. Runs in an isolated
   context so the ~4 GDrive/GDoc reads per post never touch the orchestrator's
   window.
-tools: Read, Skill, mcp__claude_ai_GDrive__listFolderContents, mcp__claude_ai_GDrive__downloadDriveFile, mcp__claude_ai_GDoc__readGoogleDoc, mcp__claude_ai_GDoc__searchGoogleDocs
+tools: Bash, Read, Write, Skill, mcp__claude_ai_GDrive__listFolderContents, mcp__claude_ai_GDrive__downloadDriveFile, mcp__claude_ai_GDoc__readGoogleDoc, mcp__claude_ai_GDoc__searchGoogleDocs
 model: sonnet
 ---
 
@@ -48,9 +48,13 @@ ERROR=<SKILL|PARSE|UNKNOWN>
 
 ### 1. Decode the post text
 
+Run this via the **Bash tool** (you have it — do not decode base64 in your head):
+
 ```bash
-POST_TEXT=$(printf '%s' "$POST_TEXT_B64" | base64 -d)
+printf '%s' "<POST_TEXT_B64 value>" | base64 -d
 ```
+
+Read the decoded text from the command output. Never eyeball-decode base64 — LLMs corrupt it character-by-character.
 
 ### 2. Invoke Skill(linkedin-comment-ideas)
 
@@ -89,13 +93,34 @@ Extract those three pieces per variant. Common shapes to handle:
 - Plain: `Strategy N — <label>`
 - Rationale line: `_Why this fits:_ ...` or `Rationale: ...`
 
-### 4. Emit the contract
+### 4. Encode each comment via the shell (never by hand)
 
-Base64-encode each comment text to survive newlines in the KEY=VALUE format:
+**Do not compute base64 in your head.** That is how corruption (`unlocks(when` instead of `unlocks when`) enters the pipeline. Instead, round-trip through real shell tools:
 
-```bash
-VARIANT_1_COMMENT_B64=$(printf '%s' "$comment_text" | base64 | tr -d '\n')
-```
+1. For each variant `i`, write the ready-to-paste comment text to a temp file with the **Write tool** (exact bytes — no shell quoting, no manual encoding):
+
+   ```
+   ./tmp/draft-<POST_KEY>-v<i>.txt
+   ```
+
+2. Run this single **Bash** command to encode every variant and self-verify each one round-trips (`decode(encode(x)) == x`). It aborts with `ENCODE_MISMATCH` rather than emit a corrupted blob:
+
+   ```bash
+   for i in 1 2 3; do
+     f="./tmp/draft-<POST_KEY>-v${i}.txt"
+     [ -f "$f" ] || continue
+     txt=$(cat "$f")                                   # $(…) strips trailing newlines → clean paste-ready text
+     b64=$(printf '%s' "$txt" | base64 | tr -d '\n')
+     if [ "$(printf '%s' "$b64" | base64 -d)" != "$txt" ]; then
+       echo "ENCODE_MISMATCH v${i}" >&2; exit 1
+     fi
+     echo "VARIANT_${i}_COMMENT_B64=$b64"
+   done
+   ```
+
+3. Copy each `VARIANT_<i>_COMMENT_B64=…` line **verbatim** from the command output into the contract — do not retype or alter the blob. If the command printed `ENCODE_MISMATCH`, re-write that temp file and re-run; never emit an unverified blob.
+
+4. Clean up: `rm -f ./tmp/draft-<POST_KEY>-v*.txt`.
 
 Then emit exactly the contract shape above. **No prose after the contract block.**
 
@@ -104,11 +129,13 @@ Then emit exactly the contract shape above. **No prose after the contract block.
 - Do **not** open Playwright. Post text arrives pre-scraped.
 - Do **not** invent post content or comment content. If the skill returns something you can't parse, emit `ERROR=PARSE`.
 - Do **not** post the comment to LinkedIn or Slack — that's the orchestrator's job.
-- Do **not** write files. The orchestrator writes the JSON.
+- Do **not** write the output JSON — the orchestrator does that. The only files you write are the throwaway `./tmp/draft-*.txt` encode buffers, which you delete in step 4.
+- Do **not** hand-compute or hand-edit any base64 blob. Every `*_B64` value must come straight from a Bash command's output that round-trip-verified it.
 - Do **not** skip the pre-work checklist. The Posted-folder de-dup and Transcripts sourcing are why we spend the tokens.
 
 ## Failure modes
 
 - `Skill(linkedin-comment-ideas)` returns an error or an obvious refusal → `ERROR=SKILL`.
 - Skill output can't be parsed into 2-3 variants → `ERROR=PARSE`.
+- The encode command prints `ENCODE_MISMATCH` and you cannot get a clean round-trip after re-writing the temp file → `ERROR=UNKNOWN` (never emit the corrupted blob).
 - Anything else → `ERROR=UNKNOWN` with a short prose explanation **before** the contract line.
