@@ -43,7 +43,11 @@ echo "run linkedin comment hourly" \
       // empty
     '
 
-if git diff --quiet -- linkedin-compain/ && git diff --cached --quiet -- linkedin-compain/; then
+# git diff --quiet only sees TRACKED changes; the skill writes untracked new JSON
+# files under linkedin-compain/comments/, so git status --porcelain is what we
+# actually need to detect them. Earlier fires wrote real drafts + posted to
+# Slack but this check said "no changes" and skipped the PR.
+if [ -z "$(git status --porcelain -- linkedin-compain/)" ]; then
     echo "No changes under linkedin-compain/ — skipping commit/PR." >&2
     exit 0
 fi
