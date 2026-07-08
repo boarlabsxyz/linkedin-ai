@@ -1412,5 +1412,145 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "zhanna-yenikieieva-7baed6be",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/zhanna-yenikieieva-pm/",
+    "author_name": "Zhanna Yenikieieva",
+    "author_headline": "Senior Product Manager | Web, Mobile B2C& B2B |",
+    "time_ago": "4h",
+    "post_text": "Connect\nЯ не іду на DOU product day\nДуже близький родич, другий батько помер в понеділок\nЦе дуже важка подія для моєї родини і для мене\nАле я вас прошу ідіть на івент і шліть фото\nhttps://lnkd.in/eNxjeSqb\nЗнижка на квиток ту спільноті….\n… more\nShow translation\n85\n26\n​",
+    "scraped_at": "2026-07-08T18:35:21Z",
+    "disposition": "off-topic",
+    "reason": "Personal bereavement post about a family loss; no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "nilesh-bansal-f7d1707a",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/nileshbansal/",
+    "author_name": "Nilesh Bansal",
+    "author_headline": "Founder/CTO | PhD in AI/ML | 2x Exits (Sysomos, Aislelabs) | Built & Scaled Teams to 100+ | Hands-On, Customer-Facing Engineering Leader",
+    "time_ago": "21h",
+    "post_text": "Software engineer == editor-in-chief of machine-written code?\n🔥 Unpopular opinion from someone shipping with coding agents daily: the hard part of engineering leadership got harder, not easier.\n🤖 Agents write the code. But taste — what to build, what \"good\" looks like, when to say no — doesn't compress. If anything, cheap code means more of it gets written, and the cost of weak technical judgment compounds faster.\n📰 The role of a senior engineer is quietly becoming: editor-in-chief of machine-written code.\nAgree or overblown? 👇\n… more\n25\n7\n​",
+    "scraped_at": "2026-07-08T18:47:30Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue position",
+        "comment": "The \"editor-in-chief\" framing resonates — taste really doesn't compress. But I'd push on one thing: the metaphor positions the senior engineer downstream of the code, cleaning up after the agent. What I keep noticing is the real judgment point is upstream — in the spec, not the review. If the behavior description is sharp, the agent produces something worth editing. If it isn't, you're not editing, you're rewriting with extra steps. So the new skill might not be editorial so much as spec authorship — and that's a different muscle than most senior engineers have ever had to develop.",
+        "rationale": "Agrees with the core (taste doesn't compress) but redirects the metaphor — senior judgment is upstream in the spec, not downstream in code review, matching Petro's TrueBDD thesis."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "The point about compounding judgment costs is the sharpest thing in here — agreed completely. One thing I keep sitting with: if \"what to build\" and \"what good looks like\" are the non-compressible parts, and agents can now produce 10x more code per day, does the math work out to something like \"one senior engineer per ten junior-plus-agent pairs\"? Or does the judgment demand scale differently — because the editor-in-chief model assumes senior engineers stay useful in proportion to volume, and I'm not convinced that holds linearly.",
+        "rationale": "Pulls out an unexamined assumption — whether judgment scales linearly with code volume — a sharp non-hostile provocation for a founder/CTO."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing of \"editor-in-chief\" is apt, and the point about compounding weak judgment is something I haven't seen articulated this cleanly. Curious what the practical form of \"taste\" looks like for you when output volume explodes — are you catching failure modes earlier in the spec or requirements stage, or primarily at the code review stage? I ask because building with coding agents daily, I've found the most expensive mistakes happen before the agent writes a line, not after.",
+        "rationale": "Acknowledges the framing, then asks where taste actually fires — upstream spec vs downstream review — grounding Petro's practitioner credibility."
+      }
+    ],
+    "slack_summary": "Argues senior engineers are becoming editor-in-chief of machine-written code — agents write code but taste and judgment don't compress.",
+    "slack_ts": "1783536464.188799",
+    "slack_thread": {
+      "post_reply_ts": "1783536483.318789",
+      "draft_reply_ts": [
+        "1783536490.144959",
+        "1783536496.099429",
+        "1783536512.183869"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tricia-mart-inez-saab-06143889",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/tricianmartinez/",
+    "author_name": "Tricia Martínez-Saab",
+    "author_headline": "Founder & CEO, Dapple | Building the Enterprise OS Cloud | The Operating System for Enterprise AI",
+    "time_ago": "2h",
+    "post_text": "Every infrastructure cycle has a defining abstraction.\nMainframes abstracted hardware.\nVMware abstracted servers.\nAWS abstracted data centers.\nAI needs its own abstraction layer.\nBuying GPUs is the easy part.\nOperating AI across clouds, private infrastructure, sovereign environments, and enterprise security requirements is where the complexity begins.\nThat's the layer we're building at Dapple.\nNot another GPU cloud.\nThe operating layer for enterprise AI.\nHere's a clip from AI in the AM where we unpack why this matters.\n… more\n9\n​\n1",
+    "scraped_at": "2026-07-08T18:50:07Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The history-of-abstractions framing is clean — and the sovereignty piece is the one I hadn't seen foregrounded before in this conversation.\n\nGenuine question: when you operate across sovereign environments with different data residency rules, does the abstraction layer need to be stateless by design, or does state management end up being where the real complexity lives? Curious whether you see that as a configuration problem or an architectural one.",
+        "rationale": "Surfaces the stateless-vs-stateful design question as a concrete unaddressed variable in Dapple's multi-sovereign thesis, requiring a real technical answer."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Agreed that the operating layer is where complexity begins — buying GPUs is genuinely the easy part.\n\nHere's what I keep wondering: each prior abstraction (VMware, AWS) eventually became a lock-in vector — the thing that was supposed to free you from the layer below locked you into the layer above. What's the design choice you're making at Dapple that stops the enterprise OS from becoming the new infrastructure dependency they can't escape in five years?",
+        "rationale": "Uses the abstraction-becomes-lock-in pattern from infra history to push Dapple's thesis into a sharper, under-examined place without being hostile."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The operating-layer framing maps onto something I ran into building BankAI — a self-hosted GenAI system for a German bank, pre-ChatGPT.\n\nThe GPU procurement was easy. What consumed 80% of the engineering effort was the surrounding scaffolding: air-gapped deployment, data residency, audit logging that satisfied German banking regulators, integration with identity systems the bank had run for 15 years. None of that was model work. It was exactly the operating layer you're describing. When you're selling into enterprise security requirements, the model is almost a detail compared to everything wrapped around it.",
+        "rationale": "Anchors acknowledgment in a real BankAI experience showing the operating-layer complexity from inside enterprise AI deployment, validating the thesis with specifics."
+      }
+    ],
+    "slack_summary": "Every infra cycle has a defining abstraction; AI needs its own operating layer across clouds, sovereign, and enterprise security — what Dapple is building.",
+    "slack_ts": "1783536629.453469",
+    "slack_thread": {
+      "post_reply_ts": "1783536635.927419",
+      "draft_reply_ts": [
+        "1783536641.756629",
+        "1783536648.297729",
+        "1783536654.848569"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-rauch-10aeccf6",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rauchg/",
+    "author_name": "Guillermo Rauch",
+    "author_headline": "CEO at Vercel",
+    "time_ago": "3d",
+    "post_text": "🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.\nFascinating to see the fluctuations among the labs, Anthropic's dominance, and the rise of open weight AI.\n… more\n299\n25\n13",
+    "scraped_at": "2026-07-08T18:52:32Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Anthropic's dominance in the spend race is the number that stands out most to me here — especially given how aggressive the pricing competition has been over the last year.\n\nWhat's your read on what's actually driving it? From where I sit, watching teams choose models for production work, it feels less like raw benchmark scores and more like trust in reliability and consistency across long-context tasks. But I'm curious whether the Gateway data gives you any signal on that — or is spend share mostly a function of which model the dev reached for first and never switched off?",
+        "rationale": "Rauch claims Anthropic's dominance but leaves the driver unexplained — a specific question about trust/reliability vs first-mover lock-in pulls out a genuinely interesting variable."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The rise of open-weight AI in the spend chart is the part I keep staring at.\n\nThe natural end state of that curve is developers running capable-enough models locally or on their own infra — which means gateway traffic doesn't grow proportionally with overall token consumption. At what quality threshold do you think open-weight models start pulling meaningful volume away from the hosted providers in your data? Or is the gateway still mostly where open-weight traffic lands too, just routed differently?",
+        "rationale": "The open-weight rise is the sharpest blindspot in the post — pushing on what it means for gateway volume is a provocative framing directly relevant to Vercel's business."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "The fluctuations among labs are the interesting part to me — a year ago the conventional wisdom was that the top models would converge on quality and price would decide everything. The spend data you're showing suggests differentiation is stickier than that.\n\nMy hypothesis: developers don't switch models mid-project even when a cheaper alternative pulls ahead on benchmarks, because the switching cost (re-tuning prompts, different failure modes, different context handling) is high enough that the benchmark delta has to be significant before it's worth it. Does the Gateway data give you any signal on how long incumbency lasts after a new model ships?",
+        "rationale": "Contrasts the year-ago commoditization narrative against what the spend data shows, proposes a switching-cost hypothesis, invites Rauch to confirm or correct."
+      }
+    ],
+    "slack_summary": "Animated the token-spend race across AI labs from Vercel AI Gateway data — highlights Anthropic's dominance and the rise of open-weight models.",
+    "slack_ts": "1783536756.928889",
+    "slack_thread": {
+      "post_reply_ts": "1783536761.568809",
+      "draft_reply_ts": [
+        "1783536769.580959",
+        "1783536778.452409",
+        "1783536795.135879"
+      ]
+    },
+    "slack_error": null
   }
 ]
