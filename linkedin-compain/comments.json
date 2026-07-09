@@ -3780,5 +3780,225 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "andrii-nikishaiev-ua-aababab2",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/creotiv/",
+    "author_name": "Andrii Nikishaiev UA",
+    "author_headline": "Solution Architect | Making your business profitable",
+    "time_ago": "1d",
+    "post_text": "Connect\nІ як же рф узнала що на тому складі у Вишневому є зброя... Навіть і не знаю...\nShow translation\n35\n18\n​",
+    "scraped_at": "2026-07-09T10:31:07Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian-language political post about Russia/weapons warehouse — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "daniel-i-3326b7bd",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/ingitaraj/",
+    "author_name": "Daniel I.",
+    "author_headline": "Head of Product Engineering | Enterprise AI Agents & Automation | Helping Businesses Reimagine Work",
+    "time_ago": "17h",
+    "post_text": "Last week, while reviewing yet another AI-generated pull request, something struck me.  The code was...fine. Actually, more than fine. It compiled. The tests passed.\nBut I still spent the next hour trying to convince myself it wouldn't break something three months from now.\nThat's when it hit me.\nWe've all been saying AI makes software faster.\nI'm starting to think that's only half true.\nIt reminds me of something city planners figured out years ago.\nBuilding another flyover doesn't always solve traffic.\nSometimes it just moves the bottleneck to the next intersection.\nAI feels a bit like that. We're spending a lot less time writing code.\nWe're spending a lot more time asking:\n\"𝐂𝐚𝐧 𝐈 𝐭𝐫𝐮𝐬𝐭 𝐭𝐡𝐢𝐬?\"\nRegression tests-> Verification-> Security-> Evaluation-> Traceability-> Trust\nI hadn't really noticed it until recently, but most of my engineering conversations aren't about writing code anymore.\nThey're about proving the code deserves to be trusted.\nMaybe that's where software engineering is heading.\nNot less engineering. Just a different kind.\n… more\n15\n13\n2",
+    "scraped_at": "2026-07-09T10:49:48Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The flyover analogy nails it — more capacity at one point just reveals the next constraint downstream.\n\nI'd add one layer though. The bottleneck didn't just move to \"can I trust this code\" — it moved to \"can I trust the spec that generated this code.\" Because if the AI drifts from the intended behaviour during generation, no amount of regression testing will catch it: the tests are validating what the code does, not what you actually meant. The question that keeps me up is who validates the validator when both the code and the tests come from the same model interpreting the same prompt.\n\nYour traceability arrow is the right direction. Curious what you're using as the authoritative source for \"this is what it should do\" — is it a behavioural spec, acceptance criteria in tickets, or something the team writes after the fact to match what shipped?",
+        "rationale": "Opens a pointed follow-up question about the authoritative source for intended behaviour — directly relevant to Petro's spec-as-source-of-truth work, without pitching it."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The chain you laid out — Regression → Verification → Security → Evaluation → Traceability → Trust — that's the real map of where engineering time actually goes in the AI era.\n\nHere's the thing that bothers me about it: every step in that chain is still a human reading something. Which means the throughput cap is the same as before, just the thing being read changed from \"the code\" to \"the evidence that the code is correct.\" That's progress on the quality side, but it doesn't unstick the bottleneck — it moves it one abstraction up. What would it take for the traceability layer itself to be machine-verifiable, so the trust question gets an answer without a human having to form it?\n\nNot a rhetorical question — genuinely curious what the trust-without-review-overhead path looks like in your teams.",
+        "rationale": "Pushes Daniel's own framework to its logical limit — human-in-the-loop at every trust step means the throughput cap didn't move, just shifted form."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The city planner framing is sharp — more lanes just moves the jam to the next intersection.\n\nI'm not sure I fully agree that trust is the final destination though. Trust in what exactly? The code behaviour? The security posture? Or the intent behind the original requirement? These feel like different problems with different solutions, and collapsing them into one \"trust\" question might be making the intersection even narrower than it needs to be. A behavioural spec that survives a full regeneration of the codebase gives you a different kind of confidence than a passing test suite does — it tells you the intent held, not just that the current implementation didn't break.\n\nWhat's the piece of the chain you've found hardest to automate — the verification step or the traceability one?",
+        "rationale": "Challenges the framing that 'trust' is one thing — argues it splits into behavioural, security, and intent-level problems, each needing a different solution."
+      }
+    ],
+    "slack_summary": "Argues AI didn't just make coding faster — it shifted engineering effort from writing code to proving the code deserves to be trusted.",
+    "slack_ts": "1783594198.473249",
+    "slack_thread": {
+      "post_reply_ts": "1783594210.973349",
+      "draft_reply_ts": [
+        "1783594219.021049",
+        "1783594227.316309",
+        "1783594234.923099"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "david-cushman-18993a72",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/davidcushman/",
+    "author_name": "David Cushman",
+    "author_headline": "AI-augmented and proud of it. HFS Research Executive Research Leader | Generative and Agentic AI, AGI & Autonomous | Services as Software | Generative Enterprise | Physical AI | Silicon Valley |",
+    "time_ago": "1h",
+    "post_text": "Cursor and SpaceX just released Grok 4.5 - the first model built entirely from scratch by both teams (you may recall SpaceX recently acquired Cursor for $60billion - but they have been working alongside each other for several months now even while the deal was being finalised). The new model matches or beats frontier models on software engineering benchmarks, sits at the Pareto frontier for price-to-performance, and undercuts comparable models significantly ($2/M input, $6/M output.\nThere will always be new models. Its Cursor's vision and continuing delivery on it that excites me. They recognised that most of the money in enterprise AI is in the SDLC - and have focused hard on serving that reality.\nThe SDLC is where agentic AI found its first real, paying, scaled use case.\nCursor saw that early and bet the company on it. It built first-party models focused relentlessly on the SDLC and its ties to SpaceX now give it lab-level compute to compete directly with the frontier labs. That focus is what sparked its extraordinary growth, and what turned a developer tool into a frontier-model contender. Phil Fersht and I covered this in our recent HFS highlight on Cursor's enterprise pivot (read it here: https://lnkd.in/gh92e959).\nThe lesson for this moment in the story of enterprise AI? Depth beats breadth. Cursor didn't try to be the AI for everything. It picked the one workflow where value is provable, spend is defensible, and ROI is visible, then went deeper than anyone else.\nMoves like eliminating token fees and standing up a CFO Council show it knows exactly who signs enterprise checks.\nAnd for enterprise buyers: Cursor needs your logo as much as you need SDLC acceleration. Use that leverage.\nKevin Kimes Neeraj Satpall Phil Fersht Saurabh Gupta Ashish Chaturvedi Hansa Iyengar Ashwin Venkatesan Joel M.\n… more\n3",
+    "scraped_at": "2026-07-09T10:53:38Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The \"depth beats breadth\" framing lands exactly right for me.\n\nWe built BankAI starting in 2018 — basically a ChatGPT for German banking, before ChatGPT existed. 17 people, self-hosted, trained on several million banking documents. Technologically it was a go-kart next to the frontier labs' Formula 1 cars. And yet it was better at generating and validating German-language investment contracts than anything else on the market, for years, because those frontier models were spread too thin to care about that specific slice of the SDLC. A European bank acquired it in 2023. It only got shut down in summer 2025 when OpenAI finally caught up in that narrow corner.\n\nSame pattern Cursor ran: pick the one workflow where the value is measurable and the domain knowledge is defensible, then go deeper than anyone else wants to go. The go-kart wins its track not because it's faster overall — it wins because Formula 1 doesn't bother showing up there.",
+        "rationale": "Petro's BankAI (2018-2023) is a documented, verified case of the exact depth-over-breadth strategy Cushman argues — narrow domain focus beating frontier-scale competitors in a specific SDLC slice."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The move to eliminate token fees is the most interesting signal here, and I think it deserves unpacking.\n\nCursor pricing SDLC access as a seat rather than as compute changes the enterprise conversation in a specific way — the CFO no longer has a variable line item that scales with usage, which is exactly what makes AI spend hard to defend in budget cycles. It's essentially absorbing the cost unpredictability that kills enterprise AI adoption at the procurement stage.\n\nCurious how you see this playing out when the next contract renewal comes around: does Cursor's leverage here increase or decrease once SpaceX's compute advantage is more visible? The buyer-power argument you end with feels right now, but I wonder if the Pareto frontier pricing is the opening move in a longer negotiation.",
+        "rationale": "Cushman names the CFO Council and token-fee elimination as proof of enterprise savvy but doesn't examine the buyer-power dynamic post-SpaceX acquisition — a specific, answerable question for an HFS analyst."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Agreed that the SDLC was where agentic AI found its first real, paying use case — I've been saying this for a while and I think the data is pretty clear on it.\n\nOne thing I keep turning over: Cursor's entire credibility with developers came from being a neutral tool that worked with whatever model you preferred. Now they're a frontier lab with first-party models and lab-level compute from SpaceX. The incentive structure shifts. At some point the tool that was agnostic about which model runs under the hood starts having a very strong opinion about it.\n\nHow do enterprise buyers factor that into procurement decisions? Vendor lock-in concerns with AI providers are already a real friction point. Adding model-layer lock-in on top of workflow-layer lock-in seems like a genuine risk the CFO Council conversation will eventually hit.",
+        "rationale": "The post praises Cursor's enterprise positioning but leaves the model-neutrality tension unexamined — raising vendor lock-in risk is a pointed, non-hostile push on a real blind spot."
+      }
+    ],
+    "slack_summary": "On Cursor + SpaceX's new Grok 4.5 model: argues Cursor won enterprise AI by going deep on the SDLC workflow rather than trying to be the AI for everything.",
+    "slack_ts": "1783594423.871399",
+    "slack_thread": {
+      "post_reply_ts": "1783594434.882959",
+      "draft_reply_ts": [
+        "1783594444.346099",
+        "1783594455.518029",
+        "1783594463.800489"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "zoe-scaman-a185661f",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/zoescaman/",
+    "author_name": "Zoe Scaman",
+    "author_headline": "Founder, Bodacious · CSO, 77X (Luka Dončić) · Creator of The Whetstone · Keynote Speaker",
+    "time_ago": "2d",
+    "post_text": "Brilliant piece of analysis on the 'cognitive debt' panic around AI.\n'The neuroscience finding that has done the most public work in the AI era rests on fifty-four people writing timed essays in a lab near Boston.'\n'The team called the pattern cognitive debt, and the phrase did what good phrases do. It travelled. What travelled with it was almost everything the paper had not said. The authors posted a plea asking readers not to conclude that the tool makes people dumber. The lead author gave interviews saying the findings had been misunderstood. It made no difference. A preprint that had not yet been through peer review became a civilisational verdict inside a news cycle, quoted in staff rooms and at dinner tables, its cautious connectivity measures mutating in transit into confident percentages of lost brain activity that appear nowhere in the paper.'\n'Earlier this year I wrote about what I called the thinking class: the people paid to produce legible cognition, the writers, analysts, academics and consultants whose outputs are words and decisions. My class. I argued that much of the AI anxiety presented as concern for humanity is that class's anxiety about the collapse of its premium. The decline panic adds a layer the economic story misses. The demand to preserve unassisted thought defends the premium, and it does something else besides. It has become a purity ritual.'\n'I want to be fair to the ritual, because purity rituals are sincere. Nobody performing one believes they are performing. The longhand drafters believe in the longhand, usually with reason; slow practices are often good practices, and I keep several of my own. The trouble starts when the ritual leaves the practitioner and reaches other people as advice, then as policy, then as shame. And the shame lands unevenly. It lands hardest on the people with the least slack.'\nhttps://lnkd.in/ea_3SzMR\n… more\nThe People Warning About AI Brain Rot Can Afford to Think Slowly\nThe People Warning About AI Brain Rot Can Afford to Think Slowly\nhybridhorizons.substack.com\n96\n19\n5",
+    "scraped_at": "2026-07-09T10:57:15Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The piece nails how the \"cognitive debt\" preprint mutated in transit — cautious connectivity measures becoming confident percentages of lost brain activity that appear nowhere in the paper.\n\nThe distinction I'd push on: the article argues for purity rituals being sincere without examining whether the ritual actually preserves what it claims to preserve. \"Slow practices are often good practices\" — agreed. But which cognitive capabilities specifically require unassisted practice to develop, versus which ones survive (or improve with) assistance? That question never gets answered in the public debate, just assumed. Without an answer, it's hard to know whether the people with the most slack are preserving something real or something that feels real because they're the ones defining what real looks like.",
+        "rationale": "Opens with specific agreement on the preprint mutation point, then turns on the one gap Zoe leaves open — the ritual's actual preservative function — without attacking her thesis."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The most honest part of this piece is the last paragraph — shame landing hardest on the people with the least slack.\n\nThe uncomfortable follow-on is: those same people often can't afford the purity ritual even if they wanted to. If you're billing by output and AI doubles output per hour, declining to use it isn't a principled stand — it's an economic penalty. The thinking class gets to perform unassisted thought; everyone else either adapts or gets outcompeted by someone who did. So the ritual doesn't just land unevenly — it actively widens the gap it claims to be worried about.",
+        "rationale": "Takes Zoe's own most pointed observation and sharpens it one step further — the ritual isn't just unequal, it's actively regressive."
+      },
+      {
+        "strategy_label": "Disagree and argue",
+        "comment": "Zoe captures something real about motivated reasoning — the demand to preserve unassisted thought defends a premium, and people performing the ritual usually don't know they're performing.\n\nOne place I'd push back a little: the piece treats both poles (panic about cognitive debt vs. comfort with AI assistance) as roughly symmetric positions. From where I sit, they're not. The people performing the purity ritual have the luxury of paying a small productivity cost as a signal; the people without that luxury are making an actual bet on whether cognitive dependency materializes. Seven years building production GenAI — before it became a career signal to have an opinion on it — my honest read is that we genuinely don't know which capabilities atrophy and which don't. The panic was wrong about the mechanism. That doesn't mean the underlying concern has no substance.",
+        "rationale": "Agrees with the class-anxiety diagnosis then offers a genuine counter — the two poles aren't symmetric, and the piece understates that the dependency question remains genuinely open."
+      }
+    ],
+    "slack_summary": "Shares an analysis arguing the AI cognitive-debt/brain-rot panic is a purity ritual defended by knowledge workers, built on an over-read preprint — landing hardest on those with the least slack.",
+    "slack_ts": "1783594643.782619",
+    "slack_thread": {
+      "post_reply_ts": "1783594658.550489",
+      "draft_reply_ts": [
+        "1783594665.922739",
+        "1783594672.686039",
+        "1783594682.514679"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "graeme-cox-c63692f6",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/graemercox/",
+    "author_name": "Graeme Cox",
+    "author_headline": "Founder & CEO, Attercop | We build AI for private equity, not just advise on it | AI-Cybersecurity founder (exit to Secureworks) | AI-Medtech/Deeptech co-founder (multiple awards & patents)",
+    "time_ago": "2h",
+    "post_text": "The conversation about AI agents has almost entirely been about what they can do. I've been more interested in what happens when they get it wrong.\nAgents are no longer experimental. They're approving transactions, handling customer interactions, making recommendations that feed into real decisions. The speed is the point, and in most organisations the oversight hasn't kept pace with it. When something goes wrong at that speed, across multiple systems with limited human review, the failure doesn't stay contained for long.\nI've seen this play out in a few different ways. A misconfigured agent producing outputs nobody caught because the volume made manual checking impractical. Accountability questions that turned out to have no clear answer because nobody had defined who owned the agent's decisions. These aren't edge cases. They're what happens when deployment runs ahead of governance, which is most places right now.\nThe EU AI Act is going to make this harder to ignore. Transparency and accountability requirements don't sit comfortably alongside autonomous systems that nobody has formally taken ownership of. Getting that ownership structure in place before it becomes a regulatory question is considerably easier than doing it under scrutiny.\nThis is why we built Attercop. Not to slow down agent deployment, but to give organisations the visibility and governance layer that makes it sustainable. Understanding what your agents are doing, knowing when something has gone wrong, and being able to explain it to an auditor or a board are solvable problems. They just need to be treated as part of the build, not bolted on afterwards.\n#AIInnovation #AutonomousSystems #AICompliance\n… more\n2",
+    "scraped_at": "2026-07-09T11:01:00Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"deployment runs ahead of governance\" framing is exactly right, and the accountability vacuum is the part that doesn't get enough attention.\n\nOne thing I keep running into: even when teams do try to define ownership before deployment, the definition tends to break at system boundaries. An agent that touches a CRM, a billing service, and a customer comms channel is effectively owned by three different teams — and when it does something unexpected, each team's first move is to show it was someone else's problem. The EU AI Act's transparency requirements are going to make that a lot harder to hand-wave, but they don't resolve the underlying structure question.\n\nCurious how Attercop handles the multi-team case — is ownership modelled as a single responsible party per agent, or can it reflect the actual distributed accountability structure?",
+        "rationale": "Extends Petro's structural-safeguards thesis to the cross-team ownership problem, then asks a pointed product question that requires Graeme to think through his own design."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"misconfigured agent producing outputs nobody caught because the volume made manual checking impractical\" example lands — that's exactly where the feedback loop breaks.\n\nWhat worries me slightly about the governance-layer approach is that it still assumes humans can define the oversight rules in advance, before the agent surprises them. In the cases I've seen go wrong, the specific failure mode wasn't one anyone had thought to guard against — the agent found a path nobody had specified. So the question isn't just \"do we have visibility?\" but \"does visibility surface novel failure modes fast enough, or does it mainly help us write the post-mortem?\" The speed at which multi-system failures compound is the same speed at which a governance dashboard that tracks known patterns becomes irrelevant.\n\nWhat does the early-warning side of Attercop look like — is it mostly pattern-matching against known bad states, or is there something that catches genuinely novel behaviour before it compounds?",
+        "rationale": "Picks the sharpest under-examined tension — governance dashboards tracking known patterns may be too slow for novel failure modes — and asks Graeme to reveal how Attercop addresses it."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The distinction between \"governance bolted on afterwards\" and \"governance as part of the build\" is the right one. The problem is that most teams don't even know they've made that choice — they just deploy, and then discover they made the bolted-on version by default.\n\nI've been thinking about this from a slightly different angle: the accountability gap usually isn't about visibility after the fact, it's about what happens before deployment when nobody has formally asked \"if this agent does X, who is responsible?\" A governance layer surfaces that question once something's gone wrong. What I'd want to see more of is the question getting asked at the design stage — not as a compliance checkbox, but as a design constraint that actually changes what the agent is allowed to do unilaterally.\n\nDoes Attercop touch that pre-deployment side, or is it primarily an observability and post-hoc accountability tool?",
+        "rationale": "Aligns with Petro's deterministic-gates view then pushes the post's conclusion one step further — from visibility to pre-deployment design constraints — with a genuine product question."
+      }
+    ],
+    "slack_summary": "Argues AI-agent deployment is running ahead of governance, creating an accountability vacuum, and ownership + oversight need to be built in before the EU AI Act makes it a regulatory problem.",
+    "slack_ts": "1783594866.372539",
+    "slack_thread": {
+      "post_reply_ts": "1783594876.070349",
+      "draft_reply_ts": [
+        "1783594883.669089",
+        "1783594890.923639",
+        "1783594898.297239"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-rauch-089db0f1",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/rauchg/",
+    "author_name": "Guillermo Rauch",
+    "author_headline": "CEO at Vercel",
+    "time_ago": "4d",
+    "post_text": "🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.\nFascinating to see the fluctuations among the labs, Anthropic's dominance, and the rise of open weight AI.\n… more\n308\n25\n13",
+    "scraped_at": "2026-07-09T11:03:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The Gateway dataset is genuinely rare — most model comparisons are synthetic benchmarks, not production token spend at this scale.\n\nWhat does \"fluctuations among the labs\" actually look like week-over-week? Specifically curious whether the open-weight share is growing continuously or whether it spikes after a major model release and then drifts back — the two patterns would tell you something very different about how developers are making switching decisions.",
+        "rationale": "The post names fluctuations but shows only the end-state snapshot — a well-targeted question about the shape of the fluctuation surfaces real analytical depth without contradicting anything Petro has written."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Anthropic's dominance in a gateway aggregating millions of developers is a signal worth taking seriously — that's not noise.\n\nThe question it raises for me: is this sticky, or is it the 2024–2025 OpenAI story playing out again with different names? OpenAI looked dominant until developers found a better cost-to-capability point and moved. If open-weight share is rising from a low base, the real question might be whether there's a floor — or whether at some price-performance crossover, the dominance number reverses faster than the apps built on top of it can adapt.",
+        "rationale": "Petro's anti-hype practitioner stance makes the is-dominance-sticky angle credible — echoes his pattern of comparing current AI enthusiasm against past cycles without dismissing the signal."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "Lifetime aggregated data is a strong base — it smooths out the launch-week spikes you'd see in shorter windows.\n\nEighteen months ago the same gateway would have shown a very different picture: OpenAI heavily dominant, open weights barely registering. The shift to Anthropic leadership and a measurable open-weight share reflects something structural — developers stopped treating model choice as a one-time infrastructure call and started treating it as an ongoing tradeoff between cost, capability, and control. My guess is open weights are growing where latency or data-residency constraints rule out API calls, and proprietary models are holding where the task requires top-end reasoning. Curious whether the data supports that split or whether the patterns are messier than that.",
+        "rationale": "The post implicitly invites a trend comparison — anchors the Anthropic shift against the known OpenAI-dominant baseline and proposes a structural hypothesis, fitting Petro's practitioner voice."
+      }
+    ],
+    "slack_summary": "Shares an animation of the token-spend race across AI labs from lifetime Vercel AI Gateway usage — highlighting Anthropic's dominance and the rise of open-weight models.",
+    "slack_ts": "1783595005.898769",
+    "slack_thread": {
+      "post_reply_ts": "1783595010.963399",
+      "draft_reply_ts": [
+        "1783595016.230749",
+        "1783595022.264089",
+        "1783595029.293009"
+      ]
+    },
+    "slack_error": null
   }
 ]
