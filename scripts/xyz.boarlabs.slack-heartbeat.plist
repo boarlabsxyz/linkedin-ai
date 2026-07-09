@@ -14,40 +14,43 @@
         <string>/Users/peterovchinnikov/cron_workers/linkedin-ai/worker/scripts/slack-heartbeat.sh</string>
     </array>
 
+    <!--
+      Schedule (local time), Minute :15 throughout, every 6 hours (hours 0,6,12,18).
+      Each entry carries a Weekday so launchd scopes it to that day
+      (0/7=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat):
+        Sat, Sun        - no fires
+        Mon (Weekday 1) - 12:15, 18:15                (from noon, every 6h)
+        Tue-Fri (2-5)   - 00:15, 06:15, 12:15, 18:15  (every 6h)
+    -->
     <key>StartCalendarInterval</key>
     <array>
-        <dict>
-            <key>Hour</key><integer>0</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>3</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>6</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>9</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>12</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>15</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>18</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
-        <dict>
-            <key>Hour</key><integer>21</integer>
-            <key>Minute</key><integer>15</integer>
-        </dict>
+        <!-- Monday: from noon, every 6h -->
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>18</integer><key>Minute</key><integer>15</integer></dict>
+
+        <!-- Tuesday: every 6h -->
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>0</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>18</integer><key>Minute</key><integer>15</integer></dict>
+
+        <!-- Wednesday: every 6h -->
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>0</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>18</integer><key>Minute</key><integer>15</integer></dict>
+
+        <!-- Thursday: every 6h -->
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>0</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>18</integer><key>Minute</key><integer>15</integer></dict>
+
+        <!-- Friday: every 6h -->
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>0</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>6</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>12</integer><key>Minute</key><integer>15</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>18</integer><key>Minute</key><integer>15</integer></dict>
     </array>
 
     <key>EnvironmentVariables</key>
