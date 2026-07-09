@@ -111,7 +111,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
 
 4. **Post a compact summary to the main channel**, then thread the details underneath. First compose a one-line summary of the post yourself (what is this post about? — ≤150 chars, plain English, no marketing words). Then:
 
-   **4a. Main-channel message** — `mcp__claude_ai_Slack__postMessage` with `channel_id=C0BF606R4N7`, body:
+   **4a. Main-channel message** — `mcp__claude_ai_Slack_Bot__postMessage` with `channel_id=C0BF606R4N7`, body:
 
    ```
    📌 *<author_name>* — <author_headline>
@@ -120,7 +120,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
 
    Capture the returned `ts` — call it `parent_ts`. Store it in the JSON as `slack_ts`.
 
-   **4b. Thread reply — the post itself** — `mcp__claude_ai_Slack__replyInThread` (or `postMessage` with `thread_ts=parent_ts`) with body:
+   **4b. Thread reply — the post itself** — `mcp__claude_ai_Slack_Bot__replyInThread` (or `postMessage` with `thread_ts=parent_ts`) with body:
 
    ```
    🔗 <post_url or author_profile_url>
