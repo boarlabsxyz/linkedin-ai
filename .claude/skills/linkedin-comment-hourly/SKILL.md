@@ -40,7 +40,7 @@ MAX_SCROLL_ITERATIONS=80
 INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
 ```
 
-Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URN` is `-` when not extractable (LinkedIn strips URNs from the home feed DOM as of 2026-07); `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. Agent 1 has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries it returns are the relevant ones still needing drafts.
+Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URL` is the **post permalink** (`https://www.linkedin.com/feed/update/<urn>/`) or `-` when no URN could be recovered; `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is `-` when not extractable even after the copy-link recovery pass (LinkedIn strips URNs from the home feed DOM as of 2026-07); `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. Agent 1 has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries it returns are the relevant ones still needing drafts.
 
 If `POSTS_FOUND=0` (or the agent returns `ERROR=<...>`), emit the failure line, do NOT spawn Step 1.5 / Step 2, and stop. The shell driver's `git diff --quiet` check skips the commit.
 
@@ -67,7 +67,7 @@ Because drafting now reads only the local `REF_CACHE` (no shared MCP), the draft
 ```
 POST_KEY=<synthetic key from Agent 1>
 POST_URN=<urn or "-">
-POST_URL=<author profile url or "-">
+POST_URL=<POST_<i>_AUTHOR_URL — author profile url or "-">
 POST_AUTHOR=<author_name>
 POST_HEADLINE=<author_headline>
 POST_TEXT_B64=<base64 post text>
@@ -86,7 +86,8 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
    {
      "key": "<POST_KEY>",
      "urn": "<urn or null>",
-     "post_url": "<url or null>",
+     "post_url": "<post permalink https://www.linkedin.com/feed/update/<urn>/ — from POST_<i>_URL, or null when no URN>",
+     "author_url": "<author profile url — from POST_<i>_AUTHOR_URL, or null>",
      "author_name": "<name>",
      "author_headline": "<headline>",
      "time_ago": "<e.g. 2d or null>",
@@ -115,18 +116,22 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
 
    ```
    📌 *<author_name>* — <author_headline>
+   👤 <author_url>
    _<one-line summary of the post>_
    ```
 
    Capture the returned `ts` — call it `parent_ts`. Store it in the JSON as `slack_ts`.
 
-   **4b. Thread reply — the post itself** — `mcp__claude_ai_Slack_Bot__replyInThread` (or `postMessage` with `thread_ts=parent_ts`) with body:
+   **4b. Thread reply — the post itself** — `mcp__claude_ai_Slack_Bot__replyInThread` (or `postMessage` with `thread_ts=parent_ts`). Include **both** links — the post permalink and the author profile — so a reader can open the post directly. Body:
 
    ```
-   🔗 <post_url or author_profile_url>
+   🔗 Post: <post_url, or "home-feed card — no stable permalink" when post_url is null>
+   👤 Author: <author_url>
 
    > <full post_text — no truncation; wrap in a quote block>
    ```
+
+   `post_url` is the permalink from `POST_<i>_URL` (present for posts where the URN was recovered; null otherwise). `author_url` comes from `POST_<i>_AUTHOR_URL` and is essentially always present. Never collapse the two into one line — the author profile is not a substitute for the post link.
 
    **4c. Thread reply — one message per draft** — for each variant, post a separate thread reply:
 
