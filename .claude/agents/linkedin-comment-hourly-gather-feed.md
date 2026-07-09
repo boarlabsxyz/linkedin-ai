@@ -27,7 +27,7 @@ So the primary key we use for dedup is a **synthetic key**: `<author-slug>-<body
 - `author-slug` = the author name from the aria-label, lowercased, non-`[a-z0-9]` → `-`, collapsed, trimmed, truncated to 40 chars.
 - `body-hash8` = first 8 hex chars of SHA-256 of the post body text (post-normalization: collapse whitespace).
 
-The URN is best-effort — populated when we can find `urn:li:(activity|ugcPost|share):\d+` anywhere in the card's HTML, otherwise `null`.
+The URN is best-effort, recovered in two passes: (1) a regex over the card's HTML for `urn:li:(activity|ugcPost|share):\d+` (works for the ~15% of home-feed cards that leak it); (2) for any card that passes all filters and enters the queue but still has no URN, the control-menu **"Copy link to post"** → clipboard flow (step 3d) recovers it while the card is still mounted. Only accepted posts get the pass-2 recovery — filtered (off-topic / already-commented) cards keep `urn: null`, which is fine since they never need a permalink. When both passes fail, `urn` stays `null`. A non-null URN yields the canonical post permalink `https://www.linkedin.com/feed/update/<urn>/`.
 
 ## Inputs (passed in the caller's prompt)
 
@@ -53,7 +53,8 @@ SCROLL_ITERATIONS=<int>
 FEED_EXHAUSTED=<true|false>
 POST_1_KEY=<author-slug>-<body-hash8>
 POST_1_URN=<urn:li:activity:xxx or "-">
-POST_1_URL=<post URL or "-">
+POST_1_URL=<post permalink "https://www.linkedin.com/feed/update/<urn>/" or "-" when no URN>
+POST_1_AUTHOR_URL=<author profile URL or "-">
 POST_1_AUTHOR=<author_name>
 POST_1_HEADLINE=<author_headline>
 POST_1_TIME_AGO=<e.g., "2d" or "-">
@@ -238,7 +239,7 @@ For each card:
 5. **Skip if already-commented** → `alreadyCommentedCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"already-commented"` (see the append helper below), then add the key to `seenInRun`.
 6. **Classify** the body text against `interests.md` categories. Bias toward inclusion.
 7. **Off-topic** → `offTopicCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"off-topic"` and a one-line `reason`, then add the key to `seenInRun`.
-8. **Relevant** → append `{ key, urn, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
+8. **Relevant** → if `urn` is still `null`, run the URN recovery flow (step 3d) for this card's `author` **now**, while the card is mounted, and set the recovered `urn` (or leave `null` if recovery fails). Then append `{ key, urn, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
 
 #### Append helper (filtered entries)
 
@@ -251,13 +252,17 @@ Both off-topic and already-commented use the same read-modify-write. `<COMMENTS_
 
    ```bash
    NOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+   # post_url is the canonical permalink built from the URN (null when no URN — filtered
+   # cards don't get pass-2 recovery). author_url is the author's profile link.
+   if [ -n "$urn" ] && [ "$urn" != "-" ]; then post_url="https://www.linkedin.com/feed/update/$urn/"; else post_url=""; fi
    entry=$(jq -n \
-     --arg key "$key" --arg urn "$urn" --arg url "$authorUrl" \
+     --arg key "$key" --arg urn "$urn" --arg posturl "$post_url" --arg authorurl "$authorUrl" \
      --arg author "$author" --arg headline "$headline" --arg time "$timeAgo" \
      --rawfile text "./tmp/filtered-<key>.txt" --arg now "$NOW" \
      --arg disp "$disposition" --arg reason "$reason" \
      '{key:$key, urn:(if $urn=="" or $urn=="-" then null else $urn end),
-       post_url:(if $url=="" then null else $url end),
+       post_url:(if $posturl=="" then null else $posturl end),
+       author_url:(if $authorurl=="" then null else $authorurl end),
        author_name:$author, author_headline:$headline, time_ago:$time,
        post_text:($text|sub("\n+$";"")), scraped_at:$now, disposition:$disp, reason:$reason,
        variants:[], slack_summary:null, slack_ts:null,
@@ -315,6 +320,43 @@ If `queue.length < TARGET_COUNT`, scroll the workspace container by one viewport
 
 Wait 2 seconds. Increment `scrollIterations`. If no new keys appeared, increment `staleScrolls`; else reset to 0.
 
+#### 3d. Recover a missing URN via "Copy link to post"
+
+Only for a card that just passed all filters (step 8) and has `urn === null`. LinkedIn's home feed strips URNs from most card DOMs, but the control-menu still offers **"Copy link to post"**, which writes the canonical permalink (carrying the activity id) to the clipboard. Run this via `mcp__playwright__browser_evaluate`, passing the card's `author` — it opens the menu, clicks the copy item, reads the clipboard, closes the menu, and extracts the URN in a single async call:
+
+```js
+async (author) => {
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const btns = Array.from(document.querySelectorAll('button[aria-label*="control menu"]'));
+  const btn = btns.find(b => (b.getAttribute('aria-label') || '').includes(author));
+  if (!btn) return { urn: null, err: 'no-menu-btn' };
+  btn.scrollIntoView({ block: 'center' });
+  await sleep(300);
+  btn.click();                                   // open the control menu
+  await sleep(700);
+  // "Copy link to post" — match by visible text (menu DOM classes are obfuscated)
+  const cand = Array.from(document.querySelectorAll('[role="menuitem"], [role="button"], button, span, div'))
+    .find(el => /^copy link to post$/i.test((el.innerText || '').trim()));
+  if (!cand) { document.body.click(); return { urn: null, err: 'no-copy-item' }; }
+  cand.click();
+  await sleep(600);
+  let clip = '';
+  try { clip = await navigator.clipboard.readText(); } catch (e) { clip = ''; }
+  // dismiss any lingering menu/toast
+  document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  document.body.click();
+  // extract the URN from the copied URL (forms: .../feed/update/urn:li:activity:ID/,
+  // .../posts/<slug>-activity-ID-<hash>, or percent-encoded urn%3Ali%3Aactivity%3AID)
+  let urn = null, m;
+  if ((m = clip.match(/urn:li:(activity|ugcPost|share):(\d+)/)))            urn = m[0];
+  else if ((m = clip.match(/urn%3Ali%3A(activity|ugcPost|share)%3A(\d+)/i))) urn = 'urn:li:' + m[1] + ':' + m[2];
+  else if ((m = clip.match(/activity-(\d{15,25})/i)))                       urn = 'urn:li:activity:' + m[1];
+  return { urn, err: urn ? null : (clip ? 'no-urn-in-clip' : 'clipboard-blocked') };
+}
+```
+
+Wait ~1 second after the call. If it returns a `urn`, use it. If it returns `err: clipboard-blocked` (the browser context denied `navigator.clipboard.readText()`) or any other error, leave `urn: null` and continue — the post is still drafted, just without a permalink (same as the pre-recovery behavior). Do **not** retry more than once per card; a bounded ≤`TARGET_COUNT` menu interactions per fire is the budget.
+
 **No "Show more results" button on the home feed** — LinkedIn just keeps loading infinitely. If `scrollHeight` stops growing across 3 consecutive scrolls AND no new keys arrive, treat as `feedExhausted = true`.
 
 ### 4. Close the tab you opened
@@ -322,6 +364,10 @@ Wait 2 seconds. Increment `scrollIterations`. If no new keys appeared, increment
 `mcp__playwright__browser_tabs` with action `close` and the index recorded in step 2. Do not close any other tab.
 
 ### 5. Emit the contract
+
+For each queued post, derive the two URL fields:
+- `POST_i_URL` = `https://www.linkedin.com/feed/update/<urn>/` when `urn` is non-null, else `-`.
+- `POST_i_AUTHOR_URL` = the card's `authorUrl` (author profile link), else `-`.
 
 Base64-encode each queued post's `bodyText`:
 
@@ -336,7 +382,7 @@ Final message shape (see contract at top).
 - Do **not** replace an existing browser tab. Always open a new one and close only the one you opened.
 - Do **not** stop early because you've reached a page height — keep scrolling until the queue is full or `scrollHeight` stops growing for 3 iterations.
 - Do **not** use `data-urn` selectors — LinkedIn stripped them from the home feed. Use the control-menu button aria-label instead.
-- Do **not** invent URNs. Populate `POST_i_URN=-` when not found; the orchestrator handles the null case.
+- Do **not** invent URNs. Populate `POST_i_URN=-` only after **both** recovery passes fail (HTML regex + the step-3d copy-link flow for accepted posts); the orchestrator handles the null case. When a URN is present, `POST_i_URL` is the permalink `https://www.linkedin.com/feed/update/<urn>/`; `POST_i_AUTHOR_URL` is always the author profile link.
 - Do **not** invent post text. If you can't scrape a card cleanly, skip it.
 - Do **not** classify without reading `interests.md`.
 - Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.
