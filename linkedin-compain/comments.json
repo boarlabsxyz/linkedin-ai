@@ -4000,5 +4000,239 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "stanislav-kirichenko-f3c5455d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/stanislav-kirichenko-417094169/",
+    "author_name": "Stanislav Kirichenko",
+    "author_headline": "Salesman | City farmer  | Selling peanut butter",
+    "time_ago": "5h",
+    "post_text": "Connect\nСьогодні день активних рекрурерок у мені. Звернулись двоє.\nВакансія 1: холодні продажі через Лінкедін і Телеграм. Сам ліда знайшов, сам нагрів, сам зконвертив, сам стосунки підтримуєш. Знання української і російської. Продаж VOIP.\nЯ собі спокійно відповів, і рекрутерка моментально пише в телеграм і така :\"го зідзвон на 15 хв\"\nПрийшлося відкрити вакансію і подивитися шо там, ще раз. А там те, що вище.  І щось я не захотів в це ввязуватись.\nДруга рекрутерка вимагала буквально резюме зі знаками оклику в повідомленні.\nВакансія : менеджер з партнерств.\nЯ показав їй резюме і вона за годину пише що у неї великий пул кандидатів , і якщо буде можливість то ми зможемо зідзвонитись. З тих пір я її не бачив.\nМожна було б пропонувати їм арахісової пасти чи каченят, але я не придумав, як це оформити, а потім я пообідав і ідея взагалі зійшла нанівець 😆\nАле ось, відмову написав в стилі як мені відмовляли )",
+    "scraped_at": "2026-07-09T16:19:20Z",
+    "disposition": "off-topic",
+    "reason": "Generic Ukrainian work-humor post about recruiters and cold sales; no AI or startup substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "vishnu-sharma-bfaffca5",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/vishnu-sharma-5206b7239/",
+    "author_name": "Vishnu Sharma",
+    "author_headline": "Teammate",
+    "time_ago": "1h",
+    "post_text": "12 remote job portals you should use if you need a high-paying remote role.\nRemote work is here to stay, and if I had to find a high-paying remote job today, these are the platforms I'd start with:\n1. Remotive\n- Curates active, fully remote tech jobs\n- Trusted by top global tech companies\n- Link: https://lnkd.in/gGV9EC8h\n2. Eztrackr\n→ Build your resume. Track your job applications. Get your dream job faster.\n→ One platform for your entire job search\n→ 1M+ resumes made\n→ Get started here: https://lnkd.in/gu6tQN8R\n3. Hubstaff Talent\n- Free resource for companies looking for remote talent\n- Connects businesses with freelancers and agencies worldwide\n- Link:https://hubstafftalent.net\n4. Remote Woman\n- Remote job board tailored for women\n- Promotes flexibility and career growth\n- Link:https://remotewoman.com/\n5. Wellfound\n- Connects job seekers with startups\n- 130K+ tech jobs from 27K companies\n- Link:https://wellfound.com/\n6. We Work Remotely\n- Largest remote work community with 4.5M+ visitors\n- Offers a wide range of remote job opportunities\n- Link:https://weworkremotely.com\n7. WorkWave\n- Remote job listings for various industries\n- Known for flexible work opportunities\n- Link:https://www.workwave.com/\n8. AI Jobs\n- Focuses on AI-related remote job listings\n- Features top 1% of AI companies\n- Link:https://theaijobboard.com\n9. Toptal\n- Exclusive network for top freelancers\n- Covers software development, design, finance & more\n- Link:https://www.toptal.com/\n10. FlexJobs\n- Find remote jobs globally or near you\n- Offers career coaching and resume help\n- Link:https://www.flexjobs.com/\n11. JS Remotely\n- Specializes in JavaScript-related remote jobs\n- Includes React, Vue, Node.js, and Angular roles\n- Link:https://jsremotely.com/\n12. RemoteOK\n- Aggregates remote jobs from across industries\n- Allows filtering jobs by category and salary\n- Link:https://remoteok.com",
+    "scraped_at": "2026-07-09T16:19:28Z",
+    "disposition": "off-topic",
+    "reason": "Generic career advice post listing remote job portals; no AI or startup substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "scott-breitenother-71ccee25",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/scottbreitenother/",
+    "author_name": "Scott Breitenother",
+    "author_headline": "Co-founder & CEO @ Kilo",
+    "time_ago": "24m",
+    "post_text": "Excited to announce the latest evolution of Kilo Code for JetBrains IDEs: a JetBrains native plugin that is faster, more reliable and integrates seamlessly with the rest of the JetBrains ecosystem.\nGive it a try and share your thoughts in the comments!",
+    "scraped_at": "2026-07-09T16:29:43Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The move to a native JetBrains plugin is a real step — the JetBrains API surface gives you access to things a generic extension layer simply can't reach.\n\nCurious what \"integrates seamlessly with the JetBrains ecosystem\" means in practice. Is Kilo now using PSI (the Program Structure Interface) for code context — or is it still sending raw text to the model the way most plugins do? The difference in context quality between those two approaches is pretty significant, especially on larger Java/Kotlin codebases.",
+        "rationale": "The announcement claims seamless integration but gives no specifics; a PSI vs. raw-text context question requires a real answer and signals technical credibility."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Going native on JetBrains makes sense — the gap between a wrapper and a proper IDE plugin is real, and the JetBrains project model gives you context depth that generic extensions can't match.\n\nOne thing I keep wondering about in this space: JetBrains is folding their own AI assistant (AI Pro) deeper into the IDE with every release. What does the sustainable moat look like when the IDE vendor itself is in the AI coding race? Is the bet that Kilo's model quality stays ahead, or that the integration depth you're building right now becomes defensible on its own?",
+        "rationale": "JetBrains shipping AI Pro creates real platform-risk tension a founder should have an answer to; useful, not hostile."
+      }
+    ],
+    "slack_summary": "Announcing Kilo Code's new native JetBrains IDE plugin — faster, more reliable, asks for feedback.",
+    "slack_ts": "1783614596.830889",
+    "slack_thread": {
+      "post_reply_ts": "1783614602.499209",
+      "draft_reply_ts": [
+        "1783614610.685189",
+        "1783614618.678989"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "charity-majors-1b37fc6b",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/charity-majors/",
+    "author_name": "Charity Majors",
+    "author_headline": "cofounder/CTO, honeycomb.io",
+    "time_ago": "16h",
+    "post_text": "Years ago, I predicted that columnar storage would remake the landscape of observability tools.\nI thought we'd see a wave of new columnar-backed observability products grow up to displace the old, creaky, three pillars model with better tech that is faster, easier, cheaper, and more efficient in every way.\nI was half right.\nObservability vendors, you are chasing the wrong ball. Datadog's great weakness is not their price point, it's their product. They are built on a 30+ year old architecture model that is obscenely inefficient. You can do so much better. You have the tools.\nClickhouse, good job. You don't make me want to stab my eyes out. In this market landscape, that's high praise.\nhttps://lnkd.in/gp-gdcdb",
+    "scraped_at": "2026-07-09T16:32:28Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"wrong ball\" framing is right — chasing Datadog on price is a race to the bottom, while the architecture gap is the actual moat to attack.\n\nThe part I keep wondering about: even if you build columnar-backed, faster, cheaper — what does the switching cost look like? Observability tooling is deeply embedded. Agents, alert configs, dashboards, on-call runbooks — all tuned to whatever the team already runs. The product has to be so obviously better on day one that the migration pain feels worth it. Has any of the newer generation actually cracked that, or are they still mostly winning on greenfield workloads?",
+        "rationale": "Charity leaves switching costs unaddressed; asking about greenfield vs migration wins surfaces a real tension without being adversarial."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The architecture critique lands — 30-year-old data models duct-taped together are genuinely hard to query against, and columnar changes what's possible at the query layer.\n\nHere's the question that nags me: who actually builds this disruptor? The companies best positioned technically (ClickHouse, DuckDB, Databricks) aren't observability-native — they don't own the instrumentation layer, the SDK ecosystem, or the on-call workflow muscle memory. Pure-play observability startups have the domain expertise but usually lack the storage engineering depth to build the substrate from scratch. Is the real bet on a storage company that learns the observability domain, or an observability company that rebuilds on modern storage? Those are very different product bets with very different timelines.",
+        "rationale": "The post identifies the opportunity but not who can seize it; the storage-vs-domain question invites Charity's insider view."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that the product is the weak point — not the price tag. Competing on discounts against a 30-year-old incumbent is a slow way to lose.\n\nWhere I'd push back slightly: columnar storage is a necessary condition, but probably not sufficient. The observability tools I've watched teams struggle with weren't slow because of storage — they were painful at the investigation layer. The query interface, the correlation between signals, the moment when an alert fires and you have to figure out why. That's still largely a UX and data-model problem, and it doesn't automatically get solved by swapping the storage layer. The vendors who crack it will need to rebuild the investigation workflow from scratch, not just the backend. Curious how much of that work you think is storage-constrained versus just product design.",
+        "rationale": "Pushes back that the investigation UX layer is a separate, equally hard problem grounded in practitioner experience."
+      }
+    ],
+    "slack_summary": "Argues observability vendors should attack Datadog on its dated, inefficient architecture, not on price; praises ClickHouse.",
+    "slack_ts": "1783614754.209799",
+    "slack_thread": {
+      "post_reply_ts": "1783614761.560279",
+      "draft_reply_ts": [
+        "1783614768.580349",
+        "1783614777.347709",
+        "1783614784.869579"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "matt-rubens-67ce95b2",
+    "urn": "urn:li:share:7480665957187805184",
+    "post_url": "https://www.linkedin.com/in/mattrubens/",
+    "author_name": "Matt Rubens",
+    "author_headline": "CEO @ Roomote • AI engineer for the important work nobody wants to do | Built Roo Code (3M+ installs)",
+    "time_ago": "4h",
+    "post_text": "Excited to talk about the state of AI (quite a moving target!) later today.\nThis Dot Labs\n23h •\nFollow\nHappening tomorrow!\nJoin us for the next State of #AI Leadership featuring Thor Schaeff from Google DeepMind, alongside Matt Rubens (Roomote), Elliott Fouts (This Dot Labs), and Rob Ocel (This Dot Labs).\nWe'll discuss how organizations can develop internal #AI champions who build trust, accelerate adoption, and help turn AI initiatives into lasting capabilities.\n📆  Tomorrow, July 9\n⏰  12:30 PM ET\n🎟️  Free and open to all\nRegister using the link in the comments 👇",
+    "scraped_at": "2026-07-09T16:35:08Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing of \"AI champions who build trust\" resonates — that trust-building piece is often the part organizations underinvest in compared to just rolling out tools.\n\nOne thing I'd be curious to hear the panel address: what actually makes someone an effective AI champion versus just an enthusiastic early adopter? In the teams I've watched, the difference tends to be whether the champion can articulate the failure modes honestly — not just show what works. The ones who build lasting trust are usually the ones who publicly say \"we tried this and it didn't work, here's why,\" not just the ones who post wins. Curious if that maps to what you're seeing at Roomote.",
+        "rationale": "Picks at the unstated variable — what distinguishes a genuine champion from an adoption cheerleader — which is real and debatable."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"lasting capabilities\" piece is what I keep coming back to when this topic comes up.\n\nMost organizations I've seen measure AI adoption by speed — how fast people started using the tools, how many seats are active. What I haven't seen measured much is whether people are actually thinking through the tool or just getting faster at offloading decisions to it. Those are two very different outcomes, and only one of them compounds. The internal champion role seems critical precisely because someone has to hold that distinction in the organization — but I wonder if the incentives usually push champions toward the adoption metrics instead. Interested in whether this comes up in the panel.",
+        "rationale": "Pulls toward the blind spot the post doesn't examine: whether adoption metrics track the right thing."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Accelerating adoption and building lasting capabilities are not always the same goal, and I think that tension is worth naming.\n\nFrom what I've seen, the orgs that move fastest on adoption sometimes create dependency rather than capability — people learn to get answers from AI but lose the habit of questioning the answers. Fast adoption into the wrong pattern locks in harder than slow adoption done right. So I'd push back gently on \"accelerate adoption\" as the frame for what a champion should optimize for. The more useful metric might be: are people on this team getting better at thinking through hard problems, or just getting faster at offloading them? Curious if the panel has a take on how to keep those two things from drifting apart.",
+        "rationale": "Gently disputes the premise that faster adoption equals better outcome; redirects toward the more meaningful metric."
+      }
+    ],
+    "slack_summary": "Promoting a webinar panel on how orgs develop internal AI champions who build trust and turn AI into lasting capabilities.",
+    "slack_ts": "1783614913.908929",
+    "slack_thread": {
+      "post_reply_ts": "1783614920.831989",
+      "draft_reply_ts": [
+        "1783614928.633159",
+        "1783614935.021979",
+        "1783614942.606069"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "aj-bubb-93cffdc7",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/ajbubb/",
+    "author_name": "AJ Bubb",
+    "author_headline": "Building Convia — Enabling thought leaders to be the talent, not full time content creators | MXP AI Native Startup Studio | Host, Facing Disruption",
+    "time_ago": "2h",
+    "post_text": "Who knew the best way to fight deep fakes was to make it an out of the box feature?.... /sarcasm\n--------------\nMeta has introduced Muse Image, its first in-house AI image generation model, allowing users to generate AI images using public Instagram profiles as visual references.\nUnder the feature, users can include the @username of a public Instagram account in a prompt, enabling Meta AI to create images based on that person's publicly available photos. According to Meta's support documentation, public accounts are included by default unless users choose to opt out. Meta also says account owners are not notified when their public content is used for AI-generated images.\n- TO DISABLE THIS -\nUsers who do not want their public posts and reels to be available for these AI features can disable the option through Instagram's settings under Sharing and Reuse. (Or set your account to private)\n#ai #privacy #ethics #trust #deepfake",
+    "scraped_at": "2026-07-09T16:37:50Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The sarcasm lands, but the deeper move here is that opt-out defaults at platform scale aren't a design oversight — they're a deliberate product choice dressed as user empowerment. Platforms learned a long time ago that most users never touch settings, so \"opt-out\" is functionally the same as \"always on.\"\n\nThe question that interests me: what would it actually take to make opt-in the default for personal likeness generation? Not whether it's right — clearly it is — but what's the structural pressure that gets a platform to absorb the user friction of requiring explicit consent? GDPR created that pressure for data collection in some markets. Is there an equivalent coming for AI-generated likeness?",
+        "rationale": "Validates the sarcasm then sharpens into a structural design question (GDPR analogy) rather than a moral one."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The sarcasm is fair. But I'd push the framing a bit further: the real issue isn't that Meta built deepfakes into a product. It's that at platform scale, opt-out defaults aren't really a policy — they're an outcome. Platform research consistently shows fewer than 3-5% of users ever change default settings on social platforms. So \"opt out if you want\" is operationally equivalent to \"everyone's likeness is included.\"\n\nThe deepfake angle almost understates it. The honest description of what's been shipped here is: a mechanism that converts every public Instagram account into a training reference, without notice, at a global scale, with the knowledge that the overwhelming majority of people will never know the toggle exists.",
+        "rationale": "Reframes the issue from deepfakes feature to opt-out defaults as an outcomes-by-design mechanism, with the 3-5% stat for teeth."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The sarcasm is exactly right, and it points at something worth naming precisely. Meta knows — and their researchers absolutely know — that opt-out at this scale is functionally opt-in-for-everyone, because the awareness gap is enormous. If you're not already reading tech news on this, you're included by default and will likely remain so.\n\nCurious what you think the accountability lever is here. The tool exists, the opt-out is buried in settings, and legislators move slowly. Does the pressure realistically come from regulators, from advertisers, or from creators with enough reach to make noise? Genuine question — I don't see a clean answer.",
+        "rationale": "Names what Meta's researchers provably know, then asks a specific accountability question the founder audience has opinions on."
+      }
+    ],
+    "slack_summary": "Criticizes Meta's new Muse Image model, which lets users generate AI images from public Instagram profiles by default (opt-out).",
+    "slack_ts": "1783615077.459599",
+    "slack_thread": {
+      "post_reply_ts": "1783615085.951439",
+      "draft_reply_ts": [
+        "1783615101.941539",
+        "1783615109.490869",
+        "1783615119.403089"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "steve-latz-53ecdbac",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/steve-latz-7a86512/",
+    "author_name": "Steve Latz",
+    "author_headline": "CTO at Ice Lake LLC",
+    "time_ago": "1d",
+    "post_text": "I really love this. One of the most productive AI tools in most widespread use today, Claude Code, is in fact not mostly LLM-based at all, but good old-fashioned C++, with deterministic logic. What's old is new again! And it uses something called ast-grep! If I wait long enough, my legacy skills will be relevant and I can claim to be a Claude Code \"internals expert.\" All we need now is hardware that can generate true Asynchronous System Traps (\"AST\"s). Seriously, the software pattern implied by Claude Code's implementation points the way forward. Build truly useful deterministic software but wrap it in an LLM to provide the inputs, configure the execution context, etc. This appears to be what has happened with Unqork with some guidance from David Ferrucci [corrected! not \"Berlucci\"], and what several workflow software vendors are doing in the name of \"guardrails\". Several variations of rules engines with some chat wrapped around it so you can call it AI to make the sale. It is possible that the announcement of the murder of the SAAS world by LLMs is way too premature.!\nBehind Claude Code's curtain: generative grammars doing the heavy lifting\nhttps://lnkd.in/gVdrNMcg",
+    "scraped_at": "2026-07-09T16:41:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"build deterministic software, wrap it in an LLM\" framing is exactly right — and it's what makes Claude Code actually reliable at scale.\n\nOne small pushback though: calling it \"not mostly LLM-based\" slightly undersells the architecture. The LLM isn't just a nice input layer — it's doing the hard part of translating ambiguous human intent into precise tool calls. The deterministic layer only looks clean because the LLM is doing a lot of interpretation work upstream. Remove the LLM and you're back to a command-line tool nobody wants to learn.\n\nThe more interesting question to me is what this pattern implies for SaaS. It's not that LLMs won't disrupt SaaS — it's that the disruption vector is different from what people predicted. Not \"LLM replaces the app\" but \"LLM replaces the UI, and the deterministic engine underneath gets swapped out or commoditized.\" The SaaS world might be fine. The front-end interaction model is what's cooked.",
+        "rationale": "Agrees with the core thesis but adds nuance that the LLM does the harder upstream work; pivots to the SaaS disruption vector."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The pattern you're describing — deterministic engine + LLM wrapper — is exactly what we've been converging on, and Claude Code is a good existence proof that it works.\n\nWhat I keep wondering: when the deterministic layer gets commoditized (and it will, ast-grep is already open source), where does the moat actually sit? Right now the answer seems to be \"proprietary domain logic and data\" — same as pre-LLM SaaS. Which might mean you're right that the murder of SaaS was announced too early, but for a different reason than people think. Not because LLMs can't replace apps, but because the part of the app that matters was never the UI layer to begin with.",
+        "rationale": "Pulls the thread on the SaaS question Steve left open, using commoditization of ast-grep as the pressure point."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The point about workflow vendors selling \"rules engines with some chat wrapped around it\" is worth sitting with.\n\nCurious whether you see a meaningful difference between those vendors and what Claude Code is doing — or is it the same pattern executed at different quality levels? Because my read is the gap is mostly in how well the deterministic layer is designed: Claude Code's C++/ast-grep layer does real semantic code understanding, whereas most \"guardrails\" vendors have a YAML rule file and call it a day. If that's right, then the pattern isn't what separates the good tools from the bad ones — the quality of the deterministic core is.",
+        "rationale": "Steve lumps Claude Code and guardrails vendors together; surfaces a real distinction (semantic understanding vs YAML rules)."
+      }
+    ],
+    "slack_summary": "Notes Claude Code relies on deterministic C++/ast-grep logic wrapped in an LLM, and argues the death of SaaS by LLMs may be premature.",
+    "slack_ts": "1783615272.070959",
+    "slack_thread": {
+      "post_reply_ts": "1783615282.248079",
+      "draft_reply_ts": [
+        "1783615290.017069",
+        "1783615306.396119",
+        "1783615313.585209"
+      ]
+    },
+    "slack_error": null
   }
 ]
