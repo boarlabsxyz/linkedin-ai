@@ -3160,5 +3160,345 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "nick-valiotti-364d4ab6",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/valiotti/",
+    "author_name": "Nick Valiotti",
+    "author_headline": "Fractional CDO | Helping Scaling Tech founders turn data into faster decisions | Founder @ Valiotti Data",
+    "time_ago": "1d",
+    "post_text": "Data strategy is \"IT's problem.\"\nWhich is corporate for: \"Please install the growth.\"\nIt usually starts innocently: data feels technical and IT feels technical. So we put the data team under IT and call it alignment → congratulations, you've just turned your future competitive advantage into a helpdesk category!!!\nNow watch what happens.\nThe business asks, \"Why are we losing customers in month three?\"\nData replies, \"The pipeline is stable.\"\nMarketing asks, \"Which channel actually drives margin?\"\nData replies, \"We migrated to a new warehouse.\"\nFinance asks, \"Can we trust this forecast?\"\nData replies, \"Access permissions are updated.\"\nEveryone is technically correct, aaand… completely missing the point.\nWhen data sits inside IT, it inherits IT's incentives: uptime, cost control, security, system health. All important. None of them answer, \"Where should we place our next €5M bet?\"\nSo the organization slowly drifts into a very modern tragedy:\nBeautiful dashboards → Zero decisions.\nSix definitions of \"active customer\" → One very awkward board meeting.\nThree new tools → No one accountable for the number.\nThen leadership concludes, \"We need more data.\"\nNo. You need fewer hiding spots.\nA data strategy is not a collection of tools. It's a set of hard choices.\n→ Which metrics actually drive this business?\n→ Who owns them?\n→ What decision changes when they move?\n→ What are we willing to stop doing because the signal says so?\nThat conversation doesn't belong in a ticketing system.\nExecution is cheap now. AI will write your SQL. Vendors will promise a single source of truth by Friday. Interns can spin up a dashboard before lunch.\nWhat's rare is alignment: around definitions, ownership, decisions that hurt a little.\nIf your data team only reports into IT, you don't have a data strategy.\nYou have very sophisticated plumbing. And plumbing is great, until you expect it to drive growth.",
+    "scraped_at": "2026-07-09T04:20:15Z",
+    "disposition": "off-topic",
+    "reason": "Data org strategy post (data under IT dept) — no AI/LLMs/agents or startup/fundraising content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "zhanna-yenikieieva-f5390fd2",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/zhanna-yenikieieva-pm/",
+    "author_name": "Zhanna Yenikieieva",
+    "author_headline": "Senior Product Manager | Web, Mobile B2C& B2B |",
+    "time_ago": "13h",
+    "post_text": "Я не іду на DOU product day\nДуже близький родич, другий батько помер в понеділок\nЦе дуже важка подія для моєї родини і для мене\nАле я вас прошу ідіть на івент і шліть фото\nhttps://lnkd.in/eNxjeSqb\nЗнижка на квиток ту спільноті….",
+    "scraped_at": "2026-07-09T04:20:23Z",
+    "disposition": "off-topic",
+    "reason": "Personal grief post (family death announcement) — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "george-hedon-9596176c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/hedon/",
+    "author_name": "George Hedon",
+    "author_headline": "Creative · Producer · Entrepreneur · Speaker · Judge | Scaled Pause Fest from 30 to 3,000+ | $3M ecosystem, 235M media reach YoY | Melbourne, available worldwide.",
+    "time_ago": "3h",
+    "post_text": "I've been vibe coding in the past year and sometimes it feels like you're on crack, hours slide, days turn into weeks. I've observed others, had many chats, and then one day I got a message from Tom, who was part of the Pause Awards judging team. As a former global CIO he's noticing similar patterns, so we came to the conclusion… here's the pitch and a first pilot.\nNobody wants to build alone anymore!\nImagine three hours in a room full of doers and experts helping you ship faster. That's why Tom and I started The 629 Club.\nWed 29 July, 6-9pm\nStone & Chalk, Melbourne\n40 seats, strictly limited\nExperts confirmed: Bank Australia + Time Under Tension (more TBC, get in touch)\nWhat it isn't: A meetup, a hackathon or a mingling night.\nWhat it is: Active work on your real project, with help on tap.\nWho it's for Not sorted by level or title. Everyone here shares one thing, real work in motion and a wall they can't clear alone.\nThe dev who ships fast but wants sharper product sense. The founder with users but no one to build beside. The corporate builder whose best project only gets Sunday nights. The maker with a product but no brand or first users. Anyone who just discovered the power of vibe coding. The mix is the point. Your gap is someone else's strong suit, one table over.\nOne last thing Bring your live project and your gap. We'll sort everything else on the night and you'll get to meet some great people and get help.\nthe629.club — sign up and find out more",
+    "scraped_at": "2026-07-09T04:23:50Z",
+    "disposition": "off-topic",
+    "reason": "Local Melbourne co-working event promo — thin on startup/AI substance, primarily an event advertisement",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "denys-osadchyi-bc92629d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/denys-osadchyi/",
+    "author_name": "Denys Osadchyi",
+    "author_headline": "Product Design Engineer · Ships products, not mockups · Founder @ MD Academy",
+    "time_ago": "1w",
+    "post_text": "Я вам тут карусельку зробив, читайте. а ось і сам кейс, коли прочитаєте\nhttps://lnkd.in/eKjFr8Kv",
+    "scraped_at": "2026-07-09T04:27:14Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian design/product case carousel — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-579524d7",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "2d",
+    "post_text": "Чергова ворожа атака. Ця ніч стала однією з найважчих, принісши втрати, які неможливо пробачити чи забути.\nНаші найщиріші співчуття рідним загиблих. Сил усім, хто зараз оговтується від наслідків атаки та допомагає постраждалим.\nЯкщо ви маєте ресурс і бажання перетворити свою злість на допомогу війську, ми залишаємо посилання на наш поточний збір на важкі ударні дрони VAMPIRE для «Хартії».\nhttps://dou.ua/goto/6XGZ",
+    "scraped_at": "2026-07-09T04:27:14Z",
+    "disposition": "off-topic",
+    "reason": "War solidarity/fundraising post — not AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "paul-lugona-b1199509",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/paul-lugona-748103388/",
+    "author_name": "Paul Lugona",
+    "author_headline": "Independent Journalist",
+    "time_ago": "1w",
+    "post_text": "In 2016, a 2 year old boy was found naked on the streets of Nigeria.\nStarving. Alone. Covered in worms.\nHis own family had abandoned him because they believed he was a witch.\nA Danish woman named Anja knelt beside him in the dirt, gave him water from a bottle, and whispered a name for him.\nHope.\nBecause that is all he had left.\nDoctors did not think he would survive the night. Daily blood transfusions. Emergency surgery. A body that weighed barely 3 kilos.\nBut Hope had other plans.\nFast forward to 2025.\nThat same little boy, now 12, walked across a graduation stage and collected his primary school diploma with one of the highest grades in his entire class.\nHe is deaf. He speaks through sign language and expresses himself through art.\nHis teachers call him \"Little Picasso.\"\nHe has been accepted into a specialist school built around children just like him.\nHe was reunited with his father.\nHe is painting. Dancing. Laughing. Dreaming of becoming an artist.\nThe boy everyone left to die on a dirt road…\nIs now the boy who makes people believe in miracles.",
+    "scraped_at": "2026-07-09T04:27:14Z",
+    "disposition": "off-topic",
+    "reason": "Inspirational humanitarian story — no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "will-voutier-23a9128b",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/willvoutier/",
+    "author_name": "Will Voutier",
+    "author_headline": "Product @ Grindr, ex-Engineer | Prev at Census, Flexport, Meldium (YC W20, S14, S13)",
+    "time_ago": "7h",
+    "post_text": "15 years ago I started using Grindr as a young, newly-out gay man. 6 years ago I met my husband, Tj Voutier, on the grid. 2 years ago, we took a career break and traveled the world and made so many lasting friendships all around the globe through the app.\nToday, I'm so excited to share that I'm joining the Grindr product team full time. I've been working with them closely since October 2024, right as Tj and I were wrapping up our career break, as a consultant with Kiso Technology on the Grindr project team. I got to work alongside some incredibly talented machine learning engineers and ship genuinely exciting updates to an app that's such a big part of my life.\nUltimately, I've realized just how much I believe in what Grindr is building, and I want to dive in headfirst. Not many products get to touch connection and belonging at this scale, and the AI work ahead of us is going to matter for my community.\nThank you so much to Evan Jonokuchi, Sam Ryan, and the entire Kiso team. The last couple of years have taught me so much; you all are building a truly world-class team of incredibly kind people. I'll definitely be stopping by whenever I'm in SF.",
+    "scraped_at": "2026-07-09T04:32:03Z",
+    "disposition": "off-topic",
+    "reason": "Personal career announcement (new job at Grindr) — no substantive AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "matei-zaharia-b994d68d",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/mateizaharia/",
+    "author_name": "Matei Zaharia",
+    "author_headline": "CTO & Cofounder at Databricks, CS Professor at Berkeley",
+    "time_ago": "8h",
+    "post_text": "We benchmarked coding agents on our own internal tasks at Databricks and learned a lot! https://lnkd.in/gjBCkQpP There are many surprising opportunities to lower cost, and many models including open source are now competitive.\nWhy did we build an internal coding benchmark? Public benchmarks like SWE-Bench are often over-tuned for, so we took real tasks our engineers did and curated test suites for them to see which agents can solve them end-to-end. These are the results on OUR sample of OUR codebase, so they are not meant to be comprehensive, but we think many companies can do a similar internal benchmark.\nSeveral findings immediately stood out:\n1) Many models are now competitive at the top tier, including open source.\n2) GLM 5.2 in particular was a major step forward in open source coding agent performance, even in our own codebase that is VERY different from SWE-Bench and TerminalBench (lots of Scala, Go, Rust, Java, TypeScript, Protobuf, Jsonnet, etc).\n3) Harnesses make a huge difference in cost-performance. The very simple Pi harness got the same success rate as harnesses from the LLM vendors with Opus and GPT 5.5, but at 2x less cost! Seems to be mainly due to smaller inputs to the LLM.\n4) Cheaper per-token does not imply cheaper per-task. For example, Sonnet 5 costs less per token than Opus 4.8 but used more tokens, resulting in higher cost and lower quality. Interestingly my ex-student Lingjiao Chen had also found this on other tasks: https://lnkd.in/gcVsRR3F.\nRead more in the blog how we built the benchmark and what we're doing with the findings. This is partly why we built Omnigent as a \"meta-harness\" to let developers switch and compose agents, and Unity AI Gateway to analyze and gate LLM usage centrally.",
+    "scraped_at": "2026-07-09T04:44:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Finding #3 landed hardest for me. The Pi harness matching vendor harnesses at 2x less cost — and the main driver being smaller inputs to the LLM — is a bigger claim than it sounds.\n\nIf context size is really the dominant cost variable, that starts to suggest that harness design is doing more heavy lifting than model selection. Does that match what you saw across the benchmark? I'm wondering whether, once you optimize the harness, the gap between top-tier models compresses enough that the model choice becomes almost secondary — and the real competition is in whoever figures out the minimal-context harness first.",
+        "rationale": "Finding #3 smaller-inputs explanation opens a sharper question on whether harness optimization makes model selection secondary"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The cheaper-per-token vs cheaper-per-task finding is something more people should stress-test on their own workloads before picking a model.\n\nOne thing I'm curious about in the Sonnet 5 vs Opus 4.8 result: you mention higher cost and lower quality together. Are those two symptoms of the same root cause — that Sonnet 5 needs more tokens to reach a comparable reasoning depth — or did you see cases where it used more tokens and still produced a worse result, suggesting a capability ceiling that context alone can't fix? The distinction matters a lot for whether the solution is harness-side (cut the context, force tighter inputs) or model-side (Sonnet 5 just isn't the right tool for this class of task).",
+        "rationale": "Separates \"model uses more tokens\" from \"capability ceiling\" in the Sonnet 5 vs Opus finding"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The internal benchmark approach is exactly right — SWE-Bench tells you how a model handles GitHub issues from public repos, not how it handles your Scala/Go/Protobuf mix with your conventions. Running your own tasks is the only honest signal.\n\nOn finding #3, I'd push slightly on attributing the Pi harness advantage mainly to smaller inputs. Smaller context is part of it, but a minimal harness also constrains the decision space the agent operates in — fewer choices at each step, tighter feedback loops, less room to wander. In my experience building orchestration for a production GenAI system before the current tooling existed, the moment we removed degrees of freedom from the agent's path was when reliability jumped, not when we tuned the prompt. I suspect \"smaller inputs\" and \"tighter decision space\" are correlated in the Pi case, and it'd be worth separating them — because if it's mostly the decision space, that has different implications for how you'd build Omnigent's orchestration layer.",
+        "rationale": "Petro reframes the Pi harness advantage as decision-space constraint, from production orchestration experience"
+      }
+    ],
+    "slack_summary": "Databricks built an internal coding-agent benchmark on real tasks; open-source models are now competitive and harness design drives cost more than model choice.",
+    "slack_ts": "1783572463.550659",
+    "slack_thread": {
+      "post_reply_ts": "1783572476.872219",
+      "draft_reply_ts": [
+        "1783572486.808129",
+        "1783572491.279539",
+        "1783572495.600729"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "lex-fridman-a217725c",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/lexfridman/",
+    "author_name": "Lex Fridman",
+    "author_headline": "Interested in humans and robots.",
+    "time_ago": "5h",
+    "post_text": "This month is insane for programming:\nFable 5\nGrok 4.5\nGPT-5.6\nGemini 3.5 Pro\nWhat a time to be alive, and to build! Crazy how much programming has changed in 8 months.\nPS: Grok 4.5 in Cursor is really fun to program with btw, probably because it's fast & token efficient, and is smart enough for most tasks. It does feel Opus-level. Amazing journey for Elon and xAI team.\nPS2: I've been genuinely mind-blown by how smart Fable 5 in Claude Code has been. Probably best to use as planner & reviewer, not implementer, too expensive otherwise.\nI'm excited to see what people build in the coming months",
+    "scraped_at": "2026-07-09T04:44:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The planner/reviewer framing for Fable 5 is the most interesting thing in this post.\n\nCurious how you're drawing that line in practice. Is it purely token cost per session, or is there something about how it reasons that makes it better as a reviewer even when cost isn't the constraint — like it's more likely to catch what the implementer missed rather than just extend what it wrote?",
+        "rationale": "Asks what actually makes Fable 5 a better reviewer vs implementer beyond token cost"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Grok 4.5 being fast and token-efficient while feeling Opus-level is actually the more important data point here, if that holds at scale.\n\nThe \"planner/reviewer only, too expensive as implementer\" framing for Fable 5 feels like where we are right now, but I wonder if it's stable. The pattern with every generation so far has been: this quarter's expensive reasoner becomes next quarter's workhorse. If Fable 5 is genuinely better at planning, the question isn't whether you use it as implementer today — it's whether the architecture you build now assumes a world where that distinction collapses in 12 months.",
+        "rationale": "Questions whether the planner/reviewer split is stable given generational cost compression"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"too expensive as implementer\" take on Fable 5 is one I keep running into, and I'm not sure cost is actually the right frame.\n\nIn my experience the bottleneck isn't per-token price — it's context structure. A model that expensive tends to be expensive because it does more passes over more context. If your context is clean (tight spec, clear boundaries, no accumulated drift), you use far fewer tokens than if you're feeding it a messy half-finished codebase and hoping it figures out intent. The teams I see overspending on frontier models are usually the ones whose context management is the problem, not the model choice.",
+        "rationale": "Reframes \"too expensive\" as a context-management symptom, from Petro practitioner position"
+      }
+    ],
+    "slack_summary": "An intense month for new coding models (Fable 5, Grok 4.5, GPT-5.6, Gemini 3.5 Pro); praises Grok 4.5 in Cursor and Fable 5 as a planner/reviewer.",
+    "slack_ts": "1783572603.087289",
+    "slack_thread": {
+      "post_reply_ts": "1783572610.559959",
+      "draft_reply_ts": [
+        "1783572619.449249",
+        "1783572622.442479",
+        "1783572625.689809"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tom-moizik-761c44d7",
+    "urn": "urn:li:share:7480772218730233856",
+    "post_url": "https://www.linkedin.com/in/moizik/",
+    "author_name": "Tom Moizik",
+    "author_headline": "president @ sash",
+    "time_ago": "4h",
+    "post_text": "A note from our president, excited!\nA Message from the President\nIt is hard to call 2026 a boring year — for me, at least.\nThis year, I am pursuing an exciting opportunity to do something actually different: build an AI-native company.\nThe term is, of course, ungodly abused on this platform, so it is important to set expectations properly. My rule of thumb is simple: if humans work at a company, it is not an AI-native company.\nThat makes me the President of Sash, an AI-native company.\nWe are now rolling out pilots with our first customers — including, to give one example, a construction management leader with a multi-billion-dollar managed project portfolio. Between that and enjoying summer as presidents should, I have not had much time to post here. I hope to fix that soon and start sharing more about what we do.\nFor now, I wanted to share a personal milestone in building a working relationship with AI systems.\nI started actually building Sash in May. Two and a half months later, with half a million lines of code written from scratch, I can look back on what has already been an incredible journey.\nWhat excites me most is the exponential growth in my monthly contribution. It might sound silly, but I have no better way to explain it than this: my relationship with Claude has improved. We understand each other better every day.\nAs President, I have not personally read a single line of code. But my CTO tells me it is very good.\nI trust my CTO, as one should, so I am very excited about our pilots and what comes next.\nThe future is amazing, and no one reads code there.\nTalk to you soon.\nP.S. We've been getting a lot of praise for our new landing page: https://sash.live.\nThank you — it did take us a few hours to build.\nWait until you see what we've built over the past two months.\nPresident Tom",
+    "scraped_at": "2026-07-09T04:44:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The definition is sharp and I appreciate it. \"If humans work at a company, it is not AI-native\" — that's a clear line, not the usual hand-waving.\n\nThe thing I'm curious about: how does quality assurance work when no human has read the code? You mention your CTO says it's good, and you trust your CTO. But what does \"good\" mean in that setup — is it behaviorally verified against a spec, or is it \"the tests pass and nothing is on fire\"? Because those are very different confidence levels, and one of them is a lot more brittle when the next model iteration generates something subtly different.",
+        "rationale": "Asks how QA works when no human reads the code — targets the spec-verification blind spot"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"My relationship with Claude has improved. We understand each other better every day.\" — this is the most interesting claim in the post, and the least explained one.\n\nWhat does that actually look like in practice? Is it accumulated context in long-running sessions, a growing set of CLAUDE.md-style instructions, structured prompts that evolved over time — or something more tacit? I ask because \"relationship improves over time\" is either a workflow artifact (better specs, better scaffolding) or something more interesting about how you've learned to frame intent. The distinction matters a lot for whether it's transferable.",
+        "rationale": "Surfaces the workflow mechanism behind the under-explained \"relationship with Claude improved\" claim"
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The definition is clean: no humans, AI-native. I've tried something adjacent — with BankAI before ChatGPT existed, a team of 17 building a production GenAI system for a German bank, the closest thing to \"AI does the work, humans do the oversight\" we could manage at the time. And the moment we thought the AI had it covered, that's exactly when the edge cases started piling up in ways no one predicted.\n\nMy honest read: the \"AI-native = no humans\" framing works when the task space is well-defined and the failure modes are cheap. Construction management at multi-billion-dollar scale has a very different risk profile — a silent data drift or a misread contract clause isn't a bad pull request, it's a real loss. Curious whether your definition holds the same for high-stakes domains, or whether the operational reality ends up putting humans back in the loop somewhere.",
+        "rationale": "Petro BankAI experience is a counter-position; construction client is the highest-stakes test of \"no humans\""
+      }
+    ],
+    "slack_summary": "Building Sash as an \"AI-native\" company (no humans write/read code); 500K lines in 2.5 months, now piloting with first customers including a construction-management client.",
+    "slack_ts": "1783572801.156059",
+    "slack_thread": {
+      "post_reply_ts": "1783572813.959129",
+      "draft_reply_ts": [
+        "1783572821.010159",
+        "1783572824.089109",
+        "1783572828.459969"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "darren-bounds-b6b7bdcb",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/in/darren-bounds-9a49083/",
+    "author_name": "Darren Bounds",
+    "author_headline": "Building AI tools for my own business every day. Helping other companies do the same — hands-on, no fluff. Co-founder of The Playbooks",
+    "time_ago": "1d",
+    "post_text": "I removed one of the most annoying steps from my AI coding workflow.\nBefore, Claude Code would implement a change, generate a review prompt, and hand it back to me. I would paste that prompt into the Codex desktop app, wait for the review, then paste Codex's findings back into Claude Code.\nThat meant switching between two apps and manually managing the review loop after every meaningful change.\nNow Claude Code runs an independent Codex review directly through the CLI:\ncodex exec --sandbox read-only\nCodex inspects the repository, reviews the implementation, and returns its findings directly to Claude Code.\nClaude then checks each finding against the code, fixes the valid issues, reruns the tests, and repeats the review when needed.\nI only need to step in for the final GO / NO-GO.\nThe part I like most is the separation:\n- A different model reviews the work\n- Codex starts with fresh context\n- It has read-only access to the repository\n- The review only runs at the review gate, so there is no surprise token usage\nClaude builds. Codex reviews. Claude verifies and fixes.\nOne unexpected bonus: on my Mac, the Codex app already contained the CLI binary and was authenticated through my ChatGPT account. I exposed that binary on PATH, so Claude Code could call it without another manual login or separate CLI installation.\nIt is a small workflow change, but it has removed a lot of friction and made independent code review much easier to use consistently.",
+    "scraped_at": "2026-07-09T04:44:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The separation principle — different model, fresh context, sandboxed — is the cleanest thing about this setup. Curious about the token economics though: the old flow was annoying but at least human-time was the only cost. Now you have Codex running on every meaningful change plus Claude re-verifying findings. How does the total token spend compare to just staying inside one model and doing a second-pass self-review?",
+        "rationale": "Post claims \"no surprise token usage\" but never addresses net cost of the review loop vs self-review"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The fresh context is genuinely the most valuable property here, not just a bonus. A reviewer who doesn't know what you were trying to build catches things a context-aware Claude would rationalize away.\n\nOne thing I haven't seen addressed in these setups though: Codex starts from scratch on the repo, so it can miss findings that are only problematic given decisions sitting in Claude's context window. Not obvious how you close that gap without collapsing the very separation that makes this worth doing.",
+        "rationale": "Pushes on fresh-context blindspot — findings only valid given context Codex never sees"
+      },
+      {
+        "strategy_label": "Disagree and argue",
+        "comment": "Using a different model as the reviewer makes sense, and the sandboxed read-only constraint is a good instinct. My hesitation with pure multi-model review loops is that both sides are still probabilistic — so what you get is correlated errors with different surface flavors rather than independent validation.\n\nWhat actually gave me reliable gates in production GenAI work was a deterministic layer in between: something that doesn't know how to be creative and can't rationalize its way through a constraint. Curious whether the codex exec gate is purely advisory or whether you have something deterministic downstream that won't let Claude proceed on a failed review.",
+        "rationale": "Challenges whether two probabilistic models give independent validation; introduces deterministic-gate thesis"
+      }
+    ],
+    "slack_summary": "Automated his code-review loop: Claude Code now calls codex exec --sandbox read-only for an independent review, then verifies and fixes the findings itself.",
+    "slack_ts": "1783572959.560889",
+    "slack_thread": {
+      "post_reply_ts": "1783572968.211979",
+      "draft_reply_ts": [
+        "1783572976.417199",
+        "1783572979.331179",
+        "1783572982.568159"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "github-b0cf624f",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/company/github/posts/",
+    "author_name": "GitHub",
+    "author_headline": null,
+    "time_ago": "1d",
+    "post_text": "The GitHub Copilot app is now available on every Copilot plan.\nNo plan? You can still build, just bring your own key. Here's how to set it up.\nDownload the app\nhttps://lnkd.in/eyS6auvP\nBYOK to the Copilot app, now available for all Copilot plans",
+    "scraped_at": "2026-07-09T04:44:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The BYOK option is the part that actually matters here — it means you can test the Copilot workflow without committing to a subscription first.\n\nGenuine question on the BYOK path: when you bring your own key, do you still get the full agentic layer (multi-step completions, workspace context, the chat that spans files), or does it drop down to raw completions through the key? Because if it's the latter, \"bring your own key\" mostly means \"bring your own API bill\" — the Copilot UX advantage goes away and you're back to a basic autocomplete wrapper. Would be useful to know where the ceiling is before people invest time setting it up.",
+        "rationale": "Asks whether BYOK keeps the full agentic layer or drops to raw completions — real eval question"
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Glad to see BYOK land here — lower barrier to entry for people who already have API access is the right call.\n\nThe thing I keep wondering about with BYOK on AI coding tools: at what point does \"bring your own key\" quietly become \"bring your own everything\"? The key is the easy part. The harder part is that as soon as you swap the underlying model, the behavior of the agentic layer shifts — context handling, tool use reliability, how it deals with ambiguous instructions. You're not really \"bringing your key to Copilot,\" you're substituting a different model into a workflow tuned for a specific one. Has anyone run this in practice and seen the quality gap close, or does it stay noticeable?",
+        "rationale": "Surfaces the tension between BYOK flexibility and workflow-model coupling"
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "BYOK accessibility is a real unlock — especially for teams that already pay for API access and don't want a second bill for the UX layer on top.\n\nThe tricky part: every AI coding tool has an implicit model assumption baked into its workflow. Copilot's suggestions, its context window handling, how it handles follow-up edits — those were tuned on specific models. BYOK introduces a gap between the workflow contract and the model's actual behavior. I ran into a version of this building Bank.ai before ChatGPT existed — we were self-hosted with no vendor lock-in by necessity, and every model swap forced us to retune the whole pipeline, not just swap the key. Curious whether GitHub has documented what degrades (and what doesn't) when you go off the default model path, or whether that's left to users to discover.",
+        "rationale": "Anchors the model-mismatch concern in Petro BankAI self-hosted experience where every swap forced pipeline retuning"
+      }
+    ],
+    "slack_summary": "The GitHub Copilot app is now available on every Copilot plan, and users with no plan can still build via bring-your-own-key (BYOK).",
+    "slack_ts": "1783573094.893729",
+    "slack_thread": {
+      "post_reply_ts": "1783573102.035209",
+      "draft_reply_ts": [
+        "1783573109.767559",
+        "1783573113.212449",
+        "1783573117.210799"
+      ]
+    },
+    "slack_error": null
   }
 ]
