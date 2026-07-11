@@ -4234,5 +4234,68 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "gergely-orosz-9196ccbe",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/gergelyorosz/",
+    "author_name": "Gergely Orosz",
+    "author_headline": "Deepdives on software engineering, tech careers and industry trends. Writing The Pragmatic Engineer, the #1 software engineering newsletter on Substack. Author of The Software Engineer's Guidebook.",
+    "time_ago": "12h",
+    "post_text": "I did my first-ever AMA episode. Your questions, my answers!\nWatch or listen:\n• YouTube: https://lnkd.in/gAMEz2vc\n• Spotify: https://lnkd.in/g7djsGyS\n• Apple: https://lnkd.in/gcZ3-WfT\nBrought to you by Antithesis: verify your system's correctness without human review or traditional integration tests – and avoid bugs or outages. https://lnkd.in/eyWErUbm\n---\nHere's a fun fact I don't think I've shared before: without the COVID-19 pandemic, The Pragmatic Engineer might not exist. Prior to the global health crisis in 2020, I had no plans to get serious about writing: I enjoyed blogging on The Pragmatic Engineer blog, but intended to remain an engineering manager or software engineer for the foreseeable future.\nBut then, COVID-19 happened and Uber made layoffs, which led to a quarter of my team being let go, while the rest of us were disbanded into other teams. It was a tough time, and I decided it was a good moment to exit and finish writing a book I had been working on, 'The Software Engineer's Guidebook'. After that project was complete, I planned to try and start a VC-funded startup and build something around platform engineering; possibly a system for tracking RFCs at mid-sized and larger companies.\nI gave myself around eight months to finish the book, but when that deadline elapsed, it still wasn't ready. I did write three other books ('The Tech Resume Inside-Out', 'Building Mobile Apps at Scale', and 'Growing as a Mobile Engineer') and still wasn't convinced by any startup idea. But I did discover that I like to write!",
+    "scraped_at": "2026-07-11T06:57:25Z",
+    "disposition": "off-topic",
+    "reason": "Personal newsletter/writing-career origin story (COVID layoff, book writing) — no AI or startup substance, more a personal-journey/AMA announcement.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-f6bc21da",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "14h",
+    "post_text": "Запустити її планують 4 вересня. У дизайн заклали багато символізму, але до вибору шрифтів уже виникли питання.\nА як ви ставитесь до введення номіналу 2000 гривень?\n👉 https://dou.ua/goto/uwQv",
+    "scraped_at": "2026-07-11T06:57:25Z",
+    "disposition": "off-topic",
+    "reason": "News about a new Ukrainian 2000-hryvnia banknote design — non-tech currency/design news, not AI or startup related.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "arseny-hofman-ea564973",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/aruseni/",
+    "author_name": "Arseny Hofman",
+    "author_headline": "Founder | hvirtka.com | Friend-matching platform",
+    "time_ago": "1d",
+    "post_text": "А хочу сказати я ось що. Я пишаюсь своїми друзями. Бо завтра буде один із найкрутіших в Україні фестивалів крафтового пива. І я дуже добре знаю, скільки зусиль потрібно, щоб таке зробити. Сам теж щось знаю про організацію подій. А робити щось такого рівня — це реально заслуговує на повагу. Тим паче, вони це роблять вже не вперше, і всі рази все проходило дійсно на рівні найкращих у світі фестивалів.\nТому, якщо ви у Львові, любите крафт та вільні з 10 по 12 липня — обов'язково приходьте.\nЩо там буде:\n— 24 крани імпортного пива на розлив, і всі сорти вперше в Україні;\n— широкий вибір українського крафту й пива від імпортних пивоварень;\n— три дегустації в програмі;\n— окремий стенд із безалкогольними напоями, а також локація з міцнішими напоями від Bar Over.\nДітям до 12 і військовим за посвідченням УБД вхід безкоштовний. Фестиваль pet-friendly, тож беріть тварин із собою, якщо знаєте, що їх не турбуватиме натовп та гучна музика. :)\nА ще, звичайно, на території стоятимуть кулери з безкоштовною водою — бо це про пивну культуру й відповідальне споживання.\n12 липня гратиме гурт The Unsleeping — справжній бедрум панк.\nКвитки та всі подробиці в інсті.\n@special_bf_festival\nЯ постараюсь прийти на всі 3 дні. Бо на таких подіях ти як ніде більше відчуваєш, що пивна культура — це не про хміль та солод. Це про людей, традиції та новаторство. А також про постійну роботу над тим, щоб кожен міг знайти щось своє.",
+    "scraped_at": "2026-07-11T06:57:25Z",
+    "disposition": "off-topic",
+    "reason": "Promo for a craft beer festival in Lviv — personal/lifestyle event announcement, no AI or startup substance despite founder title.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
   }
 ]
