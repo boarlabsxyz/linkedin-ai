@@ -283,8 +283,11 @@ Storing the full `post_text` on every filtered entry is what lets a later run (o
 
 If a card body ends in `…` or contains a `see more` button, click it BEFORE hashing:
 
+**`browser_evaluate` cannot pass arguments to the function** — it only ever calls it with zero args (or a single resolved element ref). So do NOT write `(author) => {…}` and expect `author` to arrive; it never will. Instead inline the author as a literal: copy the function below and replace `<AUTHOR>` with the card's exact author name as a JS string (double-quoted; escape any `"` inside it), then pass the resulting **zero-arg** function.
+
 ```js
-(author) => {
+() => {
+  const author = "<AUTHOR>";  // ← substitute the exact author name before calling; do NOT pass an argument
   const btns = Array.from(document.querySelectorAll('button'));
   // Match buttons inside a card whose enclosing card's author matches
   for (const b of btns) {
@@ -322,10 +325,13 @@ Wait 2 seconds. Increment `scrollIterations`. If no new keys appeared, increment
 
 #### 3d. Recover a missing URN via "Copy link to post"
 
-Only for a card that just passed all filters (step 8) and has `urn === null`. LinkedIn's home feed strips URNs from most card DOMs, but the control-menu still offers **"Copy link to post"**, which writes the canonical permalink (carrying the activity id) to the clipboard. Run this via `mcp__playwright__browser_evaluate`, passing the card's `author` — it opens the menu, clicks the copy item, reads the clipboard, closes the menu, and extracts the URN in a single async call:
+Only for a card that just passed all filters (step 8) and has `urn === null`. LinkedIn's home feed strips URNs from most card DOMs, but the control-menu still offers **"Copy link to post"**, which writes the canonical permalink (carrying the activity id) to the clipboard. It opens the menu, clicks the copy item, reads the clipboard, closes the menu, and extracts the URN in a single async call.
+
+**`browser_evaluate` CANNOT take arguments** — passing `async (author) => {…}` and expecting `author` to be supplied is the #1 cause of this agent stalling (it retries the tool call forever hunting for a way to pass the arg). There is none. Inline the author as a literal instead: copy the function below, replace `<AUTHOR>` with the card's exact author name as a double-quoted JS string (escape any `"`), and pass the resulting **zero-arg** function to `mcp__playwright__browser_evaluate`.
 
 ```js
-async (author) => {
+async () => {
+  const author = "<AUTHOR>";  // ← substitute the exact author name before calling; do NOT pass an argument
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const btns = Array.from(document.querySelectorAll('button[aria-label*="control menu"]'));
   const btn = btns.find(b => (b.getAttribute('aria-label') || '').includes(author));
@@ -355,7 +361,9 @@ async (author) => {
 }
 ```
 
-Wait ~1 second after the call. If it returns a `urn`, use it. If it returns `err: clipboard-blocked` (the browser context denied `navigator.clipboard.readText()`) or any other error, leave `urn: null` and continue — the post is still drafted, just without a permalink (same as the pre-recovery behavior). Do **not** retry more than once per card; a bounded ≤`TARGET_COUNT` menu interactions per fire is the budget.
+Wait ~1 second after the call. If it returns a `urn`, use it. **In every other case — `err: clipboard-blocked`, any other `err`, an empty/undefined return, OR the `browser_evaluate` tool call itself erroring (bad param, timeout, whatever) — treat that single call as the whole attempt: set `urn: null`, move on, and draft the post anyway.** A null URN is a fully supported outcome (the permalink is simply omitted).
+
+This step is STRICTLY ONE `browser_evaluate` call per card. Do **not** re-issue it with different params, do **not** experiment with `element`/`ref`/`target` arguments, do **not** loop — one call, then fall through. The total budget is ≤`TARGET_COUNT` copy-link calls per fire; URN recovery must never consume more than a few seconds per card. Burning the fire's whole time budget flailing on this call (as happened when the function took an `author` argument) is the exact failure this rule exists to prevent — when in doubt, skip recovery and keep `urn: null`.
 
 **No "Show more results" button on the home feed** — LinkedIn just keeps loading infinitely. If `scrollHeight` stops growing across 3 consecutive scrolls AND no new keys arrive, treat as `feedExhausted = true`.
 
@@ -383,6 +391,8 @@ Final message shape (see contract at top).
 - Do **not** stop early because you've reached a page height — keep scrolling until the queue is full or `scrollHeight` stops growing for 3 iterations.
 - Do **not** use `data-urn` selectors — LinkedIn stripped them from the home feed. Use the control-menu button aria-label instead.
 - Do **not** invent URNs. Populate `POST_i_URN=-` only after **both** recovery passes fail (HTML regex + the step-3d copy-link flow for accepted posts); the orchestrator handles the null case. When a URN is present, `POST_i_URL` is the permalink `https://www.linkedin.com/feed/update/<urn>/`; `POST_i_AUTHOR_URL` is always the author profile link.
+- Do **not** pass arguments to `mcp__playwright__browser_evaluate` (no `author` arg, no `target`/`element`/`ref` fishing). It can't take them. Inline any per-card value (e.g. the author name) as a literal inside a zero-arg function. Getting this wrong makes the agent retry forever and burns the entire fire.
+- Do **not** retry the step-3d copy-link call. One `browser_evaluate` per card; on any failure, set `urn: null` and continue. URN recovery is best-effort and must never block drafting.
 - Do **not** invent post text. If you can't scrape a card cleanly, skip it.
 - Do **not** classify without reading `interests.md`.
 - Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.
