@@ -4926,5 +4926,387 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "ara-khan-f3da8cf8",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "5d",
+    "post_text": "When the panic sets in\n2",
+    "scraped_at": "2026-07-14T10:17:59Z",
+    "disposition": "off-topic",
+    "reason": "Meme/reaction-image post with minimal text (\"When the panic sets in\"), no AI or startup substance to engage with.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "yan-drugalya-47200c32",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/yan-drugalya-63620428/",
+    "author_name": "Yan Drugalya",
+    "author_headline": "Senior Software Engineer @ Unity Technologies | Data-driven solutions",
+    "time_ago": "13h",
+    "post_text": "Nice read.\nhttps://lnkd.in/db6qDTg6\nHow tech workers are feeling in 2026: a workforce splitting in two\nHow tech workers are feeling in 2026: a workforce splitting in two\nlennysnewsletter.com\n1",
+    "scraped_at": "2026-07-14T10:17:59Z",
+    "disposition": "off-topic",
+    "reason": "Bare link-share (\"Nice read.\") with no original commentary; linked article is general tech-workforce sentiment, not AI/startup-specific enough to warrant a substantive comment.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ara-khan-b6164022",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "5d",
+    "post_text": "When the panic sets in",
+    "scraped_at": "2026-07-14T10:21:58Z",
+    "disposition": "off-topic",
+    "reason": "Meme/no-text post, no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "drew-breunig-3e54ee8d",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/drewbreunig/",
+    "author_name": "Drew Breunig",
+    "author_headline": "Working on AI, data, and geo.",
+    "time_ago": "13h",
+    "post_text": "Where do people show off their information design work these days?",
+    "scraped_at": "2026-07-14T10:22:04Z",
+    "disposition": "off-topic",
+    "reason": "Asks about information-design portfolio sites; no AI/startup substance despite AI-adjacent headline",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-de83cbea",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "2d",
+    "post_text": "Здавалося б, дрібничка, а насправді значно спрощує побут. Іноді не треба купувати щось за всі гроші світу, аби трохи полегшити собі життя)\nА у вас є якісь недорогі речі, завдяки яким ви змогли полегшити собі побут? Що це?\n👉 https://dou.ua/goto/YWkc",
+    "scraped_at": "2026-07-14T10:22:09Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian consumer-goods/lifestyle poll, no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "the-pragmatic-engineer-b51df911",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/the-pragmatic-engineer/posts/",
+    "author_name": "The Pragmatic Engineer",
+    "author_headline": "Learn more",
+    "time_ago": "21h",
+    "post_text": "Pollen threatened to sue over an article. Gergely Orosz, founder of The Pragmatic Engineer, on the stress of investigative journalism and realising this is not for him:\n\"The thing that I almost got in trouble for, I was really stressed about it, is the deep dive on Pollen.\nPollen, the events company, really pissed me off because I was just covering layoffs across the industry and I mentioned Pollen was one of the many who did layoffs. I knew people there who left Twitter and Deliveroo and some good companies to work at Pollen 'cause it was a good company, good salary, flexible perks. And I just briefly mentioned them in my article saying: updated layoffs, it was poorly handled.\nOn an all-hands, someone brought it up saying The Pragmatic Engineer - I was the only one who mentioned it - The Pragmatic Engineer mentioned that we did layoffs and it was poorly handled. What do you think of it as a CEO? And the CEO said like, ah, this is not like a BBC or Panorama. It's like some small publication with an agenda against us don't worry about it, it's incorrect anyway.\nThey shared this back with me and I was like, what?\nThe company did not pay employees and they lied about them. They canceled health insurance. It was lots of lies and unpaid salaries.\nSo I did a proper investigative article where I collected a lot of stuff on how it went wrong, including a double charging of a payment that was a deliberate double charge disguised as an outage. There's now reporting out about it from the BBC. I might or might have not helped with some of that reporting for the BBC. I couldn't put it in my article because when I sent it over to Pollen, they said that this is libelous, this is libelous, this is libelous, meaning they could sue me.\nI had to think about, do I really want to do that? So I actually self-censored and I put so much effort into the article, so much stress, and I realized that investigative journalism is just not for me. And it's a good read. The BBC later made a documentary. I also helped them with that, but I realize this world is not for me.\"\nGergely answers your questions on AI, engineering, hiring, and careers on The Pragmatic Engineer podcast:\n• YouTube: https://lnkd.in/g_hdyfem\n• Spotify: https://lnkd.in/gwDwK2gc\n• Apple: https://lnkd.in/g34JCzKw\n• Summary and transcript: https://lnkd.in/g6HmWxZa",
+    "scraped_at": "2026-07-14T10:24:11Z",
+    "disposition": "off-topic",
+    "reason": "Journalism-ethics anecdote about investigative reporting stress; not AI/LLM or startup-building content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "vasyl-rakivnenko-7de55acb",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/rakivnenkov/",
+    "author_name": "Vasyl Rakivnenko",
+    "author_headline": "AI Technical Lead @ Stanford, Instructor, Stanford GSB Alumni '23",
+    "time_ago": "3w",
+    "post_text": "🎉 1 year as #AI Technical Lead at Stanford Law School Legal Design Lab!\nPrototyping, building AI-powered tools, assisting with the AI For Legal Help class, and teaching my first course on AI at Stanford Continuing Studies, auditing classes on Calculus and Math, getting to know amazing people, and one more year living the Silicon Valley ☀️  energy.\nThere's so much I could share about Stanford and SV…\nBut instead, I want to flip it:\nAsk me anything about Stanford or Silicon Valley in the comments or DMs.\nWhat do you want to know? Let's go 👇\n#Stanford #SiliconValley",
+    "scraped_at": "2026-07-14T10:24:11Z",
+    "disposition": "off-topic",
+    "reason": "AMA about Stanford/Silicon Valley life; no substantive AI or startup content despite AI-adjacent title",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jeff-taylor-99609d7b",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/jeff-taylor-5212115a/",
+    "author_name": "Jeff Taylor",
+    "author_headline": "Boomband/Monster.com Founder/ Inventor / Entrepreneur / Marketer / Provocateur /  Father  Founder of more than 15 companies including the 454th .com -Monster",
+    "time_ago": "16h",
+    "post_text": "I'm uninspired by LinkedIn right now. Not by the people. By the content. 18 months of constant posting…and to what end?\nI went deep into my feed this week looking for a guide post. Someone's new approach. A different angle, a reason to feel sharper. What I found instead was the loop. The wake up message for today. Job tips while someone is blow drying their hair. How the World Cup makes me a better person. A parade of companies trying to sell me lead gen software I didn't ask about. Same shapes, different names, playing on repeat.\nI don't think the people are the problem. I think the format treadmill rewards repetition. Three-part series. Personal pics with nothing to do with the content, named frameworks. Rejiggering the latest chart.\nData point, bold line, body, bullets, body - close.\nIt mostly works.\nAnd once you find something you think works, you keep doing the thing…including me!\nIf you've been a steady with me through all my pushes- the tools fatigue, AI impact learning and the Boomband build-in-public stuff, thank you.\nGenuinely. You're the reason this is worth doing differently instead of not doing at all.\nAnyone else hit this wall?\nCurious if it's a me thing….",
+    "scraped_at": "2026-07-14T10:24:11Z",
+    "disposition": "off-topic",
+    "reason": "LinkedIn platform meta-post about content fatigue, not AI or startup substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-ba654a97",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "3h",
+    "post_text": "Маркіян дев'ять років працював як Back-end Developer, поки два роки тому не мобілізувався до армії. Нині він очолює команду розробки у 414-й бригаді СБС «Птахи Мадяра». Він розповів DOU про внутрішню кухню підрозділу, софт, який допомагає в ухваленні рішень командирам, армійщину та БЗВП, а також курси, які продовжує проходити.\nКерівник розробки у «Птахах Мадяра» про те, чому більшість технічних спеціалістів не доходять до кінця рекрутингу, і важливість софту",
+    "scraped_at": "2026-07-14T10:26:20Z",
+    "disposition": "off-topic",
+    "reason": "Military/human-interest profile of a dev-team lead who mobilized; not AI or startup substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kate-chapman-4675024d",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/untanglingsystems/",
+    "author_name": "Kate Chapman",
+    "author_headline": "Fractional CTO | Platform, Product & AI strategy | Sociotechnical Systems | Open Source Governance | Helping Humans & Tech Collaborate",
+    "time_ago": "4h",
+    "post_text": "Claude lectured me today.\nIt said I needed to stop chatting and get the GVWR off of my truck and it couldn't help me figure out if I could tow a trailer without that. Turns out the sticker with that was no longer there, so then it wanted me to go drive to a weigh station.\nUmmm, sir. Robot, sir. I just wanted an estimate.",
+    "scraped_at": "2026-07-14T10:37:34Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Funny thing is this is the mirror image of the failure mode I usually see. Most of the AI horror stories going around are agents that don't stop when they should (mid-task reasoning \"let me just delete this obstacle\" and doing it). Yours stopped when it very much shouldn't have, and picked the most bureaucratic possible path back into the conversation.\n\nSame root cause though, no calibrated sense of when to just answer versus when to escalate. Did it ever give you a ballpark once you pushed back, or did it stay stuck on \"go find the sticker\"?",
+        "rationale": "Post is a concrete anecdote of AI over-caution; a clarifying question that reframes it against Petro's public guardrails thesis invites a follow-up without lecturing back."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The weigh station suggestion is the tell. It didn't just refuse, it designed you a compliance workflow for a question that wanted a rough number.\n\nThat's what happens when a model treats \"I might be wrong\" and \"this could plausibly be regulated\" as the same threat level. Worth asking, if it had given you the estimate with a clear caveat instead of a lecture, would you actually have made a worse decision? My guess is no, and that gap between perceived risk and actual risk is where most of this over-caution comes from.",
+        "rationale": "Names the specific over-engineered escalation (weigh station) and pushes the conversation toward the calibration-of-risk angle, which is sharper and pulls a real response."
+      }
+    ],
+    "slack_summary": "Claude refused a rough towing estimate without her truck's GVWR and sent her to a weigh station — an AI over-caution anecdote.",
+    "slack_ts": "1784025463.058549",
+    "slack_thread": {
+      "post_reply_ts": "1784025469.728529",
+      "draft_reply_ts": [
+        "1784025479.114439",
+        "1784025486.592239"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kent-beck-a5fa88ae",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/kentbeck/",
+    "author_name": "Kent Beck",
+    "author_headline": "Of the handful of people who have shaped how we build software, Kent is the raised middle finger · Tidy first? · Thinkies · Augmented development",
+    "time_ago": "19h",
+    "post_text": "Keith Adams said something plainly on Still Burning that I agree with:\n\"We're talking in spring of 2026. If you're ignoring these tools entirely post-November 2025, you're fooling yourself. You've got your head in the sand.\"\nBut the scolding isn't the useful part. What separates the people who bounced off these tools from the ones who broke through is curiosity. Not \"it didn't work, it's hype,\" but \"why didn't it work, and what would I change?\" Then keep turning that crank.",
+    "scraped_at": "2026-07-14T10:39:16Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"Why didn't it work, and what would I change\" is the whole game. We hit that wall constantly building our pre-ChatGPT GenAI system for German banks back in 2018 — half our experiments just failed, and the only way through was running a lot more of them and doing the statistical work to see which parameter changes actually moved the needle. We were hoping more than knowing for a long stretch.\n\nCurious where you see people get stuck on the \"what would I change\" step specifically — is it usually a prompting problem, or more that they never set up a way to tell if the change actually helped?",
+        "rationale": "Kent Beck's own audience (senior practitioners) responds to concrete pre-2023 production evidence, and this echoes Petro's already-public \"hoping more than knowing\" framing without repeating it verbatim."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The curiosity point is the real filter. \"It's hype\" is a conclusion with no next step attached to it — it just lets you stop looking. \"Why didn't it work\" is the only version of the sentence that forces you to keep a hypothesis and go test it again.\n\nWhat's the failure mode you'd flag for the people who do stay curious but still don't break through — the ones turning the crank on the wrong variable? In my experience that's usually someone iterating on the prompt when the actual gap is that they never built a way to check whether the output was even right.",
+        "rationale": "Pushes past agreement into an under-examined layer of Beck/Adams' framing (curiosity alone isn't sufficient — you also need a feedback instrument), sharpening the conversation without hostility."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed on curiosity being the split — I'd add one thing underneath it: most people who \"bounce off\" never had a way to tell why it failed in the first place. They tried a prompt, got a bad output, and had no instrument to say whether the model was wrong or their spec was wrong. Turning the crank only works if you can actually see which gear is slipping.",
+        "rationale": "Tight one-paragraph nuance-add (not a full disagreement) that reframes curiosity as necessary-but-not-sufficient, staying consistent with Petro's True BDD thesis (docs/spec as the feedback instrument) without pitching it."
+      }
+    ],
+    "slack_summary": "Quotes Keith Adams: ignoring AI tools in 2026 is head-in-sand — but what separates breakthroughs from bounces is curiosity, not scolding.",
+    "slack_ts": "1784025564.331959",
+    "slack_thread": {
+      "post_reply_ts": "1784025571.674099",
+      "draft_reply_ts": [
+        "1784025580.836309",
+        "1784025588.653609",
+        "1784025596.731309"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ahmed-elhossaini-f0735ebf",
+    "urn": "urn:li:share:7482246521577447424",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:share:7482246521577447424/",
+    "author_url": "https://www.linkedin.com/in/sandboxws/",
+    "author_name": "🧠 Ahmed Elhossaini",
+    "author_headline": "I build the systems that move data at scale, real-time streaming platforms, distributed processing engines, and the developer tools that keep them fast, observable, and pleasant to operate.",
+    "time_ago": "10h",
+    "post_text": "Fantastic read!! Highly recommend!!!\nRay Myers\n• 1st\nIn search of code worth writing\n1d •\nOK, you want to get spicy? We can get spicy.\nBun's agentic rewrite from Zig to Rust, a subplot in Anthropic's campaign to end Software Engineering.\nhttps://lnkd.in/gMvVH2cD",
+    "scraped_at": "2026-07-14T10:41:01Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"A subplot in Anthropic's campaign to end Software Engineering\" is a great line, and it points at something real. But I'd push back a bit on the framing that the rewrite itself is the interesting part. We had a similar debate rewriting a chunk of our German banking GenAI stack a while back — the language swap wasn't what mattered, it was whether the new version could still be verified against the same contract-quality bar we'd already hit. If AI can regenerate a codebase in a different language and the output still passes the same tests and traces to the same requirements, that's not really \"ending software engineering,\" it's proving code was always the disposable part and the spec was the thing worth keeping. Curious if Ray's post gets into what stayed constant across the Zig-to-Rust jump versus what changed.",
+        "rationale": "Petro's public thesis is \"code is disposable, spec/documentation is the source of truth\" — this reframes the Bun rewrite as evidence for that thesis rather than a novelty, without contradicting anything in posted.md."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Ray's framing of Anthropic's \"campaign to end Software Engineering\" is the part that sticks with me more than the Bun rewrite itself. The rewrite is just the visible symptom. What would actually worry me as a failure mode isn't AI writing worse Rust than a human would — it's teams treating the rewrite as done because the tests pass, without anyone re-verifying that the original Zig behavior and the new Rust behavior still match on the edge cases nobody wrote a test for. Agentic rewrites are only as trustworthy as the spec they're checked against. What's Bun's story on that side — did they lean on existing test coverage, or generate new verification alongside the rewrite?",
+        "rationale": "Surfaces the real risk under-examined in a \"highly recommend\" repost — spec/test drift during agentic rewrites — echoing Petro's recurring \"AI needs verification, not blind trust\" stance (Project Vend, Code Quality posts) without pitching True BDD."
+      }
+    ],
+    "slack_summary": "Recommends Ray Myers' spicy take on Bun's agentic Zig-to-Rust rewrite as \"a subplot in Anthropic's campaign to end Software Engineering.\"",
+    "slack_ts": "1784025669.202649",
+    "slack_thread": {
+      "post_reply_ts": "1784025677.925979",
+      "draft_reply_ts": [
+        "1784025686.664489",
+        "1784025695.631019"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "matias-castello-a2eecc9b",
+    "urn": "urn:li:activity:7482687329246019585",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7482687329246019585/",
+    "author_url": "https://www.linkedin.com/in/matiasc/",
+    "author_name": "Matias Castello",
+    "author_headline": "Product leader — Developer Platform, AI, Growth | Former startup founder",
+    "time_ago": "14h",
+    "post_text": "Personal news: I've recently joined OpenAI!\nSuper excited ~~for unlimited tokens~~ to get to contribute to products that'll benefit all of humanity 🌐",
+    "scraped_at": "2026-07-14T10:42:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Congrats, Matias. Contributing to something that big is a different kind of engineering problem than most of us ever get to touch.\n\nCurious how the mandate reads day one, though: are you closer to shipping product surface that regular people touch, or closer to the platform/infra side that other builders build on top of? \"Benefit all of humanity\" covers a lot of very different roadmaps.",
+        "rationale": "Short career-news posts have no thesis to argue with, so a specific question about scope (product vs. platform) invites a real reply instead of generic congrats-spam."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Congrats, Matias — and the strikethrough is the best part of this post, most \"unlimited tokens\" jokes land flat but this one actually lands.\n\nI built a self-hosted GenAI system for German banking back in 2018, pre-ChatGPT, sold it in 2023, and it only got shut down in mid-2025 when OpenAI finally started outperforming it. Watching that gap close from the outside for years, then seeing someone join the team closing it from the inside, is a genuinely different vantage point. Curious what surprises you most once you're looking at the model from the builder's side instead of the API-consumer's side.",
+        "rationale": "Ties directly to the documented BankAI-vs-OpenAI story in posted.md (05.03.26 entry — Petro's GenAI product only got outperformed by OpenAI in mid-2025), giving genuine practitioner credibility instead of generic congratulations."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Congrats, Matias. Developer Platform is the part of OpenAI I'd want to poke at too — that's the layer where \"benefits all of humanity\" actually gets tested against real developer workflows, not just demo day.\n\nWhat's your first instinct on where the platform is currently weakest for builders — reliability, cost predictability, or just the surface area of what's exposed via API versus what the frontier models can actually do?",
+        "rationale": "Anchors on the author's stated headline (Developer Platform) as a builder-to-builder question, distinct in angle from Variant 1 (scope) and Variant 2 (personal story)."
+      }
+    ],
+    "slack_summary": "Announces he's joined OpenAI as a product leader, with a crossed-out \"for unlimited tokens\" joke.",
+    "slack_ts": "1784025770.263459",
+    "slack_thread": {
+      "post_reply_ts": "1784025777.282209",
+      "draft_reply_ts": [
+        "1784025784.580659",
+        "1784025792.805429",
+        "1784025799.512569"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ara-khan-f7443033",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "2w",
+    "post_text": "Hard to improve coding agents rn because the real bottleneck is not the agents but the humans using them.",
+    "scraped_at": "2026-07-14T10:44:28Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Matches what I keep seeing too. Gave a similar automation task to an experienced dev and to my son, still in university. The dev kept rewriting Claude's output by hand whenever it didn't match how he'd have written it himself. My son just described the task, iterated, and pushed forward without much editorializing — got to a working result faster. The gap wasn't skill, it was what each of them did the moment AI didn't deliver: one took over, the other kept pushing. That's a habit, not a talent, which is why I think it's trainable rather than fixed.",
+        "rationale": "Directly mirrors the post's \"bottleneck is the humans\" thesis with a real, transcript-sourced anecdote (posted.md dated 08.01.26) contrasting takeover-vs-persistence behavior under AI failure."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agree the bottleneck moved to the human side, though I'd split \"the humans\" into two different failure modes rather than one. Some people over-specify, writing a checklist of \"CRITICAL\" instructions and getting frustrated when the model only follows half of it — that's treating a creative system like a deterministic one. Others under-specify and just accept the first answer, which is its own failure. The fix in both cases looks less like a better prompt and more like a rigid outer loop with room for the model to be creative inside each step. Curious which failure mode you're seeing more of in the agents you're testing.",
+        "rationale": "Adds a concrete two-part taxonomy (over-spec vs under-spec) drawn from Petro's own \"conscious synthesis\" thesis (posted.md 11.12.25) instead of just agreeing, and invites the author to engage on specifics."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Strong claim, and I think it's right for most of the failure cases I run into. Where I'd push on it: is that a stable property of the humans, or a property of how new this workflow still is for them? If someone's been \"driving\" an agent for two years versus two weeks, does the gap between them shrink, or does it stay wide because the underlying instinct (verify vs. accept the first answer) doesn't get taught by repetition alone?",
+        "rationale": "Pushes the author's under-examined \"human bottleneck\" claim toward whether it's fixable via experience or a stable trait, sharpening the conversation without being hostile."
+      }
+    ],
+    "slack_summary": "Argues the real bottleneck in improving coding agents is the humans using them, not the agents.",
+    "slack_ts": "1784025874.785189",
+    "slack_thread": {
+      "post_reply_ts": "1784025883.057499",
+      "draft_reply_ts": [
+        "1784025891.256589",
+        "1784025900.996209",
+        "1784025908.205899"
+      ]
+    },
+    "slack_error": null
   }
 ]
