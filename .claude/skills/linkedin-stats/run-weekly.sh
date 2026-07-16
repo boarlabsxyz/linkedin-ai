@@ -4,16 +4,21 @@
 #
 # Flow:
 #   1. Branch off origin/main.
-#   2. Invoke the linkedin-stats skill via `claude -p` (writes JSON snapshots
-#      under dashboards/li-stats/).
-#   3. If anything changed, commit + push + open a PR by reusing the existing
-#      common-pr-commit / common-pr-update scripts (same message format as
-#      manual runs).
-#   4. Squash-merge the PR via common-pr-merge so weekly snapshots don't pile
-#      up and conflict with each other on subsequent runs.
+#   2. FAST PATH: run the deterministic scraper
+#      (.claude/skills/linkedin-stats/fast/scrape-weekly.mjs) — one paced
+#      Playwright process over the shared logged-in Chrome profile, ~5 min for
+#      the whole snapshot set. No LLM in the scrape loop.
+#   3. FALLBACK: only when the fast path exits 30 (selector/compat failure —
+#      LinkedIn DOM drifted beyond what the line-anchored parsers handle),
+#      invoke the legacy linkedin-stats agent pipeline via `claude -p` (the
+#      sonnet agents improvise selectors; multi-hour, watchdogged).
+#      Exit codes 20 (auth), 21 (profile locked), 22 (rate-limited), 23 (fs)
+#      fail the run outright — the agent path would hit the same wall.
+#   4. jq-validate every JSON, require a non-empty diff, then commit + push +
+#      PR + squash-merge via the common-pr-* scripts.
 set -euo pipefail
 
-for cmd in claude node gh git jq; do
+for cmd in claude node npm gh git jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Required command not found in PATH: $cmd" >&2
     exit 1
@@ -26,58 +31,97 @@ BRANCH="chore/linkedin-stats-${WEEK}"
 git fetch origin main
 git checkout -B "$BRANCH" origin/main
 
-# CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 disables the 10-minute background-task
-# kill switch. The scrape (post discovery + one metrics agent per post,
-# sequential) always exceeds 10 minutes; without this, the 2026-07-06 and
-# 2026-07-13 scheduled runs got SIGTERMed mid-scrape ("Background tasks still
-# running after 600s; terminating") and shipped nothing — while the workflow
-# stayed green.
-export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
+# ---------------------------------------------------------------- fast path
 
-# Hard wall-clock cap on the whole `claude -p` run. Disabling the ceiling above
-# removed the only kill switch, so a stalled MCP call can wedge the run until
-# the 420-min job timeout. 6h covers a real multi-hour scrape and leaves room
-# for the commit/PR/merge chain inside the job timeout.
-CLAUDE_TIMEOUT_SECS=21600
+FAST_DIR=".claude/skills/linkedin-stats/fast"
+fast_exit=0
+if [ -f "$FAST_DIR/scrape-weekly.mjs" ]; then
+  # node_modules is gitignored; the cron worker clone starts clean every fire.
+  if [ ! -d "$FAST_DIR/node_modules/playwright-core" ]; then
+    (cd "$FAST_DIR" && npm install --no-audit --no-fund --silent)
+  fi
+  echo "run-weekly: fast path starting ($(date -u +%H:%M:%SZ))"
+  set +e
+  node "$FAST_DIR/scrape-weekly.mjs" --deadline-secs=900
+  fast_exit=$?
+  set -e
+  echo "run-weekly: fast path exited $fast_exit ($(date -u +%H:%M:%SZ))"
+else
+  fast_exit=30 # no fast script in this checkout — use the agent path
+fi
 
-run_claude_pipeline() {
-  echo "gather linkedin stats" \
-    | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
-    | jq -r --unbuffered '
-        .description
-        // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
-        // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
-        // empty
-      '
-}
+case "$fast_exit" in
+  0|10)
+    echo "run-weekly: fast path succeeded (10 = partial per-post failures; still valid)."
+    ;;
+  30)
+    echo "run-weekly: fast path reported selector/compat failure — falling back to the agent pipeline." >&2
 
-run_claude_pipeline &
-pipeline_pid=$!
+    # CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 disables the 10-minute
+    # background-task kill switch — the agent pipeline (one metrics agent per
+    # post, sequential) runs multi-hour.
+    export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
-# Watchdog: after the cap, TERM the pipeline's children (echo/claude/jq) then the
-# subshell, sweep any orphaned Playwright browser, and SIGKILL anything still
-# standing. macOS ships no coreutils `timeout`/`gtimeout`.
-(
-  sleep "$CLAUDE_TIMEOUT_SECS"
-  kill -0 "$pipeline_pid" 2>/dev/null || exit 0
-  echo "run-weekly: claude exceeded ${CLAUDE_TIMEOUT_SECS}s — terminating (pid $pipeline_pid)." >&2
-  pkill -TERM -P "$pipeline_pid" 2>/dev/null || true
-  kill -TERM "$pipeline_pid" 2>/dev/null || true
-  pkill -f 'mcp-chrome-linkedin-ai' 2>/dev/null || true
-  sleep 15
-  pkill -KILL -P "$pipeline_pid" 2>/dev/null || true
-  kill -KILL "$pipeline_pid" 2>/dev/null || true
-) &
-watchdog_pid=$!
+    # Hard wall-clock cap on the whole `claude -p` run. 6h covers a real
+    # multi-hour scrape and leaves room for the commit/PR/merge chain.
+    CLAUDE_TIMEOUT_SECS=21600
 
-# Don't let `set -e` abort on a non-zero pipeline/timeout exit — partial
-# snapshots (some posts scraped before a kill) are still worth committing.
-# Then cancel the watchdog if the run finished before the cap.
-wait "$pipeline_pid" 2>/dev/null || true
-kill "$watchdog_pid" 2>/dev/null || true
-wait "$watchdog_pid" 2>/dev/null || true
+    run_claude_pipeline() {
+      echo "gather linkedin stats" \
+        | claude -p --dangerously-skip-permissions --output-format stream-json --verbose \
+        | jq -r --unbuffered '
+            .description
+            // (.message?.content? | arrays | map(select(.type=="text") | .text) | .[])
+            // (select(.is_error == true or .error) | "ERROR: \(.error // .message?.content)")
+            // empty
+          '
+    }
 
-# A watchdog kill can land mid-write; never commit a truncated snapshot.
+    run_claude_pipeline &
+    pipeline_pid=$!
+
+    # Watchdog: after the cap, TERM the pipeline's children then the subshell,
+    # sweep any orphaned Playwright browser, and SIGKILL anything left.
+    (
+      sleep "$CLAUDE_TIMEOUT_SECS"
+      kill -0 "$pipeline_pid" 2>/dev/null || exit 0
+      echo "run-weekly: claude exceeded ${CLAUDE_TIMEOUT_SECS}s — terminating (pid $pipeline_pid)." >&2
+      pkill -TERM -P "$pipeline_pid" 2>/dev/null || true
+      kill -TERM "$pipeline_pid" 2>/dev/null || true
+      pkill -f 'mcp-chrome-linkedin-ai' 2>/dev/null || true
+      sleep 15
+      pkill -KILL -P "$pipeline_pid" 2>/dev/null || true
+      kill -KILL "$pipeline_pid" 2>/dev/null || true
+    ) &
+    watchdog_pid=$!
+
+    # Don't let `set -e` abort on a non-zero pipeline/timeout exit — partial
+    # snapshots are still worth committing. Then cancel the watchdog.
+    wait "$pipeline_pid" 2>/dev/null || true
+    kill "$watchdog_pid" 2>/dev/null || true
+    wait "$watchdog_pid" 2>/dev/null || true
+    ;;
+  20)
+    echo "run-weekly: AUTH wall — LinkedIn session expired on the runner profile; failing." >&2
+    exit 1
+    ;;
+  21)
+    echo "run-weekly: Chrome profile is locked by another job; failing (next run retries)." >&2
+    exit 1
+    ;;
+  22)
+    # Commit whatever landed (weekly snapshots are unrecoverable later), but
+    # fail the workflow at the end so the partial run is visible, not green.
+    echo "run-weekly: rate-limited beyond recovery; committing partial snapshots, then failing the run." >&2
+    partial_failure=1
+    ;;
+  *)
+    echo "run-weekly: fast path failed with unexpected exit $fast_exit; failing." >&2
+    exit 1
+    ;;
+esac
+
+# A kill/deadline can land mid-write; never commit a truncated snapshot.
 while IFS= read -r -d '' f; do
   if ! jq empty "$f" 2>/dev/null; then
     echo "run-weekly: $f is not valid JSON — skipping commit/PR." >&2
@@ -97,3 +141,8 @@ fi
 ./.claude/skills/common-pr-commit/commit.sh
 ./.claude/skills/common-pr-update/pr-update.sh
 ./.claude/skills/common-pr-merge/merge.sh
+
+if [ "${partial_failure:-0}" = 1 ]; then
+  echo "run-weekly: partial data committed, but the scrape was rate-limited — marking the run failed." >&2
+  exit 1
+fi

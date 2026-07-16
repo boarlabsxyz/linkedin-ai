@@ -51,6 +51,53 @@
         }
       },
       "comments": []
+    },
+    "2026-07-13": {
+      "snapshot_at": "2026-07-16T18:19:58Z",
+      "metrics": {
+        "impressions": 281,
+        "members_reached": 149,
+        "reactions": 3,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.07
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 38.9,
+          "Entry": 31.5,
+          "Director": 6,
+          "CXO": 4
+        },
+        "job_title": {
+          "Software Engineer": 28.9
+        },
+        "industry": {
+          "Software Development": 38.3,
+          "IT Services and IT Consulting": 30.2,
+          "Technology, Information and Internet": 9.4
+        },
+        "company_size": {
+          "51-200 employees": 21.5,
+          "10,001+ employees": 14.1,
+          "1001-5000 employees": 12.8,
+          "1-10 employees": 10.1,
+          "11-50 employees": 8.7
+        },
+        "location": {
+          "Greater Bengaluru Area": 5.4,
+          "Greater Kitchener-Cambridge-Waterloo Metropolitan Area": 4.7,
+          "Kyiv Metropolitan Area": 4
+        },
+        "company": {
+          "Speed and Function": 9.4
+        }
+      },
+      "comments": []
     }
   }
 }

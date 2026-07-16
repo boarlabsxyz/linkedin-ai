@@ -7,5 +7,50 @@
   "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7479819344097751040/",
   "preview": "Just listened to Kent Beck reflect on 50 years of building software. What stayed with me: he spent the first part of his career trying to become the best programmer he could be — because that's what h",
   "text": "Just listened to Kent Beck reflect on 50 years of building software. What stayed with me: he spent the first part of his career trying to become the best programmer he could be — because that's what he was told mattered. And then, in his words, \"surprise, there's this whole human side.\"\n\nAI is writing code faster than any of us can read it. But the trust we build with a teammate when we struggle through a hard problem together, the understanding that grows when we really listen to a user — none of that gets faster. None of it gets automated.\n\nAI is AI. People are still people. And the human part is still the hardest, most beautiful part of this work.\n\nHow Kent Beck shapes the software engineering industry (The Pragmatic Engineer): https://lnkd.in/dBBhMYhk",
-  "weeks": {}
+  "weeks": {
+    "2026-07-13": {
+      "snapshot_at": "2026-07-16T18:20:09Z",
+      "metrics": {
+        "impressions": 154,
+        "members_reached": 88,
+        "reactions": 2,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.3
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 38.6,
+          "Entry": 33,
+          "CXO": 8,
+          "Director": 6.8
+        },
+        "job_title": {
+          "Software Engineer": 18.2
+        },
+        "industry": {
+          "Software Development": 39.8,
+          "IT Services and IT Consulting": 31.8
+        },
+        "company_size": {
+          "51-200 employees": 21.6,
+          "11-50 employees": 12.5,
+          "201-500 employees": 11.4,
+          "1-10 employees": 10.2,
+          "10,001+ employees": 9.1
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 9.1
+        },
+        "company": {
+          "Speed and Function": 12.5
+        }
+      },
+      "comments": []
+    }
+  }
 }

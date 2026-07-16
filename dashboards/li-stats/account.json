@@ -1127,6 +1127,86 @@
           "MONTE-PRO": 2.9
         }
       }
+    },
+    "2026-07-13": {
+      "snapshot_at": "2026-07-16T18:16:10Z",
+      "dashboard": {
+        "post_impressions_7d": 540,
+        "post_impressions_delta_pct_7d": 6,
+        "followers": 3590,
+        "followers_delta_pct_7d": 0,
+        "profile_viewers_90d": 134,
+        "search_appearances_previous_week": 21
+      },
+      "content_7d": {
+        "impressions_7d": 540,
+        "impressions_delta_pct": 6,
+        "members_reached_7d": 223,
+        "social_engagements_7d": 3,
+        "reactions_7d": 2,
+        "comments_7d": 1,
+        "reposts_7d": 0,
+        "saves_7d": 0,
+        "sends_7d": 0,
+        "link_engagements_7d": 1
+      },
+      "audience": {
+        "total_followers": 3590,
+        "followers_delta_pct_7d": 0,
+        "demographics": {
+          "job_title": {},
+          "location": {},
+          "seniority": {},
+          "company": {},
+          "industry": {},
+          "company_size": {}
+        }
+      },
+      "search_appearances": {
+        "all_appearances_7d": 594,
+        "search_appearances_7d": 21,
+        "where_appeared": {
+          "posts_pct": 61.4,
+          "comments_pct": 16.3,
+          "network_recommendations_pct": 18.7,
+          "search_pct": 3.5
+        },
+        "profile_engagement": {
+          "impressions_90d": 602,
+          "clicks_90d": 28,
+          "avg_view_time_s": 79
+        },
+        "clicks_per_section": {
+          "Activity": {
+            "count": 17,
+            "pct": 60.7
+          },
+          "Intro": {
+            "count": 8,
+            "pct": 28.6
+          },
+          "Experience": {
+            "count": 3,
+            "pct": 10.7
+          }
+        }
+      },
+      "profile_views": {
+        "viewers_90d": 134,
+        "viewers_delta_pct_7d": 100,
+        "highlights": {
+          "top_location": "Kyiv Metropolitan Area",
+          "top_industry": "IT Services and IT Consulting",
+          "top_company": "Speed and Function"
+        },
+        "top_companies_pct": {
+          "Speed and Function": 41.2,
+          "Open Supply Hub": 5.9,
+          "CostCare AI": 2.9,
+          "Bedrock Labs": 2.9,
+          "Expected X": 2.9
+        }
+      }
     }
   }
 }
