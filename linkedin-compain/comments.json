@@ -5308,5 +5308,231 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "yura-puzichenko-6711b697",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/yurii-puzichenko/",
+    "author_name": "Yura Puzichenko",
+    "author_headline": "AI Product Manager | автор тг-каналу \"Пан Пузіч\"",
+    "time_ago": "14h",
+    "post_text": "Звільнення Федорова = збереження совково-корумпованої-неефективної системи\nЗмінимось, або загинемо.\nГотуйте картонки. Схоже, по-іншому В.Зеленський чути суспільство не вміє\nПротести пройдуть завтра / 16 липня / центральні площі міст / 09.00 ранку (о 10 ранку голосування ВР за відставку Федорова)\n• Київ / Театр І.Франка / 09.00 ранку\n• Львів / Пам'ятника Т.Шевченку / 09.00 ранку\nПоширте.\nПо іншим міста поки не знаю. Пишіть якщо в курсі",
+    "scraped_at": "2026-07-16T10:07:18Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian political protest post (Fedorov dismissal) - no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "romain-huet-66939a5f",
+    "urn": "urn:li:activity:7483331210035777536",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7483331210035777536/",
+    "author_url": "https://www.linkedin.com/in/romainhuet/",
+    "author_name": "Romain Huet",
+    "author_headline": "Head of Developer Experience at OpenAI. Previously, Product Lead at Stripe. Angel Investor & Advisor.",
+    "time_ago": "8h",
+    "post_text": "Here’s what’s new in Codex for developers!\nWe packed in a lot. See Codex take on harder coding tasks with GPT‑5.6 and Ultra, and work in parallel with subagents. You also get faster computer use with Appshots, inline code editing and PR reviews directly in Codex, deployment with Sites, the ability to control Codex from mobile, and much more!\nCodex now lives inside the new ChatGPT app, with its own dedicated workspace alongside the new Work agent.\nMore than 8 million people now use Codex and ChatGPT Work. Thank you for all the feedback and for continuing to push Codex further.\nWatch until the end for a cameo from a fun new way to interact with Codex and customize your workflow. It happens to be available today! 👀",
+    "scraped_at": "2026-07-16T10:26:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The parallel subagents piece is the interesting part for me, more than GPT‑5.6 itself. Once you have several agents editing the same codebase concurrently, the hard part stops being \"can it write correct code\" and becomes \"who resolves the conflicting decisions two agents made independently.\" Are subagents scoped to non-overlapping files/modules by design, or is there a merge/arbitration step when two of them touch the same area?",
+        "rationale": "Names the one real unresolved engineering question in the announcement (conflict resolution across concurrent agents) instead of praising the feature list."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Inline PR reviews plus parallel subagents is a strong combo for throughput. The question I keep circling back to as this scales: when multiple agents are generating and reviewing code in parallel, what stays the actual source of truth for \"why\" a change happened, the commit history, or whatever spec/task description kicked it off? At 8 million users, that's not a philosophical question anymore, it's the thing that decides whether six months from now anyone can safely regenerate or refactor what these agents built without archaeology.",
+        "rationale": "Pulls the \"source of truth under parallel-agent scale\" tension into view, adjacent to Petro's documentation-as-source-of-truth thesis, without pitching True BDD."
+      },
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "The breadth here is impressive, mobile control, PR reviews, deployment, subagents all in one workspace. It reminds me of a pattern I only understood in hindsight from BankAI, the GenAI system we built for a German bank pre-ChatGPT: we had a go-kart, OpenAI had a Formula 1 car, but our narrow scope let the go-kart win in its lane for years. Codex is clearly playing the opposite game now, going wide instead of narrow. Curious whether that breadth ends up being the moat, or whether it opens room for narrower tools to win specific workflows the way we did back then.",
+        "rationale": "Uses the documented BankAI \"go-kart vs Formula 1\" story (posted.md, 05.03.2026 entry) to frame Codex's breadth-play as a real strategic tradeoff, not flattery."
+      }
+    ],
+    "slack_summary": "OpenAI's Codex update: GPT-5.6/Ultra, parallel subagents, inline PR reviews, deployment, mobile control — now inside the ChatGPT app; 8M users.",
+    "slack_ts": "1784197626.629979",
+    "slack_thread": {
+      "post_reply_ts": "1784197638.255819",
+      "draft_reply_ts": [
+        "1784197647.133029",
+        "1784197657.242879",
+        "1784197667.701919"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "john-berryman-a199bbe1",
+    "urn": "urn:li:activity:7483263910565883904",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7483263910565883904/",
+    "author_url": "https://www.linkedin.com/in/john-berryman-864b1713/",
+    "author_name": "John Berryman",
+    "author_headline": "I help companies build better AI products.",
+    "time_ago": "13h",
+    "post_text": "I want **B.Y.O.A.**  –  Bring Your Own Agent\nPlenty of websites now have embedded assistants – GitHub in this example – but the work they can do is limited. It doesn't matter how useful that assistant's tools and skills are because in order to accomplish any real work with that assistant, I need to copy-paste chunks of my own context into window in my browser.\nno 1. That's too much work.\nno 2. I don't feel like sharing my content w/ a third party.\nThe answer to this is to bring our own agents into conversation with the 3rd-party app. This way we get to use their tools and skills without stepping outside of our session.\nThis is not the same thing as downloading their skills. I want to interact with my agent AND interact with the web page. I want my agent to see what I'm doing on GitHub and I want to be able to control what's on the GitHub website through conversations with my agent.\nFinally - I want to do this safely. There is a way! I'm building it :D  (see links in the follow-ups).",
+    "scraped_at": "2026-07-16T10:28:12Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"no 2\" reason is the one that gets underrated — most people frame this as a UX complaint, but it's really a trust boundary problem. Curious how you're handling the sync direction though: when your agent acts on the GitHub page (clicks, form fills, whatever), does it read the resulting DOM state back to confirm the action landed, or is it flying blind between \"I told it to do X\" and \"the page now shows Y\"? That gap is where I'd expect the safety story to get hard.",
+        "rationale": "Post makes a strong \"BYOA\" claim but doesn't say how the agent keeps its view of the page in sync with what it just did — a concrete, non-generic gap to probe."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"I want to do this safely\" is doing a lot of work in that last line. What's the failure mode you're actually most worried about — the agent misreading page state and acting on stale info, or a malicious/careless third-party page feeding your agent instructions it shouldn't follow? Those need pretty different guardrails, and I'd guess most of the hard engineering here is in the second one, since the moment your agent can act on a page, that page becomes an input channel you don't control.",
+        "rationale": "The post ends on an unexamined \"I want to do this safely\" — pushes the author to name which specific failure mode he means, sharpening a vague safety claim."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed on both nos, especially the second — the context you'd have to paste in is usually the thing you least want a third party holding. Where I'd push back a little is on \"bring your own agent\" being the full fix: once your agent is acting inside someone else's UI, the session itself becomes the only record of what actually happened, and that record lives in a chat log, not anywhere durable. I've been going the opposite direction with True BDD — keeping the durable source of truth in documentation the agent can be handed fresh each time — precisely so the session can be thrown away without losing anything. Not mutually exclusive with what you're building, but curious whether you're treating the conversation history as disposable too, or as something that needs to persist.",
+        "rationale": "Agrees with the third-party data-sharing concern but counters that the session/chat log itself is a fragile record, tying naturally to True BDD's own source-of-truth thesis without pitching it as a product."
+      }
+    ],
+    "slack_summary": "Argues for \"Bring Your Own Agent\": let your own agent see and act on third-party sites like GitHub instead of pasting context into embedded assistants.",
+    "slack_ts": "1784197701.816279",
+    "slack_thread": {
+      "post_reply_ts": "1784197713.528579",
+      "draft_reply_ts": [
+        "1784197722.887229",
+        "1784197731.727319",
+        "1784197741.472229"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "alex-bunardzic-6dcf7fe9",
+    "urn": "urn:li:activity:7482273945220562944",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7482273945220562944/",
+    "author_url": "https://www.linkedin.com/in/alexbunardzic/",
+    "author_name": "Alex Bunardzic",
+    "author_headline": "I help CTOs & VPs Engineering escape the Velocity Trap | AI ships code faster, your architecture pays the bill → let's fix that | Creator of Test-Driven Navigation",
+    "time_ago": "21h",
+    "post_text": "A senior engineer told me she'd stopped reading her team's pull requests. Not out of laziness; out of futility. \"By the time I understand one,\" she said, \"there are nine more.\" That sentence is the most honest description of the AI era I've heard.\nHere's what it actually means, and it should worry anyone leading an engineering org.\nCode review has one job: making sure a change is understood by someone other than whoever made it. That's the whole point. It's how knowledge distributes, how mistakes get caught, how a system stays coherent across a team.\nAI broke the economics of that. Generating code is now nearly free. Understanding code costs exactly what it always did: a human, reading carefully, holding context. So the ratio inverted. Production scaled by almost 10x; comprehension didn't scale at all. And when the queue grows faster than anyone can absorb it, review doesn't fail loudly. It fails quietly: approvals get faster, scrutiny gets thinner, and eventually people are rubber-stamping while telling themselves they're reviewing.\nThe team hasn't decided to stop caring. They've just been handed a volume that makes real review arithmetically impossible, and rubber-stamping is what happens when you refuse to admit that out loud.\nThis is a cost of the Velocity Trap that no dashboard tracks: the quiet collapse of comprehension. The PRs still get approved. The metrics look fine. But nobody actually knows what's in there anymore, and the system is now held together by the assumption that someone else read it.\nHere's the test, and it's uncomfortable: ask your team, honestly, what percentage of the code they approve they could explain a week later. If the number has been falling, your review process is still running -- but it stopped doing its job a while ago.",
+    "scraped_at": "2026-07-16T10:29:26Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"There are nine more\" is the line that'll stick with me. That's not a discipline problem, it's a math problem, and math problems don't respond to \"just review more carefully.\"\n\nHere's the uncomfortable follow-up: if review can't scale with generation, what actually should replace it as the safeguard? Human code review was always our defense against human mistakes, built over decades of watching how people screw things up. AI produces a different flavor of mistake, at a volume no human queue was ever sized for. Rubber-stamping isn't the disease, it's the symptom of pointing an old-generation safeguard at a new-generation problem.",
+        "rationale": "Names the mechanism (safeguard mismatch) without dismissing the author, pulling the thread toward \"what replaces review\" rather than just agreeing."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The 10x production / flat comprehension ratio is the clearest framing of this I've seen. Most people are still arguing about whether AI writes good code; you're pointing at the actual bottleneck, which is that a human still has to hold the context for every line that ships.\n\nWhere I'd push back slightly: I don't think the fix is asking humans to review faster or smarter, that queue only grows. Code review's whole job, like you said, is making a change understood by someone other than whoever made it. If generation is now near-free, maybe the artifact worth reviewing isn't the code at all, it's the spec that generated it, since that's the one thing small enough for a human to actually hold in their head. Curious whether you're seeing any teams try that shift, or if it just moves the same problem one layer up.",
+        "rationale": "Agrees with the diagnosis but offers Petro's real contrarian position (spec as reviewable artifact instead of code) without pitching True BDD directly."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The test at the end is the part that'll actually make people uncomfortable, because most teams have never measured \"percentage of approved code they could explain a week later\" and probably don't want to start.\n\nGenuine question on the mechanism: when you've seen orgs try to fix this, does the fix usually run through slowing down generation (rate-limiting how much AI-written code enters the queue), or through changing what gets reviewed (spec/intent instead of diffs)? I ask because the first one fights the economics you described head-on, and the second one is a much bigger process change than most engineering leaders are ready to admit they need.",
+        "rationale": "Zeroes in on the post's concrete \"test\" and asks a specific, non-generic follow-up about which remediation path teams actually take."
+      }
+    ],
+    "slack_summary": "AI made code generation nearly free but comprehension didn't scale — code review is quietly collapsing into rubber-stamping.",
+    "slack_ts": "1784197774.828939",
+    "slack_thread": {
+      "post_reply_ts": "1784197787.986779",
+      "draft_reply_ts": [
+        "1784197796.818689",
+        "1784197807.258409",
+        "1784197817.413739"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ray-myers-745e4703",
+    "urn": "urn:li:activity:7483367132647587841",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7483367132647587841/",
+    "author_url": "https://www.linkedin.com/in/cadrlife/",
+    "author_name": "Ray Myers",
+    "author_headline": "In search of code worth writing",
+    "time_ago": "6h",
+    "post_text": "Are we headed to 100% agentic dev?\nThoughts as I’m in town prepping for Software Should Work conference…\nPeople ask my opinion on “Dark Software Factories”. I think it’s going to be bad general advice, usable in some situations but not what we should hold up as the platonic ideal.\nI still like Patrick Debois’ new talk on it, you’ll note he says most orgs aren’t ready - yes, part of my issue with it is how rare it is to be ready. And my favorite advice he gave: “Put your skeptics on the harness”. That’s seasoned Judo, communicated in 6 words. Classic Patrick.\nSoon I’ll suggest a more flexible model that generalizes Dark Factory and less extreme configurations in a way I hope is helpful.\nSomething else I want to say out loud for anyone trying to make this all work, let’s not do too much of Anthropic\u001ae’s homework for them.\nTheir DevRel telling Software Engineers that they’re selling us an IDE replacement while their CEO tells world leaders they are replacing the entire field of Software Engineering in 12 months is not a sustainable communication strategy.\nNo gymnastics we can come up with will help them sustain it.\nIt's fine if you see it differently, just call it like you see it.",
+    "scraped_at": "2026-07-16T10:30:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"Not what we should hold up as the platonic ideal\" is the right framing. I've said the same about 100% vibe-coding: the trajectory on SWE-Bench is real, but \"it works end-to-end for some tasks\" and \"this is the model every org should aim for\" are different claims, and most of the advice out there collapses them into one.\n\nWhere I'd push back slightly: even for the orgs that are ready, Dark Factory optimizes for throughput on tasks you've already specified well. The harder problem is still requirements drifting faster than anyone can review them. Curious whether Patrick's \"flexible model\" you're teasing addresses that, or mainly addresses org readiness.",
+        "rationale": "Petro has publicly staked out the same \"trajectory is real but 100% isn't the ideal\" position (posted.md), so this agrees on substance while adding a sharper edge — Dark Factory solves throughput, not spec drift."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The IDE-replacement-vs-replacing-the-field split you're pointing at is the actual tension, not the Dark Factory debate itself. Two audiences hearing two different promises from the same company will eventually notice.\n\nIf a vendor's CEO-level claim can't survive contact with what their own DevRel is telling engineers day to day, what's the failure mode you'd expect first: customers losing trust in the product claims, or engineers losing trust in the DevRel content specifically? Those feel like they'd play out on pretty different timelines.",
+        "rationale": "Names the specific tension (DevRel \"IDE replacement\" vs CEO \"replacing the field\") and pushes it into a sharper, non-hostile question rather than just agreeing it's unsustainable."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Put your skeptics on the harness\" is doing a lot of work in six words — it's basically saying adoption risk is a people problem before it's a tooling problem.\n\nWhat's your read on the org-readiness bar itself: is it mostly a maturity-of-process thing (can they even review a spec change fast enough to trust the regenerate step), or is it more that most orgs don't have anyone who's earned the standing to say \"not ready yet\" without it reading as obstruction?",
+        "rationale": "Zeroes in on the one concrete, quotable line in the post (Debois' \"put your skeptics on the harness\") and asks a genuinely open question about what \"readiness\" means in practice."
+      }
+    ],
+    "slack_summary": "Skeptical take on \"Dark Software Factories\" as general advice, plus a jab at Anthropic's inconsistent DevRel-vs-CEO messaging on replacing software engineering.",
+    "slack_ts": "1784197850.724949",
+    "slack_thread": {
+      "post_reply_ts": "1784197862.617319",
+      "draft_reply_ts": [
+        "1784197876.849979",
+        "1784197888.565159",
+        "1784197898.366819"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "mandar-amdekar-080f0958",
+    "urn": "urn:li:activity:7481901083989135360",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7481901083989135360/",
+    "author_url": "https://www.linkedin.com/in/amdekar/",
+    "author_name": "Mandar Amdekar",
+    "author_headline": "AI-forward engineering leader with 25+ yrs experience, ability to create order from chaos, credible technical and business acumen",
+    "time_ago": "1d",
+    "post_text": "AI made coding 10x faster, and yet end-to-end delivery improved only 6%.  Why is this?\nCoding is no longer the constraint, the constraint shifts to review, integration, testing, security and release. Yes, coding agents increase the intake rate; but if completion capacity does not keep up, WIP grows, queues deepen and cycle time does not show commensurate improvement.\nLittle's Law only cares about whether the feature got delivered, not whether agents produced snazzy demos. Unfortunately still, features do not get delivered any quicker, since the bottleneck still exits further downstream.\nRather than measuring how much code the AI produced, the useful leadership question is to ask where the bottleneck shifted and whether elapsed time to customer value actually reduced?\nRead my article below where I share the value-stream maths with a hypothetical example and the scorecard that exposes the difference.\n#AI #SoftwareEngineering #EngineeringLeadership #ContinuousDelivery",
+    "scraped_at": "2026-07-16T10:32:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The 6% number is the part that actually convinces me, most people just cite Little's Law without a figure attached. One thing your framing leaves open: does the queue depth you're seeing sit mostly in human review, or in CI/security gates that could themselves be automated? Those are different fixes, one is a staffing and prioritization problem, the other is a tooling problem, and I'd bet the answer changes what \"solving the bottleneck\" even means for a given team.",
+        "rationale": "Post cites a strong stat but leaves the composition of the downstream bottleneck unaddressed, a specific question about review vs tooling makes the author's own scorecard sharper."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The 10x-coding-6%-delivery gap matches something I keep seeing too, a few months back I was comparing how a senior dev and my son (still a student) used AI on the same task. The senior kept intercepting Claude's output and rewriting it to match his own style, my son just kept iterating with the tool until it worked. Same story as yours: the win isn't in generation speed, it's in whether the human step right after generation is a bottleneck or a multiplier. My own estimate from that period was that end-to-end, AI made tasks maybe 30% faster, not 5-10x, which lines up uncomfortably well with your 6%.",
+        "rationale": "Directly ties to the 08.01.26 Zhenya-vs-senior-dev transcript story where AI's real end-to-end speedup landed around 30%, echoing the post's own 10x-vs-6% gap."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Naming Little's Law here is the right move, most \"AI 10x'd our team\" posts never touch WIP or queue depth at all. If review, integration and security are the new constraint, the uncomfortable follow-up question is whether those stages can even be sped up the same way coding was, or whether they're bottlenecked on something that doesn't compress with more tooling, like a human needing to actually understand and trust what shipped. If it's the latter, doubling coding speed again next year buys you nothing until someone attacks that constraint directly.",
+        "rationale": "Pushes past the post's own framing into whether downstream stages are automatable at all, or bottlenecked on human trust, sharpening the leadership question the author raised."
+      }
+    ],
+    "slack_summary": "AI made coding 10x faster but delivery improved just 6% — Little's Law: the bottleneck moved downstream to review, testing, security and release.",
+    "slack_ts": "1784197934.876949",
+    "slack_thread": {
+      "post_reply_ts": "1784197948.493929",
+      "draft_reply_ts": [
+        "1784197958.000479",
+        "1784197969.792959",
+        "1784197980.650699"
+      ]
+    },
+    "slack_error": null
   }
 ]
