@@ -6,6 +6,7 @@ doc/history/
 
 # Dashboard build artefacts (regenerable from dashboards/li-stats/)
 dashboards/*/node_modules/
+.claude/skills/linkedin-stats/fast/node_modules/
 dashboards/observable/dist/
 dashboards/observable/src/.observablehq/
 

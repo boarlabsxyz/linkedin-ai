@@ -1,5 +1,68 @@
 {
   "comments": {
+    "urn:li:comment:(activity:7483474666548977665,7483565320331268096)": {
+      "comment_urn": "urn:li:comment:(activity:7483474666548977665,7483565320331268096)",
+      "commented_at": "2026-07-16T16:56:50Z",
+      "verb": "commented",
+      "text": "That's also why I don't think A and B are the only ways out. Once regeneration is cheap, you don't need code to be understandable by humans at all, you need the spec to be.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7483565379886436352",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7483565379886436352/",
+      "post_author_name": "Jouke Waleson",
+      "post_author_url": "https://www.linkedin.com/in/jouke-waleson",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7483565379886436352/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7483474666548977665%2C7483565320331268096%29",
+      "weeks": {
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 16
+        }
+      }
+    },
+    "urn:li:comment:(activity:7478518116000661504,7480530190461210624)": {
+      "comment_urn": "urn:li:comment:(activity:7478518116000661504,7480530190461210624)",
+      "commented_at": "2026-07-08T07:56:18Z",
+      "verb": "commented",
+      "text": "This is put perfectly. And the flip side helps too: the ability to accept people's functions and dysfunctions, that they make mistakes and don't always give you what you want right away, is exactly what will help the people now trying to manage AI.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7480530253262680064",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7480530253262680064/",
+      "post_author_name": "Kent Beck",
+      "post_author_url": "https://www.linkedin.com/in/kentbeck",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7480530253262680064/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7478518116000661504%2C7480530190461210624%29",
+      "weeks": {
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 23
+        }
+      }
+    },
+    "urn:li:comment:(activity:7477289819551887361,7477318478924824576)": {
+      "comment_urn": "urn:li:comment:(activity:7477289819551887361,7477318478924824576)",
+      "commented_at": "2026-06-29T11:14:07Z",
+      "verb": "commented",
+      "text": "Maria, you make juggling motherhood and the AI whirlwind look like a quiet superpower. Please share your tips and tricks!",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7477318498633965569",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7477318498633965569/",
+      "post_author_name": "Maria Umen",
+      "post_author_url": "https://www.linkedin.com/in/maria-umen-a58169a2",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7477318498633965569/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7477289819551887361%2C7477318478924824576%29",
+      "weeks": {
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 2,
+          "replies_count": 0,
+          "impressions": 105
+        }
+      }
+    },
     "urn:li:comment:(activity:7475963220797595650,7475992292089217025)": {
       "comment_urn": "urn:li:comment:(activity:7475963220797595650,7475992292089217025)",
       "commented_at": "2026-06-25T19:24:19Z",
@@ -18,6 +81,12 @@
           "reactions": 1,
           "replies_count": 0,
           "impressions": 280
+        },
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 1,
+          "replies_count": 0,
+          "impressions": 335
         }
       }
     },
@@ -36,6 +105,12 @@
       "weeks": {
         "2026-06-29": {
           "snapshot_at": "2026-06-29T06:36:48Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 0
+        },
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
           "reactions": 0,
           "replies_count": 0,
           "impressions": 0
@@ -60,6 +135,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 18
+        },
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 22
         }
       }
     },
@@ -81,6 +162,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 31
+        },
+        "2026-07-13": {
+          "snapshot_at": "2026-07-16T18:16:24Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 78
         }
       }
     },

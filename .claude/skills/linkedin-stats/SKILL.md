@@ -9,6 +9,40 @@ description: >
 
 # LinkedIn Stats
 
+## Step 0 — fast path (always try this first)
+
+Run the deterministic scraper. It performs ALL four gather steps (post
+discovery, per-post metrics, account analytics, outbound comments) in one
+paced Playwright process over the same logged-in Chrome profile the MCP uses
+(~5 min total), and prints the same KEY=VALUE contracts the agents would,
+sectioned as `[posts]` / `[metrics]` / `[account]` / `[comments]`:
+
+```bash
+node .claude/skills/linkedin-stats/fast/scrape-weekly.mjs
+```
+
+Notes:
+- If `.claude/skills/linkedin-stats/fast/node_modules` is missing, first run
+  `(cd .claude/skills/linkedin-stats/fast && npm install --no-audit --silent)`.
+- Use a 600000ms Bash timeout (the run needs ~4-5 min).
+- The script must own the Chrome profile. If the Playwright MCP browser is
+  open in this session, it exits 21 (`ERROR=PROFILE_LOCKED`) — close the MCP
+  browser tab-set first, or fall back to the agent flow below.
+
+Exit code decides what happens next:
+- **0 or 10** — success (10 = some per-post failures, listed in `FAILED_IDS`).
+  Build the final report (step 5 format) from the printed contract sections.
+  Do NOT spawn any agents.
+- **30** — selector/compat failure (LinkedIn DOM drifted beyond the fast
+  parsers; the canary post failed). Fall back to the agent flow (steps 1-4
+  below), which improvises selectors per run.
+- **21** — profile locked (MCP browser or another job owns Chrome). Either
+  close the other browser and re-run, or use the agent flow.
+- **20 / 22 / 23** — auth wall / rate-limited / fs failure. Report the error
+  verbatim and stop — the agent flow would hit the same wall.
+
+## Agent flow (fallback only)
+
 1. Spawn the `linkedin-stats-gather-posts` agent via the Agent tool. It scrolls Peter's recent-activity feed, decodes URN timestamps, and creates one file per post under `./dashboards/li-stats/posts/<YYYY-MM-DD>-<slug>.json` with `text: null` and an empty `weeks: {}` map. The metrics agent (step 2) backfills `text` — the full post body scraped from the public post page — on its next pass over any file where it's still null.
 2. Compute the week key once:
    ```bash
