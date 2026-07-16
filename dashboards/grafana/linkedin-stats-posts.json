@@ -36,20 +36,135 @@
   "panels": [
     {
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 0
       },
       "id": 15,
-      "options": {
-        "content": "### ${post:text}\n\nValue (post id): `${post}`",
-        "mode": "markdown"
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
       },
-      "pluginVersion": "",
-      "targets": [],
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "posted_date",
+              "text": "posted_date",
+              "type": "string"
+            },
+            {
+              "selector": "text",
+              "text": "text",
+              "type": "string"
+            },
+            {
+              "selector": "post_url",
+              "text": "post_url",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filterExpression": "id == \"${post}\"",
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "posts",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
       "title": "Selected post",
-      "type": "text"
+      "type": "table",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto",
+              "wrapText": true
+            },
+            "filterable": false,
+            "inspect": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "id"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "posted_date"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "post_url"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 260
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "Open post on LinkedIn",
+                    "url": "${__value.text}",
+                    "targetBlank": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
     },
     {
       "datasource": {
