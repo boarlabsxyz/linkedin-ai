@@ -6,6 +6,7 @@
   "posted_date": "2026-04-28",
   "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7454986157144203265/",
   "preview": "AI providers can block your account at any time. If your team depends on one, that's a real problem. Nick's post below shows what that actually looks like. Not a new problem either — companies treated",
+  "text": "AI providers can block your account at any time. If your team depends on one, that's a real problem 🤔. Nick's post below shows what that actually looks like.\n\nNot a new problem either — companies treated databases as critical ten years ago, but almost nobody rehearsed what to do when one breaks. GitLab learned it in public in 2017:\nhttps://lnkd.in/dzcc_5cv\n\nThat's why we're building https://awesome-mcp.xyz — a portable layer over AI vendors, so we can switch when we need to ⚙️.\n\n\n#EnterpriseAI\n#AIInfrastructure\n#VendorManagement\n#MCP",
   "weeks": {
     "2026-05-11": {
       "snapshot_at": "2026-05-16T19:44:30Z",

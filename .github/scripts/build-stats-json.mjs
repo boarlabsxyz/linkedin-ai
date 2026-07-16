@@ -53,7 +53,8 @@ for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort
     posted_date,
     posted_month,
     type,
-    preview: (d.preview ?? "").slice(0, 120),
+    preview: [...(d.preview ?? "")].slice(0, 120).join(""),  // code-point slice — a UTF-16 slice can split an emoji into a lone surrogate (invalid JSON)
+    text: d.text ?? "",
     post_url: d.post_url ?? "",
   });
   let latestWeek = "";

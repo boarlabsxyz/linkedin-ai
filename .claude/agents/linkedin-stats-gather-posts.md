@@ -170,6 +170,7 @@ For every new URN whose decoded `postedAtMs >= CUTOFF`:
 - `posted_date` — `YYYY-MM-DD` (UTC) from `postedAtMs`
 - `post_url` — `https://www.linkedin.com/feed/update/<urn>/`
 - `preview` — first ~200 chars of `previewRaw`, cleaned (collapse whitespace, drop trailing "…show more")
+- `text` — `null`. The full post body is NOT scraped here (activity-feed cards truncate behind "…see more"); the metrics agent fills it from the public post page on its next weekly pass. It stays `null` for reposts, which the metrics agent skips.
 - `weeks` — `{}` (empty map, snapshots agent fills this)
 
 ### 5. Generate the filename slug
@@ -202,6 +203,7 @@ For each new post, write JSON pretty-printed with 2-space indent. Use the `Write
   "posted_date": "<YYYY-MM-DD>",
   "post_url": "<https://...>",
   "preview": "<first ~200 chars>",
+  "text": null,
   "weeks": {}
 }
 ```
