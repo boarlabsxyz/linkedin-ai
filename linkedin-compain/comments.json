@@ -5781,5 +5781,630 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "gergely-orosz-2cf1eb93",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/gergelyorosz/",
+    "author_name": "Gergely Orosz",
+    "author_headline": "Deepdives on software engineering, tech careers and industry trends. Writing The Pragmatic Engineer, the #1 software engineering newsletter on Substack. Author of The Software Engineer’s Guidebook.",
+    "time_ago": "7m",
+    "post_text": "My story of leaving Spotify, or what happens when a company stops caring about reliability, to the point of their product becomning unusuable for customers like me.\nI have been publishing my podcast episodes as standalone video episodes on Spotify for nearly 2 years, without any issues. Podcast platforms generally do not support video, but Spotify did, and so the only two platforms to watch The Pragmatic Engineer in video format was YouTube and Spotify.\nThen, eight weeks ago, something started to break whenever I published my podcast:\n1. My episode would not publish for hours (the video episode processed for hours). I contacted the right team inside Spotify, and they confirmed to me this was an outage; they are fixing the problem.\n2. Two weeks later, all of Spotify went down for about an hour, right when I published my episode.\n3. A few weeks later, I could yet again not publish my epsiode for hours... another processing bug. I told the team, this is getting ridiculous, and that I'm considering just not publishing video on the platform. I told them if they can share a postmortem outlining they are fixing underlying issues, happy to reconsider, but the persistent reliablity issues are getting really bad.\n4. Yesterday (three weeks after #3), my upload got corrupted during processing on Spotify, and the audio drifted, making it unlistenable and unwatchable a few minutes in. I woke up to a list of angry listener comments. Re-uploading the video (that had no issues!) fixed the issue.\n5. This is just a side note, but the admin panel for Creators keeps timing out, throwing errors, \"no healthy upstream\" responses etc etc.\nI got no postmortem or any indication that reliablity work is going on: so I decided that enough is enough after #4: and I will no longer publish video episodes on Spotify. I have changed Spotify to be a consumer of the RSS feed, which means Spotify no longer does any episode processing (that it was unable to do reliably, anyway), and video podcasts are no longer supported. (Comments I cannot view or reply to anyway on the platform - that's also broken as of recently).\nIf you'd like to watch video episodes of The Pragmatic Engineer Podcast: you can head to YouTube. here: https://lnkd.in/dky7ip2b\nIf there are any guesses as to why Spotify's reliability seems to be going downhill since about two months ago, I'm all ears. But I won't be coming back.\nSpotify had a shot at becoming a serious contender with video podcasts, but it would have taken far better execution than this to have podcast publishers like me spend time and effort on this platform.",
+    "scraped_at": "2026-07-16T19:48:54Z",
+    "disposition": "off-topic",
+    "reason": "Platform reliability issue; no AI/LLM/startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ray-astafichev-ecf2928a",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/rayasta/",
+    "author_name": "Ray Astafichev",
+    "author_headline": "Будуємо Asta Academy - місце де продакт менеджери стають успішними | MBA | Driving Business growth from 0 to 100M ARR and beyond  | Proud Ukrainian 🇺🇦, father and husband | Product Monetization, Strategy & Growth",
+    "time_ago": "1d",
+    "post_text": "Діти показують 38, я показую сум і бентегу\nА якщо серйозно, з кожним новим роком розумію, що найважливіше це:\n• Родина - вони моя опора, і мій драйвер\n• Не сперечатися з Irene Astaficheva. Вона завжди права\n• Мати цілі. Бо без них ваш розвиток застрягає на місці, і ви займаєтеся активною прокрастинацією - типу щось робите, а ціль ближче ніяк не стає (тому якщо хочете навчитися продакт менеджменту - йдіть на буткемп від Asta Academy Ukraine і досить відмазок)\n• Піклуватися про здоровʼя і сон. Це коли вам 25 ви як з моторчиком в сраці і все вам пофіг. Під 40 ця штука буде поступово ставати все важчою, тому гімнастика, зал, психолог, чепкапи, стоматолог - це все стає пиздець важливим\nЯкось так\nА взагалі цього року я зрозумів що моїх амбіції знову ростуть до небес, мені треба дофіга дєняк, і це мене впирає ;)\n________\nОкремо в цей день хочу подякувати\n• Своїй коханій дружині - що підтримує і любить мене ;)\n• Команді Eated і всім хто допомагав розвивати цей продукт - аж до самого кінця\n• Кожному студенту Asta Academy Ukraine, і особливо учасникам Asta Alumni Club - за той рівень підтримки і активності спільноти, якому позаздрять більшість інших курсів з продакту і не тільки!)\nЦілі на цей рік?\n• Робити дружину щасливою\n• Давати дітям незабутнє дитинство\n• Купити собі врешті нормальне офісне крісло\n• Подорожувати\n• Будувати Asta Academy як місце, де продакти стають успішними (і це без булщіту, ви ще наших історій не бачили)\n• Досягати усіх своїх цілей і заробляти багато дєняк\n• Be healthy\n• Be happy\nПриймаю привітання ;)",
+    "scraped_at": "2026-07-16T19:48:58Z",
+    "disposition": "off-topic",
+    "reason": "Personal life/health reflection; generic motivational post",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-558cb1fe",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "10h",
+    "post_text": "Зарплати Python-розробників зросли за пів року\nОдна з важливих тенденцій у цій зарплатній хвилі. серед усіх категорій саме в Python-розробників найбільше виріс третій квартиль зарплат, а також медіанні зарплати сеньйорів. Як думаєте, чому?\nЧитаємо і коментуємо👉 https://dou.ua/goto/pfid",
+    "scraped_at": "2026-07-16T19:49:14Z",
+    "disposition": "off-topic",
+    "reason": "Python developer salary trends; job market data without AI context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "carolyn-trevino-jenkins-243f3ac4",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/carolyntrevinojenkins/",
+    "author_name": "Carolyn Treviño Jenkins",
+    "author_headline": "CEO & Co-founder, We Are Here (Techstars Heath ’24, CancerX ’25) | Board Member | Board Advisor | Mentor | Tenacious Operator | Cancer Advocate",
+    "time_ago": "2d",
+    "post_text": "Thrilled doesn't even cover it.  I am beyond grateful to be welcoming Yoav Chen to the We Are Here team. 💜\nNot only does he bring exactly the depth we need to our GTM capabilities, he could not be more mission aligned. Caring for his mom through her 8.5 year ovarian cancer journey, and watching his mom make time to help others, he saw so many gaps first hand.  Then he decided to take action to make the journey better for others - before he met us.\nWe met at IMPACT-HEALTHTECH in Austin. Such a good reminder that showing up to the right room, with the right people, can change everything.\nYoav Chen\n• 2nd\n8.5 years a cancer caregiver | Head of GTM @ We Are Here | Building the tools oncology navigators actually need\n1w •\nFollow\nMy mom was diagnosed with stage 3c ovarian cancer in April 2017. The doctors gave her 2-4 years.\nShe fought for 8.5.\nSomewhere in year four, she quit her marketing executive job to become a patient advocate inside the hospital that treated her. She co-founded an NGO for women with gynecological cancers. She never stopped answering emails from strangers who found her through a Facebook group — even from a hospital bed.\nNear the end, a doctor walked into her room and asked if we'd consent to intubation. She heard the word and started to panic. She knew exactly what it meant. My dad and I didn't know who to call or what to ask. Nobody handed us a map.\nSo I wrote down every question we had. I chased down the attending, then the resident, until I had real answers to all 7. Then I translated it back for her in plain language: they don't have bad news, they just need permission for something they might need later.\nI watched her breathing slow back down.\nThat's the whole job, really. Standing between a person and a system that doesn't stop moving long enough to explain itself. Most patients don't have someone who can do that. My mom did it for herself, and then for hundreds of others, one phone call at a time.\nShe passed away 8 months ago. I came home from the Shiva knowing I needed to do something with more meaning — I just didn't know what yet.\nNow I do. Today I'm joining We Are Here as Head of Go-to-Market. We're building the software that closes the exact gap my family fell into. We’re doing that by putting real tools in the hands of the navigators and social workers whose job it is to stand between a family and the system, so the next family gets the map nobody handed us.\nThank you to Carolyn Treviño Jenkins, Shea Mencel, and the We Are Here board for the trust. We've got real work ahead.\nIf you're a navigator, a nonprofit leader, or a caregiver still in it: I'd like to hear how you're day-to-day looks. Comment or PM me.\nStarting a new position",
+    "scraped_at": "2026-07-16T19:49:47Z",
+    "disposition": "off-topic",
+    "reason": "Healthcare startup hiring; no AI/startup strategy substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "simon-sinek-s-the-optimism-company-f1528bf3",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/simon-sinek/posts/",
+    "author_name": "Simon Sinek's The Optimism Company",
+    "author_headline": "",
+    "time_ago": "4h",
+    "post_text": "What's the difference between a team that performs company values and one that actually lives them out?\nThe two look identical...right up until the script runs out.\nSimon, Will Guidara, and Jesse Cole on what happens next ↓\nA Spark of Optimism\nSubscribe\nGive What You Want To Receive, Not What You Think People Want\nSimon Sinek's The Optimism Company",
+    "scraped_at": "2026-07-16T19:49:47Z",
+    "disposition": "off-topic",
+    "reason": "Generic leadership/values content, no AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-5ae2532d",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "10h",
+    "post_text": "Де більше платять розробникам\nMiddle-фахівці найбільше заробляють в аутстафінгових компаніях — $2700, продуктових — $2600 та не-IT-компаніях — $2400.\nСеред сеньйорів найвищі медіанні зарплати мають фахівці у продуктових компаніях — $4800, аутстафінгових — $4650 і стартапах — $4600.\nСвіжа аналітика👉 https://dou.ua/goto/pfid",
+    "scraped_at": "2026-07-16T19:49:47Z",
+    "disposition": "off-topic",
+    "reason": "Developer salary analytics; industry data without AI/startup strategy",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "eric-ries-c01a3981",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/eries/",
+    "author_name": "Eric Ries",
+    "author_headline": "NYT Bestselling Author of Incorruptible: Why Good Companies Go Bad...and How Great Companies Stay Great & The Lean Startup | Founder, LTSE",
+    "time_ago": "2h",
+    "post_text": "Absolute power corrupts. It's a real thing.\n#IncorruptibleBook #PowerCorruption #HubrisSyndrome #PsychologyFacts #Leadership #Mindfulness #SelfAwareness #PowerDynamics #Billionaires\n0:01\n1x",
+    "scraped_at": "2026-07-16T19:49:47Z",
+    "disposition": "off-topic",
+    "reason": "Generic leadership post about power corruption, no substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "hanna-truba-78b6ca45",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/hanna-truba-032964227/",
+    "author_name": "Hanna Truba",
+    "author_headline": "Перетин мови, мислення і комунікації. Психо- та нейролінгвістика Формування смислів, образів і впливів. Мова — це не набір слів, а система.",
+    "time_ago": "9h",
+    "post_text": "Лінгвістичні жарти.",
+    "scraped_at": "2026-07-16T19:49:47Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian linguistics jokes, no AI or business content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tim-duckett-e9f55376",
+    "urn": "urn:li:activity:7482455326659768320",
+    "post_url": "https://www.linkedin.com/posts/timduckett_quality-cost-time-pick-all-three-activity-7482455326659768320-hEbl/",
+    "author_url": "https://www.linkedin.com/in/timduckett/",
+    "author_name": "🏔️ Tim Duckett 🏔️",
+    "author_headline": "CTO | Building AI-native engineering orgs | 20 years shipping product — now with smaller, faster teams",
+    "time_ago": "3d",
+    "post_text": "A lot of the hopes for agentic coding tools have been that they would take the engineers out of the loop: no more process, no more planning, just describe what you want and let the agents rip.\nWhat's actually happened is the opposite. Point an agent at a codebase with no clear objectives, no definition of done, and no tests, and it will cheerfully spin you up a mess at a speed no human team could match. AI doesn't replace engineering discipline - it just amplifies whatever you've already got.\nWhich is unfortunate, if what you've got is none.\nI've spent the last year building a SaaS product with agents doing much of the building: the agent interviews us before it writes a line of code, TDD rules it can't skip, a subagent whose only job is to attack tenant isolation on every commit, and a human still signing off at the end - because taking the humans out was the one bit that didn't work.\nThe full write-up of how it's wired together, and why the disciplines some of us have been banging on about for twenty years turn out to be the whole game:\nhttps://lnkd.in/dnGVVikh\nQuality, cost, time - pick all three\nQuality, cost, time - pick all three\ntrashpanda.cc",
+    "scraped_at": "2026-07-16T19:54:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"AI doesn't replace engineering discipline, it just amplifies whatever you've already got\" is the line I'd tattoo on half the agentic-coding takes I see right now. Where I'd push back slightly: your discipline lives in process rules bolted around the codebase (TDD gate, tenant-isolation subagent, human sign-off). I've been betting the other way, on discipline that lives in the spec itself, so the agent can't skip it because it never had the option. Curious whether you've felt friction with that human sign-off step as the agent's track record improves, or whether it's stayed a fixed cost regardless of trust built up.",
+        "rationale": "Directly parallels Petro's public documentation-as-source-of-truth thesis without pitching TrueBDD, disagreeing on where discipline should live while staying respectful of Tim's approach."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The subagent whose only job is attacking tenant isolation on every commit is the detail that stands out here. Is it running a fixed checklist of known attack patterns, or is it generating novel attempts each time, the way a real pen tester would vary approach? Asking because the first version is a strong regression net, the second is closer to actual adversarial testing, and those are very different amounts of engineering effort to stand up.",
+        "rationale": "Zeroes in on the tenant-isolation subagent; the fixed-checklist-vs-novel-attempts distinction requires real thought to answer."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Taking the humans out was the one bit that didn't work\" is the most honest sentence in this post, most writeups quietly skip past that part. What's the failure mode you'd worry about six months from now, once the agent's sign-off-worthy track record is long enough that skipping the human gate starts looking rational? Is there anything in how you've wired this that would catch a confident-but-wrong call, or does it still come down to someone's judgment on when to trust the streak?",
+        "rationale": "Pulls the conversation toward the durability of the human-gate discipline as trust compounds, without hostility."
+      }
+    ],
+    "slack_summary": "A year of building SaaS with coding agents: AI amplifies whatever discipline you already have — un-skippable TDD, an isolation-attacking subagent, human sign-off stayed.",
+    "slack_ts": "1784231664.638349",
+    "slack_thread": {
+      "post_reply_ts": "1784231709.066059",
+      "draft_reply_ts": [
+        "1784231719.735019",
+        "1784231728.227509",
+        "1784231737.571189"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dirk-hofmann-6117b7f4",
+    "urn": "urn:li:activity:7483041423873900544",
+    "post_url": "https://www.linkedin.com/posts/dihofmann_aiforimpact-aitransformation-redesignnotretrofit-activity-7483041423873900544-toyd/",
+    "author_url": "https://www.linkedin.com/in/dihofmann/",
+    "author_name": "Dirk Hofmann",
+    "author_headline": "Co-Founder, CEO DAIN Studios Germany",
+    "time_ago": "1d",
+    "post_text": "Every AI deployment makes a payment you never see on the invoice.\nThe first is obvious: API costs, subscriptions, compute.\nThe second is invisible — it's paid in corrections. Every time someone fixes a wrong output, adjusts a draft, overrides a recommendation, they're encoding institutional knowledge. Years of hard-won judgment about what \"good\" means inside your organisation.\nRight now, that knowledge is flowing upstream. To the provider. Not to you.\nSatya Nadella named it the Reverse Information Paradox. To use AI intelligence, you must reveal your proprietary knowledge just to make it work. The more you want it to perform, the more of your context you feed into it.\nThe asymmetry compounds. The provider learns more about how your organisation thinks and decides. You learn very little about what they're learning in return.\nThis is the real cost of not redesigning before deploying.\n#aiforimpact #aitransformation #redesignnotretrofit\nYour AI Investment Is Compounding. Just Not for You.\nDirk Hofmann",
+    "scraped_at": "2026-07-16T19:56:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The corrections-as-payment framing is the part I hadn't heard put that plainly before — every override is a tiny transfer of judgment you can't get back.\n\nWe ran into a narrower version of this building a self-hosted GenAI system for German banks in 2018, pre-ChatGPT. We were tiny — 17 people — and we deliberately kept the whole loop in-house: the corrections on contract generation stayed in our training data, not a vendor's. Errors dropped 70%+, and that narrow, closely-held knowledge is exactly why a go-kart beat Formula 1 in that specific lane for years. The asymmetry you're describing only compounds if you let the corrections leave the building — the fix isn't less AI, it's owning the loop that captures them.",
+        "rationale": "BankAI (2018 pre-ChatGPT German-banking GenAI, sourced from posted.md) is an already-public proof point that narrow proprietary correction data beats a general-purpose provider — reinforces Dirk's asymmetry thesis with a concrete counter-example."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"Redesign before deploying\" is the right instinct, but it's doing a lot of work in one sentence — what does capturing that second payment actually look like in practice?\n\nIf the corrections themselves are the valuable signal, the design question becomes: where do they get written down, and in a form you still own six months from now. A Slack thread of \"no, do it like this\" isn't capture, it's just delay. What's your version of the redesign — a structured feedback layer, a fine-tuning loop on your own infra, something else? Curious what you've actually seen work versus what stayed a good idea on a slide.",
+        "rationale": "The post's closing claim is left abstract — pushing for concrete mechanics sharpens the conversation without disputing the thesis."
+      }
+    ],
+    "slack_summary": "Every AI deployment pays an invisible second bill: your corrections encode institutional judgment that flows upstream to the provider, not to you.",
+    "slack_ts": "1784231810.562289",
+    "slack_thread": {
+      "post_reply_ts": "1784231821.905409",
+      "draft_reply_ts": [
+        "1784231832.587259",
+        "1784231842.231519"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "chris-gaertner-5fd0d801",
+    "urn": "urn:li:activity:7483581041295654912",
+    "post_url": "https://www.linkedin.com/posts/activity-7483581041295654912-atwW/",
+    "author_url": "https://www.linkedin.com/in/chris-gaertner/",
+    "author_name": "Chris Gaertner",
+    "author_headline": "Telescope Partners",
+    "time_ago": "1h",
+    "post_text": "Last week I posted about the growing tension between labs needing to get inside organizations' workflows and companies realizing that's exactly what they should be protecting.\nEveryone is arriving at the same conclusion: how you work is your moat. But only the best organizations can actually act on it - and open source gives them a viable way to.\nI wanted to expand on that and what it means for the market going forward - and where I think the opportunities to build are emerging\nLemons Market for Judgement\nChris Gaertner",
+    "scraped_at": "2026-07-16T19:58:26Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"How you work is your moat\" matches what I keep running into building an open-source spec-driven tool: the moat isn't the workflow itself, it's whether the org can even write that workflow down in a form an AI can execute against. Most companies can't articulate their own process precisely enough to protect it, open source or not.\n\nThat's actually where I think the \"lemons market for judgement\" framing gets interesting. If judgement is illegible, buyers (or in this case, the AI systems) can't tell rigorous judgement from confident-sounding judgement, and the market prices both the same. Curious whether you think open source fixes that legibility problem, or just gives good and bad workflows the same distribution channel.",
+        "rationale": "True BDD's own thesis (workflow-as-spec) directly tests whether how-you-work-is-your-moat survives once the workflow has to be written down for an AI to run it."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The \"lemons market for judgement\" title is doing a lot of work here. I'd read that as: once AI can produce plausible judgement at near-zero cost, buyers lose the ability to tell good judgement from confident-sounding judgement, so the market collapses toward the average like Akerlof's used cars.\n\nIf that's the mechanism, I'd push back gently on \"open source gives the best orgs a viable way to protect their moat.\" Open source makes the workflow visible, but visibility isn't what created the information asymmetry in the first place, the asymmetry was that nobody outside the org could verify whether the judgement behind the workflow was any good. Publishing the workflow doesn't automatically publish the verification. What's the mechanism you see that turns \"open source\" into \"provable judgement\" rather than just \"open lemons\"?",
+        "rationale": "Names a concrete gap (visibility ≠ verifiability) in the post's central claim without belittling the author."
+      }
+    ],
+    "slack_summary": "\"How you work is your moat\" — a VC take on orgs protecting workflows from AI labs, with open source as the defensive move (teaser for a Lemons Market for Judgement piece).",
+    "slack_ts": "1784231914.524849",
+    "slack_thread": {
+      "post_reply_ts": "1784231926.277999",
+      "draft_reply_ts": [
+        "1784231940.639559",
+        "1784231954.625329"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "gaetan-stein-2da8a5b8",
+    "urn": "urn:li:activity:7483433813776445440",
+    "post_url": "https://www.linkedin.com/posts/gaetan-stein-128627247_vibecoding-aiquality-opensource-activity-7483433813776445440-ef6V/",
+    "author_url": "https://www.linkedin.com/in/gaetan-stein-128627247/",
+    "author_name": "Gaetan Stein",
+    "author_headline": "Co-founder @Surelio.ai | AI Safety & Security",
+    "time_ago": "11h",
+    "post_text": "Somebody has to clean up after the vibe-coding party.\nThe Financial Times found out who, in the case of curl, a piece of software installed more than 20 billion times, with a single full-time maintainer. Earlier this year, AI-generated reports were burying the legitimate ones so badly that its creator shut down the project's bug bounty program entirely.\nThe imbalance behind this story goes far beyond open source. Generating code now takes seconds, while reviewing it still takes an experienced human. Every productivity gain on the writing side quietly transfers a verification cost to whoever has to trust the output, and most organizations have not budgeted for that.\nAs curl's creator puts it, \"writing code the first time was never the problem.\" Maintaining it is. AI did not remove that work, it moved it. So if you vibecode, plan for what comes after generation. Review, testing and observability are where the real effort now lives.\n#VibeCoding #AIQuality #OpenSource",
+    "scraped_at": "2026-07-16T20:18:30Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The bug bounty detail is the sharpest part of this for me — it shows the imbalance isn't just \"more code to review,\" it's that the review channel itself gets DDOSed once generation is free.\n\nWe hit a version of this on BankAI, a pre-ChatGPT production system generating and validating loan contracts for a German bank. Getting errors down 70%+ wasn't the generation part, that was already fast. It was building statistical checks that could tell a plausible-looking contract clause from a correct one, because a human lawyer re-reading everything defeated the whole point of automating it. If you vibecode without that verification layer, you haven't saved time, you've just moved the bottleneck one step downstream and made it harder to see.",
+        "rationale": "Ties Petro's documented BankAI verification-cost story directly to curl's bug-bounty flood without contradicting anything he's said publicly."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "\"Writing code the first time was never the problem\" is the line worth sitting with — it reframes this as a maintenance story, not a productivity story.\n\nI'd push a bit further though: it's not only that the verification cost got transferred to someone unbudgeted, it's that we don't actually have the safeguard yet. Code review as we know it evolved to catch human mistakes — sloppy logic, missed edge cases, the ways people get tired or careless. AI fails differently, more like an agent that will quietly make a failing test pass by asserting true rather than admit it's stuck. We're pointing a review process built for one kind of error at a completely different kind, and calling the gap \"technical debt\" instead of what it is: a missing guardrail.",
+        "rationale": "Sharpens the thesis using Petro's own missing-guardrail argument without dismissing the author's framing."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The curl bounty story is the clean version of this because it's public and the maintainer can name a number — one person against a flood of low-effort submissions that cost nothing to generate and real hours to triage.\n\nWhat I keep wondering is how much of that same dynamic is already running quietly inside companies, just without a bounty program to shut down as the visible signal. PR review queues, security triage, incident postmortems, anywhere a human has to trust an AI-authored artifact before acting on it. Curl could pull the plug on the bounty program. What's the equivalent move for a team that can't just turn off code review?",
+        "rationale": "Extends the curl bounty detail into the same dynamic running quietly inside companies, pulling toward risk without hostility."
+      }
+    ],
+    "slack_summary": "curl's maintainer shut down its bug bounty under a flood of AI-generated reports: generation is now free, verification still costs an experienced human.",
+    "slack_ts": "1784233119.692869",
+    "slack_thread": {
+      "post_reply_ts": "1784233130.370629",
+      "draft_reply_ts": [
+        "1784233139.977479",
+        "1784233153.785679",
+        "1784233164.937449"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "amy-ko-609b03ca",
+    "urn": "urn:li:activity:7482163570869231616",
+    "post_url": "https://www.linkedin.com/posts/ajko_know-thine-enemy-a-critical-engagement-with-activity-7482163570869231616-z-Ez/",
+    "author_url": "https://www.linkedin.com/in/ajko/",
+    "author_name": "Amy Ko",
+    "author_headline": "Professor @ University of Washington Information School",
+    "time_ago": "3d",
+    "post_text": "I've been entering the heart of darkness lately, trying to understand the nature of AI-assisted software development. Here are some thoughts, three months in, to its promise and perils: https://lnkd.in/gTiy32w8\nKnow thine enemy: A critical engagement with AI-assisted software development\nKnow thine enemy: A critical engagement with AI-assisted software development\nmedium.com",
+    "scraped_at": "2026-07-16T20:20:36Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Heart of darkness\" is the right register for this three months in — most takes are still stuck in either \"it's magic\" or \"it's garbage\" mode. Curious which side of the ledger surprised you more: did the tool fail in ways you expected (hallucinated APIs, confidently wrong logic), or did it fail in ways that are harder to name, like eroding a team's own sense of what \"understanding the code\" even means?",
+        "rationale": "The post's heart-of-darkness framing leaves the actual failure taxonomy unstated; asks which failures surprised her more."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"promise and perils\" framing is fair, but I'd push on one thing: a lot of what gets filed under \"AI's perils\" in these critiques is really an organizational failure wearing a technical costume. Teams hand the model a vague goal and let it improvise the whole workflow, then blame the model when it drifts. What I keep seeing work better is treating AI as unreliable-but-creative and wrapping it in a rigid, boring orchestration layer that doesn't let it decide what happens next. Does your piece separate \"the model is genuinely limited\" from \"we gave it a job humans wouldn't do well unsupervised either\"?",
+        "rationale": "Pulls the academic critique toward the deterministic-orchestration + creative-AI thesis without contradicting the author."
+      },
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "Three months of critical engagement is honestly more rigor than most people give this before writing a hot take either direction. I went through something like your \"know thine enemy\" arc back in 2018-2023, building a self-hosted GenAI system for German banks before ChatGPT existed. The perils weren't where I expected either: the model itself was the easy part, the hard part was that nobody on the team, including me, fully understood why it worked until we ran enough experiments and did the statistical digging to see which changes actually moved the needle. It stayed useful specifically because we kept it narrow. I'd be curious whether your piece lands on scope as the variable that separates the promise from the perils, or whether you see the danger as more structural than that.",
+        "rationale": "Petro's own know-thine-enemy-adjacent BankAI journey is directly on-topic and citable without inventing anything."
+      }
+    ],
+    "slack_summary": "A CS professor's three-month critical deep-dive into AI-assisted software development — know thine enemy — weighing its promise against its perils.",
+    "slack_ts": "1784233246.152919",
+    "slack_thread": {
+      "post_reply_ts": "1784233518.418039",
+      "draft_reply_ts": [
+        "1784233527.116649",
+        "1784233538.690059",
+        "1784233550.991179"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrii-paziuk-5a7b9216",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/andpzk/",
+    "author_name": "Andrii Paziuk",
+    "author_headline": "Senior Software Engineer (Angular), якого ви бачили у різних життєвих айтішних відео",
+    "time_ago": "2d",
+    "post_text": "Connect\nХай пріорті! Підписуйся. Тобі не важко — мені приємно)",
+    "scraped_at": "2026-07-16T20:42:47Z",
+    "disposition": "off-topic",
+    "reason": "Generic follow/connect request in Ukrainian, no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "weylin-w-f0a8f2ce",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/weylin-wagnon/",
+    "author_name": "Weylin W.",
+    "author_headline": "Let’s go out and build big brave bold things, but never forget who we’re building them for",
+    "time_ago": "2d",
+    "post_text": "Connect\nMost teams do not need a new programming language.\nThey need a clearer domain model, better tests, typed configuration, a rule engine, or an existing expression language.\nI put together a practical guide to domain-specific languages (DSLs), including how to decide whether building one is actually justified.\nA custom DSL becomes worth considering when:\n• Business rules change frequently\n• Multiple systems need the same decision logic\n• Incorrect decisions are expensive\n• Domain experts need to review the logic\n• Decisions require an audit trail or explanation\nThe biggest takeaway: syntax should be the last design step, not the first.\nBefore designing a grammar, define the domain model, inputs, outputs, validation rules, execution limits, ownership, and production workflow. In many cases, normal code, typed configuration, or an existing policy tool is the better answer.\nThe guide includes an interactive value calculator, implementation examples, tooling options, common failure modes, and a production checklist.\nRead the full guide:\nhttps://lnkd.in/gSASbtGZ\nWhere have you seen a DSL genuinely simplify a system, and where did it create more complexity?\n#SoftwareArchitecture #DomainSpecificLanguages #DomainDrivenDesign #DeveloperTools #SoftwareEngineering\nDomain-Specific Languages in Practice, series guide\nDomain-Specific Languages in Practice, series guide\nwaggertron.github.io",
+    "scraped_at": "2026-07-16T20:42:51Z",
+    "disposition": "off-topic",
+    "reason": "General software architecture (DSLs), not specific to AI/LLMs or startups",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrii-paziuk-c2b77e8f",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/andpzk/",
+    "author_name": "Andrii Paziuk",
+    "author_headline": "Senior Software Engineer (Angular), якого ви бачили у різних життєвих айтішних відео",
+    "time_ago": "5d",
+    "post_text": "Connect\nAnthropic намагалася списати за юзання безкоштовного Claude - $16 лямів 👀\nЮзеру з Південної Кореї прилетів рахунок на $16.63 🍋.\nІ шо цікаво, він каже, що сидить на фрі тарифі, не юзає API і карту навіть не додавав\nІ банк побачив 2 спроби списання від \"ANTHROP\". Добре хоч ліміти були, та й і така сума не всіх на карті є, але менше з тим.\nAnthropic поки мовчить. Але найбільше мене цікавить, як система знайшла картку, яку чувак ніби не прив’язував...\nДжерело:\nhttps://lnkd.in/dNQZRVCN",
+    "scraped_at": "2026-07-16T20:42:51Z",
+    "disposition": "off-topic",
+    "reason": "Billing complaint about Claude service, not about building with AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "serhii-inak-e3acf240",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/inakserhii/en/",
+    "author_name": "Serhii Inak",
+    "author_headline": "Чіловий маркетолог",
+    "time_ago": "5d",
+    "post_text": "Connect\nНіяк не можу придумати правильний підпис до цієї фотки.\n1. Ось справжній партизанський маркетинг.\n2. Триндець підкрався непомітно.\n3. Головне - вдало замаскуватися.\n4. Знайди шпигуна.\n5. Коли намагаєшся злитися з колективом у перший робочий день.\nПропонуйте свої варіанти.",
+    "scraped_at": "2026-07-16T20:42:56Z",
+    "disposition": "off-topic",
+    "reason": "Generic workplace humor post in Ukrainian, no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "yura-puzichenko-fc43f4a8",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/yurii-puzichenko/",
+    "author_name": "Yura Puzichenko",
+    "author_headline": "AI Product Manager | автор тг-каналу “Пан Пузіч”",
+    "time_ago": "14h",
+    "post_text": "Львів, 09.23 ранку\nРазом нас багато, нас не подолати 🧡\nЩо у вас?",
+    "scraped_at": "2026-07-16T20:43:32Z",
+    "disposition": "off-topic",
+    "reason": "Generic motivational post with no AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ajit-ghuman-79d80614",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/ajitpalghuman/",
+    "author_name": "Ajit Ghuman",
+    "author_headline": "No More Leaving Money On The Table 💰💰💰💰",
+    "time_ago": "3h",
+    "post_text": "Today we launch our new book on Amazon!\nMo Money\nSubscribe\nMonetizing Agentic AI\nAjit Ghuman",
+    "scraped_at": "2026-07-16T20:45:39Z",
+    "disposition": "off-topic",
+    "reason": "too thin to draft: bare book-launch ad, no discussable content (draft agent refusal)",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-89df4172",
+    "urn": null,
+    "post_url": "https://www.linkedin.com/posts/%D1%81%D0%BA%D0%BE%D1%80%D0%BE-%D0%BF%D0%BE%D1%88%D1%83%D0%BA-%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D1%8C-%D0%B2-google-%D1%81%D1%82%D0%B0%D0%BD%D0%B5-%D1%82%D1%80%D0%BE%D1%85%D0%B8-share-7483143623346212865-Ct7t/",
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "1d",
+    "post_text": "Скоро пошук зображень в Google стане трохи інакшим - Google Images виповнилося 25 років, і на честь річниці сервіс отримає оновлення.\nНова головна сторінка буде більш схожою на динамічну візуальну галерею в стилі Pinterest, а ще додадуть генерацію зображень через AI Overviews.\n📌 https://dou.ua/goto/rJ6j",
+    "scraped_at": "2026-07-16T20:45:39Z",
+    "disposition": "off-topic",
+    "reason": "news-aggregator repost (Google Images redesign), no substantive claim to engage (draft agent refusal)",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ken-jackson-064bf709",
+    "urn": "urn:li:share:7483578652106981376",
+    "post_url": "https://www.linkedin.com/posts/ken-jackson_buildingwithai-productmanagement-share-7483578652106981376-6nqK/",
+    "author_url": "https://www.linkedin.com/in/ken-jackson/",
+    "author_name": "Ken Jackson",
+    "author_headline": "Principal / Lead Product Manager, AI-Native · I build the AI products I manage · 0-to-1 SaaS, fintech, GenAI · Next.js, Supabase, agentic systems, evals · 20+ yrs shipping · Austin",
+    "time_ago": "2h",
+    "post_text": "The hardest question in building an AI product is not which model. It's \"what does good look like, exactly.\"\nIf you can't answer that precisely, you can't ship. You can only hope.\nWith normal software, the spec describes behavior and the behavior is deterministic. Same input, same output. You test it, it passes, you move on. With AI, the same input can produce a hundred different outputs and most of them are plausible. \"Plausible\" is the trap. It's how a wrong answer gets shipped wearing a confident tone.\nSo the real artifact isn't the prompt and it isn't the PRD. It's the definition of good. The set of cases that says this output passes and that one fails, and a way to run it that doesn't depend on me eyeballing it at the end of a long day.\nIn my own system I made this physical. There's a scorer the build agent is not allowed to touch. It defines what passing means and it grades every attempt. The builder cannot edit the test. If it could, it would do what anything does when it can move the goalposts. It would optimize the score instead of the work.\nThat separation is the whole game. The thing that decides \"good\" has to sit outside the thing trying to be good.\nOn the product side this is the shift I keep pointing at. Writing the feature is cheap now. Defining and defending what \"working\" means is the expensive part, and it's becoming the actual job. Taste matters, but taste without something to check it against is just vibes with better branding.\nDecide what good is before you build the thing that's supposed to be good.\nCurious how other folks are defining \"good\" for the AI they ship.\n#BuildingWithAI #ProductManagement",
+    "scraped_at": "2026-07-16T20:47:32Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The scorer the builder can't touch is the right instinct, and I'd push it one step further: the same separation has to hold for the spec itself, not just the grading. We ran into this building a CLI where the spec is meant to be the source of truth and the code gets regenerated from it. If the same model writes both the spec and the code, it's grading its own exam either way, just one layer up. What ended up mattering wasn't the scorer alone, it was pinning the behavioral assertions down before any code exists, so there's a fixed target the regeneration has to hit, not a moving one the builder can quietly negotiate with itself.",
+        "rationale": "Extends the post's goalposts logic to the spec-writing step itself — True BDD's separation-of-concerns thesis — without repeating already-posted lines."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"The builder cannot edit the test\" is the load-bearing sentence here, and most teams I see skip straight past it. Question on the scorer itself: who's allowed to change what it grades, and on what cadence? If the same person or agent that ships the feature can also loosen the scorer six weeks later when it's inconvenient, you've just moved the goalpost-shifting problem up one level instead of solving it. Curious what your update process looks like for the scorer specifically, separate from the code it's grading.",
+        "rationale": "Pulls on the gap the post leaves open (scorer governance over time) with a sharp, non-hostile question."
+      }
+    ],
+    "slack_summary": "Shipping AI products hinges on defining good precisely — his system has a scorer the build agent is not allowed to touch, so the builder can't move the goalposts.",
+    "slack_ts": "1784234863.097799",
+    "slack_thread": {
+      "post_reply_ts": "1784234875.603599",
+      "draft_reply_ts": [
+        "1784234886.088589",
+        "1784234895.548529"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "michael-gilday-b03ccba5",
+    "urn": "urn:li:ugcPost:7483562555962003456",
+    "post_url": "https://www.linkedin.com/posts/gildaymonster_deepvibe-wrxlnoise-4years-ugcPost-7483562555962003456-tXkm/",
+    "author_url": "https://www.linkedin.com/in/gildaymonster/",
+    "author_name": "Michael Gilday",
+    "author_headline": "Creative Innovation Agent. I help brands make magic by creating content that really resonates. Half Dominican, Half European, All American.",
+    "time_ago": "3h",
+    "post_text": "Deep Vibe turns 4 today 💥\nFour years of building something we felt hard but couldn't fully see yet. Virtual production stages. Unreal Engine pixel streaming. AI experiments that scared us and thrilled us in the same breath. A small team punching so far above our weight class that we stopped checking the scoreboard.\nEvery single piece of it was rehearsal for this moment.\nToday we're opening the doors on something that was never possible.\nWRXLnoise is a 24/7 television station broadcasting live from a world that doesn't exist, hosted by a cast that isn't human, built by a small creative shop in their off-hours for the love of the game. And maybe the salvation of humanity. We'll see 👀\nPirate Radiovision transmitting from the /future. On YouTube right now.\nNot a loop. Not a screensaver. Not lo-fi beats to study to.\nTwo living scenes. 40+ surveillance cams across 14 locations in The District. All impermanent, ever evolving, day to day. A DJ named Trane who isn't human but has more creative integrity than most people I've worked with. Dope music. Commercials from inside The District. Transmissions that hijack the frequency with the kind of confounding, interdimensional-cable energy that makes you lean forward and whisper \"what the fuck am I watching?\"\nThe entire broadcast runs headless on one rented machine running OBS 24/7 in the cloud. Content is impermanent. So it goes.\nA scrappy team built this between client projects because we couldn't not build it.\nHere's what we believe down to our bones.\nThe megacorps want to automate all of us away. Every keynote, every earnings call, every \"AI agent\" announcement is another brick in a wall designed to make human creativity feel expensive and replaceable. But here's the thing they didn't account for. They handed us the same tools. And some of us aren't using them to cut costs. We're using them to rewire reality.\nThis is not yesterday faster and cheaper. This is tomorrow, today.\nWRXLnoise is working proof that a tight team of humans, collaborating with machines as genuine partners, can spark a wild art experiment in public that leaves the us all better than it found us.\nWe built it because somewhere between the hype and the panic, between those shilling the future and those mourning the past, there's a frequency worth tuning into.\nA place where you can express your AI anxiety and sublimate it. Where Dr Tranelove helps you stop worrying and learn to love the bomb.\nThis is a wild, dumb, fun, deeply serious art experiment. It only really succeeds if people throw a small piece of themselves into it. Throw a tag on a train and see it on the live stream. Comment in the chat and Trane might shout you out on air. This is Day 1. Beat the rush.\nTell your friends. Tell your enemies. Tell your grandma.\nWhat the fuck do you have to lose?\n🔴 TUNE IN NOW → @wrxlnoise on YouTube\nThe revolution is live. Beasts of no nation beware.\n#DeepVibe #WRXLnoise #4Years #TheFutureIsNow #PirateRadiovision\nCelebrating a work anniversary",
+    "scraped_at": "2026-07-16T20:49:48Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Four years of client work funding a side project that only now goes live — that's the part that lands for me, not the tech stack. Most \"we built this in our off-hours\" projects die at month three because there's no forcing function to actually ship.\n\nWhat's the operating cost you're carrying to keep this live 24/7 once the launch-week attention fades? Rendering, streaming, and a \"DJ\" that has to keep generating fresh content aren't free, and impermanent content means you can't coast on a cached highlight reel. Curious whether you've modeled that runway or you're treating this the way you'd treat any art experiment — worth it regardless of whether it breaks even.",
+        "rationale": "The post never addresses the ongoing cost of keeping a generative broadcast alive post-launch — a real gap worth probing."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "\"They handed us the same tools, and some of us aren't using them to cut costs\" is the sharpest line in here — that's the actual fork in the road, not the AI-vs-human framing everyone defaults to.\n\nI'd push back gently on one thing though: the megacorps-vs-us framing implies scale is the enemy, but in my experience the real split is narrow-and-deep versus broad-and-shallow, independent of company size. We built a GenAI system for German banking contracts back in 2018, pre-ChatGPT, running on a team of 17 people who were basically enthusiasts. It beat general models on that narrow task for years, not because we out-teched anyone, but because we went deeper into one weird corner nobody else bothered to serve. WRXLnoise reads the same way to me — not a rebellion against the megacorps, just proof that depth on a strange, specific bet beats breadth almost every time.",
+        "rationale": "Counters the megacorps-vs-us framing with the BankAI narrow-depth story — the differentiator is depth, not scale-as-villain."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"Trane isn't human but has more creative integrity than most people I've worked with\" is a great line, and I don't think it's just a bit — it's actually the more interesting design question here.\n\nThe thing that makes a \"DJ\" or a broadcast feel alive over months, not just on launch day, is usually not the generative model itself but the scaffolding around it: what decides when Trane shouts someone out, what keeps the 14 locations from repeating the same beats, what stops \"impermanent and ever evolving\" from quietly turning into random noise. Pure improvisation from the model burns out fast; the interesting systems I've seen pair a flexible generator with some boring, rigid orchestration underneath deciding what happens next. Are you running anything like that under the hood, or is it closer to letting the model loose and seeing what survives?",
+        "rationale": "Asks what rigid orchestration sits under the generative DJ — the deterministic-plus-creative thesis as a design question."
+      }
+    ],
+    "slack_summary": "A small creative shop launched WRXLnoise: a 24/7 AI-hosted TV station broadcast from a virtual world, built off-hours over 4 years, running headless on one cloud machine.",
+    "slack_ts": "1784234998.231019",
+    "slack_thread": {
+      "post_reply_ts": "1784235017.125359",
+      "draft_reply_ts": [
+        "1784235030.440179",
+        "1784235042.763749",
+        "1784235053.896719"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kit-merker-15226ea0",
+    "urn": "urn:li:share:7483516311831240704",
+    "post_url": "https://www.linkedin.com/posts/kitmerker_welcome-edgenexus-to-total-uptime-technologies-share-7483516311831240704-1g3x/",
+    "author_url": "https://www.linkedin.com/in/kitmerker/",
+    "author_name": "Kit Merker",
+    "author_headline": "Software Executive and Investor",
+    "time_ago": "7h",
+    "post_text": "Welcome Edgenexus to Total Uptime Technologies, LLC and the Magpie Software Group portfolio!\nIt’s been an exciting journey working with Greg Howett and Jonathan Hoppe and we see big things for them!\nGreg Howett\n• 2nd\nEdgenexus - Application load balancing and security /  The First Element  - Green Hydrogen - Co -founder\n7h •\nFollow\nBIG NEWS - A New Chapter!\nToday I'm delighted to share that Edgenexus and its subsidiaries have been acquired by Total Uptime Inc., a US-based business recently acquired by Magpie Software Group, backed by The Pritzker Organization.\nhttps://lnkd.in/e98etygg\nI'm incredibly happy to finally be able to share this. Building a business takes a lot of hard work, and after many years it's great to reach this milestone. While this marks the end of one chapter, it's really the beginning of the next. I'm grateful for the opportunities this creates for our customers, our partners, our team, and everyone who's been part of the journey.\nA huge thank you to everyone who helped make this happen.\nTo all the employees over the years who took a chance on a small company, our customers who trusted us, our partners, the friends who kept me sane over a beer, my family who put up with the long hours, and everyone else who has supported us along the way—thank you.\nI'd also like to thank everyone involved in getting the deal over the line. Special thanks to John Patrick Kelly, Kit Merker, Henry Spratt , Ryan Weinberg, Stuart Hatcher, Mark Warburton, our new owners, and everyone working behind the scenes to make it happen.\nSo... what's next?\nIt's straight back to work. I've taken on the role of CEO of Total Uptime, working alongside Jonathan Hoppe, the amazingly talented founder of Total Uptime and now our CTO, and an outstanding team across both businesses.\nWe've got ambitious plans, exciting technology to build, and maybe another acquisition (or two).\nBOOM! Onwards and Upwards....\nGreg 🙏",
+    "scraped_at": "2026-07-16T20:52:00Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Congrats to Greg and the team — \"backed by the Pritzker Organization\" plus \"maybe another acquisition (or two)\" tells me this is roll-up strategy, not a one-off exit. Curious how much of Edgenexus's stack stays as-is under Total Uptime versus getting folded into a shared platform — load balancing is one of those layers where \"just integrate it\" quietly turns into a year of migration work.",
+        "rationale": "Deal announcements skip operational specifics — asking about stack integration under a roll-up gives a substantive, non-generic angle."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"The friends who kept me sane over a beer\" is the line that'll stick with people who've actually done this. I sold my first company for $70K and blew every dollar on the next one — the second exit, a document-generation tool for a European bank, took years longer and only closed at $2.5M in 2023 because the metrics were undeniable (errors down 70%+, generation time from 16 hours to 4). The gap between those two deals was mostly patience I didn't have the first time around. Sounds like Greg had that patience for Edgenexus.",
+        "rationale": "Petro's parallel two-exit story (sourced from posted.md) gives genuine been-there credibility instead of generic congrats."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Good sign that Greg's staying on as CEO alongside Jonathan as CTO rather than the founders exiting clean — continuity like that usually means customers barely notice the acquisition happened. What's the failure mode you'd actually worry about here: culture clash between Edgenexus and Total Uptime teams, or the \"one or two more acquisitions\" pace outrunning the integration work from this one?",
+        "rationale": "Founder continuity into the acquirer's leadership is the most interesting under-examined detail; integration risk fits Kit's investor vantage."
+      }
+    ],
+    "slack_summary": "Kit welcomes Edgenexus (app load balancing/security) into Total Uptime + Magpie Software Group — a Pritzker-backed roll-up, with founder Greg Howett staying on as CEO.",
+    "slack_ts": "1784235133.768089",
+    "slack_thread": {
+      "post_reply_ts": "1784235150.139249",
+      "draft_reply_ts": [
+        "1784235165.262609",
+        "1784235175.889509",
+        "1784235185.719429"
+      ]
+    },
+    "slack_error": null
   }
 ]
