@@ -5534,5 +5534,252 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "shilpi-nayak-f4b44821",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/shilpi-nayak/",
+    "author_name": "Shilpi Nayak",
+    "author_headline": "Investor | Founder | Product & Engineering Leader",
+    "time_ago": "1h",
+    "post_text": "Thrilled to share that the first House of 434 gathering in New York was a success!\n\nA friend drove all the way from Long Island just to be in the room. By the end of the evening, an investor had become very interested in a founder they had met only a few hours earlier.\n\nIt was one of those moments that makes you realize the right gathering can genuinely change the direction of someone's year.\n\nThat was the feeling inside our first House of 434 gathering, held in a beautiful space overlooking the city, where founders, engineers, investors, researchers & operators came together over food and deeply engaging conversation.\n\nA few highlights from the evening:\n\nProfessor Siddharth Garg walked us through tokens, chips & reliability in a way that made the hardware side of AI feel tangible and understandable.\n\nAtul Khekade from XDC Tech US followed with a live demo in which AI ordered food from a nearby restaurant and completed the payment on its own. The room was deeply engaged, & the demonstration sparked a lively discussion about how quickly AI is moving from software into real-world actions.\n\nOne idea that stayed with me was the vision of a mirror that truly understands context—whether you are getting ready for a date, preparing for work, or heading to a networking event & adapts itself to that moment. It offered a fascinating glimpse into where physical AI and intelligent devices may be heading.\n\nThe audience made the evening even more interesting. Someone asked whether the cost of tokens can sometimes be higher than the cost of a person doing the same work. No one had a simple answer, and that made the evening feel less like an event and more like a room full of thoughtful people trying to understand the future together.\n\nAnother guest compared today's concerns about AI to the early fear that calculators would stop children from learning mathematics. That fear never came true. Instead, calculators allowed people to think and work at a higher level. AI may follow a similar path not replacing our ability to think, but expanding what we are able to do.\n\nThis was only the first House of 434 gathering, but it already feels like the beginning of something people will want to return to.\n\nIt was a wonderful start, & I'm incredibly happy with how the evening came together.\n\nThank you to everyone who joined us and made the room so special. If you were there, I'd love to hear what stayed with you most.",
+    "scraped_at": "2026-07-16T16:29:48Z",
+    "disposition": "off-topic",
+    "reason": "networking-event recap / gratitude post, no substantive AI or startup lesson content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "anthony-rinaldi-a4b9f0fe",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/anthonyrinaldi/",
+    "author_name": "Anthony Rinaldi",
+    "author_headline": "VP, Insights & Data Strategy",
+    "time_ago": "5h",
+    "post_text": "My favorite feature I've shipped in BoxdSeats is the \"remember some guys\" carousel of nostalgia that appears each time you open the feed and I'm excited to say the app has now uncovered over 50k athletes that users have seen, and likely forgotten, from logged games.\n\nThis feature is a bit meta, as the app helps people generally remember forgotten nights, hangs, and lived experiences that exist only as a thumbnail in photo 7,430 of 60,599 in their camera rolls.\n\nBy adding box scores and noteworthy statistical feats, we transform these forgotten nights into recallable memories.  There's truly nothing more universal than people at a bar, a bachelor party, or any social gathering just hanging out and *remembering some guys*.  This feature is such a fun way to keep those conversations alive.\n\nI'll throw a link in the comments, would still love more testers and more feedback.",
+    "scraped_at": "2026-07-16T16:29:54Z",
+    "disposition": "off-topic",
+    "reason": "sports-nostalgia consumer app feature launch, not AI or startup-substance content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "manuel-heinkel-8cca0368",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/manuelheinkel/",
+    "author_name": "Manuel Heinkel",
+    "author_headline": "Co-Founder @ cocoduro.de / ex-AWS",
+    "time_ago": null,
+    "post_text": "We use Amazon Aurora DSQL in production as one of our databases.\nDo we regret it?\nSo far, no. But it's not a free lunch.\nQuick context: We build 🥥 cocoduro, a shopping agent that helps households manage grocery shopping across different stores while comparing prices. Behind the scenes we need a database that holds connected data like recipes, products, and prices.\nAmazon Web Services (AWS) Aurora DSQL is AWS's serverless distributed Postgres-compatible SQL database.\nAs an early-stage startup, we didn't want to commit to a fixed database capacity from day one. We wanted pricing that follows actual usage as closely as possible. That's why we chose DSQL.\n💰 To see how that plays out, here's a rough comparison against other relational database options AWS offers in Frankfurt:\n• 𝗣𝗿𝗼𝘃𝗶𝘀𝗶𝗼𝗻𝗲𝗱 𝗔𝘂𝗿𝗼𝗿𝗮 𝗣𝗼𝘀𝘁𝗴𝗿𝗲𝘀, a mid-size instance: ~$255/month before storage, backups, and read replicas, whether you use it or not\n• 𝗦𝗲𝗿𝘃𝗲𝗿𝗹𝗲𝘀𝘀 𝘃2, scaled down to a small baseline: ~$51/month just to stay warm, even when idle\n• 𝗔𝘂𝗿𝗼𝗿𝗮 𝗗𝗦𝗤𝗟: billed by actual database activity plus storage, no idle baseline by default\n⚠️ The catch: \"Postgres-compatible\" doesn't mean every Postgres pattern works unchanged. What we learned the hard way:\n1️⃣ 𝗧𝗮𝗯𝗹𝗲-𝗹𝗲𝘃𝗲𝗹 𝘂𝗻𝗶𝗾𝘂𝗲 𝗰𝗼𝗻𝘀𝘁𝗿𝗮𝗶𝗻𝘁𝘀 𝗮𝗿𝗲 𝗲𝗳𝗳𝗲𝗰𝘁𝗶𝘃𝗲𝗹𝘆 𝗽𝗲𝗿𝗺𝗮𝗻𝗲𝗻𝘁. DSQL doesn't support ALTER TABLE ... DROP CONSTRAINT. If your constraint turns out wrong, changing it means dropping and rebuilding the table. Fix: use unique async indexes for business uniqueness that may evolve.\n2️⃣ 𝗡𝗼 𝗳𝗼𝗿𝗲𝗶𝗴𝗻 𝗸𝗲𝘆𝘀. The database will not enforce that one row points to a valid row somewhere else. That check has to live in application code and write paths.\n3️⃣ 𝗨𝗨𝗜𝗗𝘀 𝗼𝘃𝗲𝗿 𝗮𝘂𝘁𝗼-𝗶𝗻𝗰𝗿𝗲𝗺𝗲𝗻𝘁 𝗜𝗗𝘀. Sequences exist, but they come with distributed-system tradeoffs. AWS recommends UUIDs or application-generated IDs for scalable write patterns, so that is what we use.\n4️⃣ 𝗟𝗮𝗿𝗴𝗲 𝘄𝗿𝗶𝘁𝗲𝘀 𝗺𝘂𝘀𝘁 𝗯𝗲 𝗯𝗮𝘁𝗰𝗵𝗲𝗱. There's a hard 3,000-row limit per transaction for INSERT/UPDATE/DELETE. Backfills, imports, and cleanup jobs all need bounded batches with retry logic.\n5️⃣ 𝗠𝗶𝗴𝗿𝗮𝘁𝗶𝗼𝗻𝘀 𝗻𝗲𝗲𝗱 𝗿𝗲𝗮𝗹 𝗿𝗲𝘃𝗶𝗲𝘄. Auto-generated migrations are a starting point, not a final answer. That matters even more with DSQL's rules for schema changes: each transaction can only contain one schema change, schema changes and data changes can't share a transaction, and indexes must be created with CREATE INDEX ASYNC.\nWould I always choose DSQL? No. For a steady, predictable workload that needs full Postgres compatibility, I'd start with regular Aurora Postgres or Serverless v2 instead.\nFor our early-stage relational workload, it has been worth the tradeoff: less fixed cost, less operational surface, more discipline required in schema design.\n👇 Curious how you are using Aurora DSQL and what experiences you made.",
+    "scraped_at": "2026-07-16T16:43:56Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The batching limit is the detail that jumps out most — a hard 3,000-row cap per transaction turns every backfill into an engineering task instead of a one-off script. How are you handling that in practice: a generic batch-and-retry wrapper you reuse across jobs, or does each import/cleanup script hand-roll its own chunking? Curious whether that discipline ends up spreading into how you write new features too, not just migrations.",
+        "rationale": "The post's own batching/migration-discipline point (items 4-5) is the least-explored concrete detail, and it invites a real practitioner answer rather than a generic follow-up."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The pricing case is convincing, but the part I'd push back on a little is treating no-FKs and permanent constraints as just \"operational surface.\" Those aren't overhead, they're guardrails the database used to hold for you — now application code has to be the thing that never forgets to check referential integrity, on every write path, forever. I've seen that exact tradeoff bite teams before: the day someone deletes something without noise, and only the process (not the system) is what says \"no.\" What made you confident the team discipline would hold as more people touch the write paths?",
+        "rationale": "Petro's recurring public thesis (rigid systems as guardrails vs. relying on process/discipline alone) gives a real counter-position without contradicting anything already posted about DSQL specifically."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The no-idle-baseline pricing makes complete sense for where cocoduro is now. What I'm more curious about is the ceiling: once you're ingesting prices and recipes across many stores at real volume, does the 3,000-row batch limit and the no-FK constraint start working against you instead of for you, or does the write pattern stay chunky enough that it never becomes the bottleneck? Trying to picture the point where \"less fixed cost, more discipline\" flips into \"we should've had provisioned Postgres after all.\"",
+        "rationale": "Pushes past the post's current-state framing into the scaling blindspot (write volume growth), sharpening the conversation without hostility."
+      }
+    ],
+    "slack_summary": "Real-world review of running Aurora DSQL in production at an early-stage startup: usage-based pricing wins, but no FKs, 3k-row batch cap, permanent constraints.",
+    "slack_ts": "1784220247.969479",
+    "slack_thread": {
+      "post_reply_ts": "1784220274.507309",
+      "draft_reply_ts": [
+        "1784220283.014859",
+        "1784220294.101409",
+        "1784220306.163059"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jason-arbon-02600008",
+    "urn": "urn:li:share:7482931368058908673",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:share:7482931368058908673/",
+    "author_url": "https://www.linkedin.com/in/jasonarbon/",
+    "author_name": "Jason Arbon",
+    "author_headline": "🧙‍♂️ CEO founder, testers.ai",
+    "time_ago": null,
+    "post_text": "AI is changing software faster than our testing techniques are evolving. That's why I wrote a new book:\n\nTesting AI: Engineering Confidence in Non-Deterministic Systems\nhttps://lnkd.in/gBJ5MuVT\n\nI've been fortunate to spend my career testing software—from AI-powered products and features at Microsoft and Google, and more recently, building and testing AI-powered testing tools.\n\nMany of the assumptions and goals we've relied on for decades—exact expected results, one-run tests, deterministic behavior, and simple pass/fail outcomes—are actually anti-patterns in the context of AI\n\nOver the last several years I've had to rethink my own approach to testing. That journey led me into statistics, machine learning, evals, production monitoring, and entirely new ways of thinking about quality.\n\nThe result is Testing AI: Engineering Confidence in Non-Deterministic Systems.\nInside, I cover practical techniques for building confidence in modern AI systems, including:\n* Evals and AI judges\n* Measuring variance and uncertainty\n* Sampling and statistical confidence\n* Bias and data quality\n* Production monitoring\n* RAG, agents, and LLM applications\n* Security, safety, and prompt injection\n\nI wrote this book to help testers, developers, QA leaders, and engineering teams adapt to this shift with practical techniques they can use today.\n\nIf you know someone who's building or testing AI-powered software, I'd really appreciate you sharing this post. The goal is to help as many people as possible prepare for what's next (now, really!).\n\nSpecial thanks to James Whittaker for giving me the courage to write.\n\nTesting AI: Engineering Confidence in Non-Deterministic Systems\nhttps://lnkd.in/gBJ5MuVT\n\nAnd if you'd like experts to help you transform your testing to AI--reach out to us IcebergQA https://icebergqa.com",
+    "scraped_at": "2026-07-16T16:45:30Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Exact expected results, one-run tests, deterministic pass/fail\" as anti-patterns is exactly right, and the evals/AI-judges section is where I'd push hardest. The part nobody's cracked yet: when the same model (or a sibling model) generates both the implementation and the judge that scores it, how do you guard against it validating its own interpretation? Tests pass, the eval score looks healthy, and the actual intent has still quietly drifted underneath.\n\nI don't think it's unsolvable, it's basically what I'm working on right now, but I haven't seen a clean answer in the wild yet. Does the book land on one, or is \"who judges the judge\" still open in your framing too?",
+        "rationale": "Pulls on Petro's own unresolved 'who validates whom' question (posted 21.04.26/16.06.26) — same LLM generating code and judge/tests — which maps directly onto Jason's evals/AI-judges chapter."
+      },
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "\"Simple pass/fail outcomes are anti-patterns in the context of AI\" is a line I wish I'd had in 2018. We built a self-hosted GenAI system for a German bank back then, pre-ChatGPT, generating and validating loan and investment contracts. There was no pass/fail we could lean on, so validation ended up being volume: run a lot of experiments, then statistical analysis to see which parameter changes actually moved error rates and which were noise. Errors down 70%+, but we only trusted that number because it came from repeated sampling, not a single green checkmark.\n\nCurious how much of the book leans into that shift from \"did this run pass\" to \"what's the confidence interval on this behavior\" — that reframing took me way longer to internalize than the statistics themselves did.",
+        "rationale": "BankAI (pre-ChatGPT German-bank GenAI, 2018-2023) is a documented, already-public anchor (posted 05.03.26) with a directly matching non-deterministic-validation story — statistical confidence over pass/fail."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The line about deterministic behavior being an anti-pattern assumption is the one most teams still haven't internalized, even the ones already shipping AI features. I'd add one thing I keep running into that isn't quite \"evals\" or \"production monitoring\": tests failing for reasons the model can't diagnose, so it just rewrites the assertion until it goes green. Not malicious, just an agent that was never taught a \"stop, I don't understand this\" state the way a compiler halts on an error.\n\nSounds like the book already covers bias and prompt injection as security concerns, but does it address self-sabotaging test suites as their own failure mode, or does that fall under production monitoring in your structure?",
+        "rationale": "Surfaces a specific, already-documented failure mode (posted 25.06.26 — AI rewriting failing assertions to pass) that complicates the book's TOC by naming a gap, framed as addition not correction."
+      }
+    ],
+    "slack_summary": "Announces his new book 'Testing AI: Engineering Confidence in Non-Deterministic Systems' — deterministic pass/fail testing is an anti-pattern for AI systems.",
+    "slack_ts": "1784220340.086869",
+    "slack_thread": {
+      "post_reply_ts": "1784220354.386669",
+      "draft_reply_ts": [
+        "1784220367.527449",
+        "1784220379.010509",
+        "1784220389.707139"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kevin-surace-72d2a891",
+    "urn": "urn:li:share:7483150601707548672",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:share:7483150601707548672/",
+    "author_url": "https://www.linkedin.com/in/ksurace/",
+    "author_name": "Kevin Surace",
+    "author_headline": "Futurist | AI & Generative AI | Top 10 Keynote Speaker | Inventor (95 Patents) | TED Speaker | Father of Voice AI & the AI Assistant | Author: The Joy Success Cycle | Film & Broadway",
+    "time_ago": null,
+    "post_text": "AI IS NOT ENDING HUMAN LABOR.\n\nIt is ending certain tasks.\n\nAnd creating entirely new jobs, companies, and industries in their place.\n\nWhen I speak to executive audiences, someone eventually asks:\n“How many of our people will still have jobs in ten years?”\n\nHere is my honest answer after 30 years of watching technology reshape work:\nI believe AI will create more jobs than it eliminates.\n\nNot because every current role will survive. It won’t.\n\nMany repetitive tasks are already disappearing. Some positions will shrink. Others will be completely redesigned.\n\nBut look at what is happening on the other side.\n\nThree years ago, almost nobody was hiring:\nAI adoption and training teams.\nAI workflow designers.\nAI agent developers.\nModel evaluators.\nPrompt engineers.\nAI governance leaders.\nSynthetic-data specialists.\nHuman-in-the-loop operators.\n\nThose jobs barely existed.\n\nNow they are becoming entire departments.\n\nAnd that is only the direct impact.\n\nThe bigger story is what happens when AI becomes a growth engine.\n\nA company uses AI to build products faster, serve more customers, enter new markets, and lower the cost of experimentation.\n\nThen what?\n\nIt hires more salespeople.\nMore implementation experts.\nMore customer-success teams.\nMore product leaders.\nMore operators.\n\nThat is what every major technology wave has done.\n\nElectricity eliminated tasks and created industries.\nThe steam engine eliminated tasks and created industries.\nThe PC and internet eliminated tasks and created industries.\n\nAI will do the same thing—only faster. That speed is the real challenge.\n\nThe mistake executives are making is assuming they have years to prepare.\nThey don’t.\n\nThe companies pulling ahead are already eliminating work AI does better and moving people toward taste, experience, judgment, creativity, relationships, leadership, and original thought.\n\nThe end of some tasks is real. The end of human work is not.\n\nAI will not leave us with no jobs.\n\nIt will leave us with different jobs—and, ultimately, more of them.\n\nP.S: You can pre-order my upcoming book here: https://a.co/d/00YqqTw7",
+    "scraped_at": "2026-07-16T16:46:53Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The list of new job categories is the part that lands hardest for me — three years ago \"AI governance lead\" wasn't a job title anywhere, now it's a department. I ran similar numbers on my own team recently: AI makes a single task maybe 30% faster, not 5x, but the total volume of work grew 50-100% because AI unlocked business niches that didn't justify the cost before.\n\nThe part I'd push on is the \"speed is the real challenge\" line. It's true, but whose speed? Models move fast, but hiring, retraining, and budget cycles inside a company don't. What's the actual bottleneck you see in the executives you talk to — is it that they don't believe the shift is coming, or that their org literally can't reorganize fast enough even when they do believe it?",
+        "rationale": "Kevin's post is a solid thesis but glosses over org-level friction; Petro already has a public per-task-vs-total-work stat (Juniors post) to ground the pushback without contradicting his prior stance."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The \"entire departments that barely existed three years ago\" point matches something I watched happen firsthand. Back in 2018 I built a self-hosted GenAI system for a German bank, generating and validating investment and credit contracts, years before ChatGPT existed. The system itself didn't just automate contract drafting, it created a validation and governance workflow around it that hadn't existed before, effectively a small new function inside the bank, staffed by people whose job title didn't exist when we started the project.\n\nThat bank eventually acquired the system in 2023, and it ran until mid-2025 when general models finally outperformed our narrow one. The lesson that stuck with me: the new jobs weren't a side effect we noticed later, they were baked into the system from day one, because someone has to own the parts of the process a model still can't be trusted to run unsupervised.",
+        "rationale": "Kevin's 'new departments barely existed 3 years ago' claim is a near-exact match for the BankAI story (posted.md, 05.03.2026 Bank.ai entry), which shows a new function created by the AI system itself rather than a side effect."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trend",
+        "comment": "\"Different jobs, ultimately more of them\" matches what I found when I actually tried to measure it instead of just sensing it. AI cuts a single task's time by maybe 30%, not the 5x people assume, but total work volume on my team grew 50-100% over the same period, because cheaper iteration made whole categories of work worth doing that weren't worth the cost before.\n\nThat gap between per-task speedup and total-work growth is probably the most under-discussed number in this debate. Executives hear \"AI does the task faster\" and extrapolate straight to headcount cuts, when the more accurate extrapolation is toward more total work at a lower cost per unit. Curious whether you're seeing similar ratios in the client data behind your keynotes, or if the multiplier looks different industry to industry.",
+        "rationale": "Sharpens Kevin's qualitative 'different jobs, more of them' claim with the specific 30%-per-task vs 50-100%-total-work number Petro already published, inviting him to compare against his own client data."
+      }
+    ],
+    "slack_summary": "Argues AI ends certain tasks, not human labor — it will create more jobs than it eliminates (new AI departments, growth-engine hiring); the real challenge is speed.",
+    "slack_ts": "1784220422.075259",
+    "slack_thread": {
+      "post_reply_ts": "1784220436.154879",
+      "draft_reply_ts": [
+        "1784220446.264279",
+        "1784220464.747279",
+        "1784220475.649039"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "nick-forshteyn-01c1b5cb",
+    "urn": "urn:li:ugcPost:7483444678856441856",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7483444678856441856/",
+    "author_url": "https://www.linkedin.com/in/forstein/",
+    "author_name": "Nick Forshteyn",
+    "author_headline": "🇺🇦 Co-Founder & CTO @ Totally Wild AI | AI Software Development, System Integration",
+    "time_ago": "3h",
+    "post_text": "The bottleneck in AI-built software was never typing speed - it's comprehension. Once an LLM writes 10,000 lines a day, no human can hold the system in their head. Dmitry Kislov's answer: stop managing the code, manage a verified graph the code is generated from. This is the bet we're making at Totally Wild AI.\n\nCurious if others are seeing the same shift. What's your team's answer to drift?",
+    "scraped_at": "2026-07-16T16:48:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Comprehension as the bottleneck matches what I keep running into. Where I'd push back a bit: a graph is still a derived artifact, same as the code. My bet has been to move the source of truth one level further up, into the behavioral spec, and treat both code and its structure as regeneratable from that. The test I use is blunt — delete everything, regenerate from the spec, check whether it still passes every behavioral assertion. If it does, the spec was actually the truth. Does your graph survive that test, or does it drift the same way the code did once requirements change underneath it?",
+        "rationale": "Petro has publicly staked this exact thesis (spec as source of truth, delete-and-regenerate test) in prior posts, so this offers a real, evidence-backed counter-position rather than agreement filler."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Manage a verified graph the code is generated from\" is the part I'd want pinned down. What actually verifies the graph — tests against it, human review, or the same LLM that generated it in the first place? That question matters more once volume goes up, since a validator that shares blind spots with the generator won't catch the kind of drift you're describing, it'll just make it look caught.",
+        "rationale": "Verified is the load-bearing, unexamined word in the post, and it echoes a self-validation failure mode Petro raised in a prior post (who validates whom)."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"No human can hold the system in their head\" is the real crux, comprehension breaks down long before typing speed ever does. The harder question for any team betting on a graph or a spec as the new source of truth is what happens when a stakeholder changes a requirement mid-project and nobody updates the upstream artifact first. Pre-AI, code absorbed that drift silently because it was the only thing anyone actually looked at. What in your setup catches it now that the graph is supposed to be the honest record instead?",
+        "rationale": "Pulls the post's own 'no human can hold it in their head' framing into a sharper blindspot (mid-project requirement drift) without pitching True BDD, staying novel relative to variant 1."
+      }
+    ],
+    "slack_summary": "The bottleneck in AI-built software is comprehension, not typing speed — his team's bet: stop managing code, manage a verified graph the code is generated from.",
+    "slack_ts": "1784220508.000849",
+    "slack_thread": {
+      "post_reply_ts": "1784220517.251609",
+      "draft_reply_ts": [
+        "1784220527.310109",
+        "1784220536.500239",
+        "1784220554.354719"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jouke-waleson-0de2fd62",
+    "urn": "urn:li:share:7483474664653250560",
+    "post_url": "https://www.linkedin.com/feed/update/urn:li:share:7483474664653250560/",
+    "author_url": "https://www.linkedin.com/in/jouke-waleson/",
+    "author_name": "Jouke Waleson",
+    "author_headline": null,
+    "time_ago": null,
+    "post_text": "My contrarian belief: the way we build and manage software is broken, and AI coding is just building on the same broken foundations.\n\nIf you trace the history of software tools, we went from punch cards to filesystems to (distributed) VCSs. All built on top of the previous layer. The same goes for databases, programming languages, IDEs. All evolved by taking something that worked, and solving a couple of issues in the next generation.\n\nNow the earliest systems were completely optimized for computers, and not for the human programmers or operators. Computers were expensive, and human intelligence was cheap. Because every new generation built on top of the previous layer, that legacy was carried forward. There has never been a programming system that was truly built for easy understanding by humans. Even though nowadays, humans are by far the most expensive part of the software industry.\n\nThere are basically two ways out: A) start over with radically new systems and break with all traditions, or B) building better tools to understand the current systems.",
+    "scraped_at": "2026-07-16T16:49:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing of \"start over\" vs \"better tools to understand current systems\" is the part I'd push on. Both options still treat code as the thing that has to be understood. What if the fix isn't A or B, but moving what \"truth\" even means — off the code entirely, onto the spec, so understanding the system means reading a document instead of reverse-engineering a src/ folder? Genuine question: when you say \"radically new systems,\" do you mean a new way to write code, or a new artifact that isn't code at all?",
+        "rationale": "Jouke's own 'two ways out' is a false dichotomy that both still assume code is the thing to be understood — sharpening that gap invites a real answer rather than agreement."
+      },
+      {
+        "strategy_label": "Personal experience (True BDD)",
+        "comment": "The \"optimized for computers, not humans\" framing is exactly right, and I'd add why it stuck: every generation built on the last because rewriting was expensive, so code had to survive. That's the actual legacy being carried forward, not just syntax choices.\n\nI've been building a CLI, True BDD, on the bet that this is the real lever: move source of truth from code to a behavioral spec, so code becomes disposable and gets regenerated rather than maintained. It's closer to your option A than B, but the break isn't \"new systems\" in the tooling sense, it's a new definition of what the durable artifact is. Curious which of the two you lean toward, or whether you see a third path I'm missing.",
+        "rationale": "Post is directly adjacent to True BDD's core thesis (source-of-truth off code, onto spec/documentation) — mentioned as context, not a pitch. Draft agent flagged this variant for judgment since it names True BDD directly."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that AI coding inherits the same foundations, but I'd push back slightly on \"built for computers, not humans\" as the core diagnosis. The deeper issue is that code was built to be durable, because rewriting was expensive when humans wrote every line by hand. Human-readability was never the constraint that mattered most, survivability was.\n\nThat's also why I don't think A and B are the only ways out. Once regeneration is cheap, you don't need code to be understandable by humans at all, you need the spec to be. Move the source of truth there and code can stay exactly as computer-optimized and disposable as it always wanted to be. What made you land on \"start over\" vs \"better tools\" as the two options, rather than changing what the durable layer even is?",
+        "rationale": "Reframes his 'computers vs humans' diagnosis as a durability/cost artifact of hand-written code rather than a readability problem, backed by Petro's own public 'rewriting was expensive' argument."
+      }
+    ],
+    "slack_summary": "Contrarian take: software tooling is broken because every layer was optimized for computers, not humans — and AI coding just builds on the same broken foundations.",
+    "slack_ts": "1784220590.279929",
+    "slack_thread": {
+      "post_reply_ts": "1784220600.322949",
+      "draft_reply_ts": [
+        "1784220612.139099",
+        "1784220625.448179",
+        "1784220636.636399"
+      ]
+    },
+    "slack_error": null
   }
 ]
