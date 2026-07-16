@@ -24,6 +24,14 @@
         "GRAFANA_URL": "https://boarlabs.grafana.net",
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN}"
       }
+    },
+    "arxiv": {
+      "command": "uvx",
+      "args": [
+        "arxiv-mcp-server",
+        "--storage-path",
+        "/Users/peterovchinnikov/work/ai/linkedin-ai/tmp/arxiv"
+      ]
     }
   }
 }

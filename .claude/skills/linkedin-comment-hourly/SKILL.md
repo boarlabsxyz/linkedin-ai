@@ -40,7 +40,7 @@ MAX_SCROLL_ITERATIONS=80
 INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
 ```
 
-Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URL` is the **post permalink** (`https://www.linkedin.com/feed/update/<urn>/`) or `-` when no URN could be recovered; `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is `-` when not extractable even after the copy-link recovery pass (LinkedIn strips URNs from the home feed DOM as of 2026-07); `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. Agent 1 has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries it returns are the relevant ones still needing drafts.
+Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URL` is the **post permalink** — the canonical `https://www.linkedin.com/feed/update/<urn>/` when the activity id resolved, otherwise the `https://lnkd.in/p/<code>` short link Agent 1 captured (still a clickable permalink); it's `-` only when capture failed entirely, which should now be rare. `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is `-` when the id couldn't be resolved even after the copy-link recovery pass (LinkedIn strips URNs from the home feed DOM and "Copy link to post" now yields a `lnkd.in` short link, as of 2026-07); a `-` URN does **not** imply a `-` URL. `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. Agent 1 has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries it returns are the relevant ones still needing drafts.
 
 If `POSTS_FOUND=0` (or the agent returns `ERROR=<...>`), emit the failure line, do NOT spawn Step 1.5 / Step 2, and stop. The shell driver's `git diff --quiet` check skips the commit.
 
@@ -86,7 +86,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
    {
      "key": "<POST_KEY>",
      "urn": "<urn or null>",
-     "post_url": "<post permalink https://www.linkedin.com/feed/update/<urn>/ — from POST_<i>_URL, or null when no URN>",
+     "post_url": "<post permalink from POST_<i>_URL — canonical /feed/update/<urn>/ or the lnkd.in short link; null only when POST_<i>_URL is '-'>",
      "author_url": "<author profile url — from POST_<i>_AUTHOR_URL, or null>",
      "author_name": "<name>",
      "author_headline": "<headline>",
@@ -131,7 +131,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
    > <full post_text — no truncation; wrap in a quote block>
    ```
 
-   `post_url` is the permalink from `POST_<i>_URL` (present for posts where the URN was recovered; null otherwise). `author_url` comes from `POST_<i>_AUTHOR_URL` and is essentially always present. Never collapse the two into one line — the author profile is not a substitute for the post link.
+   `post_url` is the permalink from `POST_<i>_URL` — now present for essentially every accepted post (canonical `/feed/update/…` link, or a `lnkd.in` short link that resolves to the post); the "no stable permalink" fallback should fire only when capture failed outright. `author_url` comes from `POST_<i>_AUTHOR_URL` and is essentially always present. Never collapse the two into one line — the author profile is not a substitute for the post link.
 
    **4c. Thread reply — one message per draft** — for each variant, post a separate thread reply:
 

@@ -27,7 +27,17 @@ So the primary key we use for dedup is a **synthetic key**: `<author-slug>-<body
 - `author-slug` = the author name from the aria-label, lowercased, non-`[a-z0-9]` → `-`, collapsed, trimmed, truncated to 40 chars.
 - `body-hash8` = first 8 hex chars of SHA-256 of the post body text (post-normalization: collapse whitespace).
 
-The URN is best-effort, recovered in two passes: (1) a regex over the card's HTML for `urn:li:(activity|ugcPost|share):\d+` (works for the ~15% of home-feed cards that leak it); (2) for any card that passes all filters and enters the queue but still has no URN, the control-menu **"Copy link to post"** → clipboard flow (step 3d) recovers it while the card is still mounted. Only accepted posts get the pass-2 recovery — filtered (off-topic / already-commented) cards keep `urn: null`, which is fine since they never need a permalink. When both passes fail, `urn` stays `null`. A non-null URN yields the canonical post permalink `https://www.linkedin.com/feed/update/<urn>/`.
+The **permalink** (not the raw URN) is what matters, and it's best-effort, recovered for accepted posts in two passes:
+
+1. A regex over the card's HTML for `urn:li:(activity|ugcPost|share):\d+`. As of **2026-07-14 this yields ~0%** — LinkedIn strips URNs from every home-feed card DOM (verified: a full-document attribute scan finds zero `urn:li:activity` hits, and the timestamp/anchor links are generic `/company/.../posts/` with no activity id). Kept only as a free first try.
+
+2. For any card that passes all filters and enters the queue but still has no permalink, the control-menu **"Copy link to post"** → clipboard flow (step 3d), while the card is still mounted. **Two 2026-07-14 realities the flow must handle:**
+   - **"Copy link to post" now copies a `https://lnkd.in/p/<code>` short link, NOT a raw URN.** The old regex (`urn:li:activity` / `activity-<id>`) never matched it, so `post_url` came out null even when the copy succeeded — *this was the "no stable permalink" bug*.
+   - **Reading the clipboard with `navigator.clipboard.readText()` throws "Document is not focused" in the unfocused/headless cron tab.** So we do NOT read the clipboard. We **intercept `navigator.clipboard.writeText` before clicking** and capture the string LinkedIn writes — focus-independent and permission-independent.
+
+   The captured `lnkd.in` short link is then **resolved server-side** (`curl -sIL`) to the canonical `/posts/…-<activityId>-<hash>/` URL, from which we pull the 15–25-digit activity id → `urn:li:activity:<id>` and the canonical permalink `https://www.linkedin.com/feed/update/<urn>/`.
+
+Only accepted posts get pass-2 recovery — filtered (off-topic / already-commented) cards keep `urn: null` / `post_url: null`, which is fine since they never need a permalink. **`post_url` for an accepted post should almost never be null now:** if resolution fails, we keep the captured `lnkd.in` short link as `post_url` (it's still a clickable permalink) with `urn: null`; only a total capture failure (no short link at all) leaves `post_url` null.
 
 ## Inputs (passed in the caller's prompt)
 
@@ -53,7 +63,7 @@ SCROLL_ITERATIONS=<int>
 FEED_EXHAUSTED=<true|false>
 POST_1_KEY=<author-slug>-<body-hash8>
 POST_1_URN=<urn:li:activity:xxx or "-">
-POST_1_URL=<post permalink "https://www.linkedin.com/feed/update/<urn>/" or "-" when no URN>
+POST_1_URL=<post permalink — canonical "https://www.linkedin.com/feed/update/<urn>/" or the "https://lnkd.in/p/<code>" short link; "-" only when nothing was captured>
 POST_1_AUTHOR_URL=<author profile URL or "-">
 POST_1_AUTHOR=<author_name>
 POST_1_HEADLINE=<author_headline>
@@ -239,7 +249,7 @@ For each card:
 5. **Skip if already-commented** → `alreadyCommentedCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"already-commented"` (see the append helper below), then add the key to `seenInRun`.
 6. **Classify** the body text against `interests.md` categories. Bias toward inclusion.
 7. **Off-topic** → `offTopicCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"off-topic"` and a one-line `reason`, then add the key to `seenInRun`.
-8. **Relevant** → if `urn` is still `null`, run the URN recovery flow (step 3d) for this card's `author` **now**, while the card is mounted, and set the recovered `urn` (or leave `null` if recovery fails). Then append `{ key, urn, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
+8. **Relevant** → run the permalink recovery flow (step 3d) for this card's `author` **now**, while the card is mounted, to set `postUrl` (and `urn` when it resolves). Then append `{ key, urn, postUrl, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
 
 #### Append helper (filtered entries)
 
@@ -323,9 +333,11 @@ If `queue.length < TARGET_COUNT`, scroll the workspace container by one viewport
 
 Wait 2 seconds. Increment `scrollIterations`. If no new keys appeared, increment `staleScrolls`; else reset to 0.
 
-#### 3d. Recover a missing URN via "Copy link to post"
+#### 3d. Recover the post permalink via "Copy link to post"
 
-Only for a card that just passed all filters (step 8) and has `urn === null`. LinkedIn's home feed strips URNs from most card DOMs, but the control-menu still offers **"Copy link to post"**, which writes the canonical permalink (carrying the activity id) to the clipboard. It opens the menu, clicks the copy item, reads the clipboard, closes the menu, and extracts the URN in a single async call.
+Only for a card that just passed all filters (step 8). Two moves: **(i)** one `browser_evaluate` that clicks "Copy link to post" and captures the `lnkd.in` short link LinkedIn writes; **(ii)** one Bash `curl` that resolves that short link to the canonical permalink + URN.
+
+**Move (i) — capture the copied short link (ONE `browser_evaluate`).** The control-menu "Copy link to post" copies a `https://lnkd.in/p/<code>` short link. Do **NOT** read the clipboard — `navigator.clipboard.readText()` throws "Document is not focused" in the unfocused cron tab (the historical failure). Instead **intercept `navigator.clipboard.writeText` before clicking** and capture the string LinkedIn writes (focus- and permission-independent; verified 2026-07-14).
 
 **`browser_evaluate` CANNOT take arguments** — passing `async (author) => {…}` and expecting `author` to be supplied is the #1 cause of this agent stalling (it retries the tool call forever hunting for a way to pass the arg). There is none. Inline the author as a literal instead: copy the function below, replace `<AUTHOR>` with the card's exact author name as a double-quoted JS string (escape any `"`), and pass the resulting **zero-arg** function to `mcp__playwright__browser_evaluate`.
 
@@ -333,37 +345,75 @@ Only for a card that just passed all filters (step 8) and has `urn === null`. Li
 async () => {
   const author = "<AUTHOR>";  // ← substitute the exact author name before calling; do NOT pass an argument
   const sleep = ms => new Promise(r => setTimeout(r, ms));
+  // Intercept the clipboard WRITE (not read) — captures the URL regardless of focus/permission.
+  const cap = { writeText: null, execCommand: null, selection: null };
+  try {
+    const origWrite = navigator.clipboard && navigator.clipboard.writeText
+      ? navigator.clipboard.writeText.bind(navigator.clipboard) : null;
+    if (origWrite) navigator.clipboard.writeText = (t) => { cap.writeText = t; try { return origWrite(t); } catch (e) { return Promise.resolve(); } };
+  } catch (e) {}
+  const origExec = document.execCommand.bind(document);   // legacy fallback (hidden-textarea copy)
+  document.execCommand = (c, ...r) => {
+    if (String(c).toLowerCase() === 'copy') {
+      try { cap.selection = (document.getSelection() || '').toString(); } catch (e) {}
+      const ae = document.activeElement;
+      if (ae && (ae.tagName === 'TEXTAREA' || ae.tagName === 'INPUT')) cap.execCommand = ae.value;
+    }
+    return origExec(c, ...r);
+  };
   const btns = Array.from(document.querySelectorAll('button[aria-label*="control menu"]'));
   const btn = btns.find(b => (b.getAttribute('aria-label') || '').includes(author));
-  if (!btn) return { urn: null, err: 'no-menu-btn' };
+  if (!btn) return { shortUrl: null, err: 'no-menu-btn' };
   btn.scrollIntoView({ block: 'center' });
   await sleep(300);
   btn.click();                                   // open the control menu
-  await sleep(700);
+  await sleep(800);
   // "Copy link to post" — match by visible text (menu DOM classes are obfuscated)
   const cand = Array.from(document.querySelectorAll('[role="menuitem"], [role="button"], button, span, div'))
     .find(el => /^copy link to post$/i.test((el.innerText || '').trim()));
-  if (!cand) { document.body.click(); return { urn: null, err: 'no-copy-item' }; }
+  if (!cand) { document.body.click(); return { shortUrl: null, err: 'no-copy-item' }; }
   cand.click();
-  await sleep(600);
-  let clip = '';
-  try { clip = await navigator.clipboard.readText(); } catch (e) { clip = ''; }
+  await sleep(700);
+  const captured = cap.writeText || cap.execCommand || cap.selection || null;
   // dismiss any lingering menu/toast
   document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   document.body.click();
-  // extract the URN from the copied URL (forms: .../feed/update/urn:li:activity:ID/,
-  // .../posts/<slug>-activity-ID-<hash>, or percent-encoded urn%3Ali%3Aactivity%3AID)
-  let urn = null, m;
-  if ((m = clip.match(/urn:li:(activity|ugcPost|share):(\d+)/)))            urn = m[0];
-  else if ((m = clip.match(/urn%3Ali%3A(activity|ugcPost|share)%3A(\d+)/i))) urn = 'urn:li:' + m[1] + ':' + m[2];
-  else if ((m = clip.match(/activity-(\d{15,25})/i)))                       urn = 'urn:li:activity:' + m[1];
-  return { urn, err: urn ? null : (clip ? 'no-urn-in-clip' : 'clipboard-blocked') };
+  // If LinkedIn ever copies a raw URN again, pull it straight out; otherwise return the short link.
+  let urn = null, m; const s = captured || '';
+  if ((m = s.match(/urn:li:(activity|ugcPost|share):(\d+)/)))               urn = m[0];
+  else if ((m = s.match(/urn%3Ali%3A(activity|ugcPost|share)%3A(\d+)/i)))   urn = 'urn:li:' + m[1] + ':' + m[2];
+  else if ((m = s.match(/activity-(\d{15,25})/i)))                         urn = 'urn:li:activity:' + m[1];
+  return { shortUrl: captured, urn, err: captured ? null : 'no-capture' };
 }
 ```
 
-Wait ~1 second after the call. If it returns a `urn`, use it. **In every other case — `err: clipboard-blocked`, any other `err`, an empty/undefined return, OR the `browser_evaluate` tool call itself erroring (bad param, timeout, whatever) — treat that single call as the whole attempt: set `urn: null`, move on, and draft the post anyway.** A null URN is a fully supported outcome (the permalink is simply omitted).
+Wait ~1 second after the call. Read the return:
+- If it already carries a `urn` (rare — only if LinkedIn reverts to copying raw URNs), use it directly: `post_url = https://www.linkedin.com/feed/update/<urn>/`, done.
+- If it carries a `shortUrl` (the normal `https://lnkd.in/p/<code>` case) but no `urn`, go to **move (ii)**.
+- If `shortUrl` is null (any `err`, empty/undefined return, or the tool call itself erroring) — treat that single call as the whole attempt: set `urn: null`, `post_url: null`, move on, and draft the post anyway.
 
-This step is STRICTLY ONE `browser_evaluate` call per card. Do **not** re-issue it with different params, do **not** experiment with `element`/`ref`/`target` arguments, do **not** loop — one call, then fall through. The total budget is ≤`TARGET_COUNT` copy-link calls per fire; URN recovery must never consume more than a few seconds per card. Burning the fire's whole time budget flailing on this call (as happened when the function took an `author` argument) is the exact failure this rule exists to prevent — when in doubt, skip recovery and keep `urn: null`.
+**Move (ii) — resolve the short link to the canonical permalink (ONE Bash `curl`).** `lnkd.in/p/<code>` 301-redirects to `…/posts/<slug>-<activityId>-<hash>/`; extract the 15–25-digit activity id and build the canonical URN + permalink. Substitute the captured `shortUrl`:
+
+```bash
+short="<shortUrl>"
+# Follow redirects (HEAD); take the last Location that looks like a post/activity URL.
+resolved=$(curl -sIL -A "Mozilla/5.0" "$short" 2>/dev/null \
+  | grep -i '^location:' | tr -d '\r' | sed 's/^[Ll]ocation: *//' \
+  | grep -iE '/posts/|/feed/update/|activity|share' | tail -1)
+# The activity id is the long digit run in the slug tail (…-<id>-<hash>/).
+id=$(printf '%s' "$resolved" | grep -oE '[0-9]{15,25}' | head -1)
+if [ -n "$id" ]; then
+  urn="urn:li:activity:$id"
+  post_url="https://www.linkedin.com/feed/update/$urn/"
+else
+  urn=""                 # couldn't resolve — leave URN unknown
+  post_url="$short"      # the lnkd.in short link is itself a clickable permalink; never null it out
+fi
+```
+
+So an accepted post's `post_url` is: the canonical `/feed/update/…` permalink when the id resolved, else the `lnkd.in` short link, and only `null` when move (i) captured nothing at all. `urn` stays `null` unless the id resolved. **Never null out a `post_url` when you hold a short link** — that non-null clickable link is the whole point of this fix.
+
+**Discipline.** Move (i) is STRICTLY ONE `browser_evaluate` call per card; move (ii) is ONE `curl` per card. Do **not** re-issue the evaluate with different params, do **not** experiment with `element`/`ref`/`target` arguments, do **not** loop. Total budget ≤`TARGET_COUNT` copy-link calls + `TARGET_COUNT` curls per fire; recovery must never consume more than a few seconds per card. Burning the fire's whole time budget flailing on the evaluate call (as happened when the function took an `author` argument) is the exact failure this rule exists to prevent — when in doubt, skip recovery and keep `post_url: null`.
 
 **No "Show more results" button on the home feed** — LinkedIn just keeps loading infinitely. If `scrollHeight` stops growing across 3 consecutive scrolls AND no new keys arrive, treat as `feedExhausted = true`.
 
@@ -374,7 +424,7 @@ This step is STRICTLY ONE `browser_evaluate` call per card. Do **not** re-issue 
 ### 5. Emit the contract
 
 For each queued post, derive the two URL fields:
-- `POST_i_URL` = `https://www.linkedin.com/feed/update/<urn>/` when `urn` is non-null, else `-`.
+- `POST_i_URL` = the recovered `postUrl` from step 3d — the canonical `https://www.linkedin.com/feed/update/<urn>/` when the id resolved, else the captured `lnkd.in` short link. Emit `-` only when step 3d captured nothing at all.
 - `POST_i_AUTHOR_URL` = the card's `authorUrl` (author profile link), else `-`.
 
 Base64-encode each queued post's `bodyText`:
@@ -390,9 +440,9 @@ Final message shape (see contract at top).
 - Do **not** replace an existing browser tab. Always open a new one and close only the one you opened.
 - Do **not** stop early because you've reached a page height — keep scrolling until the queue is full or `scrollHeight` stops growing for 3 iterations.
 - Do **not** use `data-urn` selectors — LinkedIn stripped them from the home feed. Use the control-menu button aria-label instead.
-- Do **not** invent URNs. Populate `POST_i_URN=-` only after **both** recovery passes fail (HTML regex + the step-3d copy-link flow for accepted posts); the orchestrator handles the null case. When a URN is present, `POST_i_URL` is the permalink `https://www.linkedin.com/feed/update/<urn>/`; `POST_i_AUTHOR_URL` is always the author profile link.
+- Do **not** invent URNs or permalinks. `POST_i_URN=-` when the id never resolved; `POST_i_URL` is the resolved canonical permalink, else the captured `lnkd.in` short link, and `-` only when step 3d captured nothing. `POST_i_AUTHOR_URL` is always the author profile link. Never emit `POST_i_URL=-` while holding a captured short link — that clickable link is the fix.
 - Do **not** pass arguments to `mcp__playwright__browser_evaluate` (no `author` arg, no `target`/`element`/`ref` fishing). It can't take them. Inline any per-card value (e.g. the author name) as a literal inside a zero-arg function. Getting this wrong makes the agent retry forever and burns the entire fire.
-- Do **not** retry the step-3d copy-link call. One `browser_evaluate` per card; on any failure, set `urn: null` and continue. URN recovery is best-effort and must never block drafting.
+- Do **not** retry the step-3d recovery. One `browser_evaluate` (capture short link) + one `curl` (resolve it) per card; on any failure, set `post_url: null` and continue. Permalink recovery is best-effort and must never block drafting. Do **not** read the clipboard (`navigator.clipboard.readText()`) — it throws "Document is not focused" in the cron tab; intercept `writeText` instead.
 - Do **not** invent post text. If you can't scrape a card cleanly, skip it.
 - Do **not** classify without reading `interests.md`.
 - Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.

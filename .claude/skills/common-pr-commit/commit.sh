@@ -31,7 +31,7 @@ if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
     echo ""
     echo "=== Staged diff ==="
     git diff --cached
-  } | claude -p "$BRANCH_PROMPT" | tr -d '\r' | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' -e '/^$/d' | head -n 1 > "$BRANCH_NAME_FILE"
+  } | CLAUDE_HISTORY_ROLE=branch-name claude -p "$BRANCH_PROMPT" | tr -d '\r' | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' -e '/^$/d' | head -n 1 > "$BRANCH_NAME_FILE"
 
   NEW_BRANCH=$(cat "$BRANCH_NAME_FILE")
   rm "$BRANCH_NAME_FILE"
@@ -56,7 +56,7 @@ PROMPT='Generate a git commit message for the staged changes shown below. Format
   echo ""
   echo "=== Staged diff ==="
   git diff --cached
-} | claude -p "$PROMPT" | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' > "$COMMIT_MSG_FILE"
+} | CLAUDE_HISTORY_ROLE=commit-msg claude -p "$PROMPT" | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' > "$COMMIT_MSG_FILE"
 
 if [ ! -s "$COMMIT_MSG_FILE" ]; then
   echo "Claude returned an empty commit message." >&2
