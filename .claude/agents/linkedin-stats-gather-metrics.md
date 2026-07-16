@@ -5,8 +5,9 @@ description: >
   post-summary and demographic-detail analytics pages plus the public post
   URL, scrapes the four cards, six demographic breakdowns, and the list of
   top-level comments (author + body + engagement), and writes a single entry
-  to that file's `weeks` map keyed by the caller-supplied WEEK. Returns a
-  strict KEY=VALUE contract.
+  to that file's `weeks` map keyed by the caller-supplied WEEK. While on the
+  public post page, also backfills the file's top-level `text` (full post
+  body) when it is null or missing. Returns a strict KEY=VALUE contract.
 tools: Bash, Read, Write, Edit, mcp__playwright__browser_tabs, mcp__playwright__browser_navigate, mcp__playwright__browser_evaluate, mcp__playwright__browser_wait_for, mcp__playwright__browser_click, mcp__playwright__browser_snapshot
 model: sonnet
 ---
@@ -86,7 +87,7 @@ ERROR=<FS|UNKNOWN>
 
 ### 2. Read the post file
 
-Use `Read` to load `POST_FILE`. Extract `urn`, `id`, and `type` (default `"post"` if absent — legacy files predate the field).
+Use `Read` to load `POST_FILE`. Extract `urn`, `id`, and `type` (default `"post"` if absent — legacy files predate the field). Also set `NEED_TEXT = true` when the file's top-level `text` key is missing or `null` — step 10.1.5 will backfill it from the public post page. When `text` is already a non-empty string, `NEED_TEXT = false` and the field must not be touched.
 
 If `type == "repost"` → emit `STATUS=SKIPPED_REPOST POST_ID=<id> WEEK=<WEEK>` and stop. **Do not open the browser.** Pure reshares have no analytics of their own.
 
@@ -219,6 +220,50 @@ Use `post_url` straight from the loaded post file:
 - `mcp__playwright__browser_wait_for(time=3)` for the page to settle.
 - `mcp__playwright__browser_wait_for(text="Load more comments", time=3)` —
   falls back to time when there are no more-comments to load (small threads).
+
+#### 10.1.5 Backfill the full post text (only when `NEED_TEXT`)
+
+Skip this sub-step entirely when `NEED_TEXT = false` (step 2). Otherwise, while
+the public post page is loaded and BEFORE any comment expansion, run ONE
+`mcp__playwright__browser_evaluate` with exactly this zero-arg async function
+(the tool cannot take arguments):
+
+```js
+async () => {
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const container = document.querySelector('.feed-shared-update-v2')
+    || document.querySelector('[data-urn^="urn:li:activity"]')
+    || document;
+  // Expand the POST BODY "…see more" only — never comment expanders.
+  const btn = Array.from(container.querySelectorAll('button')).find(b => {
+    if (b.offsetParent === null || b.disabled) return false;
+    if (b.closest('.comments-comments-list, .comments-comment-item, .comments-comment-entity')) return false;
+    const t = (b.innerText || '').trim().toLowerCase();
+    return t === 'see more' || t === '…see more'
+      || /feed-shared-inline-show-more-text__see-more-less-toggle/.test(b.className);
+  });
+  if (btn) { btn.click(); await sleep(800); }
+  const bodyEl = container.querySelector('.feed-shared-update-v2__description, .update-components-text');
+  const text = (bodyEl ? bodyEl.innerText : '').trim();
+  return { found: !!bodyEl, len: text.length, text };
+}
+```
+
+Clean the returned text minimally — nothing else: strip a trailing
+`…see more` / `see more` token; replace every `hashtag\n#` with `#`
+(LinkedIn a11y artifact). Keep everything else VERBATIM — newlines, Unicode
+bold/math chars, emoji. Do NOT collapse whitespace, translate, or summarize.
+
+Sanity-check against the file's `preview` (collapse whitespace on both sides,
+strip any trailing `…` from the preview): the preview's first ~30 chars must
+appear at the start of the scraped text (case-insensitive). If the check fails,
+`found` is false, or the text is empty → set `post_text = null` (the file keeps
+`text: null`; a later week retries) and continue. On success, write the cleaned
+text to `./tmp/post-text-<id>.txt` with the **Write tool** (exact bytes — never
+through shell quoting) for step 12 to pick up.
+
+This backfill is best-effort: it must never fail the run, never touch the
+contract, and never overwrite an existing non-null `text`.
 
 #### 10.2 Expand all top-level comments
 
@@ -368,7 +413,13 @@ import json, os, tempfile
 path = "<POST_FILE>"
 week = "<WEEK>"
 snapshot = <inline-json>
+txt_path = "./tmp/post-text-<id>.txt"   # written by step 10.1.5; absent when NEED_TEXT was false or capture failed
 with open(path) as f: data = json.load(f)
+if os.path.exists(txt_path) and not data.get("text"):
+    with open(txt_path) as f:
+        text = f.read().rstrip("\n")
+    if text:
+        data["text"] = text
 data.setdefault("weeks", {})[week] = snapshot
 fd, tmp = tempfile.mkstemp(prefix=".weeks.", dir=os.path.dirname(path))
 with os.fdopen(fd, "w") as f:
@@ -378,7 +429,9 @@ os.replace(tmp, path)
 PY
 ```
 
-Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for other weeks are never touched.
+After the merge succeeds, delete the temp file: `rm -f ./tmp/post-text-<id>.txt`.
+
+Idempotency: if `weeks[WEEK]` already exists, it's overwritten. Snapshots for other weeks are never touched. `text` is only ever set when it was null/missing — an existing non-null `text` is never overwritten.
 
 If the heredoc bash command exits non-zero → close the tab and emit `STATUS=FAIL REASON=FS`.
 
@@ -423,5 +476,6 @@ Classification:
 - Do **not** compute `WEEK`. The caller passes it; you use it verbatim.
 - Do **not** leave your tab open at the end — even on failure.
 - Do **not** touch `weeks[k]` for any `k != WEEK`.
+- Do **not** overwrite a non-null top-level `text`, and do **not** add any line to the contract for the text backfill — it's a silent, best-effort side effect of step 10.1.5.
 - Do **not** retry on failure. Return `STATUS=FAIL` and let the caller decide.
 - Do **not** add prose after the final contract block.

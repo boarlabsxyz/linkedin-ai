@@ -9,7 +9,7 @@ description: >
 
 # LinkedIn Stats
 
-1. Spawn the `linkedin-stats-gather-posts` agent via the Agent tool. It scrolls Peter's recent-activity feed, decodes URN timestamps, and creates one file per post under `./dashboards/li-stats/posts/<YYYY-MM-DD>-<slug>.json` with an empty `weeks: {}` map.
+1. Spawn the `linkedin-stats-gather-posts` agent via the Agent tool. It scrolls Peter's recent-activity feed, decodes URN timestamps, and creates one file per post under `./dashboards/li-stats/posts/<YYYY-MM-DD>-<slug>.json` with `text: null` and an empty `weeks: {}` map. The metrics agent (step 2) backfills `text` — the full post body scraped from the public post page — on its next pass over any file where it's still null.
 2. Compute the week key once:
    ```bash
    WEEK=$(date -u -v-Mon "+%Y-%m-%d" 2>/dev/null || date -u -d "last monday" "+%Y-%m-%d")
