@@ -36,7 +36,7 @@ No markdown code fences, no Co-authored-by, no Generated-with trailers, no surro
   echo ""
   echo "=== Diff vs origin/$BASE_BRANCH ==="
   git diff "origin/$BASE_BRANCH"...HEAD
-} | claude -p "$PROMPT" | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' > "$PR_OUTPUT_FILE"
+} | CLAUDE_HISTORY_ROLE=pr-content claude -p "$PROMPT" | sed -e '/^```[a-zA-Z]*$/d' -e '/^```$/d' > "$PR_OUTPUT_FILE"
 
 if [ ! -s "$PR_OUTPUT_FILE" ]; then
   echo "Claude returned an empty PR title/body." >&2

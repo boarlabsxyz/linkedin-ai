@@ -19,16 +19,15 @@ LinkedIn post generation and workflow automation. The repo currently holds writi
 ├── linkedin-compain/             # Every-15-min LinkedIn comment-ideas outputs (written by linkedin-comment-hourly)
 │   └── comments.json             # SINGLE JSON array — one object per handled post, and the cross-fire seen-set. Every entry shares the same shape: {key, urn?, post_url?, author_url?, author_name, author_headline?, time_ago?, post_text, scraped_at, disposition, reason?, variants[], slack_summary, slack_ts, slack_thread, slack_error}. `post_url` is the post permalink — the canonical `https://www.linkedin.com/feed/update/<urn>/` when the activity id resolved, else the `https://lnkd.in/p/<code>` short link (still clickable), null only when capture failed entirely; `author_url` is the author's profile link. `disposition` ∈ drafted | off-topic | already-commented; drafted entries carry variants + Slack ts, filtered entries carry a `reason` + empty variants. `key` is the synthetic `<author-slug>-<body-hash8>` (LinkedIn strips URNs from the home-feed DOM — obfuscated CSS classes, no data-urn as of 2026-07). Permalink recovery (accepted posts only; filtered cards keep urn/post_url null) is: (1) an HTML regex for a leaked URN — now ~0% since LinkedIn fully strips URNs; (2) the control-menu "Copy link to post", which as of 2026-07-14 copies a `lnkd.in/p/<code>` short link (not a URN). We capture it by intercepting `navigator.clipboard.writeText` before clicking — reading the clipboard via `readText()` throws "Document is not focused" in the cron tab (that was the "no stable permalink" bug) — then resolve the short link server-side (`curl -sIL`) to the `/posts/…-<activityId>-<hash>/` URL to extract the id → canonical urn + permalink; if resolution fails the short link itself is stored as post_url. Dedup = presence of `key` in the array; repost/promoted cards are deliberately never written so a later original isn't suppressed.
 ├── prompts/                      # Ad-hoc prompt drafts (e.g., plan-mode prompts) — checked in for reuse, not consumed by Claude Code automatically
-├── doc/                          # Project documentation
-│   └── history/                  # Auto-captured conversation transcripts written by the hooks below (one .md per session, named <UTC-ts>-<slug>.md)
 ├── .claude/
-│   ├── settings.json             # Permission allowlist + hooks config (SessionStart / UserPromptSubmit / Stop)
-│   ├── hooks/                    # Conversation-history hooks: prompt-submit.sh, assistant-stop.sh, session-start.sh, lib.sh
+│   ├── settings.json             # Permission allowlist + hooks config (UserPromptSubmit / Stop → history.py)
+│   ├── hooks/                    # history.py — conversation-history capture (see Conventions)
+│   ├── commands/                 # Slash commands: new-task.md (/new-task — roll the history file over)
 │   ├── skills/                   # Project skills (see below)
 │   └── agents/                   # Sub-agents spawned by skills via the Agent tool
 ├── .github/workflows/            # GitHub Actions (linkedin-stats-weekly runs on self-hosted macOS)
 ├── .github/scripts/              # CI helper scripts (build-stats-json.mjs: flattens li-stats/*.json into Pages-hosted stats.json for Grafana Infinity)
-├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana
+├── .mcp.json                     # MCP servers: context7, terminal, playwright, grafana, arxiv
 ├── start.sh                      # Local launcher: sources .env then execs `claude --dangerously-skip-permissions`
 ├── .env.example                  # Template for the gitignored .env that start.sh loads
 └── CLAUDE.md                     # This file
@@ -73,7 +72,7 @@ Source-of-truth JSONs for both dashboards live in `dashboards/grafana/`. Dashboa
 - **ClickUp** — source of truth for the LinkedIn writing docs (workspace `90151491867`), for AWESOME tasks (list `901522119783` in space `901510520225`), and for personal priorities (list `901522189872`). Skill files contain the specific IDs.
 - **Google Drive** — meeting transcripts. AWESOME single transcripts folder: `14I2yIWsoZ5BTJD-Sqk9nVkU23iC11eYJ`.
 - **Google Calendar** — used by `weekly-priorities` to scope the previous week's meetings.
-- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env).
+- **MCP servers** (in `.mcp.json`): `context7` (library docs), `terminal` (interactive terminal), `playwright` (browser automation), `grafana` (Grafana Cloud — `https://boarlabs.grafana.net`; reads `GRAFANA_SERVICE_ACCOUNT_TOKEN` from the launching shell's env), `arxiv` (arXiv paper search/download via `uvx arxiv-mcp-server`; paper storage under `tmp/arxiv`).
 
 ## Local launch
 
@@ -96,7 +95,7 @@ Workflows tagged `runs-on: [self-hosted, macOS]` execute on Peter's Mac Studio v
 - **Transcript language:** AWESOME Sync and weekly meeting transcripts are in Russian/Ukrainian; ClickUp output is always in English with consistent transliteration (e.g., always "Petro", not sometimes "Peter").
 - **Temp files:** use `./tmp/` and clean up afterward. Listed in `.gitignore`.
 - **ClickUp writes need validation:** AWESOME and weekly-priorities both validate every extracted item one-by-one before writing — auto-generated tasks/priorities are noisy and require human judgment.
-- **Conversation-history hooks:** `.claude/hooks/` auto-writes every session's transcript to `doc/history/<UTC-ts>-<slug>.md` — one `## user` block per prompt, one `## claude` block per assistant text block, plus `## claude (asked)` / `## user (answered)` for AskUserQuestion exchanges (parsed from the JSONL transcript since `PostToolUse` doesn't fire for that tool — see [#12605](https://github.com/anthropics/claude-code/issues/12605)). Tool calls (Bash/Read/Edit/Write/…) are intentionally skipped to keep the file a Q&A transcript. `tmp/history-current` is the sentinel naming the active file.
+- **Conversation-history hooks:** `.claude/hooks/history.py prompt-submit` is wired to BOTH UserPromptSubmit and Stop (same command; mirrors `awesome-claude-mcp`). It appends every turn to `tmp/history/<UTC-ts>-<session8>-<slug>.md` (gitignored): `## user` per prompt, `## claude` per finished assistant turn (all text blocks since the last prompt, read from the transcript JSONL; the payload's `last_assistant_message` backstops an unflushed tail). Each heading carries a UTC timestamp + short git sha. Tool calls are intentionally skipped. `tmp/history/hook-state` holds the active file's name and is shared across sessions — a new session continues the same file; `/new-task` (`.claude/commands/new-task.md`) deletes the state file so the next prompt opens a fresh one (its own prompt + ack are filtered out). Headless `claude -p` workers set `CLAUDE_HISTORY_ROLE` (branch-name / commit-msg in `common-pr-commit/commit.sh`, pr-content in `common-pr-update/pr-update.sh`) so their prompts log as `## claude to @<role>`; `CLAUDE_HISTORY_ROLE=0` disables logging entirely; sub-agent prompts (payload `agent_id`) are skipped. Legacy transcripts from the retired shell-hook system remain under `doc/history/` (also gitignored) but nothing writes there anymore.
 
 ## Git workflow rules
 
