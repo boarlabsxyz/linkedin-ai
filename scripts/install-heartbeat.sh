@@ -66,7 +66,11 @@ PLIST_DEST="$HOME/Library/LaunchAgents/$LABEL.plist"
 cp "$WORKER_DIR/scripts/$LABEL.plist" "$PLIST_DEST"
 echo "✓ Plist installed at $PLIST_DEST"
 
-# 5. Reload
+# 5. Reload. `enable` first: a previously disabled service (launchctl print
+# lists it under disabled) makes bootstrap fail with error 119, so a plain
+# bootout+bootstrap is NOT idempotent from that state. The enable override
+# persists across bootstraps.
+launchctl enable "gui/$(id -u)/$LABEL"
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST_DEST"
 
