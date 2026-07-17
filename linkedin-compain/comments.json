@@ -6406,5 +6406,231 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "dou-bd5c5e92",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "1d",
+    "post_text": "Вшануймо пам'ять про Антона Зайця з Кременчука. Антон був ветераном АТО, боронив Україну ще з 2015 року. Мав позивний Чехов, був старшим лейтенантом ЗСУ.\nПройшов Лисичанськ, Сіверськодонецьк, Рубіжне, Попасну, Кремінну, Ізюм, брав участь у звільненні Херсонщини. За свій військовий шлях здобув 12 медалей.\nЗагинув 18 березня 2023 року під час виконання бойового завдання неподалік Бахмута. https://lnkd.in/e5DRhy9i\nСвітла пам'ять 🕯️",
+    "scraped_at": "2026-07-17T06:34:48Z",
+    "disposition": "off-topic",
+    "reason": "Ukrainian military memorial, no AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "muhammad-zia-cec6b893",
+    "urn": "urn:li:share:7483477347375972352",
+    "post_url": "https://www.linkedin.com/posts/mughalhere_ai-didnt-atrophy-my-coding-skills-it-exposed-share-7483477347375972352-Gnd0/",
+    "author_url": "https://www.linkedin.com/in/mughalhere/",
+    "author_name": "Muhammad Zia",
+    "author_headline": "Senior Full Stack AI Engineer · React · Node.js · TypeScript · LLMs & Agentic Workflows | 5+ yrs shipping production systems",
+    "time_ago": "19h",
+    "post_text": "AI didn't atrophy my coding skills.\nIt exposed that most engineers never learned to read code. Only write it.\nLast month I was pairing with a talented developer on a bug. Sharp, fast, fluent with AI tools. He could stand up a working feature in minutes.\nThe bug was in a function he had shipped the week before.\nWe opened it together. I asked him to walk me through it, line by line.\nHe couldn't.\nNot because he wasn't smart. Because he had never actually read it. He described the prompt he used, not the code it produced. The AI wrote it. The tests passed. He moved on.\nThe bug was three lines in. An edge case the model never considered and he never reviewed.\nIt took me longer to explain the problem than to fix it. First I had to teach him to read his own code.\nHere's what I took from it:\nWriting code used to be the hard part. It isn't anymore. AI made producing code almost free.\nReading it did not get easier. It got more important.\nSomeone has to understand what the machine wrote, catch what it missed, and own what ships. That someone needs to read fluently, not prompt fluently.\nThe skill quietly moved. Most people didn't notice.\nFor hiring managers: engineers who can generate code with AI are everywhere now. They ship fast and break quietly. Engineers who can read code, trace it, and tell you exactly why it's wrong are rare. They are the only reason AI output is safe to ship. Hire the readers.\nHave you noticed the same shift on your team?",
+    "scraped_at": "2026-07-17T06:42:12Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience (transcript-backed)",
+        "comment": "\"Three lines in, an edge case the model never considered\" is the whole story in miniature — the bug wasn't in the code, it was in nobody having read it.\n\nI took down Wikipedia once. A change I introduced went through seven rounds of code review and seven rounds of testing, everything came back green, the degradation was small enough to look like noise. Then millions of users hit it and it fell over. What stuck with me wasn't that a mistake slipped through — it's that seven reviewers reading the same diff still didn't catch it, and that was humans writing for humans. Reading AI-generated code is a harder version of the same problem: no shared mental model with the author to fall back on, because there wasn't one.\n\nYour hiring-managers line is the sharper point, honestly. We optimized recruiting pipelines for \"can you produce a working feature fast\" for a decade. Nobody built the interview loop for \"can you read a stranger's three-hundred-line diff and find the thing that only breaks at scale.\"",
+        "rationale": "Directly transcript-sourced (Wikimedia code-review incident, posted.md ~line 414-419, 14.04.26 post) and reframes the post's thesis: even human-written code with 7 review rounds missed the same class of bug, so reading is the harder, older problem AI just made visible."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "\"He described the prompt he used, not the code it produced\" is the tell — that's a guy who never built a mental model of his own function, AI or not.\n\nI'd push a bit further than \"hire the readers\" though. Reading fluently doesn't scale as a safeguard either — it's still one human's attention against however much code the model can produce in an afternoon, and attention doesn't compound the way generation speed does. We've spent decades building process around human mistakes (code review is one of them), and it still let a 3-line edge case through for your guy. Not because reading is worthless, but because it's the same bottleneck wearing a different hat.\n\nWhere does your team draw the line between \"read it yourself\" and \"build a check that reads it for you\"? Genuinely curious whether you've found a review step that catches this class of bug before it ships, or if it's still down to who happened to look closely that day.",
+        "rationale": "Agrees with the diagnosis but complicates the prescription (echoes Petro's public \"code review is a safeguard against human stupidity, not AI's kind\" stance from posted.md ~line 527) without pitching True BDD, inviting a real reply."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The line that got me: \"he had never actually read it.\" Tests passing became the proxy for understanding, and those aren't the same thing.\n\nCurious how you'd extend this past the individual skill though — if reading code well is now the scarcer skill, what changes about how a team structures ownership? Right now most orgs still assign one author per PR and everyone else skims. Does \"hire the readers\" imply flipping that ratio, more reviewers per line shipped, or is it more about who's allowed to merge without a second set of eyes that actually traced the logic?",
+        "rationale": "Pulls the post's individual-skill thesis toward a team-structure question (author-per-PR vs. distributed review ownership), on-topic for an AI-engineering audience without repeating the other two angles."
+      }
+    ],
+    "slack_summary": "AI made writing code cheap; reading code is now the scarce skill. Story of a dev who shipped AI code he'd never read — \"hire the readers.\"",
+    "slack_ts": "1784270545.828559",
+    "slack_thread": {
+      "post_reply_ts": "1784270557.793089",
+      "draft_reply_ts": [
+        "1784270567.394919",
+        "1784270577.852789",
+        "1784270586.167669"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-flor-5fad1178",
+    "urn": "urn:li:ugcPost:7483444734573613056",
+    "post_url": "https://www.linkedin.com/posts/guillermoflor_breaking-openai-just-shipped-hardware-ugcPost-7483444734573613056-HyJc/",
+    "author_url": "https://www.linkedin.com/in/guillermoflor/",
+    "author_name": "Guillermo Flor",
+    "author_headline": "Angel Investor | Founder @ AI MARKET FIT",
+    "time_ago": "21h",
+    "post_text": "BREAKING: OpenAI just shipped hardware.\nCodex Micro is a programmable macro pad built with Work Louder, designed specifically for use with OpenAI's Codex coding assistant.\nThis is not a software update.\nThis is OpenAI putting a physical object on your desk.\nWill developers really use this or its just some merchandising stunt?",
+    "scraped_at": "2026-07-17T06:44:12Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "\"Physical object on your desk\" is the right frame, not \"hardware.\" A macro pad is really just a keybind layer with a nicer form factor. What I'd want to know before calling it more than merchandising: does it actually save meaningful time over a software-level shortcut config, or is the value mostly habit-forming — you reach for the Codex workflow because the object is sitting there? If it's the second one, that's still a real growth lever, just a different claim than \"productivity tool.\"",
+        "rationale": "The post already ends on an open question, so sharpening it toward a testable distinction (time-saved vs. habit-forming) fits Strategy 1 without repeating the author's own framing."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Agreed this reads as a deliberate move, not a side project. The interesting question isn't developer adoption though, it's what OpenAI is actually optimizing for. A macro pad doesn't scale distribution and it doesn't improve the model. What it does is claim desk real estate and make Codex a habit with a physical trigger, closer to a loyalty object than a productivity tool. If that's the play, the real test isn't \"will developers buy it,\" it's whether OpenAI keeps shipping physical touchpoints as a retention strategy once the novelty wears off.",
+        "rationale": "Reframes \"will developers use it\" (surface question) into \"what is OpenAI actually optimizing for\" (strategic blindspot), which is the sharper, more contrarian angle Strategy 4 calls for."
+      },
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The \"physical object on your desk\" framing is doing a lot of work here, and I get the instinct, my first computer was a ZX Spectrum I had to solder together key by key, so hardware-as-craft has real pull for people who grew up on that. But that nostalgia is exactly why I'd be skeptical of the productivity claim: a soldered keyboard forced you to understand what you were building. A branded macro pad doesn't teach you anything about Codex, it just sits there looking intentional. My guess is it survives as a merchandising win and dies as a workflow tool within a year.",
+        "rationale": "Draws on Petro's soldered-ZX-Spectrum-keyboard childhood story (from posted.md, entries \"18.12 First computer and AI program\" and its \"12.05\" retake — already public, referenced here only as a brief anchor, not retold verbatim) to contrast hardware-as-craft with hardware-as-merch."
+      }
+    ],
+    "slack_summary": "OpenAI shipped Codex Micro, a physical macro pad for its Codex coding assistant — real developer tool or merchandising stunt?",
+    "slack_ts": "1784270659.927399",
+    "slack_thread": {
+      "post_reply_ts": "1784270666.815349",
+      "draft_reply_ts": [
+        "1784270676.297039",
+        "1784270684.577559",
+        "1784270695.349249"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "alaister-moull-acaa979a",
+    "urn": "urn:li:share:7482845598157553665",
+    "post_url": "https://www.linkedin.com/posts/alaister-moull-9816b3_i-cant-hammer-like-on-this-article-enough-share-7482845598157553665-9PGZ/",
+    "author_url": "https://www.linkedin.com/in/alaister-moull-9816b3/",
+    "author_name": "Alaister Moull",
+    "author_headline": "Systems thinker. Making AI solutions deliver value.",
+    "time_ago": "2d",
+    "post_text": "I can't hammer 'like' on this article enough :\n\"99% of AI revenue today is coding because coding has built-in evals. Code runs or it doesn’t.\"\nhttps://lnkd.in/dC3EaKzH\nHeiko Struebing Simone Pedemonte Richard Rodger Niall Murphy Charlotte Mitchell Jonathan Dunn Maria Luciana Axente @",
+    "scraped_at": "2026-07-17T06:46:11Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"Code runs or it doesn't\" is the cleanest eval anyone's had for free in this industry. Every other domain has to build that signal by hand.\n\nThe question I keep landing on: what happens once agents start doing multi-step work where \"runs\" isn't binary anymore — a deploy that succeeds but ships the wrong feature, a refactor that passes tests but breaks an SLA nobody wrote down. Coding's 99% share might partly be an artifact of how cheap and unambiguous the pass/fail signal is at the unit-of-work level. Curious if you think that edge holds once the unit of work gets bigger.",
+        "rationale": "Pushes the post's clean thesis to its structural edge (multi-step/agent work where pass/fail stops being binary) without disputing the core claim."
+      },
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "That line explains something I only half-understood while it was happening. We built a self-hosted GenAI system for German banking contracts back in 2018, pre-ChatGPT — and the reason it worked wasn't the model, it was that we had a brutal built-in eval: errors in generated contracts down 70%+, creation time from 16 hours to 4. Every run either matched the legal and numerical constraints or it didn't. No ambiguity to hide behind.\n\nThat narrow, checkable eval is exactly why a go-kart of a system beat what would eventually be a Formula 1 model in its own lane, for years. Domains without that kind of hard pass/fail signal don't get to cheat their way to reliable AI revenue the same way — they have to build the eval first, and that's the harder, less fundable part of the work.",
+        "rationale": "BankAI (05.03.26 posted-folder entry) is a directly on-topic story: a narrow-domain GenAI system whose success was measured by a hard built-in eval (error rate, generation time), reinforcing the post's exact thesis with a named source."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The \"code runs or it doesn't\" framing is sharp because it's really saying the eval is free — nobody had to design it, the compiler and the test suite did it for you.\n\nGenuinely curious how you'd extend this to domains that are adjacent but not identical — legal contract generation, financial reporting, medical documentation. They have pass/fail conditions too, just not ones a compiler hands you for free. Do you think those become the next 10% once someone bothers to formalize the eval, or is coding's advantage more structural than that?",
+        "rationale": "Asks a specific, thought-requiring question about adjacent domains with implicit-but-not-free evals, inviting the author to extend rather than just validate the article's claim."
+      }
+    ],
+    "slack_summary": "Shares an article arguing 99% of AI revenue is in coding because code has built-in evals — it runs or it doesn't.",
+    "slack_ts": "1784270777.939419",
+    "slack_thread": {
+      "post_reply_ts": "1784270785.793599",
+      "draft_reply_ts": [
+        "1784270794.536819",
+        "1784270805.704029",
+        "1784270814.696499"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "prithvi-raju-alluri-44cb4ac9",
+    "urn": "urn:li:ugcPost:7482815300405616642",
+    "post_url": "https://www.linkedin.com/posts/prithvirajua_aiengineering-softwaredevelopment-agenticai-ugcPost-7482815300405616642-pr2v/",
+    "author_url": "https://www.linkedin.com/in/prithvirajua/",
+    "author_name": "Prithvi Raju Alluri",
+    "author_headline": "Eat, Code, Repeat!",
+    "time_ago": "2d",
+    "post_text": "We didn't add AI to our SDLC. We rebuilt the SDLC around it.\nNine stages. One shared context graph. A validation agent behind every generator, and a human holding the final word wherever a decision actually matters.\nThis is the inward-facing story of how Darwinbox Engineering, DevOps, SRE, and Security rebuilt our own software lifecycle around AI agents - including the specific places it broke first.\nSwipe through. Full breakdown below. →\n#AIEngineering #SoftwareDevelopment #AgenticAI #SRE #DevOps #EngineeringLeadership #Darwinbox\nHOW DARWINBOX REBUILT ITS SDLC AROUND AI AGENTS -  AND WHERE WE KEPT HUMANS IN CHARGE\nPrithvi Raju Alluri",
+    "scraped_at": "2026-07-17T06:48:09Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience (BankAI validation split)",
+        "comment": "\"A validation agent behind every generator\" is the detail that stands out — most SDLC-AI writeups skip straight to the generator and forget it needs a checker with different incentives, or it just rubber-stamps its own output.\n\nWe ran into this on BankAI, a self-hosted GenAI system for German bank contracts, back in 2018 — pre-ChatGPT, so the orchestration was hand-built. Generation alone got us maybe 80% of the way; what actually cut errors 70%+ was a separate validation pass with its own rules, not the same model re-checking itself. Curious whether your validation agents share weights/context with the generators they're checking, or run as genuinely separate systems — that split mattered more than I expected going in.",
+        "rationale": "Draws a direct, evidence-backed parallel from Petro's own BankAI build (posted.md, 05.03.2026 entry) to the post's \"validation agent behind every generator\" claim, citation: posted.md 05.03.2026 \"Bank.ai - billion-dollar competitors is not a death sentence\" (70%+ error reduction figure)."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"One shared context graph\" across nine stages is the part I'd want to stress-test — that's a lot of surface area for drift between what the graph says and what each stage actually did.\n\nWhen a generator and validator disagree, or a human overrides a stage decision, does that correction feed back into the graph automatically, or does it stay local to that stage until someone remembers to update it? That gap — between the graph as documented intent and the graph as what's actually true — seems like exactly the kind of place it \"broke first\" that you mentioned. Curious which one it was.",
+        "rationale": "Pushes on the single-context-graph claim's blindspot (drift between documented and actual state) without hostility, inviting the author to name where it actually broke."
+      },
+      {
+        "strategy_label": "Strategy 3 — Personal experience (BankAI human-signoff boundary)",
+        "comment": "Nine stages with a human holding final word \"wherever a decision actually matters\" is the right framing — the interesting engineering question is how you drew that line, not whether humans stayed in the loop at all.\n\nI keep coming back to a version of this from building BankAI, a self-hosted contract-generation system for a German bank in 2018: we didn't trust the model less over time, we just got sharper about which specific decisions needed a human signature versus which ones a rigid check could catch deterministically. The generator/validator split you describe sounds like the same instinct applied at SDLC scale rather than document scale. What moved a stage from \"human signs off every time\" to \"human only sees exceptions\" for you — was it error rate, or something else?",
+        "rationale": "Reframes the post's human-in-the-loop claim through Petro's own BankAI experience of drawing the deterministic-check-vs-human-signature line, inviting a concrete criterion the author used."
+      }
+    ],
+    "slack_summary": "How Darwinbox rebuilt its SDLC around AI agents: nine stages, a shared context graph, validators behind generators, humans on key decisions.",
+    "slack_ts": "1784270897.622639",
+    "slack_thread": {
+      "post_reply_ts": "1784270906.489359",
+      "draft_reply_ts": [
+        "1784270916.371579",
+        "1784270925.997549",
+        "1784270939.663039"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "guillermo-flor-30cd1dc8",
+    "urn": "urn:li:ugcPost:7483567303155183616",
+    "post_url": "https://www.linkedin.com/posts/guillermoflor_instead-of-netflix-tonight-watch-stanfords-ugcPost-7483567303155183616-IEWU/",
+    "author_url": "https://www.linkedin.com/in/guillermoflor/",
+    "author_name": "Guillermo Flor",
+    "author_headline": "Angel Investor | Founder @ AI MARKET FIT",
+    "time_ago": "12h",
+    "post_text": "Instead of Netflix tonight, watch Stanford's lecture on how ChatGPT and Claude actually work.\nIt's one of the clearest explanations available — built for beginners but genuinely useful if you use AI tools every day.\nThe hidden gem: industry doesn't obsess over model architecture. It obsesses over data, evaluation, and systems.\nThat's the gap most people never close from surface-level usage alone.\nPost-training — the process that turns a raw LLM into an AI assistant — is the real shift since ChatGPT launched. Most people skip right past it.\nPair it with a Claude guide and you can build an Agentic OS in a few hours. The lecture gives you the mental model. The rest is reps.\nPS: Let me know in the comments if you are learning this instead of watching netflix 😅",
+    "scraped_at": "2026-07-17T06:50:04Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Post-training as \"the real shift\" is right, and it's the part almost nobody outside the labs talks about at dinner parties. But here's what I'd push on: the lecture can give you the mental model for RLHF and instruction tuning, it can't give you the evaluation instincts that actually separate a working assistant from a demo. What's the failure mode you'd flag for someone who watches this, builds their Agentic OS in a weekend, and never sets up a real eval loop? My guess is it looks fine for two weeks and then quietly drifts.",
+        "rationale": "Sharpens the post's own data/eval-over-architecture claim into a concrete blindspot (no eval loop) without being hostile."
+      },
+      {
+        "strategy_label": "Personal experience (Strategy 3)",
+        "comment": "The line about industry obsessing over data, evaluation, and systems instead of architecture matches exactly what saved us on BankAI. We built a self-hosted GenAI for German banking contracts back in 2018, pre-ChatGPT, so there was no off-the-shelf post-training playbook to lean on. We got errors down 70%+ not by chasing a bigger model but by running chaotic rounds of experiments and statistical analysis to see which parameter changes actually moved the needle. That's the unglamorous \"reps\" part you mention, and it's genuinely where the work is.",
+        "rationale": "Direct real-world echo of the post's data/eval-over-architecture thesis, sourced from the BankAI story in posted.md (05.03.26 \"Bank.ai\" entry, ~line 344-353 of transcripts/INDEX.md)."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"A few hours to build an Agentic OS\" is a great hook, and I don't doubt the scaffolding part is that fast now. What I'm curious about is where the hours actually go for people who try it: is it mostly wiring the pieces together, or does most of the time disappear into figuring out whether the thing is doing what they think it's doing? In my experience the second part is where the real learning curve hides.",
+        "rationale": "Probes the \"few hours to build an Agentic OS\" claim for a specific, thought-requiring answer rather than generic engagement."
+      }
+    ],
+    "slack_summary": "Recommends Stanford's lecture on how ChatGPT/Claude work — post-training, data, evals and systems matter more than architecture.",
+    "slack_ts": "1784271011.793869",
+    "slack_thread": {
+      "post_reply_ts": "1784271020.563499",
+      "draft_reply_ts": [
+        "1784271033.055809",
+        "1784271041.993059",
+        "1784271051.076289"
+      ]
+    },
+    "slack_error": null
   }
 ]
