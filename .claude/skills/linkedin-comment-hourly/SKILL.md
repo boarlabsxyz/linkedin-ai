@@ -1,10 +1,11 @@
 ---
 name: linkedin-comment-hourly
 description: >
-  Every 15 minutes: open Peter's LinkedIn home feed, scroll until 5 posts pass all
+  On each scheduled fire: gather 5 LinkedIn home-feed posts that pass all
   filters (unseen, on-topic per interests.md, not already commented on, not a
-  repost), draft 2-3 comment variants per post via the linkedin-comment-ideas
-  skill (full pre-work checklist), append one entry per post to the single
+  repost) via the deterministic fast/gather-feed.mjs scraper (<5 min), draft
+  2-3 comment variants per post via the linkedin-comment-ideas skill (full
+  pre-work checklist), append one entry per post to the single
   ./linkedin-compain/comments.json array, and post one Slack message per post to
   channel C0BF606R4N7. Use when the user says "run linkedin comment hourly",
   "gather linkedin comment drafts", "draft comments for the feed", or when the
@@ -13,7 +14,7 @@ description: >
 
 # LinkedIn Comment Hourly
 
-Thin orchestrator. Three sub-agents do the heavy work — `gather-feed` (scrape + classify), `prep-refs` (refresh the local reference cache once), and `draft` (fan out in parallel, one per post) — this skill glues them and posts to Slack.
+Thin orchestrator. The gather step is a **deterministic fast script** (`fast/gather-feed.mjs` — scrape + classify + permalink recovery + filtered-entry appends, <5 min); two sub-agents do the drafting work — `prep-refs` (refresh the local reference cache once) and `draft` (fan out in parallel, one per post) — this skill glues them and posts to Slack. The `gather-feed` agent survives only as the selector-drift fallback.
 
 ## Constants
 
@@ -25,24 +26,35 @@ Thin orchestrator. Three sub-agents do the heavy work — `gather-feed` (scrape 
 | Slack channel | `C0BF606R4N7` (https://spdfn.slack.com/archives/C0BF606R4N7) |
 | Target posts per fire | `5` |
 
-`comments.json` is the single source of truth **and** the cross-fire seen-set. Each element is one post: drafted posts carry `variants` + Slack timestamps; filtered posts (`off-topic` / `already-commented`) carry a `reason` and empty `variants`. Agent 1 appends the filtered entries; you (the orchestrator) append the drafted ones. Never hand-write JSON — always mutate the array with `jq`.
+`comments.json` is the single source of truth **and** the cross-fire seen-set. Each element is one post: drafted posts carry `variants` + Slack timestamps; filtered posts (`off-topic` / `already-commented`) carry a `reason` and empty `variants`. The gather step (fast script, or the fallback agent) appends the filtered entries; you (the orchestrator) append the drafted ones. Never hand-write JSON — always mutate the array with `jq`.
 
 ## Flow
 
-### Step 1 — Gather 5 posts from the home feed
+### Step 1 — Gather 5 posts from the home feed (fast script, agent only as fallback)
 
-Spawn `linkedin-comment-hourly-gather-feed` via the Agent tool. Its prompt body:
+The gather is deterministic: `fast/gather-feed.mjs` scrapes the feed on the shared `mcp-chrome-linkedin-ai` Chrome profile, classifies candidates against `interests.md` via batched tool-free `claude -p` haiku calls, appends the off-topic / already-commented entries to `comments.json` itself, recovers permalinks, and writes the contract to a run-scoped `tmp/gather-feed/<ts>/` dir.
 
-```
-COMMENTS_FILE=./linkedin-compain/comments.json
-TARGET_COUNT=5
-MAX_SCROLL_ITERATIONS=80
-INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
-```
+Pick ONE of three paths:
 
-Parse the KEY=VALUE return. Expected keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_B64` for i = 1..`POSTS_FOUND`. `POST_<i>_URL` is the **post permalink** — the canonical `https://www.linkedin.com/feed/update/<urn>/` when the activity id resolved, otherwise the `https://lnkd.in/p/<code>` short link Agent 1 captured (still a clickable permalink); it's `-` only when capture failed entirely, which should now be rare. `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is `-` when the id couldn't be resolved even after the copy-link recovery pass (LinkedIn strips URNs from the home feed DOM and "Copy link to post" now yields a `lnkd.in` short link, as of 2026-07); a `-` URN does **not** imply a `-` URL. `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. Agent 1 has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries it returns are the relevant ones still needing drafts.
+1. **Pre-gathered (cron).** If your invocation prompt names a contract path (run-hourly.sh already ran the script), Read that `contract.env` and parse it. Do NOT re-run the script and do NOT spawn the gather agent.
+2. **Run it yourself (interactive).** No contract in the prompt → run via Bash (**timeout 600000** — it needs up to ~5-7 min):
+   ```bash
+   [ -d .claude/skills/linkedin-comment-hourly/fast/node_modules/playwright-core ] || (cd .claude/skills/linkedin-comment-hourly/fast && npm install --no-audit --no-fund --silent)
+   node .claude/skills/linkedin-comment-hourly/fast/gather-feed.mjs --deadline-secs=300
+   ```
+   The contract is printed on stdout (and written to `<OUT_DIR>/contract.env`). Exit 0/10 → parse it. Exit 20 (auth) / 21 (profile locked — close the Playwright MCP browser or another Chrome on the profile) / 22 (rate-limited) / 23 (fs) / 31 (classifier down) → report the failure and stop.
+3. **Legacy agent fallback.** ONLY when the script exits 30 (selector drift) or the prompt explicitly says to use the legacy gather: spawn `linkedin-comment-hourly-gather-feed` via the Agent tool with prompt body:
+   ```
+   COMMENTS_FILE=./linkedin-compain/comments.json
+   TARGET_COUNT=5
+   MAX_SCROLL_ITERATIONS=80
+   INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
+   ```
+   (The agent returns `POST_<i>_TEXT_B64` instead of `POST_<i>_TEXT_FILE` — decode via `base64 -d` to a temp file and treat that as the text file — and its legacy contract has no `GATHER_END_REASON` / `OUT_DIR`; treat those as absent.)
 
-If `POSTS_FOUND=0` (or the agent returns `ERROR=<...>`), emit the failure line, do NOT spawn Step 1.5 / Step 2, and stop. The shell driver's `git diff --quiet` check skips the commit.
+Contract keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, `GATHER_END_REASON`, `OUT_DIR`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_FILE` for i = 1..`POSTS_FOUND`. `POST_<i>_TEXT_FILE` is an absolute path to the full post body — **post bodies travel as files, never as inline base64** (large inline blobs poisoned agent contexts and got generations refused, 2026-07-16 fire). `POST_<i>_URL` is the **post permalink**, in one of exactly two forms: the verified `https://www.linkedin.com/posts/<slug>/` URL (the copy-link short link's resolution target, which the script OPENED and confirmed renders the right post via author/body match — the normal case), or the raw `https://lnkd.in/p/<code>` short link when the resolved page couldn't be positively verified (rare; unverified but LinkedIn-issued). It's `-` only when capture failed entirely. **Never emit `/feed/update/<urn>/` URLs or rebuild a permalink from a URN** — those internal routes render unreliably outside the full web app (user-verified 2026-07-16), and the urn type is load-bearing anyway (`activity` names the thread, `ugcPost`/`share` name the post — same post, different digits; guessing shipped 4 broken links). `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is best-effort metadata from the verified `/posts/` slug (the thread's activity id); `-` when ambiguous — a `-` URN does **not** imply a `-` URL. `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. The script has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries are the relevant ones still needing drafts.
+
+If `POSTS_FOUND=0`, emit the failure line (include `GATHER_END_REASON`), do NOT spawn Step 1.5 / Step 2, and stop. The shell driver's porcelain check still commits any filtered appends.
 
 ### Step 1.5 — Refresh the local reference cache
 
@@ -65,12 +77,12 @@ Because drafting now reads only the local `REF_CACHE` (no shared MCP), the draft
 **2a. Fan out — spawn every draft agent in a single message.** For all `POSTS_FOUND` posts at once, issue one message containing one `linkedin-comment-hourly-draft` Agent call per post (this runs them in parallel). Each call's prompt body:
 
 ```
-POST_KEY=<synthetic key from Agent 1>
+POST_KEY=<synthetic key from the contract>
 POST_URN=<urn or "-">
-POST_URL=<POST_<i>_AUTHOR_URL — author profile url or "-">
+POST_AUTHOR_URL=<POST_<i>_AUTHOR_URL — author profile url or "-">
 POST_AUTHOR=<author_name>
 POST_HEADLINE=<author_headline>
-POST_TEXT_B64=<base64 post text>
+POST_TEXT_FILE=<POST_<i>_TEXT_FILE — absolute path to the full post body>
 REF_CACHE=<REF_CACHE from Step 1.5>
 ```
 
@@ -78,15 +90,15 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
 
 **2b. Write + Slack — sequentially, once all drafts are back.** Iterate the successful results **one at a time** (Slack posting and the `comments.json` read-modify-write must not interleave). For each post:
 
-1. Decode each variant's `VARIANT_<i>_COMMENT_B64` (via `base64 -d` — never decode by hand). The entry is keyed by the synthetic key from Agent 1 (`<author-slug>-<body-hash8>`), not the URN, because the home feed strips URNs.
+1. Decode each variant's `VARIANT_<i>_COMMENT_B64` (via `base64 -d` — never decode by hand). The entry is keyed by the synthetic key from the contract (`<author-slug>-<body-hash8>`), not the URN, because the home feed strips URNs.
 
-2. **Append a `drafted` entry** to `./linkedin-compain/comments.json`. Build the object with `jq -n` (decode the base64 comments into `--arg` values so newlines/quotes are safe), then append with `jq '. + [$e]'` — same read-modify-write discipline Agent 1 uses. The entry shape:
+2. **Append a `drafted` entry** to `./linkedin-compain/comments.json`. Build the object with `jq -n` (decode the base64 comments into `--arg` values so newlines/quotes are safe; read the post body with `--rawfile text "<POST_<i>_TEXT_FILE>"` — never paste it inline), then append with `jq '. + [$e]'` — same read-modify-write discipline the gather script uses. The entry shape:
 
    ```json
    {
      "key": "<POST_KEY>",
      "urn": "<urn or null>",
-     "post_url": "<post permalink from POST_<i>_URL — canonical /feed/update/<urn>/ or the lnkd.in short link; null only when POST_<i>_URL is '-'>",
+     "post_url": "<verified public permalink from POST_<i>_URL — always the /posts/<slug>/ form, or (rare) the lnkd.in short link; null only when POST_<i>_URL is '-'>",
      "author_url": "<author profile url — from POST_<i>_AUTHOR_URL, or null>",
      "author_name": "<name>",
      "author_headline": "<headline>",
@@ -108,7 +120,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
    }
    ```
 
-   The `drafted` entry shares the exact field set as Agent 1's filtered entries — only `disposition`, `reason`, and `variants` differ — so the array stays uniform.
+   The `drafted` entry shares the exact field set as the gather step's filtered entries — only `disposition`, `reason`, and `variants` differ — so the array stays uniform.
 
 4. **Post a compact summary to the main channel**, then thread the details underneath. First compose a one-line summary of the post yourself (what is this post about? — ≤150 chars, plain English, no marketing words). Then:
 
@@ -131,7 +143,7 @@ Collect all returns. For any that returned `ERROR=<...>`, drop that post (note i
    > <full post_text — no truncation; wrap in a quote block>
    ```
 
-   `post_url` is the permalink from `POST_<i>_URL` — now present for essentially every accepted post (canonical `/feed/update/…` link, or a `lnkd.in` short link that resolves to the post); the "no stable permalink" fallback should fire only when capture failed outright. `author_url` comes from `POST_<i>_AUTHOR_URL` and is essentially always present. Never collapse the two into one line — the author profile is not a substitute for the post link.
+   `post_url` is the permalink from `POST_<i>_URL` — present for essentially every accepted post (the verified `/posts/<slug>/` link, or rarely a `lnkd.in` short link that resolves to the post); the "no stable permalink" fallback should fire only when capture failed outright. `author_url` comes from `POST_<i>_AUTHOR_URL` and is essentially always present. Never collapse the two into one line — the author profile is not a substitute for the post link.
 
    **4c. Thread reply — one message per draft** — for each variant, post a separate thread reply:
 
@@ -171,7 +183,7 @@ Slack failures:           <n>
 
 ## What you must not do
 
-- Do **not** open Playwright yourself — that lives inside Agent 1's tool allowlist. If Agent 1 fails, do not fall back to a direct scrape.
+- Do **not** open Playwright yourself — the fast script drives its own browser, and the fallback agent has its own tool allowlist. If the gather fails, do not fall back to a direct MCP scrape.
 - Do **not** run the linkedin-comment-ideas skill directly for a post. Delegating to the draft agent keeps the reference reads out of your context.
 - Do **not** run the draft agents sequentially — they read only the local `REF_CACHE` (no shared MCP), so launch them **all in one message** (Step 2a). Sequential drafting is the old, slow behavior.
 - Do **not**, however, interleave the **Slack posts or the `comments.json` writes** — those stay strictly sequential (Step 2b) to avoid a read-modify-write race on the single file.

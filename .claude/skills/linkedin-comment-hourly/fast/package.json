@@ -1,0 +1,10 @@
+{
+  "name": "linkedin-comment-hourly-fast-gather",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Deterministic fast path for the linkedin-comment-hourly gather step: scrapes + classifies + permalink-recovers 5 feed posts in one paced Playwright run (<5 min) instead of the ~7+ min LLM agent conversation.",
+  "type": "module",
+  "dependencies": {
+    "playwright-core": "1.61.1"
+  }
+}
