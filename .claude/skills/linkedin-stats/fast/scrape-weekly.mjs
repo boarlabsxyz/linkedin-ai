@@ -15,8 +15,10 @@
 // round-trips existing files byte-for-byte where JSON.stringify does not
 // (historical float lexemes like 50.0).
 //
-// Phase order: posts (discovery) -> metrics ∥ account -> comments-out (only
-// after account succeeded — mirrors the skill's "step 3 ERROR stops step 4").
+// Phase order: posts (discovery) -> account (alone — its audience rendering
+// proved contention-sensitive, see doc/incidents/2026-07-20) -> metrics ∥
+// comments-out (comments only after account succeeded — mirrors the skill's
+// "step 3 ERROR stops step 4").
 // Global pacing: max 3 navigations in flight, 750-1250ms between navigation
 // starts across ALL tabs, circuit-break on 429 / navigation 403 / checkpoint.
 //

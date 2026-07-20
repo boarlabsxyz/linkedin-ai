@@ -122,20 +122,23 @@ sweep_profile_chrome() {
 spawn_killer() {
   local cap="$1" target="$2" label="$3" marker="$4" kids
   (
-    # Background + wait: a reap then ends this subshell without bash's noisy
-    # "Terminated" job notice (only foreground deaths print).
+    # Whole-subshell stderr is discarded: reaping this watchdog TERMs its
+    # sleep, and the runner's bash prints a "Terminated: 15 sleep" job notice
+    # even for background children (observed on the 2026-07-20 fires —
+    # backgrounding alone didn't silence it). Individual kills below carry
+    # their own redirects; the one legitimate alert goes to stdout.
     sleep "$cap" &
     wait "$!" || exit 0
     kill -0 "$target" 2>/dev/null || exit 0
     touch "$marker"
-    echo "run-weekly: $label exceeded ${cap}s — terminating (pid $target)." >&2
+    echo "run-weekly: $label exceeded ${cap}s — terminating (pid $target)."
     kids=$(pgrep -P "$target" 2>/dev/null || true)
     # word-splitting of $kids is intended: it is a PID list
     kill -TERM $kids "$target" 2>/dev/null || true
     sweep_profile_chrome
     sleep 15
     kill -KILL $kids "$target" 2>/dev/null || true
-  ) &
+  ) 2>/dev/null &
 }
 
 # await_target <target-pid> <watchdog-pid> <marker>
