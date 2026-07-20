@@ -291,7 +291,10 @@ async function pacedGoto(page, url, marker, { markerTimeout = 10000 } = {}) {
   await paceGap(url);
   await acquireNavSlot();
   try {
-    const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    // 90s: under the GH runner navigations have been observed ~20x slower
+    // than interactive (2026-07-20 incident, cause unproven) — patience per
+    // nav costs nothing against the 429 budget, giving up costs the week.
+    const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
     if (resp && resp.status() === 429) {
       noteRateLimit(url);
       throw new RateLimitError(url);
@@ -405,11 +408,14 @@ async function launchBrowser() {
         channel: 'chrome',
         headless: HEADLESS,
         viewport: { width: 1440, height: 1000 },
-        timeout: 30000,
+        timeout: 60000,
       });
     } catch (e) {
       lastErr = e;
       log(`launch attempt ${attempt} failed: ${String(e.message).split('\n')[0]}`);
+      // A timed-out launch can leave a half-started Chrome holding the
+      // profile's ProcessSingleton — sweep it or every retry inherits the lock.
+      spawnSync('pkill', ['-f', `user-data-dir=${USER_DATA_DIR}`], { timeout: 10000 });
       await sleep(3000 * attempt);
     }
   }
@@ -1209,6 +1215,23 @@ async function phaseAccount(page) {
     failures.push('profile_views');
   }
 
+  // Semantic canaries: the line-anchored parsers default missing anchors to
+  // zero/{}, so an anchor drift looks like a clean run with hollow data — it
+  // DID: audience demographics came back as six empty groups on 2026-07-13
+  // and 2026-07-20 while the run exited 0. Zero followers or zero demographic
+  // rows can never be real on this account; count them as page failures so
+  // the run exits 10 and cannot auto-merge.
+  if (!failures.includes('dashboard') && !(snapshot.dashboard.followers > 0)) {
+    failures.push('dashboard-canary');
+  }
+  if (!failures.includes('audience')) {
+    const demoRows = Object.values(snapshot.audience.demographics ?? {})
+      .reduce((s, g) => s + Object.keys(g ?? {}).length, 0);
+    if (!(snapshot.audience.total_followers > 0) || demoRows === 0) {
+      failures.push('audience-canary');
+    }
+  }
+
   snapshot.snapshot_at = nowIso();
   mergeViaPython({ mode: 'account', path: ACCOUNT_FILE, week: WEEK, snapshot });
 
@@ -1428,6 +1451,14 @@ const fail = (section, err) => {
   } else if (err instanceof BreakerError) {
     contractSections.set(section, { ERROR: isDeadline() ? 'DEADLINE' : 'NETWORK' });
     if (isDeadline()) sev.partial = true; else sev.rate = true;
+  } else if (/page\.goto: Timeout/.test(String(err?.message))) {
+    // Slow-network phase loss (the 2026-07-20 runner signature): keep the
+    // partials instead of discarding the whole snapshot as UNKNOWN/exit 1.
+    // Only goto timeouts — a waitForSelector timeout can be DOM drift and
+    // must keep escalating. run-weekly.sh's coverage gate keeps a hollow
+    // exit 10 from passing as ok.
+    contractSections.set(section, { ERROR: 'NETWORK' });
+    sev.partial = true;
   } else if (err?.reason === 'COMPAT') {
     contractSections.set(section, { ERROR: 'COMPAT' });
     sev.compat = true;
