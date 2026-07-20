@@ -49,6 +49,49 @@
         }
       },
       "comments": []
+    },
+    "2026-07-20": {
+      "snapshot_at": "2026-07-20T15:06:54Z",
+      "metrics": {
+        "impressions": 227,
+        "members_reached": 119,
+        "reactions": 3,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 1.32
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 38.7,
+          "Entry": 31.9
+        },
+        "job_title": {
+          "Software Engineer": 11.8
+        },
+        "industry": {
+          "Software Development": 36.1,
+          "IT Services and IT Consulting": 35.3,
+          "Technology, Information and Internet": 5
+        },
+        "company_size": {
+          "51-200 employees": 21.8,
+          "11-50 employees": 14.3,
+          "10,001+ employees": 11.8,
+          "1001-5000 employees": 10.9,
+          "201-500 employees": 8.4
+        },
+        "location": {
+          "Prague Metropolitan Area": 5.9
+        },
+        "company": {
+          "Speed and Function": 6.7
+        }
+      },
+      "comments": []
     }
   }
 }

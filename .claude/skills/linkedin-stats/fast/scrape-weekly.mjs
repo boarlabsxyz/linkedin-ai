@@ -488,10 +488,6 @@ async function phasePosts(page) {
   else cutoff = [...existing.values()].filter(Boolean).sort().at(-1);
   const cutoffMs = Date.parse(cutoff + 'T00:00:00Z');
 
-  await pacedGotoRetry(page, PROFILE_URL, null);
-  await page.waitForSelector('div[data-urn^="urn:li:activity"]', { timeout: 15000 })
-    .catch(() => {});
-
   const allCards = new Map(); // urn -> card
   let oldestEverSeenMs = null;
 
@@ -505,7 +501,6 @@ async function phasePosts(page) {
     }
     return added;
   };
-  await scrape();
 
   // Wait for a previously-unseen URN (not a count change — virtualization can
   // swap cards without growing the count).
@@ -517,14 +512,36 @@ async function phasePosts(page) {
     }, [...allCards.keys()], { timeout },
   ).catch(() => {});
 
-  const { iterations, endReason } = await feedScrollLoop(page, {
-    scrape,
-    waitForNew,
-    shouldStop: async () =>
-      (oldestEverSeenMs !== null && oldestEverSeenMs < cutoffMs) ? 'past-cutoff' : null,
-    maxIterations: 120,
-  });
-  vlog(`posts: scroll ended (${endReason}) after ${iterations} iterations, ${allCards.size} cards`);
+  // LinkedIn occasionally serves the activity feed empty (observed
+  // 2026-07-20: zero cards at 14:25, five cards on the same runner at 14:33)
+  // — one paced re-navigation covers the transient before the phase dies.
+  for (let round = 1; round <= 2; round++) {
+    await pacedGotoRetry(page, PROFILE_URL, null);
+    await page.waitForSelector('div[data-urn^="urn:li:activity"]', { timeout: 15000 })
+      .catch(() => {});
+    await scrape();
+    const { iterations, endReason } = await feedScrollLoop(page, {
+      scrape,
+      waitForNew,
+      shouldStop: async () =>
+        (oldestEverSeenMs !== null && oldestEverSeenMs < cutoffMs) ? 'past-cutoff' : null,
+      maxIterations: 120,
+    });
+    vlog(`posts: scroll ended (${endReason}) after ${iterations} iterations, ${allCards.size} cards`);
+    if (allCards.size > 0) break;
+    // Keep the evidence a retry would otherwise erase: which page actually
+    // rendered when the cards were missing.
+    const diag = await page.evaluate(() => ({
+      url: location.href,
+      title: document.title,
+      anyDataUrn: document.querySelectorAll('[data-urn]').length,
+      mainLi: document.querySelectorAll('main li').length,
+      text: ((document.querySelector('main') || document.body).innerText || '')
+        .slice(0, 300).replace(/\n+/g, ' | '),
+    })).catch(() => null);
+    log(`posts: zero cards on round ${round}: ${JSON.stringify(diag)}`);
+    if (round === 1) await sleep(5000);
+  }
 
   if (allCards.size === 0) {
     throw Object.assign(new Error('no activity cards found'), { reason: 'SCRAPE' });
@@ -1072,6 +1089,17 @@ async function phaseAccount(page) {
   // -- audience
   try {
     await pacedGotoRetry(page, AUDIENCE_URL, 'Top demographics');
+    // The demographic rows render per tab click, and a fixed 800ms settle
+    // proved not enough under load — every concurrent run (2026-07-13/20)
+    // shipped six empty groups while the same page parsed fine idle. Scroll
+    // the module into view, wait for the tab strip, then poll per tab until
+    // the rows region shows stable, changed content.
+    await scrollBottomSettle(page);
+    await page.waitForFunction(
+      () => Array.from((document.querySelector('main') || document.body).querySelectorAll('button'))
+        .some((b) => (b.innerText || '').trim() === 'Job title'),
+      { timeout: 10000 },
+    ).catch(() => {});
     const head = await page.evaluate(asFn(`() => {
       const main = (document.querySelector('main') || document.body).innerText.replace(/\\s+/g,' ');
       const t = main.match(/(\\d[\\d,]*)\\s+Total followers/);
@@ -1084,21 +1112,10 @@ async function phaseAccount(page) {
       ['Job title', 'job_title'], ['Location', 'location'], ['Seniority', 'seniority'],
       ['Company', 'company'], ['Industry', 'industry'], ['Company size', 'company_size'],
     ];
-    let prevFirstLabel = null;
-    for (let ti = 0; ti < tabs.length; ti++) {
-      const [tabName, key] = tabs[ti];
-      const clicked = await page.evaluate((name) => {
-        const btn = Array.from(document.querySelectorAll('button'))
-          .find((b) => (b.innerText || '').trim() === name);
-        if (!btn) return false;
-        btn.click();
-        return true;
-      }, tabName);
-      if (!clicked) { demographics[key] = {}; continue; }
-      await sleep(800);
-      // Rows render as "<label>" / "<pct>%" line pairs after the tab strip
-      // (whose last label is "Company size"). "< 1%" -> 0.5 here — the
-      // audience-page convention in the existing corpus.
+    // Rows render as "<label>" / "<pct>%" line pairs after the tab strip
+    // (whose last label is "Company size"). "< 1%" -> 0.5 here — the
+    // audience-page convention in the existing corpus.
+    const grabRows = async () => {
       const lines = linesOf(await page.evaluate(MAIN_INNER_TEXT));
       const iTop = findLineIdx(lines, /^Top demographics$/);
       const iStrip = findLineIdx(lines, /^Company size$/, iTop >= 0 ? iTop : 0);
@@ -1112,13 +1129,47 @@ async function phaseAccount(page) {
           i++;
         }
       }
-      const firstLabel = Object.keys(rows)[0] ?? null;
-      if (ti > 0 && firstLabel !== null && firstLabel === prevFirstLabel) {
-        demographics[key] = {}; // silent tab-click failure
+      return rows;
+    };
+    // Seed the stale guard with the pre-click view: the default "All" tab
+    // parses to non-empty MIXED rows, which must never be stored as a group.
+    const sig = (rows) => JSON.stringify(rows);
+    let prevSig = sig(await grabRows());
+    for (let ti = 0; ti < tabs.length; ti++) {
+      const [tabName, key] = tabs[ti];
+      const clicked = await page.evaluate((name) => {
+        const btn = Array.from((document.querySelector('main') || document.body).querySelectorAll('button'))
+          .find((b) => (b.innerText || '').trim() === name);
+        if (!btn) return false;
+        btn.click();
+        return true;
+      }, tabName);
+      if (!clicked) { failures.push(`audience-tab-${key}`); demographics[key] = {}; continue; }
+      // Accept only STABLE + CHANGED content: two consecutive identical
+      // non-empty grabs that differ from the previous view. On timeout store
+      // {} and a per-tab failure — stale or half-rendered rows must never be
+      // attributed to this tab, and a hollow group can never be real on this
+      // account (same reasoning as the audience canary).
+      let rows = null;
+      let lastSig = null;
+      const deadline = Date.now() + 8000;
+      do {
+        await sleep(250);
+        const r = await grabRows();
+        const s = sig(r);
+        if (s !== prevSig && Object.keys(r).length > 0 && s === lastSig) { rows = r; break; }
+        lastSig = s;
+      } while (Date.now() < deadline);
+      if (rows === null) {
+        failures.push(`audience-tab-${key}`);
+        demographics[key] = {};
+        // Re-baseline on what is visible NOW so a late-arriving response for
+        // this tab is less likely to be misattributed to the next one.
+        if (lastSig !== null) prevSig = lastSig;
       } else {
         demographics[key] = rows;
+        prevSig = sig(rows);
       }
-      prevFirstLabel = firstLabel ?? prevFirstLabel;
     }
     snapshot.audience = { ...head, demographics };
   } catch (e) {
@@ -1489,8 +1540,29 @@ try {
     }
   }
 
-  // Phase B (metrics) ∥ C (account); D (comments) strictly after C succeeds —
-  // mirrors the sequential skill's "account ERROR stops comments-out".
+  // Phase C (account) runs ALONE, before the metrics pool opens: its audience
+  // demographics parsing proved concurrency-sensitive — six empty groups on
+  // every concurrent run (2026-07-13/20) vs healthy rows on every sequential
+  // run before, same parser. Costs ~21s of wall-clock; deadline headroom ~5x.
+  let accountOk = true;
+  if (PHASES.includes('account')) {
+    const started = Date.now();
+    const page = await context.newPage();
+    try {
+      const r = await phaseAccount(page);
+      contractSections.set('account', r);
+      manifestPhase('account', started, r);
+      if (r.PAGES_FAILED !== '-') sev.partial = true;
+    } catch (e) {
+      accountOk = false;
+      fail('account', e);
+    } finally {
+      await page.close().catch(() => {});
+    }
+  }
+
+  // Phase B (metrics) ∥ D (comments); D strictly after C succeeds — mirrors
+  // the sequential skill's "account ERROR stops comments-out".
   const metricsTask = PHASES.includes('metrics')
     ? (async () => {
         const started = Date.now();
@@ -1504,40 +1576,23 @@ try {
       })()
     : Promise.resolve();
 
-  const accountThenComments = (async () => {
-    let accountOk = true;
-    if (PHASES.includes('account')) {
-      const started = Date.now();
-      const page = await context.newPage();
-      try {
-        const r = await phaseAccount(page);
-        contractSections.set('account', r);
-        manifestPhase('account', started, r);
-        if (r.PAGES_FAILED !== '-') sev.partial = true;
-      } catch (e) {
-        accountOk = false;
-        fail('account', e);
-      } finally {
-        await page.close().catch(() => {});
-      }
+  const commentsTask = (async () => {
+    if (!PHASES.includes('comments')) return;
+    if (!accountOk) {
+      contractSections.set('comments', { SKIPPED: 'account_failed' });
+      return;
     }
-    if (PHASES.includes('comments')) {
-      if (!accountOk) {
-        contractSections.set('comments', { SKIPPED: 'account_failed' });
-        return;
-      }
-      const started = Date.now();
-      const page = await context.newPage();
-      try {
-        const r = await phaseCommentsOut(page);
-        contractSections.set('comments', r);
-        manifestPhase('comments', started, r);
-      } catch (e) { fail('comments', e); }
-      finally { await page.close().catch(() => {}); }
-    }
+    const started = Date.now();
+    const page = await context.newPage();
+    try {
+      const r = await phaseCommentsOut(page);
+      contractSections.set('comments', r);
+      manifestPhase('comments', started, r);
+    } catch (e) { fail('comments', e); }
+    finally { await page.close().catch(() => {}); }
   })();
 
-  await Promise.all([metricsTask, accountThenComments]);
+  await Promise.all([metricsTask, commentsTask]);
 } catch (e) {
   if (e instanceof AuthError) sev.auth = true;
   else if (e instanceof BreakerError) { if (isDeadline()) sev.partial = true; else sev.rate = true; }

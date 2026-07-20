@@ -109,3 +109,7 @@ Workflows tagged `runs-on: [self-hosted, macOS]` execute on Peter's Mac Studio v
 - **Never** create branches, switch branches, commit, push, or create PRs unless explicitly requested in the user's prompt, plan, or instructions.
 - Git operations are user-initiated only — do not proactively perform any git actions.
 - **When the user says "commit", "commit changes", "push", or any variation** — always use the `common-pr-commit` skill via the Skill tool. Do NOT follow manual git commit steps.
+
+## Incidents
+
+- 2026-07-20 — weekly scrape: transient empty activity feed + audience demographics empty under concurrent load; recovered after 2 attempts / 1 heal (account phase serialized before metrics, adaptive per-tab poll), PR review pending — [doc/incidents/2026-07-20-linkedin-stats-weekly.md](doc/incidents/2026-07-20-linkedin-stats-weekly.md)
