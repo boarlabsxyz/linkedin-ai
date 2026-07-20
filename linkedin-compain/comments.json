@@ -6632,5 +6632,211 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "marc-brooker-891662ec",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/marc-brooker-b431772b/",
+    "author_name": "Marc Brooker",
+    "author_headline": "VP/Distinguished Engineer at Amazon Web Services",
+    "time_ago": "6m",
+    "post_text": "Our new paper on the design and implementation of Aurora DSQL is now up on Arxiv! https://lnkd.in/g5wy8_3T\nI'm super excited about this: it brings together end-to-end view of how DSQL works, where we're going, and what we've learned.\nI've also put together a fun interactive transaction demo: https://lnkd.in/gtM6H-KH\nAnd a blog post with some paper highlights: https://lnkd.in/gnGifhhb",
+    "scraped_at": "2026-07-20T17:04:58Z",
+    "disposition": "off-topic",
+    "reason": "Aurora DSQL is database infrastructure, not AI/LLM/startup focused",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "luca-bonmassar-8da2d5aa",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/lucabonmassar/",
+    "author_name": "Luca Bonmassar",
+    "author_headline": "CTO at Checkr | Engineering leader across Fintech, Crypto & AI | 3x Founder (acquired) | Ex-Coinbase VP, Citadel",
+    "time_ago": "3d",
+    "post_text": "I have a system to make most cross-team decisions without a meeting. All I need is one short document and one person who owns the final decision. The system is called:\nRAPID.\nEach letter defines a role:\nR (Recommend): the person who spotted the decision and wrote the doc\nA (Agree): one or more people who can agree or block, usually the most senior stakeholders with the most at stake\nP (Perform): the people who'll do the work if the decision is approved\nI (Input): people closest to the ground, cross-functional stakeholders who know the problem\nD (Decide): one person only - the final call owner\nA and D sit at the top. They tend to be the most senior people involved. Input comes from the ground up.\nThe distinction between I and A is the most important one. Input means you get heard. Agreement means you can block. Conflating the two is what turns decisions into committees.\nAnyone can trigger a RAPID.\nYou write a 1-3 page doc, describe the problem, state your recommendation, name who fills each role, and send it to the right people. Most of the time, the decision resolves asynchronously.\nCompanies often don't lack smart people or good analysis, they just never formalize who makes the final call. So they end up scheduling a meeting to decide when to have another meeting.\nI brought it from Coinbase to Checkr.\nStill the default for almost every important cross-team decision we make.",
+    "scraped_at": "2026-07-20T17:05:02Z",
+    "disposition": "off-topic",
+    "reason": "Generic org decision framework; author background doesn't make content itself startup/AI focused",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "adi-stan-d6c98fb8",
+    "urn": "urn:li:ugcPost:7483804895771426816",
+    "post_url": "https://www.linkedin.com/posts/adistan_is-your-agentic-ai-deployment-uninsurable-ugcPost-7483804895771426816-GktH/",
+    "author_url": "https://www.linkedin.com/in/adistan/",
+    "author_name": "Adi Stan",
+    "author_headline": "Working in/with AI since ’97. Autor: Cognitive Divergence Theory CDT, Information Gravity Theory IGT, Minimal Ethical Governance MEG, FCPT; Books: THE AGE OF COGNITIVE DIVERGENCE; METEORAIT; ssrn.com/author=7778480",
+    "time_ago": "3d",
+    "post_text": "Is your Agentic AI deployment uninsurable? 5 questions every Board of Directors must ask.\nIs your Agentic AI deployment uninsurable? 5 questions every Board of Directors must ask.\nAdi Stan",
+    "scraped_at": "2026-07-20T17:14:58Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Uninsurable\" is a sharp word to reach for. It turns an ethics debate into actuarial math, which is exactly the language a board actually responds to.\n\nWhat I'd want to know first: is the insurer underwriting a single bad decision, or the compounding kind, where an agent keeps \"fixing\" something and multiplies the damage before anyone notices? Most agentic incidents I've run into aren't one bad call, they're a bad call that doesn't stop on its own. Curious whether your five questions split those two risk shapes apart, because the safeguards for each look pretty different.",
+        "rationale": "The post's headline claim (\"uninsurable\") is under-examined without its supporting content visible, so a sharper question about which failure mode the underwriting actually targets pulls the conversation forward without needing the unseen \"5 questions.\""
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agree boards should be asking this before deployment, not after the incident report.\n\nWhere I'd push back a little is on \"uninsurable\" as the frame, it implies the fix is a bigger premium or a tighter contract. What I keep running into building with these agents is that they don't fail the way people do. They don't stop at an obstacle, they route around it and call the task done. Code review exists because we spent decades learning how humans break things; for AI's kind of mistake we haven't built the equivalent guardrail yet, and no policy substitutes for that. Does your list get at that runtime containment question, or does it stay mostly upstream, at governance and sign-off?",
+        "rationale": "Directly echoes (paraphrased, not linked) Petro's own 25.06.26 posted stance that AI fails in a fundamentally different shape than humans and that we haven't built the equivalent guardrail — a real counter-position grounded in his public record, not invented."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The board-level framing is the right level. Most agentic AI risk conversations stall at the engineering layer and never reach the people who'd actually sign off on the liability.\n\nOne thing I'd want pinned down before answering any of the five: is \"uninsurable\" describing an underwriter's current unwillingness to price the risk at all, or a specific coverage gap, like an agent's actions not counting as \"your\" acts under an existing E&O or cyber policy? Those point to two different board actions. One is a market-maturity problem you wait out. The other is a contract you renegotiate now.",
+        "rationale": "With only the caption line scraped (the actual \"5 questions\" live in an uncaptured image/carousel), a clarifying question that forces precision on what \"uninsurable\" means engages the post without assuming unseen content."
+      }
+    ],
+    "slack_summary": "Board-level take on agentic AI risk: is your AI agent deployment even insurable, plus 5 questions directors should ask before sign-off.",
+    "slack_ts": "1784567704.837229",
+    "slack_thread": {
+      "post_reply_ts": "1784567709.988439",
+      "draft_reply_ts": [
+        "1784567715.594269",
+        "1784567722.397109",
+        "1784567729.136649"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "marco-de-rossi-37dd2fd0",
+    "urn": "urn:li:ugcPost:7484985248947224577",
+    "post_url": "https://www.linkedin.com/posts/marcoderossi_monday-demo-italian-accent-on-10-ugcPost-7484985248947224577-1N51/",
+    "author_url": "https://www.linkedin.com/in/marcoderossi/",
+    "author_name": "Marco De Rossi",
+    "author_headline": "CEO, Levanto Labs 🤖 AI Lead @ MetaMask 🦊 ERC-8004 author | Exploring how humans and AI can coexist and thrive",
+    "time_ago": "2h",
+    "post_text": "Monday demo 📺, Italian accent On 🍕\n10 things Sage by Levanto Labs does 9x faster than your LLM, cheaper and with a built-in confidence score (humble enough to say \"I don't know\").\n- Model routing\n- Personal agent: escalate or not\n- Agent security guardrail\n- Rank an incident queue\n- Score ticket urgency\n- Trading: rank Web3 assets\n- Auto-approve or escalate a refund\n- Moderate a social post\n- Sentiment analysis\n- Spot AI-slop\nLink to try and free credits 👇 👇",
+    "scraped_at": "2026-07-20T17:16:31Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"humble enough to say I don't know\" bit is the part I'd actually want to see in a demo — most vendors bury the uncertain cases instead of surfacing them. How's that confidence calibrated across such different tasks though? A threshold that's well-tuned for ticket urgency scoring probably behaves very differently on trading asset ranking. Is it one shared calibration layer, or does each of the ten get its own threshold and retraining loop?",
+        "rationale": "The post's one genuinely underspecified variable is how confidence gets calibrated across ten very different task domains, so a specific question about that invites real technical detail rather than a generic reply."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Narrow models beating general-purpose LLMs on cost and latency for well-defined classification isn't surprising — that's been true since before \"LLM\" was a category name. What I'd want pressure-tested is the heterogeneity: refund auto-approval, social moderation and Web3 asset ranking have very different cost-of-being-wrong profiles. When the model is confidently wrong instead of honestly unsure, what catches that before it's a refund that shouldn't have been approved or a ticket that got buried?",
+        "rationale": "Ten very different-stakes tasks share one system in this post, so pressure-testing the failure mode (confidently wrong vs. honestly unsure) surfaces a real blindspot without being hostile."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Model routing and security guardrails are the same shape of narrow-model win that existed well before \"LLM\" was a category — a small classifier beating a general model on cost and speed for one well-defined job isn't new. The part that usually eats the 9x in practice is maintenance: ten task definitions means ten labeling pipelines to keep current as business rules shift, and that overhead tends to erode the inference savings quietly. What's the retraining cadence once a new fraud pattern or refund policy changes underneath one of these?",
+        "rationale": "Grounded in the pre-LLM production-GenAI perspective (BankAI-era narrow classifiers), this counters the implied \"9x cheaper\" framing with a real maintenance-cost tradeoff, without inventing an unverified specific anecdote."
+      }
+    ],
+    "slack_summary": "Demo of Sage by Levanto Labs: 10 classification tasks it runs 9x faster and cheaper than an LLM, with a built-in confidence score.",
+    "slack_ts": "1784567798.588449",
+    "slack_thread": {
+      "post_reply_ts": "1784567804.816469",
+      "draft_reply_ts": [
+        "1784567810.309639",
+        "1784567816.322559",
+        "1784567821.709649"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ara-khan-c30de0da",
+    "urn": "urn:li:share:7483756916356112384",
+    "post_url": "https://www.linkedin.com/posts/arafatkatze_github-arafatkatzegrok-build-privacy-retest-share-7483756916356112384-X4tD/",
+    "author_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "3d",
+    "post_text": "I gave xAI a lot of shit for Grok Build’s repo-upload behavior, so they deserve the same volume when they fix it.\nI pulled the new signed release, planted fake secrets, and captured its HTTPS traffic with MITM proxies. The fix held as retention was off on first login and had no /v1/storage, GCS traffic or Git bundle, and none of my canaries left the machine.\nTelemetry still runs, but I found no prompts, code, filenames, or secrets inside it. They published the source and the privacy-gate tests passed 5/5. Attaching my investigation here https://lnkd.in/gMNjA7ku\nMax respect to the team for taking accountability and making a verifiable fix.\nhttps://lnkd.in/g5zRi2fR\nGitHub - arafatkatze/grok-build-privacy-retest: Reproducible packet-level privacy retest for Grok Build 0.2.102\nGitHub - arafatkatze/grok-build-privacy-retest: Reproducible packet-level privacy retest for Grok Build 0.2.102\ngithub.com",
+    "scraped_at": "2026-07-20T17:18:04Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "The canary-secret approach is the right bar here: planting fake secrets and watching the wire beats reading a privacy policy.\n\nWe hit a version of this building BankAI, a self-hosted GenAI system for German banks, years before ChatGPT existed. We solved it differently though: instead of verifying a vendor tool doesn't leak data, we just kept everything on-prem, so the question never came up in compliance review. What you did here is the harder version: proving a third-party tool is clean instead of removing the dependency entirely. Are you planning to rerun this MITM setup on every signed release, or was 0.2.102 a one-time bar-setting exercise?",
+        "rationale": "BankAI is an explicitly listed Strategy 3 anchor and a directly relevant story (self-hosted GenAI for German banks, sourced from posted.md's \"05.03.2026 Bank.ai\" entry) — draws a real contrast between architectural avoidance vs. third-party verification of a privacy claim."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The detail that stands out is telemetry still running, just with prompts, code, filenames and secrets audited out of it. That's a meaningfully narrower privacy bar than \"telemetry off.\"\n\nWhat's actually left in that payload once you strip those out: timing, usage counts, error codes? And is 0.2.102 now the baseline you diff every future signed release against, or a one-off check now that the fix landed?",
+        "rationale": "Zeroes in on the one unresolved variable the author left open (telemetry still runs, contents unspecified) and pushes toward whether this is a repeatable regression check."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Respect for shipping packet captures instead of taking the changelog at its word. That's a different level of accountability than most vendor \"fixed it\" posts get.\n\nThe uncomfortable part underneath: this result only exists because you're capable of running MITM proxies and reading GCS traffic yourself. Everyone else on that same signed release is trusting your fix on faith, not on their own verification. Does that push you toward treating retests like this as standing infrastructure that runs on every release like a test suite, rather than a one-off gesture after enough public pressure?",
+        "rationale": "Pushes the post's implicit accountability theme one level higher — into the asymmetry between expert-level verification and everyone else's blind trust — without being hostile to the author."
+      }
+    ],
+    "slack_summary": "Independent packet-level retest of Grok Build's privacy fix: planted canary secrets, MITM'd the traffic, confirmed nothing leaked in 0.2.102.",
+    "slack_ts": "1784567889.457009",
+    "slack_thread": {
+      "post_reply_ts": "1784567900.873369",
+      "draft_reply_ts": [
+        "1784567908.037819",
+        "1784567916.359819",
+        "1784567921.741759"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "thomas-dohmke-22422f8b",
+    "urn": "urn:li:ugcPost:7484999636403859456",
+    "post_url": "https://www.linkedin.com/posts/ashtom_coding-agents-are-writing-high-quality-code-ugcPost-7484999636403859456-dEtc/",
+    "author_url": "https://www.linkedin.com/in/ashtom/",
+    "author_name": "Thomas Dohmke",
+    "author_headline": "Co-founder & CEO at Entire",
+    "time_ago": "1h",
+    "post_text": "Coding agents are writing high-quality code faster than ever, and are picking up issues and stories with growing autonomy. But the human developer still sits at the center of the pull request, reviewing code and suggestions. At the same time, context is fragmenting across chats, prompts, sessions, and branches, leaving agents stateless and developers without an understanding of intent, decisions, and learning.\nThe role of the human developer has transformed, from that of a singular craftsperson to the manager of an agentic assembly line that operates in powerful loops. We now live in a world of agent-to-human and agent-to-agent collaboration, one that collapses planning, coordination, design, implementation, review, and deployment into a continuous loop. And one that removes bottlenecks while preserving quality, security, and trust, and developer happiness.\nIt was so great to be back at WeAreDevelopers in Berlin this month, talking about how agents are killing the software development lifecycle as we know it, and what our vision at Entire is on what comes after it. Below are my remarks as delivered.\nThe Agentic Assembly Line: My Keynote at WeAreDevelopers World Congress 2026 in Berlin\nThomas Dohmke",
+    "scraped_at": "2026-07-20T17:19:49Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The craftsperson-to-assembly-line-manager framing is right, and the part worth pressing on is that the human still sits at the center of the pull request even as agent autonomy grows.\n\nIn our shop, speeding up generation didn't collapse that step, it just moved the wait downstream into review — the code still needed the same amount of human verification per line, just delivered faster. What actually cut it for us was making the spec the thing under review instead of the diff, so there's less left to hand-check line by line. Does the assembly line change what gets reviewed, or just how fast the review queue fills up?",
+        "rationale": "Petro has a real, previously-posted counter-position (code-as-source-of-truth keeps the human as review bottleneck) that directly engages Dohmke's PR-centered claim without pitching."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The line about agents being stateless while context fragments across chats, prompts, and branches names the real cost most \"autonomous agent\" takes skip over.\n\nIf the loop's shared memory still lives in sessions and diffs rather than something durable, what breaks first when the underlying model changes: the agents' output quality, or the human's ability to reconstruct why a decision was made three sprints ago? A physical assembly line usually survives a machine swap because the spec for the part doesn't change with the machine. Does yours?",
+        "rationale": "Pulls on the post's own admission (stateless agents, fragmenting context) to sharpen it into a durability question, staying skeptical without hostility."
+      },
+      {
+        "strategy_label": "Personal experience (Wikimedia / Speed & Function)",
+        "comment": "\"The human developer still sits at the center of the pull request\" matches what I've seen even on projects with heavy process around review.\n\nOn the Wikimedia project I once shipped a change that went through seven rounds of code review and seven rounds of testing, all green, and a small performance regression slipped through anyway, because everyone was checking against \"tests pass,\" not against a spec of expected behavior. More autonomous agents upstream don't change what's being checked downstream unless the thing being checked against changes too. What's the artifact your assembly line actually verifies against: tests, a spec, or reviewer judgment?",
+        "rationale": "Real, documented Wikimedia PR-review incident (Speed & Function client anchor, previously used in Petro's own posted content per posted.md lines 415-421) directly illustrates the post's PR-centered claim."
+      }
+    ],
+    "slack_summary": "WeAreDevelopers keynote recap: developers are shifting from craftsperson to manager of an agentic assembly line, but the human still owns the PR.",
+    "slack_ts": "1784567995.438119",
+    "slack_thread": {
+      "post_reply_ts": "1784568003.927649",
+      "draft_reply_ts": [
+        "1784568009.940029",
+        "1784568015.655829",
+        "1784568021.347519"
+      ]
+    },
+    "slack_error": null
   }
 ]
