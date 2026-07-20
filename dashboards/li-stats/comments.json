@@ -1,5 +1,26 @@
 {
   "comments": {
+    "urn:li:comment:(activity:7483578653969174528,7483624111043309568)": {
+      "comment_urn": "urn:li:comment:(activity:7483578653969174528,7483624111043309568)",
+      "commented_at": "2026-07-16T20:50:27Z",
+      "verb": "commented",
+      "text": "If the same model writes both the spec and the code, it's grading its own exam either way, just one layer up. What ended up mattering wasn't the scorer alone, it was pinning the behavioral assertions down before any code exists, so there's a fixed target the regeneration has to hit, not a moving one the builder can quietly negotiate with itself.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7483624163967029248",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7483624163967029248/",
+      "post_author_name": "Ken Jackson",
+      "post_author_url": "https://www.linkedin.com/in/ken-jackson",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7483624163967029248/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7483578653969174528%2C7483624111043309568%29",
+      "weeks": {
+        "2026-07-20": {
+          "snapshot_at": "2026-07-20T15:02:55Z",
+          "reactions": 2,
+          "replies_count": 0,
+          "impressions": 35
+        }
+      }
+    },
     "urn:li:comment:(activity:7483474666548977665,7483565320331268096)": {
       "comment_urn": "urn:li:comment:(activity:7483474666548977665,7483565320331268096)",
       "commented_at": "2026-07-16T16:56:50Z",
@@ -18,6 +39,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 16
+        },
+        "2026-07-20": {
+          "snapshot_at": "2026-07-20T15:02:55Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 77
         }
       }
     },
@@ -39,6 +66,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 23
+        },
+        "2026-07-20": {
+          "snapshot_at": "2026-07-20T15:02:55Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 32
         }
       }
     },
