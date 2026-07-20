@@ -9,8 +9,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -19,18 +17,32 @@ concurrency:
 jobs:
   scrape:
     runs-on: [self-hosted, macOS]
-    timeout-minutes: 420
+    # Generous backstop: the in-script watchdogs (per-attempt deadline, heal
+    # and review caps) are what bound the run — they must win over this or
+    # partial commits and the incident doc are lost to a runner-level kill.
+    timeout-minutes: 6000
+    outputs:
+      main_updated: ${{ steps.scrape.outputs.main_updated }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Run weekly scrape
+        id: scrape
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./.claude/skills/linkedin-stats/run-weekly.sh
 
   publish:
     needs: scrape
+    # A healed/partial run leaves its data on an unmerged PR — republishing
+    # stale main would be a no-op; skip until the PR is merged (then use
+    # pages-deploy.yml to publish manually).
+    if: needs.scrape.outputs.main_updated == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     environment:
       name: github-pages
