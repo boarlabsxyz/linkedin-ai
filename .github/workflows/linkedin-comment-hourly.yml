@@ -1,0 +1,39 @@
+name: linkedin-comment-hourly
+
+on:
+  schedule:
+    # 04:00 UTC Tue–Fri -> 06:00 Podgorica summer / 05:00 winter. GH cron
+    # regularly fires late (0–2h+ observed on this repo) — acceptable for a
+    # morning drafts drop.
+    - cron: "0 4 * * 2-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# A late cron fire must queue behind a manual dispatch, never overlap it —
+# both drive the same logged-in Chrome profile. (Cross-workflow overlap with
+# linkedin-stats-weekly is already impossible: the single self-hosted runner
+# processes one job at a time.)
+concurrency:
+  group: linkedin-comment-hourly
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: [self-hosted, macOS]
+    # Outer backstop above run-hourly.sh's own watchdogs (420s gather, 40-min
+    # drafting) plus the commit/PR/merge chain. The in-script watchdogs must
+    # win: they still commit partial drafts and sweep the orphaned browser,
+    # while a runner-level kill loses both and gives the EXIT-trap Slack
+    # bookend only ~10s to post.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run comment-drafts pipeline
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./.claude/skills/linkedin-comment-hourly/run-hourly.sh

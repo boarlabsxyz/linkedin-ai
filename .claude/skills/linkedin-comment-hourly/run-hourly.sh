@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Scheduled LinkedIn comment-ideas drop, driven non-interactively by the
-# xyz.boarlabs.slack-heartbeat LaunchAgent (which execs this script instead
-# of posting a bare heartbeat).
+# linkedin-comment-hourly GitHub Actions workflow on a self-hosted macOS
+# runner (Tue–Fri 04:00 UTC; mirrors linkedin-stats/run-weekly.sh).
 #
 # Flow:
 #   1. Branch off origin/main.
@@ -175,11 +175,12 @@ GATHER_OUT="tmp/gather-feed/${TS}"
 GATHER_DEADLINE_SECS=300
 # Belt-and-suspenders wall clock around the node process itself: the in-process
 # deadline should always win; if node wedges anyway (stalled Chrome launch,
-# hung subprocess), this watchdog frees the launchd slot instead of blocking
-# every later fire. macOS has no coreutils timeout, hence the bash pattern.
+# hung subprocess), this watchdog frees the runner slot instead of blocking
+# every later job. macOS has no coreutils timeout, hence the bash pattern.
 GATHER_WATCHDOG_SECS=420
 
-# node_modules is gitignored; the cron worker clone starts clean every fire.
+# node_modules is gitignored; actions/checkout cleans the runner workdir
+# (git clean -ffdx) every fire.
 if [ ! -d "$FAST_DIR/node_modules/playwright-core" ]; then
     (cd "$FAST_DIR" && npm install --no-audit --no-fund --silent)
 fi
@@ -294,9 +295,10 @@ if [ -n "$CLAUDE_PROMPT" ]; then
     export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
     # Hard wall-clock cap on the whole `claude -p` run. A stalled MCP call can
-    # wedge this process indefinitely — and launchd's at-most-one-instance
-    # guarantee then silently blocks EVERY later fire until it's killed by hand
-    # (a 00:15 fire once hung 19h). macOS ships no coreutils timeout, so guard
+    # wedge this process indefinitely (a launchd-era 00:15 fire once hung 19h).
+    # The workflow's timeout-minutes is the outer backstop, but only THIS
+    # watchdog still commits partial drafts + sweeps the orphaned browser — a
+    # runner-level kill loses both. macOS ships no coreutils timeout, so guard
     # with a bash watchdog.
     CLAUDE_TIMEOUT_SECS=2400
 
