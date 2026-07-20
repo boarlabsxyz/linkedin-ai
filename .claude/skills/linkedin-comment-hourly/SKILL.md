@@ -9,7 +9,7 @@ description: >
   ./linkedin-compain/comments.json array, and post one Slack message per post to
   channel C0BF606R4N7. Use when the user says "run linkedin comment hourly",
   "gather linkedin comment drafts", "draft comments for the feed", or when the
-  slack-heartbeat cron fires.
+  linkedin-comment-hourly workflow cron fires.
 ---
 
 # LinkedIn Comment Hourly

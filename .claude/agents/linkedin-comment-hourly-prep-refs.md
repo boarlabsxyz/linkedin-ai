@@ -6,8 +6,8 @@ description: >
   reference sources (ICP doc, True BDD factsheet, Posted doc, Transcripts folder)
   ONCE per fire, downloading only the docs whose Drive "modified" date changed
   since the last run, and rebuilds the transcript index. The cache lives OUTSIDE
-  the git worktree so cron-wrapper's `git clean -fd` can't wipe it. Returns the
-  cache paths as a strict KEY=VALUE contract.
+  the git worktree so the runner's per-fire checkout clean (`git clean -ffdx`)
+  can't wipe it. Returns the cache paths as a strict KEY=VALUE contract.
 tools: Bash, Read, Write, mcp__claude_ai_GDrive__listFolderContents, mcp__claude_ai_GDrive__mintRestBearerForCurl
 model: sonnet
 ---
@@ -72,7 +72,7 @@ $REF_CACHE/
     INDEX.md               # one line per transcript: "<date>\t<first ~200 chars, whitespace-collapsed>"
 ```
 
-The cache is deliberately **outside the repo** (default `$HOME/.cache/...`). Do NOT write it under the worktree — `cron-wrapper.sh` runs `git clean -fd` every fire and would delete it.
+The cache is deliberately **outside the repo** (default `$HOME/.cache/...`). Do NOT write it under the worktree — the runner's per-fire checkout clean (`git clean -ffdx`) would delete it.
 
 ## Steps
 
