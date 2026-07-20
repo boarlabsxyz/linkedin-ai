@@ -23,12 +23,13 @@ concurrency:
 jobs:
   draft:
     runs-on: [self-hosted, macOS]
-    # Outer backstop above run-hourly.sh's own watchdogs (420s gather, 40-min
-    # drafting) plus the commit/PR/merge chain. The in-script watchdogs must
-    # win: they still commit partial drafts and sweep the orphaned browser,
-    # while a runner-level kill loses both and gives the EXIT-trap Slack
-    # bookend only ~10s to post.
-    timeout-minutes: 90
+    # Outer backstop above run-hourly.sh's own watchdogs (420s per gather
+    # attempt, one 30-min heal session, 40-min drafting) plus the commit/PR/
+    # merge chains. The in-script watchdogs must win: they still commit
+    # partial drafts, land the heal branch, and sweep the orphaned browser,
+    # while a runner-level kill loses all of that and gives the EXIT-trap
+    # Slack bookend only ~10s to post.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:

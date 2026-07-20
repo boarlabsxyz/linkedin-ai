@@ -20,7 +20,12 @@ jobs:
     # Generous backstop: the in-script watchdogs (per-attempt deadline, heal
     # and review caps) are what bound the run — they must win over this or
     # partial commits and the incident doc are lost to a runner-level kill.
-    timeout-minutes: 6000
+    # Capped at 20h (not the old 6000 min): a run stuck OUTSIDE those
+    # watchdogs (npm, git, PR chain) would otherwise occupy the single
+    # runner past Tuesday 04:00 — GitHub silently cancels self-hosted jobs
+    # queued >24h, so the hourly fire would vanish without a Slack bookend.
+    # Worst legitimate run (5 attempts + 4 heals + review + chains) is ~9h.
+    timeout-minutes: 1200
     outputs:
       main_updated: ${{ steps.scrape.outputs.main_updated }}
     steps:
