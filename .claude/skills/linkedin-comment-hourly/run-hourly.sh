@@ -24,7 +24,9 @@
 #      that) → fail fast, no heal; 30 (selector drift) → legacy-agent
 #      FALLBACK first (drafts must ship), then ONE post-landing heal session
 #      AFTER the data is safely merged — its fix is unverified until the
-#      next fire and lands on a review PR.
+#      next fire and lands on a review PR. An accepted contract with
+#      PERMALINKS_MISSING>0 (a draft would ship without its post link) is
+#      ALSO an error: the fire goes ⚠️ and gets the same post-landing heal.
 #   3. DRAFTING: invoke the linkedin-comment-hourly skill via `claude -p`
 #      pointing at the accepted contract (or the legacy gather on fallback).
 #      Skipped entirely when the gather found 0 draftable posts.
@@ -122,6 +124,8 @@ FINISH_POSTED=0
 HEAL_MODE="in-loop"
 FALLBACK_USED=0              # exit 30 → legacy gather (fast path unverified)
 HEAL_RESULT=""               # post-landing heal: completed | timed out | failed | aborted | skipped
+PERMALINKS_MISSING_N=0       # accepted posts whose permalink capture failed (contract)
+PERMALINK_HEAL=0             # missing permalinks → error + post-landing heal
 
 # Single EXIT trap composes + posts the finish message on EVERY exit path
 # (explicit exit N, set -e aborts, and — via the TERM/INT traps — signals).
@@ -152,6 +156,8 @@ on_exit() {
         summary="${summary}; self-heal ×${PL_HEAL_COUNT} (${HEAL_MODE}${HEAL_RESULT:+, ${HEAL_RESULT}})${CODE_PR_URL:+ — heal PR awaiting review: ${CODE_PR_URL}}"
     elif [ "${FALLBACK_USED:-0}" = 1 ]; then
         summary="${summary}; fast gather NOT healed (${HEAL_RESULT:-skipped})"
+    elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
+        summary="${summary}; permalink failure NOT healed (${HEAL_RESULT:-skipped})"
     fi
 
     local msg
@@ -160,6 +166,8 @@ on_exit() {
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} — no draftable posts ($(pl_oneline "${GATHER_END_REASON_TXT:-unknown}")); ${summary}"
         elif [ "${FALLBACK_USED:-0}" = 1 ]; then
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (selector drift — legacy fallback shipped the drafts) — ${summary}"
+        elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
+            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (permalink capture FAILED on ${PERMALINKS_MISSING_N} accepted post(s) — drafts shipped) — ${summary}"
         elif [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (self-healed) — ${summary}"
         else
@@ -227,6 +235,7 @@ INCIDENT_FILE=${INCIDENT_FILE}
 CODEX_AVAILABLE=${PL_CODEX_AVAILABLE}
 FAST_DIR=${FAST_DIR}
 GATHER_OUT=${GATHER_OUT:-}
+PERMALINKS_MISSING=${PERMALINKS_MISSING_N:-0}
 COMMENTS_FILE=./linkedin-compain/comments.json
 TS=${TS}
 EOF
@@ -333,6 +342,12 @@ validate_contract() {
   done
   case "$posts_off" in (*[!0-9]*|'') posts_off=0;; esac
   case "$posts_already" in (*[!0-9]*|'') posts_already=0;; esac
+  # PERMALINKS_MISSING is an error SIGNAL, not a contract breaker (absent in
+  # pre-2026-07-21 contracts → 0): >0 flags the fire and schedules a
+  # post-landing heal, but the drafts still ship.
+  permalinks_missing=$(grep '^PERMALINKS_MISSING=' "$contract" 2>/dev/null | head -1 | cut -d= -f2- || true)
+  case "$permalinks_missing" in (*[!0-9]*|'') permalinks_missing=0;; esac
+  PERMALINKS_MISSING_N="$permalinks_missing"
   POSTS_FOUND_N="$posts_found"
   POSTS_FILTERED_N=$(( posts_off + posts_already ))
   GATHER_END_REASON_TXT="$end_reason"
@@ -411,6 +426,18 @@ FIRE_FAILED=0
 POST_LANDING_HEAL=0
 case "$PL_OUTCOME" in
   accept)
+    # An accepted post without a permalink is an ERROR (user-mandated
+    # 2026-07-21: a draft reached Slack as "no stable permalink" for a post
+    # that had one), but a morning-delivery error: the drafts still ship
+    # first, then the self-heal loop engages post-landing — same philosophy
+    # as the exit-30 fallback, and an in-loop retry couldn't rerun-verify a
+    # fix anyway (the feed has moved on by the retry).
+    if [ "${PERMALINKS_MISSING_N:-0}" -gt 0 ]; then
+      echo "run-hourly: ${PERMALINKS_MISSING_N} accepted post(s) have no permalink — treating as an error; post-landing heal after the drafts land." >&2
+      RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }gather: ${PERMALINKS_MISSING_N} accepted post(s) missing permalinks"
+      POST_LANDING_HEAL=1
+      PERMALINK_HEAL=1
+    fi
     if [ "${POSTS_FOUND_N:-0}" -gt 0 ]; then
       CLAUDE_PROMPT="run linkedin comment hourly using the pre-gathered contract at ${GATHER_OUT}/contract.env — do not re-run the gather step"
     else
@@ -605,6 +632,8 @@ commit_heal_code_pr() {
     local incident_outcome
     if [ "$PL_OUTCOME" = "fallback" ]; then
         incident_outcome="selector drift — legacy fallback shipped drafts; fast-path fix unverified until next fire, PR review pending"
+    elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
+        incident_outcome="permalink capture failed on ${PERMALINKS_MISSING_N} accepted post(s) — drafts shipped; fix unverified until next fire, PR review pending"
     elif [ "$FIRE_FAILED" = 1 ]; then
         incident_outcome="gather failed (${PL_OUTCOME}) after ${PL_HEAL_COUNT} heal(s), PR review pending"
     else
@@ -641,9 +670,10 @@ else
     land_data_split
 fi
 
-# Post-landing heal: only for selector drift (exit 30). The drafts are safely
-# on main by now; spend the remaining budget fixing the fast path for the
-# next fire. Its changes are unverified-by-rerun by definition.
+# Post-landing heal: selector drift (exit 30) or accepted posts that shipped
+# without a permalink (PERMALINKS_MISSING>0). The drafts are safely on main
+# by now; spend the remaining budget fixing the fast path for the next fire.
+# Its changes are unverified-by-rerun by definition.
 if [ "$POST_LANDING_HEAL" = 1 ] && [ "${PL_HEAL_COUNT:-0}" -lt "$MAX_HEALS" ]; then
     if [ "$SECONDS" -gt "$HEAL_CUTOFF_SECS" ]; then
         echo "run-hourly: past the heal cutoff (${SECONDS}s > ${HEAL_CUTOFF_SECS}s) — skipping the post-landing heal." >&2

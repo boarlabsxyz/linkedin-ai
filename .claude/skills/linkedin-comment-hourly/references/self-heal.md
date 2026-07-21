@@ -17,12 +17,18 @@ contract dir), `COMMENTS_FILE` (`./linkedin-compain/comments.json`), `TS`
   exit, and the driver resets `linkedin-compain/` to the fire's base commit
   (an immutable SHA captured at branch checkout — not the index) before that
   retry, so the rerun is real verification of your fix against clean state.
-- `post-landing` — the gather hit selector drift (exit 30) and the fire
-  already shipped drafts via the legacy agent fallback; the drafted data has
-  already been merged to main. There is NO rerun this fire: every change you
-  make is unverified next-run by definition — say so in the incident, keep
-  the fix conservative, and lean on `fast/verify-links.mjs` + saved-HTML
-  probes for spot-verification instead.
+- `post-landing` — the fire already shipped its drafts and merged the data
+  to main; you are fixing the fast path for the NEXT fire. Two triggers:
+  selector drift (exit 30 — drafts came via the legacy agent fallback), or
+  `PERMALINKS_MISSING>0` in an otherwise-accepted contract (the fast gather
+  itself drafted, but ≥1 accepted post shipped to Slack without its post
+  link — an error since 2026-07-21; the caller passes the count as
+  `PERMALINKS_MISSING`, and the attempt log + `GATHER_OUT/manifest.json`
+  name the affected keys and the captured `no-copy-item (menu: …)` /
+  `no-capture` detail). There is NO rerun this fire: every change you make
+  is unverified next-run by definition — say so in the incident, keep the
+  fix conservative, and lean on `fast/verify-links.mjs` + saved-HTML probes
+  for spot-verification instead.
 
 Your session runs with a ~30 minute watchdog (shorter than the weekly
 pipeline's — this is a morning delivery pipeline). Budget the codex round
@@ -48,7 +54,7 @@ accordingly (cap it at ~600s) and write the incident as you go.
 
 | exit | meaning | typical response |
 |---|---|---|
-| 0 / 10 | ok / partial — you are only called when the CONTRACT is unusable despite the ok exit: missing `contract.env`, non-numeric `POSTS_FOUND`, `OUT_DIR` not matching the attempt's `--out-dir` (stale/foreign contract), a `POST_<i>` missing `KEY`/`AUTHOR`, or a `POST_<i>_TEXT_FILE` absent, empty, or outside the attempt dir — that's a contract-emission bug in the script | fix the contract writer / text-file plumbing in `gather-feed.mjs` |
+| 0 / 10 | ok / partial — you are called in-loop when the CONTRACT is unusable despite the ok exit: missing `contract.env`, non-numeric `POSTS_FOUND`, `OUT_DIR` not matching the attempt's `--out-dir` (stale/foreign contract), a `POST_<i>` missing `KEY`/`AUTHOR`, or a `POST_<i>_TEXT_FILE` absent, empty, or outside the attempt dir — that's a contract-emission bug in the script. A USABLE contract with `PERMALINKS_MISSING>0` is instead dispatched post-landing (drafts ship first): fix the copy-link capture (`RECOVER_EVAL` / `recoverPermalink`), using the menu-item dump the error line now carries | fix the contract writer / text-file plumbing, or the permalink capture, in `gather-feed.mjs` |
 | 20 | AUTH — LinkedIn session expired on the runner profile | unfixable by code → ABORT (needs Peter's interactive relogin) |
 | 21 | profile locked (Chrome ProcessSingleton) | you're called on the SECOND consecutive lock (the driver already swept once) — find what's actually holding the profile |
 | 22 | rate-limited, nothing accepted | never dispatched to you — the driver fails fast (next fire is tomorrow; time is the only fix) |
@@ -76,5 +82,10 @@ accordingly (cap it at ~600s) and write the incident as you go.
 - Post bodies travel as FILES (`POST_<i>_TEXT_FILE`), never inline base64 —
   inline blobs poisoned agent contexts and got generations refused
   (2026-07-16 fire).
+- 2026-07-21 fire: one accepted card's control menu produced `no-copy-item`
+  on a single 800ms-wait lookup and the draft went to Slack with no post
+  link. Response: the lookup now polls ~3.2s + retries the whole recovery
+  once + dumps the rendered menu items into the error line, and
+  `PERMALINKS_MISSING>0` became a ⚠️-fire + post-landing-heal trigger.
 - The Slack bookends and the batched classifier are pinned `claude -p`
   micro-call shapes (see WRAPPER comments) — do not "improve" their flags.
