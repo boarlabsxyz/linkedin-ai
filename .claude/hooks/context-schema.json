@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_summary", "requirement", "decision", "correction", "fact", "follow_up"],
+  "properties": {
+    "task_summary": { "type": "string" },
+    "requirement": { "type": "array", "items": { "type": "string" } },
+    "decision": { "type": "array", "items": { "type": "string" } },
+    "correction": { "type": "array", "items": { "type": "string" } },
+    "fact": { "type": "array", "items": { "type": "string" } },
+    "follow_up": { "type": "array", "items": { "type": "string" } }
+  }
+}
