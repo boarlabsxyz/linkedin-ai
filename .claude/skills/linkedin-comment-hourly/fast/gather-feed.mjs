@@ -33,7 +33,11 @@
 // Exit codes (driver contract, mirrors linkedin-stats fast path):
 //   0  contract emitted; target reached or feed genuinely exhausted
 //   10 contract emitted; partial stop (deadline / rate-limit / classifier
-//      trouble / scroll cap) — accepted posts, if any, are still draftable
+//      trouble / scroll cap) — accepted posts, if any, are still draftable —
+//      or an accepted post shipped without a permalink (PERMALINKS_MISSING>0
+//      in the contract; the driver treats that as an error and schedules a
+//      post-landing heal — user-mandated 2026-07-21 after a draft went to
+//      Slack with no post link)
 //   20 auth/checkpoint wall
 //   21 profile busy (another Chrome owns the profile)
 //   22 rate-limited with nothing accepted
@@ -306,10 +310,13 @@ async function classifyBatch(cands) {
 
 // Port of the agent's step 3d. ONE evaluate (intercept clipboard.writeText,
 // open the card's control menu, click "Copy link to post") + ONE in-browser
-// navigation to resolve the lnkd.in short link. Best-effort: any failure
-// leaves urn/post_url null and never blocks drafting. The card is addressed by
-// the run-local data-fg-id tag, not by author (authors are not unique on a
-// feed page).
+// navigation to resolve the lnkd.in short link. A failure leaves urn/post_url
+// null and never blocks drafting, but it is NOT silently tolerated anymore:
+// the contract carries PERMALINKS_MISSING and the exit demotes to 10 so the
+// driver flags the fire and schedules a post-landing heal (2026-07-21: a
+// draft reached Slack as "no stable permalink" for a post that had one). The
+// card is addressed by the run-local data-fg-id tag, not by author (authors
+// are not unique on a feed page).
 const RECOVER_EVAL = async (fgId) => {
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const card = document.querySelector(`[data-fg-id="${fgId}"]`);
@@ -345,10 +352,22 @@ const RECOVER_EVAL = async (fgId) => {
     btn.scrollIntoView({ block: 'center' });
     await sleep(300);
     btn.click();
-    await sleep(800);
-    const cand = Array.from(document.querySelectorAll('[role="menuitem"], [role="button"], button, span, div'))
-      .find((el) => /^copy link to post$/i.test((el.innerText || '').trim()));
-    if (!cand) { document.body.click(); return { shortUrl: null, err: 'no-copy-item' }; }
+    // The dropdown renders async — poll up to ~3.2s instead of one fixed
+    // 800ms look (a slow menu produced the 2026-07-21 no-copy-item miss).
+    let cand = null;
+    for (let waited = 0; !cand && waited < 3200; waited += 400) {
+      await sleep(400);
+      cand = Array.from(document.querySelectorAll('[role="menuitem"], [role="button"], button, span, div'))
+        .find((el) => /^copy link to post$/i.test((el.innerText || '').trim()));
+    }
+    if (!cand) {
+      // Report what the menu actually held — the heal session's first
+      // question is "did the item text change or did the menu not render".
+      const items = Array.from(document.querySelectorAll('[role="menuitem"]'))
+        .map((el) => (el.innerText || '').trim().split('\n')[0]).filter(Boolean).slice(0, 12);
+      document.body.click();
+      return { shortUrl: null, err: `no-copy-item (menu: ${items.join(' | ') || 'nothing rendered'})` };
+    }
     cand.click();
     await sleep(700);
   } finally {
@@ -453,9 +472,18 @@ async function recoverPermalink(page, cand) {
   // short link → verified /posts/ page (lnkd.in serves a reCAPTCHA page to
   // curl since 2026-07-16, so server-side resolution is not an option).
   try {
-    const res = await page.evaluate(RECOVER_EVAL, cand.fgId);
+    let res = await page.evaluate(RECOVER_EVAL, cand.fgId);
     await sleep(500);
-    const capturedUrl = (res?.shortUrl && /^https?:\/\//.test(res.shortUrl)) ? res.shortUrl : null;
+    let capturedUrl = (res?.shortUrl && /^https?:\/\//.test(res.shortUrl)) ? res.shortUrl : null;
+    if (!capturedUrl && !outOfTime()) {
+      // One reopen-and-retry: a first-open miss is usually menu timing, not
+      // structure — cheap insurance before the fire gets flagged for heal.
+      log(`recovery for ${cand.key} captured nothing (${res?.err || 'no result'}) — retrying once`);
+      await sleep(800);
+      res = await page.evaluate(RECOVER_EVAL, cand.fgId);
+      await sleep(500);
+      capturedUrl = (res?.shortUrl && /^https?:\/\//.test(res.shortUrl)) ? res.shortUrl : null;
+    }
     if (!capturedUrl) {
       log(`recovery for ${cand.key} captured nothing: ${res?.err || 'no result'}`);
       return;
@@ -704,6 +732,10 @@ function emitContractInner(feedExhausted, endReason) {
   kv.push(`SCROLL_ITERATIONS=${counters.scrollIterations}`);
   kv.push(`FEED_EXHAUSTED=${feedExhausted}`);
   kv.push(`GATHER_END_REASON=${endReason}`);
+  // Accepted posts whose permalink capture failed end-to-end. >0 is an error
+  // signal to the driver (post-landing heal), not a contract breaker — the
+  // drafts still ship.
+  kv.push(`PERMALINKS_MISSING=${accepted.filter((c) => !c.postUrl).length}`);
   kv.push(`OUT_DIR=${OUT_DIR}`);
   accepted.forEach((c, idx) => {
     const i = idx + 1;
@@ -726,6 +758,7 @@ function emitContractInner(feedExhausted, endReason) {
     ts: nowIso(), elapsed_secs: Math.round((Date.now() - t0) / 1000),
     end_reason: endReason, feed_exhausted: feedExhausted,
     accepted: accepted.map((c) => c.key),
+    permalink_missing: accepted.filter((c) => !c.postUrl).map((c) => c.key),
     counters,
     classify_calls: classifyCalls,
     failed_ladders: failedLadders,
@@ -937,7 +970,10 @@ async function main() {
   // full/exhausted run needs zero failed ladders to claim exit 0.
   if (failedLadders > 0 && totalVerdicts === 0) return 31;
   if (stopReason === 'rate-limited' && accepted.length === 0) return 22;
-  if ((endReason === 'target' || endReason === 'exhausted') && failedLadders === 0) return 0;
+  // A missing permalink on an accepted post demotes an otherwise-clean run
+  // to partial: the drafts ship, but the fire must not read as green.
+  if ((endReason === 'target' || endReason === 'exhausted') && failedLadders === 0
+    && accepted.every((c) => c.postUrl)) return 0;
   return 10;
 }
 
