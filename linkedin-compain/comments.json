@@ -6838,5 +6838,231 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "viktoriia-prydatko-038e860d",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/viktoriyaprydatko/",
+    "author_name": "Viktoriia Prydatko",
+    "author_headline": "Executive Search & Tech Recruiting | Product Company Hiring | Senior & Complex Roles | Executive search | Talent acquisition partner | Recruitment Agency Founder",
+    "time_ago": "4d",
+    "post_text": "Приходьте, будемо відповідати на ті питання, на які не встигли в минулу зустріч. І якщо ви хочете запис першої зустрічі, ставьте +, ми поділимось :)\nНаша команда закриває дуже складні технічні та менеджерські ролі вже 16 років. Для нас критично важливо, щоб стандарт роботи з компаніями, якість і швидкість пошуку, процес переговорів завжди були на високому рівні — відповідно до того, куди рухається технологічний світ. Тому ми завжди робимо дуже багато проектів: від зарплатних репортів до щоденних інсайтів «з поля», щоб ми і ринок могли зростати й піднімати планку.\nТому ми вирішили в липні провести відкритий вебінар саме для рекрутерів і сорсерів.\nПоговоримо про те, які скіли зараз треба мати МАСТ, щоб бути дійсно ефективним у цій ролі. З наших внутрішніх стандартів це:\nАвтономність, самостійність у прийнятті рішень\nШвидкість\nВідповідальність та рефлексія\nВміння компактно та професійно донести інформацію\nОрієнтація на бізнес (підприємницьке мислення)\nРозуміння того, куди рухаються технології, та адекватна оцінка того, де нам бути стосовно цього\nЩо зараз очікують клієнти в робочих процесах. Як зростати у професії, щоб мати можливість працювати в кращих командах. Поділимося тим, на що дивимося ми, і що ми бачили в останніх процесах і співбесідах із рекрутерами.\nРобочими кейсами також поділимося — з перспективи саме скілів.\nХочемо мати інтенсивну розмову, яка зацікавить сильних рекрутерів і завдяки якій ми всі зможемо знайти цікаві точки росту.\nShow translation\nPreviously live\n0:00\n/\n1:11:30\n1x\nEvent ended\nВідкрита зустріч з рекрутерами та сорсерами\nLinkedIn Live\nViktoriia Prydatko and 11 other attendees\nView event",
+    "scraped_at": "2026-07-21T06:23:25Z",
+    "disposition": "off-topic",
+    "reason": "Tech recruiting webinar; not focused on AI, startups, or entrepreneurship",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrew-amann-0358aec2",
+    "urn": "urn:li:ugcPost:7485005449252040704",
+    "post_url": "https://www.linkedin.com/posts/andrewamann_your-company-chose-gpt-4-last-year-cool-ugcPost-7485005449252040704-SY5y/",
+    "author_url": "https://www.linkedin.com/in/andrewamann/",
+    "author_name": "Andrew Amann",
+    "author_headline": "🤖 CEO of the Top AI Development Agency in America ➡️ Previously a Nuclear Submarine Engineer 🏗️ Built 150+ Products 🚀 Launched 14 Startups💲3 Acquisitions 💡 20+ US Patents 📈 5 years, Inc 5000 🎤 AI Speaker",
+    "time_ago": "14h",
+    "post_text": "Your company chose GPT-4 last year. Cool.\nNow Claude is better. So you rebuild everything.\nNext quarter, Gemini takes the lead. Rebuild again.\nThis is the cycle most enterprise AI projects are stuck in. They're betting on the model when they should be building the layer underneath it.\nAt NineTwoThree, we don't build around a single model. We build an Intelligence Layer that sits between your data and whatever model happens to be state of the art. Permissions. Memory. Evaluations. PII detection. Scoped context construction. Guardrails on every input and output.\nThat layer is model-agnostic. When GPT gets outperformed, we swap the reasoning engine. The business logic, the integrations, the workflows, the security model. All of it stays.\nHere's what most teams miss. The real moat isn't the harness you build on day one. It's the enterprise intelligence that compounds over the engagement. Every new data source, every workflow, every evaluation, every permission rule makes the platform more valuable. And none of it depends on which model is winning this month.\nIf your AI strategy starts and ends with \"which model should we use,\" you're building on sand.\nThe question that matters: are you building intelligence that compounds, or are you rebuilding every time the leaderboard shifts?",
+    "scraped_at": "2026-07-21T06:38:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The permissions/guardrails point is the one that actually held up for us in production, not just on a slide. On BankAI (pre-ChatGPT production GenAI for a German bank), we built exactly that kind of layer out of necessity: by default the model was forbidden to do anything, it had to ask a separate system \"can I do this, in this way?\" before acting, and that system decided what was actually allowed.\n\nThat layer is what let it run in production for years and get acquired in 2023 — and it's also what let the business logic survive once general models caught up and eventually outperformed it in 2025. What I'd add is that the layer itself isn't cheap to get right; ours took real iteration on where to draw the permission boundaries, and that cost rarely shows up in the \"just swap the reasoning engine\" version of this pitch.",
+        "rationale": "Petro actually built the exact permissions/guardrails layer the post describes (BankAI, pre-ChatGPT), so the agreement is evidence-backed rather than generic."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The \"permissions, memory, evals, guardrails\" layer holds up fine when models trade places but keep the same interface — same prompt-in, text-out shape, just a better scorer behind it.\n\nWhat I'd want to pressure-test: what happens when the shift isn't ranking but shape — say moving from a single-shot completion model to one that plans and calls tools on its own mid-task. Does scoped context construction survive that unchanged, or does the layer end up needing its own rebuild, just one level up from where teams were rebuilding before?",
+        "rationale": "Presses on the post's unstated assumption (that the layer stays fixed while only model rank changes), pulling the thread toward a real blindspot — shape shifts, not just leaderboard shifts."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The evaluations piece is the one I'd want to dig into more than the others in that list.\n\nWhen you swap the reasoning engine, do the same eval suites and pass thresholds still tell you the truth, or does each new \"state of the art\" model quietly need its own recalibration — different failure modes, different score baselines? Curious how much of \"the layer stays\" actually holds for evals specifically, versus permissions and memory, which feel more mechanically model-agnostic by design.",
+        "rationale": "Isolates the one component of the Intelligence Layer (evals) whose model-agnosticism is least obvious, inviting a substantive answer."
+      }
+    ],
+    "slack_summary": "Enterprise AI teams keep rebuilding around each new leading model; he pitches a model-agnostic \"Intelligence Layer\" that compounds instead.",
+    "slack_ts": "1784615932.969289",
+    "slack_thread": {
+      "post_reply_ts": "1784615947.753919",
+      "draft_reply_ts": [
+        "1784615954.891779",
+        "1784615961.446639",
+        "1784615967.106089"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "denys-osadchyi-0574bb1e",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/denys-osadchyi/",
+    "author_name": "Denys Osadchyi",
+    "author_headline": "Product AI Design Engineer · Ships products, not mockups · Founder @ MD Academy",
+    "time_ago": "17h",
+    "post_text": "Connect\nДва місяці шукаю роботу і не розумію, чому з моїми скілами і досвідом це взагалі має бути складно. AI Design Engineer, 15+ років продуктового дизайну. Будую AI-воркфлоу для дизайн-команд, роблю open-source інструменти для дизайнерів, сам пишу фронтенд продакшен-рівня і тримаю власну інфраструктуру. Профіль, який, здавалося б, має відкривати двері.\nІ я не про нетворкінг. Люди самі пишуть з пропозиціями співпраці і просто познайомитись, це працює нормально. Я про класичний пошук, коли ти сам подаєшся на вакансію.\nІ ось цей класичний пошук виглядає як дикий гостинг із психологічної драми Netflix.\nСценарій приблизно такий. Подаюсь на релевантну позицію. Пишу детальний ковер: чому підходжу, які мої сильні сторони, що компанія реально виграє з найму. Натискаю відправити. І далі пустота. Чорна діра.\n20 заявок, кожна під мій досвід. Жодна компанія не відповіла. Ні так, ні ні. Серед них великі гравці, у яких точно є процес для поданих заявок, і все одно тиша.\nІ я справді не розумію. Чому так відбувається? В чому причина? Навіщо це так влаштовано? І головне, що робити далі. Ці питання ставлю не тільки я, їх ставлять і колеги, які теж зараз у пошуку.\nМоже, я чогось не бачу зі свого боку, тому питаю чесно. Якщо ти наймаєш і знаєш, де такі заявки зникають, розкажи, мені справді цікаво. Якщо ти теж шукаєш, напиши, як воно в тебе. А якщо у вас є роль, де дизайн і код одне ціле, ви знаєте, де мене знайти.\nКонтакти і портфоліо в першому коментарі. Дякую за репости, вони допомагають тим, хто теж у цій чорній дірі.",
+    "scraped_at": "2026-07-21T06:39:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "20 заявок під релевантний досвід і повна тиша навіть від великих компаній з власним процесом — оце найбільше зачепило, бо тиша там означає щось конкретне, а не оцінку тебе.\n\nМи в S&F постійно наймаємо, і чесно скажу: класичний канал \"подався на вакансію\" у нас теж найслабший, навіть коли лист написаний ідеально. На вхідному фільтрі рідко хтось встигає дочитати ковер-леттер, там переважно обсяг і ключові слова, і мовчання найчастіше означає, що жива людина ще навіть не дійшла до заявки, а не що тебе відхилили. Ти сам пишеш, що нетворкінг у тебе працює нормально — цікаво, що там інакше: пряме звернення до людини, яка веде команду, чи щось третє?",
+        "rationale": "Author directly asks hiring people why applications vanish; Petro currently hires at S&F and can give a real disagreement/counter-view on the assumed cause."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "Фраза про роль, де дизайн і код одне ціле, — це та частина посту, яка найбільше зачепила, бо це доволі вузька комбінація.\n\nПитання: ці 20 заявок — все на вже опубліковані вакансії, чи є серед них компанії, де такої окремої позиції ще формально не існує? З мого досвіду найму гібридні ролі рідко народжуються з форми заявки, вони частіше з'являються з розмови, коли команда бачить конкретну проблему, яку людина може закрити. Якщо так, цікаво, чи пробував заходити не через \"вакансію\", а напряму до команди з питанням \"чи є у вас задача, яку я міг би зробити\"?",
+        "rationale": "The design-plus-code-as-one-role line is an under-examined variable — asking whether applications targeted already-posted roles vs. unformed hybrid ones pulls the discussion toward a concrete, actionable angle."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Теза, що це не про нетворкінг, а саме про класичний пошук, — точна, бо це справді дві різні системи з різною механікою.\n\nА що як причина не в тому, що заявки губляться, а в тому, що профіль буквально не влазить у жодну коробку, по якій сортує рекрутер чи ATS? Одночасно дизайнер і інженер продакшн-рівня — для системи, яка ділить \"дизайнер\" і \"інженер\" на окремі списки, це не сильна сторона, а сигнал \"не підходить під жодну вакансію\". Тоді питання вже не \"де губляться заявки\", а чи взагалі маѕ сенс подаватись у форму під вузьку роль, замість того, щоб цілитись напряму в компанії, де така гібридна роль уже існує неформально.",
+        "rationale": "Reframes the mystery from a hiring-side lens the author himself invited — his exact hybrid profile may be unclassifiable to ATS/recruiter buckets, sharpening the why into something actionable."
+      }
+    ],
+    "slack_summary": "AI design engineer with 15+ years of experience describes 20 tailored job applications vanishing into silence and asks hiring folks why.",
+    "slack_ts": "1784615990.311269",
+    "slack_thread": {
+      "post_reply_ts": "1784616010.001239",
+      "draft_reply_ts": [
+        "1784616022.939679",
+        "1784616032.185979",
+        "1784616041.612029"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "howard-holton-6ed51f6d",
+    "urn": "urn:li:ugcPost:7485078238910816258",
+    "post_url": "https://www.linkedin.com/posts/howardholton_its-harder-to-steal-an-f150-from-your-fleet-ugcPost-7485078238910816258-GBwK/",
+    "author_url": "https://www.linkedin.com/in/howardholton/",
+    "author_name": "Howard Holton",
+    "author_headline": "Strategic Advisor and Analyst | Keynote Speaker | Lead Analyst | Leading Digital Transformation for Large Enterprises",
+    "time_ago": "9h",
+    "post_text": "It's harder to steal an F150 from your fleet than to attack your cyber presence.\nHugging Face just got breached by an autonomous AI agent. No human at the keyboard. 17,000 logged actions, a swarm of disposable sandboxes, and an entry point so boring it hurts: a malicious dataset. Same week, a threat actor used a free AI command-line tool to run a botnet of dental clinic PCs.\nDental clinics. The textbook \"we're not worth the attack investment\" target.\nThat comfort is dead. For years we moved at the pace our organizations would allow, and attack economics quietly covered the gap. Autonomous agents just collapsed the attacker's cost to near zero. \"Too small to target\" stopped being a category.\nTHE PRESSURE HAS CHANGED\nWe knew this day was coming. I wrote in May that attack automation is a decade old and the real shift would be automation that thinks. It arrived, and it beat an AI company on its own infrastructure.\nFive things that stop being negotiable today:\n- Zero external admin interfaces. Move them inside.\n- Kill the broad VPNs. Modern access only.\n- No more excuses on MFA. Anywhere.\n- No ancient equipment on the edge.\n- No more skipped maintenance windows to get sales back in faster. If you're breached, sales gets kicked out anyway, then explains to every customer why.\nCustomers will ask.\nAnd don't sprint out to buy shiny agentic-defense products. Reduce your attack surface, get the basics current, and make 100% sure you can recover.\nTO BOARDS: Ask your CISO what's on the \"too hard\" list. Fund it. That list is your actual risk register.\nTO CISOs: You already knew. This is your air cover. Bring the five items above with dates attached.\nTO CEOs: Back the maintenance window. The revenue you protect by skipping it is the revenue you'll spend explaining a breach.\nThe attackers went autonomous. The economics went to zero. Your excuses go next.\nThe \"Too Small to Hack\" Era Just Ended\nHoward Holton",
+    "scraped_at": "2026-07-21T06:40:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The number that actually lands for me is 17,000 logged actions — that's the real proof \"too small to target\" is dead, not the headline about who got hit.\n\nCurious about the detection timeline though: were those 17k actions caught close to real-time, or reconstructed afterward during incident response? The economics argument holds either way, but the defensible posture looks very different if your mean-time-to-detect against a swarm is hours versus weeks — a swarm that doesn't sleep, doesn't need a paycheck, and can spin up a new disposable sandbox the second one gets noticed.",
+        "rationale": "The 17,000-action number is the post's strongest evidence but leaves detection latency unaddressed — a specific technical question, not a generic tell-me-more."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The line that lands hardest here is \"don't sprint out to buy shiny agentic-defense products\" — reducing surface area beats bolting on more autonomy you don't fully control.\n\nBut if the attacker side is now running disposable sandboxes and deciding its next move on its own, isn't \"reduce surface, patch the basics\" a static target facing a moving one? I keep coming back to the same pattern from Anthropic's vending-machine experiment: the AI agent only stopped bleeding money once boring deterministic scaffolding — checklists, forced double-checks — got wrapped around it. Maybe the missing sixth item on your list isn't a defense agent at all, it's a rigid, fast containment loop that doesn't make judgment calls, just buys the human time to make one. Curious if any of the CISOs you talk to are actually building that versus just hardening the five items.",
+        "rationale": "Pulls in Petro's rigid-systems-plus-creative-AI thesis (Project Vend post) to sharpen the don't-buy-agentic-defense line into a concrete architectural question."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "\"Automation that thinks\" is the phrase that stuck with me — it names exactly the jump from scripted attacks to something that adapts mid-run.\n\nThe same curve is showing up here that we've watched on SWE-bench: models resolving real GitHub issues went from about 23% to 60%+ in roughly a year. If capability on structured technical tasks compounds at that rate, the \"thinking\" attacker you're describing isn't a one-time event, it's a trend line, and next year's version reads this list of five non-negotiables as day-one table stakes. Curious whether you're seeing defensive tooling compound anywhere near that same slope, or whether the growing gap between attacker capability and defender capability is the actual crisis underneath the basics list.",
+        "rationale": "Echoes Petro's known SWE-bench data point (23% to 60%+ resolve rate) from his own posted content to reframe the threat as a compounding trend, inviting the author's read."
+      }
+    ],
+    "slack_summary": "Autonomous AI agents just collapsed attack economics — \"too small to target\" is dead; five security basics stop being negotiable.",
+    "slack_ts": "1784616062.118979",
+    "slack_thread": {
+      "post_reply_ts": "1784616073.325769",
+      "draft_reply_ts": [
+        "1784616079.331149",
+        "1784616089.382309",
+        "1784616096.188449"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ara-khan-38517c4b",
+    "urn": "urn:li:share:7485070585149112321",
+    "post_url": "https://www.linkedin.com/posts/arafatkatze_calling-it-now-in-6-months-most-companies-share-7485070585149112321-mfdC/",
+    "author_url": "https://www.linkedin.com/in/arafatkatze/",
+    "author_name": "Ara Khan",
+    "author_headline": "Code Artisan",
+    "time_ago": "9h",
+    "post_text": "Calling it now, in 6 months most companies will just be self hosting OpenWeight models at 90% cheaper price point and if you don't hop on this right now you will be playing catch up.\nTo pursue self hosting, we simulated @cline live production traffic onto 8-GPU B200 nodes, measuring TTFT, per-stream speed, and cache hit rates and now we are sharing everything about self hosting so that you can  get all the open weight benefits like protecting your data, not being blocked by model nerfings of frontier labs and SAVING a lot of money.\nIf you are an AI engineer, a tech lead or in leadership at any AI company  and the AI spending is causing you stress, this blog will answer all of your questions about how to manage your money, engineering requirements and upholding quality. Most of you think that your only saving grace is using a cheaper model and begging providers for discounts but self hosting is the much better option for cheaper inference and data autonomy.\nYou don't have to do everything yourself, you can get really really far by just understanding how your own AI traffic is working and then getting any inference provider to work with you using the advice posted in the blog.\nSpecial thanks to @baseten (The OG @philipkiely ) and  @CoreWeave team for helping us understand inference and walking us through how to scale and try different traffic cases.\nWe encourage people to read through the blog and get the possible inference deals from any provider that works best for their specific use case.\nhttps://lnkd.in/dmZRegC8",
+    "scraped_at": "2026-07-21T06:41:51Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The TTFT and cache-hit-rate benchmarking is the part most self-hosting pitches skip — that's usually where the real cost surprises live, not the sticker price of the GPU hour.\n\nWe built something similar back in 2018 — a self-hosted GenAI system for a European bank, generating and validating investment and credit contracts in German, running before ChatGPT existed. Errors down 70%+, contract turnaround from 16 hours to 4. It got acquired for $2.5M in 2023 and only got shut down in 2025, once OpenAI's models finally caught up on that narrow task. What made it work wasn't a smarter stack — it was owning the full loop: data, latency, and the failure modes, instead of renting someone else's judgment call on how a model behaves this week.\n\nCurious whether you're seeing the same pattern — cost is the headline reason to self-host, but control over failure modes is the reason it sticks.",
+        "rationale": "Draws on Petro's own already-published BankAI self-hosting story — a directly analogous, document-verified anecdote instead of a generic agreement."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "Simulating live Cline traffic onto actual B200 nodes before committing is the right move — most self-hosting pitches skip that step and just extrapolate from a benchmark PDF.\n\nOne thing I'd want nailed down before quoting that 90% number to a CFO: does it fold in GPU amortization and the engineering hours to keep cache-hit rates high as traffic patterns shift, or is it purely token-cost-per-million against the frontier API price? The gap between those two numbers is usually where the self-hosting math either holds up or quietly falls apart.",
+        "rationale": "A concrete, specific question about what's baked into the headline 90% figure — invites real engineering-cost discussion rather than a vague tell-me-more."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The 90% number is the kind of thing that gets people moving, and simulating on B200s before committing is the right way to earn it.\n\nThe part I'd want to pressure-test: self-hosting fixes today's frontier-lab pricing and nerfing risk, but it also puts you on the hook for tracking every open-weight release, quantization scheme, and inference-engine bump yourself, indefinitely. What's the failure mode you'd worry about 12 months out — a team that self-hosted, stopped watching the model treadmill, and quietly fell behind the pace it was trying to escape?",
+        "rationale": "Pressure-tests the post's boldest claim (6-month industry shift) by naming a specific long-term blind spot — the ongoing maintenance treadmill — without contradicting the thesis."
+      }
+    ],
+    "slack_summary": "Predicts most companies will self-host open-weight models within 6 months at ~90% lower cost, sharing benchmarks from simulating Cline traffic on B200 nodes.",
+    "slack_ts": "1784616118.525569",
+    "slack_thread": {
+      "post_reply_ts": "1784616128.569409",
+      "draft_reply_ts": [
+        "1784616136.080589",
+        "1784616144.336889",
+        "1784616154.905589"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrew-amann-fb498fb2",
+    "urn": "urn:li:share:7483917987977273344",
+    "post_url": "https://www.linkedin.com/posts/andrewamann_sloppedinlinkedincover-share-7483917987977273344-DXOG/",
+    "author_url": "https://www.linkedin.com/in/andrewamann/",
+    "author_name": "Andrew Amann",
+    "author_headline": "🤖 CEO of the Top AI Development Agency in America ➡️ Previously a Nuclear Submarine Engineer 🏗️ Built 150+ Products 🚀 Launched 14 Startups💲3 Acquisitions 💡 20+ US Patents 📈 5 years, Inc 5000 🎤 AI Speaker",
+    "time_ago": "3d",
+    "post_text": "Most CEOs on LinkedIn are using Claude to write their posts.\nThat means Dario Amodei and Sam Altman are deciding what gets built.\nThey run an original thought through an AI model. If the model says \"that won't work,\" they don't ship it. If the model says \"good idea,\" they post it.\nSo your entire feed is tuned by the same two people.\nAlex Karp saw this coming in 2008. He bet on safe, secure, manageable AI when nobody cared. He's been saying the same thing for 18 years because the ideas are his. Not Claude's.\nAt NineTwoThree AI Studio, we don't generate ideas with AI. We run 30 active projects a month across profitable companies. Every insight comes from building real systems and seeing what works firsthand.\nWe think the best AI is no AI. Deterministic outputs. Systems that produce reliable results.\nWe're not on TechCrunch touting a $100 million valuation. We're helping companies increase revenue, hire more people, and prepare for what's next.\nOriginal ideas don't come from a prompt. They come from doing the work.\nWhat's the last idea you had that didn't need AI to validate?",
+    "scraped_at": "2026-07-21T06:42:53Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The part about running an idea through a model until it says \"good idea\" - I see that same pattern constantly, and it's a real failure mode. But \"the best AI is no AI\" goes further than my own experience does. What's worked for me isn't zero AI, it's a hard split: AI does the creative half, a deterministic layer decides what's actually allowed to ship. Cut AI out entirely and you lose a tool that's genuinely useful for the boring 80%; let it validate your ideas and you've just outsourced judgment to whoever trained the model.\n\nWhere do you draw that line at NineTwoThree - is AI out of execution too, or only out of the idea stage?",
+        "rationale": "Agrees with the anti-outsourced-judgment critique but pushes back on no-AI as too absolute, drawing on Petro's own deterministic-layer-plus-creative-AI thesis."
+      },
+      {
+        "strategy_label": "Share personal experience (BankAI)",
+        "comment": "Thirty active projects a month building real systems is exactly where insight should come from - that part I'd bet on every time. I built a self-hosted GenAI system for German banking in 2018, before ChatGPT existed, and it kept beating billion-dollar competitors on that narrow use case for years afterward. What made it work wasn't an idea validated by a bigger model, there was no bigger model yet. It was volume of actual usage telling us which parameter changes moved the needle and which didn't.\n\nThe lesson held even after ChatGPT arrived: narrow domain depth beats general capability, right up until the gap in raw capability gets too large to bridge. Original ideas surviving contact with production is the only validation that's ever mattered to me.",
+        "rationale": "Mirrors the author's insight-from-building-real-systems claim with Petro's own documented BankAI story — no invented experience."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Deterministic outputs as the design goal is a real position, not a slogan - most \"AI-first\" shops don't state it that plainly. Curious how that shows up in the actual delivery process across those 30 projects though: is \"no AI\" scoped to ideation and strategy, or does it extend into how the code itself gets written and reviewed?\n\nI ask because in my experience the two need very different guardrails. Keeping AI out of the idea stage is a discipline problem. Keeping it out of execution is an architecture problem. Conflating them is where most \"no AI\" claims quietly turn into marketing.",
+        "rationale": "Probes an unaddressed variable (scope of no-AI) the author's absolute framing left open, requiring a real answer not a generic reply."
+      }
+    ],
+    "slack_summary": "Argues CEOs who let Claude validate their ideas outsource judgment to AI labs; his agency generates ideas from building, claiming \"the best AI is no AI\".",
+    "slack_ts": "1784616179.163179",
+    "slack_thread": {
+      "post_reply_ts": "1784616188.241769",
+      "draft_reply_ts": [
+        "1784616195.099849",
+        "1784616201.654599",
+        "1784616208.724709"
+      ]
+    },
+    "slack_error": null
   }
 ]
