@@ -29,7 +29,7 @@ jobs:
     outputs:
       main_updated: ${{ steps.scrape.outputs.main_updated }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Run weekly scrape
@@ -53,18 +53,18 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
       - name: Emit flat stats.json for Grafana
         run: |
           mkdir -p pages-dist
           node .github/scripts/build-stats-json.mjs --out pages-dist/stats.json
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: pages-dist
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

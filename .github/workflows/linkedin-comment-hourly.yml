@@ -33,7 +33,7 @@ jobs:
     # Slack bookend only ~10s to post.
     timeout-minutes: 180
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Run comment-drafts pipeline
