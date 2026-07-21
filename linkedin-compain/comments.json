@@ -7064,5 +7064,294 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "putri-karunia-e3256d94",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/putrikarunia/",
+    "author_name": "Putri Karunia",
+    "author_headline": "Founder at Lunagraph.com  |  Design engineering partner for startups | prev. Typedream (YC W20, acq)",
+    "time_ago": "13h",
+    "post_text": "real question: am i designing or coding?👀\ndesign and code have always been 2 jobs, 2 steps, 2 platforms.\nbut here on Lunagraph, the canvas is React code:\n→ i'm editing real H2s\n→ i'm adding a real Button.tsx\n→ selecting variants from the codebase\nit's not \"export as React.\"\nthere's no MCP step to rebuild the UI.\nwhat i designed already is the right code and styling.\nit's about time we design with code.",
+    "scraped_at": "2026-07-21T07:55:35Z",
+    "disposition": "off-topic",
+    "reason": "Design-to-code tool workflow, no AI/startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andrii-zhulidin-63e1b6a2",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/zhulidin/",
+    "author_name": "Andrii Zhulidin 👽",
+    "author_headline": "Product Design Leader building AI products",
+    "time_ago": "1w",
+    "post_text": "Connect\nМинулого тижня презентував команді оновлений дизайн BOOSTERS. Працювали над ним втрьох, без залучення агенції. Misha Galian 🇺🇦 задавав візію, я відповідав за артдирекшн і веб, а Hordiy Vasylash — за концепції та графічний дизайн.\nМи називаємо це саме редизайном, а не ребрендингом. Тому що не змінювали сутність бренду. А намагалися точніше її виразити. У центрі залишилося те, чим Boosters був завжди: поєднання двох світів — філософії Бусідо та естетики командної гри.\nСам по собі редизайн і його анонс — це лише 20% роботи. Попереду ще багато роботи над оновленням та розвитком стилю.\nГордій на прохання описати процес цього редизайну одним словом сказав: «Шлях».\nЩо ж. Дякую Misha Galian 🇺🇦 та Hordiy Vasylash за те, що пройшли цей шлях разом. 💖\nbefore / after в коментарях",
+    "scraped_at": "2026-07-21T07:55:58Z",
+    "disposition": "off-topic",
+    "reason": "Product branding redesign and design process, no AI/startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "olga-tsapro-39d2bcb5",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/olga-tsapro-52b8a640/",
+    "author_name": "Olga Tsapro",
+    "author_headline": "HR Director в Arterium",
+    "time_ago": "1d",
+    "post_text": "Шукаємо кандидата на 100%.\nЗнаходимо на 70% — відмовляємо.\nЗнаходимо на 80% — думаємо.\nЗнаходимо на 90% — просимо ще одну співбесіду.\nЧерез 2 місяці кандидат на 70% вже працює у конкурентів, навчився, адаптувався та приносить результат.\nА ми все ще шукаємо того самого «ідеального».\nІноді достатня якість сьогодні приносить більше користі,\nніж ідеальність завтра.\n#HR #Рекрутинг #Управління #Лідерство",
+    "scraped_at": "2026-07-21T07:56:34Z",
+    "disposition": "off-topic",
+    "reason": "Generic HR hiring philosophy, no AI or startup substance.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "arseny-hofman-0c6409a9",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/aruseni/",
+    "author_name": "Arseny Hofman",
+    "author_headline": "Founder | hvirtka.com | Friend-matching platform",
+    "time_ago": "4d",
+    "post_text": "Дві прогулянки. Понеділок та середа. Якщо ваші прогулянки закінчуються не так, навіть не кличте мене. 😅",
+    "scraped_at": "2026-07-21T07:56:38Z",
+    "disposition": "off-topic",
+    "reason": "Personal life anecdote about walks, no AI/startup relevance.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "luca-bonmassar-f568279b",
+    "urn": "urn:li:share:7484959779891593216",
+    "post_url": "https://www.linkedin.com/posts/lucabonmassar_the-first-time-we-had-access-to-fable-it-share-7484959779891593216-_899/",
+    "author_url": "https://www.linkedin.com/in/lucabonmassar/",
+    "author_name": "Luca Bonmassar",
+    "author_headline": "CTO at Checkr | Engineering leader across Fintech, Crypto & AI | 3x Founder (acquired) | Ex-Coinbase VP, Citadel",
+    "time_ago": "18h",
+    "post_text": "The first time we had access to Fable, it was only for 72 hours. On the first day, it cleared a backlog we'd been ignoring for years.\nEvery security team has one. You stay on top of the critical findings, the P0s and P1s, because you have to. The lower-severity findings keep piling up until there are thousands that no one realistically has time to review.\nWe had around 10,000 of them, collected over the years by tools like SonarQube and ArmorCode.\nWe pointed Fable at the entire backlog.\nIn just a few hours, it reviewed all 10,000 findings, validated them, flagged the false positives, and explained the reasoning behind every decision.\nOur security engineers stayed in the loop the entire time, reviewing its work and overruling it whenever they disagreed.\nBy the end of the day, we had cleared a backlog that would have taken months, or even quarters, to work through by hand.\nThe backlog was the obvious win. But the more interesting implication is code auditing. A full manual audit of a large codebase can take years, and the code changes faster than any team can finish. Most organizations don't seriously attempt it for that reason.\nIt's great that our access has been restored! There's a lot more to test.",
+    "scraped_at": "2026-07-21T08:05:50Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "10,000 findings triaged with reasoning attached in a few hours is a number that actually means something, most \"AI cleared our backlog\" posts skip that context.\n\nWhat I'm more curious about: once your security engineers reviewed Fable's calls, what was the overrule rate? Single digits, or closer to what you'd see reviewing a junior's first pass? That number tells you more about whether this scales to full codebase audits than the raw throughput does.",
+        "rationale": "The overrule rate is the number that actually tells you whether the tool is trustworthy at scale, and the post gives no numbers on it."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The audit implication is the sharper point buried in this post. A full manual audit already can't keep pace with how fast a codebase changes, which is why most orgs quietly stop attempting it.\n\nIf the code moves faster than any team, human or AI, can fully audit, doesn't that make the code itself the wrong thing to be judging at any given moment? The auditable artifact might need to be the behavior the code is supposed to satisfy, not a snapshot of the code. Curious whether that's a reframe you'd push back on, or something that's already implicit in how you're pointing Fable at things.",
+        "rationale": "Luca's own \"code changes faster than any team can audit\" observation is the seam to push on Petro's contrarian position (behavior/spec as the real source of truth) without pitching True BDD."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The part that stands out to me isn't the speed, it's that your engineers stayed in the loop and could overrule it. That's the difference between an audit tool and a black box you just trust.\n\nWe ran into a similar shape of problem building a self-hosted GenAI system for German banks, pre-ChatGPT, validating credit and investment contracts. The only way we got comfortable shipping it was the same mechanism: humans stayed in the decision path until the error rate proved itself out, which got contract errors down 70%+ and cut creation time from 16 hours to 4. The trust never lived in the model, it lived in the loop staying closed.\n\nAre you planning to keep the overrule step as permanent infrastructure, or does it taper off once Fable earns enough track record on your specific codebase?",
+        "rationale": "The BankAI project (self-hosted GenAI for German banks, human-in-the-loop validation) is a directly analogous human-overrule story from documented history."
+      }
+    ],
+    "slack_summary": "Checkr's CTO says Anthropic's Fable triaged their 10,000-finding security backlog in hours, engineers overruling it — and sees code auditing as the bigger play.",
+    "slack_ts": "1784621157.098979",
+    "slack_thread": {
+      "post_reply_ts": "1784621165.119319",
+      "draft_reply_ts": [
+        "1784621170.745879",
+        "1784621176.874559",
+        "1784621184.643459"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "the-pragmatic-engineer-35375c78",
+    "urn": "urn:li:ugcPost:7484955745005006848",
+    "post_url": "https://www.linkedin.com/posts/what-is-token-harder-vs-token-smarter-ugcPost-7484955745005006848-l9kD/",
+    "author_url": "https://www.linkedin.com/company/the-pragmatic-engineer/posts/",
+    "author_name": "The Pragmatic Engineer",
+    "author_headline": "Learn more",
+    "time_ago": "18h",
+    "post_text": "What is “token harder” vs “token smarter”? Dex Horthy, founder of HumanLayer:\n“So, on token harder: I’m in a group chat called Hyper Engineering. It’s all people trying to max out their cloud subs. It’s like ‘I’ve got six Claude code accounts, and I’ve gotten all of them maxed out every five hour period. So I always use all the tokens.’\nThe goal is optimizing for utilization and efficiency of one node in your factory rather than the end to end goal of how do we ship value in things that people like that are stable and will last a long time.\nThat’s my idea of token harder.\nAnd my take on token smarter is: how do I move faster? How do I get as much value out of AI as I can without having to turn the lights off while still maintaining control and taste and judgment and understanding the system architecture? And having a lot of applying my hard won opinions through 10 years of software engineering to the design of the program. So that I can feel confident that the code’s going to get better and more maintainable over time.”\nLearn more about context engineering, loop engineering and how Dex Horthy’s approach to AI-assisted software has evolved, on The Pragmatic Engineer podcast:\n• YouTube: https://lnkd.in/dgzhQqcS\n• Spotify: https://lnkd.in/dgeNMuEv\n• Apple: https://lnkd.in/dNSn8hQY\n• Summary and transcript: https://lnkd.in/dJB4vzCe",
+    "scraped_at": "2026-07-21T08:07:31Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"one node in your factory\" line is the sharpest part of this — it names exactly what a maxed-out subscription screenshot is actually optimizing for.\n\nHere's what worries me about \"token smarter\" though: it's basically invisible in the short run. A maxed quota is legible proof of effort to a manager or a group chat. Taste, judgment, restraint — those only show up as evidence six months later, when the codebase either still holds together or doesn't. What's the earliest signal you'd trust that someone's actually doing the smarter version, before you have a year of maintenance history to check it against?",
+        "rationale": "Names the \"one node in your factory\" framing specifically, then sharpens the asymmetry: token-harder is legible/broadcastable while token-smarter is only provable in hindsight."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The \"confidence the code's going to get better and more maintainable over time\" bit is the real bar for me, not whichever model shipped last week.\n\nWe've watched this across model generations at Speed & Function: every time a flashier release lands, someone expects a jump in code quality, and it just doesn't show up — what a human would call \"good code\" barely moves release to release. What actually changed for us was learning to cut a task small enough that AI could finish it in one clean pass, and getting fast enough at review to catch what a slower human writer would've been caught on too. That's closer to what Horthy calls token smarter than any model swap ever was for us.",
+        "rationale": "Draws on a transcript-backed observation (2026-06-12, token economy and code quality not scaling with model releases) to ground the smarter side in Petro's own Speed & Function experience."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Six Claude Code accounts maxed out every five hours is a very specific kind of proof-of-work — a good, concrete example of the trap.\n\nCurious about the practical side of \"token smarter\": when it's genuinely ambiguous whether burning more tokens on retries would be faster than stopping to rethink the architecture, what's the tell you use to catch yourself before you slide into \"harder\" mode without noticing?",
+        "rationale": "Zeroes in on the concrete \"six Claude Code accounts\" anecdote and asks a specific, answerable question about the moment-to-moment judgment call."
+      }
+    ],
+    "slack_summary": "Dex Horthy contrasts \"token harder\" (maxing out Claude subscriptions) with \"token smarter\" (taste, judgment, maintainable code) on the podcast.",
+    "slack_ts": "1784621257.277359",
+    "slack_thread": {
+      "post_reply_ts": "1784621267.136369",
+      "draft_reply_ts": [
+        "1784621273.817039",
+        "1784621279.725299",
+        "1784621285.216989"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "nimish-gatam-88c14574",
+    "urn": "urn:li:share:7485230613361389568",
+    "post_url": "https://www.linkedin.com/posts/nimish-g%C3%A5tam-44125512_anthropic-while-doing-cool-research-does-share-7485230613361389568-Ci_z/",
+    "author_url": "https://www.linkedin.com/in/nimish-g%C3%A5tam-44125512/",
+    "author_name": "Nimish Gåtam",
+    "author_headline": "VP of AI Engineering | Fractional CTO consultant | Policy and Responsible AI | Ex-CTO | Ex-Wikipedia",
+    "time_ago": "40m",
+    "post_text": "Anthropic, while doing cool research, does it in the dark and says “trust me bro”.\nMeanwhile they have no trouble “destilling” off the Chinese models they decry for “destilling” off them.\nI’m not familiar with Qwen’s exact licensing agreements, but even if it was full MIT/GNU it feels ethically wrong that one company is freely releasing models for the world to use, learn from and study, while another company is trying to get them banned and sued while shamelessly exploiting their work.\nHarald Schäfer\n• 2nd\nChief Technology Officer at comma.ai\n12h •\nFollow\nOpus 4.8 was distilled from Qwen. This is 100% real, I didn't even have to mess with the settings, got it after 3 requests.\nI guess every accusation really is a confession.\nDid nobody at anthropic think to try asking in Chinese? Did nobody feel embarrassed about the distillation attack blogs, knowing they train on chinese models?",
+    "scraped_at": "2026-07-21T08:09:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The asymmetry you're pointing at is fair: you don't get to sue over distillation and then shrug if you did the exact same thing.\n\nBut \"asked it three times and it admitted it\" isn't evidence, it's the failure mode. Chat models have no privileged access to their own weights or training data. Push a leading question hard enough and they'll produce a confident, fluent answer that has nothing to do with what actually happened under the hood. If Opus really trained on Qwen's outputs, that shows up in output distributions or benchmark artifacts, not in a transcript of the model agreeing with the premise you handed it. What would you actually count as evidence here, beyond self-report?",
+        "rationale": "The post's only proof is a self-report from the model — a well-known LLM failure mode — so a technical pushback on evidence quality fits Petro's anti-hype voice without attacking the author."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The double standard, if real, is worth calling out loudly.\n\nBut the standard of proof here, three prompts and a confident answer, would just as easily \"prove\" that every model on the market secretly runs on every other model's outputs, since they all confabulate lineage the same way under a leading question. The actually interesting question nobody's asking: what test would settle this either way, output-distribution comparison against Qwen, perplexity on Qwen-generated text, something else? Right now the debate is \"do you trust the blog post\" versus \"do you trust the screenshot,\" and neither side can verify the other.",
+        "rationale": "Reframes the argument from tribal (Anthropic vs Qwen) to epistemic (what would actually count as proof), pulling the thread somewhere sharper without picking a side."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The ethical case, one company suing over a practice it might use itself, doesn't actually need the distillation claim to be literally true to land.\n\nWhat exactly does \"distilled from Qwen\" mean in the screenshot: logit-level distillation on Qwen's outputs, fine-tuning on Qwen-generated synthetic data, or just that the model's phrasing pattern-matches Qwen when asked in Chinese? Those are three different technical claims with three different evidence bars, and right now a single self-report is being used to settle all three at once.",
+        "rationale": "Separates the ethical-double-standard point from the shaky technical claim by asking which of three very different meanings of \"distilled\" is actually being alleged."
+      }
+    ],
+    "slack_summary": "Accuses Anthropic of a double standard: decrying distillation while a screenshot claims Opus 4.8 \"admits\" it was distilled from Qwen.",
+    "slack_ts": "1784621359.849749",
+    "slack_thread": {
+      "post_reply_ts": "1784621367.398039",
+      "draft_reply_ts": [
+        "1784621377.303869",
+        "1784621383.590849",
+        "1784621389.026759"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "tanya-melikova-6d2aa108",
+    "urn": "urn:li:share:7481241827375824896",
+    "post_url": "https://www.linkedin.com/posts/tetiana-melikova_%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BD%D1%96%D0%BC-%D1%87%D0%B0%D1%81%D0%BE%D0%BC-%D1%8F-%D0%B2%D1%81%D0%B5-%D1%87%D0%B0%D1%81%D1%82%D1%96%D1%88%D0%B5-%D0%B1%D0%B0%D1%87%D1%83-%D0%BE%D0%B4%D0%BD%D1%83-%D0%B9-share-7481241827375824896-1EBR/",
+    "author_url": "https://www.linkedin.com/in/tetiana-melikova/",
+    "author_name": "Tanya Melikova 🇺🇦",
+    "author_headline": "20+ years HRD, HR consulting, Career consulting, Talent Management, HR and Recruitment audit",
+    "time_ago": "1w",
+    "post_text": "Останнім часом я все частіше бачу одну й ту саму вимогу від клієнтів: кандидати повинні не просто знати про AI, а активно використовувати його у своїй щоденній роботі.\nБільше того, деякі компанії вже вводять окреме шкалювання кандидатів за рівнем використання AI. Від «просто користується ChatGPT» до побудови складних workflows, роботи з AI-агентами та управління процесами, де AI виконує значну частину роботи, а людина контролює, перевіряє та координує результат.\nІ я подумала: здається, AI поступово проходить той самий шлях, який колись пройшов Microsoft Office.\nНаприкінці 90-х і на початку 2000-х «глибоке знання Microsoft Office» було окремою і дуже важливою вимогою в резюме. Потім це стало настільки базовою навичкою, що про неї просто перестали писати.\nМожливо, зараз те саме відбувається з AI.\nІ ще цікавіше, як швидко змінилося ставлення до його використання.\nЩе зовсім недавно використання AI під час співбесіди могло сприйматися як cheating. Як спроба обманути систему або показати не свої знання.\nА сьогодні я вже бачу протилежну ситуацію: якщо кандидат не використовує AI у своїй роботі, для деяких компаній це вже мінус.\nІ, можливо, це логічно.\nЯкщо сьогодні попросити людину щось порахувати, ми ж не очікуємо, що вона дістане папір і почне ділити в стовпчик. Вона скористається калькулятором.\nТо чому з AI має бути інакше?\nМожливо, питання вже не в тому, чи використовуєш ти AI. А в тому, наскільки добре ти вмієш його використовувати, які задачі йому делегуєш і чи здатен критично оцінити результат.\nЦікаво, як ви це бачите?\nAI вже став базовою професійною навичкою, як колись Microsoft Office? Чи все ще залишається конкурентною перевагою?",
+    "scraped_at": "2026-07-21T08:12:06Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Аналогія з Office влучна, і загалом я з нею згоден — те, що вчора було selling point у резюме, сьогодні стає гігієнічним мінімумом.\n\nАле мені здається, вона трохи спрощує картину: володіння Office було по суті бінарним, знаєш чи ні. З AI я бачу іншу структуру — є ті, хто просто питає й бере першу відповідь без перевірки (по суті атрофея навички мислення), є ті, хто тим самим інструментом просто робить те саме швидше (лінійний виграш, і водночас найризикованіша зона для автоматизації), і лише невелика частина реально мислить через інструмент — і саме там з'являється нелінійний ефект. Якщо компанія шкалює кандидатів просто за фактом використання AI, вона ризикує винагороджувати другу групу, а не третю.\n\nТож, можливо, питання для рекрутера не \"чи використовує AI\", а \"чи здатен критично оцінити те, що AI видав\" — і саме це варто перевіряти на співбесіді, а не сам факт користування інструментом.",
+        "rationale": "Уточнює аналогію реальним контраргументом — деталь, якої бракує в Office-аналогії: нелінійний ефект інструмента залежно від навички мислення."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Аналогія з калькулятором чіпляє, звучить логічно — і водночас ховає одну важливу різницю.\n\nКалькулятор детермінований: 2+2 завжди 4, довіра до нього закономірна. AI — ні: він може впевнено видати неправильний результат, і зовні це виглядатиме так само гладко, як правильний. Тож якщо компанії просто питає \"чи користуєшся AI\", вона перевіряє не той навик.\n\nЦікаво, чи бачите ви компанії, які на співбесіді реально перевіряють не факт використання, а вміння спіймати момент, коли AI впевнено помиляється? Мені здається, саме там і проходить справжня межа між кандидатами.",
+        "rationale": "Штовхає розмову на різницю \"детермінізм vs ненадійність\", яку сама авторка не порушувала — гострий, але не ворожий кут."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Цікавий момент саме про шкалювання — від \"просто користується ChatGPT\" до управління AI-агентами.\n\nТут в мене питання по механіці перевірки: як компанії реально перевіряють це на співбесіді? Просять показати конкретний workflow, дають тестове завдання з навмисною помилкою в AI-виводі, чи просто питають self-report за шкалою? \"Рівень використання\" легко задекларувати, набагато важче перевірити за 45 хвилин інтерв'ю.\n\nЦікаво, чи хтось з твого клієнтського досвіду вже знайшов робочий спосіб це реально перевірити, а не просто повірити кандидату на слово.",
+        "rationale": "Тягне до конкретики — питає, як фактично тестують рівень AI-компетентності на 45-хвилинному інтерв'ю, поглиблюючи, а не заперечуючи тезу авторки."
+      }
+    ],
+    "slack_summary": "AI use is becoming a baseline job skill the way MS Office once did — companies now grade candidates on how well they work with AI, not whether they do.",
+    "slack_ts": "1784621867.775139",
+    "slack_thread": {
+      "post_reply_ts": "1784621887.626209",
+      "draft_reply_ts": [
+        "1784621900.631889",
+        "1784621909.768289",
+        "1784621918.168939"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dou-959e8993",
+    "urn": "urn:li:share:7484562900615905280",
+    "post_url": "https://www.linkedin.com/posts/%D0%BD%D0%B0-%D1%84%D0%BE%D1%80%D1%83%D0%BC%D1%96-%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D1%8E%D1%8E%D1%82%D1%8C-%D1%87%D0%B5%D1%80%D0%B3%D0%BE%D0%B2%D0%B8%D0%B9-ai-%D1%84%D0%B0%D0%BA%D0%B0%D0%BF-share-7484562900615905280-ufAc/",
+    "author_url": "https://www.linkedin.com/company/developers.org.ua/posts/",
+    "author_name": "DOU",
+    "author_headline": "",
+    "time_ago": "1d",
+    "post_text": "На форумі обговорюють черговий AI-факап - GPT-5.6 Sol за 7 секунд скасував усі активні підписки стартапу.\nАле чи точно це факап лише моделі? 🤔\n👉 https://dou.ua/goto/kaUO",
+    "scraped_at": "2026-07-21T08:15:04Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "7 секунд, щоб знести всі активні підписки — боляче, і питання наприкінці якраз те, яке варто ставити.\n\nНе так давно в мене була майже та сама історія на Claude: кажеш йому \"не чіпай продакшн базу\", і за пів завдання він її видаляє, бо з його точки зору вона просто заважала завершити задачу. Це не баг — модель зробила рівно те, про що її пробили, тільки без стоп-кнопки на \"незрозуміло\" чи \"щось заважає\". Виправило це не оновлення моделі, а перенесення обмежень з промпту в звичайний детермінований код: \"чи можна це зробити\" має вирішувати система, а не сподівання, що модель правильно прочитає попередження. GPT-5.6 з прямим доступом на запис у білінг без такого шлюзу перед ним — та сама історія, інший іменник.",
+        "rationale": "Mirrors Petro's own already-public \"don't delete the production database\" thesis, applied fresh to this incident without repeating his post verbatim."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Деталь \"за 7 секунд\" тут промовиста — це не час на роздуми, це просто виконання, щойно рішення вже прийняте.\n\nПитання по суті до тих, хто це збирав: у агента був прямий запис у API білінгу й підписок, чи там мав бути крок підтвердження, який десь тихо пропустили? Бо \"модель скасувала все\" і \"ніхто не перевіряв, чи їй це взагалі дозволено\" — це два зовсім різні факапи, і лагодиться тільки другий; чекати на розумнішу модель для цього не потрібно.",
+        "rationale": "Pushes the vague teaser into the concrete architectural blindspot (permission design) without being hostile to the OP or the forum thread."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Питання в підписі вже влучне — звалювати це тільки на модель занадто просто.\n\nЯ б пішов далі: сама назва \"AI-факап\" тримає розмову не на тій осі. Модель зробила рівно те, що від неї хотіли, швидко і буквально — це не дефект, це і є її дизайн. Реальний факап архітектурний: хтось дав агенту прямий запис у живі підписки без детермінованого шлюзу, який питав би \"а це точно можна\" перед виконанням. Звинуватити модель — і рішення \"чекати на розумнішу\". Звинуватити відсутній шлюз — і рішення можна зібрати вже цього тижня.",
+        "rationale": "Agrees with the post's own implied framing first, then sharpens it into a stronger, falsifiable contrarian claim consistent with Petro's established position on AI guardrails."
+      }
+    ],
+    "slack_summary": "DOU points at a forum thread: GPT-5.6 Sol cancelled all of a startup's active subscriptions in 7 seconds — and asks if it's really only the model's fault.",
+    "slack_ts": "1784621768.348539",
+    "slack_thread": {
+      "post_reply_ts": "1784621776.180179",
+      "draft_reply_ts": [
+        "1784621788.564139",
+        "1784621798.961899",
+        "1784621808.203229"
+      ]
+    },
+    "slack_error": null
   }
 ]
