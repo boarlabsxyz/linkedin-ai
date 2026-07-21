@@ -2,10 +2,12 @@ name: linkedin-comment-hourly
 
 on:
   schedule:
-    # 04:00 UTC Tue–Fri -> 06:00 Podgorica summer / 05:00 winter. GH cron
+    # 05:28 UTC Tue–Fri -> 07:28 Podgorica summer / 06:28 winter. GH cron
     # regularly fires late (0–2h+ observed on this repo) — acceptable for a
-    # morning drafts drop.
-    - cron: "0 4 * * 2-5"
+    # morning drafts drop. Off-hour minute: on-the-hour slots are the most
+    # contended on GitHub's scheduler and the 04:00 fire was dropped entirely
+    # on 2026-07-21.
+    - cron: "28 5 * * 2-5"
   workflow_dispatch:
 
 permissions:
