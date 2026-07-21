@@ -35,63 +35,10 @@
   "liveNow": false,
   "panels": [
     {
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 15,
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "grafanacloud-infinity"
       },
-      "targets": [
-        {
-          "columns": [
-            {
-              "selector": "id",
-              "text": "id",
-              "type": "string"
-            },
-            {
-              "selector": "posted_date",
-              "text": "posted_date",
-              "type": "string"
-            },
-            {
-              "selector": "text",
-              "text": "text",
-              "type": "string"
-            },
-            {
-              "selector": "post_url",
-              "text": "post_url",
-              "type": "string"
-            }
-          ],
-          "computed_columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "grafanacloud-infinity"
-          },
-          "filterExpression": "id == \"${post}\"",
-          "filters": [],
-          "format": "table",
-          "parser": "backend",
-          "refId": "A",
-          "root_selector": "posts",
-          "source": "url",
-          "type": "json",
-          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "title": "Selected post",
-      "type": "table",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -143,9 +90,9 @@
                 "id": "links",
                 "value": [
                   {
+                    "targetBlank": true,
                     "title": "Open post on LinkedIn",
-                    "url": "${__value.text}",
-                    "targetBlank": true
+                    "url": "${__value.text}"
                   }
                 ]
               }
@@ -153,18 +100,71 @@
           }
         ]
       },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
       "options": {
-        "showHeader": true,
         "cellHeight": "sm",
         "footer": {
-          "show": false,
+          "countRows": false,
+          "fields": "",
           "reducer": [
             "sum"
           ],
-          "countRows": false,
-          "fields": ""
+          "show": false
+        },
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "id",
+              "text": "id",
+              "type": "string"
+            },
+            {
+              "selector": "posted_date",
+              "text": "posted_date",
+              "type": "string"
+            },
+            {
+              "selector": "text",
+              "text": "text",
+              "type": "string"
+            },
+            {
+              "selector": "post_url",
+              "text": "post_url",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filterExpression": "id == \"${post}\"",
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "posts",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
         }
-      }
+      ],
+      "title": "Selected post",
+      "type": "table"
     },
     {
       "datasource": {
