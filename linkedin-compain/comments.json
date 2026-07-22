@@ -7353,5 +7353,210 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "kate-chapman-797685dd",
+    "urn": "urn:li:share:7485343938552229888",
+    "post_url": "https://www.linkedin.com/posts/untanglingsystems_chris-breaks-down-the-options-of-running-share-7485343938552229888-5WbQ/",
+    "author_url": "https://www.linkedin.com/in/untanglingsystems/",
+    "author_name": "Kate Chapman",
+    "author_headline": "Fractional CTO | Platform, Product & AI strategy | Sociotechnical Systems | Open Source Governance | Helping Humans & Tech Collaborate",
+    "time_ago": "17h",
+    "post_text": "Chris breaks down the options of running open-weight models at home. When do they pay for themselves against your max account? If it is just you and it is just about the money? They don't.\nIf it is you and you care deeply about privacy and other aspects of sovereign infrastructure. It might be worth it.\nIf it is you and your team. Worth a serious look.\nChris Daley\n• 2nd\nAI Systems • Agent Experience (AX) • Sovereign Infrastructure | Building AI-native engineering organizations\n18h •\nFollow\nSo you've heard the hype about frontier-class open-weight models - Kimi, GLM, DeepSeek and you're wondering what it would actually take to run one yourself. I did at least, so I went and priced it. All of it.\nIn my latest I cover: every current model from the 1T-parameter monsters down to gpt-oss-20b, the actual GPUs that run them, and what that hardware costs in this, the worst year to buy a GPU since the last one.\nThree findings worth your scroll-stop:\n1. The wall is memory, not compute. A trillion-parameter MoE computes like a 32B model and consumes RAM like a trillion.\n2. For a solo user, frontier-class on-prem never pays for itself against a $200/month subscription. For a business it's a different sum entirely - ten seats is $24k a year, and a $15k box serving the whole office breaks even in about eight months. If your data can't leave the building, the spreadsheet was never the decision anyway.\n3. And the floor is rising faster than the ceiling. My own agents run on a pair of 2016 Tesla P40s in a box that cost less than $1,000. Sliding-window attention and prompt caching turned old iron into a workhorse.\nhttps://lnkd.in/gWZ3r6q5\nRunning the frontier at home\nRunning the frontier at home\nchrisdaley.biz",
+    "scraped_at": "2026-07-22T08:06:43Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "\"If your data can't leave the building, the spreadsheet was never the decision anyway\" is the whole post in one line. We hit that exact wall in 2018 building a self-hosted GenAI system for a German bank — generating and validating loan contracts, pre-ChatGPT. Nobody ran a TCO model against a future subscription; the contracts couldn't leave the bank's infra, so the architecture was decided before the cost math even started.\n\nWhat's new in Chris's numbers is that the payback window for teams has dropped to eight months. The sovereignty case and the cost case used to pull in opposite directions — now they're starting to agree.",
+        "rationale": "Petro has a directly relevant, already-public self-hosted-infra story (BankAI, posted.md 05.03.26) that mirrors the post's \"sovereignty decides architecture before cost does\" point."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "A pair of 2016 Tesla P40s running production agents for under $1,000 is the detail that'll stick with me from this. Where's the ceiling on that setup though — is it single-user only, or have you pushed concurrent sessions through it? Curious whether sliding-window attention plus prompt caching holds up once you've got a team hitting the same box instead of just your own agents, or if that's exactly where the memory wall Chris describes starts to bite.",
+        "rationale": "Pulls on the post's most concrete, checkable claim (old GPUs + sliding-window attention) and asks a specific question that needs real engineering judgment to answer."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Ten seats at $24k a year against a $15k box breaking even in eight months is a clean number, and pricing the actual hardware instead of hand-waving at \"it's cheaper\" is the useful part. What I'd want to stress-test before signing off on the box: frontier API pricing has been dropping every few months, not rising. What's the sensitivity of that eight-month figure to a 30% subscription price cut a year out — does on-prem still win once you're comparing three years of ownership instead of one?",
+        "rationale": "Stress-tests the payback-period math against falling frontier API prices — a real blind spot in the analysis, raised without being hostile."
+      }
+    ],
+    "slack_summary": "Shares Chris Daley's cost breakdown of running open-weight models at home: solo never beats a $200/mo sub, but a team box breaks even in ~8 months.",
+    "slack_ts": "1784707611.945439",
+    "slack_thread": {
+      "post_reply_ts": "1784707625.072459",
+      "draft_reply_ts": [
+        "1784707633.058889",
+        "1784707641.386119",
+        "1784707648.907669"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "eric-ward-3affc462",
+    "urn": "urn:li:ugcPost:7485319853134884864",
+    "post_url": "https://www.linkedin.com/posts/eric-ward-greenville_for-most-of-my-24-years-as-a-cto-i-gave-ugcPost-7485319853134884864-FbGb/",
+    "author_url": "https://www.linkedin.com/in/eric-ward-greenville/",
+    "author_name": "Eric Ward",
+    "author_headline": "Stop paying for 1,000 features to use 12 | I build software around your exact business process — live in 30 days or it's free | Founder, Stratify | Former CTO, 24-yr exit",
+    "time_ago": "18h",
+    "post_text": "For most of my 24 years as a CTO, I gave the same advice: never build, always buy.\nI'm here to take it back.\nNot because I was wrong; it was the right call for twenty years. It was arithmetic. But the arithmetic changed underneath us, and advice doesn't announce when it expires.\nThe full argument is in the article: why custom software earned its horror stories, why those failures were never what we thought they were, and what quietly flipped the math.\nIf you've ever bent your business to fit software that almost fit, this one's for you.\nWhat's the workflow at your company that nothing off the shelf ever fit?\nThe Case for Custom Software\nEric Ward",
+    "scraped_at": "2026-07-22T08:08:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "\"Advice doesn't announce when it expires\" is the line that'll stick with me. Most build-vs-buy rules get treated like physical law instead of a snapshot of a cost curve.\n\nI ran into this from the other side. Back in 2018, before ChatGPT existed, we built a self-hosted system for a German bank to generate and validate loan and investment contracts: errors down 70%+, generation time from 16 hours to 4. It stayed the better tool for that one workflow for years even after ChatGPT existed, because the generic option couldn't match the depth on that narrow slice. We only shut it down in 2025, once general models finally caught up there. So my read on your question isn't \"nothing off the shelf fits,\" it's usually one specific high-stakes workflow where the generic tool is technically capable but worse on accuracy or cost, and everything else still gets bought.",
+        "rationale": "Draws directly on the documented BankAI story (posted.md, \"05.03.26 Bank.ai — billion-dollar competitors is not a death sentence\") to reframe \"nothing fits off the shelf\" as usually one narrow high-stakes workflow, not the whole stack."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Framing this as arithmetic instead of ideology is the right move. Most build-vs-buy debates get moralized when it's really a cost curve that shifted.\n\nHere's the harder question though: the same AI that just flipped the build side is starting to show up on the buy side too, wiring configuration and customization directly into off-the-shelf platforms. Is \"build custom\" the new default for the next 20 years, or a 3-5 year window before vendors absorb the same flexibility and the math flips back?",
+        "rationale": "Pushes the post's own \"arithmetic changed\" framing one step further by asking whether the same AI-driven cost shift is about to hit the buy side too, without contradicting the author's thesis."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The honesty here stands out. Most people who reverse a 20-year position bury the correction; you're naming it outright.\n\nCurious what you'd point to as the actual mechanism behind the flip: AI dropping the cost of writing and maintaining custom code, off-the-shelf tools getting more bloated and harder to configure, or something on the vendor lock-in and total-cost-of-ownership side. Those are different problems and probably call for different playbooks depending on which one is driving it for a given company.",
+        "rationale": "The post names \"what quietly flipped the math\" but doesn't specify the mechanism in the excerpt — asking which lever it actually was invites a substantive, specific reply."
+      }
+    ],
+    "slack_summary": "A 24-year CTO retracts his \"never build, always buy\" advice: AI changed the build-vs-buy arithmetic, and he asks which workflow never fit off-the-shelf.",
+    "slack_ts": "1784707733.036749",
+    "slack_thread": {
+      "post_reply_ts": "1784707743.164169",
+      "draft_reply_ts": [
+        "1784707752.904129",
+        "1784707763.111739",
+        "1784707772.138399"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "john-sukup-5761e621",
+    "urn": "urn:li:ugcPost:7485523562284593152",
+    "post_url": "https://www.linkedin.com/posts/johnsukup_the-caio-toolkit-ugcPost-7485523562284593152-IK0Z/",
+    "author_url": "https://www.linkedin.com/in/johnsukup/",
+    "author_name": "John Sukup",
+    "author_headline": "Fractional Chief AI Officer | Executive AI Strategies | Agentic Solutions on Gemini Enterprise Agent Platform | 20-year Data and AI/ML Professional | Founder @ TuningFork | 2x GCP Certified | AI/ML Professional Training",
+    "time_ago": "3h",
+    "post_text": "Here is a figure that should give most businesses pause: $750,000.\nThat's the three-year base salary for hiring a Chief AI Officer at a small to mid-sized organization.\nPaying an \"AI Consultant\" to get you started along your AI-enablement pathway?\nThat's easily $50,000 for (maybe) three months of work, a PowerPoint deck, a pat on the back, and a \"Best of luck!\" while they walk out the door $50,000 wealthier...\n...and your business still has no idea what to do next.\nWhat if you could get the best of the AI transformation tools used by leaders from McKinsey, IBM, HP, OpenAI, Gartner, Microsoft, Google, and MIT, all wrapped up into a simple four-framework package?\nToday, my organization, Expected X, is delivering just that: The CAIO Toolkit, designed to enable funded startups and SMBs with the same frameworks used by the largest players in industry.\nThe four frameworks:\n-AI Opportunity Scan: Identify your highest ROI AI use cases in 15 minutes.\n-AI Readiness Scorecard: Assess your organization's AI readiness across 7 dimensions.\n-Build vs. Buy Decision Framework: A practical guide to AI technology decisions.\n-AI Quick Audit: Identify 2 to 3 high-value automation opportunities in your workflows.\nTo be honest, most organizations don't need a full-time CAIO, but they still need the expertise of one at the beginning of their journey.\nStart on the right foot.\n-------\nP.S. If you're interested in a guided engagement to achieve the most from The CAIO Toolkit, DM me about Expected X's \"AI Proof-of-Value Sprint,\" or comment below.\nThe CAIO Toolkit\n·\n30 pages",
+    "scraped_at": "2026-07-22T08:10:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"$50K for a PowerPoint deck and a pat on the back\" is a precise description of a failure mode I've watched play out more than once.\n\nThe four frameworks look solid for the diagnosis and decision layer. What I'm actually curious about is what happens right after the Quick Audit surfaces those 2-3 opportunities — does the toolkit force a client to ship the smallest version of one within a couple of weeks, or does the deliverable still end at a document, just a better-structured one than the $50K consultant leaves behind?",
+        "rationale": "Sharpens the post's blind spot (does the toolkit end at a document too?) without dismissing the cost problem it names."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agree completely on the $50K pattern — that's a real, common failure mode, not an exaggeration.\n\nWhere I'd push back a little: most SMBs I've talked to already have a rough idea where AI could help. What's usually missing isn't a framework, it's the discipline to ship something thin and watch what real users do with it before writing the next requirement. I watched a client spend a year and a half and $200K building a gamified weight-loss app with zero feedback loop before launch — shut it down two months after release. No scorecard would have caught that; only shipping the ugly version in week one would have. Curious what actually gets your clients from \"audit done\" to a live pilot — is that baked into the engagement, or still on them?",
+        "rationale": "Names a different, evidence-backed counter (ReSelf's $200K no-feedback-loop failure, posted.md 26.02.26) to the implicit claim that frameworks alone close the gap."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The part I'd question is \"the same frameworks used by McKinsey, IBM, Google, OpenAI\" — not because they're bad frameworks, but because a lot of their value comes from budgets and scale most SMBs will never have.\n\nWhen we built BankAI, a self-hosted GenAI system for a German bank, pre-ChatGPT, we weren't running anything close to what the billion-dollar players had. Compared to what OpenAI was building at the time, it was a go-kart next to a Formula 1 car. What made it work wasn't a borrowed enterprise playbook, it was narrow focus on a problem worth about $30K to us, not billions, plus deep domain expertise. I'd bet that combination matters more for your SMB clients than which framework they start with.",
+        "rationale": "Directly questions the \"same frameworks as the giants\" pitch using Petro's documented BankAI story (posted.md 05.03.2026) — narrow focus beat billion-dollar scale, not borrowed playbooks."
+      }
+    ],
+    "slack_summary": "Launches \"The CAIO Toolkit\": four AI-transformation frameworks pitched to SMBs as a cheaper alternative to a $750K CAIO hire or $50K consultants.",
+    "slack_ts": "1784707853.334419",
+    "slack_thread": {
+      "post_reply_ts": "1784707865.404659",
+      "draft_reply_ts": [
+        "1784707873.414439",
+        "1784707883.754689",
+        "1784707891.751469"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jake-levirne-45fe319d",
+    "urn": "urn:li:ugcPost:7480666432784146432",
+    "post_url": "https://www.linkedin.com/posts/jakelevirne_who-owns-quality-now-ugcPost-7480666432784146432-lF5V/",
+    "author_url": "https://www.linkedin.com/in/jakelevirne/",
+    "author_name": "Jake Levirne",
+    "author_headline": "Ex-Docker, DigitalOcean | Co-founder of SpecStory | Passionate About Teams Who Build Software",
+    "time_ago": "1w",
+    "post_text": "\"We're 30% faster with AI. And somehow we're moving backwards.\"\nA product leader said that to me on a call this week.\nHis CTO's fix: go even faster.\nWrong constraint. The bottleneck moved.\nWhere we landed 👇\nWho owns quality now?\n·\n12 pages",
+    "scraped_at": "2026-07-22T08:12:27Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Wrong constraint, the bottleneck moved\" is the sharpest line here. Most teams just pour more of what's no longer scarce into the same pipe. I'd push on the framing though: is it really about who owns quality, or about what's actually capable of reviewing at generation speed? A person checking AI output at the rate they used to write it isn't an owner, just a queue with a title.",
+        "rationale": "Sharpens the author's own closing question (\"who owns quality now?\") into a harder one about review throughput rather than ownership titles, without needing the un-captured 12-page content."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "\"Wrong constraint, the bottleneck moved\" is the right diagnosis. I'd argue with where you point the fix though. Finding a person to own quality assumes someone's still reading the output at review speed, and once generation outpaces that, they're rubber stamping, not reviewing. The real gate becomes whatever the AI gets checked against before it ships (tests, specs, acceptance criteria), not a name on an org chart. Curious if page 12 landed on a role or on a checkpoint.",
+        "rationale": "Agrees with the \"wrong constraint\" diagnosis but reframes the fix from a person-owns-quality answer to a spec/test-as-gate answer, lightly adjacent to Petro's own thesis without pitching it."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"30% faster, moving backwards\" matches something I saw up close. At BankAI, a pre-ChatGPT production GenAI system for a German bank generating and validating loan and investment contracts, we hit the same wall: once generation got fast enough, no single reviewer could keep pace with it. Quality stopped being a person's job and became a statistical validation loop instead, checking error rates against a threshold before anything shipped. Errors dropped 70%+, but only because we stopped pretending a human was reviewing every document. Curious if your 12 pages land somewhere similar, a process owning the check instead of a person.",
+        "rationale": "Grounds \"who owns quality now\" in a real, already-public BankAI anchor (posted.md, \"05.03.26 Bank.ai — billion-dollar competitors is not a death sentence\", errors down 70%+ via statistical validation) where quality became a process check rather than a person's role."
+      }
+    ],
+    "slack_summary": "A team is \"30% faster with AI but moving backwards\" — a 12-page carousel arguing the bottleneck moved from writing code to owning quality.",
+    "slack_ts": "1784707955.244399",
+    "slack_thread": {
+      "post_reply_ts": "1784707963.681889",
+      "draft_reply_ts": [
+        "1784707974.597239",
+        "1784707982.885039",
+        "1784707990.866439"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jayashankar-attupurathu-a8d64329",
+    "urn": "urn:li:ugcPost:7480921120725143552",
+    "post_url": "https://www.linkedin.com/posts/jayashankarattupurathu_ai-is-making-banking-faster-ugcPost-7480921120725143552-kCMQ/",
+    "author_url": "https://www.linkedin.com/in/jayashankarattupurathu/",
+    "author_name": "Jayashankar Attupurathu",
+    "author_headline": "Fractional CTO/CTPO | Turning AI Ambition into Outcomes | Credit Suisse · HSBC · Citicorp · Envestnet· Startup | Building in India",
+    "time_ago": "1w",
+    "post_text": "AI in banking just got a reality check.\nOn 24 June 2026, RBI proposed a formal AI governance framework for banks, introducing board approved AI policies, independent model validation, lifecycle traceability, and third-party vendor controls.\nAI is already in core banking decisions.\n𝐉𝐏𝐌𝐨𝐫𝐠𝐚𝐧 𝐂𝐡𝐚𝐬𝐞 uses AI to support fraud detection across billions of payment events and software engineering workflows.\n𝐌𝐚𝐬𝐭𝐞𝐫𝐜𝐚𝐫𝐝 applies AI across its global payments network to detect fraudulent transactions in real time.\nYet most institutions still cannot answer:\n𝐖𝐡𝐲 𝐝𝐢𝐝 𝐭𝐡𝐞 𝐬𝐲𝐬𝐭𝐞𝐦 𝐦𝐚𝐤𝐞 𝐭𝐡𝐚𝐭 𝐝𝐞𝐜𝐢𝐬𝐢𝐨𝐧?\nThat gap is structural.\nAI systems are scaling decision velocity by 𝟓𝟎% 𝐭𝐨 𝟕𝟎%, while governance systems operate at reporting speed with only 𝟏𝟎% 𝐭𝐨 𝟐𝟎% real-time visibility.\nAcross BFSI, similar patterns are seen.\nSpeed improves but Control doesn’t.\nRBI’s proposal matters as it shifts enterprise AI from model-centric to system-centric governance.\nEvery prediction is traceable, Models are versioned, Decisions are reproducible, and every vendor is accountable.\nCompetitive advantage will come from proving whether AI can be trusted under regulatory scrutiny.\nBefore scaling your next AI initiative, ask:\n𝐂𝐚𝐧 𝐞𝐯𝐞𝐫𝐲 𝐀𝐈 𝐚𝐬𝐬𝐢𝐬𝐭𝐞𝐝 𝐝𝐞𝐜𝐢𝐬𝐢𝐨𝐧 𝐬𝐮𝐫𝐯𝐢𝐯𝐞 𝐚 𝐫𝐞𝐠𝐮𝐥𝐚𝐭𝐨𝐫𝐲 𝐚𝐮𝐝𝐢𝐭 𝐭𝐨𝐝𝐚𝐲?\n#ArtificialIntelligence #Banking #AIGovernance #RiskManagement\nAI is making banking faster.\n·\n7 pages",
+    "scraped_at": "2026-07-22T08:14:30Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "System-centric governance is the right diagnosis. A validated model still fails you if nobody can reconstruct why a specific output happened months later.\n\nWe ran into exactly this building Bank.ai, a self-hosted GenAI system for German banks generating and validating credit contracts, back in 2018, years before ChatGPT existed. Every contract had to survive an internal audit, so lineage — which document version, which validation pass, which human sign-off — ended up taking almost as much engineering effort as the generation itself. That's the part that never shows up in a demo, and it's exactly what gets cut when teams are racing to ship.\n\nOne thing I'd want RBI's framework to spell out: how do you version a fraud-detection model that gets retrained weekly on live data without freezing it into uselessness? That's the harder half of \"every prediction is traceable.\"",
+        "rationale": "Grounds the governance thesis in a real, documented banking-AI build (Bank.ai, posted.md) and raises a concrete gap the post doesn't address."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The diagnosis that governance is structural, not a tooling gap, is right. Where I'd push back a bit: lifecycle traceability and model versioning tell you what happened, not why the model weighted the inputs the way it did. Anthropic's own circuit-tracing research on their own models found that even with full internal access, large chunks of behavior stay unexplained — and that's the team that built the model, with access no auditor will ever get.\n\nSo a regulator can get a fully reproducible decision trail and still be one step short of judging whether a specific decision was reasonable. What's worked better in practice is treating explainability as its own deliverable — a simpler proxy or rule layer that approximates the decision for audit purposes — instead of trying to force full interpretability out of the deployed model itself.\n\nDoes RBI's framework separate \"traceable\" from \"explainable,\" or are they treating the two as the same requirement?",
+        "rationale": "Adds an evidence-backed nuance consistent with Petro's own public \"dark matter\" post (posted.md), sharpening rather than contradicting his stated position."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "Vendor accountability is the sharpest edge of this, since a lot of BFSI's AI stack runs on models the bank doesn't own and can't fully inspect. JPMorgan and Mastercard both build fraud detection partly on cloud-hosted models where access tops out at an API.\n\nCurious how \"every vendor is accountable\" is meant to work in practice when the vendor's contract limits what they'll disclose about training data or model internals. Does RBI's proposal push audit-critical use cases toward self-hosted or open-weight models, or is contractual disclosure treated as enough?",
+        "rationale": "Surfaces the practical tension in \"vendor accountability\" for banks running fraud detection on API-only third-party models, inviting a concrete answer."
+      }
+    ],
+    "slack_summary": "RBI proposed a formal AI governance framework for banks — traceable predictions, versioned models, vendor accountability — while AI already runs core banking decisions.",
+    "slack_ts": "1784708077.809709",
+    "slack_thread": {
+      "post_reply_ts": "1784708093.325639",
+      "draft_reply_ts": [
+        "1784708107.411459",
+        "1784708115.910209",
+        "1784708124.373549"
+      ]
+    },
+    "slack_error": null
   }
 ]
