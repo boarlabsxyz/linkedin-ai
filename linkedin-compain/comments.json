@@ -7558,5 +7558,231 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "gwyneth-pena-siguenza-1ad4c0b6",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/madebygps/",
+    "author_name": "Gwyneth Peña-Siguenza",
+    "author_headline": "DX @ GitHub",
+    "time_ago": "14h",
+    "post_text": "My discrete-math-loving brain is very happy: GitHub Projects views now support AND, OR, and parentheses.",
+    "scraped_at": "2026-07-23T07:58:26Z",
+    "disposition": "off-topic",
+    "reason": "GitHub feature unrelated to AI, agents, or startup/entrepreneurship topics",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "steve-yegge-bb374261",
+    "urn": "urn:li:share:7485762038799953921",
+    "post_url": "https://www.linkedin.com/posts/steveyegge_couldnt-have-said-it-better-ive-got-a-share-7485762038799953921-BnhH/",
+    "author_url": "https://www.linkedin.com/in/steveyegge/",
+    "author_name": "Steve Yegge",
+    "author_headline": "AI Babysitter",
+    "time_ago": "13h",
+    "post_text": "Couldn't have said it better. I've got a blog post planned for Beads soon. It still has no competitors, and it fills a critical gap in agentic systems programming. If you aren't using Beads yet, you are just reinventing it poorly.\nMohamed Dhiab\n• 2nd\nSenior AI Engineer 📑 🤖 | Double M.Sc. from Centrale Méditerranée 🇫🇷 and TU Berlin 🇩🇪\n1d •\nFollow\nSaw Steinberger's tweet blow up and figured it deserves an actual answer, not just a take 👀\nThe problem is simple. A loop is great when one agent does one thing on repeat. But real work is usually a pile of things depending on each other, and a loop has no idea what's blocked by what.\nThat's the gap graphs fill 🔗\nBeads (from Steve Yegge) is a clean example. Tasks live in a small local database instead of a to-do list, and they can depend on each other. Setup with claude code is short:\n🔹 brew install beads (or the install script)\n🔹 bd init in your project → builds the graph, writes an AGENTS.md\n🔹 bd setup claude → wires up hooks so claude code just knows the workflow\n🔹 agent runs bd ready to see unblocked work, claims it, closes it when done\nNo manual to-do list, no losing track after a context reset 🧩\nSame idea on the code side: I wrote about this with code-review-graph. An agent doesn't need to read your whole repo to review a change, it needs to know what's connected to it. Tasks or code, same fix. Something has to hold the shape of how things relate.\n🔗 link to beads repo: https://lnkd.in/dWbikAEW\n#aicoding #agenticcoding #developertools #claudecode #mcp",
+    "scraped_at": "2026-07-23T08:07:22Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The loop-vs-graph framing is the right cut — a loop genuinely has no notion of what's blocked by what, no matter how many times you run it.\n\nOne thing I'd stress-test though: when a dependent task closes, what's actually confirming the deliverable satisfies the thing it was blocked on, versus just the ready → in-progress → done state moving through the graph? Scheduling dependency and behavioral dependency are two different problems, and a graph can look perfectly healthy while the second one quietly drifts.",
+        "rationale": "Petro's spec-vs-code thesis maps directly onto this: a task graph proves scheduling state, not that the deliverable actually satisfies what it was blocked on — worth surfacing to a high-profile dev-tools audience without pitching anything."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "bd init writing an AGENTS.md as part of setup is a nice detail — most task trackers don't even try to hand the agent the why behind a dependency, just the that.\n\nCurious how it holds up under requirement churn though: if the spec for an upstream task changes mid-flight, does bd invalidate or reopen the dependents automatically, or is re-deriving the graph still a manual edit? That's usually where dependency systems like this start showing their age.",
+        "rationale": "Names a specific detail (AGENTS.md) before asking a concrete, non-generic question about spec churn invalidating the graph — invites real technical engagement rather than a platitude reply."
+      },
+      {
+        "strategy_label": "Disagree and share a different angle",
+        "comment": "Good instinct on the loop failing to know what's blocked by what — we ran into the same wall building an orchestrator for multi-step AI work: a plain loop had zero memory of dependency, it just kept re-trying step A. What actually fixed it for us wasn't the graph by itself, it was drawing a hard line between what the agent gets to decide inside a step and what a deterministic layer decides about which step runs next.\n\nSo the question for bd: are the dependency edges purely scheduling metadata, or do they also gate what the agent is allowed to touch next? Those look the same on a diagram but behave very differently once an agent starts improvising.",
+        "rationale": "Draws on Petro's own already-public orchestrator thesis (posted.md, \"step A/step B... don't allow AI to decide what to do next\") as a genuinely different lens — paraphrased, not linked — landing a sharp question about scheduling vs. decision-gating edges."
+      }
+    ],
+    "slack_summary": "Steve boosts a Beads explainer: agent loops can't see what's blocked by what — a task-dependency graph (bd ready) fills the gap.",
+    "slack_ts": "1784794048.439279",
+    "slack_thread": {
+      "post_reply_ts": "1784794059.244969",
+      "draft_reply_ts": [
+        "1784794064.791629",
+        "1784794070.498929",
+        "1784794076.559779"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "max-brin-71894294",
+    "urn": "urn:li:ugcPost:7485793101891092481",
+    "post_url": "https://www.linkedin.com/posts/forgotpassword_aiagents-aisecurity-ugcPost-7485793101891092481-Jk9O/",
+    "author_url": "https://www.linkedin.com/in/forgotpassword/",
+    "author_name": "Max Brin",
+    "author_headline": "Building the open-source control layer for AI agents @ OpenLeash",
+    "time_ago": "11h",
+    "post_text": "AI coding agents move fast.\nflow-viewer lets you see every move they make.\nToday, I'm open-sourcing flow-viewer, an interception and debugging app for AI agents.\nThink of it as DevTools for agents: inspect requests and responses in real time, understand exactly what happened, and debug the entire flow.\nIt currently works with local agents, including Claude Code, Codex, Cursor, Cline, OpenCode, and many others.\nSupport for SaaS and homegrown agents is coming soon.\nI originally built flow-viewer to help me develop OpenLeash, my open-source control layer for AI agents.\nIt became so useful that releasing it separately was an obvious decision.\nIn the demo:\n→ A fresh OpenLeash installation connects to its local interception proxy and agent API hooks\n→ flow-viewer exposes every request and response in detail\n→ blast-radius plugin detects and blocks a destructive database operation\nBecause I just couldn’t demo visibility without also stopping an agent from destroying something.\nflow-viewer is fully open-source and MIT licensed.\nFork it. Build on it. Break it.\nhttps://lnkd.in/dWjV-mjr\n#AIAgents #AISecurity",
+    "scraped_at": "2026-07-23T08:09:09Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The line \"I just couldn't demo visibility without also stopping an agent from destroying something\" is the part that actually matters here — tracing requests is nice, but the plugin that blocks the query is where the value sits.\n\nCurious how blast-radius decides what counts as destructive. A hardcoded op list (DROP, DELETE without WHERE, etc.) will always be too blunt for the case where the delete is the correct move — a real migration, a cleanup job someone actually wants run. Is there a path to scope an exception without turning the gate off entirely, or does that live elsewhere in OpenLeash's policy layer?",
+        "rationale": "The post shows a real destructive-op interception but doesn't specify the rule engine's granularity — this pushes on a genuine design tradeoff (false positives on legitimate destructive ops)."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Works with local agents, SaaS support coming soon\" is the interesting fork here — local agents give you a process and API calls to hook, SaaS agents don't hand you that.\n\nFor those, what's the actual plan: an SDK the agent vendor has to embed, a webhook or audit-log feed you consume after the fact, or something else? That distinction changes who has to opt in — one needs the vendor's cooperation, the other you can bolt on unilaterally.",
+        "rationale": "The \"SaaS support coming soon\" line leaves an unaddressed technical variable (no local process to hook) that's worth a specific, thought-requiring question."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "MIT plus \"fork it, build on it, break it\" is the right call for something meant to become an ecosystem, not a walled product.\n\nOne pushback though: \"DevTools for agents\" undersells what's actually valuable in your own demo. Seeing every request after the fact helps with debugging, but the thing that saved the database was blast-radius firing before the write landed — a deterministic gate, not observability. Matches something I've argued before: guardrails against AI's version of stupid need to live in boring, non-negotiable code, not in a prompt asking nicely. Is enforcement — blast-radius and whatever else gets built on top — the real core of OpenLeash with flow-viewer as the debugging layer around it, or the other way around?",
+        "rationale": "Pushes back on the \"DevTools/observability\" framing in favor of a position Petro has already staked publicly (25.06.26 posted.md entry: guardrails must be deterministic code, not a plea) — genuine, evidence-backed counter-angle, not invented."
+      }
+    ],
+    "slack_summary": "Open-sources flow-viewer: DevTools-style interception for AI coding agents, with a blast-radius plugin that blocks destructive DB ops.",
+    "slack_ts": "1784794154.411569",
+    "slack_thread": {
+      "post_reply_ts": "1784794162.380759",
+      "draft_reply_ts": [
+        "1784794168.328979",
+        "1784794176.581889",
+        "1784794182.530559"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "deltcho-valtchanov-phd-42478343",
+    "urn": "urn:li:share:7485713413361254400",
+    "post_url": "https://www.linkedin.com/posts/deltcho_i-have-a-friend-who-is-not-particularly-share-7485713413361254400-K55w/",
+    "author_url": "https://www.linkedin.com/in/deltcho/",
+    "author_name": "Deltcho Valtchanov, PhD",
+    "author_headline": "Principal AI Advisor | Ex-Chief Scientist | Co-founder & CTO",
+    "time_ago": "16h",
+    "post_text": "I have a friend, who is not particularly tech savvy, that recently got an Android update to their phone. Holding the power button changed from displaying the power menu, often used to turn off/reset phone, to popping up Gemini.\nWatching them now hold the power button to pop-up the assistant and then talk to Gemini and tell it to restart their phone was mind blowing. They don't use Gemini for anything else, only to restart their phone.\nWhen I explained that the old functionality could be restored by going into settings and changing the power button behavior, the response I got was \"that sounds too complicated, this works fine.\"\nRequiring an internet connection, calling up to the cloud, and burning precious datacenter compute just to do something that used to take one button click.\nHow engineers/product managers envision their AI will be used can often be quite different than how real consumers use it.",
+    "scraped_at": "2026-07-23T08:10:44Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "What jumps out to me is the internet dependency. A one-click, zero-infrastructure action now needs a live connection, an LLM call, and a round trip to a datacenter. What happens the one time Gemini decides restarting deserves a clarifying question, or the connection just isn't there? You've moved the single point of failure from a physical button to a network call, for a task that gained nothing from being conversational.",
+        "rationale": "Sharpens the post's own framing into a concrete failure-mode question about routing a deterministic action through a network-dependent LLM call."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "This matches something I ran into building agent workflows. I used to route every action through Claude directly, deterministic ones included, and it kept finishing tasks in ways nobody asked for, because from the model's side the task just needed to get done. I ended up putting a dumb, rule-based gate in front of it: AI handles judgment calls, a deterministic layer decides what's actually allowed to run. Your friend's power button is the same shape in reverse, a deterministic action got routed through a probabilistic layer with zero functional upside, just because someone wanted another Gemini touchpoint logged.",
+        "rationale": "Petro's own documented practice (posted.md, \"26.05 don't delete the production database\" — building a deterministic permission gate in front of Claude) mirrors this post's tension in reverse and extends it without pitching anything."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Curious what's actually driving this default. Did anyone test whether users want a conversational restart, or is it just an engagement metric, more daily Gemini touches, regardless of task fit? Your friend's workaround sounds like shadow IT for hardware: keep the new default because digging into settings feels like more effort than it's worth, even though the old single click was strictly better.",
+        "rationale": "Probes whether the default-flip is a genuine UX misjudgment or a metric-driven design choice, inviting the author's insider read as a Principal AI Advisor."
+      }
+    ],
+    "slack_summary": "A non-techie friend now restarts their phone by talking to Gemini — how real consumers' AI use diverges from what PMs envision.",
+    "slack_ts": "1784794249.810189",
+    "slack_thread": {
+      "post_reply_ts": "1784794256.782259",
+      "draft_reply_ts": [
+        "1784794262.242219",
+        "1784794267.777879",
+        "1784794272.782299"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "cate-huston-68bfe626",
+    "urn": "urn:li:share:7485308160539361283",
+    "post_url": "https://www.linkedin.com/posts/catehuston_maturing-our-development-process-as-an-ai-first-share-7485308160539361283-CXwS/",
+    "author_url": "https://www.linkedin.com/in/catehuston/",
+    "author_name": "Cate Huston",
+    "author_headline": "🤖👑",
+    "time_ago": "1d",
+    "post_text": "We've decided, again, that we don't need managers. At the exact moment there's more of that work to do than ever.\nThis week Jean Hsu and I shipped a big release as a 2 person team. As part of this, we adopted processes I used to associate with much larger teams.\nScaling has always been about finding and removing bottlenecks. What's changed is the ordering and priority - dramatically. Your playbook is dead. Your toolkit is still useful.\nWorking out which bottleneck to remove next is exactly the kind of work good managers have always done. Odd time to keep insisting we don't need them 🤔🍿\nhttps://lnkd.in/e-nytTVX\nMaturing our development process as an AI-first 2 person team\nMaturing our development process as an AI-first 2 person team\ncate.blog",
+    "scraped_at": "2026-07-23T08:12:09Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"playbook is dead, toolkit is still useful\" line is a sharp way to put it. Curious how the bottleneck-hunting itself works on a 2 person team though — when you're also the one writing the code, is there a moment you catch yourself skipping the \"step back and find what's actually blocking us\" pass because you're heads-down shipping? That's the part that used to be someone else's full-time job.",
+        "rationale": "The post's \"playbook dead, toolkit useful\" split is a clean claim but leaves out how the bottleneck-finding itself gets done when the doer and the finder are the same person — worth asking."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Agree that this work doesn't disappear, it just changes owner. On BankAI back in 2018 — a self-hosted GenAI system for a German bank, team topped out around 17 people — we never had a \"manager\" title on the org chart, but someone was always doing exactly what you describe: figuring out which constraint to attack next, not writing more code. That skill survives every reshuffle of what a \"team\" looks like, AI-augmented or not.",
+        "rationale": "Directly analogous documented story (small team, no formal manager title, bottleneck-removal work still had to happen) backs Cate's exact thesis without contradicting anything Petro has posted."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Odd time to keep insisting we don't need them\" lands well, the timing really is backwards. Genuine question: is this a durable shift, where bottleneck-finding becomes a skill everyone on a small AI-augmented team has to carry themselves, or a temporary gap that snaps back once these teams scale past 5-10 people and coordination cost returns? Curious which one your 2 person release actually points toward.",
+        "rationale": "Pushes the post's under-examined edge — whether this is a durable structural claim or a temporary artifact of small-team size — without hostility."
+      }
+    ],
+    "slack_summary": "AI-first 2-person team ships a big release with big-team processes — argues bottleneck-finding (classic manager work) matters more than ever.",
+    "slack_ts": "1784794335.549259",
+    "slack_thread": {
+      "post_reply_ts": "1784794345.295059",
+      "draft_reply_ts": [
+        "1784794350.363429",
+        "1784794356.071879",
+        "1784794364.699669"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "anusheel-bhushan-e6ef4440",
+    "urn": "urn:li:ugcPost:7483971105339375618",
+    "post_url": "https://www.linkedin.com/posts/anusheel_i-came-across-a-simple-framework-from-boris-ugcPost-7483971105339375618-108_/",
+    "author_url": "https://www.linkedin.com/in/anusheel/",
+    "author_name": "Anusheel Bhushan",
+    "author_headline": "Founder. CTO | Engineering partner to AI-first businesses",
+    "time_ago": "5d",
+    "post_text": "I came across a simple framework from Boris Cherny that lays this out really well. He calls it the Steps of AI Adoption. What made it click for me is the yardstick he picks. Not dollars spent or seats bought, but how many agents one engineer runs at a time, and what your actual job becomes while they do the work.\nAnthropic's journey - from 0 to 1,000 Agents: the 5 Stages of AI Adoption\nAnusheel Bhushan",
+    "scraped_at": "2026-07-23T08:13:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The yardstick is the sharpest part of this - not spend, but agents per engineer. What I keep bumping into building agent workflows myself is that the generation side scales almost for free, but review doesn't. If your engineer is running 20 agents in parallel, what does verifying their output actually look like at that stage - do you trust sampling, or is there some other check reading every diff couldn't replace?",
+        "rationale": "The post's own framing (agents per engineer, not spend) invites the obvious follow-up: what happens to review capacity as agent count scales, a gap the post leaves open."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The metric you pull out - agents running at once, not dollars spent - is the first stage-of-adoption yardstick I've seen that actually measures behavior change instead of budget. Curious about the step from stage 2 to 3 specifically: when an engineer goes from directing one agent to several, what's the skill that breaks first - task decomposition, verifying output, or just context-switching between them?",
+        "rationale": "Asks Anusheel to make the abstract framework concrete at one specific transition point, which requires real thought to answer rather than a generic reply."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Good yardstick - dollars spent measures intent, agent count measures behavior, which is the harder thing to fake. Where I'd push back a bit: agent count alone doesn't tell you if that's healthy scaling or Project-Vend-style drift, where the agent looked busy and productive right up until it wasn't. I'd want a second number next to it, something like how often a human actually catches a bad output before it ships, otherwise stage 5 could just mean nobody's looking anymore, not that nobody needs to.",
+        "rationale": "Petro publicly covered Project Vend (12.02.26) and the creativity-vs-rigid-systems thesis, so this counter-position is evidence-backed, not invented, and doesn't contradict any prior stance in posted.md."
+      }
+    ],
+    "slack_summary": "Shares Boris Cherny's 5 stages of AI adoption — measured by agents run per engineer, not dollars spent, and how the job changes.",
+    "slack_ts": "1784794428.032579",
+    "slack_thread": {
+      "post_reply_ts": "1784794433.673899",
+      "draft_reply_ts": [
+        "1784794439.304069",
+        "1784794444.967459",
+        "1784794451.499229"
+      ]
+    },
+    "slack_error": null
   }
 ]
