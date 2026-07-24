@@ -317,10 +317,16 @@ async function classifyBatch(cands) {
 // draft reached Slack as "no stable permalink" for a post that had one). The
 // card is addressed by the run-local data-fg-id tag, not by author (authors
 // are not unique on a feed page).
-const RECOVER_EVAL = async (fgId) => {
+const RECOVER_EVAL = async ({ fgId, bodyProbe }) => {
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const card = document.querySelector(`[data-fg-id="${fgId}"]`);
   if (!card) return { shortUrl: null, err: 'card-unmounted' };
+  // The tagged node must still show THIS candidate's post — LinkedIn recycles
+  // card elements on re-render, and a wrong-card URL would sail through the
+  // unverified keep below (verification can't catch it: the page renders fine,
+  // just for the wrong post).
+  const cardNorm = (card.innerText || '').replace(/[​‌‍﻿]/g, '').toLowerCase().replace(/\s+/g, ' ');
+  if (bodyProbe && !cardNorm.includes(bodyProbe)) return { shortUrl: null, err: 'card-recycled' };
   const btn = card.querySelector('button[aria-label*="control menu"]');
   if (!btn) return { shortUrl: null, err: 'no-menu-btn' };
   const cap = { writeText: null, execCommand: null, selection: null };
@@ -407,9 +413,18 @@ const VERIFY_SCRAPE = () => {
 
 const RENDER_ERROR_RE = /cannot be displayed|couldn.t be loaded|isn.t available|not available|deleted|removed|Something went wrong|page not found/i;
 
+// URLs in log lines get quoted into committed incident docs — never include
+// the query string (the copy-link `rcm=` param is member-associated).
+const urlForLog = (u) => {
+  try { const x = new URL(u); return x.origin + x.pathname + (x.search ? ' query=yes' : ''); }
+  catch { return String(u).split('?')[0].slice(0, 90); }
+};
+
 async function verifyPostPage(url, cand) {
+  // Every null return logs its reason: this path failing SILENTLY is what let
+  // the 2026-07-24 fire ship a draft with no post link and no diagnosable log.
   const remaining = stopAt - Date.now();
-  if (remaining < 8_000) return null;
+  if (remaining < 8_000) { log(`verify ${cand.key}: skipped, out of time`); return null; }
   try {
     const p = await getVerifyPage();
     await p.goto(url, { waitUntil: 'domcontentloaded', timeout: Math.min(15_000, remaining) });
@@ -420,16 +435,25 @@ async function verifyPostPage(url, cand) {
     await sleep(400);
     const finalUrl = p.url();
     const u = new URL(finalUrl);
-    if (!/(^|\.)linkedin\.com$/.test(u.hostname)) return null;
+    if (!/(^|\.)linkedin\.com$/.test(u.hostname)) {
+      log(`verify ${cand.key}: landed off-domain (${urlForLog(finalUrl)})`);
+      return null;
+    }
     // ONLY the /posts/<slug> form is an acceptable deliverable —
     // /feed/update/<urn> routes render unreliably outside the full web app
     // (user-verified 2026-07-16: they 404'd from Slack clicks while /posts/
     // links "work correctly for all browsers").
-    if (!/\/posts\//.test(u.pathname)) return null;
+    if (!/\/posts\//.test(u.pathname)) {
+      log(`verify ${cand.key}: final path is not /posts/ (${urlForLog(finalUrl)})`);
+      return null;
+    }
     const got = await p.evaluate(VERIFY_SCRAPE);
     // Error banners render at the very top; keep the window tight so post
     // prose containing words like "removed" can't false-positive.
-    if (RENDER_ERROR_RE.test(got.text.slice(0, 300))) return null;
+    if (RENDER_ERROR_RE.test(got.text.slice(0, 300))) {
+      log(`verify ${cand.key}: error banner on page (${urlForLog(finalUrl)})`);
+      return null;
+    }
     // Positive identity check. The body prefix is the primary signal (a wrong
     // post by the SAME author must fail); the author-path match is accepted
     // alone only for very short bodies where the prefix isn't distinctive.
@@ -444,7 +468,7 @@ async function verifyPostPage(url, cand) {
     const bodyOk = normText(got.text).includes(normBody.slice(0, 80));
     const distinctive = normBody.length >= 40;
     if (distinctive ? !bodyOk : !(bodyOk || authorOk)) {
-      vlog(`verify ${cand.key}: page renders but identity check failed (${finalUrl.slice(0, 90)})`);
+      log(`verify ${cand.key}: page renders but identity check failed (${urlForLog(finalUrl)})`);
       return null;
     }
     // urn metadata: the /posts/ slug carries an authoritative type+id
@@ -462,7 +486,7 @@ async function verifyPostPage(url, cand) {
     }
     return { postUrl: u.origin + u.pathname, urn };
   } catch (e) {
-    vlog(`verify nav failed for ${cand.key}: ${String(e.message).split('\n')[0]}`);
+    log(`verify nav failed for ${cand.key}: ${String(e.message).split('\n')[0]}`);
     return null;
   }
 }
@@ -472,7 +496,8 @@ async function recoverPermalink(page, cand) {
   // short link → verified /posts/ page (lnkd.in serves a reCAPTCHA page to
   // curl since 2026-07-16, so server-side resolution is not an option).
   try {
-    let res = await page.evaluate(RECOVER_EVAL, cand.fgId);
+    const evalArg = { fgId: cand.fgId, bodyProbe: normText(cand.body).slice(0, 60) };
+    let res = await page.evaluate(RECOVER_EVAL, evalArg);
     await sleep(500);
     let capturedUrl = (res?.shortUrl && /^https?:\/\//.test(res.shortUrl)) ? res.shortUrl : null;
     if (!capturedUrl && !outOfTime()) {
@@ -480,7 +505,7 @@ async function recoverPermalink(page, cand) {
       // structure — cheap insurance before the fire gets flagged for heal.
       log(`recovery for ${cand.key} captured nothing (${res?.err || 'no result'}) — retrying once`);
       await sleep(800);
-      res = await page.evaluate(RECOVER_EVAL, cand.fgId);
+      res = await page.evaluate(RECOVER_EVAL, evalArg);
       await sleep(500);
       capturedUrl = (res?.shortUrl && /^https?:\/\//.test(res.shortUrl)) ? res.shortUrl : null;
     }
@@ -492,6 +517,29 @@ async function recoverPermalink(page, cand) {
     if (v) {
       cand.postUrl = v.postUrl;
       cand.urn = v.urn;
+      return;
+    }
+    // Unverified keeps: raw captured payloads only, never rebuilt or guessed,
+    // and urn stays null — provenance is the copy-link click, not a verified
+    // page. Both keeps are counted in PERMALINKS_UNVERIFIED so a wholesale
+    // verifier regression stays visible instead of hiding behind working links.
+    const direct = (() => {
+      try {
+        const u = new URL(capturedUrl);
+        if (u.protocol !== 'https:' || u.hostname !== 'www.linkedin.com') return null;
+        if (u.username || u.password || u.port) return null;
+        if (!/^\/posts\/[^/]+\/?$/.test(u.pathname)) return null;
+        return u.origin + u.pathname; // tracking query dropped (rcm= is member-associated)
+      } catch { return null; }
+    })();
+    if (direct) {
+      // The desktop copy-link writes the full canonical /posts/ URL directly
+      // on some cards instead of an lnkd.in short link (first seen
+      // 2026-07-24) — same trust class as the raw short link below.
+      cand.postUrl = direct;
+      cand.urn = null;
+      cand.permalinkUnverified = true;
+      log(`recovery for ${cand.key}: kept captured canonical URL unverified (${direct})`);
     } else if (/^https:\/\/lnkd\.in\//.test(capturedUrl)) {
       // Last resort, allowlisted to LinkedIn's own short-link domain: it
       // redirects to the post; keep it even though the verification pass
@@ -499,6 +547,10 @@ async function recoverPermalink(page, cand) {
       // never hand out an unverified arbitrary URL.
       cand.postUrl = capturedUrl;
       cand.urn = null;
+      cand.permalinkUnverified = true;
+      log(`recovery for ${cand.key}: kept captured short link unverified`);
+    } else {
+      log(`recovery for ${cand.key}: captured URL not keepable, dropped (${urlForLog(capturedUrl)})`);
     }
   } catch (e) {
     log(`recovery for ${cand.key} threw: ${String(e.message).split('\n')[0]}`);
@@ -612,7 +664,7 @@ function parseCard(raw) {
   for (let j = 0; j < lines.length; j++) {
     if (/^\d+[smhdw]$/i.test(lines[j].replace(/\s*•\s*$/, '').trim())) {
       for (let k = j + 1; k < lines.length; k++) {
-        if (!/^(Follow|Following|View my services|Promoted|Visit my website)$/i.test(lines[k])) { bodyStart = k; break; }
+        if (!/^(Follow|Following|Connect|View my services|Promoted|Visit my website)$/i.test(lines[k])) { bodyStart = k; break; }
       }
       break;
     }
@@ -736,6 +788,10 @@ function emitContractInner(feedExhausted, endReason) {
   // signal to the driver (post-landing heal), not a contract breaker — the
   // drafts still ship.
   kv.push(`PERMALINKS_MISSING=${accepted.filter((c) => !c.postUrl).length}`);
+  // Raw captured links kept without positive page verification. Not an error
+  // by itself, but a count that grows across fires means the verifier is
+  // broken and only the unverified keeps are masking it.
+  kv.push(`PERMALINKS_UNVERIFIED=${accepted.filter((c) => c.permalinkUnverified).length}`);
   kv.push(`OUT_DIR=${OUT_DIR}`);
   accepted.forEach((c, idx) => {
     const i = idx + 1;
@@ -759,6 +815,7 @@ function emitContractInner(feedExhausted, endReason) {
     end_reason: endReason, feed_exhausted: feedExhausted,
     accepted: accepted.map((c) => c.key),
     permalink_missing: accepted.filter((c) => !c.postUrl).map((c) => c.key),
+    permalink_unverified: accepted.filter((c) => c.permalinkUnverified).map((c) => c.key),
     counters,
     classify_calls: classifyCalls,
     failed_ladders: failedLadders,

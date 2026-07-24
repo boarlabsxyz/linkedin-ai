@@ -30,7 +30,10 @@ for (const p of posts) {
     const gone = /cannot be displayed|couldn.t be loaded|isn.t available|not available|deleted|removed|Something went wrong/i.test(text);
     const authorOk = text.toLowerCase().includes(p.author.replace(/[^\p{L}\p{N} ]/gu, '').trim().split(/\s+/)[0].toLowerCase());
     if (gone) { console.log(`BROKEN  ${p.key} -> ${p.url}`); bad++; }
-    else console.log(`OK      ${p.key} authorSeen=${authorOk} -> ${p.url.slice(0, 100)}`);
+    // A rendering page without the author is the WRONG post — that is
+    // permalink drift too, not a pass (it printed OK until 2026-07-24).
+    else if (!authorOk) { console.log(`NOAUTHOR ${p.key} -> ${p.url.slice(0, 100)}`); bad++; }
+    else console.log(`OK      ${p.key} -> ${p.url.slice(0, 100)}`);
   } catch (e) {
     console.log(`ERROR   ${p.key}: ${String(e.message).split('\n')[0]}`); bad++;
   }
