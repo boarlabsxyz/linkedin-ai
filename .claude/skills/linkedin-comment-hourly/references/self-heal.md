@@ -87,5 +87,21 @@ accordingly (cap it at ~600s) and write the incident as you go.
   link. Response: the lookup now polls ~3.2s + retries the whole recovery
   once + dumps the rendered menu items into the error line, and
   `PERMALINKS_MISSING>0` became a ⚠️-fire + post-landing-heal trigger.
+- 2026-07-24 fire: an accepted draft shipped with no post link and NO error
+  detail in the log. Two stacked causes: (1) "Connect" header chrome (shown
+  for non-connection authors) leaked into the parsed body — poisoning the
+  body-hash key and the verify body-prefix check; (2) the desktop copy-link
+  wrote a FULL canonical `/posts/` URL (not an lnkd.in short link), which the
+  lnkd.in-only unverified-keep silently dropped after verification failed.
+  Response: `Connect` added to the body-start skip list, every verify null
+  path now logs a reason code (query strings never logged — `rcm=` is
+  member-associated), unverified keeps extended to captured canonical
+  `/posts/` URLs (strict URL-parse checks, query stripped, urn null) and
+  counted in `PERMALINKS_UNVERIFIED`, and `RECOVER_EVAL` gained a
+  card-association body-probe (`card-recycled` error) so a recycled card's
+  URL can't ride the unverified keep. 14 seen-set entries with
+  Connect-prefixed `post_text` were jq-repaired (keys kept — the fuzzy
+  bridge covers them). If a permalink goes missing WITH a logged reason now,
+  it is a NEW failure mode, not this one.
 - The Slack bookends and the batched classifier are pinned `claude -p`
   micro-call shapes (see WRAPPER comments) — do not "improve" their flags.
