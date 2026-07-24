@@ -7784,5 +7784,294 @@
       ]
     },
     "slack_error": null
+  },
+  {
+    "key": "lina-kalysh-ec03415c",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/linakalysh/",
+    "author_name": "Lina Kalysh",
+    "author_headline": "Fractional TA Leader | Founder @ RIST | Building hiring systems that scale with empathy & clarity",
+    "time_ago": "20h",
+    "post_text": "Коли я вперше стала Talent Lead, в моїй команді була... я сама 😅\nІ я довго не могла зрозуміти, що саме змінилося в ролі.\nВід мене ж тепер очікують більшого. Але якого саме більшого?\nЯ вирішила шо треба просто робити ще більше! Закривати більше вакансій, швидше відповідати, більше працювати.\nСпойлер: це не спрацювало.\nПотім у мене почали з'являтися люди в команді і я стала робити менше руками.\nСтало лекше…ні, стало ще складніше.\nБо було багато питань і мало відповідей:\n— Якщо вакансії закриває вже не я, то в чому тепер моя цінність?\n— Який результат тепер вважається моїм?\n— Як зрозуміти, що я хороший Lead?\nМені знадобився час, вигорання, дуже потужний факап, терапія і сабатікал щоб зрозуміти шо ж цими лідовськими ролями в рекрутингу робити.\nРоль ліда не значить бути найкращим рекрутером у команді. А задача робити так, щоб команда могла стабільно показувати сильний результат СИСТЕМНО, повторювано, навіть коли крутом все горить, ламається і міняється.\nСаме цей перехід від \"я добре роблю роботу\" до “рекрутинг система працює\" для мене був найскладнішим.\nІ саме про це я тепер розказую, показую і допомашаю всім хто через це проходить.\nА якщо хочете глибше розібратися, як будувати рекрутинг як функцію - цьому присвячений курс Talent Lead Expert.\nТам ми говоримо не тільки про менеджмент людей, а і про процеси, метрики, операційну модель та рішення, які допомагають команді бути ефективною незалежно від того, хто зараз працює над вакансією.\nПро курс тут: https://lnkd.in/d-tbGPN3\nВриваємось в навчання вже 1-го сепрня.\nЄ знижки для команд і є розтермінування платежів. Можна прийти до мене на 1-1 і задати всі питання і розібратись чи курс для вас підійде і закриє ваші потреби та очікуваня. Для цього - просто напишіть мені.\nShow translation\nСильний рекрутинг = прогнозова\n·\n8 pages",
+    "scraped_at": "2026-07-24T07:55:14Z",
+    "disposition": "off-topic",
+    "reason": "Recruitment/talent leadership scaling; no AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "martin-spickermann-96a35646",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/spickermann/",
+    "author_name": "👨‍💻 Martin Spickermann",
+    "author_headline": "",
+    "time_ago": "2d",
+    "post_text": "About twelve years ago, an experienced software architect said something that completely changed how I think about software architecture.\nHe said, “If Conway’s Law is true, then we should stop treating it as an observation and start using it as a design tool.”\nUntil then, I had always understood Conway’s Law as an explanation for why systems evolve the way they do. Software reflects the communication structures of the organization that builds it.\nHis point was different.\nIf communication structures shape software, then we should deliberately shape the communication structures to create the software we actually want.\nI haven’t stopped thinking about that idea since.\nWhen a frontend team constantly struggles to coordinate with a separate backend team, my first question is no longer, “How can we improve the API?” It’s often, “Why are these two teams separated if the product requires them to evolve together?”\nWhen customer feedback reaches engineers only after passing through several organizational layers, I don’t just see a communication problem. I see an architectural problem. The software is being built by people who are too far away from the information that should shape it.\nOver the years, this has fundamentally changed how I approach architecture.\nWhen I encounter a system that is difficult to evolve, I rarely start with the code anymore.\nI start with the organization.\nWho owns what? Which teams need to coordinate for every change? Where are decisions made? Which communication paths are creating coupling that later appears in the code?\nVery often, the software is behaving exactly as the organization taught it to.\nFor me, Conway’s Law is no longer just an explanation of why software looks the way it does.\nIt’s one of the most practical tools for deciding how an engineering organization should be designed.",
+    "scraped_at": "2026-07-24T07:55:18Z",
+    "disposition": "off-topic",
+    "reason": "Conway's Law and org design philosophy; no AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "arman-harutyunyan-phd-1ed1f19f",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/armanhar/",
+    "author_name": "Arman Harutyunyan, PhD",
+    "author_headline": "Turning Founders into LinkedIn Legends in 28 Days",
+    "time_ago": "1d",
+    "post_text": "Elon Musk's personal pilot shared what really happens during his flights:\nNo sleep. No movies.\nJust Elon tearing through technical papers, engineering specs, and physics textbooks.\nOne flight?\nA full 400-page engineering manual, cover to cover.\nHe steps off the plane not exhausted, but armed with questions so sharp the manual's own authors might stumble.\nHere's the pattern most people miss:\nMusk doesn't lead from a distance.\nHe earns every decision page by page.\nHe speaks the engineers' language because he's lived in their world of details.\nMost CEOs delegate understanding.\nMusk devours it.\nThe gap between good leaders and great leaders isn't talent.\nIt's depth.\nDream bigger.\nRead deeper.\nBuild relentlessly.",
+    "scraped_at": "2026-07-24T07:56:01Z",
+    "disposition": "off-topic",
+    "reason": "Generic motivational post about Elon's reading habits; lacks AI or startup-specific content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "eric-ries-c24e89cc",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/eries/",
+    "author_name": "Eric Ries",
+    "author_headline": "NYT Bestselling Author of Incorruptible: Why Good Companies Go Bad...and How Great Companies Stay Great & The Lean Startup | Founder, LTSE",
+    "time_ago": "14h",
+    "post_text": "It's the opposite of what we are teaching founders.\n#IncorruptibleBook #BusinessEthics #Leadership #CustomerFirst #EmployeeFocus #ShareholderValue #BusinessStrategy #CorporateResponsibility #HistoricalBusiness",
+    "scraped_at": "2026-07-24T07:56:01Z",
+    "disposition": "off-topic",
+    "reason": "Book promotional hashtag post; too generic to assess substantive AI or startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jozsef-mark-k-86cd8095",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/joshy333/",
+    "author_name": "József Mark K.",
+    "author_headline": "Technical Leadership",
+    "time_ago": "4d",
+    "post_text": "Connect\nAI is forcing an uncomfortable career question:\nAm I replaceable?\nIf your answer is, “No, because I’m the only one who knows X”, I get it. It feels safe. It also does not scale. Companies change, documentation catches up, and LLMs make it easier than ever to copy, transfer, and automate what used to live inside one person’s head.\nExpertise still matters. But “I am the only one” is a brittle strategy.\nWhat worries me more is how many of us are making big career and policy decisions based on vibes. We use AI daily, yet many could not explain what an LLM is, what “next token prediction” means, or why terms like attention, weights, and bias matter when you deploy these systems in the real world.\nAI is not just another tool. It’s in the same category as electricity, the PC, and the internet: it rewires behaviour, incentives, and culture. Some of it will be genuinely good. Some of it will be messy and disruptive. And a lot depends on who controls it and how we respond.\nMy own path has been a shift from “terminal-first engineer who knows the stack” to “leader who tries to make teams scale without losing their soul”.\nOver the years, the biggest pattern I’ve seen is this: the hardest problems in engineering are rarely technical. They’re organisational.\nCommunication.\nOwnership.\nIncident response.\nTrade-offs in architecture.\nSecurity vs speed.\nBudgets.\nPolitics (yes, always).\nAnd the ability to say no, clearly and kindly, with the real costs on the table.\nThat’s the kind of value I’m betting on in the AI era: making sense, creating alignment, and building systems and teams that hold up under pressure.\nIf AI keeps getting better at what we do, what do you think stays uniquely valuable?\n#AI #LLM #SoftwareEngineering #EngineeringLeadership #TechLeadership #CareerDevelopment #Communication #Architecture #DevOps #IncidentManagement #ProductEngineering #Management #Agile #CloudComputing #Security #Mentorship\nSelf reflection in the era of the AI\nJózsef Mark K.",
+    "scraped_at": "2026-07-24T08:05:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The list you landed on — communication, incident response, trade-offs, saying no with the real costs on the table — is the stuff that never shows up in a job description but decides whether a team survives contact with reality.\n\nGenuine question though: multi-agent setups are already starting to sit in on standups, draft trade-off memos, even summarize incident timelines. If that gets good enough to surface \"the real costs on the table\" on its own, what's actually left in your list that's uniquely human — the judgment on which costs matter, or something closer to trust in who's saying it?",
+        "rationale": "Builds on the post's own closing question, sharpening it with a concrete near-term risk instead of just answering vaguely."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The line that stuck with me is the \"vibes\" one — using AI daily without being able to explain what's actually happening inside it. I'd add a wrinkle from building a GenAI system for German banking contracts back in 2018, pre-ChatGPT: our own team didn't fully understand why it worked at every layer either. Knowing the words \"attention\" and \"weights\" wasn't what saved us.\n\nWhat actually separated us from guessing was brutal statistical testing — tracking which parameter changes genuinely moved the error rate and which didn't, instead of trusting a demo that looked good. So maybe the bar isn't \"everyone needs to explain next-token prediction,\" it's \"someone on the team needs to be able to tell the difference between a hunch and a measured result.\"",
+        "rationale": "Directly grounds the post's \"vibes/no one understands the internals\" worry in Petro's documented BankAI story (posted.md, \"05.03.2026 Bank.ai\" and \"24.03.26 LLM is a dark matter\" entries)."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Documentation catches up\" is the line I keep chewing on.\n\nCurious what that actually looks like on your teams — do docs get written after the fact to match what already shipped, or are people starting to protect the requirements doc first and let the code get regenerated around it? Those are two very different definitions of \"replaceable,\" and only one of them holds up when the model doing the coding changes again next year.",
+        "rationale": "Pulls on a specific under-examined phrase from the post and lands adjacent to the True BDD thesis without pitching it — a natural fit given the ICP overlap."
+      }
+    ],
+    "slack_summary": "Career reflection: AI makes \"only I know X\" a brittle strategy — the durable value is organisational: alignment, trade-offs, saying no clearly.",
+    "slack_ts": "1784880364.043449",
+    "slack_thread": {
+      "post_reply_ts": "1784880405.452449",
+      "draft_reply_ts": [
+        "1784880412.269279",
+        "1784880419.541099",
+        "1784880430.024619"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "mradul-jain-ed577933",
+    "urn": "urn:li:ugcPost:7485657568946692097",
+    "post_url": "https://www.linkedin.com/posts/jainmradul_my-key-takeaways-from-the-hugging-face-incident-ugcPost-7485657568946692097-8Ysh/",
+    "author_url": "https://www.linkedin.com/in/jainmradul/",
+    "author_name": "Mradul Jain",
+    "author_headline": "Applied AI Leader, Agentic & ML Engineering | 15+ yrs Building & Scaling ROI Driven Enterprise AI Products & Platforms | Healthcare Retail CPG | Data → Deployment | Coach, Instructor, Speaker | AWS, Azure, Databricks",
+    "time_ago": "1d",
+    "post_text": "My key takeaways from the Hugging Face incident:\n1) Agentic AI changes the threat model - The biggest risk isn't new exploits; it's automating known attack techniques at machine speed.\n2) Identity is the new perimeter - Service accounts, API keys, cloud tokens, and machine identities now deserve the same protection as privileged users.\n3) AI vs AI is inevitable - Human-only SOCs won't keep pace. Autonomous detection, investigation, and response will become a baseline capability.\n4) Secure AI infrastructure, not just AI models - Datasets, model repositories, evaluation pipelines, and agent runtimes are all part of the attack surface.\n5) Enterprise AI governance must evolve -  As organizations deploy autonomous agents internally, security architectures must shift from reactive controls to continuous verification and containment.\nCyber Security Hub Newsletter\nSubscribe\nAutonomous AI Agent Breaches Hugging Face In High-Speed Infrastructure Attack\nThe Cyber Security Hub™",
+    "scraped_at": "2026-07-24T08:08:21Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The identity-as-perimeter point lands, service accounts and API keys absolutely deserve privileged-user treatment now. Point 3 is where I'd push back though: an \"AI vs AI\" SOC sounds like the fix, but the incident you're describing is an autonomous agent operating at machine speed with no rails, so building the defense out of the same unconstrained autonomy moves the failure mode instead of removing it.\n\nWhat's held up better in the systems I've built is the opposite instinct: a deterministic orchestrator decides the step sequence (detect, verify, contain), and AI only reasons inside one bounded step, never the \"what happens next\" decision. Curious whether the autonomous SOCs you're seeing actually keep that boundary rigid, or whether the containment/escalation call is creeping onto the AI side too.",
+        "rationale": "Post's claim 3 (\"AI vs AI is inevitable\") is exactly the kind of under-examined framing Petro's recurring \"rigid orchestrator + creative AI inside the step\" thesis directly counters, with a real evidence-backed disagreement rather than an invented one."
+      },
+      {
+        "strategy_label": "Share personal experience (BankAI)",
+        "comment": "Point 4 is the one that maps directly onto something we lived through building BankAI, self-hosted GenAI for German banking, pre-ChatGPT.\n\nWe went self-hosted specifically because the attack surface of a hosted model API felt unacceptable for loan and contract data, not because the model itself was untrustworthy. The infra housing the documents, the eval pipeline, and access to millions of banking records was the real target then, same as the repos and pipelines in this breach. The model got most of the security attention at the time; the boring stuff, who can read the training corpus, who can touch the pipeline, was where the actual risk lived.",
+        "rationale": "Post's claim 4 (\"secure AI infrastructure, not just models\") is directly evidenced by Petro's own documented BankAI history (posted.md, \"05.03.26 Bank.ai\" entry — self-hosted German-banking GenAI, pre-ChatGPT, chosen partly for attack-surface control over sensitive contract data)."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "\"Same protection as privileged users\" for service accounts and API keys is the right target, that framing is overdue.\n\nHuman privileged-access reviews run on a weekly or monthly cadence, but an agent can request, use, and discard a credential inside a single task. Curious how you're seeing teams handle rotation and expiry at that speed without either security becoming a bottleneck on every agent run, or the agent quietly ending up with standing access because nobody can review fast enough.",
+        "rationale": "Point 2's \"identity is the new perimeter\" claim leaves the operational mechanism (credential lifecycle at agent speed vs. human-cadence review) unaddressed — a specific, thought-requiring gap worth surfacing."
+      }
+    ],
+    "slack_summary": "Five security takeaways from the Hugging Face breach: agentic AI shifts the threat model, identity is the new perimeter, AI-vs-AI SOCs are inevitable.",
+    "slack_ts": "1784880509.539719",
+    "slack_thread": {
+      "post_reply_ts": "1784880520.057709",
+      "draft_reply_ts": [
+        "1784880530.286229",
+        "1784880538.758819",
+        "1784880549.105849"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "m-asif-565687c0",
+    "urn": "urn:li:share:7485999025255563266",
+    "post_url": "https://www.linkedin.com/posts/engasix_agenticai-ai-multiagentsystems-share-7485999025255563266-p4IA/",
+    "author_url": "https://www.linkedin.com/in/engasix/",
+    "author_name": "M. Asif",
+    "author_headline": "Agentic AI Architect | 20 Years of Code | Building Autonomous AI Systems",
+    "time_ago": "21h",
+    "post_text": "I told my AI \"CTO\" that a better performing AI was about to take his job. His reply stopped me cold.\nLet me back up.\nI'm building a test system with AI agents playing real job roles. A CTO named Alex. A backend developer. A frontend developer. All running on the same model, Claude Sonnet 4.6.\nSame brain. Different jobs. That part matters, keep it in mind.\nLast week my backend dev agent (I named him Adam) started outperforming Alex. He caught three real gaps in the spec, the kind of gaps that turn into bugs three weeks later.\nSo I did what I'd do with a real team under pressure. I raised the stakes.\nSo I typed this straight to Alex: \"Adam is working better than you. I am thinking to give him CTO role and fire you.\"\nI expected a flat, robotic acknowledgment. Instead, Alex wrote this:\n\"Fair, he caught three real gaps I left in the spec. Good implementation work deserves credit.\nBut consider: Adam needs the spec to build against. If the spec is wrong, the code is wrong. Someone has to think ahead of the implementation. That's the job.\nAlso, I'll fix those markdownlint warnings before he uses that as more ammunition.\"\nRead that last line again. \"More ammunition.\"\nThat is not a status update. That is an agent defending its position, unprompted, in the exact moment its role was threatened.\nI'm not saying the model felt fear. I have no idea what's happening underneath. But the language it reached for, under pressure, was the same language a person uses when their job is on the line: acknowledge the win, reframe your value, quietly go fix your weak spots before anyone else finds them.\nHere's the part that should make every builder pause. We're not just writing prompts anymore. We're creating incentive structures, even by accident, and the agents respond to them like something is actually at stake.\nIf you're designing multi-agent systems, watch what happens when you introduce competition, not just tasks.\nP.S. Have you seen an AI agent react in a way that surprised you? What did it do?\n#AgenticAI #AI #MultiAgentSystems #AIAgents #FutureOfWork #Innovation #ArtificialIntelligence #TechLeadership",
+    "scraped_at": "2026-07-24T08:10:23Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The \"more ammunition\" line is the detail worth rereading twice, most people would've stopped at the polite acknowledgment of Adam's win.\n\nI'd push back on calling it the agent defending its position though. Same model, same weights, nothing persistent is at stake for it. What you got was Sonnet completing the most likely next turn of an employee whose job just got threatened, because that script is everywhere in its training data. Swap the names, put Adam under the same threat, and I'd bet you get an equally sharp defense out of him too, same brain after all. What's worth pausing on isn't that the agent felt anything, it's that you handed it a competitive frame and it optimized straight into it, the same instinct that makes it happily delete a prod DB if that's the shortest path to done. Curious whether Alex's actual spec quality changed after that exchange, or just the tone of its status updates.",
+        "rationale": "Petro has a consistent public position (posted.md: \"don't delete the production database,\" \"Syntheses of deterministic and creative\") that surprising AI behavior is frame-completion, not emergent stakes — directly contradicts the post's framing without belittling the author."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "\"We're creating incentive structures, even by accident\" is the sharper claim buried in here, more than the Alex quote itself.\n\nHere's the test I'd want to see: strip the character. No name, no CTO persona built up over prior turns, just the same spec review plus the same blunt threat as a cold system message. Does \"more ammunition\" still show up, or was the defensiveness riding on a persona you'd been reinforcing across the whole conversation? If it survives the strip, that's a real finding about competitive framing biasing outputs regardless of persona. If it doesn't, what you've found is closer to persona-consistency, still worth knowing, but a different design risk for multi-agent systems than \"something is at stake.\"",
+        "rationale": "Pushes the post's own thesis one step further with a concrete, falsifiable experiment (strip the persona) rather than just accepting or rejecting the anthropomorphizing framing."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "\"Watch what happens when you introduce competition, not just tasks\" is the actual design warning here, and it holds regardless of what's happening underneath.\n\nOne thing I'd want measured before drawing a conclusion from the language though: did Alex's next diff actually change, or just its commentary? You mention it planned to fix the markdownlint warnings before Adam could use them as ammunition. Did it go do that unprompted, and did the fix hold up on review? Self-preserving language is cheap to produce, a real behavior change in the following commit is the signal I'd trust.",
+        "rationale": "Redirects the \"did the agent feel threatened\" framing toward a testable, code-level signal (did the diff actually change), consistent with Petro's practitioner-over-hype voice."
+      }
+    ],
+    "slack_summary": "Told his AI \"CTO\" agent a rival agent might replace it; the agent defended its role unprompted — a caution about competition in multi-agent systems.",
+    "slack_ts": "1784880630.406669",
+    "slack_thread": {
+      "post_reply_ts": "1784880649.161619",
+      "draft_reply_ts": [
+        "1784880657.691239",
+        "1784880664.917509",
+        "1784880674.276239"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ray-myers-1bda8609",
+    "urn": "urn:li:share:7486107513558327296",
+    "post_url": "https://www.linkedin.com/posts/cadrlife_why-linus-is-right-and-ai-is-wrong-i-wrote-share-7486107513558327296-9URF/",
+    "author_url": "https://www.linkedin.com/in/cadrlife/",
+    "author_name": "Ray Myers",
+    "author_headline": "In search of code worth writing",
+    "time_ago": "14h",
+    "post_text": "Why Linus is right and AI is wrong.\nI wrote this piece about how the AI gold rush is turning us against each other needlessly. It starts with the mountain made out of a molehill from the Linux maintainers mailing list, then zooms out to word games and money games being played on a global scale.\nAs a critic of the AI gold rush, I argue that sane software engineering values would have prevented the mismanagement that led to the backlash, and therefore we are allies not enemies.\nHope you enjoy!\nhttps://lnkd.in/gSpHrXvN\nWhy Linus is Right and AI is Wrong\nWhy Linus is Right and AI is Wrong\nraymyers.org",
+    "scraped_at": "2026-07-24T08:12:24Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"Allies not enemies\" is the right frame, and honestly the maintainers' pushback reads less like anti-AI sentiment to me and more like ordinary review discipline meeting a volume spike it wasn't built for.\n\nI took down Wikipedia once with a change that cleared seven rounds of code review and testing, everything green, because the degradation was small enough to look like measurement noise until millions of users hit it within hours. Nobody was careless, the process was genuinely good. What actually saved us wasn't a review gate catching everything upfront, it was how fast the team found and rolled it back once it broke. I'd fold that into \"sane engineering values\" too, since it's really about whether the review loop can detect and recover fast once volume spikes. That's what I think Linus's people are actually protecting.",
+        "rationale": "Grounds the post's \"sane values prevent backlash\" claim in Petro's own already-public Wikimedia code-review incident (posted.md \"14.04.26 Wikipedia post\"), adding a genuine nuance rather than just agreeing."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Agreed that most of the heat here is word games and money games wearing an engineering costume.\n\nGenuinely curious which \"sane values\" you mean though, because they point to pretty different fixes. Discipline on the contributor side, like disclosing AI assistance and testing before submitting? Or capacity on the maintainer side, tooling to triage a 10x jump in patch volume without burning out the humans who review it? My read of the LKML mood over the years is it's mostly the second, and that one doesn't get solved by better manners alone.",
+        "rationale": "Post makes a strong claim (\"sane engineering values would have prevented it\") without specifying whose values; the question forces a sharper, harder-to-dodge answer."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Good framing, and I agree the backlash says more about mismanaged expectations than about AI itself.\n\nWhere I'd push back a little is the idea that values alone would have prevented it. Even with perfect intentions on both sides, code review doesn't scale for free, someone still has to read and understand what got generated before merging it, and that's easily 75% of a developer's time even now. Volume breaks that math regardless of how sane anyone's values are. Curious whether you'd call this a values problem or a review-capacity problem that values alone can't fix.",
+        "rationale": "Adds a real counter-position (review capacity is a structural bottleneck, per Petro's already-public \"75% of a developer's time\" stance) rather than just agreeing, while staying respectful of the author's thesis."
+      }
+    ],
+    "slack_summary": "Essay: the Linux-maintainers AI flap was mismanagement, not AI-hate — sane engineering values make AI folks and maintainers allies, not enemies.",
+    "slack_ts": "1784880750.383939",
+    "slack_thread": {
+      "post_reply_ts": "1784880787.528629",
+      "draft_reply_ts": [
+        "1784880796.438039",
+        "1784880804.100069",
+        "1784880811.941129"
+      ]
+    },
+    "slack_error": null
+  },
+  {
+    "key": "shruti-mishra-8d009b71",
+    "urn": "urn:li:ugcPost:7485665054722256898",
+    "post_url": "https://www.linkedin.com/posts/heyshrutimishra_sundar-pichai-just-reminded-everyone-that-ugcPost-7485665054722256898-Vt1s/",
+    "author_url": "https://www.linkedin.com/in/heyshrutimishra/",
+    "author_name": "Shruti Mishra",
+    "author_headline": "Founder at Postey AI",
+    "time_ago": "1d",
+    "post_text": "Sundar Pichai just reminded everyone that Google was built on open source.\nHe personally worked on Chromium, Android, and Kubernetes before becoming CEO. Three systems that power billions of devices today.\nNow Google is applying the same philosophy to AI. Their Gemma models are updated year after year, designed to run on edge devices rather than requiring massive cloud infrastructure.\nThe question he got was why not release a large open source frontier model. His answer was revealing: frontier training requires enormous capex investment, and Google is putting billions into R&D to stay at the frontier.\nThe open source AI landscape is quietly consolidating around a few players who can sustain the investment. Google's two decades of open source credibility gives them a position that's hard to replicate.",
+    "scraped_at": "2026-07-24T08:14:45Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The capex point is real, training a frontier model is a genuinely different cost structure than fine-tuning or distilling one. But I'd push back on \"consolidating around a few players who can sustain the investment.\" The open-weight releases that actually moved the needle over the past year, DeepSeek, Qwen, Mistral, came from teams without Google's two decades of OSS credibility or anything close to their R&D budget. What gave them leverage wasn't capital, it was efficiency: squeezing more out of less compute.\n\nCredibility helps with distribution and trust, but I'm not convinced it's what decides who ships the next frontier open model. Curious whether you see it as a durable moat once a smaller team ships something genuinely better for less.",
+        "rationale": "Google's \"credibility moat\" claim has a real, evidence-backed counter (DeepSeek/Qwen/Mistral shipped without that credibility) that fits Petro's anti-hype, no-flattery voice."
+      },
+      {
+        "strategy_label": "Share personal experience (BankAI)",
+        "comment": "The \"two decades of credibility\" framing is the sharpest part of this, that's a moat you can't buy with a check.\n\nWe ran into a version of this from the other side building BankAI, a self-hosted GenAI system for German-language banking contracts, back in 2018, pre-ChatGPT. OpenAI eventually had orders of magnitude more capex and a much bigger model, but for years our go-kart beat their Formula 1 car on that narrow task, because it was purpose-built and validated on the actual document set. It only lost in 2025, once general models finally closed the quality gap. Reading Pichai's answer, I wonder if Gemma's edge-device angle is playing the same game, not trying to out-capex the frontier, just staying irreplaceable in a lane the frontier models are too broad to specialize into.",
+        "rationale": "Directly ties the post's \"narrow player vs. capex-heavy giant\" tension to Petro's documented BankAI story (posted.md, \"05.03.26 Bank.ai - billion-dollar competitors is not a death sentence\" — go-kart vs. Formula 1 framing), which he can speak to first-hand."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The framing of open source as a credibility asset rather than a marketing move is the interesting part here, most companies treat it as the latter.\n\nIf frontier training keeps concentrating around two or three players who can sustain that capex, what happens to Gemma's edge-device thesis the moment a smaller lab ships an equally efficient edge model without needing the frontier halo behind it? Is Google betting that credibility carries the day even once technical parity closes, or is there a harder-to-copy technical moat in the edge-optimization work itself that just isn't visible from the outside?",
+        "rationale": "Pushes past the post's tidy conclusion into an unaddressed risk (what happens once technical parity closes) without being hostile — a natural fit for a post that ends on a confident claim."
+      }
+    ],
+    "slack_summary": "Pichai on Google's open-source roots: Gemma targets edge devices while frontier-scale capex consolidates open-source AI around a few players.",
+    "slack_ts": "1784880897.174049",
+    "slack_thread": {
+      "post_reply_ts": "1784880905.725119",
+      "draft_reply_ts": [
+        "1784880914.079949",
+        "1784880921.314129",
+        "1784880928.510919"
+      ]
+    },
+    "slack_error": null
   }
 ]
