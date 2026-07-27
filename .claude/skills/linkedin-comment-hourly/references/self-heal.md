@@ -7,9 +7,18 @@ additive — it cannot relax the core's ground rules.
 Extra context keys from the caller: `HEAL_MODE` (`in-loop` or
 `post-landing`, see below), `GATHER_OUT` (the failed attempt's run-scoped
 contract dir), `COMMENTS_FILE` (`./linkedin-compain/comments.json`), `TS`
-(this fire's timestamp). `WRAPPER` is
-`.claude/skills/linkedin-comment-hourly/run-hourly.sh`; the fast script is
-`<FAST_DIR>/gather-feed.mjs`.
+(this fire's timestamp), plus `INBOX_OUT`/`INBOX_OK`/`INBOX_STATE_FILE`
+(the slack-inbox stage's out-dir, acceptance flag, and watermark state).
+`WRAPPER` is `.claude/skills/linkedin-comment-hourly/run-hourly.sh`; the
+fast script is `<FAST_DIR>/gather-feed.mjs`.
+
+**The slack-inbox stage is NOT yours to heal.** You are only ever dispatched
+for FEED gather failures. Inbox failures degrade to feed-only by design
+(⚠️ bookend note; the watermark stays put, so the links retry next fire and
+live in a durable pending/dead queue in `INBOX_STATE_FILE`). Never edit
+`INBOX_STATE_FILE` — the driver owns it, and a hand-advanced watermark
+silently loses Peter's links. Inbox context is provided for diagnosis only
+(e.g., a profile lock the inbox fetch left behind).
 
 ## HEAL_MODE
 

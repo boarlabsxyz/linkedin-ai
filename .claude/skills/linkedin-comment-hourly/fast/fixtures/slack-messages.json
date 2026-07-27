@@ -1,0 +1,99 @@
+{
+  "channelId": "C0BF606R4N7",
+  "messages": [
+    {
+      "ts": "1784992193.489909",
+      "user": "US52EFX2S",
+      "bot_id": null,
+      "subtype": null,
+      "text": "Posts for comments:\n\n<https://www.linkedin.com/posts/davidlinthicum_the-hidden-tax-on-honest-discourse-in-technology-ugcPost-7486729143691337728-2b55/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAfVql8BvA3EvhUg7D_GS35q3pjm_Pk-E-8|linkedin.com/posts/davidlinthicum_the-hidden-tax-on-honest-discourse-in-technology…?rcm=…&…>",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/posts/davidlinthicum_the-hidden-tax-on-honest-discourse-in-technology-ugcPost-7486729143691337728-2b55/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAfVql8BvA3EvhUg7D_GS35q3pjm_Pk-E-8",
+          "original_url": "https://www.linkedin.com/posts/davidlinthicum_the-hidden-tax-on-honest-discourse-in-technology-ugcPost-7486729143691337728-2b55/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAAfVql8BvA3EvhUg7D_GS35q3pjm_Pk-E-8"
+        }
+      ]
+    },
+    {
+      "ts": "1784882519.315739",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":warning: linkedin-comment-hourly: run finished in 47m47s (permalink capture FAILED on 1 accepted post(s) — drafts shipped) — 5 drafted, 4 filtered — PR: <https://github.com/boarlabsxyz/linkedin-ai/pull/124;> self-heal ×1 (post-landing, session completed, fix unverified until next fire) — heal PR awaiting review: <https://github.com/boarlabsxyz/linkedin-ai/pull/125>",
+      "attachments": []
+    },
+    {
+      "ts": "1784880897.174049",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":pushpin: *Shruti Mishra* — Founder at Postey AI\n:bust_in_silhouette: <https://www.linkedin.com/in/heyshrutimishra/>\n_Pichai on Google's open-source roots: Gemma targets edge devices while frontier-scale capex consolidates open-source AI around a few players._",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/in/heyshrutimishra/",
+          "original_url": "https://www.linkedin.com/in/heyshrutimishra/"
+        }
+      ]
+    },
+    {
+      "ts": "1784880750.383939",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":pushpin: *Ray Myers* — In search of code worth writing\n:bust_in_silhouette: <https://www.linkedin.com/in/cadrlife/>\n_Essay: the Linux-maintainers AI flap was mismanagement, not AI-hate — sane engineering values make AI folks and maintainers allies, not enemies._",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/in/cadrlife/",
+          "original_url": "https://www.linkedin.com/in/cadrlife/"
+        }
+      ]
+    },
+    {
+      "ts": "1784880630.406669",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":pushpin: *M. Asif* — Agentic AI Architect | 20 Years of Code | Building Autonomous AI Systems\n:bust_in_silhouette: <https://www.linkedin.com/in/engasix/>\n_Told his AI \"CTO\" agent a rival agent might replace it; the agent defended its role unprompted — a caution about competition in multi-agent systems._",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/in/engasix/",
+          "original_url": "https://www.linkedin.com/in/engasix/"
+        }
+      ]
+    },
+    {
+      "ts": "1784880509.539719",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":pushpin: *Mradul Jain* — Applied AI Leader, Agentic &amp; ML Engineering | 15+ yrs Building &amp; Scaling ROI Driven Enterprise AI Products &amp; Platforms\n:bust_in_silhouette: <https://www.linkedin.com/in/jainmradul/>\n_Five security takeaways from the Hugging Face breach: agentic AI shifts the threat model, identity is the new perimeter, AI-vs-AI SOCs are inevitable._",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/in/jainmradul/",
+          "original_url": "https://www.linkedin.com/in/jainmradul/"
+        }
+      ]
+    },
+    {
+      "ts": "1784880364.043449",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":pushpin: *József Mark K.* — Technical Leadership\n:bust_in_silhouette: <https://www.linkedin.com/in/joshy333/>\n_Career reflection: AI makes \"only I know X\" a brittle strategy — the durable value is organisational: alignment, trade-offs, saying no clearly._",
+      "attachments": [
+        {
+          "from_url": "https://www.linkedin.com/in/joshy333/",
+          "original_url": "https://www.linkedin.com/in/joshy333/"
+        }
+      ]
+    },
+    {
+      "ts": "1784879655.082969",
+      "user": "U0BG0UR86V7",
+      "bot_id": "B0BFVNDHGAZ",
+      "subtype": null,
+      "text": ":large_green_circle: linkedin-comment-hourly: run started — 2026-07-24T07-54-03Z",
+      "attachments": []
+    }
+  ]
+}
