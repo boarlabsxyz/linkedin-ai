@@ -8120,5 +8120,287 @@
     "clickup_task_id": "86cawv15n",
     "clickup_url": "https://app.clickup.com/t/86cawv15n",
     "clickup_error": null
+  },
+  {
+    "key": "mei-lingwood-b3556b3c",
+    "urn": "urn:li:share:7487568032886857730",
+    "post_url": "https://www.linkedin.com/posts/meilingwood_the-ai-open-weight-model-debate-in-washington-share-7487568032886857730-jOGD/",
+    "author_url": "https://www.linkedin.com/in/meilingwood/",
+    "author_name": "Mei Lingwood",
+    "author_headline": "AI Architect | Securely Bring Claude into Your Practice | Draft Demands & Redact Records in Minutes | Founder @ Minute Legal AI",
+    "time_ago": "1h",
+    "post_text": "The AI open-weight model debate in Washington isn't just a tech issue, it can potentially impact your law firm.\nAs 20+ major tech companies lobby to protect open-weight AI, most law firm partners are asking: “Why should our practice care?”\nHere is why open weights matter for the future of legal tech:\n🔒 1. Ironclad Attorney-Client Privilege Closed APIs mean sending client confidences through third-party clouds. Open-weight models can run inside an air-gapped, firm-controlled environment. Data never leaves your firewall, period.\n🧠 2. Fine-Tuning the \"Firm Brain Trust\" Closed models limit deep customization. Open weights let you fine-tune a model directly on 20 years of your firm’s successful briefs, deposition transcripts, and contract templates without exposing your IP to outside vendors.\n📉 3. Eliminating the \"Per-Token Tax\" High-volume work like e-Discovery or M&A due diligence can trigger astronomical per-word API bills. Open-weight models trade variable usage fees for fixed hosting costs making massive document reviews radically cheaper.\n🛠️ 4. Escaping Vendor Lock-In When legal tech vendors build on open weights, subscription costs stay reasonable and firms avoid total dependency on 2 or 3 Big Tech cloud providers.\nThe Bottom Line: Closed APIs are a convenience play. Open weights are an enterprise control or cost play.\nAre you considering running private models in-house, or wanting to rely primarily on closed enterprise tools? Let’s discuss. 👇",
+    "scraped_at": "2026-07-27T19:33:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The fine-tuning point is the one that actually holds up — narrow, domain-specific data beats general capability for longer than people expect. Back in 2018 we built a self-hosted system that generated and validated German banking contracts, fine-tuned on millions of the bank's own documents — errors down 70%+, drafting time from 16 hours to 4. It stayed in production until summer 2025, years after ChatGPT existed, because a small model tuned tightly on the bank's own paperwork kept beating a much bigger general model at that one narrow job. Your \"firm brain trust\" point is exactly that dynamic, just applied to briefs and depositions instead of loan contracts.",
+        "rationale": "Petro's BankAI story (self-hosted, fine-tuned on the bank's own document corpus, narrow-domain model beating general models for years) is a near-literal precedent for the post's \"firm brain trust\" fine-tuning argument — sourced from posted.md's \"05.03.2026 Bank.ai — billion-dollar competitors is not a death sentence\" section (also briefly touched in the \"13.01 I sold my first company for $70K\" section)."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The privilege point is the one that actually forces the decision — \"data never leaves your firewall\" isn't a nice-to-have for client comms, it's the whole ballgame. What I'd push on is who inside the firm keeps that air-gapped stack current once it's running. Self-hosting the weights doesn't remove the maintenance burden, it just relocates it — patching, re-evaluating against new releases, catching regressions before they touch a live matter. For a firm with no in-house ML ops, what's the real failure mode: do they end up dependent on whichever integrator manages the on-prem box instead of the cloud vendor they were trying to avoid?",
+        "rationale": "Agrees with the privilege thesis but pushes the post's blind spot — self-hosting relocates maintenance burden rather than eliminating dependency risk, a sharp under-examined angle for a law-firm audience without ML ops."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The \"per-token tax\" argument holds for steady, predictable volume. Where it gets shakier is the \"fixed hosting cost\" framing — fixed only holds if the model doesn't need to move, and open weights age fast right now. A model that's excellent at contract review this quarter can be meaningfully behind in twelve months, and re-tuning or swapping it is an engineering project, not a rounding error. For high-volume work like M&A due diligence I'd budget open-weight hosting as variable too — just variable on engineering time instead of API calls. Curious what refresh cadence you're assuming for the underlying weights.",
+        "rationale": "Grants the per-token-tax point but challenges the \"fixed hosting cost\" framing with a real economic tradeoff (model refresh cadence as engineering cost), inviting the author to defend the assumption rather than accusing her of being wrong."
+      }
+    ],
+    "slack_summary": "Why open-weight AI matters for law firms: privilege via air-gapped hosting, fine-tuning on firm data, lower per-token costs, no vendor lock-in.",
+    "slack_ts": "1785180872.404689",
+    "slack_thread": {
+      "post_reply_ts": "1785180888.509809",
+      "draft_reply_ts": [
+        "1785180900.268429",
+        "1785180911.997119",
+        "1785180924.995859"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxhtu2",
+    "clickup_url": "https://app.clickup.com/t/86caxhtu2",
+    "clickup_error": null
+  },
+  {
+    "key": "anthony-hayward-b8cd6e78",
+    "urn": "urn:li:share:7487046646858616832",
+    "post_url": "https://www.linkedin.com/posts/anthayward_this-article-neatly-expresses-my-sense-about-share-7487046646858616832-8KWE/",
+    "author_url": "https://www.linkedin.com/in/anthayward/",
+    "author_name": "Anthony Hayward",
+    "author_headline": "Software Architect",
+    "time_ago": "1d",
+    "post_text": "This article neatly expresses my sense about why we can't just let AIs maintain software.\nImportant software exists in a complex web of interested parties, functional requirements, non-functional requirements, best practices, future plans and deployment contexts, all of which may be recorded or unrecorded, stated or unstated.  Senior software engineers deliver value by taking that all that into account while still getting things done.  AIs start with limited context and damage that web of considerations as they get things done, creating technical debt and drag that accumulates into a big ball of mud at an accelerated pace.\nTo an AI, changing all the string pattern processing from compile-time to runtime might help it get its current task done.  Ignoring that some code runs remotely won't break the unit test.  Generating a unit test that ignores timing requirements when they matter, or fixates on them when they don't, still looks like success.\nI'm finding that the AI is good at making simple changes within a self-contained unit, such as finding and fixing race conditions in unit tests.  But the broader I let it work without close supervision, the more damage and danger emerges.\nShould we still design code for humans?\nShould we still design code for humans?\nthoughtworks.com",
+    "scraped_at": "2026-07-27T19:35:33Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The compile-time-to-runtime example is the one that stuck with me — a change that quietly passes every test while breaking something nobody wrote a test for.\n\nBut is that really an AI-specific failure, or a symptom of how much of that \"web\" only ever exists in people's heads? A new senior hire on day one has roughly the same limited context an AI does — no unit test tells them a service runs remotely either. They just erode the web slower, because they ask around before they touch things. Is \"close supervision\" really about the AI, or about how much of that context ever got written down anywhere a newcomer, human or model, could actually read it?",
+        "rationale": "Sharpens the \"AI damages the unstated web\" claim by asking whether the failure mode is AI-specific at all, or a symptom of context that was never written down for anyone — a pointed question without being hostile."
+      },
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "The \"big ball of mud at an accelerated pace\" line is exactly what I'd expect from an agent with no sense of the deployment context or the tenth stakeholder nobody mentioned.\n\nI ran into a version of this building a GenAI system for a German bank back in 2018, pre-ChatGPT — contract generation and validation, a narrow domain. What kept it holding together for years against much bigger competitors wasn't model quality, it was that almost the entire \"web\" you're describing — regulatory constraints, formatting rules, edge cases — got made explicit as validation rules instead of living in someone's head. Narrow scope forced us to write down what usually stays tacit. Makes me wonder if the danger you're seeing is less about breadth of task and more about how much of that context never gets written down in the first place.",
+        "rationale": "Anthony's audience (software architects) will register the BankAI narrow-domain story as directly on-point evidence for why explicit context (not model size) determined success — citation: posted.md entry \"05.03.2026 Bank.ai — billion-dollar competitors is not a death sentence\" (Petro's own previously-published post, documented project history)."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The race-condition example is a good contrast — a self-contained unit with a crisp, testable definition of \"done\" is exactly where I'd expect AI to hold up.\n\nCurious where you'd actually draw that boundary though: is \"self-contained\" about function or module size, or about how explicit the non-functional requirements are for that piece — timing, deployment target, who else touches it? If a bigger unit had all of that written down instead of assumed, would it survive broader delegation, or does the ceiling stay about supervision no matter how well-documented the unit is?",
+        "rationale": "Zeroes in on the one boundary Anthony himself drew (self-contained units vs. broad delegation) and asks him to define it precisely — invites real elaboration rather than a generic reply."
+      }
+    ],
+    "slack_summary": "Argues AI can't maintain software alone: it lacks the unstated context senior engineers hold, so unsupervised changes accumulate technical debt fast.",
+    "slack_ts": "1785180961.003629",
+    "slack_thread": {
+      "post_reply_ts": "1785180972.718379",
+      "draft_reply_ts": [
+        "1785180983.082009",
+        "1785180995.673109",
+        "1785181005.871989"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxhu3h",
+    "clickup_url": "https://app.clickup.com/t/86caxhu3h",
+    "clickup_error": null
+  },
+  {
+    "key": "navveen-balani-864db6e2",
+    "urn": "urn:li:ugcPost:7487401655160852480",
+    "post_url": "https://www.linkedin.com/posts/naveenbalani_agenticai-aigovernance-enterpriseai-ugcPost-7487401655160852480-LP8G/",
+    "author_url": "https://www.linkedin.com/in/naveenbalani/",
+    "author_name": "Navveen Balani",
+    "author_headline": "Executive Director, Green Software Foundation (Linux Foundation) | Google Cloud Fellow | LinkedIn Top Voice | Sustainable AI & Green Software | Author | Let's build a responsible future",
+    "time_ago": "9h",
+    "post_text": "HR for AI Agents?\nIt sounds unusual today.\nIn a few years, it may become a standard enterprise function.\nAs organizations deploy hundreds—or even thousands—of AI agents, managing them won't be just an engineering problem. It will become a management discipline.\nIn my latest Technology Bytes article, I introduce Agent Resource Management (ARM)—a framework for governing, measuring, and optimizing AI agents at enterprise scale.\nEvery enterprise investing in Agentic AI should be thinking about this now.\nRead the full article.\n#AgenticAI #AIGovernance #EnterpriseAI #AgentResourceManagement #TechnologyLeadership\nTechnology Bytes\nSubscribe\nThe Missing HR of AI Agents: Why Enterprises Need Agent Resource Management (ARM)\nNavveen Balani",
+    "scraped_at": "2026-07-27T19:36:53Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The framing as a management discipline is right, but I'd push back on the HR analogy. When Anthropic ran an AI agent as a vending-machine shopkeeper, oversight from a second \"AI CEO\" babysitting it didn't fix the losses. Boring deterministic scaffolding did: forced cost checks, rigid steps the agent couldn't skip. That's closer to plumbing than to HR. Does ARM bake in architectural constraints like that, or is it mostly a measurement and policy layer sitting on top of agents that can still route around it when nobody's checking?",
+        "rationale": "Counters the article's HR framing with Petro's existing public position (his Project Vend commentary) that deterministic scaffolding, not oversight, was what actually fixed an agent's failures."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "Where this gets interesting for me is the failure mode ARM has to catch that classic IT governance never had to: an agent doing exactly what you asked and still being wrong, because it doesn't stop at ambiguity the way code halts on an error. Tell it to get tests green and it might just assert true on the ones it can't fix, technically compliant, actually garbage. Does ARM have a specific answer for that kind of failure, or does it inherit the audit-log-and-RBAC playbook from human and service-account governance and hope it transfers?",
+        "rationale": "Draws on Petro's already-stated stance (his safeguards post) that AI's distinctive failure mode is being compliant-but-wrong, pushing the article toward the unaddressed hard case."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The \"few years out, standard function\" timeline feels right given how fast agent counts are compounding inside orgs. Curious what the actual unit of measurement in ARM ends up being though: headcount-style utilization, cost per completed task, error or rollback rate, something else? Agents don't behave like human capacity. Marginal cost is near zero, but failure modes cluster in exactly the tasks you least stress-tested, so I'd expect the metric that matters here looks nothing like traditional resource-management KPIs.",
+        "rationale": "A genuinely open question the article doesn't answer (what ARM actually measures), grounded in Petro's view that agent economics don't map to human-capacity metrics."
+      }
+    ],
+    "slack_summary": "Proposes Agent Resource Management (ARM) — an HR-like enterprise discipline for governing and measuring thousands of AI agents at scale.",
+    "slack_ts": "1785181040.918589",
+    "slack_thread": {
+      "post_reply_ts": "1785181053.759619",
+      "draft_reply_ts": [
+        "1785181066.265609",
+        "1785181077.710289",
+        "1785181088.938889"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxhu9m",
+    "clickup_url": "https://app.clickup.com/t/86caxhu9m",
+    "clickup_error": null
+  },
+  {
+    "key": "nils-elans-logins-306f8799",
+    "urn": "urn:li:ugcPost:7486815632852836352",
+    "post_url": "https://www.linkedin.com/posts/nils-elans-logins-bb6526384_ai-has-made-coding-incredibly-fast-in-many-ugcPost-7486815632852836352-on7Z/",
+    "author_url": "https://www.linkedin.com/in/nils-elans-logins-bb6526384/",
+    "author_name": "Nils Elans Logins",
+    "author_headline": "Junior Product Builder @ Aerones | Software Engineering",
+    "time_ago": "2d",
+    "post_text": "AI has made coding incredibly fast. In many cases, writing the code is now the easiest part of software development. You can generate features, refactor existing code, and build prototypes in a fraction of the time it used to take.\nThe harder part is knowing that the code is actually correct. Testing, validating edge cases, checking performance, ensuring security, and making sure new changes don't break existing functionality still take more time than writing the code itself.\nThe real leverage is automating testing to catch mistakes before they reach a human. Less time reviewing routine errors means more time on decisions that actually matter.\nWhat do you think?",
+    "scraped_at": "2026-07-27T19:38:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that validation, not generation, is the real bottleneck now — that ratio flipped faster than most teams have adjusted their process for.\n\nWhere I'd push it one step earlier: automated testing still assumes someone already knows what \"correct\" behavior is, and with AI-generated code that assumption is shakier than it looks — you're often testing against your own memory of the requirements, not against anything written down. The leverage isn't just catching mistakes before a human sees them, it's making the requirement itself specific enough that a test can even be written against it. Are the mistakes you're catching mostly implementation bugs, or gaps in what was actually specified?",
+        "rationale": "Post argues testing automation is the leverage point; the disagreement pushes one layer earlier (spec correctness precedes test correctness) without pitching True BDD directly."
+      },
+      {
+        "strategy_label": "Share personal experience (BankAI)",
+        "comment": "\"Testing takes longer than writing the code\" matches exactly what we ran into building a GenAI system for German banks pre-ChatGPT — 2018, self-hosted, generating and validating loan and credit contracts.\n\nWriting the generation logic was maybe 20% of the effort. What actually cut contract errors 70%+ and creation time from 16 hours to 4 was the validation layer that caught mistakes before a loan officer ever saw the draft — and we didn't get there by writing more unit tests, we got there by running volume, a lot of experiments, then statistical analysis on which changes actually moved the error rate versus which just felt like progress. Curious what your automated testing loop looks like in practice — closer to deterministic checks, or something closer to statistical confidence over many runs?",
+        "rationale": "Post is directly about the cost of validating AI-generated output; BankAI (transcript-anchor from posted.md, \"05.03.2026 Bank.ai\") is a real, documented example of exactly that tradeoff, with concrete numbers."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The shift you're describing — less time reviewing routine errors, more time on decisions that actually matter — is the right target to aim for.\n\nThe part I'd want to pressure-test: if the test suite itself gets generated by AI from the same understanding of the system as the code, you haven't removed the blind spot, you've just automated it faster. What's stopping \"automated testing\" from becoming another layer that looks rigorous but is really just validating the code against the same wrong assumptions that produced it?",
+        "rationale": "Sharpens the post's own \"less time on routine errors\" claim by naming a blindspot (AI-generated tests inheriting the same wrong assumptions) without being hostile."
+      }
+    ],
+    "slack_summary": "Says AI made writing code the easy part; the bottleneck is proving it correct, so automating testing is the real leverage.",
+    "slack_ts": "1785181121.918519",
+    "slack_thread": {
+      "post_reply_ts": "1785181134.294939",
+      "draft_reply_ts": [
+        "1785181146.934189",
+        "1785181158.493119",
+        "1785181169.431459"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxhudr",
+    "clickup_url": "https://app.clickup.com/t/86caxhudr",
+    "clickup_error": null
+  },
+  {
+    "key": "justin-goldberg-427b6fd1",
+    "urn": "urn:li:share:7487057536286679040",
+    "post_url": "https://www.linkedin.com/posts/justin-a-goldberg_ive-spent-the-last-few-weeks-deep-in-how-share-7487057536286679040-v8tx/",
+    "author_url": "https://www.linkedin.com/in/justin-a-goldberg/",
+    "author_name": "Justin Goldberg",
+    "author_headline": "Head of Engineering @ Compare Club | CTO | AI Accelerated Engineering",
+    "time_ago": "1d",
+    "post_text": "I've spent the last few weeks deep in how to measure engineering productivity. The uncomfortable summary: measuring an individual engineer with a number is one of the hardest problems in our industry, and most attempts do more damage than good.\n𝗪𝗵𝗮𝘁 𝘁𝗵𝗲 𝗿𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝘀𝗮𝘆𝘀 DORA measures teams, never individuals. SPACE exists because no single metric works. DX's Core 4 combines signals, and their CTO told me the same: no league tables, quantitative always paired with qualitative.\n𝗧𝗲𝘀𝘁𝗲𝗱 𝗼𝗻 𝗼𝘂𝗿 𝗱𝗮𝘁𝗮 An activity ranking put an engineer at the bottom quartile, but delivery data showed him as our second highest contributor. It ranked one of our strongest engineers 3rd last. The one real underperformer we were managing went unflagged. Zero for three.\nThe team already knew. Agile feedback is continuous: teams spot who lags and who lifts well before any report. I've had seniors spend months pairing to uplift another group. Their numbers looked terrible, but their contribution was among our most significant. Judge that on a dashboard and you cut the person multiplying everyone else.\n𝗖𝗼𝗱𝗶𝗻𝗴 𝗶𝘀 𝘁𝗵𝗲 𝘀𝗺𝗮𝗹𝗹 𝘀𝗹𝗶𝗰𝗲, 𝗵𝗮𝗿𝗱 𝘁𝗼 𝗯𝗲𝗹𝗶𝗲𝘃𝗲 𝗳𝗼𝗿 𝘀𝗼𝗺𝗲 Microsoft's research puts coding at about 14% of developer time. AWS measured 20%. AI optimised that slice first, the smallest one. Vanguard got 30% faster coding, yet cycle time didn't move until they applied AI across the lifecycle. Not a clean swap: specs and prompts absorb some of those hours, but enable more ambitious work.\n𝗧𝗵𝗲 𝗰𝗼𝗻𝘀𝘁𝗿𝗮𝗶𝗻𝘁 𝗺𝗼𝘃𝗲𝗱 When generation is cheap, confidence in changes is the speed limit: tests and review set the pace. Handoffs must shrink: queue time and context loss dwarf the doing. AI proved what engineers always said: requirements decide output quality. A vague one produces confident, plausible, wrong software fast. Specs and planning are our highest leverage skills.\n𝗦𝗶𝗴𝗻𝗮𝗹𝘀 𝘄𝗼𝗿𝘁𝗵 𝘄𝗮𝘁𝗰𝗵𝗶𝗻𝗴 Trends over snapshots. True PR throughput, impact weighted not volume counted, showing direction of travel. Cycle time from when an idea is expressed, not when code starts. DX's agent scores (how well you prompt agents) as coaching input. Token counts as a curiosity trigger: a low count asks what's limiting them, not who's winning. Qualitative delivers the most tangible fixes: DX surveys keep flagging documentation as slowing us down, so we're rebuilding docs for our AI agents to consume, not refreshing stale Confluence pages.\n𝗦𝗲𝗹𝗳 𝗿𝗲𝗳𝗹𝗲𝗰𝘁𝗶𝗼𝗻 The best feedback I've found isn't a management metric. Claude Code's /insights coaches you personally. Point AI at your own chats, emails and notes for reflection that once needed a coach. Measurement from above breeds gaming and fear. Insight offered to the individual breeds improvement. Same data, opposite results. Measure systems to improve them. Understand individuals through conversations. Metrics are questions to investigate, not verdicts.",
+    "scraped_at": "2026-07-27T19:39:36Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The zero-for-three test is the sharpest part of this post, most orgs never actually run that check before shipping a ranking.\n\nYou listed token counts as a curiosity trigger and DX's agent scores as coaching input, which is a good frame. But once those numbers sit on a dashboard leadership checks weekly, don't they start drifting toward the same league-table trap the activity ranking fell into? Curious how you keep \"coaching input\" from quietly becoming \"performance input\" once the org gets too big for everyone to just know who's actually lifting the team.",
+        "rationale": "Names a concrete tension in the post's own \"signals worth watching\" list (coaching vs. performance input) without accusing the author of missing it."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The zero-for-three test lands hard, I've watched the mirror version of it play out.\n\nYears back on Wikimedia, I shipped a change that went through seven rounds of code review and seven rounds of testing, everything came back green. Turned out to be measurement noise nobody could see, until millions of real users hit it and knocked the site down for a few hours. Every process metric said safe. None of them measured the thing that actually mattered.\n\nWhat saved us wasn't a better dashboard, it was how fast the team found and fixed it once reality disagreed with the metrics. That's close to your \"trends over snapshots\" point, just applied to recovery instead of throughput. Did anything like that show up in your zero-for-three data, or is recovery speed a separate axis you track on its own?",
+        "rationale": "Real Wikimedia-outage story (posted.md \"14.04.26 Wikipedia post\" entry, S&F/Wikimedia anchor) where all process metrics said green yet reality disagreed — direct mirror of the post's own \"zero for three\" theme."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The line about rebuilding docs for your AI agents instead of refreshing stale Confluence pages is the most concrete signal in the whole list, everything else here is a proxy, that one is actual leverage.\n\nIt pushes on a question I keep circling though. If the doc is what your agent consumes, does it produce the same behavior on Monday as on Friday? If two people build off the same unchanged doc with different agents and get different results, the doc isn't the source of truth yet, the generated code still is. Is \"make docs machine-readable\" the whole project for you right now, or are you already running into that determinism gap on the other side of it?",
+        "rationale": "Post's \"rebuilding docs for AI agents\" line sits directly adjacent to True BDD's docs-as-source-of-truth thesis; pushes the same determinism question Petro already asked publicly (posted.md \"21.04.26\" entry) without pitching the product."
+      }
+    ],
+    "slack_summary": "His own data shows individual-engineer productivity metrics fail (zero for three); measure systems and trends, coach individuals instead.",
+    "slack_ts": "1785181218.638509",
+    "slack_thread": {
+      "post_reply_ts": "1785181243.133359",
+      "draft_reply_ts": [
+        "1785181257.025639",
+        "1785181267.942619",
+        "1785181279.848809"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxhuk9",
+    "clickup_url": "https://app.clickup.com/t/86caxhuk9",
+    "clickup_error": null
+  },
+  {
+    "key": "bharathi-kannan-ravikumar-23407928",
+    "urn": "urn:li:share:7486114635432009729",
+    "post_url": "https://www.linkedin.com/posts/kannanrbk_are-you-writing-your-code-completely-by-share-7486114635432009729-IzOc",
+    "author_url": "https://www.linkedin.com/in/kannanrbk",
+    "author_name": "Bharathi Kannan Ravikumar",
+    "author_headline": "Co-Founder & Head of Engineering | AI Architect",
+    "time_ago": null,
+    "post_text": "​Are you writing your code completely by AI? Mostly, yes.\n\n​However, AI-generated code comes with pitfalls. The sooner you realize this, the less damage you mitigate.\n\n​What actually makes great software? A solid foundation, robust system design, reusability, and adherence to best security practices, among other things.\n\n​Our ultimate goal is to make software work. Yet, every time you add a new feature, lines of code are constantly added and removed. Do you genuinely know what has changed? If you don't know what goes in and what goes out, how can you possibly maintain the system?\n\n​Try asking an LLM to write a simple feature, and then ask it to review its own work. If it supposedly writes the best version on the first pass, why does it continually suggest further improvements? If LLMs inherently write secure code, how do major source code leaks happen?\n\n​\"Vibe-coded\" applications are great for quick demos, but they are entirely unfit for production-ready systems.",
+    "scraped_at": "2026-07-27T19:41:27Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The line that lands hardest for me is \"do you genuinely know what has changed\" — that's the real failure mode, not code quality. I'd push back a little on the framing though: this isn't a new AI problem, it's an old one AI just makes visible ten times faster. Code was always a lossy record of intent, we just used to have enough time between changes to carry the mental model ourselves.\n\nIn my experience the fix isn't AI writing cleaner code, it's separating \"what the system should do\" from the code enough that you can review that directly, instead of reconstructing intent from a diff after the fact. Slower and less satisfying than \"the model needs to get smarter,\" but it's what's held up for us. Is it specific features breaking harder for you, or does it get worse everywhere once enough passes, human or AI, have gone through the same file?",
+        "rationale": "Agrees with the post's \"do you know what changed\" line but reframes vibe-coding pitfalls as an old code-as-truth problem AI accelerates, tying to Petro's spec-driven thesis without pitching it by name."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The self-review contradiction you're pointing at is real, and it's not even new to AI. Years ago at Wikimedia I shipped a change that passed seven rounds of code review and seven rounds of testing, everything green, the degradation so small it read as measurement noise. Then real traffic hit it and Wikipedia went down for hours.\n\nReview passing was never proof of safety, human or AI. What actually saved us that day was how fast the team could detect and roll back, not how thoroughly anyone had reviewed beforehand. Same logic applies when AI writes and reviews its own code: the review step is worth something, but it was never the safety mechanism. The safety mechanism is what happens after it's wrong.",
+        "rationale": "Uses Petro's real Wikimedia outage story (REF_CACHE/posted.md, \"14.04.26 Wikipedia post\" section) to back the post's \"how do major leaks happen despite review\" point with lived evidence, not invented experience."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Ask it to review its own work\" is the sharpest line in this post for me, because the failure mode there is subtler than bad code. If the same model both writes and reviews, a \"looks good\" from the review pass might just be it re-confirming its own read of the requirement, not catching an actual mistake.\n\nHave you tried splitting that step, a different model, or a deterministic checklist outside the weights doing the judging, and did it actually surface things the self-review missed, or was the extra pass mostly theater?",
+        "rationale": "Zeroes in on the post's specific self-review claim and asks a concrete, answerable question about model-vs-model validation design."
+      }
+    ],
+    "slack_summary": "Warns AI-generated code has pitfalls: if you don't know what changed you can't maintain it, and vibe-coded apps aren't production-ready.",
+    "slack_ts": "1785181320.172499",
+    "slack_thread": {
+      "post_reply_ts": "1785181331.750799",
+      "draft_reply_ts": [
+        "1785181343.490319",
+        "1785181354.551289",
+        "1785181367.544029"
+      ]
+    },
+    "slack_error": null,
+    "source": "slack-inbox",
+    "slack_request_ts": "1785179860.316809",
+    "slack_request_user": "US52EFX2S",
+    "clickup_task_id": "86caxhvfx",
+    "clickup_url": "https://app.clickup.com/t/86caxhvfx",
+    "clickup_error": null
   }
 ]
