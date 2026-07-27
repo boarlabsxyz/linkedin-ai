@@ -35,3 +35,18 @@ _transcript: 20260718-190554-372ee591-next-task-is-it-use-clicku-as-source-of.md
 _transcript: 20260720-114324-f671ba95-i-want-also-to-create-make-the-workflow.md_
 
 - The Mac Studio’s previous GitHub Actions runner binaries were x86_64-only and live Runner and Chrome processes carried Rosetta’s `P_TRANSLATED` flag; after reinstalling the arm64 runner, job Chrome ran natively and the in-job A/B confirmed the runner-only scrape slowdown disappeared (binary/process verification 2026-07-20T14:07:37Z; A/B confirmation 2026-07-20T14:30:07Z).
+
+## 2026-07-22 — The task verified whether Z.ai’s ZCode development environment is open source.
+
+_transcript: 20260722-061036-62eef0e2-did-context-py-was-called-after-new-task.md_
+
+- As of 2026-07-25, ZCode itself was closed source: its site distributed compiled desktop binaries without a source repository or open-source license, and Z.ai’s GitHub organization exposed only a ZCode feedback tracker; the open components were the GLM-5.2 model weights and `zai-coding-plugins`, not the ZCode app (verified 2026-07-25T12:19:22Z).
+
+## 2026-07-25 — The task began planning changes to LinkedIn post generation so completed posts go to ClickUp and LinkedIn links shared by humans in Slack are also processed, using iterative Codex review and testing.
+
+_transcript: 20260725-150058-15284ba4-the-linkedin-post-generation-i-need-two.md_
+
+- The Slack connector’s REST proxy returned paginated raw channel-history JSON using an `oldest` watermark; bot-authored messages carried `bot_id` while human-authored messages did not, providing a deterministic author filter (live-verified 2026-07-25T15:39:21Z).
+- The available ClickUp REST proxy was read-only, so creating tasks in the target list required the ClickUp MCP `createTask` tool (live-verified 2026-07-25T15:39:21Z).
+- ClickUp’s indexed/rendered task representation did not reliably preserve the literal Markdown `_key: …_` identity footer, although the key remained available in the full REST-proxy description; adoption therefore needed the exact Source URL plus a full-description check (live-verified 2026-07-25T18:35:46Z).
+- In the tested Slack REST-bearer flow, Sonnet treated the mint request as credential exfiltration and returned no parseable token; pinned Haiku succeeded with connector context in the system prompt, and probing the bearer before use caught altered or placeholder output (live-verified 2026-07-25T18:35:46Z).

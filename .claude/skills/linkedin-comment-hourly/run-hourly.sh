@@ -90,8 +90,17 @@ GATHER_DEADLINE_SECS="${GATHER_DEADLINE_SECS:-300}"
 # in-process deadline should always win; if node wedges anyway (stalled
 # Chrome launch, hung subprocess), the watchdog frees the runner slot.
 GATHER_WATCHDOG_SECS="${GATHER_WATCHDOG_SECS:-420}"
-CLAUDE_TIMEOUT_SECS="${CLAUDE_TIMEOUT_SECS:-2400}"
+# 3000s (was 2400): the sequential write+Slack+ClickUp loop can now carry up
+# to 5 feed + 5 inbox posts per fire.
+CLAUDE_TIMEOUT_SECS="${CLAUDE_TIMEOUT_SECS:-3000}"
 LOCK_RETRY_SLEEP_SECS="${LOCK_RETRY_SLEEP_SECS:-60}"
+# Slack-inbox stage (runs BEFORE the feed gather; failures skip the inbox for
+# this fire — watermark untouched, retried next fire — and never block the
+# feed). Watchdog > mjs deadline: the soft deadline should always win.
+INBOX_STATE_FILE="linkedin-compain/slack-inbox.json"
+INBOX_MAX_LINKS="${INBOX_MAX_LINKS:-5}"
+INBOX_DEADLINE_SECS="${INBOX_DEADLINE_SECS:-240}"
+INBOX_WATCHDOG_SECS="${INBOX_WATCHDOG_SECS:-360}"
 
 PL_LOG_PREFIX="run-hourly"
 PL_PIPELINE_NAME="linkedin-comment-hourly"
@@ -126,6 +135,11 @@ FALLBACK_USED=0              # exit 30 → legacy gather (fast path unverified)
 HEAL_RESULT=""               # post-landing heal: completed | timed out | failed | aborted | skipped
 PERMALINKS_MISSING_N=0       # accepted posts whose permalink capture failed (contract)
 PERMALINK_HEAL=0             # missing permalinks → error + post-landing heal
+INBOX_OK=0                   # inbox stage produced an accepted contract
+INBOX_POSTS_N=""             # inbox contract POSTS_FOUND
+INBOX_SUMMARY=""             # "inbox: X msgs / Y links / …" for the bookend
+INBOX_NOTE=""                # one-line inbox failure/delivery note (⚠️)
+INBOX_OUT=""                 # inbox stage out-dir
 
 # Single EXIT trap composes + posts the finish message on EVERY exit path
 # (explicit exit N, set -e aborts, and — via the TERM/INT traps — signals).
@@ -151,6 +165,8 @@ on_exit() {
     case "$drafted" in (''|-*) drafted="?";; esac   # unknown / counter regressed
 
     local summary="${drafted} drafted, ${POSTS_FILTERED_N:-?} filtered"
+    [ -n "$INBOX_SUMMARY" ] && summary="${summary}; ${INBOX_SUMMARY}"
+    [ -n "$INBOX_NOTE" ] && summary="${summary}; inbox: $(pl_oneline "$INBOX_NOTE")"
     [ -n "$PR_URL" ] && summary="${summary} — PR: ${PR_URL}"
     if [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
         summary="${summary}; self-heal ×${PL_HEAL_COUNT} (${HEAL_MODE}${HEAL_RESULT:+, ${HEAL_RESULT}})${CODE_PR_URL:+ — heal PR awaiting review: ${CODE_PR_URL}}"
@@ -162,7 +178,7 @@ on_exit() {
 
     local msg
     if [ "$ec" -eq 0 ]; then
-        if [ "${POSTS_FOUND_N:-}" = "0" ]; then
+        if [ "${POSTS_FOUND_N:-}" = "0" ] && [ "${INBOX_POSTS_N:-0}" = "0" ]; then
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} — no draftable posts ($(pl_oneline "${GATHER_END_REASON_TXT:-unknown}")); ${summary}"
         elif [ "${FALLBACK_USED:-0}" = 1 ]; then
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (selector drift — legacy fallback shipped the drafts) — ${summary}"
@@ -170,6 +186,8 @@ on_exit() {
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (permalink capture FAILED on ${PERMALINKS_MISSING_N} accepted post(s) — drafts shipped) — ${summary}"
         elif [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
             msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (self-healed) — ${summary}"
+        elif [ -n "$INBOX_NOTE" ]; then
+            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (inbox issue — see summary) — ${summary}"
         else
             msg="✅ linkedin-comment-hourly: run finished in ${dur} — ${summary}"
         fi
@@ -213,6 +231,230 @@ case "$DRAFTED_BASELINE" in (*[!0-9]*|'') DRAFTED_BASELINE=0;; esac
 
 pl_npm_ensure "$FAST_DIR"
 
+# ------------------------------------------------------------- inbox stage
+
+# Validate the inbox contract beyond exit codes (mirrors validate_contract):
+# provenance, per-post identity, no /feed/update/ URLs ever, watermark ==
+# the snapshot's exact max ts, proposed-state well-formed, and the manifest's
+# link-conservation arithmetic. An accepted-looking contract that fails any
+# of these is DROPPED (inbox skipped, no advance) — never trusted.
+validate_inbox_contract() {
+  local contract="$INBOX_OUT/contract.env" n i k a tf mode url wm state_prop max_ts
+  INBOX_CONTRACT_OK=0
+  INBOX_CONTRACT_NOTE=""
+  [ -f "$contract" ] || { INBOX_CONTRACT_NOTE="contract missing"; return 0; }
+  n=$(grep '^POSTS_FOUND=' "$contract" | head -1 | cut -d= -f2- || true)
+  printf '%s' "$n" | grep -qE '^[0-9]+$' || { INBOX_CONTRACT_NOTE="no numeric POSTS_FOUND"; return 0; }
+  local contract_out
+  contract_out=$(grep '^OUT_DIR=' "$contract" | head -1 | cut -d= -f2- || true)
+  case "$contract_out" in
+    "$INBOX_OUT"|*"/$INBOX_OUT") : ;;
+    *) INBOX_CONTRACT_NOTE="OUT_DIR '${contract_out}' is not ${INBOX_OUT}"; return 0;;
+  esac
+  i=1
+  while [ "$i" -le "$n" ]; do
+    k=$(grep "^POST_${i}_KEY=" "$contract" | head -1 | cut -d= -f2- || true)
+    a=$(grep "^POST_${i}_AUTHOR=" "$contract" | head -1 | cut -d= -f2- || true)
+    tf=$(grep "^POST_${i}_TEXT_FILE=" "$contract" | head -1 | cut -d= -f2- || true)
+    mode=$(grep "^POST_${i}_MODE=" "$contract" | head -1 | cut -d= -f2- || true)
+    url=$(grep "^POST_${i}_URL=" "$contract" | head -1 | cut -d= -f2- || true)
+    { [ -n "$k" ] && [ -n "$a" ]; } || { INBOX_CONTRACT_NOTE="POST_${i} missing KEY or AUTHOR"; return 0; }
+    { [ -n "$tf" ] && [ -s "$tf" ]; } || { INBOX_CONTRACT_NOTE="POST_${i}_TEXT_FILE missing/empty"; return 0; }
+    case "$tf" in
+      "$INBOX_OUT"/*|*"/$INBOX_OUT/"*) : ;;
+      *) INBOX_CONTRACT_NOTE="POST_${i}_TEXT_FILE outside ${INBOX_OUT}"; return 0;;
+    esac
+    case "$mode" in
+      draft|clickup-only|reprocess-off-topic) : ;;
+      *) INBOX_CONTRACT_NOTE="POST_${i}_MODE invalid ('${mode}')"; return 0;;
+    esac
+    # Positive whitelist (codex solution rounds 1–2): ONLY the two
+    # LinkedIn-issued deliverable forms. Inbox rows are never legitimately
+    # linkless — the gather keeps unresolvable links pending — so "-" is a
+    # gather regression and rejects the contract.
+    case "$url" in
+      https://www.linkedin.com/posts/*|https://lnkd.in/*) : ;;
+      *) INBOX_CONTRACT_NOTE="POST_${i}_URL not an allowed form ('${url}')"; return 0;;
+    esac
+    i=$((i + 1))
+  done
+  wm=$(grep '^PROPOSED_WATERMARK=' "$contract" | head -1 | cut -d= -f2- || true)
+  printf '%s' "$wm" | grep -qE '^[0-9]+\.[0-9]+$' || { INBOX_CONTRACT_NOTE="watermark not a ts ('${wm}')"; return 0; }
+  local cur_ts
+  cur_ts=$(jq -r '.last_ts' "$INBOX_STATE_FILE" 2>/dev/null || echo '')
+  awk -v a="$wm" -v b="$cur_ts" 'BEGIN { exit (a+0 >= b+0) ? 0 : 1 }' \
+    || { INBOX_CONTRACT_NOTE="watermark ${wm} below current ${cur_ts}"; return 0; }
+  # Exact STRING equality for the ts (float64 wobbles in the microsecond
+  # digits); the snapshot's max is computed with the same [sec,usec] compare
+  # the mjs uses. The watermark must be EXACTLY max(current, snapshot-max) —
+  # accepting a stale "== current" while newer messages exist would let a
+  # buggy gather silently skip them (codex solution round 2).
+  max_ts=$(jq -r '[.messages[].ts] | sort_by(split(".") | map(tonumber)) | last // empty' "$INBOX_OUT/messages.json" 2>/dev/null || echo '')
+  local expected_wm="$cur_ts"
+  if [ -n "$max_ts" ] && awk -v a="$max_ts" -v b="$cur_ts" 'BEGIN { split(a, x, "."); split(b, y, ".");
+      exit (x[1]+0 > y[1]+0 || (x[1]+0 == y[1]+0 && x[2]+0 > y[2]+0)) ? 0 : 1 }'; then
+    expected_wm="$max_ts"
+  fi
+  if [ "$wm" != "$expected_wm" ]; then
+    INBOX_CONTRACT_NOTE="watermark ${wm} != expected max(current, snapshot) = ${expected_wm}"
+    return 0
+  fi
+  state_prop=$(grep '^PROPOSED_STATE_FILE=' "$contract" | head -1 | cut -d= -f2- || true)
+  case "$state_prop" in
+    "$INBOX_OUT"/*|*"/$INBOX_OUT/"*) : ;;
+    *) INBOX_CONTRACT_NOTE="proposed state '${state_prop}' is outside ${INBOX_OUT}"; return 0;;
+  esac
+  jq -e --arg wm "$wm" '(.last_ts == $wm) and (.pending | type=="array") and (.dead | type=="array")' \
+      "$state_prop" >/dev/null 2>&1 \
+    || { INBOX_CONTRACT_NOTE="proposed state missing/malformed/watermark-mismatched"; return 0; }
+  # scan_floor_ts is immutable — a proposed state that drops or changes it
+  # could replay pre-cutoff messages on later fires.
+  local cur_floor prop_floor
+  cur_floor=$(jq -r '.scan_floor_ts // ""' "$INBOX_STATE_FILE" 2>/dev/null || echo '')
+  prop_floor=$(jq -r '.scan_floor_ts // ""' "$state_prop" 2>/dev/null || echo '')
+  if [ -n "$cur_floor" ] && [ "$prop_floor" != "$cur_floor" ]; then
+    INBOX_CONTRACT_NOTE="proposed state altered scan_floor_ts ('${prop_floor}' vs '${cur_floor}')"
+    return 0
+  fi
+  INBOX_EXPECTED_WM="$wm"
+  jq -e '.conservation | (.jobs_pending_in + .jobs_new) ==
+         (.contract_rows + .pending_out + .dead_new + .accounted_dupes
+          + .skipped_already_commented + .alias_merged)' \
+      "$INBOX_OUT/manifest.json" >/dev/null 2>&1 \
+    || { INBOX_CONTRACT_NOTE="link-conservation arithmetic does not balance"; return 0; }
+  INBOX_POSTS_N="$n"
+  INBOX_PROPOSED_STATE="$state_prop"
+  INBOX_SUMMARY="inbox: $(grep '^INBOX_MSGS_HUMAN=' "$contract" | head -1 | cut -d= -f2- || true)h msgs / $(grep '^INBOX_LINKS_FOUND=' "$contract" | head -1 | cut -d= -f2- || true) links / ${n} posts / $(grep '^INBOX_DUPLICATES=' "$contract" | head -1 | cut -d= -f2- || true) dup / $(grep '^INBOX_BACKLOG=' "$contract" | head -1 | cut -d= -f2- || true) backlog / $(grep '^INBOX_DEAD=' "$contract" | head -1 | cut -d= -f2- || true) dead"
+  INBOX_CONTRACT_OK=1
+  return 0
+}
+
+# Slack read + gather-inbox under ONE kill watchdog. Any failure degrades to
+# feed-only (⚠️ note, watermark untouched, retried next fire) — by design the
+# inbox never triggers the heal loop and never blocks the feed.
+run_inbox_stage() {
+  RUN_STAGE="inbox"
+  INBOX_OUT="tmp/gather-inbox/${TS}"
+  local marker="$HEAL_ROOT/timeout-inbox" log_file="$HEAL_ROOT/inbox-stage.log" pid wd rc
+  echo "run-hourly: inbox stage starting ($(date -u +%H:%M:%SZ))"
+  set +e
+  (
+    set -euo pipefail
+    "$SKILL_DIR/read-slack-inbox.sh" "$INBOX_OUT" "$INBOX_STATE_FILE"
+    node "$FAST_DIR/gather-inbox.mjs" \
+      --messages-file="$INBOX_OUT/messages.json" \
+      --state-file="$INBOX_STATE_FILE" \
+      --out-dir="$INBOX_OUT" \
+      --deadline-secs="$INBOX_DEADLINE_SECS" \
+      --max-links="$INBOX_MAX_LINKS"
+  ) > "$log_file" 2>&1 &
+  pid=$!
+  pl_spawn_killer "$INBOX_WATCHDOG_SECS" "$pid" "inbox stage" "$marker"
+  wd=$!
+  pl_await_target "$pid" "$wd" "$marker"
+  rc=$?
+  set -e
+  sed 's/^/run-hourly[inbox]: /' "$log_file" | tail -40
+  if [ -f "$marker" ]; then
+    INBOX_NOTE="stage killed at ${INBOX_WATCHDOG_SECS}s watchdog — skipped this fire"
+    echo "run-hourly: ${INBOX_NOTE}" >&2
+    return 0
+  fi
+  case "$rc" in
+    0|10)
+      validate_inbox_contract
+      if [ "$INBOX_CONTRACT_OK" = 1 ]; then
+        INBOX_OK=1
+        [ "$rc" = 10 ] && INBOX_NOTE="partial (fetch failures went to the durable backlog)"
+        # New dead letters must be ACTIONABLE: name each URL + reason in the
+        # bookend so Peter knows what to re-drop (re-dropping revives it).
+        local dead_new_n dead_detail
+        dead_new_n=$(grep '^INBOX_DEAD_NEW=' "$INBOX_OUT/contract.env" | head -1 | cut -d= -f2- || true)
+        case "$dead_new_n" in (*[!0-9]*|'') dead_new_n=0;; esac
+        if [ "$dead_new_n" -gt 0 ]; then
+          dead_detail=$(jq -r '[.dead_new_detail[] | "\(.url) (\(.reason))"] | join("; ")' \
+            "$INBOX_OUT/manifest.json" 2>/dev/null || echo "detail unavailable")
+          INBOX_NOTE="${INBOX_NOTE:+${INBOX_NOTE}; }${dead_new_n} link(s) DEAD-LETTERED: $(pl_oneline "$dead_detail") — re-drop a link to retry it"
+        fi
+        echo "run-hourly: inbox contract accepted — ${INBOX_POSTS_N} post(s); ${INBOX_SUMMARY}"
+      else
+        INBOX_NOTE="contract unusable (${INBOX_CONTRACT_NOTE}) — skipped this fire"
+        echo "run-hourly: inbox ${INBOX_NOTE}" >&2
+      fi
+      ;;
+    20) INBOX_NOTE="auth wall during inbox fetch — skipped (feed gather will confirm)";;
+    21) INBOX_NOTE="profile locked during inbox fetch — skipped (feed loop sweeps)";;
+    22) INBOX_NOTE="rate-limited during inbox fetch — skipped this fire";;
+    *)  INBOX_NOTE="stage exited ${rc} — skipped this fire";;
+  esac
+  [ -n "$INBOX_NOTE" ] && [ "$INBOX_OK" != 1 ] \
+    && echo "run-hourly: inbox ${INBOX_NOTE}" >&2
+  return 0
+}
+
+# Deterministic postcondition before installing the watermark: every inbox
+# contract row must now exist in comments.json (reprocess rows at disposition
+# drafted). A drafting session that "succeeded" while silently skipping a
+# post must not consume its Slack message.
+install_inbox_state() {
+  local contract="$INBOX_OUT/contract.env" n i k mode missing="" tmp_state
+  n="$INBOX_POSTS_N"
+  # UNIFIED two-leg delivery evidence for EVERY mode (codex rounds 1–4): the
+  # entry must carry `source` (all inbox writes set it), a NON-EMPTY ClickUp
+  # outcome (task id or error), and — unless the row said NEED_SLACK=0 — a
+  # Slack outcome, where completion means the THREAD's post reply landed
+  # (`slack_thread.post_reply_ts`), not just the parent, or a recorded
+  # slack_error. A "successful" session that wrote entries but skipped the
+  # delivery legs must not consume the messages. Reprocess rows additionally
+  # prove the in-place flip to disposition drafted. Stale markers can only
+  # mis-time the watermark, never lose delivery: any `source` entry without
+  # its task reconciles later, and a replayed message re-emits the Slack leg.
+  local need_slack
+  i=1
+  while [ "$i" -le "$n" ]; do
+    k=$(grep "^POST_${i}_KEY=" "$contract" | head -1 | cut -d= -f2- || true)
+    mode=$(grep "^POST_${i}_MODE=" "$contract" | head -1 | cut -d= -f2- || true)
+    need_slack=$(grep "^POST_${i}_NEED_SLACK=" "$contract" | head -1 | cut -d= -f2- || true)
+    [ "$need_slack" = "0" ] || need_slack=1
+    jq -e --arg k "$k" --arg mode "$mode" --argjson ns "$need_slack" '
+        any(.[]; .key == $k and (.source != null)
+          and (($mode != "reprocess-off-topic") or (.disposition == "drafted"))
+          and (((.clickup_task_id | type == "string") and (.clickup_task_id | length > 0))
+               or ((.clickup_error | type == "string") and (.clickup_error | length > 0)))
+          and (($ns == 0)
+               or ((.slack_thread.post_reply_ts? // null) != null)
+               or ((.slack_error | type == "string") and (.slack_error | length > 0))))' \
+      linkedin-compain/comments.json >/dev/null 2>&1 || missing="${missing} ${k}(${mode})"
+    i=$((i + 1))
+  done
+  if [ -n "$missing" ]; then
+    INBOX_NOTE="delivery incomplete — ledger missing:${missing}; watermark NOT advanced (messages retry next fire)"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }inbox ${INBOX_NOTE}"
+    echo "run-hourly: inbox ${INBOX_NOTE}" >&2
+    return 0
+  fi
+  # Atomic + guarded: an install I/O failure must degrade to a warning (the
+  # comments.json landing below matters more than the watermark), never abort
+  # the fire via set -e. The full watermark predicate is re-checked right
+  # before the mv — validation ran much earlier and the file could have been
+  # touched in between (codex solution round 2).
+  tmp_state="${INBOX_STATE_FILE}.install-$$"
+  if jq -e --arg wm "${INBOX_EXPECTED_WM:-}" \
+        '(.last_ts == $wm) and (.pending | type=="array") and (.dead | type=="array")' \
+        "$INBOX_PROPOSED_STATE" >/dev/null 2>&1 \
+     && cp "$INBOX_PROPOSED_STATE" "$tmp_state" 2>/dev/null \
+     && jq empty "$tmp_state" 2>/dev/null \
+     && mv "$tmp_state" "$INBOX_STATE_FILE" 2>/dev/null; then
+    echo "run-hourly: inbox state installed (watermark $(jq -r '.last_ts' "$INBOX_STATE_FILE" 2>/dev/null || echo '?'))"
+  else
+    rm -f "$tmp_state" 2>/dev/null || true
+    INBOX_NOTE="state install failed — watermark NOT advanced"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }inbox ${INBOX_NOTE}"
+    echo "run-hourly: inbox ${INBOX_NOTE}" >&2
+  fi
+  return 0
+}
+
 # ------------------------------------------------------------ strategy hooks
 
 pipeline_heal_prompt() {
@@ -237,6 +479,9 @@ FAST_DIR=${FAST_DIR}
 GATHER_OUT=${GATHER_OUT:-}
 PERMALINKS_MISSING=${PERMALINKS_MISSING_N:-0}
 COMMENTS_FILE=./linkedin-compain/comments.json
+INBOX_OUT=${INBOX_OUT:-}
+INBOX_OK=${INBOX_OK:-0}
+INBOX_STATE_FILE=${INBOX_STATE_FILE}
 TS=${TS}
 EOF
 )
@@ -266,10 +511,18 @@ pipeline_run_attempt() {
   # half-overwrite) a stale contract from the failed attempt.
   GATHER_OUT="tmp/gather-feed/${TS}-a${PL_ATTEMPT}"
   echo "run-hourly: fast gather attempt ${PL_ATTEMPT}/${MAX_ATTEMPTS} starting ($(date -u +%H:%M:%SZ))"
+  # Same-fire cross-source dedup: the inbox ran first; its accepted posts'
+  # identities join the feed gather's seen-set so one post can't be accepted
+  # from both sources in one fire.
+  local extra_seen=""
+  if [ "${INBOX_OK:-0}" = 1 ] && [ -s "$INBOX_OUT/keys.json" ]; then
+    extra_seen="--extra-seen-file=$INBOX_OUT/keys.json"
+  fi
   set +e
   (
     node "$FAST_DIR/gather-feed.mjs" \
-      --deadline-secs="$GATHER_DEADLINE_SECS" --out-dir="$GATHER_OUT" 2>&1 | tee "$PL_ATTEMPT_LOG"
+      --deadline-secs="$GATHER_DEADLINE_SECS" --out-dir="$GATHER_OUT" \
+      ${extra_seen:+"$extra_seen"} 2>&1 | tee "$PL_ATTEMPT_LOG"
     exit "${PIPESTATUS[0]}"
   ) &
   pid=$!
@@ -414,7 +667,12 @@ pipeline_classify() {
   esac
 }
 
-# ---------------------------------------------------------------- fast gather
+# ------------------------------------------------------- inbox, then gather
+
+# The inbox runs FIRST (its keys feed the gather's cross-source dedup) and is
+# independent: whatever happens to the feed below, an accepted inbox contract
+# still reaches the drafting phase (Peter-curated links must ship).
+run_inbox_stage
 
 attempt_summaries=()
 consecutive_lock=0
@@ -424,6 +682,13 @@ pl_attempt_loop
 CLAUDE_PROMPT=""
 FIRE_FAILED=0
 POST_LANDING_HEAL=0
+# Inbox clause appended to whichever drafting prompt the feed outcome builds;
+# also the standalone prompt when the feed produced nothing draftable but the
+# inbox did (feed failures must not hold Peter-curated links hostage).
+INBOX_CLAUSE=""
+if [ "${INBOX_OK:-0}" = 1 ] && [ "${INBOX_POSTS_N:-0}" -gt 0 ]; then
+    INBOX_CLAUSE="ALSO process the slack-inbox contract at ${INBOX_OUT}/contract.env (same skill flow; note the per-post MODE field)"
+fi
 case "$PL_OUTCOME" in
   accept)
     # An accepted post without a permalink is an ERROR (user-mandated
@@ -439,13 +704,16 @@ case "$PL_OUTCOME" in
       PERMALINK_HEAL=1
     fi
     if [ "${POSTS_FOUND_N:-0}" -gt 0 ]; then
-      CLAUDE_PROMPT="run linkedin comment hourly using the pre-gathered contract at ${GATHER_OUT}/contract.env — do not re-run the gather step"
+      CLAUDE_PROMPT="run linkedin comment hourly using the pre-gathered contract at ${GATHER_OUT}/contract.env — do not re-run the gather step${INBOX_CLAUSE:+. ${INBOX_CLAUSE}}"
+    elif [ -n "$INBOX_CLAUSE" ]; then
+      echo "run-hourly: feed found 0 draftable posts — drafting runs on the inbox contract alone." >&2
+      CLAUDE_PROMPT="run linkedin comment hourly using ONLY the pre-gathered slack-inbox contract at ${INBOX_OUT}/contract.env (the feed gather found 0 draftable posts — do not re-run any gather; note the per-post MODE field)"
     else
       echo "run-hourly: gather found 0 draftable posts (end reason: ${GATHER_END_REASON_TXT:-unknown}) — skipping drafting, committing any filtered appends." >&2
     fi
     ;;
   fallback)
-    CLAUDE_PROMPT="run linkedin comment hourly using the legacy agent gather — the fast gather script reported selector drift"
+    CLAUDE_PROMPT="run linkedin comment hourly using the legacy agent gather — the fast gather script reported selector drift${INBOX_CLAUSE:+. ${INBOX_CLAUSE}}"
     POST_LANDING_HEAL=1
     FALLBACK_USED=1
     ;;
@@ -459,8 +727,31 @@ case "$PL_OUTCOME" in
     ;;
 esac
 
+# A failed feed must not hold the inbox hostage: ship the Peter-curated posts
+# anyway (the fire still exits red for the feed). Exception: exit 31 — the
+# drafting session runs on the same `claude -p` the classifier just proved
+# dead, so drafting would fail identically.
+if [ "$FIRE_FAILED" = 1 ] && [ -z "$CLAUDE_PROMPT" ] && [ -n "$INBOX_CLAUSE" ] \
+   && [ "${PL_ATTEMPT_EXIT:-0}" != 31 ]; then
+    echo "run-hourly: feed gather failed but the inbox has ${INBOX_POSTS_N} post(s) — drafting the inbox contract anyway." >&2
+    CLAUDE_PROMPT="run linkedin comment hourly using ONLY the pre-gathered slack-inbox contract at ${INBOX_OUT}/contract.env (the feed gather failed this fire — do not re-run any gather; note the per-post MODE field)"
+fi
+
+# Quiet-fire ClickUp reconciliation: entries that never got their task must
+# not strand behind fires with nothing to draft.
+if [ -z "$CLAUDE_PROMPT" ]; then
+    RECONCILABLE_N=$(jq '[.[] | select(.source != null and .disposition == "drafted" and .clickup_task_id == null)] | length' \
+        linkedin-compain/comments.json 2>/dev/null || echo 0)
+    case "$RECONCILABLE_N" in (*[!0-9]*|'') RECONCILABLE_N=0;; esac
+    if [ "$RECONCILABLE_N" -gt 0 ] && [ "${PL_ATTEMPT_EXIT:-0}" != 31 ]; then
+        echo "run-hourly: ${RECONCILABLE_N} ledger entr(y/ies) lack their ClickUp task — running reconcile-only drafting session." >&2
+        CLAUDE_PROMPT="run linkedin comment hourly in RECONCILE-ONLY mode: no gather contracts this fire — only run the ClickUp reconciliation sub-step from the skill's Step 2b (entries with source set, disposition drafted, and clickup_task_id null), then stop"
+    fi
+fi
+
 # ------------------------------------------------------------ drafting phase
 
+pipeline_status=""
 if [ -n "$CLAUDE_PROMPT" ]; then
     RUN_STAGE="drafting"
     # CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 disables the 10-minute
@@ -524,6 +815,25 @@ if [ -f linkedin-compain/comments.json ] && ! jq empty linkedin-compain/comments
         echo "run-hourly: linkedin-compain/comments.json is not valid JSON — skipping commit/PR." >&2
         RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }comments.json invalid after kill — commit skipped"
         exit 1
+    fi
+fi
+
+# Inbox watermark install — BEFORE the commit section so the state file rides
+# the same linkedin-compain/ data commit as the seen-set. Rules (plan §C):
+# 0 inbox posts → install directly; >0 → only when the drafting session that
+# covered the inbox contract exited 0 AND the ledger postcondition holds.
+if [ "${INBOX_OK:-0}" = 1 ]; then
+    if [ "${INBOX_POSTS_N:-0}" = "0" ]; then
+        install_inbox_state
+    else
+        inbox_in_prompt=0
+        case "$CLAUDE_PROMPT" in (*"${INBOX_OUT}/contract.env"*) inbox_in_prompt=1;; esac
+        if [ "$inbox_in_prompt" = 1 ] && [ "${pipeline_status:-1}" -eq 0 ]; then
+            install_inbox_state
+        else
+            INBOX_NOTE="drafting did not complete for the inbox contract — watermark NOT advanced (messages retry next fire)"
+            echo "run-hourly: inbox ${INBOX_NOTE}" >&2
+        fi
     fi
 fi
 

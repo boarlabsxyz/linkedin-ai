@@ -53,6 +53,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { authorSlug, normText, makeKey, fuzzyId } from './keys.mjs';
 
 const execFile = promisify(execFileCb);
 
@@ -82,6 +83,10 @@ const CLASSIFY_MODEL_ESCALATION = String(args['classify-model-escalation'] || 'c
 const HEADLESS = !!args.headless;
 const VERBOSE = !!args.verbose;
 const DRY_RUN = !!args['dry-run'];
+// Same-fire cross-source dedup: the inbox gather runs first and exports its
+// accepted posts' identities; a post Peter dropped in Slack must not be
+// accepted again from the home feed in the same fire.
+const EXTRA_SEEN_FILE = args['extra-seen-file'] ? path.resolve(REPO_ROOT, String(args['extra-seen-file'])) : null;
 const PETER_NAMES = new RegExp(String(args['peter-names'] || '\\b(Peter|Petro) (Ovchynnykov|Ovchyn) commented\\b'), 'i');
 
 // ---------------------------------------------------------------- utilities
@@ -108,38 +113,8 @@ class RateLimitError extends Error {}
 
 // ------------------------------------------------------------- key + dedup
 
-// Forward-only key scheme: same `<author-slug>-<body-hash8>` FORMAT the agent
-// used, but computed natively (NFKD + Cyrillic translit + sha256 of
-// whitespace-collapsed body). Byte-parity with the legacy bash pipeline
-// (iconv//TRANSLIT + tr + shasum) is NOT guaranteed — the fuzzy secondary
-// dedup below is what bridges entries written by the old agent.
-const CYR = {
-  а: 'a', б: 'b', в: 'v', г: 'h', ґ: 'g', д: 'd', е: 'e', є: 'ie', ж: 'zh', з: 'z',
-  и: 'y', і: 'i', ї: 'i', й: 'i', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p',
-  р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh',
-  щ: 'shch', ь: '', ю: 'iu', я: 'ia', ы: 'y', э: 'e', ё: 'e', ъ: '',
-};
-
-function authorSlug(author) {
-  let s = author.normalize('NFKD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[Ѐ-ӿ]/g, (ch) => CYR[ch] ?? '');
-  s = s.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').replace(/-{2,}/g, '-');
-  return (s || 'author').slice(0, 40).replace(/-+$/, '');
-}
-
-const normText = (s) => (s || '').replace(/[​‌‍﻿]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
-
-function makeKey(author, body) {
-  const hash = crypto.createHash('sha256').update(normText(body), 'utf8').digest('hex').slice(0, 8);
-  return `${authorSlug(author)}-${hash}`;
-}
-
-// Fuzzy bridge to legacy entries: normalized author + first 160 chars of the
-// normalized body. Catches the same card even when the hash recipe differs
-// (legacy bash normalization vs ours, footer-cut differences, …).
-const fuzzyId = (author, body) => `${normText(author)}|${normText(body).slice(0, 160)}`;
+// Key scheme + fuzzy bridge live in keys.mjs, shared with gather-inbox.mjs —
+// cross-source dedup depends on both scripts computing identical identities.
 
 // ------------------------------------------------------------ jq discipline
 
@@ -847,6 +822,22 @@ async function main() {
   const seenKeys = new Set(existing.map((e) => e.key));
   const seenFuzzy = new Set(existing.map((e) => fuzzyId(e.author_name, e.post_text)));
   log(`seen-set: ${seenKeys.size} keys from ${path.relative(REPO_ROOT, COMMENTS_FILE)}`);
+  if (EXTRA_SEEN_FILE) {
+    // [{key, fuzzy}] from the inbox gather's keys.json. A missing/invalid file
+    // is an FS error, not a silent skip — the driver only passes the flag when
+    // the inbox contract was accepted, so absence means something broke.
+    try {
+      const extra = JSON.parse(fs.readFileSync(EXTRA_SEEN_FILE, 'utf8'));
+      if (!Array.isArray(extra)) throw new Error(`${EXTRA_SEEN_FILE} is not a JSON array`);
+      for (const e of extra) {
+        if (e.key) seenKeys.add(e.key);
+        if (e.fuzzy) seenFuzzy.add(e.fuzzy);
+      }
+      log(`extra seen-set: +${extra.length} inbox identities`);
+    } catch (e) {
+      throw Object.assign(e, { reason: 'FS' });
+    }
+  }
 
   context = await launchBrowser();
   const page = context.pages()[0] || await context.newPage();
