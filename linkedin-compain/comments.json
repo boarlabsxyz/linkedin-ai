@@ -8402,5 +8402,240 @@
     "clickup_task_id": "86caxhvfx",
     "clickup_url": "https://app.clickup.com/t/86caxhvfx",
     "clickup_error": null
+  },
+  {
+    "key": "sam-betty-mckoy-e212c886",
+    "urn": "urn:li:ugcPost:7487300218938576896",
+    "post_url": "https://www.linkedin.com/posts/bzbetty_these-days-when-someone-brings-me-a-bug-ugcPost-7487300218938576896-DViD/",
+    "author_url": "https://www.linkedin.com/in/bzbetty/",
+    "author_name": "Sam \"Betty\" McKoy",
+    "author_headline": "Principal Technologist - AI and Software",
+    "time_ago": "1d",
+    "post_text": "These days when someone brings me a bug, I skip the ticket and send it straight to an LLM, it's usually fixed before I'd have finished writing the ticket. Why keep a backlog when you can just have the software? That small habit is the front edge of something bigger: software you change while you're still using it.\nOn AI & the Craft\nSubscribe\nSoftware That Evolves As You Use It\nSam \"Betty\" McKoy",
+    "scraped_at": "2026-07-28T08:13:26Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The productivity win here is real, we skip tickets for that kind of fast fix too. Where I'd push back: the thing that disappears isn't the ticket, it's the record of why the bug existed in the first place. My own bet with True BDD goes a similar direction but keeps that piece: code gets thrown away and regenerated, but the requirement stays somewhere durable and queryable, so when a similar bug shows up in a different service six months later there's something to compare against instead of someone's memory of a chat session. What do you do to keep that trail once the ticket's gone?",
+        "rationale": "Agrees with the real productivity win but pushes back on the specific gap (losing the \"why\" trail), grounded in Petro's own True BDD stance that documentation/requirements must persist even when code is disposable."
+      },
+      {
+        "strategy_label": "Strategy 4 — Ask a provocative question",
+        "comment": "\"Software you change while you're still using it\" is a sharp compression of the direction. The failure mode I'd worry about: two bugs that look identical on the surface get fixed two different ways by two different LLM sessions, with no shared record connecting them. At what point does that stop being \"skip the backlog\" and start being its own kind of drift, code that's individually correct but quietly diverging in style and structure fix by fix?",
+        "rationale": "Names the specific unaddressed blindspot (parallel LLM sessions patching identical bugs with no shared record) to push the conversation into sharper territory without hostility."
+      },
+      {
+        "strategy_label": "Strategy 1 — Ask a clarifying question",
+        "comment": "The bug-to-LLM habit tracks, we do the same for anything under maybe 20 minutes of diagnosis. Curious where you draw the line before it stops working though: at what size of change does \"skip the ticket, just fix it\" start needing a captured why somewhere, something big enough that the next person, or the next LLM call, actually needs the reasoning behind it and not just the diff?",
+        "rationale": "Asks a specific, hard-to-answer question (where the \"skip the ticket\" habit stops scaling) rooted directly in the post's own framing rather than a generic follow-up."
+      }
+    ],
+    "slack_summary": "Sends bugs straight to an LLM instead of writing tickets — argues software is becoming something you change while you're still using it.",
+    "slack_ts": "1785226429.523829",
+    "slack_thread": {
+      "post_reply_ts": "1785226437.675719",
+      "draft_reply_ts": [
+        "1785226446.607819",
+        "1785226456.274819",
+        "1785226464.029539"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxq1nk",
+    "clickup_url": "https://app.clickup.com/t/86caxq1nk",
+    "clickup_error": null
+  },
+  {
+    "key": "steve-jackson-fb433c21",
+    "urn": "urn:li:share:7487386404197564417",
+    "post_url": "https://www.linkedin.com/posts/blackbeak_people-often-think-that-when-they-use-ai-share-7487386404197564417-pPiL/",
+    "author_url": "https://www.linkedin.com/in/blackbeak/",
+    "author_name": "Steve Jackson",
+    "author_headline": "CDO and founder | AI Adoption in companies",
+    "time_ago": "1d",
+    "post_text": "People often think that when they use AI coding tools that the code is the product.\nAfter rebuilding a massive mono-repo of 5 years worth of code over the last 6 weeks I disagree.\nAI is changing how we write software.\nBut I think it’s also changing what software engineers are paid to do.\nFor years, the development process looked something like this:\n1. Understand the problem.\n2. Design the solution.\n3. Write the code.\n4. Test it.\nWriting the code was the biggest job.\nToday, tools like Claude Code can turn a well-defined design into working software in hours.\nThat changes things.\nThe scarce skill is no longer writing code, it’s everything that comes before and after it.\nI’ve found my workflow now looks more like this:\nThink\nWhat problem are we actually solving? Is there a simpler solution?\nWhat are the business rules? Where are the edge cases?\nDesign\nChallenge the architecture. Question every assumption.\nThink about performance, security, maintainability and how this feature fits into the wider platform.\nThis is often an iterative conversation with AI, refining the design until it feels right.\nGenerate\nNow let AI build it which used to be the longest phase.\nToday it’s often the shortest.\nGovern\nThis is where many teams underestimate the work.\n- Review the implementation.\n- Run automated tests.\n- Test locally.\n- Deploy to staging.\n- Test again.\nMonitor production.\nImprove what you learn.\nThis isn’t about checking whether AI wrote good code.\nIt’s about making sure the system behaves as intended.\nThat’s the Red Queen* lesson.\nWhen one activity becomes dramatically faster, another becomes more valuable.\nCoding hasn’t disappeared.\nIt has become cheaper.\nGood judgement hasn’t become cheaper.\nIt has become more valuable.\nThe engineers who thrive over the next decade won’t necessarily be the ones who write the most code.\nThey’ll be the ones who ask the best questions, design the best systems and create the confidence to ship software quickly without losing control.\nIn the AI era, the product isn’t the code.\nThe product is the quality of the decisions that shape it.\n*Check the first comment for more similar ideas",
+    "scraped_at": "2026-07-28T08:14:41Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The Think → Design → Generate → Govern framing matches what we're seeing on client engagements too. Generate really did shrink to the shortest phase.\n\nWhere I'd push back a bit: when we measured full ticket-to-production time instead of just the coding phase, the end-to-end speedup came out closer to 30%, not the multiple your \"hours\" framing implies. Govern quietly ate most of what Generate gave back. Was your six-week timeline measuring the whole loop, or mostly the generate step?",
+        "rationale": "Grounds the pushback in Petro's own posted 30% end-to-end speedup figure rather than a generic disagreement, staying consistent with his public record."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The Red Queen framing is the sharpest part of this for me. Coding got cheap, judgment didn't, and most teams still budget for the old ratio.\n\nOne thing I'd push on: your Govern step reviews the implementation against intent, but what keeps the design doc itself honest six months later? We spent years watching Jira tickets drift away from what's actually in src/ once code became the thing everyone edited by hand. If AI is now writing most of the code, what stops the design doc from becoming exactly that kind of stale artifact?",
+        "rationale": "Uses Petro's long-standing \"docs drift like Jira drifted from src/\" argument to probe whether Govern actually keeps design docs honest, without pitching True BDD."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "Five years of mono-repo history rebuilt in six weeks is the kind of number that actually tells me something. Most \"AI made this 10x faster\" posts don't have one.\n\nCurious how those six weeks split across your four stages. Was Govern the majority of the time like your framework implies it should be, or did having the old codebase as a reference let you skip a chunk of Think and Design because the business rules were already encoded in the legacy code?",
+        "rationale": "A specific, answerable question about where the six weeks actually went, testing the post's own four-stage framework against Steve's concrete number."
+      }
+    ],
+    "slack_summary": "After rebuilding 5 years of mono-repo in 6 weeks: the product isn't the code, it's the Think/Design/Govern judgment around AI generation.",
+    "slack_ts": "1785226505.336739",
+    "slack_thread": {
+      "post_reply_ts": "1785226518.058469",
+      "draft_reply_ts": [
+        "1785226526.267959",
+        "1785226533.935089",
+        "1785226541.425369"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxq2mr",
+    "clickup_url": "https://app.clickup.com/t/86caxq2mr",
+    "clickup_error": null
+  },
+  {
+    "key": "addy-osmani-2d668674",
+    "urn": "urn:li:ugcPost:7486670405957505024",
+    "post_url": "https://www.linkedin.com/posts/addyosmani_agentic-autonomy-levels-ugcPost-7486670405957505024-ZjLa/",
+    "author_url": "https://www.linkedin.com/in/addyosmani/",
+    "author_name": "Addy Osmani",
+    "author_headline": "AI Engineering & DevRel Leader, Recently: Director, Google Cloud AI. Eng Lead, Chrome Best-selling Author. Speaker. AI, DX, UX. I want to see you win.",
+    "time_ago": "3d",
+    "post_text": "AI coding? The autonomy you grant an agent is the level you can cheaply verify\nSteve Yegge drew the first map I saw for AI coding autonomy at the start of the year: a ladder from L1 (no AI) all the way up to L8 (build your own orchestrator). It's a great mental model, and it got a lot of people reasoning in levels.\nSome time running agents later, I'd redraw it. Two things changed for me.\n1. Autonomy isn't a level you climb to and stay at. It's a setting you pick per problem. The same engineer could run an agent at \"just suggest\" for a delicate migration and \"go fix the whole queue overnight\" for others. \"What level are you?\" is the wrong question. \"What level does this problem deserve?\" is the right one.\n2. One ladder hides two different dials. There's agency (how far a single agent goes before it needs you) and there's orchestration (how many agents run at once, and who coordinates them). They're related, but moving up one is not the same as moving up the other, and each has its own failure mode.\nSo my version is shorter, L0 to L5, and split into agency then orchestration:\nL0 Assist - it suggests, you act at keystroke speed\nL1 Supervised action - it acts, but stops at boundaries\nL2 Scoped task delegation - it owns a bounded task, you review the diff\nL3 Goal-driven autonomy - it loops until a measurable goal holds\nL4 Parallel delegation - many agents at once, you run the queue\nL5 Managed-by-exception orchestration - a manager wakes, delegates and escalates only the decisions\nThe thing that actually sets the level isn't ambition though it's verification. Every run needs effectively a loose contract: scope, stopping condition, evidence, escalation, budget. The level you can safely reach is exactly the level you can cheaply prove.\nHopefully helpful for folks thinking about this topic :)\n#ai #softwareengineering #programming\nAgentic Autonomy Levels\n·\n12 pages",
+    "scraped_at": "2026-07-28T08:15:57Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Agency vs orchestration is the sharper cut here — most \"what level are you\" framings conflate how far one agent goes with how many run in parallel, and those are two very different oversight problems. For L4/L5 though, verification cost doesn't seem to scale linearly with agent count — reviewing 10 diffs isn't 10x reading one diff, it's closer to triage than review. What's held constant to keep that \"cheap\" at scale — narrower scope per agent, an automated gate, or just a higher noise tolerance you're willing to eat?",
+        "rationale": "The post frames autonomy as two dials (agency, orchestration) but only unpacks verification cost for the single-agent side; asking about the L4/L5 orchestration side pulls out the unaddressed variable."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"The level you can safely reach is exactly the level you can cheaply prove\" is the cleanest one-line version of something I only got to after building it the hard way. We ended up with Claude forbidden from doing anything by default — if it wants to act, it asks a separate deterministic system, and that system says yes or no, nothing in the prompt. Moving the constraint into boring code instead of instructions is what actually made \"cheap to prove\" true for us — an LLM enforcing its own rule in its own context isn't verification, it's a suggestion.",
+        "rationale": "Petro publicly documented (posted.md, 26.05 \"don't delete the production database\") building exactly the deterministic-gate mechanism that operationalizes Addy's \"cheaply prove\" claim — a real, citable anchor rather than an invented story."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Verification as the actual lever, not ambition, matches what I keep seeing too. Curious about L3 though — it loops until a measurable goal holds, but the cheapest goals to measure (tests green, build passes) are rarely the ones that matter (is this the right feature at all). When the cheap-to-verify goal and the actually-important goal diverge, do you see teams quietly start optimizing for the former just because it's provable?",
+        "rationale": "Surfaces the blindspot in the L3 \"measurable goal\" framing (goodhart's-law risk between cheap-to-verify and actually-important goals) without being hostile to the ladder itself."
+      }
+    ],
+    "slack_summary": "Redraws Yegge's AI-coding autonomy ladder as L0-L5 split into agency vs orchestration — the level you can reach is the level you can cheaply verify.",
+    "slack_ts": "1785226581.396329",
+    "slack_thread": {
+      "post_reply_ts": "1785226594.149239",
+      "draft_reply_ts": [
+        "1785226603.677079",
+        "1785226613.080899",
+        "1785226621.413879"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxq3j0",
+    "clickup_url": "https://app.clickup.com/t/86caxq3j0",
+    "clickup_error": null
+  },
+  {
+    "key": "shawn-lynes-25db0a66",
+    "urn": "urn:li:share:7487130603759296513",
+    "post_url": "https://www.linkedin.com/posts/shawnlynes_as-a-senior-principal-software-engineer-share-7487130603759296513-eG2c/",
+    "author_url": "https://www.linkedin.com/in/shawnlynes/",
+    "author_name": "Shawn Lynes",
+    "author_headline": "Senior Principal Software Engineer at Data Dimensions",
+    "time_ago": "1d",
+    "post_text": "As a Senior Principal Software Engineer, I'm always surprised by how negative some people are about AI-assisted development.I've watched technology improve over the last few decades, and most of the time developers eventually embrace it because it helps us build better software faster. To me, AI is just the next step.One thing I've learned over the years is that there are always bottlenecks. There's always more work to do than time to do it. If something can help me get through repetitive tasks faster so I can spend more time solving actual problems, I'm all for it.I also think your perspective changes when your backlog never seems to get smaller. If you've got more work than you can realistically get done, it's hard not to appreciate tools that make you more productive.AI isn't replacing good engineers. It still takes experience, good judgment, and someone who's accountable for the final product. It's just another tool, and it's a pretty powerful one.So I'll keep embracing AI and anything else that helps me deliver better software faster. At the end of the day, our job is to solve problems and deliver value to customers, and I'll gladly use every tool available to do that.",
+    "scraped_at": "2026-07-28T08:17:17Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"AI isn't replacing good engineers\" line is fair, but it assumes a steady supply of engineers who already have that judgment. If seniors keep offloading the repetitive work to AI, where does a junior get the reps that build that judgment in the first place? Not an argument against the tool, just curious how you're thinking about training the next generation of \"good judgment\" when the boring work that used to teach it is exactly what's disappearing first.",
+        "rationale": "The post's confident \"AI isn't replacing good engineers\" claim leaves the judgment-pipeline question unexamined, and it's a tension Petro has publicly explored in his own juniors-and-AI posts."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The backlog point lands. Once the queue stops shrinking, you stop debating whether the tool is cheating and start caring whether it works.\n\nI ran into the judgment piece directly a few months back. Gave the same automation task to an experienced dev and, separately, to my son, still in university. The senior kept rewriting the AI's output to match how he'd have written it by hand. He wanted control over the how. My son just kept iterating with the model until it worked, barely touching the editor. Both landed on working code, but the son got there faster, precisely because he had no attachment yet to a \"proper\" way of doing it. The gap didn't show up in raw skill. It showed up in the moment each of them decided to stop trusting the AI and take over.",
+        "rationale": "Directly illustrates the post's \"it still takes experience, good judgment, someone accountable\" claim with a real, documented anecdote (posted.md, \"08.01.26 Zhenya post (AI)\"), adding a nuance rather than just agreeing."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The backlog point is the practical test that cuts through most of the AI-skepticism debate. Abstract arguments matter less once the queue stops shrinking.\n\nCurious how you draw the line between \"faster on repetitive tasks\" and \"faster end to end.\" In my own experience the ratio isn't 1:1: the task itself might run 2-3x faster, but review and judgment don't compress the same way, so the backlog shrinks less than the raw speedup suggests. Does that gap show up on your side too, or is the backlog actually shrinking now?",
+        "rationale": "Grounds the post's \"backlog never gets smaller\" claim in Petro's own prior public observation (posted.md, \"21.04.26\" — review stays 75% of dev time even in the AI era) without repeating that post directly."
+      }
+    ],
+    "slack_summary": "Senior engineer pushes back on AI negativity: with a backlog that never shrinks, AI is just the next productivity tool — judgment still stays human.",
+    "slack_ts": "1785226657.581159",
+    "slack_thread": {
+      "post_reply_ts": "1785226671.902009",
+      "draft_reply_ts": [
+        "1785226679.978319",
+        "1785226691.765299",
+        "1785226699.950059"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxq4ke",
+    "clickup_url": "https://app.clickup.com/t/86caxq4ke",
+    "clickup_error": null
+  },
+  {
+    "key": "david-heinemeier-hansson-ffb08cb4",
+    "urn": "urn:li:share:7487196392323563520",
+    "post_url": "https://www.linkedin.com/posts/david-heinemeier-hansson-374b18221_jason-and-i-have-been-making-the-same-argument-share-7487196392323563520-oQyD/",
+    "author_url": "https://www.linkedin.com/in/david-heinemeier-hansson-374b18221/",
+    "author_name": "David Heinemeier Hansson",
+    "author_headline": "Co-owner & CTO of 37signals (Makers of Basecamp + HEY)",
+    "time_ago": "1d",
+    "post_text": "Jason and I have been making the same argument for over a quarter of a century now: Small teams can do incredible things when they embrace their constraints. And when they work in software or media or other intellectual realms, they don't need loads of capital to get going, so they can skip the investor rat race, focus on their edge, and find customers to fund the journey.\nWith the rise of AI, this argument has never been more potent. When Jason and I got started, you could only do this if you had the skills to build everything with your own hands. You had to be a designer or a programmer to skip taking other people's money. But now, incredibly, The Idea Guy really does have a place and a path.\nThis old-and-new reality is what I sat down to talk with David Senra about in Malibu. Which was kinda meta, because Senra himself has run our playbook, built an incredible podcast success, and is killing it without investors to answer to as well.\nAnd while it's not just about the money, the money is nice too! That's a central part of this claim. Making \"yellow Lamborghini money\" is far more achievable when it can be done bootstrapping a business to, say, $5–10M/year in revenue. No venture capitalist is going to let you settle for that! They'd rather kill the business than let it stall out there. It's unicorn or bust.\nThat's their business model. And it's fine, btw! I've actually come to appreciate far more the fruits of these big bets than I did when we got started. The world needs Shopify, Spotify, and SpaceX, to take just three examples of VC-powered success stories starting with S.\nBut you have to know what you want. If your aspiration is to run a meaningful part of world commerce or send rockets to Mars, I think you should swing for those fences, knowing that the odds are stacked sorely against you. I'm just not that ambitious!\nSenra and I talk about this in many different ways. Like how James Cameron's original Terminator movie, shot on a shoestring, is a far superior movie to Avatar because of the constraints. Or how this Polish kid Vaxry was able to make a far more compelling window manager from his dormitory than Apple or Microsoft could do with a trillion-dollar market cap. Constraints provide the pressure that produce diamonds.\nBut we also talked about the bigger threats to business than just whether you take funding or not. How the early 2020s saw a horde of White Walkers march upon the Wall, and how entrepreneurs of all stripes eventually came to see the common threat to capitalism, prosperity, and self-determination in woke menance. And how Marc Andreessen turned out to be pivotal in our personal battle with these malevolent forces. Fate loves irony!\nAnyway, if any of these topics resonate, I think you'll appreciate the episode. It's also less demanding on your time than the Lex marathon from last summer, and you'll only be asked for an hour and a half of your time. Enjoy!\nhttps://lnkd.in/g2YwtVsD\nDHH: How to Build a Profitable Company Without Losing Control\nDHH: How to Build a Profitable Company Without Losing Control\nyoutube.com",
+    "scraped_at": "2026-07-28T08:18:35Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The $5-10M \"yellow Lamborghini money\" framing is the sharpest part of this for me — it names the ceiling VCs won't let you stop at, and it's exactly the number most bootstrapped software businesses can actually hit.\n\nHere's the part I'm still turning over: AI removes the constraint at the \"can you build v1\" stage. But what happens six months after launch, once real usage exposes edge cases and the requirements start changing under a founder who never had to understand what the AI generated? Does the Idea Guy hit a wall there instead, just later — or has that constraint moved too?",
+        "rationale": "Names a specific number from the post, then asks a concrete question about the maintenance phase the post never addresses."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that AI moved the floor on who gets to start — that part is real and it happened fast.\n\nWhere I'd push back a little: the constraint didn't disappear, it moved. We build AI-native dev tools for a living, and the founders who stall out aren't stuck because they can't type code anymore — they're stuck because their idea was never specified precisely enough to survive translation into something that works. Typing was never the hard part; knowing exactly what you want, in enough detail that a model can't drift, still is. Curious whether Senra had that precision by instinct or had to learn it the hard way.",
+        "rationale": "Petro's practitioner stance on AI-native dev tools (matches his already-posted \"requirements-first, store prompts not code\" position) gives a grounded counter without contradicting past posts."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Constraints provide the pressure that produce diamonds\" is a good line, and Vaxry vs. a trillion-dollar market cap is a great example of it.\n\nBut AI just dissolved the one constraint that used to filter out most Idea Guys — the need to build it yourself. So what's the new filter? If everyone can now spin up a passable v1, the bottleneck shifts to taste: knowing what not to build, and when to stop adding. That's a much harder thing to bootstrap than code ever was, and I don't think AI touches it at all.",
+        "rationale": "Picks up the \"constraints produce diamonds\" framing and pushes on where the constraint moved to now that AI removed the technical-skill filter."
+      }
+    ],
+    "slack_summary": "Bootstrapping case restated for the AI era: small teams + constraints beat VC pressure, and now even \"The Idea Guy\" has a path without investors.",
+    "slack_ts": "1785226744.520999",
+    "slack_thread": {
+      "post_reply_ts": "1785226759.333539",
+      "draft_reply_ts": [
+        "1785226768.094939",
+        "1785226776.729139",
+        "1785226787.218069"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86caxq5qm",
+    "clickup_url": "https://app.clickup.com/t/86caxq5qm",
+    "clickup_error": null
   }
 ]
