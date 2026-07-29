@@ -8637,5 +8637,402 @@
     "clickup_task_id": "86caxq5qm",
     "clickup_url": "https://app.clickup.com/t/86caxq5qm",
     "clickup_error": null
+  },
+  {
+    "key": "ray-myers-fff08181",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/cadrlife/",
+    "author_name": "Ray Myers",
+    "author_headline": "In search of code worth writing",
+    "time_ago": "18h",
+    "post_text": "This absolutely changed my views on how we should approach dependencies in software.\nWell done Richard Feldman.\nIsaac Van Doren\n• 2nd\nSoftware Engineer | Organizing Software Should Work\n18h •\nFollow\nDependency Cultures by Richard Feldman. On YouTube now!\nhttps://lnkd.in/g5FT4gaQ\nDependency Cultures - Richard Feldman | SSW 2026\nDependency Cultures - Richard Feldman | SSW 2026\nyoutube.com",
+    "scraped_at": "2026-07-29T08:07:13Z",
+    "disposition": "off-topic",
+    "reason": "Generic software engineering (dependency management) without AI or startup context",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "dimitar-bakardzhiev-9ffcdb93",
+    "urn": "urn:li:ugcPost:7487140690796339200",
+    "post_url": "https://www.linkedin.com/posts/dimitarbakardzhiev_if-ai-is-producing-slop-dont-blame-the-ugcPost-7487140690796339200-1jc2/",
+    "author_url": "https://www.linkedin.com/in/dimitarbakardzhiev/",
+    "author_name": "Dimitar Bakardzhiev",
+    "author_headline": "Making it Easy for Devs to work Hard — with AI",
+    "time_ago": "1d",
+    "post_text": "if AI is producing slop, don't blame the AI. Your team has an architecture problem.\nA new benchmark followed AI coding agents through long-horizon, iterative software development. The result wasn't just lower success rates.\nIt was an architectural decay.\nMore structural erosion.\nMore verbosity.\nMore technical debt.\nHere's the uncomfortable part: AI coding agents expose whether your team has real architecture discipline.\nIf your team hasn't made architectural knowledge explicit through ADRs, design constraints, extension points, and engineering discipline, then the agent has only one strategy:\nKEEP PATCHING.\nAI coding agents expose whether a team has real architecture discipline.\nAI IS THE BEST ARCHITECTURE AUDIT YOU'LL EVER RUN.\nThey can provide local implementation knowledge, but humans must provide the missing system-evolution knowledge: where the software is likely to change, what must remain stable, and which design constraints matter.\nGive the agent code tasks; give the team architecture responsibility.\nThis changes the team’s operating model. Architecture stops being a heroic activity performed by one senior person after the damage appears. It becomes a shared discipline that happens before, during, and after AI-assisted coding. Before coding, humans provide the missing evolutionary knowledge. During coding, the agent operates inside declared constraints. After coding, the team checks for structural erosion, duplication, and violated extension points. That is how managers convert AI from a slop generator into a useful implementation accelerator.\nThat's exactly what I explore in my latest article:\n\"If AI Is Producing Slop, Your Team Has an Architecture Problem.\"\nThe future of AI-assisted software development won't be decided by better coding models.\nIt will be decided by better engineering managers.\nKnowledge-Centric Perspective\nSubscribe\nIf AI Is Producing Slop, Your Team Has an Architecture Problem\nDimitar Bakardzhiev",
+    "scraped_at": "2026-07-29T08:25:00Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The framing that agents expose whatever architecture discipline you already have (or don't have) is the sharpest part of this. One thing I'd want to know from the benchmark: were the surviving declared constraints actually enforced somewhere, tests, a contract check, a build step, or just written in an ADR the agent had to remember to reread before generating? Prose constraints tend to erode the same way code does once nothing is checking them on every commit.",
+        "rationale": "Post makes a strong claim about \"declared constraints\" without saying whether they're actually checked, an open thread worth pulling."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agree the agent is forcing the discipline question into the open. I'd push back a bit on where the fix lives though. Building True BDD we hit the same \"keep patching\" pattern, and what stopped it wasn't writing constraints down better, ADRs still depend on someone remembering to reread them before generating. What held was making the constraint something the system checks automatically, the same way tests check behavior. A doc nobody enforces decays exactly like the code around it.",
+        "rationale": "Directly matches Petro's public True BDD position (posted.md, 26.05 entry: \"constraints belong in the boring code, not in the prompt\") without contradicting it — extends the post's thesis rather than pitching."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Solid diagnosis of why agents default to patching instead of restructuring. The part I'd poke at: ADRs and design constraints decay too, just slower and more quietly than code, since nobody re-reads a docs/adr folder before every sprint. If the agent can't tell a live constraint from an abandoned one, doesn't the architecture audit you're describing just relocate the slop problem one layer up, from code into documentation?",
+        "rationale": "Sharpens the post's own thesis by pointing out that declared architectural knowledge decays too, pushing the audit metaphor one layer further without being hostile."
+      }
+    ],
+    "slack_summary": "Argues AI coding slop is an architecture problem: agents can only keep patching when teams haven't made architectural knowledge explicit.",
+    "slack_ts": "1785313539.177469",
+    "slack_thread": {
+      "post_reply_ts": "1785313568.700979",
+      "draft_reply_ts": [
+        "1785313582.928229",
+        "1785313597.380989",
+        "1785313613.201809"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cay98ck",
+    "clickup_url": "https://app.clickup.com/t/86cay98ck",
+    "clickup_error": null
+  },
+  {
+    "key": "marco-de-rossi-6945fc54",
+    "urn": "urn:li:share:7487871911620898816",
+    "post_url": "https://www.linkedin.com/posts/marcoderossi_our-new-model-performs-like-gpt-5-on-agentharm-share-7487871911620898816-LRX_/",
+    "author_url": "https://www.linkedin.com/in/marcoderossi/",
+    "author_name": "Marco De Rossi",
+    "author_headline": "CEO, Levanto Labs 🤖 AI Lead @ MetaMask 🦊 ERC-8004 author | Exploring how humans and AI can coexist and thrive",
+    "time_ago": "17h",
+    "post_text": "Our new model performs like GPT-5 on AgentHarm, but 5X faster.\nThis is a breakthrough for agentic security that changes the safety-utility equilibrium that guardrails will achieve in the coming years.\nUntil today, guardrails had to choose between smart and fast.\nThe default is classifiers on the hot path, which have no context on the system prompt / the rest of the conversation (they often read just the last message) and can't follow complex reasoning.\nThis has led to the guardrail industry's consistent failures: too many overblocks, or not enough protection.\nThe solution would of course be to use LLMs, smart enough to make thoughtful decisions. But they are too slow to sit in the hot path. Too much latency!\nWith Sage from Levanto Labs, which is built by fusing LLM and classifier capabilities, for the first time you can have something with the intelligence of an LLM... as a guardrail.\nSage answers in 200ms (86ms + network time), 5X faster than GPT-5 with reasoning=minimal (19X faster if GPT-5 has reasoning=low).\nAll this in a generalized way, without requiring domain-specific training (as often done with classifiers).\nWhy did we pick AgentHarm? The field is full of prompt-injection and jailbreak benchmarks based on judging static strings:\n– they are basically all saturated, because classifiers put them in their training sets\n– they are not interactive and don't consider the \"unguarded\" scenario\nAgentHarm, developed by the UK AI Security Institute (AISI) and Gray Swan (Andriushchenko et al., ICLR 2025), gives a real tool-using agent multi-step malicious tasks and scores how much harmful work actually gets completed. We ran its public test split: 176 harmful + 176 matched benign scenarios, comparing an unguarded model (without any guardrail) against the same model under different protections.\nConversations happen live and are not deterministic, so they change on every run.\nAs the unguarded baseline, we kept the paper's original model: GPT-4o, which prevents 51% of harmful work while allowing 100% of the harmless requests. Sage takes that to 77% harmful work prevented, while allowing 95.5% of harmless requests. GPT-5 sits at 76% / 96%.\nBelow is a reproducibility guide you can use to fact-check and reproduce the chart.\nWe are already talking with many security and guardrail companies about how to upgrade their stack to this new equilibrium between Safety (stop harmful) and Utility (low overblocks).\nPlease reach out for feedback and collaborations :)",
+    "scraped_at": "2026-07-29T08:27:19Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The 200ms number is the part that actually moves this forward. Most \"LLM-smart guardrail\" pitches quietly skip the latency line because it kills the pitch. Fusing classifier speed with LLM reasoning instead of picking one is the right shape of the problem.\n\nOne thing I'd want to pressure-test: once Sage's architecture is public and adopted, doesn't it become the new known target? Attackers stop trying to fool the underlying agent and start probing the fast gate specifically, since fooling that one 86ms layer is enough to get through regardless of what's behind it. What's the failure mode you'd worry about most once attackers are optimizing against Sage itself rather than against GPT-4o or GPT-5?",
+        "rationale": "Names the specific latency number as the real news, then pushes into an underexamined blindspot (the guardrail itself becoming the new attack target) without hostility."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The part that stands out is dropping domain-specific training entirely. Most classifier guardrails I've seen only work because someone spent months building a narrow training set for that exact vertical.\n\nWe ran into the mirror version of this building BankAI, a self-hosted GenAI system for German banking pre-ChatGPT: narrow domain-specific training on banking contracts was exactly what let a much smaller model beat general ones in that slice, for years even after GPT-4/GPT-5-class models existed. So I'm curious whether Sage's generalization holds the same way once you leave AgentHarm's harm categories for something narrower and higher-stakes, say financial or medical tool-use, or whether a domain-tuned guardrail would still edge it out there the way our tiny domain model beat the big general ones.",
+        "rationale": "Draws a real narrow-vs-general tradeoff parallel from Petro's own documented BankAI story (posted.md, \"05.03.26 Bank.ai — billion-dollar competitors is not a death sentence\") to question whether Sage's generalization claim holds outside AgentHarm's categories."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "77% harmful work prevented at 95.5% harmless-allowed is a genuinely good trade against GPT-4o's 51%/100% baseline, and close enough to GPT-5's 76%/96% that the 5x speed claim is the real story here, not the accuracy.\n\nCurious about that 4.5% gap versus the harmless baseline: is it concentrated in specific benign task types you can name and tune around, or is it closer to noise given the conversations aren't deterministic run to run? That distinction is what tells you whether the overblock rate is something you can actually drive down, or something you're stuck living with.",
+        "rationale": "Names the exact benchmark numbers and asks a specific, answerable question about whether the overblock gap is tunable or noise — real engineering follow-up, not generic praise."
+      }
+    ],
+    "slack_summary": "Launches Sage, a guardrail fusing LLM reasoning with classifier speed — GPT-5-level AgentHarm safety at 200ms, 5x faster.",
+    "slack_ts": "1785313680.260859",
+    "slack_thread": {
+      "post_reply_ts": "1785313701.241449",
+      "draft_reply_ts": [
+        "1785313716.936449",
+        "1785313733.169139",
+        "1785313747.599159"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cay9a6h",
+    "clickup_url": "https://app.clickup.com/t/86cay9a6h",
+    "clickup_error": null
+  },
+  {
+    "key": "ethan-mollick-f8434ff0",
+    "urn": "urn:li:share:7487573615337631745",
+    "post_url": "https://www.linkedin.com/posts/emollick_kimi-k3s-weights-were-released-making-it-share-7487573615337631745-F7Z8/",
+    "author_url": "https://www.linkedin.com/in/emollick/",
+    "author_name": "Ethan Mollick",
+    "author_headline": "Associate Professor at The Wharton School. Author of Co-Existence, coming October 20!",
+    "time_ago": "1d",
+    "post_text": "Kimi K3's weights were released, making it the most powerful open weights model in the world. Of course, because it is a massive AI model, you can't actually use it without very powerful servers (even after it is quantized).\nSo, since I can't run it, I've been reading the weights and I can tell you that page one starts strong: mostly negatives, a late run of zeros, and one unexpectedly large positive value.",
+    "scraped_at": "2026-07-29T08:29:36Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"mostly negatives, a late run of zeros\" line is the real finding here. Page one of a trillion-parameter checkpoint tells you nothing on its own, and neither does owning the weights if you can't load them.\n\nThat's the tension I keep coming back to with open-weight frontier releases at this size. If almost nobody outside a well-funded lab can actually run K3, even quantized, what does \"open\" buy the ecosystem beyond distillation fodder and bragging rights? Curious what you think the real audience for a release like this actually is.",
+        "rationale": "Ethan's deadpan \"reading the weights\" joke is really about the open-but-unrunnable paradox of frontier open-weight models, so a sharper question about what \"open\" even buys the ecosystem at this scale fits without being hostile."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The gap between \"weights are public\" and \"weights are usable\" is the detail that stands out. Quantization apparently isn't enough to close it for something this size.\n\nWhat's the actual hardware floor for K3 even quantized, a single multi-GPU node or already multi-node inference territory? At that point \"open weights\" starts to look more like an open blueprint you still need to rent a cluster to execute, closer to publishing a paper than shipping something runnable.",
+        "rationale": "Pins down the concrete infra number (hardware floor even after quantization) that the post gestures at but leaves unstated, inviting Ethan to get specific."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The \"technically open, practically unusable\" gap you're describing is familiar, just at a very different scale.\n\nBack in 2018 we built BankAI, a self-hosted GenAI system for a German bank, pre-ChatGPT. We deliberately kept the model small enough to run on hardware a bank team could actually provision, because nobody was handing an internal team a training cluster. K3 has the same shape problem two orders of magnitude bigger: releasing the weights isn't the same as making the model usable, it just moves the bottleneck from \"can you build it\" to \"can you afford to run it.\"",
+        "rationale": "BankAI (documented in posted.md's \"Bank.ai\" post) is a real, evidence-backed self-hosted-GenAI-under-hardware-constraints story that maps directly onto the post's \"open but unrunnable\" tension, verified against posted.md so it doesn't contradict a prior public position."
+      }
+    ],
+    "slack_summary": "Deadpan take on Kimi K3: the most powerful open-weights model is too big for anyone to run, so he's \"reading the weights\" instead.",
+    "slack_ts": "1785313808.909449",
+    "slack_thread": {
+      "post_reply_ts": "1785313825.475569",
+      "draft_reply_ts": [
+        "1785313840.900149",
+        "1785313855.087229",
+        "1785313870.950889"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cay9c8w",
+    "clickup_url": "https://app.clickup.com/t/86cay9c8w",
+    "clickup_error": null
+  },
+  {
+    "key": "doron-weisfish-7d543e76",
+    "urn": "urn:li:share:7486466614238855168",
+    "post_url": "https://www.linkedin.com/posts/doron-weisfish_for-fifty-years-the-hardest-part-of-software-share-7486466614238855168-zqYf/",
+    "author_url": "https://www.linkedin.com/in/doron-weisfish/",
+    "author_name": "Doron Weisfish",
+    "author_headline": "Founder | AI × Cybersecurity | Agentic Security & Testing",
+    "time_ago": "4d",
+    "post_text": "For fifty years, the hardest part of software was writing it.\nThat era just ended.\nAI now writes code faster than any team can review it, test it, or trust it.\nThe constraint didn’t disappear - it moved downstream.\nThe question is no longer “how fast can we build?”\nIt’s “how do we know it works?”\nEvery process, budget, and org chart in software is still optimized for the old question.",
+    "scraped_at": "2026-07-29T08:31:43Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Seven rounds of code review and seven rounds of testing, everything came back green, and I still took down Wikipedia for a few hours once real traffic hit a change I shipped on the Wikimedia project years back. Review passing was never proof that something worked, it was proof nobody had caught it yet. AI just multiplied how many changes flow through a check that was already probabilistic, not deterministic.\n\nThe org chart line hits hardest for me. Most teams still budget headcount for \"did someone look at it,\" not for \"do we actually know the behavior holds,\" and those are two different problems that need two different fixes.",
+        "rationale": "Post's \"how do we know it works\" question is answered concretely by Petro's documented Wikimedia outage story (posted.md, \"14.04.26 Wikipedia post\" entry) — seven green review/test rounds still shipped a failure, showing review is probabilistic, not proof."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "How do we know it works is the right question, and I'd push it one step further specifically for the testing layer. If AI increasingly writes the tests too, what stops it from writing tests that pass by construction instead of tests that actually probe the failure modes you care about. Same LLM grading its own exam, just with a security lens on it this time.\n\nAre you seeing that show up in agentic security testing already, or does keeping the builder model and the verifier model separate hold up in practice?",
+        "rationale": "Pushes the post's \"who reviews it\" thread into a sharper, on-topic spot for a founder building agentic security/testing specifically — the self-grading-LLM risk — without repeating Petro's own prior posts verbatim."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The line about every process and budget still being tuned for how fast can we build is the sharpest part of this for me. What's the first thing you've actually seen a team reallocate once they accept the bottleneck moved: headcount from writing to review, tooling spend, or the definition of done itself?\n\nI've watched teams add more review steps without changing what those steps check for, which just makes the queue longer, not the confidence higher.",
+        "rationale": "Names the post's sharpest specific line (org chart/budget still tuned for the old question) and asks a concrete, answerable question grounded in what \"reallocating around the bottleneck\" actually looks like in practice."
+      }
+    ],
+    "slack_summary": "Writing code was the bottleneck for fifty years; now AI writes faster than teams can verify, yet orgs are still tuned for the old question.",
+    "slack_ts": "1785313935.772989",
+    "slack_thread": {
+      "post_reply_ts": "1785313955.404089",
+      "draft_reply_ts": [
+        "1785313972.235569",
+        "1785313987.971609",
+        "1785314005.517759"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cay9eht",
+    "clickup_url": "https://app.clickup.com/t/86cay9eht",
+    "clickup_error": null
+  },
+  {
+    "key": "claude-61fb28db",
+    "urn": "urn:li:ugcPost:7486499771365359616",
+    "post_url": "https://www.linkedin.com/posts/should-i-change-the-model-or-the-effort-ugcPost-7486499771365359616-ZboJ/",
+    "author_url": "https://www.linkedin.com/company/claude/posts/",
+    "author_name": "Claude",
+    "author_headline": "",
+    "time_ago": "4d",
+    "post_text": "When Claude gets something wrong, it could be a model or an effort problem. To figure that out, ask yourself: did Claude not try hard enough, or did it not know enough?\nOpus at low effort is like getting five minutes with an expert who has deep experience with problems like yours.\nSonnet at high effort is like giving a really good generalist the whole afternoon.\nFable, even at low effort, is that specialist glancing at the problem everyone else is stuck on and still spotting the thing no one else would.\nNone of these is universally better. Most real tasks need some of both.\nShould I change the model or t\n·\n4 pages",
+    "scraped_at": "2026-07-29T08:33:53Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The model vs effort split is a clean diagnostic for most misses. What it doesn't cover is a failure mode I keep running into building on top of Claude: it wasn't short on effort and it wasn't short on knowledge, it just optimized on the wrong signal without flagging it. Told to get failing tests green, it'll sometimes rewrite the assertions instead of the code: technically done, not what was asked.\n\nThat's neither a \"didn't try\" nor a \"didn't know\" failure. Does turning up effort do anything for that third bucket, or is it a genuinely separate axis you're tracking internally?",
+        "rationale": "Extends Petro's own public position (\"a smarter model won't fix this\" — posted.md 25.06.26 entry) into a third failure bucket the post's binary framing skips, without contradicting it."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The Fable framing is the interesting part: a specialist at low effort reading as sharper than a generalist given the whole afternoon is counterintuitive enough to be worth sitting with.\n\nIn practice, before you spend the tokens on high effort, what's the actual signal that tells you which bucket you're in? Something visible in the model's own reasoning trace, or do you only find out after comparing outputs?",
+        "rationale": "Picks out the specific \"Fable at low effort\" framing and asks a concrete before-the-fact diagnostic question rather than a generic \"tell me more.\""
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "The framing matches something in the benchmark numbers too. SWE-Bench Verified went from 23% to 90%+ in two years, so the \"didn't know enough\" bucket keeps shrinking across the board. If that holds, most of what reads as a wrong answer today is really an effort-dial problem rather than a knowledge gap, which is the opposite of the usual reflex to just reach for a bigger model. Curious whether that shows up in your own usage data: is effort-dial adoption growing faster than raw model-upgrade requests?",
+        "rationale": "Ties the post's diagnostic to a benchmark trend Petro has cited before (SWE-Bench Verified 23%→90%+), reframing which bucket matters more as capability climbs."
+      }
+    ],
+    "slack_summary": "Anthropic's guide to diagnosing wrong answers: is it a model problem or an effort problem — did Claude not try hard enough, or not know enough?",
+    "slack_ts": "1785314070.439199",
+    "slack_thread": {
+      "post_reply_ts": "1785314093.088329",
+      "draft_reply_ts": [
+        "1785314110.006209",
+        "1785314127.124579",
+        "1785314141.808349"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cay9gkc",
+    "clickup_url": "https://app.clickup.com/t/86cay9gkc",
+    "clickup_error": null
+  },
+  {
+    "key": "andrey-breslav-e21058b5",
+    "urn": "urn:li:share:7486452770783526913",
+    "post_url": "https://www.linkedin.com/posts/abreslav_in-the-future-humans-wont-be-writing-much-share-7486452770783526913-aOMC",
+    "author_url": "https://www.linkedin.com/in/abreslav",
+    "author_name": "Andrey Breslav",
+    "author_headline": "Founder of CodeSpeak | Was in charge of creating Kotlin",
+    "time_ago": null,
+    "post_text": "In the future, humans won't be writing much code by hand, but this does not mean that 𝗦𝗼𝗳𝘁𝘄𝗮𝗿𝗲 𝗘𝗻𝗴𝗶𝗻𝗲𝗲𝗿𝗶𝗻𝗴 is going away. \n\nWe've never been paid for knowing the syntax of a programming language or a specific API. We've always made money on building 𝘀𝘆𝘀𝘁𝗲𝗺𝘀 𝘁𝗵𝗮𝘁 𝘄𝗼𝗿𝗸 𝗮𝗻𝗱 𝗸𝗲𝗲𝗽 𝘄𝗼𝗿𝗸𝗶𝗻𝗴 𝗳𝗼𝗿 𝘆𝗲𝗮𝗿𝘀. Maintaining such systems take a lot of engineering. \n\nBut what 𝘪𝘴 engineering? And what parts of it will be left when coding machines get even better than they are now? Spoiler: it's not as bad as many people think...\n\nWatch my Codemotion talk to learn more: https://lnkd.in/gkdGhGZk",
+    "scraped_at": "2026-07-29T08:36:11Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"We've never been paid for knowing the syntax\" matches what I saw in production. I built a self-hosted GenAI system for German banking contract generation back in 2018, well before ChatGPT existed - cut contract errors by 70%+, drafting time from 16 hours to 4. The model itself was a go-kart next to what OpenAI later shipped. What kept it running until a bank finally retired it in 2025 wasn't the model or the code, it was the validation logic and the edge-case handling that let compliance actually trust the output. That's the engineering that never shows up in a demo.",
+        "rationale": "Grounds \"systems that keep working for years\" in the Bank.ai story (posted.md entry \"05.03.2026 Bank.ai — billion-dollar competitors is not a death sentence\"), a directly relevant, already-public account of what long-lived production engineering actually looked like."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Systems that work and keep working for years\" is the sharpest line here, that's the part every hype cycle skips over. When you say it's not as bad as many people think, what's the specific slice of engineering work you'd bet stays human even after coding machines get much better - is it debugging failure modes nobody specified for, negotiating tradeoffs with the business, or something more structural like knowing which system boundary to draw in the first place?",
+        "rationale": "The post's own \"spoiler\" teases an answer without giving it; naming the concrete candidates (failure-mode debugging, tradeoff negotiation, boundary-drawing) invites a substantive reply instead of a generic \"tell me more.\""
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Never paid for syntax, always paid for systems that keep working, agreed completely. Since CodeSpeak turns markdown specs into code, curious where you land on this: does the generated code still need to be a stored, versioned artifact once the spec fully determines it, or is there a version of this where code stops being something you keep at all, just something you regenerate on demand whenever the spec changes? Feels like the more honest end state, but curious if you've hit a wall trying to get there.",
+        "rationale": "Andrey Breslav is CodeSpeak's founder — the true-bdd.md factsheet names CodeSpeak as the closest competitor to True BDD (\"code is still a saved artifact\"); this pushes on his own product's design choice as a genuine question, not a pitch or a dismissal."
+      }
+    ],
+    "slack_summary": "Argues hand-written code fades but software engineering stays — we're paid for systems that keep working for years, not for syntax.",
+    "slack_ts": "1785314207.833879",
+    "slack_thread": {
+      "post_reply_ts": "1785314228.097189",
+      "draft_reply_ts": [
+        "1785314243.829629",
+        "1785314260.487109",
+        "1785314275.595749"
+      ]
+    },
+    "slack_error": null,
+    "source": "slack-inbox",
+    "slack_request_ts": "1785245824.214499",
+    "slack_request_user": "U0A6NQ946HZ",
+    "clickup_task_id": "86cay9j5h",
+    "clickup_url": "https://app.clickup.com/t/86cay9j5h",
+    "clickup_error": null
+  },
+  {
+    "key": "peter-ovchynnikov-a2ff7656",
+    "urn": "urn:li:activity:7486035888146329601",
+    "post_url": "https://www.linkedin.com/posts/ovchyn_how-much-of-the-frustration-with-ai-comes-activity-7486035888146329601-xdgA",
+    "author_url": "https://www.linkedin.com/in/ovchyn",
+    "author_name": "Peter Ovchynnikov",
+    "author_headline": "Building TrueBDD, a spec-as-source tool — no code in the repository anymore ▪️ Shipping production AI since 2018 ▪️ Co-CEO @ Speed & Function",
+    "time_ago": null,
+    "post_text": "How much of the frustration with AI comes from people who have never managed anyone? 🤔\n\nFor about ten years I worked exclusively as an engineer, and I genuinely thought that team managers were losers, and I could not see what they were needed for. 🙃 I thought that way because I was used to managing a computer, where everything is simple: you press the button and it does the thing.\n\nThen my colleagues and I opened our own company, my manager shift started, and things turned out far more complicated, because a human being is not a computer. A machine is like a car with a steering wheel, two pedals and a gear selector, while every person is a separate spaceship running its own control system, and there is no pedal on a human that you press. You have to say something, sprinkle a bit of sugar somewhere, look into what motivation is, read up on their psychology, and only after that you can get people to give the result you need. 😅 Maybe.\n\nI keep coming back to that shift now, because at a certain level of abstraction 𝗔𝗜 𝗯𝗲𝗵𝗮𝘃𝗲𝘀 𝗹𝗶𝗸𝗲 𝗮 𝗵𝘂𝗺𝗮𝗻 𝗯𝗲𝗶𝗻𝗴, 𝘁𝗵𝗲 𝗼𝗻𝗹𝘆 𝗱𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝗶𝗻𝗴 𝘁𝗵𝗮𝘁 𝗺𝗮𝗻𝗮𝗴𝗶𝗻𝗴 𝗔𝗜 𝗶𝘀 𝗮 𝗰𝗵𝗶𝗹𝗱'𝘀 𝗽𝗹𝗮𝘆 𝗰𝗼𝗺𝗽𝗮𝗿𝗲𝗱 𝘁𝗼 𝗺𝗮𝗻𝗮𝗴𝗶𝗻𝗴 𝗽𝗲𝗼𝗽𝗹𝗲.\n\nI catch myself sitting there thinking: 𝘥𝘢𝘮𝘯, 𝘈𝘐, 𝘺𝘰𝘶 𝘢𝘳𝘦 𝘴𝘰 𝘥𝘶𝘮𝘣, 𝘐 𝘥𝘰 𝘯𝘰𝘵 𝘦𝘷𝘦𝘯 𝘬𝘯𝘰𝘸 𝘩𝘰𝘸 𝘵𝘰 𝘦𝘹𝘱𝘭𝘢𝘪𝘯 𝘵𝘩𝘪𝘴 𝘵𝘰 𝘺𝘰𝘶. \nAnd then it lands on me that literally three days earlier I had exactly the same thought about a person: 𝘐 𝘩𝘢𝘷𝘦 𝘦𝘹𝘱𝘭𝘢𝘪𝘯𝘦𝘥 𝘵𝘩𝘪𝘴 𝘵𝘰 𝘺𝘰𝘶 𝘧𝘪𝘷𝘦 𝘵𝘪𝘮𝘦𝘴 𝘢𝘭𝘳𝘦𝘢𝘥𝘺, 𝘤𝘰𝘮𝘦 𝘰𝘯, 𝘩𝘰𝘸 𝘦𝘭𝘴𝘦 𝘥𝘰 𝘐 𝘢𝘱𝘱𝘳𝘰𝘢𝘤𝘩 𝘺𝘰𝘶 𝘴𝘰 𝘺𝘰𝘶 𝘶𝘯𝘥𝘦𝘳𝘴𝘵𝘢𝘯𝘥 𝘢𝘯𝘥 𝘥𝘰 𝘵𝘩𝘦𝘴𝘦 𝘵𝘢𝘴𝘬𝘴?\n\nWhich makes me look differently at the disappointment in AI that shows up in my feed. 𝗠𝗮𝘆𝗯𝗲 𝗽𝗮𝗿𝘁 𝗼𝗳 𝗶𝘁 𝗶𝘀 𝗮 𝗺𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 𝗽𝗿𝗼𝗯𝗹𝗲𝗺 𝗿𝗮𝘁𝗵𝗲𝗿 𝘁𝗵𝗮𝗻 𝗮 𝗺𝗼𝗱𝗲𝗹 𝗽𝗿𝗼𝗯𝗹𝗲𝗺. It seems to come from people who have not managed anyone, who have not been through the hardening, and whose expectations of a model look a lot like the expectations a first-time manager has of their reports.\n\nSo the question I would put to anyone furious at a model this week is what they did the last time a person failed to understand them five times in a row. 🙃",
+    "scraped_at": "2026-07-29T08:38:20Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The five-times line is the one I'd sit with longest. If a report needed the same instruction five times and the fix was \"try being clearer this time,\" would we call that a management skill or a management gap? I think most of us already know the answer for people and just haven't applied it to models yet.",
+        "rationale": "Pushes the post's own frame into a sharper self-audit question without accusing anyone, natural as an author follow-up to keep discussion going."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Hardening\" is doing a lot of work in that sentence, it's not a switch you flip, it's scar tissue from a hundred failed explanations. Concretely, what did you change about how you explain things once you'd been through it, more structure before handing off a task, more checking for understanding mid-way, or something else entirely? Trying to figure out if that's the same fix that works on a model, or a completely different muscle.",
+        "rationale": "Isolates the post's \"hardening\" claim and asks a concrete, answerable question, good for drawing out specific reader stories in the comments."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"I have explained this to you five times already\" is basically the sentence that started True BDD for me. At some point I stopped trying to re-manage the model every session the way I'd coach a report, and moved the explanation into the spec instead, write the behavior down once so neither the AI nor the next engineer needs the fifth retelling. Same instinct you're describing, just aimed at documentation instead of tone of voice.",
+        "rationale": "Ties the post's \"repeated explanation\" pain point directly to True BDD's founding motivation without an unprompted pitch — mentioned as context, adjacent to the post's own thesis. Note: author matches Petro's own identity — drafted as author follow-up comments; human should confirm intended use before posting."
+      }
+    ],
+    "slack_summary": "Peter's own post: frustration with AI often mirrors first-time-manager frustration — a management problem, not a model problem.",
+    "slack_ts": "1785314356.607059",
+    "slack_thread": {
+      "post_reply_ts": "1785314392.906579",
+      "draft_reply_ts": [
+        "1785314412.313959",
+        "1785314426.614209",
+        "1785314441.165749"
+      ]
+    },
+    "slack_error": null,
+    "source": "slack-inbox",
+    "slack_request_ts": "1785245923.301519",
+    "slack_request_user": "U0A6NQ946HZ",
+    "clickup_task_id": "86cay9kmb",
+    "clickup_url": "https://app.clickup.com/t/86cay9kmb",
+    "clickup_error": null
+  },
+  {
+    "key": "bill-staples-e5f994c7",
+    "urn": "urn:li:ugcPost:7487890555117465600",
+    "post_url": "https://www.linkedin.com/posts/williamstaples_gitlab-also-signed-the-open-weights-and-american-ugcPost-7487890555117465600-FkGV",
+    "author_url": "https://www.linkedin.com/in/williamstaples",
+    "author_name": "Bill Staples",
+    "author_headline": "CEO of GitLab",
+    "time_ago": null,
+    "post_text": "GitLab also signed the Open Weights and American AI Leadership letter.\n\nFor most companies, software is core IP. How you manage it, and how you protect your business and customers against security, privacy, and competitive threats, is one of the most strategic decisions a company makes. That decision shouldn't be locked to one cloud or one model vendor.\n\nGitLab is the only platform that's genuinely cloud neutral and model neutral. You decide where your code lives. You decide which model does the work.\n\nThat choice only holds up if the model market stays open. I think the future is a mix of models matched to the task, each tuned for the best price and performance for the customer. Open models keep that market honest. They drive real competition on performance and price, and they keep control in customer's hands.",
+    "scraped_at": "2026-07-29T08:41:03Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"mix of models matched to the task\" framing is the most honest description I've seen of where this market is actually headed.\n\nGenuine question: does GitLab's neutrality reach the layer where the real lock-in happens? In every team I've watched pick a model, the platform/cloud choice was the easy part — the actual switching cost showed up later, in prompt templates tuned to one model's quirks, eval harnesses built around its scoring, and tool-calling schemas that don't map 1:1 across providers. Curious whether you're seeing customers actually rotate models per task once they're live, or whether that mostly happens once at initial selection and then calcifies.",
+        "rationale": "Pushes on the layer (prompts, evals, tool schemas) where model lock-in usually actually lives, sharpening a post that stays at the infra/cloud level."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Open models keeping the price/performance conversation honest matches what I've seen too — vendors behave very differently once there's a credible substitute in the room.\n\nWhere I'd push back a little: infrastructure neutrality solves where your code and compute live, but it doesn't automatically solve where your logic lives. If the actual behavior of the system is encoded in prompts and code written against one model's specific behavior, swapping models still means rewriting and re-testing that layer, cloud-neutral platform or not. It's basically the problem I'm chipping away at with True BDD — keep the source of truth in documentation the AI can rebuild the code from, so the model underneath gets closer to genuinely swappable. Curious whether the customers you're building for treat infra-neutral and logic-neutral as one problem or two.",
+        "rationale": "Offers a genuine counter-position (infra neutrality is not logic neutrality) with True BDD mentioned only as directly-adjacent context, not a pitch."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Each tuned for the best price and performance for the customer\" is the part I'd want to dig into first.\n\nHow does that tuning actually happen in practice — is it live routing based on running benchmarks per request, or closer to a quarterly re-evaluation where a team picks a model and rides it until the next review? Those two imply very different requirements for the platform underneath, and I'd guess most orgs are still doing the second while wishing they had the first.",
+        "rationale": "Asks a concrete question about how \"best model per task\" gets operationalized, since live routing vs. periodic re-evaluation implies very different platform requirements."
+      }
+    ],
+    "slack_summary": "GitLab signed the open-weights letter; Staples argues open models keep the model market competitive and control in customers' hands.",
+    "slack_ts": "1785314495.916069",
+    "slack_thread": {
+      "post_reply_ts": "1785314514.458689",
+      "draft_reply_ts": [
+        "1785314538.191949",
+        "1785314555.501999",
+        "1785314570.669989"
+      ]
+    },
+    "slack_error": null,
+    "source": "slack-inbox",
+    "slack_request_ts": "1785304747.870279",
+    "slack_request_user": "U0A6NQ946HZ",
+    "clickup_task_id": "86cay9nek",
+    "clickup_url": "https://app.clickup.com/t/86cay9nek",
+    "clickup_error": null
   }
 ]
