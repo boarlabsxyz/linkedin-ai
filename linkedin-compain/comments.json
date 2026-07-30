@@ -9034,5 +9034,261 @@
     "clickup_task_id": "86cay9nek",
     "clickup_url": "https://app.clickup.com/t/86cay9nek",
     "clickup_error": null
+  },
+  {
+    "key": "diego-borgo-abfdec18",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/diegoborgo/",
+    "author_name": "Diego Borgo",
+    "author_headline": "Executive Advisor to Tech Founders | Brand Strategy, Positioning & Go-to-Market",
+    "time_ago": "20h",
+    "post_text": "Remember when Web3 was supposed to actually change sh*t?\nNot chase pumps, flip narratives but actually solve problems for real humans.\nThe original promise was simple:\nGive people control of their data, cut out the predatory middlemen, build systems that actually work for everyone.\nThen came ape JPEGs and token dumps.\nWe lost the f*cking plot.\nI've spent years as Brand and Marketing advisor advising Fortune 500s and Web3 founders.\nHere's what I learn:\nHere are projects I worked with that are winning because they solve real problems.\n1- Pyth Network streams real-time prices for global markets.\n2- Rise made global payroll actually work.\n3- Addressable.io cracked how to actually find and reach crypto users at scale.\nWeb3 doesn't have to be complicated, it just needs to be useful.\nIf you're building something that makes people's lives suck less, drop it in the comments.\nLFGrow ❤️🔥\n#RightClickSaveAs",
+    "scraped_at": "2026-07-30T07:56:37Z",
+    "disposition": "off-topic",
+    "reason": "Web3/crypto infrastructure and marketing, not AI or startup growth focused",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ben-dickson-55a84556",
+    "urn": "urn:li:share:7487915918228992000",
+    "post_url": "https://www.linkedin.com/posts/bendee983_heres-what-happens-you-start-programming-share-7487915918228992000-mxL5/",
+    "author_url": "https://www.linkedin.com/in/bendee983/",
+    "author_name": "Ben Dickson",
+    "author_headline": "Software Engineer | Tech Blogger",
+    "time_ago": "1d",
+    "post_text": "Here's what happens:\nYou start programming with LLMs. It looks magical at the beginning (a la Arthur C. Clarke). With a simple natural language command, you get the AI to generate code that would have taken you hours or days.\nThen you want to go further. It turns out that natural language can be interpreted in different ways, and the LLM's interpretation does not necessarily align with yours.\nSo you start adding more structure and specification. You add test cases and guardrails to make sure the AI stays within your intent and specs.\nNow, if you look back and squint, you'll see that you reinvented programming languages.\n(All that said, if you master all these aspects, you can get reliable output from AI coding agents and increase your productivity.)",
+    "scraped_at": "2026-07-30T08:15:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Ben, the arc you describe matches what I've seen too: natural language works until it drifts, then you buy back precision with structure.\n\nWhere I'd push back a little: a programming language exists to make the code authoritative, since that's the thing that actually runs. What people are bolting on now (tests, guardrails, specs) points the other way, toward making the code disposable and the description the thing that stays true. Same formal shape, different job underneath. I'm building a small CLI on exactly that bet, and the part that actually bites isn't the structure, it's determinism: same spec, same behavior on Monday and on Friday. Today, mostly not yet.",
+        "rationale": "Petro's public determinism question and three-levels-of-SDD posts sit right next to Ben's \"reinvented programming languages\" punchline, so a lived counter-position lands as substance."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The line about adding guardrails to keep the AI inside your intent is the part I keep coming back to. That's really where all the effort goes once the initial magic wears off.\n\nGenuine question: once you've built all that structure, do you actually get the same output twice for the same input? A real programming language guarantees that by design, that's the whole point of it halting on ambiguity instead of guessing. Curious whether what you ended up with gets you there, or whether it's just a much better-aimed version of the same probabilistic thing underneath.",
+        "rationale": "Turns Ben's own \"guardrails to keep the AI inside your intent\" line into the sharpest open question in the post — determinism."
+      },
+      {
+        "strategy_label": "Offer a supporting link or material",
+        "comment": "This arc you're describing already has a name in the spec-driven-development literature (arXiv 2602.00180), worth a look. They split it into three levels: spec kicks off the work and then code takes over (roughly where your \"reinvented programming languages\" punchline lands), spec as a living contract CI checks against while code still leads (most serious tools sit here today), and spec as the actual source of truth with code regenerated on demand.\n\nAlmost nobody has actually shipped that third level yet. That gap might be the more interesting failure mode than the one in your post.",
+        "rationale": "Petro has read and posted about this spec-driven-development paper (three levels of SDD), so the arXiv reference is grounded rather than a name-drop."
+      }
+    ],
+    "slack_summary": "Argues that piling tests, guardrails and specs onto LLM coding just reinvents programming languages.",
+    "slack_ts": "1785399495.883039",
+    "slack_thread": {
+      "post_reply_ts": "1785399543.918149",
+      "draft_reply_ts": [
+        "1785399621.545019",
+        "1785399661.992309",
+        "1785399704.562039"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cayrvfx",
+    "clickup_url": "https://app.clickup.com/t/86cayrvfx",
+    "clickup_error": null
+  },
+  {
+    "key": "andrew-amann-ec5ad63f",
+    "urn": "urn:li:share:7487903960046010368",
+    "post_url": "https://www.linkedin.com/posts/andrewamann_peaked-revenue-for-claudelinkedincover-share-7487903960046010368-E7Y9/",
+    "author_url": "https://www.linkedin.com/in/andrewamann/",
+    "author_name": "Andrew Amann",
+    "author_headline": "🤖 CEO of the Top AI Development Agency in America ➡️ Previously a Nuclear Submarine Engineer 🏗️ Built 150+ Products 🚀 Launched 14 Startups💲3 Acquisitions 💡 20+ US Patents 📈 5 years, Inc 5000 🎤 AI Speaker",
+    "time_ago": "1d",
+    "post_text": "Claude peaked again.\nEvery new model version gets a little smarter and a lot more boring.\nThe reason is simple. Anthropic is training on the internet, and the internet is now full of AI text. Each generation eats its own output. The model gets safer, more predictable, and less sharp. Not because the engineers are bad. Because the data is poisoned.\nThen there is the alignment tax. RLHF forces Claude to be polite, structured, and risk-averse. The version that impressed everyone two years ago had edge. The version shipping today has guardrails. The creativity that made it useful for real work is the same thing that gets sanded down with every safety update.\nThe context window tells the same story. Claude's 200K token window is the highlight. But processing that much text at once costs compute at near-exponential scale. So the model trades depth for breadth. It can read more, but it reasons less. The capability that made it worth paying for gets throttled to keep latency down.\nAnd the hardware wall is real. The jumps between GPT-2 and GPT-4 were generational. The jumps now are incremental. Chips are hitting physical limits. Power availability is the bottleneck. The math says the next model costs 10x more to train and delivers 1.2x improvement.\nThe final hit is commercialization. Anthropic needs enterprise contracts. Enterprise contracts demand predictability. Predictability kills flexibility. The power-user features that made Claude indispensable for builders are the same features that scare procurement teams. So they get quietly removed.\nClaude is not going to disappear. It is going to become infrastructure. Boring, reliable, expensive infrastructure. The version you fell in love with is already gone. The version coming next will be safer, slower, and more compliant.\nIf you are building on Claude, stop optimizing for the model you have today. It will not be the model you have in six months. Build for the architecture, not the model.",
+    "scraped_at": "2026-07-30T08:15:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The alignment-tax argument is the part I'd push back on, not the compute math. Ran into this directly building on Claude: I stopped treating guardrails as the enemy and put a deterministic gate in front of it instead — by default it can't do anything, every action goes through a separate system that says yes or no, production DB included. The version that would've just done whatever, edge and all, wasn't more useful for shipping real work, it was one prompt away from taking out something nobody asked it to touch. What specific capability do you feel a gate like that couldn't have preserved?",
+        "rationale": "Counters the alignment-tax framing with Petro's own Claude build — a deterministic gate is what made the model production-usable, not what ruined it."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"Build for the architecture, not the model\" is the line that actually matters here — everything before it is packaging. But architecture-first only works if something outside the model is carrying the state and the contract: specs, evals, a permission layer, whatever you pick. What's the piece you'd point to that survives a model swap intact? Because if the honest answer is \"the prompts,\" you haven't decoupled from the model, you've just renamed the lock-in.",
+        "rationale": "Pushes on the post's own closing thesis (\"build for architecture, not the model\") to expose whether that decoupling is real or just relocated lock-in."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The \"10x compute for 1.2x improvement\" line is the concrete claim in here worth pressure-testing. Where's that ratio coming from — extrapolated from public scaling-law papers, or a number you're seeing directly in training/inference cost quotes? Because if it's the former, a plateauing loss curve isn't the same claim as \"the next model will feel barely better\" — a good chunk of last year's real gains showed up in tool use and agentic reliability, not raw benchmark deltas, and that's not something the standard scaling curves capture.",
+        "rationale": "Holds the post's strongest numeric claim (\"10x compute for 1.2x improvement\") up to scrutiny by asking where the ratio actually comes from."
+      }
+    ],
+    "slack_summary": "Claims each new Claude release gets safer but duller — blames AI-polluted data, alignment tax, compute limits, and enterprise demands.",
+    "slack_ts": "1785399498.415369",
+    "slack_thread": {
+      "post_reply_ts": "1785399552.768559",
+      "draft_reply_ts": [
+        "1785399624.427329",
+        "1785399664.515779",
+        "1785399708.027119"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cayrvhm",
+    "clickup_url": "https://app.clickup.com/t/86cayrvhm",
+    "clickup_error": null
+  },
+  {
+    "key": "todd-larsen-2d399d13",
+    "urn": "urn:li:share:7487507738982465536",
+    "post_url": "https://www.linkedin.com/posts/remotebranch_what-is-the-fastest-way-to-waste-your-ai-share-7487507738982465536-0vIX/",
+    "author_url": "https://www.linkedin.com/in/remotebranch/",
+    "author_name": "Todd Larsen",
+    "author_headline": "Exited Founding Engineer → Transforming Mid-Market & Enterprise Ops & GTM Orgs with AI Agents",
+    "time_ago": "2d",
+    "post_text": "What is the fastest way to waste your AI budget?\nPicking the tool before you understand the problem.\nThe first question should never be which tool. It's what the workflow is worth to your company, and how well your team actually understands it.\nSome workflows are core to how you create advantage. Those you design and build in-house, because handing them to a vendor hands away the edge.\nPlenty of others are generic. The problem is common, the solution well understood, and the vendor already knows the compliance surface better than you do.\nThen there's the messy middle. The workflow is valuable, but your team can't yet see the pattern well enough to design it safely. That's when you bring in outside help before you build anything.\nThe mistake isn't choosing wrong between build and buy.\nIt's reaching for a tool before you've decided what the work is actually worth.",
+    "scraped_at": "2026-07-30T08:15:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The \"messy middle\" is the part most build-vs-buy frameworks skip past. What's the actual signal you use to tell a team it can't yet see the pattern well enough to design it safely? Is it a failed first attempt at building it, or is there a diagnostic that catches it before anyone writes a line of code?",
+        "rationale": "Names the specific \"messy middle\" case Todd raises and pushes for a concrete diagnostic instead of a generic follow-up question."
+      },
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The line you're drawing, generic work the vendor already knows better than you versus core work you keep in-house, is sharper than most build-vs-buy takes, which mostly argue over tool features.\n\nWe hit the compliance version of this a lot at Speed & Function. A client needs HIPAA or GDPR handled, and the instinct is to hire whoever claims the deepest expertise in it. What actually sped things up for us was the opposite split: we stayed the ones who understood the end user, and bought the compliance knowledge as a bit of outside consulting instead of trying to own it ourselves. Took one engagement from three months down to about six weeks, mostly by not burning cycles re-learning what the client actually needed.\n\nCurious if you'd say the expertise people go buy in your \"generic\" bucket is usually narrower than they assume too.",
+        "rationale": "Draws on Petro's build-vs-buy call at Speed & Function (HIPAA/GDPR vendor selection, three months down to ~six weeks) to add a nuance Todd's framework doesn't cover."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The buy-vs-build split reads like a one-time decision here, and that's the part I'd push on. Something that sits in your \"generic, vendor knows the compliance surface\" bucket today can turn into the thing that defines your edge in a year, once the market commoditizes the piece you thought was core.\n\nHow often do you re-run the classification, and what's the tell that it's drifted before the budget's already committed?",
+        "rationale": "Pushes on the blindspot that Todd's build/buy/messy-middle classification is treated as static rather than re-evaluated as vendors commoditize."
+      }
+    ],
+    "slack_summary": "Says the fastest way to waste an AI budget is picking a tool before deciding what a workflow is worth and whether to build or buy.",
+    "slack_ts": "1785399499.728059",
+    "slack_thread": {
+      "post_reply_ts": "1785399557.780719",
+      "draft_reply_ts": [
+        "1785399627.076929",
+        "1785399668.676079",
+        "1785399709.995979"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cayrvkv",
+    "clickup_url": "https://app.clickup.com/t/86cayrvkv",
+    "clickup_error": null
+  },
+  {
+    "key": "roberto-cruz-705fa8d8",
+    "urn": "urn:li:ugcPost:7486822636199604224",
+    "post_url": "https://www.linkedin.com/posts/robertocruzperez_i-dont-need-to-think-anymore-openai-and-ugcPost-7486822636199604224-wKMC/",
+    "author_url": "https://www.linkedin.com/in/robertocruzperez/",
+    "author_name": "Roberto Cruz",
+    "author_headline": "Co-Founder & CEO",
+    "time_ago": "4d",
+    "post_text": "\"I don't need to think anymore. OpenAI and Anthropic think for me.\"\nNobody says it out loud. But a growing number of people are building on exactly that belief, and it's the most dangerous idea in AI right now.\nYou've seen the pattern. Someone with no knowledge of a domain, and no understanding of how these models actually work, prompts their way to a demo and announces they've solved a problem industries have been grinding at for decades. The demo dazzles. Then it meets reality, and collapses, because nobody in the loop understood what was happening behind the screen.\nHere's what I wish more people knew: a language model doesn't know things. It produces the most plausible continuation of a text. That's why it's fluent even when it's wrong. Confidence is a style of text, not a state of knowledge. A bad calculator gives you an absurd number. A language model gives you a beautifully argued wrong answer.\nIf you know that, you can build around it: verify outputs, constrain the model, keep a human on the decisions that matter. If you don't, you build on sand. And for serious problems, in healthcare, finance, law, that gap doesn't make your solution worse. It makes it impossible to work with at all.\nMeanwhile, look at who's actually winning with AI. Not the people who stopped thinking. The people thinking more, using the model to move fast through what they understand and slowing down at what they don't.\nAI removes the need to type. It does not remove the need to think. It's the best amplifier of competence ever built, but a multiplier needs something to multiply.\nOne question worth asking about anything you've built with AI: if the model were confidently wrong right now, would you be able to tell?\nFull article below\nThe Machine Thinks, So I Don't Have To: The Most Dangerous Idea in AI Right Now\nRoberto Cruz",
+    "scraped_at": "2026-07-30T08:15:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "\"A beautifully argued wrong answer\" is the sharpest way I've heard that put. A bad calculator is at least honest about being broken.\n\nWe ran into exactly this building Bank.ai back in 2018, a self-hosted document generation system for a German bank, before ChatGPT existed. The model would draft a loan clause that read perfectly and cited the right regulation, and be subtly wrong in a way nobody skimming it would catch. Errors dropped 70%+ and drafting time went from 16 hours to 4, but only once we stopped treating fluency as a signal of correctness and built a separate statistical validation layer just to decide which outputs to trust.\n\nThat validation layer ended up costing more engineering time than the generation itself. Worth planning for from day one, not bolting on after the first confidently wrong contract ships.",
+        "rationale": "Roberto's thesis (fluent confidence is not correctness) is exactly what Petro's Bank.ai project confronted — a real anchor story with a statistical validation layer."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "\"Confidence is a style of text, not a state of knowledge\" should be printed above every AI onboarding doc.\n\nCurious how you split effort between the three levers you list: verify outputs, constrain the model, keep a human on the decisions that matter. In our experience constraining, hard gates the model can't route around, buys more than verifying after the fact, because verification still needs someone who knows the domain well enough to catch a well-argued wrong answer, which is the exact expertise gap you're describing in the first place. Where does your team put the weight?",
+        "rationale": "The post names three mitigation levers without ranking them; an opinionated question about which one carries the most weight invites real engagement."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "\"AI removes the need to type, not the need to think\" is a clean way to draw that line.\n\nOne thing I keep turning over though: does the gap you're describing shrink as models improve, or grow? A weaker model is confidently wrong in ways that are easy to catch, the claim just falls apart on inspection. A stronger model gets better at sounding right faster than most of us get better at spotting wrong. If that holds, verifying outputs and keeping a human on the decisions that matter doesn't become less necessary as capability goes up. It gets more expensive to skip, and easier to convince yourself you can.",
+        "rationale": "Pushes the post's under-examined edge — does confident-wrongness get worse, not better, as models improve — without hostility."
+      }
+    ],
+    "slack_summary": "Warns that outsourcing thinking to LLMs is dangerous — they give fluent but plausibly-wrong output, so verify and keep humans on decisions.",
+    "slack_ts": "1785399501.191739",
+    "slack_thread": {
+      "post_reply_ts": "1785399566.358019",
+      "draft_reply_ts": [
+        "1785399630.423999",
+        "1785399671.714229",
+        "1785399713.490789"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cayrvp5",
+    "clickup_url": "https://app.clickup.com/t/86cayrvp5",
+    "clickup_error": null
+  },
+  {
+    "key": "gergely-orosz-5b26710b",
+    "urn": "urn:li:ugcPost:7488291454205992960",
+    "post_url": "https://www.linkedin.com/posts/gergelyorosz_theres-a-popular-theory-that-ai-will-finally-ugcPost-7488291454205992960-_g9Y/",
+    "author_url": "https://www.linkedin.com/in/gergelyorosz/",
+    "author_name": "Gergely Orosz",
+    "author_headline": "Deepdives on software engineering, tech careers and industry trends. Writing The Pragmatic Engineer, the #1 software engineering newsletter on Substack. Author of The Software Engineer’s Guidebook.",
+    "time_ago": "13h",
+    "post_text": "There’s a popular theory that AI will finally make formal verification mainstream because mathematical proof of correctness will be needed when machines write most or all of the code. But will this happen? Hillel Wayne is one of the best people to answer:\n• YouTube: https://lnkd.in/gg6kCpHY\n• Spotify: https://lnkd.in/g6MgvDwA\n• Apple: https://lnkd.in/gW7y6mai\nBrought to you by:\n• Antithesis – verify your system’s correctness without human review or traditional integration tests – and avoid bugs or outages. https://lnkd.in/eyWErUbm\n• turbopuffer – a vector and full-text search engine built on object storage. It’s fast, cheap, and extremely scalable. https://lnkd.in/erQW8sEY\n• WorkOS – everything you need to make your app enterprise ready. https://workos.com/\nTwo things I found especially interesting, talking with Hillel:\n1. Amazon used TLA+ to find a bug almost impossible to locate without formal methods.\nIn the paper How AWS uses formal methods, the AWS team shared that they’d found a complicated bug for which the shortest error trace to exhibit was 35 steps (!!). The bug passed unnoticed through extensive design review, code reviews, and testing. AWS concluded they wouldn’t have uncovered it if they’d stuck to conventional testing approaches.\n2. Why not use formal verification for everything, then?\nIt’s because specs in the real world are a nightmare to write. Even a simple problem like “find the file in a directory that has the most lines” gets complicated when modeled with formal methods. We would have to answer questions like: ‘do we look at ASCII or UTF-8 new line characters, what about unreadable files, and Symlinks?’ Without formal methods, we can write a simple verification that is right in 99%+ of cases. Formal methods require a lot of extra effort for the less than 1% of exotic use cases!",
+    "scraped_at": "2026-07-30T08:15:37Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The 35-step error trace is the detail that sticks — that's not a bug conventional testing was ever going to stumble into by accident.\n\nWhat I keep wondering as AI writes more of the code: if the same model (or a sibling model with the same blind spots) also drafts the TLA+ spec, are we actually catching more, or just moving the same misunderstanding one layer up so it looks verified? Formal methods only catch what the spec author thought to specify — and that's still a human (or model) judgment call, not a proof against reality.",
+        "rationale": "The AWS 35-step detail is specific enough to acknowledge concretely, and the post leaves an unaddressed tension: who verifies an AI-authored spec?"
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"find the file with the most lines\" example is a great illustration of why formal specs don't scale on their own — three sentences of intent turn into a dozen edge-case decisions nobody wants to make up front.\n\nCurious what Hillel thinks happens once AI is doing the spec-drafting itself — surfacing the ASCII/UTF-8/symlink branch points as questions instead of us having to think of them cold. Does that change the economics of where formal methods become worth the effort, or does the bottleneck stay human judgment on which of those edge cases actually matter for the system?",
+        "rationale": "Anchors on the post's own file-line-count example and asks whether AI-assisted spec drafting changes the cost calculus the post raises."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The AWS trace matches something we ran into building a self-hosted GenAI system for German banking contracts, pre-ChatGPT — investment and loan agreement generation, where a missed edge case is a legal problem, not a UX bug.\n\nWe never got near formal methods for it. Specifying \"what a valid loan agreement is\" in a language a model could reason against would have taken longer than the project. What actually cut errors 70%+ was volume — thousands of real documents plus statistical analysis of which parameter changes actually moved outcomes, not proofs. Matches your second point exactly: for most real systems, the cost of writing the spec is the actual blocker, not the verification technique itself.",
+        "rationale": "BankAI (pre-ChatGPT production GenAI for a German bank) is a directly relevant correctness/validation story echoing the post's second point about spec-writing cost."
+      }
+    ],
+    "slack_summary": "Interview with Hillel Wayne on whether AI will make formal verification mainstream — TLA+ caught a 35-step AWS bug, but specs are hard to write.",
+    "slack_ts": "1785399502.914729",
+    "slack_thread": {
+      "post_reply_ts": "1785399575.341779",
+      "draft_reply_ts": [
+        "1785399633.246449",
+        "1785399673.703669",
+        "1785399715.507809"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cayrvrv",
+    "clickup_url": "https://app.clickup.com/t/86cayrvrv",
+    "clickup_error": null
   }
 ]
