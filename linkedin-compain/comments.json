@@ -9290,5 +9290,68 @@
     "clickup_task_id": "86cayrvrv",
     "clickup_url": "https://app.clickup.com/t/86cayrvrv",
     "clickup_error": null
+  },
+  {
+    "key": "stefan-pukallus-e869a4bc",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/stefan-pukallus-04531114a/",
+    "author_name": "Stefan Pukallus",
+    "author_headline": "I turn complex requirements into reliable systems · AI Agents · ORACLE , PostgreSQL · Strategic Architecture | 20++ Years · BI/DWH · Drone Swarming",
+    "time_ago": "1d",
+    "post_text": "GPS is a shadow of the truth — not the truth.\nThe vehicle has one true path. Every sensor sees a projection of it. Spoofing isn't \"signal loss\" — it's one projection disagreeing with the others. You detect it by watching for the disagreement, not by trusting any single fix.\nMost people treat GPS as ground truth. It isn't. It's one measurement of ground truth — and a jammable, spoofable one.\nThink of it this way. Your vehicle follows one true path through the world. GPS is a shadow that path casts on one wall. Terrain shape is another shadow. The magnetic field is another. What the camera recognises is another.\nWhen GPS is honest, all the shadows agree. When someone spoofs it, the GPS shadow slides away from the others — while terrain, magnetics and vision keep telling the truth.\nSo the interesting question is never \"do I trust this fix?\" It's \"do my independent shadows still agree?\" A spoof is a contradiction between measurements, and contradictions are detectable even when you can't tell which single sensor is lying.\nThat reframe changes the whole design. You stop chasing a better GPS and start building a system that survives without it — and that treats the moment the shadows disagree as a state worth acting on, not noise to average away.\nNo GPS is not a failure mode. It's Tuesday.\n#PNT #GNSS #Navigation #ElectronicWarfare",
+    "scraped_at": "2026-07-31T08:19:10Z",
+    "disposition": "off-topic",
+    "reason": "GPS/GNSS spoofing and sensor fusion for navigation — no AI or startup content.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "the-pragmatic-engineer-87078d5d",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/the-pragmatic-engineer/posts/",
+    "author_name": "The Pragmatic Engineer",
+    "author_headline": "Learn more",
+    "time_ago": "2d",
+    "post_text": "“It was like horse-driven computing”. Kent Beck, TDD creator, on how he and Erich Gamma wrote JUnit on a plane with no internet and no power:\n“Erich Gamma and I were flying to America. He was going to show me Java. I was going to show him SUnit.\nWe developed JUnit on the flight from Vienna to Washington Dulles. No internet. Two and a half hours of battery. The clock is ticking. No power adapter in the seat. It was like horse-driven computing.\nWe landed and we gave JUnit to Martin Fowler who was at OOPSLA. The next day I hear, ‘you have a Java testing framework, can I get a copy’? So we made floppy disks, three and a half inch diskettes. We were handing 'em out as fast as we could”\nLearn more about the origins of TDD, Extreme Programming and Agile from Kent Beck on The Pragmatic Engineer podcast:\n• YouTube: https://lnkd.in/eKeMnwBN\n• Spotify: https://lnkd.in/e8KsMuNK\n• Apple: https://lnkd.in/eMkjwbxz\n• Summary and transcript: https://lnkd.in/eSH2DrnZ",
+    "scraped_at": "2026-07-31T08:19:25Z",
+    "disposition": "off-topic",
+    "reason": "Historical anecdote about writing JUnit/TDD origins — no AI or startup substance.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "gwyneth-pena-siguenza-93ca8641",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/madebygps/",
+    "author_name": "Gwyneth Peña-Siguenza",
+    "author_headline": "DX @ GitHub",
+    "time_ago": "2d",
+    "post_text": "Did you know the GitHub team streams every Thursday! We hang, code, talk about new features and more!\nyoutube.com/@github",
+    "scraped_at": "2026-07-31T08:19:58Z",
+    "disposition": "off-topic",
+    "reason": "Promotional 'watch our GitHub stream' post; no AI or startup substance.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
   }
 ]
