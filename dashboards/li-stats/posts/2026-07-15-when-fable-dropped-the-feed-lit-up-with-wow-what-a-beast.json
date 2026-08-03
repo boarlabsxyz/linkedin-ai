@@ -165,6 +165,62 @@
         }
       },
       "comments": []
+    },
+    "2026-08-03": {
+      "snapshot_at": "2026-08-03T02:11:53Z",
+      "metrics": {
+        "impressions": 597,
+        "members_reached": 386,
+        "reactions": 0,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 2,
+        "followers_gained": 0,
+        "engagement_rate": 0
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 29.5,
+          "Senior": 28,
+          "Director": 7.5,
+          "Manager": 6,
+          "CXO": 5.7
+        },
+        "job_title": {
+          "Software Engineer": 13,
+          "Founder": 2.8,
+          "Co-Founder": 2.6,
+          "Chief Executive Officer": 2.1,
+          "Product Manager": 1.8
+        },
+        "industry": {
+          "Software Development": 24.4,
+          "IT Services and IT Consulting": 16.6,
+          "Technology, Information and Internet": 8.3,
+          "Financial Services": 7.3,
+          "Motor Vehicle Manufacturing": 3.4
+        },
+        "company_size": {
+          "10,001+ employees": 17.4,
+          "51-200 employees": 15,
+          "11-50 employees": 13.7,
+          "1001-5000 employees": 11.1,
+          "201-500 employees": 9.1
+        },
+        "location": {
+          "London Area, United Kingdom": 5.4,
+          "San Francisco Bay Area": 4.4,
+          "Greater Bengaluru Area": 2.8,
+          "New York City Metropolitan Area": 2.6,
+          "Greater Sydney Area": 2.1
+        },
+        "company": {
+          "Speed and Function": 4.7
+        }
+      },
+      "comments": []
     }
   }
 }
