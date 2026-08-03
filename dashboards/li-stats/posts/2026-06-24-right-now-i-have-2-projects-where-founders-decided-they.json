@@ -371,6 +371,99 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-08-03": {
+      "snapshot_at": "2026-08-03T02:08:22Z",
+      "metrics": {
+        "impressions": 1240,
+        "members_reached": 613,
+        "reactions": 31,
+        "comments": 6,
+        "reposts": 6,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 3,
+        "followers_gained": 1,
+        "engagement_rate": 3.47
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 35.9,
+          "Entry": 31.3,
+          "Manager": 4.7,
+          "Director": 3.8,
+          "CXO": 3.1
+        },
+        "job_title": {
+          "Software Engineer": 14.7,
+          "Frontend Developer": 4.7,
+          "Full Stack Engineer": 2.8,
+          "Founder": 2.3,
+          "Quality Assurance Engineer": 2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 33.3,
+          "Software Development": 28.4,
+          "Technology, Information and Internet": 8.8,
+          "Staffing and Recruiting": 2.3,
+          "Financial Services": 2
+        },
+        "company_size": {
+          "51-200 employees": 20.7,
+          "11-50 employees": 13.9,
+          "10,001+ employees": 9.8,
+          "1001-5000 employees": 9.5,
+          "201-500 employees": 9
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 12.1,
+          "Lviv": 7,
+          "London Area, United Kingdom": 2.4,
+          "Cracow Metropolitan Area": 2.1,
+          "Warsaw Metropolitan Area": 2
+        },
+        "company": {
+          "Speed and Function": 5.7,
+          "EPAM Systems": 1.3
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Kent Gregoire",
+          "author_url": "https://www.linkedin.com/in/kentgregoire",
+          "text": "Guilty as charged, Peter. Show me a founder who has not started building before asking whether it needed building. The entrepreneurial instinct that makes us good at shipping is the same one that gets us in trouble. A tool that forces the pause is something most of us quietly need. I'll be using this tool. Thanks, Peter.",
+          "reactions": 0,
+          "replies_count": 1
+        },
+        {
+          "author_name": "Andrii Rozhylo",
+          "author_url": "https://www.linkedin.com/in/arozhylo",
+          "text": "I tested the bot on my pet project and was amazed by how clearly and accurately it consulted me. Now whenever someone asks me to explain how AI can help them, I just send them this link.",
+          "reactions": 1,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Yana Nakonechna",
+          "author_url": "https://www.linkedin.com/in/yana-nakonechna",
+          "text": "📢 📢 📢",
+          "reactions": 0,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Stas Nikitin",
+          "author_url": "https://www.linkedin.com/in/nstas",
+          "text": "Tom the bot is thoughtful and engaging! Nice work, guys 👏 Thank you.",
+          "reactions": 0,
+          "replies_count": 0
+        },
+        {
+          "author_name": "Hanna Lesyk",
+          "author_url": "https://www.linkedin.com/in/anylesik",
+          "text": "I really like the idea of asking better questions before choosing a solution. Too often, companies start with \"How can we use AI?\" instead of \"What business problem are we trying to solve?\" Technology should follow strategy, not replace it.",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

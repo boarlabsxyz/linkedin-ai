@@ -18,6 +18,12 @@
           "reactions": 2,
           "replies_count": 0,
           "impressions": 673
+        },
+        "2026-08-03": {
+          "snapshot_at": "2026-08-03T02:08:00Z",
+          "reactions": 2,
+          "replies_count": 0,
+          "impressions": 813
         }
       }
     },
@@ -39,6 +45,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 235
+        },
+        "2026-08-03": {
+          "snapshot_at": "2026-08-03T02:08:00Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 242
         }
       }
     },
@@ -60,6 +72,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 23
+        },
+        "2026-08-03": {
+          "snapshot_at": "2026-08-03T02:08:00Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 31
         }
       }
     },
