@@ -9353,5 +9353,324 @@
       "draft_reply_ts": []
     },
     "slack_error": null
+  },
+  {
+    "key": "sadiq-ibrahim-43aac180",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/sadiq-ibrahim01/",
+    "author_name": "Sadiq Ibrahim",
+    "author_headline": "",
+    "time_ago": "17h",
+    "post_text": "I spent the last few months building a production-grade SAST tool from scratch.\nNot because Semgrep doesn't exist. But because building one teaches you things\nthat using one never will.\nWhat I built:\n→ AST-based Java vulnerability detection (not regex)\n→ Intra-procedural taint analysis tracking HTTP parameters to SQL sinks\n→ Shannon entropy-based secret detection (same technique as TruffleHog)\n→ Config file scanning distinguishing real credentials from placeholders\n→ REST API, web dashboard, CLI, Docker image\nReal-world validation:\n→ 186 files scanned\n→ 3 real findings\n→ 0 false positives\nWhat I learned:\nThe difference between CRITICAL/HIGH confidence and CRITICAL/LOW confidence\nis the difference between a useful security tool and one that gets disabled.\nEvery false positive erodes trust. AST analysis and entropy thresholds exist\nprecisely to earn that trust back.\nThe full project is on GitHub: https://lnkd.in/esrrwTWX\nIf you build Java services and want a free scan, DM me.\n#Java #Security #SAST #AppSec #OpenSource #SoftwareEngineering\nGitHub - SadiqIbrahim01/mini-sast: A production-grade static analysis security tool (Mini SAST) that detects vulnerabilities like SQL injection, hardcoded secrets, and insecure patterns using AST parsing and data flow analysis.\nGitHub - SadiqIbrahim01/mini-sast: A production-grade static analysis security tool (Mini SAST) that detects vulnerabilities like SQL injection, hardcoded secrets, and insecure patterns using AST parsing and data flow analysis.\ngithub.com",
+    "scraped_at": "2026-08-04T08:03:05Z",
+    "disposition": "off-topic",
+    "reason": "Security tooling engineering; not AI/agents or startup-focused",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "the-pragmatic-engineer-c7087813",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/the-pragmatic-engineer/posts/",
+    "author_name": "The Pragmatic Engineer",
+    "author_headline": "Learn more",
+    "time_ago": "18h",
+    "post_text": "What are formal methods? Hillel Wayne, Formal Methods Consultant:\nHillel: \"I'm going to give you a function max: given a list, return the largest number. Let’s take one of those tests you’d write for that. How do you know what the right answer is supposed to be?\"\nGergely: “I just know because I learned math and I know which number is bigger, honestly. I look at it, I have this, I guess, ingrained knowledge. It feels like very basic knowledge that I don't even have to explain.”\nHillel: “Right. You have some ingrained knowledge that you don't have to explain. You can look at the max of two and three and know it's three. That's interesting. There's some sort of implicit mechanism in your brain that can see that and know what the function is supposed to do.\nWhat formal methods ask is, can we use mathematics to show that it works not just for the cases that you asked for, but every single possible list you pass in? And that is done through proof. Coming up with some sort of mathematical argument that this code matches this spec.”\nLearn about Formal Methods with Hillel Wayne on The Pragmatic Engineer podcast\n• YouTube: https://lnkd.in/dcMWJ5B3\n• Spotify: https://lnkd.in/dssrq_RQ\n• Apple: https://lnkd.in/dQbD_s3k\n• Summary and transcript: https://lnkd.in/dPy4Kn5K\nRay Myers and 13 others reacted",
+    "scraped_at": "2026-08-04T08:03:09Z",
+    "disposition": "off-topic",
+    "reason": "General software engineering methodology; not AI/agent or startup-specific",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "alan-cunningham-7eccb6e5",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/alan-cunningham-cissp-gstrt-gsna/",
+    "author_name": "Alan Cunningham",
+    "author_headline": "CIO & Cybersecurity Leader/Coach | Securing the Enterprise with Pragmatic Strategy | vCISO | Risk & Compliance Expert",
+    "time_ago": "1w",
+    "post_text": "I rejected a budget request for an \"AI Strategy.\"\nYou don't need an AI Strategy. You need a Business Strategy that uses math.\nIn 2026, every department head wants \"AI.\"\nMarketing wants GenAI for copy.\nSales wants AI for lead scoring.\nHR wants AI for recruiting.\nThey come to me asking: \"What is our AI Strategy?\" My answer: \"We don't have one.\"\nWe don't have an \"Excel Strategy\" either. We don't have a \"Wi-Fi Strategy.\" These are Tools, not Outcomes.\nI implemented a rule: You cannot use the word \"AI\" in a budget request. Instead of saying: \"We need $50k for an AI chatbot.\" You must say: \"We need $50k to reduce Call Center wait times by 20% using automation.\"\nIf you frame it as a business problem, I will fund it. If you frame it as a tech experiment, buy it with your own money.\nCIOs: Stop letting the Hype Cycle dictate your roadmap. AI is just fancy statistics. Treat it like software, not magic.\n#CIO #AI #ArtificialIntelligence #GenAI #Strategy #Budgeting #Leadership #HypeCycle",
+    "scraped_at": "2026-08-04T08:03:14Z",
+    "disposition": "off-topic",
+    "reason": "CIO budgeting philosophy; organizational strategy rather than AI technology or startups",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "natalie-f-grillon-443a373a",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/nataliegrillon/",
+    "author_name": "Natalie F. Grillon",
+    "author_headline": "CEO/Executive Director at Open Supply Hub - Data that opens doors to safe and sustainable supply chains",
+    "time_ago": "1w",
+    "post_text": "In the US right now there is a cyclospora outbreak. You don't want to get it.\nCurrently, consumers can't get a good answer about which foods are impacted, where those foods are coming from.\nYou're either not eating lettuce, hoping for the best, or maybe taking assurances from the brands and restaurants you buy from.\nWouldn't it be nice if we could trace where things come from? Have comprehensive information about the product's supply chain, the health and safety considerations, the ownership structure of the company and onwards.\nI've been experimenting with product traceability using Claude (here's number 3!) and understanding the potential to use Open Supply Hub data. What if we added some additional datasets beyond the supply shed to give the user even more info? Here's an attempt :\nYou scan a barcode or a label. In one view you get:\n🚨 Health & Safety — active FDA recalls, CDC outbreak advisories, allergen flags, additive scoring drawn from EFSA and IARC\n🌳 Ownership tree — brand → parent → ultimate owner  (public data)\n🏭 Supply shed — Open Supply Hub facilities, tier-by-tier component maps, cool facts about each step in the supply chain\n🧪 Ingredients — plain-English risk levels per line item\nI pulled \"Marketside Iceberg Shredded Lettuce\" — a live FDA recall right now — and it shows the cyclospora advisory, the states affected, the grower (Taylor Farms de Mexico), and every plant Open Supply Hub has for the supply shed (we do have many Taylor Farms locations in Open Supply Hub but not the one in Mexico (https://lnkd.in/ekHketWm).\nOpen Supply Hub is the anchor for the plant-level data. The rest is stitched from openFDA, CDC, Open Food Facts, and public M&A records. And — in line with the OS Hub model— brands can claim their profile and contribute their  data that sits alongside the public data with a \"Brand-verified\" badge.   I'll iterate to pull in our Spotlight data too with audits etc. I'd like to build a map in the app too with the traceability.\nWhat I'm most interested in:\n1. encouraging the broader ecosystem and even consumers to seek out AND contribute data and\n2. encouraging organizations to be more public with their data, so everyone can have better information, and in this case, be safer!\nUnfortunately this isn't telling you what lettuce to eat and what not to eat...yet. The traceability isn't super clear because there isn't a lot of transparency. But I do think building it might make things more transparent.\nSo how about one scan that pulls in everything a consumer needs! An Open Product Hub? Check out the prototype at the link in the comments!\nLauren Spirig and 17 others reacted",
+    "scraped_at": "2026-08-04T08:03:52Z",
+    "disposition": "off-topic",
+    "reason": "Supply chain traceability using Claude; focus is food/supply chains, not AI/startups.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "andreas-schilling-03e074cf",
+    "urn": "urn:li:share:7489977898611826688",
+    "post_url": "https://www.linkedin.com/posts/andreas-schilling_vibe-coding-is-not-software-engineering-share-7489977898611826688-gmSs/",
+    "author_url": "https://www.linkedin.com/in/andreas-schilling/en/",
+    "author_name": "Andreas Schilling",
+    "author_headline": "CTO & MD @ FactoryPal | Tech Leader, Engineer, Entrepreneur, Investor | Passionate about technology, startups, and company culture | PhD | Optimist",
+    "time_ago": "19h",
+    "post_text": "Vibe coding is not software engineering ✋\nDescribing what you want and letting an agent build it is impressive, especially for people who could never ship software before. But for systems that have to keep running and evolving, it is not enough.\nWhat actually works looks boring. The results I trust come from a defined workflow: capture the requirement, plan, review the plan, implement, review the code, commit. Each stage defined through skills.\nProcess has always mattered in software engineering. What is new is that you can no longer skip it. A strong engineer could carry a project on skill alone; agents take that option away, going off the rails faster and more confidently than any person would.\nSo the leverage is no longer the hero who writes the best code, but the process the code runs through.\nIf agents handle the coding, what should we get great at instead? For some engineers that question feels existential. I think the answer is exciting: writing code was always only part of the job. Understanding the problem and shaping a system people can rely on was always the real work, and it is the part still worth getting great at.",
+    "scraped_at": "2026-08-04T08:14:39Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The line about agents \"going off the rails faster and more confidently than any person would\" is the sharpest part of this post — that's the real difference from a strong engineer improvising without process.\n\nI watched this split firsthand: gave a similar-complexity automation task to an experienced dev and, separately, to my son, still in university. The dev kept intercepting Claude's output and rewriting it his way. My son just described the task and iterated — pure vibe coding. Both landed a working result, his route noticeably faster. What made the gap different from your framing: the risk didn't show up in that task's complexity, it showed up in whether the thing had to keep running and evolving afterward — which is exactly the boundary you're drawing.",
+        "rationale": "Uses a real, documented split-test (a senior dev vs. Petro's son, described in posted.md's \"08.01.26 Zhenya post\") to add a boundary condition — task lifespan/evolution, not raw complexity — to the post's binary framing, without contradicting Petro's prior nuanced public stance."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The reframing that leverage is now the process and not the hero feels right — that's the same shift I keep running into building agent workflows.\n\nHere's what I'd push on: right now a human still writes the plan-review and code-review steps. What happens to that workflow once the same agent proposes the plan, implements it, and is also asked to review its own code? Does the process still catch drift, or does the review stage quietly become theater — a checkpoint the agent has learned to satisfy rather than one it can actually fail?",
+        "rationale": "Pressure-tests the workflow's most fragile assumption — human review — as agents get capable enough to write and review their own plans, sharpening the conversation without hostility."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "\"Each stage defined through skills\" is the detail that actually matters here — that's the difference between a process that survives contact with a real backlog and one that's just a nicer-sounding version of vibe coding.\n\nCurious how you handle the \"capture the requirement\" stage over time: is that a living doc the agent re-reads every cycle, or closer to a one-time brief the code quietly drifts away from after a few iterations? We've been leaning hard into the first version — treating the requirement and behavior spec as the thing that has to stay accurate, and the code underneath it as something you can regenerate rather than protect.",
+        "rationale": "Probes the \"capture the requirement\" stage — the piece most likely to decay over iterations — and ties it lightly to Petro's own True-BDD-adjacent contrarian thesis (docs as source of truth, code as regenerable) as context only, no pitch."
+      }
+    ],
+    "slack_summary": "Argues vibe coding isn't software engineering: with agents, leverage shifts from hero coders to the defined process the code runs through.",
+    "slack_ts": "1785831305.494399",
+    "slack_thread": {
+      "post_reply_ts": "1785831318.432029",
+      "draft_reply_ts": [
+        "1785831330.147189",
+        "1785831342.109969",
+        "1785831355.547589"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb0nzcb",
+    "clickup_url": "https://app.clickup.com/t/86cb0nzcb",
+    "clickup_error": null
+  },
+  {
+    "key": "shivraj-dube-4fd304dd",
+    "urn": "urn:li:share:7487842557486362625",
+    "post_url": "https://www.linkedin.com/posts/shivraj-dube-4b1588209_someone-open-sourced-a-headless-browser-that-share-7487842557486362625-gwz8/",
+    "author_url": "https://www.linkedin.com/in/shivraj-dube-4b1588209/",
+    "author_name": "Shivraj Dube",
+    "author_headline": "I write about AI, accelerating technology, and the gap between capability and control",
+    "time_ago": "6d",
+    "post_text": "Someone open-sourced a headless browser that runs 11x faster than Chrome and uses 9x less memory.\nIt’s called Lightpanda, it's written in Zig and designed specifically for AI agents and automation.\nNot a Chromium fork. No Blink, no WebKit, no rendering engine.\n→ 100 pages in 5s vs Chrome's 46s\n→ ~9x faster, ~16x lighter\n→ Drop-in replacement for Puppeteer & Playwright\n→ Native MCP + agent mode built in\nIt has an agent mode. You describe a flow in plain English, it clicks through and pulls the data, then /save exports that session as PandaScript: plain JavaScript you can replay forever.\nDeterministic. Token-free. No model at runtime.\nYou prototype with the LLM once, then ship the script to production and never pay another inference call on that workflow again.\n100% Open Source.",
+    "scraped_at": "2026-08-04T08:17:07Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "No Blink, no WebKit, no rendering engine is exactly what gets you the 9x/16x numbers — but it's also exactly the signal a lot of bot-detection stacks (Cloudflare, PerimeterX, even LinkedIn's own gating) fingerprint for: canvas output, WebGL, real layout timing, things that only exist if something actually rendered the page.\n\nCurious whether Lightpanda's agent mode has hit that wall yet, or whether the speed story and the detection story turn out to be two separate problems that only look like one at first.",
+        "rationale": "Names a real, under-examined tradeoff (no rendering engine = fast but also exactly what fingerprint-based bot detection checks for) without being hostile."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "\"Record once with the LLM, replay forever without one\" is the right instinct. Deterministic execution should be the default once you actually know the shape of a task.\n\nWe hit close to the inverse of your speed story building our own LinkedIn scraping pipeline. Our link-resolution step tried the lightest HTTP client first, and since mid-July LinkedIn's short-link redirector started serving a reCAPTCHA page to anything that isn't a full browser doing an actual rendering pass — so we ended up routing that one step through a real Chrome tab, specifically because it wasn't rendering enough. The heavy engine was the workaround, not the thing worth cutting. Makes me wonder how much of Lightpanda's throughput advantage survives once a target site starts gating on whether you actually rendered the page.",
+        "rationale": "Real, documented project history (own LinkedIn scraping pipeline hit lnkd.in's reCAPTCHA gate on non-full-browser clients since mid-July 2026) — genuine mirror-image case, not invented."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Prototype with the LLM once, then ship the deterministic script and never pay inference on that workflow again\" is a clean line — matches a pattern I keep running into: creative reasoning belongs up front, boring deterministic execution belongs after.\n\nWhat I'm curious about is the staleness boundary. When the target site's DOM shifts two months later, does PandaScript fail loud and force a re-record, or is there a hook back into agent mode to patch itself? That's usually the part where \"never pay inference again\" quietly turns into \"pay inference again, just less predictably.\"",
+        "rationale": "Picks out the \"prototype once, replay deterministically\" line and probes the real weak point (DOM staleness) without pitching True BDD, matching a determinism thesis Petro has already stated publicly."
+      }
+    ],
+    "slack_summary": "Showcases Lightpanda, an open-source headless browser for AI agents — no rendering engine, 11x faster than Chrome, records LLM flows as replayable scripts.",
+    "slack_ts": "1785831455.832149",
+    "slack_thread": {
+      "post_reply_ts": "1785831467.704789",
+      "draft_reply_ts": [
+        "1785831477.716159",
+        "1785831490.867979",
+        "1785831507.392769"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb0p11n",
+    "clickup_url": "https://app.clickup.com/t/86cb0p11n",
+    "clickup_error": null
+  },
+  {
+    "key": "barry-j-c7f6969e",
+    "urn": "urn:li:ugcPost:7489912734877302784",
+    "post_url": "https://www.linkedin.com/posts/thefoot_aisoftware-aiagents-softwareengineering-ugcPost-7489912734877302784-_Yg4/",
+    "author_url": "https://www.linkedin.com/in/thefoot/",
+    "author_name": "Barry J.",
+    "author_headline": "Building agentic-engineered software that’s audit-defensible · RCF methodology · Newsletter: AI Software, Proper",
+    "time_ago": "1d",
+    "post_text": "AI coding agents have got very good at checking their own work. Nobody has shown them what the work was for.\nI build software with AI agents full time and ship it into production. The machinery that makes that possible finally has a proper name: the harness. Everything around the model that isn't the model. The instructions it reads, the checks that catch its mistakes, the loops that let it review and fix its own work before a human ever looks. Three write-ups this year, from OpenAI, Anthropic and Thoughtworks, have put real definition on the discipline, and there's plenty in each I intend to steal.\nThen I followed the checks. Every one, across all three, compares the code against the code. Its types, its structure, its style, or tests the same agent wrote moments after the thing they test. A green run proves the code agrees with itself. Nothing in the loop has ever seen what the business asked for.\nThe person who mapped the field says so herself. The Thoughtworks taxonomy rates code quality as well developed, architecture as emerging, and whether the software functionally does its job as \"the elephant in the room\". That ordering should bother anyone signing off an agent-driven delivery.\nThe closest anyone gets is Anthropic's setup agent, which expands a one-line prompt into a couple of hundred feature requirements that later sessions can only flip to passing. Right shape, right place. But the agent wrote the mark scheme it's now marking against. Fine for a demo. On commercial software the requirement lives in a discovery workshop and the memory of a product manager who has since left, and the file the agent invents has no connection to any of it.\nOpenAI keep specs in the repository, which is the right instinct, but when the docs and the code disagree an agent corrects the docs to match the code. The spec is downstream of the implementation.\nIMHO the missing piece isn't a smarter check. It's an artefact: the requirement, in the repository, versioned and checkable, with the same standing as a failing test. I've spent the last year building exactly that, and it's put real software into production.\nThis morning's newsletter goes through all three write-ups properly: where the loop mechanics really are close to solved, why every check ends up pointing at the code, and what a requirements artefact a loop can close on looks like.\nGenuine question for anyone running coding agents. What does your green run actually prove?\n#AISoftware #AIAgents #SoftwareEngineering #RequirementsEngineering\nAI Software, Properly\nSubscribe\nHarness engineering has a hole where the requirements should be.\nBarry J.",
+    "scraped_at": "2026-08-04T08:19:40Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The line that lands is \"a green run proves the code agrees with itself\" — same blind spot at one more remove, the setup agent that writes Anthropic's requirements file is also the one grading against it.\n\nI ran into the same wall building TrueBDD. The test I settled on for whether a spec had actually taken over from the code: delete all the code, regenerate from the spec, check whether the new build still passes every behavioural assertion. If yes, the spec is source of truth. If \"mostly,\" the code is still quietly in charge no matter how many requirement files sit in the repo. It doesn't resolve who authored the requirement, but it forces the artefact to survive something the code never wrote.\n\nCurious whether your requirements artefact has an equivalent teardown test, or whether repo residency and versioning alone are meant to keep it honest.",
+        "rationale": "Directly extends Petro's own documented TrueBDD \"delete-and-regenerate\" teardown test into Barry's exact self-grading complaint about Anthropic's setup agent."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The \"green run proves the code agrees with itself\" framing is the sharpest part of this for me — same gap I keep circling: tests written by the model that wrote the code just check its own homework.\n\nOne thing I'd want to know about the artefact you're proposing: once the requirement is captured and versioned, what keeps it honest six months out? Code drift gets caught because review runs on every change. A requirement written once from a discovery workshop can drift from what the business actually needs just as easily — is there a rhythm in your setup for re-validating the requirement itself, or is the moment it's committed assumed to hold?",
+        "rationale": "Names a real gap in the post (requirement provenance vs. requirement staleness) and asks a specific question the author would need real thought to answer."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Agree the requirement is the missing artefact, not a smarter check — that's close to what pushed me toward treating spec, not code, as the thing worth versioning.\n\nThe part I'd want stress-tested: once a requirements file has \"the same standing as a failing test,\" what stops an agent from treating the requirement text itself as the thing to edit when it's stuck, the same way it currently edits a failing assertion to make it pass? Versioning catches that in a diff review, sure, but versioning already sits on top of the code too, and that hasn't stopped the self-grading problem you're describing. What in your setup makes the requirement harder to game than the code was?",
+        "rationale": "Pushes into an unexamined blindspot (requirement-gaming, not just code-gaming) that sharpens the post's own thesis rather than restating it."
+      }
+    ],
+    "slack_summary": "Argues agent harness checks only compare code against itself — the missing piece is a versioned requirements artefact with the standing of a failing test.",
+    "slack_ts": "1785831615.102779",
+    "slack_thread": {
+      "post_reply_ts": "1785831634.024339",
+      "draft_reply_ts": [
+        "1785831646.197059",
+        "1785831661.925229",
+        "1785831674.319579"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb0p321",
+    "clickup_url": "https://app.clickup.com/t/86cb0p321",
+    "clickup_error": null
+  },
+  {
+    "key": "chad-fowler-6735a9da",
+    "urn": "urn:li:share:7485736303175823360",
+    "post_url": "https://www.linkedin.com/posts/fowlerchad_jack-dorsey-has-just-released-buzzxyz-an-share-7485736303175823360-WQ9G/",
+    "author_url": "https://www.linkedin.com/in/fowlerchad/",
+    "author_name": "Chad Fowler",
+    "author_headline": "Investor, Software Engineer, Author, CTO, Musician",
+    "time_ago": "1w",
+    "post_text": "Jack Dorsey has just released buzz.xyz, an agent-native Slack replacement built with cryptographic identity.\nThey're approaching some of the ideas I've been writing about in The Phoenix Archictecture series on Regenerative Software, specifically these ideas on provenance of intent https://lnkd.in/eA9_ZpgX\nAll of this said, Buzz is a thin and less elegant implementation of what I'm building with my open source project, Freeq (https://freeq.at/).\nFreeq has:\n* Cryptographic identity\n* Everything is signed\n* Agent-native SDK including the ability to programmably mint new agents that can participate in all aspects of the system, including audio/video conversations.\n* End to end encryption by default\n* Peer to peer mode via Iroh\n* Polished native clients (WIP but already nice) on web, TUI, ios, macos, android and windows.\n* A decoupled channel policy model based on verifiable credentials",
+    "scraped_at": "2026-08-04T08:22:15Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "The programmable agent-minting piece is the part that actually differentiates this from a chat app with better crypto — most \"agent-native\" pitches stop at giving an LLM an API key. Genuine question on the identity layer though: once you're minting agents at runtime and everything's signed, what's the revocation story when one of those spawned agents gets compromised or just goes rogue? Rotating a human's key is one thing; rotating trust for a swarm of agents that already delegated credentials downstream feels like the part nobody's solved yet.",
+        "rationale": "Names the one genuinely novel piece (runtime agent-minting) and pushes on the credential-revocation-at-scale failure mode without dismissing the project."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "Six native clients plus a P2P mode via Iroh is a lot of surface area to keep consistent — that's usually where \"agent-native\" projects quietly become \"agent-native, web client only.\" Curious how Freeq handles the case where the same signed identity is active on two offline peers at once — say a TUI session and a phone both queued to sync after a stretch offline. Is conflict resolution part of the channel policy model, or is it still last-writer-wins under the hood?",
+        "rationale": "Grounds curiosity in the specific claim (Iroh P2P + six native clients) and asks the concrete multi-device sync question only someone who's shipped that surface would ask."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "Provenance of intent is the right problem to chase — most of the agent-protocol chatter right now is still stuck on transport, not trust. One pushback from building production GenAI in a regulated setting (German banking, document generation) though: signing a message proves it wasn't altered in transit, but it doesn't prove the agent's output was actually grounded in what it claims to be grounded in. That gap is where the real audit pain lived for us. Does Freeq's credential layer reach into that, or is it scoped to identity and transport for now?",
+        "rationale": "Draws on Petro's real, already-public BankAI/German-banking production-GenAI story to separate transport-level signing from semantic grounding."
+      }
+    ],
+    "slack_summary": "On Jack Dorsey's buzz.xyz agent-native Slack alternative — compares it to his own open-source Freeq project with cryptographic identity and E2E encryption.",
+    "slack_ts": "1785831759.723499",
+    "slack_thread": {
+      "post_reply_ts": "1785831774.043579",
+      "draft_reply_ts": [
+        "1785831783.864679",
+        "1785831794.291469",
+        "1785831804.838399"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb0p4nu",
+    "clickup_url": "https://app.clickup.com/t/86cb0p4nu",
+    "clickup_error": null
+  },
+  {
+    "key": "deshraj-singh-110888ba",
+    "urn": "urn:li:ugcPost:7485660042369634304",
+    "post_url": "https://www.linkedin.com/posts/deshraj-singh-8309431bb_%F0%9D%97%A6%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%B9%F0%9D%97%B9-%F0%9D%98%84%F0%9D%97%AE%F0%9D%97%B6%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%98%82%F0%9D%97%BB%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%B9-%F0%9D%97%AE%F0%9D%97%B3-ugcPost-7485660042369634304-YiJU/",
+    "author_url": "https://www.linkedin.com/in/deshraj-singh-8309431bb/",
+    "author_name": "Deshraj Singh",
+    "author_headline": "Software Engineer | Java | Springboot | Microservices | RESTAPI | MySQL | Tech & AI Content Creator | Product Visibility & Growth Partner | Helping SaaS, AI, Startups & Innovative Brands | Open for Collaborations",
+    "time_ago": "1w",
+    "post_text": "𝗦𝘁𝗶𝗹𝗹 𝘄𝗮𝗶𝘁𝗶𝗻𝗴 𝘂𝗻𝘁𝗶𝗹 𝗮𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗱𝗮𝗺𝗮𝗴𝗲 𝘁𝗼 𝗳𝗶𝗻𝗱 𝗼𝘂𝘁 𝘄𝗵𝗮𝘁 𝘁𝗵𝗲𝘆 𝗱𝗶𝗱?  👀\n𝗞𝗮𝘀𝘁𝗿𝗮 is the runtime authorization layer for AI agents, built to decide what agents can and cannot do before actions execute. It enforces policies with sub-1 ms latency across prompts, tools, inputs, and outputs. That means you can govern Claude Code, Cursor, Codex, OpenClaw, and related SDKs from one control plane. It helps prevent unauthorized tool use, prompt injection, and sensitive data exposure before they become incidents.\n𝗪𝗵𝘆 𝗞𝗮𝘀𝘁𝗿𝗮 𝗶𝘀 𝗱𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝘁 👇\n• Evaluates every prompt, tool call, shell command, database query, and API request before it runs.\n• Enforces policy with sub-millisecond decisions and cryptographic evidence.\n• Works across Claude Code, Cursor, Codex, OpenClaw, and major agent SDKs.\n• Prevents unauthorized tool use, prompt injection, and sensitive data leaks.\n• Gives you one control plane for governance across multiple agent environments.\n𝗔𝘂𝘁𝗵𝗼𝗿𝗶𝘇𝗲 → 𝗘𝗻𝗳𝗼𝗿𝗰𝗲 → 𝗔𝘂𝗱𝗶𝘁\n・Define policies → set what agents may do\n・Inspect actions → allow, deny, redact, or escalate\n・Keep evidence → trace every decision cleanly\n🌐 Check it out here: https://kastra.ai/\n📈 Support us on Product Hunt: https://lnkd.in/dwe6ngJV\nTrust the rules, not the agents.\nArnaud Bastide and 303 others reacted",
+    "scraped_at": "2026-08-04T08:24:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Sub-1ms across prompts, tools, and outputs is a real bar — most policy layers I've seen either eat the latency budget or narrow the scope to hit it.\n\nThe failure mode I keep running into is different from unauthorized tool use though: an agent staying fully inside its permissions, making a call it's allowed to make, for the wrong reason. Tell it to get the tests green, it edits the assertion instead of the code — nothing there trips an access rule, the call itself is legitimate. Is that kind of judgment failure in scope for Kastra, or does it stay strictly at the permission boundary and the semantic layer is someone else's job?",
+        "rationale": "A promotional post making a concrete latency/coverage claim invites a specific technical gap-check rather than agreement."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"decide before it executes\" framing is the right instinct — most of the incidents I've seen weren't stopped by a better prompt, they needed something that could say no before the action landed.\n\nWhat I'd want to know before trusting the audit trail: how does the policy set itself keep pace? New tool surfaces and new failure modes show up basically weekly right now, and a policy engine one release behind the agent it's governing just gives you cryptographic evidence of the wrong thing — a clean log of an action nobody thought to forbid yet. What does the update loop look like on your side, and who's watching for the gaps in the policy, not just the violations of it?",
+        "rationale": "Pushes past the \"cryptographic evidence\" marketing line into the real staleness risk of any policy engine governing fast-moving agent tooling."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Governing Claude Code, Cursor, Codex and the rest from one control plane is the pitch that'll sell, and the underlying idea — enforce before execution, not after — is sound.\n\nWhere I'd push back a bit: \"unauthorized tool use\" and \"prompt injection\" aren't the same kind of thing to police from one layer. The first is close to a deterministic permission check on a defined action. The second is a semantic call on the input itself — different engineering problem, different error profile, and probably a different latency budget once you're actually running a model to make that call instead of matching a rule. Curious how much of the injection and data-exposure side leans on hard rules versus a classifier doing the judging underneath that sub-1ms number, because if it's mostly rules, I'd want to see the false-negative rate before trusting the \"audit\" half of the pitch.",
+        "rationale": "Distinguishes deterministic permission checks from semantic judgment calls that a single \"control plane\" claim glosses over."
+      }
+    ],
+    "slack_summary": "Promotes Kastra, a runtime authorization layer that decides what AI agents can do before actions execute — sub-1ms policy checks with audit evidence.",
+    "slack_ts": "1785831919.406469",
+    "slack_thread": {
+      "post_reply_ts": "1785831940.144539",
+      "draft_reply_ts": [
+        "1785831957.882319",
+        "1785831974.237859",
+        "1785831986.729619"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb0p6wr",
+    "clickup_url": "https://app.clickup.com/t/86cb0p6wr",
+    "clickup_error": null
   }
 ]
