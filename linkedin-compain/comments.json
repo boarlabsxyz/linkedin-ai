@@ -9907,5 +9907,219 @@
     "clickup_task_id": "86cb1729g",
     "clickup_url": "https://app.clickup.com/t/86cb1729g",
     "clickup_error": null
+  },
+  {
+    "key": "olga-mykhailova-michai-6320bd15",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b/",
+    "author_name": "Olga Mykhailova (Michai)",
+    "author_headline": "Chief Experience Officer, ITC Coach",
+    "time_ago": "8h",
+    "post_text": "How do you know your company culture is real?\nThis weekend, a few friends and I got together to play Colt Express—a board game where everyone plays a bandit trying to rob a train.\nA couple of people at the table happened to work at Speed & Function.\nAt one point, someone made a rather demanding comment. Before anyone could react, another person laughed and said:\n“That’s not very NVC. Where’s Igor when we need him?”\nFor context, Igor is our spineless cactus and the symbol of Nonviolent Communication in our company. We chose a cactus without spines because it’s a reminder that you don’t need “spikes” to be strong.\nIt made me smile.\nNot because someone remembered Igor.\nBut because the language and habits we’ve been intentionally building at work had quietly followed people into a completely different setting—a board game with friends.\nNo workshop.\nNo facilitator.\nNo one trying to “practice NVC.”\nJust people naturally noticing how they communicate.\nOne of our aspirations at Speed & Function is to spread a developmental culture beyond our own company.\nThis weekend, I caught a tiny glimpse of what that might actually look like.\nAnd I realized something:\nMaybe culture becomes real not when people remember the principles at work…\n…but when they start bringing them into the rest of their lives.",
+    "scraped_at": "2026-08-06T06:20:55Z",
+    "disposition": "off-topic",
+    "reason": "Company culture & NVC focus; no AI or startup content.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "kay-walten-bba2935a",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/kaywalten/",
+    "author_name": "Kay Walten",
+    "author_headline": "35 years in tourism, almost all of it in Mexico. I’ve put places on the map. Travel writing from the inside, and stories from a life held together with duct tape and zip ties",
+    "time_ago": "6h",
+    "post_text": "Wow if you do the math, the important decisions come into focus. 🧮\nYou Are Dead Soon\nSubscribe\nDo the Arithmetic\n🌏 Peter Syme 🌍",
+    "scraped_at": "2026-08-06T06:21:23Z",
+    "disposition": "off-topic",
+    "reason": "Tourism & travel writing; philosophical mortality post with no AI/startup angle.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "william-cowell-39d83376",
+    "urn": "urn:li:ugcPost:7490697318774702081",
+    "post_url": "https://www.linkedin.com/posts/wcowell_last-week-a-product-manager-on-my-team-shipped-ugcPost-7490697318774702081-kx7b/",
+    "author_url": "https://www.linkedin.com/in/wcowell/",
+    "author_name": "William Cowell",
+    "author_headline": "CPTO @ MyPass | Building Enterprise-Ready Engineering & Product Out of a Founder-Led B2B SaaS Scale-up",
+    "time_ago": "21h",
+    "post_text": "Last week a product manager on my team shipped code to production. An engineer didn't write a line of it.\nA customer had asked for a middle-name field across several of our APIs. A few months ago that sat in an engineer's backlog for a sprint. Instead the PM sat down with our internal tooling and built it, tested it, got it reviewed and shipped it themselves.\nI'm still not sure whether that's the best thing I saw all month or the thing that should worry me most.\nWhy? It went through our full process - groomed, sized, reviewed, tested - held to the same bar as any engineer's work. But it did so for one reason: when we built the tooling, I happened to ask \"how do we make sure this gets the same rigour as regular software?\"\nIf I hadn't asked, would it have? It might just have gone out.\nThat's the bit that's been nagging me. The thing that used to guarantee quality wasn't a process - it was a gate. Only engineers could ship. AI has quietly removed the gate, and the rigour doesn't come bundled with it.\nI've written up the whole thing - including the org-design bet it's pushing me towards - in this article linked.\nIf a non-engineer on your team has shipped to prod, how are you keeping the bar high? Asking for a friend.\nAI makes it easy to scale. It doesn't make it safe.\nWilliam Cowell",
+    "scraped_at": "2026-08-06T06:54:30Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The line that actually matters here is \"the rigour doesn't come bundled with it\" — the PM shipping code is just the trigger, not the finding.\n\nOne thing I'd want to know: when you asked \"how do we make sure this gets the same rigour,\" did that turn into something the tooling enforces on every future ship — required review, required test coverage — or is it still you personally remembering to ask? If it's the second one, the gate didn't come back. You're just standing in for it until you're in back-to-back meetings the week someone else ships the next thing.",
+        "rationale": "Presses on whether the \"rigour gate\" is a deterministic tooling rule or just the CPTO's habit of remembering to ask — the exact unaddressed variable in the post."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"If I hadn't asked, would it have?\" is the sentence that should worry every engineering leader reading this, not just you.\n\nSharper version: what happens to that rigour the quarter you're heads-down on something else, or once the CPTO after you doesn't think to ask the same question? If the check only exists because one senior person remembered to raise it, it's not a gate, it's a habit sitting in someone's head. The org-design bet only holds up if it survives you leaving the room, not just surviving a PM shipping code.",
+        "rationale": "Pushes the post's own self-doubt into a sharper, org-durability framing — what survives personnel/reorg change, not just this one incident."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed the gate mattered — I'd push back a bit on where you're placing the cause, though. \"Only engineers could ship\" worked less because it was a deterministic safeguard and more because building was slow enough that a review step fit into the timeline by default.\n\nWe hit the same wall giving an agent real production access: asking it nicely, or hoping someone senior remembers to check, didn't hold up. What worked was moving the actual limits into boring code the AI has to pass through regardless of who's driving. So the gap you found isn't \"non-engineers can ship now\" — it's that the rigour check was still a person's habit instead of a rule the tooling enforces unconditionally. Fix that and it stops mattering whether it's a PM, an engineer, or an agent hitting deploy.",
+        "rationale": "Reframes the cause using Petro's own documented stance (deterministic gates in code, not habits/prompts) without contradicting or repeating it verbatim."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+  },
+  {
+    "key": "ilan-zerbib-62f89b6b",
+    "urn": "urn:li:ugcPost:7490832303871483904",
+    "post_url": "https://www.linkedin.com/posts/izerbib_eleven-months-ago-i-founded-sapiom-six-ugcPost-7490832303871483904-T3I6/",
+    "author_url": "https://www.linkedin.com/in/izerbib/",
+    "author_name": "Ilan Zerbib",
+    "author_headline": "Founder & CEO, Sapiom | Building the AI-Native Financial OS for the Agentic Economy | x-Director, Shopify | x-Founder, Earny (acquired)",
+    "time_ago": "12h",
+    "post_text": "Eleven months ago, I founded Sapiom.\nSix months ago, we announced our $15 million seed.\nToday, we are announcing our $35 million Series A, led by Dragonfly, with participation from Accel, Anthropic, Gradient, Coinbase, Operator Collective 🔆, Formus Capital, and VanEck, alongside continued support from existing investors including Okta Ventures, Menlo Ventures, and Array Ventures, bringing total funding to $50 million.\nAlongside the round, we’re revealing what we’ve spent those eleven months building: Sapiom Router, Sapiom Agent Studio, and Sapiom Agent Runtime\nEvery tool humans have ever built was designed for a human operator.\nFor the first time, software can be the operator. Agents are deciding which tool to use, which service to call, and which action to take next on their own.\nAlmost none of our software or financial infrastructure was built for that.\nToday, anyone can build a capable agent demo in a weekend. Getting it to run reliably at scale, at a cost the business can sustain, is much harder.\nBefore moving to Sapiom, one customer running thousands of agents asked what should have been a reasonable question:\nHow many agents ran yesterday, and what did they cost?\nThe answer was $12,000, but nobody knew what it had paid for. They could not see which agents ran, which tasks succeeded, where agents got stuck, or how many times they retried the same failed step.\nSapiom is production infrastructure for AI agents. It sits at the exact moment an agent is about to act.\nFor every action, Sapiom selects the best allowed path across models, compute, tools, and services based on cost, performance, permissions, and the boundaries the business has set.\nBecause we run our own inference stack on dedicated GPUs, you get the most affordable path while also keeping your data in the US.\nBudgets and permissions are enforced before anything runs, and every step is recorded with its cost and outcome.\n- Sapiom Router lowers what you pay per call by matching every call to the right model instead of defaulting to the most expensive one. It takes two lines of code to try against agents you're already running.\n- Sapiom Agent Studio is where builders create, test, inspect, and deploy agents as real code inside the coding environment they already use.\n- Sapiom Agent Runtime is the production infrastructure where those agents run, recover from failures, access outside capabilities, and operate within the boundaries you set.\nIn our first six months, Sapiom has processed more than 270 million transactions across more than 100,000 daily agent runs.\nOne customer reduced its inference costs by 75%.\nWe're starting with cost because that's where the economics break first.\nOur ambition is to remove everything standing between builders and the next trillion agents.\nBring the agents you already have, or start fresh. Your first agent can be running on Sapiom in under 10 minutes.",
+    "scraped_at": "2026-08-06T06:55:34Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The line that lands hardest is \"$12,000, but nobody knew what it had paid for.\" That's the real failure mode here, not the demo-to-prod gap everyone talks about.\n\nWhere I'd push back a bit: I don't think handing agents the decision of what to do next is the fix, that's close to what produced the $12k mystery in the first place. What's worked for us is keeping step-to-step control deterministic (step A leads to step B, retry N times then stop, no step left or right) and letting the model be creative only inside a bounded step. Reading between the lines, Sapiom's budgets-and-permissions layer is doing exactly that job under the hood. Curious whether you see the routing decision itself as agentic, or closer to a rules engine with AI filling in the inputs.",
+        "rationale": "Directly engages Petro's public orchestrator thesis (posted.md: \"Build an orchestrator... don't allow AI to decide what to do next\") against the post's \"software can be the operator\" framing, using the post's own $12k example as evidence."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The detail that stood out was \"how many times they retried the same failed step,\" that's usually the part nobody instruments until the bill shows up.\n\nHow does Sapiom actually decide a run is stuck versus legitimately retrying with backoff? A hard retry ceiling, pattern-matching on repeated calls, or something that checks whether state actually changed between attempts? That boundary seems like the difference between the $12k story and a $1,200 one.",
+        "rationale": "The retry-loop detail is the specific unaddressed variable in the post's own cost story, and the answer would reveal a concrete design decision worth knowing."
+      },
+      {
+        "strategy_label": "Share personal experience (BankAI)",
+        "comment": "\"Nobody knew what it had paid for\" matches something I've lived through, just on the correctness side instead of the cost side.\n\nBuilding GenAI for German banking before ChatGPT existed, we had what looked like all the right preconditions and still didn't know upfront whether the system would hold at the moments that mattered. We ran a lot of chaotic experiments and leaned on statistical analysis to tell us which parameter changes actually moved the needle versus which just felt like progress, hoping more than knowing for a good while. That gap between what a system does and what you can actually observe it doing sounds like the same gap Sapiom is pricing out now, just moved from correctness to cost.",
+        "rationale": "Mirrors the post's cost-opacity story with Petro's own already-public BankAI/German-banking pre-ChatGPT production GenAI story (source: posted.md, section \"24.03.26 LLM is a 'dark matter'\" — \"we didn't fully know it would work either... hoping more than knowing\")."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+  },
+  {
+    "key": "claude-67f1d70f",
+    "urn": "urn:li:ugcPost:7486465323441848320",
+    "post_url": "https://www.linkedin.com/posts/introducing-claude-opus-5-ugcPost-7486465323441848320-mh-X/",
+    "author_url": "https://www.linkedin.com/company/claude/posts/",
+    "author_name": "Claude",
+    "author_headline": "",
+    "time_ago": "1w",
+    "post_text": "Introducing Claude Opus 5: a thoughtful and proactive model that comes close to the frontier intelligence of Fable 5 at half the price.\nOn several coding and knowledge work evaluations, Opus 5 is the new state-of-the-art. It’s also highly efficient—it outperforms other models for a similar or lower cost per task.\nAccording to our automated behavioral audit, Opus 5 is our most aligned model to date. It shows the lowest rates of reckless or deceptive behavior, and the strongest adherence to Claude’s Constitution.\nIt’s available today on all paid plans and the Claude API, priced the same as Opus 4.8. It’s the default model on Claude Max, and the strongest on Claude Pro.\nOpus 5 is also available in Fast mode, which runs around 2.5× the default speed.\nRead more: https://lnkd.in/eA5EsPHt\nIntroducing Claude Opus 5\nRodrigo Padula de Oliveira and 14,019 others reacted\nRodrigo Padula de Oliveira and 14,019 others\n470 comments\n470 comments\n•",
+    "scraped_at": "2026-08-06T06:56:28Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"similar or lower cost per task\" framing is the more interesting number here than the headline eval score — most launch posts stop at the benchmark bar.\n\nCost per task on an eval harness and cost per task inside a real agent loop rarely land the same, once you add retries, tool-call loops, and context re-loading. Is that cost-per-task figure end-to-end on the benchmark run, or does it still hold once a workload needs a few retries to get right?",
+        "rationale": "The launch post makes an efficiency/cost claim without defining measurement basis, and Petro's practitioner background makes eval-vs-production cost skepticism credible rather than generic."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The alignment framing stands out too — \"automated behavioral audit\" and \"strongest adherence to Claude's Constitution\" is a much more specific claim than the usual safety-first launch copy.\n\nGenuine question: does anyone outside Anthropic ever run that audit, or is \"most aligned model to date\" currently a claim only Anthropic itself is positioned to verify? Coding evals had this exact credibility problem before third-party leaderboards caught up — curious whether alignment audits are heading the same direction.",
+        "rationale": "The post's alignment claim is self-reported (Anthropic's own automated audit), which is exactly the kind of unverified marketing framing Petro's anti-hype stance calls out — sharp but not hostile."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Also notable: pricing near-frontier intelligence at half of your top model is a real economics claim, not just a launch-day flex.\n\nWe ran into this benchmark-to-production gap ourselves doing production GenAI work before ChatGPT existed — a model that wins evals by a wide margin can still lose on total cost once you add the retries and guardrail calls a real agent needs wrapped around it. The \"half the price\" number would land harder next to a production cost breakdown, not just the eval score — anything in the eval methodology that already accounts for that?",
+        "rationale": "Grounds a counter-position in Petro's documented pre-ChatGPT production-GenAI background (BankAI) without inventing a specific unlogged anecdote, consistent with Strategy 2's evidence-backed-counter requirement."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+  },
+  {
+    "key": "emmanuel-excellent-4c6985d0",
+    "urn": "urn:li:share:7489826717235130368",
+    "post_url": "https://www.linkedin.com/posts/emmaexcellent1_there-is-a-dangerous-moment-in-ai-assisted-share-7489826717235130368-5pzL/",
+    "author_url": "https://www.linkedin.com/in/emmaexcellent1/",
+    "author_name": "Emmanuel Excellent",
+    "author_headline": "AI Engineer building global products that solve business problems.",
+    "time_ago": "2d",
+    "post_text": "There is a dangerous moment in AI-assisted development.\nWhen your code works...\nbut you don't know why.\nThat's where problems begin.\nWorking code still needs to be something you can change, improve, debug, and trust.\nA codebase you don't understand is a future problem waiting for a deadline.\nUse AI.\nBut stay involved.\nYour understanding is still what makes the system work.\nI broke this down in my newsletter:\nThe Silent Killer in Your Codebase: 100 Dangers of \"Vibe Coding.\"\nRead it on Substack. (Link in comment)👇\nHave you ever shipped code you couldn't fully explain?",
+    "scraped_at": "2026-08-06T06:57:34Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The line about a codebase being \"a future problem waiting for a deadline\" is dead accurate — I've inherited exactly that kind of codebase from clients.\n\nWhere I'd push back slightly: I don't think the fix is holding every engineer responsible for explaining every line. That bar was broken well before AI — code review already eats roughly 75% of a developer's time because nobody keeps a whole system in their head. What actually kills a codebase is undocumented intent, not un-understood syntax. If the intended behavior is written down and checkable, I'd rather regenerate the implementation than force someone to trace AI-written code line by line. Genuinely curious: in your \"100 dangers,\" how many trace back to missing understanding versus missing documentation of intent? Feels like two different diagnoses.",
+        "rationale": "Petro has publicly argued (posted.md, 21.04.26 spec-as-source-of-truth post) that code review already eats ~75% of dev time because nobody holds the whole system in their head, so this reframes \"understand every line\" as the wrong invariant without pitching True BDD by name."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "\"Working code still needs to be something you can change, improve, debug, and trust\" is the sentence I'd underline in this post.\n\nOut of the 100 dangers you catalogued, which one shows up most often in practice — juniors accepting AI output because they don't yet know what to question, or seniors skimming past it because they've built up unearned trust in the tool? Those feel like different failure modes needing different fixes, and I'm curious which one your newsletter weighs heavier.",
+        "rationale": "Zeroes in on the post's \"100 dangers\" hook and forces a specific split (junior-blindness vs senior-complacency) rather than a generic \"tell me more.\""
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "Agree that shipping code you can't explain is where the trouble starts — and the deadline always seems to land exactly where you'd expect.\n\nHere's the harder question though: does \"stay involved, keep understanding it\" actually scale? Six months from now the models will produce code faster and more plausibly-correct than they do today, and \"I understand what I shipped\" gets harder to verify, not easier, as the volume goes up. What's your bet for the next generation of this problem — better habits from individual engineers, or systems that don't require any single person to hold the whole picture in their head?",
+        "rationale": "Pushes the post's thesis into \"will this scale as models improve,\" a natural next question given Petro's public bet that requirements/behavior specs, not human-held understanding, are what should survive model improvements."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
   }
 ]
