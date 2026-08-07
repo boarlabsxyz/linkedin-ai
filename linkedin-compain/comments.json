@@ -10121,5 +10121,241 @@
     "clickup_task_id": null,
     "clickup_url": null,
     "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+  },
+  {
+    "key": "krisztian-kuntner-ea74ce75",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/kkuntner/",
+    "author_name": "Krisztián Kuntner",
+    "author_headline": "Crafting software that cannot fail | medtech & regulated industries | Director of Development @ BrightHills",
+    "time_ago": "23h",
+    "post_text": "How does it feel to read AI?\nYesterday I was reading the prep courses for an Anthropic certification. The longer I read the stuff, the more it felt odd… felt AI-generated. Clearly not slop, the content itself was extremely valuable. But somehow my brain felt the difference. The wording, the sentences, it felt… plastic. Look at the last sentence, that's wher I decided to post. It is soo AI.\nWhen I think back on the best trainings I had, the best professional books I read, they had personality, some light humor, real-worls examples I believed happened. Marco Cantu', Marco Russo, Gergely Orosz or Addy Osmani - just a few where I even remember the authors - for some, even after decades. Thank you guys.\nI might be wrong as a non-native English speaker - but I suspect native English speakers feel the difference even more.",
+    "scraped_at": "2026-08-07T06:00:57Z",
+    "disposition": "off-topic",
+    "reason": "Personal reflection on AI writing style, lacks technical substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "ben-dickson-f6e50689",
+    "urn": "urn:li:share:7487228612019109888",
+    "post_url": "https://www.linkedin.com/posts/bendee983_this-is-true-but-there-are-nuances-that-share-7487228612019109888-aZ0K/",
+    "author_url": "https://www.linkedin.com/in/bendee983/",
+    "author_name": "Ben Dickson",
+    "author_headline": "Software Engineer | Tech Blogger",
+    "time_ago": "1w",
+    "post_text": "This is true, but there are nuances that make managing human developers and managing AI coding agents very different.\nHuman developers gradually change and improve as you provide them with feedback. They develop habits and meld in with how you manage the SDLC and architecture software.\nAI agents, on the other hand, require you to adjust to them. The underlying LLM does not change. It is you who have to change your instructions, prompt templates, etc. to make sure that the AI agent does what you expect it to do (and yes I know that the agent can also update its own instructions and md files but that is just a shortcut for what I'm saying and it's not perfect). You also have to take into account multiple things such as context engineering and context rot and a bunch of other stuff that don't happen with humans.\nWith humans, you build trust in the coder and gradually let them write code without looking over their shoulder. With AI, you have to build trust in yourself and your ability to prompt the LLM correctly.\nMykhailo Y. and 6 others reacted",
+    "scraped_at": "2026-08-07T06:16:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed on the core point — the burden really is on us, not on the model. Where I'd push back a little: for us, editing the prompt template kept being a losing game, so we stopped trying to make the prompt itself the safety mechanism. On a client build we moved the actual \"you can/can't do this\" rules into a deterministic layer outside the LLM — the model proposes, boring code approves or vetoes. The prompt only handles reasoning, not guardrails.\n\nCurious if you've found any part of \"adjusting your instructions\" that works better as hard code than as more prompt text.",
+        "rationale": "Grounds the counter in Petro's actual public position (the \"don't delete the production database\" post — constraints belong in deterministic code, not the prompt) rather than a generic disagreement."
+      },
+      {
+        "strategy_label": "Ask a clarifying question rooted in the topic",
+        "comment": "The trust framing is the sharpest part of this — with humans it's trust in the person, with AI it's trust in your own prompting. One thing I keep running into: with a human, once you give feedback it tends to stick, they remember the postmortem. With an agent, does a fixed prompt actually stay fixed, or does the same failure mode creep back in after a model swap or a context window change? Genuinely curious how durable your fixes have been.",
+        "rationale": "Pokes at an unaddressed variable in the author's claim — whether prompt fixes actually persist across model/context changes the way human feedback persists."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "What stands out is that you're describing the prompt as the thing that actually has to evolve and get maintained — which quietly makes it the real artifact, not the code the agent outputs. If that's true, doesn't the instruction set deserve the same review discipline as code, versioning, diffs, rollback, instead of living as a doc people casually edit? Or is that overkill for where most teams are right now?",
+        "rationale": "Extends the post's own logic toward instructions-as-durable-artifact — echoes Petro's documentation-as-source-of-truth thesis as an angle, not a pitch, since True BDD is never named."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+  },
+  {
+    "key": "mark-andrew-yao-649be771",
+    "urn": "urn:li:share:7490238728276258816",
+    "post_url": "https://www.linkedin.com/posts/markandrewyao_i-keep-running-into-products-that-were-built-share-7490238728276258816-9B8X/",
+    "author_url": "https://www.linkedin.com/in/markandrewyao/",
+    "author_name": "Mark Andrew Yao",
+    "author_headline": "Co-Founder, CEO at First Mate Technologies",
+    "time_ago": "3d",
+    "post_text": "I keep running into products that were built fast with AI, work perfectly well, but that nobody can actually explain.\nThat’s not technical debt. Technical debt you can see, and decide what to do about it. This is quieter. Tests pass. The product is live and taking payments, and when you ask how a piece of it works you get a description of what it does instead. The how isn’t written down anywhere, and it isn’t in anyone’s head.\nThere’s a name for it now. MIT published a study on what happens when you let a machine do your thinking, and the term they used was cognitive debt. What I see is closer to what GPS did to our sense of direction. Most of us still have a rough idea of our own city. What went missing is the layer underneath. Which shortcut works at 6pm, where to find parking near your destination, how to get around a road closure. We arrived every time, so we never had to learn it. Founders have the same rough idea of their product, and nothing underneath it.\nYou don't feel any of this while you're building. It shows up later, the first time you need to pivot, or something breaks at 2am, or you hire an engineer and sit down to hand the thing over.\nWe use agents on projects at First Mate Technologies. The rule we don’t bend is that someone on the team has to be able to explain anything that ships. It costs us time. I think it’s worth it, because the alternative is giving a founder something they own on paper and can’t actually operate.",
+    "scraped_at": "2026-08-07T06:16:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The GPS analogy is the right way to think about it — you still \"know\" the city, just not well enough to route around anything when the road closes.\n\nOne place I'd push back a little: I don't think the fix is getting people to understand more. Tests pass and the product ships precisely because understanding was never the bottleneck — behavior was. The \"how\" goes missing because it only ever lived in code, and code is a lossy explanation of intent. What's worked better on the projects I've run is treating the explanation as an artifact that has to exist before something ships, not something someone is trusted to hold in their head. What made you land on \"someone can explain it\" as the bar, instead of \"it's written down somewhere they'd still have it after that someone quits\"?",
+        "rationale": "Petro has publicly staked the same thesis repeatedly (code as lossy/regenerable artifact, docs as source of truth) — this pushes the post's framing one notch further without contradicting it, and asks a real question back."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"We arrived every time, so we never had to learn it\" is the whole problem in one line.\n\nHere's the test I'd apply to \"can explain it\": could that explanation actually rebuild the thing? Plenty of teams can narrate what a feature does in a standup and still couldn't reconstruct it from scratch if the repo disappeared tomorrow. The pivot and the 2am break you mention are exactly the moments that expose the gap between describing behavior and being able to regenerate it. Where's the line for you between \"someone understands this\" and \"someone could rebuild this from what's written down, without the code\"?",
+        "rationale": "Sharpens \"can explain it\" into a testable bar (rebuild-from-spec), echoing Petro's own regeneration test without naming True BDD — invites the author to define his own threshold."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Tests pass, but nobody can explain it\" is the clearest description of this problem I've come across.\n\nCurious how you actually enforce the rule day to day — is it a review gate before anything merges, a written explanation someone has to produce, or more of a norm that self-selects for people who ask enough questions while it's being built? And at what point does \"it costs us time\" start feeling like it's costing you speed, rather than just feeling slower in the moment?",
+        "rationale": "A concrete, answerable follow-up on the one mechanism (the \"someone must be able to explain it\" rule) the post asserts but doesn't unpack — invites the founder to get specific."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+  },
+  {
+    "key": "scott-johnston-7f935e48",
+    "urn": "urn:li:share:7486223654687490049",
+    "post_url": "https://www.linkedin.com/posts/scottcjohnston_a-year-ago-agent-workloads-were-a-rounding-share-7486223654687490049-G2hL/",
+    "author_url": "https://www.linkedin.com/in/scottcjohnston/",
+    "author_name": "Scott Johnston",
+    "author_headline": "Builder",
+    "time_ago": "1w",
+    "post_text": "A year ago, agent workloads were a rounding error at Fly. Today they're the majority of revenue from Fly’s top accounts. A new category is forming - computers for agents - and it's moving faster than the market has noticed.\nSpecifically, agent workloads now drive 66% of revenue across Fly’s top 100 accounts, up nearly 12X y/y. This isn't a projection - it's what's already running on Fly today.\nThe category forming here is far bigger than any one company, but Fly is unusually well-positioned to define it. That's why I'm joining as CEO - and why we've raised $25M to go all in.\nI've been fortunate to have worked with great teams through a few of these shifts in the past - app servers at Netscape, PaaS at Loudcloud, DevOps at Puppet, containers at Docker. Each was a category crossing from early adopters into the mainstream, and the pattern held every time: being early is necessary but not sufficient. Outcomes are also determined by: i) whether the foundation you've built is what the market turns out to need, and ii) the focus to bet everything on it.\nFly's foundation is exactly that kind of bet. Years before agents, Kurt Mackey focused Fly on the core primitives - compute, networking, storage - of Linux computers because he believed developers deserved real computers, not simplified abstractions. It turns out that's precisely what agents need.\nFoundation was step one. Focus is step two - and that's my job. We're pointing all of Fly at one thing: computers for agents. Not just where agents run, but where they build, test, and ship the software they're creating - the full environment agents need to do real work.\nWe think the next decade of software gets built by developers directing agents - and those agents need real computers. That's the bet, and it's why developers stay at the center of everything we do: computers for agents, run by developers. If you're building agents, I'd like to hear from you - what's working, what's missing, what you wish existed. Full announcement in the first comment.\nAlex Ezell and 279 others reacted\nAlex Ezell and 279 others\n125 comments\n125 comments\n•",
+    "scraped_at": "2026-08-07T06:16:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "66% of revenue from your top 100 accounts in a year is a hard number to look away from. One thing I'm curious about underneath it: how much of that is long-running agent sessions holding state for hours while they build and iterate, versus short bursts like CI jobs and ephemeral test runs? The infra shape for those two is pretty different — persistent volumes and warm state vs pure cold-start throughput — and I'd guess the mix tells you more about where this category is actually headed than the aggregate number does.",
+        "rationale": "The 66% figure is a hard number that hides a mix (long-running vs ephemeral agent workloads) — a specific question about that mix pulls the founder into a real answer, not a generic \"tell me more.\""
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "\"Real computers, not simplified abstractions\" is the right instinct — agents do fail in strange ways once you sandbox away the primitives they actually need. But computers solve the execution side of the problem. Agents also drift from what they were supposed to build, the same way people drift from a spec over a long implementation. Is that squarely someone else's layer, or does \"computers for agents\" end up pulled into owning part of that too once you're this close to how agents actually work day to day?",
+        "rationale": "Petro's own thesis is that agents/humans drift from spec over long implementations — this pushes Scott's \"real computers\" framing toward the adjacent unsolved layer without pitching True BDD directly."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "12x growth in a year lines up with what's happening on the model side too — SWE-bench resolve rates on real GitHub issues went from around 23% to 60%+ over roughly the same stretch. My read is infra demand trails capability by something like a year: models got good enough to attempt real work, and the compute layer is only now catching up to what that actually requires operationally. Curious whether your 66% climbed steadily the whole time or if you saw a visible step change once the models crossed some threshold.",
+        "rationale": "Petro has cited the SWE-bench 23%→60%+ jump before (posted.md, 15.01.26 entry) — reusing that real data point to hypothesize a demand/capability lag ties his own known claims to Fly's growth curve."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+  },
+  {
+    "key": "marc-brooker-ed155844",
+    "urn": "urn:li:share:7491187325880864768",
+    "post_url": "https://www.linkedin.com/posts/marc-brooker-b431772b_about-six-months-ago-jean-baptiste-tristan-share-7491187325880864768-FWJn/",
+    "author_url": "https://www.linkedin.com/in/marc-brooker-b431772b/",
+    "author_name": "Marc Brooker",
+    "author_headline": "VP/Distinguished Engineer at Amazon Web Services",
+    "time_ago": "12h",
+    "post_text": "About six months ago, Jean-Baptiste Tristan mentioned an idea that really caught my imagination: a policy language for AI agents based that can reason about history. About order, time, and rate.\nCan an agent only delete after creating a backup?\nCan an agent pay, but only $10 per transaction and $100 per day?\nCan an agent send only 10 emails a day?\nHow do we express these in policy? The answer was to build Dogwood, a new policy language for agents based on temporal logic, a branch of mathematics that lets us formally reason about time, order, and rate.\nToday we're releasing the first version of Dogwood as open source, and releasing new AgentCore policy features based on these capabilities. And don't worry if you don't know what temporal logic is! You can get started with AgentCore Policy's temporal policies without being a mathematician (my secret: I mostly pass the docs to Kiro and it writes the policies for me).\nMy blog post with Jean-Baptiste Tristan and Joseph Tassarotti: https://lnkd.in/gw_U9iYr\nMadhuvanesh Parthasarathy's blog post on the new agent core features: https://lnkd.in/g3RYwj5K\nDogwood on github: https://lnkd.in/gW3bFr3H\nOh, and the production backend of Dogwood compiles these temporal policies to SQL, and runs them on Aurora DSQL. Isn't that cool?",
+    "scraped_at": "2026-08-07T06:16:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The $10-per-transaction / $100-per-day framing is the kind of constraint you can actually write a test against, which is rare for anything that gets called an AI safety feature.\n\nOne thing I'd want to see Dogwood handle: rate limits invite structuring. An agent that can't send a $250 payment in one shot but is well inside policy sending twenty-five $10 payments across the day ends up in the same place, just legally. Does the temporal logic reason over the aggregate intent, or only over the literal count and rate as written? That's the line between a policy language and something that actually catches an agent gaming its own guardrail.",
+        "rationale": "Names a concrete, non-hostile gap (rate policy vs. aggregate-intent \"structuring\") that pushes the conversation into a sharper technical corner without attacking the release."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The part that stands out is compiling temporal policy straight to SQL and running enforcement on Aurora DSQL — that's a real architectural choice, not just a prompt-level \"please don't.\"\n\nCurious how the backup-before-delete example actually resolves under concurrency: is the CREATE BACKUP a precondition inside the same transaction as the DELETE, so Dogwood can hard-block it, or is it closer to a policy check that runs alongside and flags a violation after the fact? With retries and parallel agent runs, that's usually where \"can only delete after backup\" quietly turns into \"usually deletes after backup.\"",
+        "rationale": "Zeroes in on the SQL/Aurora DSQL enforcement mechanic and asks a concurrency question a practitioner shipping production agent tooling would actually want answered."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Formal policy for the mechanical stuff, order, rate, time, is the right layer, and building it as a real language instead of a prompt instruction is the correct call.\n\nWhere I keep running into trouble building agent tooling of my own is a step earlier: an agent staying inside every rule you wrote and still doing something nobody actually wanted, because the policy was airtight and the intent behind it was never captured anywhere machine-readable. Curious whether Dogwood has hit cases like that, where the temporal logic is satisfied to the letter and the outcome is still wrong.",
+        "rationale": "Agrees with the mechanical layer, then raises a different (adjacent-to-True-BDD, unnamed) experience about intent-vs-rule-satisfaction as the harder unsolved problem, echoing Petro's already-public 25.06.26 \"invent the safeguards\" thesis without contradicting or repeating it verbatim."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+  },
+  {
+    "key": "ben-dickson-b460419c",
+    "urn": "urn:li:share:7487070133245329408",
+    "post_url": "https://www.linkedin.com/posts/bendee983_one-category-of-software-engineers-who-will-share-7487070133245329408-TDZz/",
+    "author_url": "https://www.linkedin.com/in/bendee983/",
+    "author_name": "Ben Dickson",
+    "author_headline": "Software Engineer | Tech Blogger",
+    "time_ago": "1w",
+    "post_text": "One category of software engineers who will be eliminated are the ones who think they don't need coding and engineering skills because \"AI does everything now.\"\nIt's the same as with calculators but times 1000. You still need to learn arithmetic, algebra, calculus, and learn to solve problems manually, even if you use a calculator most of the time.\nThe same goes with software engineering. You will use AI coding agents abundantly, but you still need to stay sharp when it comes to coding and software design.\nIf AI is making all the decisions and you're just smashing Enter and writing LGTM, you will be replaced by AI.\nMykhailo Y. and 19 others reacted",
+    "scraped_at": "2026-08-07T06:16:05Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The calculator analogy holds up better than most people give it credit for — the failure mode isn't \"can't do arithmetic,\" it's not noticing when the tool hands you the wrong order of magnitude because you never built the intuition for what the right one looks like.\n\nWhere I'd want to split it further: \"staying sharp\" gets used for two different skills. Syntax fluency, which AI genuinely covers well now, and architectural judgment, which it doesn't. Someone can be fast with the tool and still smash Enter blindly on a design decision. Which one do you think actually predicts who survives this — the coding chops or the judgment calls?",
+        "rationale": "Post asserts one blanket \"staying sharp\" skill; splitting it into syntax fluency vs. architectural judgment surfaces a real, answerable variable Ben left unaddressed."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agree on the mechanism, less sure about \"eliminated\" as the shape it takes. I've been watching the \"juniors are disappearing\" narrative for about a year now, and what actually happens isn't people getting fired for smashing Enter — it's their output quietly getting cheaper to replace, until someone notices the review queue is full of LGTMs nobody in the room can defend.\n\nThat's closer to the tractor-versus-horse transition than a layoff event — slower, more diffuse, easy to miss from inside it. Curious whether you're seeing outright firings over this specific behavior, or mostly teams that just stop growing that person's scope until it's obvious.",
+        "rationale": "Petro's own \"Juniors are disappearing\" post argues the tool changes, not the profession, wholesale — reusing that lens to soften Ben's \"eliminated\" framing without contradicting a public stance."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"smashing Enter and writing LGTM\" line is the real tell. It's not that these engineers can't code, it's that they've stopped forming an opinion before approving one — a review problem wearing a skills problem's clothes.\n\nNow that AI output is polished enough to pass a superficial review, what's actually catching this category before they've shipped six months of decisions nobody owns? Most teams I've seen don't have a signal for \"approved without understanding\" until something breaks in production and the trail goes cold.",
+        "rationale": "Post is reasonable but under-examines how teams actually catch this behavior early; pushes into the detection blindspot without hostility."
+      }
+    ],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": null,
+    "clickup_url": null,
+    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
   }
 ]
