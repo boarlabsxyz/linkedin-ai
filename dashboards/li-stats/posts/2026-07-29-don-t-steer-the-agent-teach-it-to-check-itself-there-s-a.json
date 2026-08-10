@@ -51,6 +51,59 @@
         }
       },
       "comments": []
+    },
+    "2026-08-10": {
+      "snapshot_at": "2026-08-10T00:19:01Z",
+      "metrics": {
+        "impressions": 213,
+        "members_reached": 115,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 0.94
+      },
+      "demographics": {
+        "seniority": {
+          "Entry": 30.4,
+          "Senior": 29.6,
+          "CXO": 5.2
+        },
+        "job_title": {
+          "Software Engineer": 21.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 36.5,
+          "Software Development": 31.3,
+          "Technology, Information and Internet": 8.7
+        },
+        "company_size": {
+          "51-200 employees": 30.4,
+          "10,001+ employees": 12.2,
+          "11-50 employees": 12.2,
+          "1001-5000 employees": 7.8,
+          "501-1000 employees": 7
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 7,
+          "Lviv": 7
+        },
+        "company": {
+          "Speed and Function": 17.4
+        }
+      },
+      "comments": [
+        {
+          "author_name": "Olga Mykhailova (Michai)",
+          "author_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
+          "text": "I did it to some extent. Not for coding but for contract reading while designing new templates. Used 2 agents checking the work of each other and writing recommendations on what to check next time when we do regression testing of the updated template",
+          "reactions": 0,
+          "replies_count": 0
+        }
+      ]
     }
   }
 }

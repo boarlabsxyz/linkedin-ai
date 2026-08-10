@@ -1,5 +1,47 @@
 {
   "comments": {
+    "urn:li:comment:(activity:7487568033847070720,7491792908463964161)": {
+      "comment_urn": "urn:li:comment:(activity:7487568033847070720,7491792908463964161)",
+      "commented_at": "2026-08-08T09:50:20Z",
+      "verb": "commented",
+      "text": "hesitate is the idea that open weights automatically solve the economics. You remove the per-token bill, but you add hosting, evals, monitoring, incident response, and the burden of proving reliability to the partnership. For a mid-sized firm, I’m not sure that trade becomes cheaper as early as people think. Where do you see the break-even?",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7491792933088821248",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7491792933088821248/",
+      "post_author_name": "Mei Lingwood",
+      "post_author_url": "https://www.linkedin.com/in/meilingwood",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7491792933088821248/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7487568033847070720%2C7491792908463964161%29",
+      "weeks": {
+        "2026-08-10": {
+          "snapshot_at": "2026-08-10T00:14:52Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 3
+        }
+      }
+    },
+    "urn:li:comment:(activity:7487046647974170626,7491789903802966016)": {
+      "comment_urn": "urn:li:comment:(activity:7487046647974170626,7491789903802966016)",
+      "commented_at": "2026-08-08T09:38:23Z",
+      "verb": "commented",
+      "text": "To me, the danger starts exactly when the agent wanders into assumptions nobody wrote down. But if most of the important intent stays unrecorded, are we actually protecting the system by designing code for humans, or just preserving a workflow where every future maintainer, human or AI, has to act like an archaeologist?",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7491789959352352768",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7491789959352352768/",
+      "post_author_name": "Anthony Hayward",
+      "post_author_url": "https://www.linkedin.com/in/anthayward",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7491789959352352768/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7487046647974170626%2C7491789903802966016%29",
+      "weeks": {
+        "2026-08-10": {
+          "snapshot_at": "2026-08-10T00:14:52Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 4
+        }
+      }
+    },
     "urn:li:comment:(activity:7485308161529405440,7485978160505876480)": {
       "comment_urn": "urn:li:comment:(activity:7485308161529405440,7485978160505876480)",
       "commented_at": "2026-07-23T08:44:36Z",
@@ -24,6 +66,12 @@
           "reactions": 2,
           "replies_count": 0,
           "impressions": 813
+        },
+        "2026-08-10": {
+          "snapshot_at": "2026-08-10T00:14:52Z",
+          "reactions": 2,
+          "replies_count": 0,
+          "impressions": 841
         }
       }
     },
@@ -51,6 +99,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 242
+        },
+        "2026-08-10": {
+          "snapshot_at": "2026-08-10T00:14:52Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 247
         }
       }
     },
@@ -78,6 +132,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 31
+        },
+        "2026-08-10": {
+          "snapshot_at": "2026-08-10T00:14:52Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 33
         }
       }
     },
