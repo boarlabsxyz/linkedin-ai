@@ -134,9 +134,42 @@ try {
   }
 } catch { /* account.json optional */ }
 
-const posts_per_month = [...monthAgg.values()]
-  .map(m => ({ ...m, avg_impressions_per_post: m.posts > 0 ? Math.round(m.total_impressions / m.posts) : 0 }))
-  .sort((a, b) => a.month.localeCompare(b.month));
+// Current calendar month in UTC as "YYYY-MM".
+function currentMonthUTC() {
+  const d = new Date();
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
+}
+
+// Inclusive list of "YYYY-MM" months from start to end.
+function monthRange(startMonth, endMonth) {
+  const out = [];
+  let [y, m] = startMonth.split("-").map(Number);
+  const [ey, em] = endMonth.split("-").map(Number);
+  while (y < ey || (y === ey && m <= em)) {
+    out.push(`${y}-${String(m).padStart(2, "0")}`);
+    if (++m > 12) { m = 1; y += 1; }
+  }
+  return out;
+}
+
+// Fill month gaps so absent months render as an explicit 0 instead of vanishing
+// from the bar charts. Spans the earliest present month through the current UTC
+// month (or the latest present month, whichever is later). `zeroFor(month)`
+// supplies the shape for a missing month.
+function zeroFillMonths(rows, zeroFor) {
+  if (!rows.length) return rows;
+  const byMonth = new Map(rows.map(r => [r.month, r]));
+  const months = rows.map(r => r.month).sort();
+  const start = months[0];
+  const end = [months[months.length - 1], currentMonthUTC()].sort().pop();
+  return monthRange(start, end).map(month => byMonth.get(month) ?? zeroFor(month));
+}
+
+const posts_per_month = zeroFillMonths(
+  [...monthAgg.values()]
+    .map(m => ({ ...m, avg_impressions_per_post: m.posts > 0 ? Math.round(m.total_impressions / m.posts) : 0 })),
+  month => ({ month, posts: 0, reposts: 0, total_impressions: 0, avg_impressions_per_post: 0 }),
+);
 
 const commentsAgg = new Map();
 try {
@@ -154,7 +187,10 @@ try {
     commentsAgg.set(month, cur);
   }
 } catch { /* comments.json optional */ }
-const comments_per_month = [...commentsAgg.values()].sort((a, b) => a.month.localeCompare(b.month));
+const comments_per_month = zeroFillMonths(
+  [...commentsAgg.values()],
+  month => ({ month, comments_posted: 0, reactions_received: 0, impressions_received: 0 }),
+);
 
 const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month, correlation_points, correlation_trend };
 
