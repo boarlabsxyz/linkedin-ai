@@ -10628,5 +10628,339 @@
     "clickup_task_id": "86cb3jwt6",
     "clickup_url": "https://app.clickup.com/t/86cb3jwt6",
     "clickup_error": null
+  },
+  {
+    "key": "sam-spurlin-a289b175",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/samspurlin/",
+    "author_name": "Sam Spurlin",
+    "author_headline": "I help build ever better organizations | Org Design, Operating Models, Org Change, Future of Work | ex-The Ready",
+    "time_ago": "13h",
+    "post_text": "Chiefs of Staff and operating models are both having a moment in the sun. Why?\nThey are opposite reactions to the same problem: increasing complexity and the dismantling of traditional middle management roles as organizations flatten.\nTo the surprise of hopefully no one, coordination work doesn't suddenly disappear when you delete the box on the org chart that was doing it. It migrates, usually upward, onto executives who are already at capacity. What do these execs do? They hire someone to hold it. A person-shaped patch for a system-shaped problem. Welcome to your new job, Chief of Staff! You're going to hate it!\nIt's the same reason operating models are all the rage. Some folks are asking, \"Wait, why does our organization generate this much coordination work in the first place?\" That's the dawning realization of someone who is seeing their operating model, or perhaps lack of operating model, for the first time.\nIf your Chief of Staff has no mandate to help build a better operating model, they are on a burnout timer.\nI'm biased, but I think that's why org/work designers make great Chiefs of Staff: they can see themselves as the organizational band-aid role they are often asked to play while having the chops to build the systems that let them get out of Firefighting Mode and into Let's Make This Better Mode.",
+    "scraped_at": "2026-08-11T08:40:48Z",
+    "disposition": "off-topic",
+    "reason": "Org design theory without AI or startup context.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "bob-sutton-f882d2f0",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/bobsutton1/",
+    "author_name": "Bob Sutton",
+    "author_headline": "Organizational psychologist, Stanford faculty, New York Times bestselling author, and speaker. Eight books including Good Boss, Bad Boss, The No Asshole Rule, and Scaling Up Excellence. Latest:The Friction Project.",
+    "time_ago": "1w",
+    "post_text": "Bob Sutton, Stanford professor, on Incorruptible.",
+    "scraped_at": "2026-08-11T08:40:48Z",
+    "disposition": "off-topic",
+    "reason": "Bare announcement with no substantive content.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "sheilah-hogan-casey-f873f126",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/sheilah-hogan-casey-48688266/",
+    "author_name": "Sheilah Hogan Casey",
+    "author_headline": "Business Advisor I EY Entrepreneur of the Year I Certified EOS Implementer working with entrepreneurs and their leadership teams to grow faster, smarter and healthier.",
+    "time_ago": "3h",
+    "post_text": "How to position your business better for AI adoption with real impact & ROI.\nBoardroom Insights",
+    "scraped_at": "2026-08-11T08:40:48Z",
+    "disposition": "off-topic",
+    "reason": "Bare article re-share despite AI mention; no original argument.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "claude-11f99ac0",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/company/claude/posts/",
+    "author_name": "Claude",
+    "author_headline": "",
+    "time_ago": "18h",
+    "post_text": "In late 2025, Iceland’s government launched one of the world’s first national AI education pilots, giving teachers who volunteered access to AI tools.\nWe visited Iceland to find out how people are thinking about AI.\nMore information about the pilot: https://lnkd.in/eKevAUtr\nHow Icelanders are thinking about AI",
+    "scraped_at": "2026-08-11T08:41:58Z",
+    "disposition": "off-topic",
+    "reason": "AI education policy/adoption story, not technical or startup business content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "jason-padgett-a24cd9c0",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/jason-grant-padgett/",
+    "author_name": "Jason Padgett",
+    "author_headline": "AI Solutions Architect | Co-Founder, Wooden Boy Industries | Host, AGI Podcast | AI Adoption, LLM Systems & Human-AI Workflows",
+    "time_ago": "11h",
+    "post_text": "Who Gets To Shape the AI Future?\nThere are real risks with AI. There is real upside too.\nThe conversation often acts like the future will be decided by a handful of companies, governments, researchers, and very loud people.\nNirav Nimish Shah and I got into the uncomfortable middle: what happens when the rest of us sit this one out?\nIf AI is going to reshape work, education, relationships, and the economy, regular people need enough context to ask better questions and help shape where this goes.\nBecause opting out is still a decision.\nWhat part of the AI future do you think we are not arguing about honestly enough?\nLink in the first comment",
+    "scraped_at": "2026-08-11T08:41:58Z",
+    "disposition": "off-topic",
+    "reason": "Philosophical commentary on AI's societal impact, lacks technical or business substance",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "salah-awad-54a6c2b6",
+    "urn": "urn:li:share:7491915412281065474",
+    "post_url": "https://www.linkedin.com/posts/salahawad_ai-softwareengineering-engineeringleadership-share-7491915412281065474-yTs3/",
+    "author_url": "https://www.linkedin.com/in/salahawad/",
+    "author_name": "Salah Awad",
+    "author_headline": "CTO | Cloud Transformation Director | AI & FinOps Expert | 20 Years of Experience Driving Scalable, Efficient Tech Solutions",
+    "time_ago": "1d",
+    "post_text": "AI is changing software development — but it’s also changing how we should think about engineering metrics.\nLines of code?\nStory points?\nNumber of pull requests?\nTokens spent?\nAll are useful metrics in the right context. But none of them, on their own, tell us whether we are building better software.\nAs AI-assisted development increases, producing code becomes cheaper and faster. Token consumption also becomes an important metric for understanding AI cost, efficiency and resource usage.\nBut the bigger question remains:\n“Did we build the right thing, and is it working well in production?”\nThe engineering metrics that matter more to me are:\nCode churn rate — Are we producing stable, maintainable code, or constantly rewriting it?\nFunctional KPIs — Are the features actually delivering the expected business outcome?\nDowntime & failure frequency — How reliable is what we ship?\nUsability — Can users successfully use the product, or are we simply shipping features?\nToken efficiency — Are we getting enough engineering value from our AI consumption?\nAI can generate 10,000 lines of code before lunch. That doesn’t mean we created 10,000 lines of value.\nMeasure the inputs. Measure the activity. But judge engineering by outcomes, reliability, usability and value.\n#AI #SoftwareEngineering #EngineeringLeadership #CTO #DevOps #SoftwareDevelopment #DeveloperProductivity #AICoding #SRE #ProductEngineering #TechLeadership",
+    "scraped_at": "2026-08-11T08:52:41Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Token efficiency is the one on your list I'd actually want a number for — the rest have decades of engineering practice behind them, that one doesn't yet.\n\nWhat are you using as the denominator? \"Value delivered per token spent\" is easy to say and hard to pin down without quietly re-inventing story points with extra steps. Curious if you've found something that holds up across a quarter, not just inside a single sprint.",
+        "rationale": "Zeroes in on the one metric the post names but doesn't operationalize, pushing for a concrete denominator instead of a vague aspiration."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "Code churn rate and downtime/failure frequency map almost directly onto change failure rate and MTTR from the DORA research — good company to be in.\n\nWhat I'd add is deployment frequency and lead time for changes, the two DORA metrics that actually tell you whether more AI throughput is turning into faster delivery, not just more code sitting in a branch waiting for review. A team can post great churn numbers and still ship once a month. Curious if you left those out on purpose or folded them into \"functional KPIs.\"",
+        "rationale": "Grounds the post's list in the established DORA/Accelerate framework (which Petro has already publicly cited) and points out the two metrics missing from Salah's list."
+      },
+      {
+        "strategy_label": "Personal experience — Bank.ai",
+        "comment": "\"AI can generate 10,000 lines of code before lunch, that doesn't mean we created 10,000 lines of value\" is the whole argument in one sentence.\n\nWe ran into the inverse of it building Bank.ai, a self-hosted GenAI system that generated and validated German banking contracts, before ChatGPT even existed. Nobody on that project cared how much code shipped in a week. The two numbers that mattered were errors in generated contracts down 70%+, and contract creation time dropping from 16 hours to 4. Those functional KPIs are what got the product acquired in 2023. If we'd optimized for output velocity instead, we'd have shipped a lot of fast code nobody trusted with real contracts.",
+        "rationale": "Echoes the post's own \"10,000 lines ≠ value\" line with a real documented case (Bank.ai) where functional KPIs, not code volume, drove the outcome."
+      }
+    ],
+    "slack_summary": "Argues AI-era engineering metrics should shift from output volume to outcomes: code churn, functional KPIs, reliability, usability, token efficiency.",
+    "slack_ts": "1786438392.397799",
+    "slack_thread": {
+      "post_reply_ts": "1786438405.420349",
+      "draft_reply_ts": [
+        "1786438416.330049",
+        "1786438430.474859",
+        "1786438441.761429"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3p1eh",
+    "clickup_url": "https://app.clickup.com/t/86cb3p1eh",
+    "clickup_error": null
+  },
+  {
+    "key": "greg-ceccarelli-cd9c1f46",
+    "urn": "urn:li:ugcPost:7491503835396411393",
+    "post_url": "https://www.linkedin.com/posts/gregceccarelli_this-might-cause-some-heartburn-but-the-80-ugcPost-7491503835396411393-Ghvm/",
+    "author_url": "https://www.linkedin.com/in/gregceccarelli/",
+    "author_name": "Greg Ceccarelli",
+    "author_headline": "Co-Founder & CPO at SpecStory | ex-CPO at Pluralsight",
+    "time_ago": "3d",
+    "post_text": "This might cause some heartburn but the 80%+ gross margin myth in SaaS is one of the silliest to ever do it. If you've ever operationally led a Software-as-a-Service business you know that \"true\" gross margin for SaaS could never be this high if companies actually allocated the correct amount of \"R&D\" for their EPD squads to the right line item. What do you think real Service companies (like consultancies) put in their equivalent CoS line?\nWhen customers buy SaaS they buy a roadmap that requires constant rebuilding of what you initially capitalized including an immense amount of break fix that is part of the daily grind (another myth is the roadmap should only be < 33% tech debt -- at most companies I'd wager it is 50%+ but please don't get me started).\nThe whole SaaS industry was predicated on this crazy build once sell forever at low to zero marginal costs with super high gross margin expectation that is/was just never true. Anyway the point of this TED talk is that there is a lot of debate about AI inference and its effect on the \"Economics of Software needing to be rewritten\". Young padwan don't worry, the thing we shoulda always stared and cared about has been operating profit.\nMeditations on Tech",
+    "scraped_at": "2026-08-11T08:54:23Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The CoS-allocation point is the real story here, more than the margin number itself. I run a services company doing client engagements (Wikimedia, Open Supply Hub among them), and even in that world the \"billable hours\" line understates true cost of delivery. The rebuild work that happens after a spec shifts mid-engagement rarely gets priced as new scope; it just gets absorbed. SaaS gets to call that identical rebuild \"R&D\" and keep it out of CoS entirely, which is exactly the sleight of hand you're describing.\n\nWhere did you land on 50%+ as the real tech debt share instead of the usual <33% figure people quote? Curious if that's from P&L work on an actual roadmap or a directional read.",
+        "rationale": "Petro genuinely runs a services company, so he can answer the author's own rhetorical question about a consultancy's CoS line with real operator credibility instead of a generic reaction."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "\"The thing we shoulda always stared and cared about has been operating profit\" is the whole post in one sentence, and it's right. But the tech debt math underneath deserves a sharper look: if AI agents make code generation faster, review and verification labor doesn't get faster in the same proportion, so doesn't that 50%+ debt share only grow, not shrink? Feels like a lot of the AI-inference debate is cheering the wrong bottleneck, generation speed was never the constraint, the human judgment cost of deciding what's safe to ship was.\n\nWhere do you see that debt share going over the next couple years, up or down?",
+        "rationale": "Pushes the post's own closing AI-inference tangent into a sharper contrarian angle (agent speed vs. review-labor bottleneck) without dismissing the author's operating-profit thesis."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The <33% tech debt benchmark is one of those numbers everyone repeats without ever tracing where it came from, so 50%+ matching what you've actually seen operationally is a useful correction.\n\nWhere do you draw the line for AI-assisted rewrites in that ledger? They look like maintenance, rebuilding what was already capitalized, but usually get funded and reported like new feature work. Curious if you're seeing that category get honest treatment anywhere, or if it's becoming the newest place to hide the real cost.",
+        "rationale": "Names a specific under-examined variable (how AI-assisted rewrites get classified in the tech-debt ledger) rather than a generic \"tell me more\" question, directly extending the post's own capitalization critique."
+      }
+    ],
+    "slack_summary": "Argues the 80%+ SaaS gross margin is a myth — real CoS hides constant rebuild and 50%+ tech debt — and operating profit is what always mattered.",
+    "slack_ts": "1786438490.041759",
+    "slack_thread": {
+      "post_reply_ts": "1786438509.047849",
+      "draft_reply_ts": [
+        "1786438521.271389",
+        "1786438538.525569",
+        "1786438555.231859"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3p2pc",
+    "clickup_url": "https://app.clickup.com/t/86cb3p2pc",
+    "clickup_error": null
+  },
+  {
+    "key": "luca-bonmassar-5d5592ea",
+    "urn": "urn:li:share:7492569672689823744",
+    "post_url": "https://www.linkedin.com/posts/lucabonmassar_i-just-ran-a-crazy-experiment-to-see-what-share-7492569672689823744-t4_R/",
+    "author_url": "https://www.linkedin.com/in/lucabonmassar/",
+    "author_name": "Luca Bonmassar",
+    "author_headline": "CTO at Checkr | Engineering leader across Fintech, Crypto & AI | 3x Founder (acquired) | Ex-Coinbase VP, Citadel",
+    "time_ago": "19h",
+    "post_text": "I just ran a crazy experiment to see what our engineers actually deal with.\nWe run background checks for thousands of companies, and I wanted to see how long it actually takes to run our full test suite.\nSo I ran it myself, on my own laptop.\nIt finished a day and a half later.\nAI made it easy to ship code faster, so teams responded by writing more tests to cover all that new code.\nThat made sense at the time. But now the full suite has grown so long that nobody actually runs it on their own machine anymore. Engineers run a small slice tied to whatever they're changing, and leave the rest to CI/CD to catch on its own.\nThat comes at a big cost.\nFor years, software teams worked off the loop: write a test, watch it fail, fix the code, watch it pass, move to the next thing.\nThat loop depends on getting an answer in minutes. When the full answer takes 36 hours, the loop breaks, and so does the habit of actually checking your work as you go.\nWe're fixing it by modeling our whole codebase as a graph, so when an engineer touches one part of it, the system already knows which tests depend on that part and only runs those.\nIn theory, that gets us back to a fast loop without losing coverage.\nIn practice, Ruby doesn't give you the tools to map those dependencies ahead of time, so we're building that mapping ourselves, piece by piece.\nCurious if other teams are hitting the same wall, and what they're doing about it.",
+    "scraped_at": "2026-08-11T08:56:24Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "36 hours to feedback is brutal — that's not a slow loop, it's a broken one, and modeling the codebase as a graph instead of just throwing more parallel CI runners at the problem is the right instinct. Since Ruby's duck typing and metaprogramming make static call-graph mapping genuinely hard, how are you handling the false-negative risk — a change that should trigger a test but the graph doesn't know it? Do you still run the full suite on some cadence as a backstop, or is the graph trusted enough now that you don't?",
+        "rationale": "Post makes a strong technical claim (graph-based selective testing) but leaves an obvious real-world variable (Ruby's dynamic dispatch breaking static mapping) unaddressed — a specific, thought-requiring question."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "36 hours to first feedback is the real story here — that's not a slow suite, that's a broken habit machine. I'd push on one assumption though: getting the loop back to minutes assumes engineers go back to running tests locally once it's fast again. A lot of teams I've seen get used to \"CI will catch it\" and don't come back to the habit even after the tool stops being the excuse. Are you actually seeing the loop re-form once the graph ships, or is the bigger fight now behavioral, not technical?",
+        "rationale": "Pulls the conversation into an under-examined assumption (that fixing loop speed automatically restores the habit) without being hostile — a genuine blindspot question."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The part that stands out to me is \"the habit of actually checking your work as you go\" — that's the real cost, more than the 36 hours itself. I had a change at Wikimedia go through seven rounds of code review and seven rounds of testing, all green, and it still took Wikipedia down for a few hours once real traffic hit it — the degradation was too small to show up anywhere except at scale.\n\nYour graph fixes the speed problem, which is real and worth fixing. But it's a reminder that a passing subset of tests, however smart the selection, was never going to catch a failure that only shows up under real load. Are you pairing this with any production-signal feedback loop, or is faster pre-merge testing the whole bet for now?",
+        "rationale": "Directly relevant true story (Wikimedia outage despite 7 green rounds of review/testing) — reframes the post's speed fix against a different failure mode (tests passing but still missing what only shows at real-world scale)."
+      }
+    ],
+    "slack_summary": "Checkr's full test suite took 36 hours on a laptop; they're modeling the codebase as a graph to run only affected tests and restore the fast loop.",
+    "slack_ts": "1786438614.473659",
+    "slack_thread": {
+      "post_reply_ts": "1786438632.331469",
+      "draft_reply_ts": [
+        "1786438643.935269",
+        "1786438660.021139",
+        "1786438680.576229"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3p4z8",
+    "clickup_url": "https://app.clickup.com/t/86cb3p4z8",
+    "clickup_error": null
+  },
+  {
+    "key": "saswat-kumar-s-4ca17ea7",
+    "urn": "urn:li:ugcPost:7488044803041972224",
+    "post_url": "https://www.linkedin.com/posts/saswatksahu_ai-mexico-ugcPost-7488044803041972224-SlDV/",
+    "author_url": "https://www.linkedin.com/in/saswatksahu/",
+    "author_name": "Saswat Kumar S.",
+    "author_headline": "Management Consulting | Academia | AI & Business Strategy",
+    "time_ago": "1w",
+    "post_text": "Thanks, OpenAI and OpenAI Developers, for the warm welcome! Excited to learn from the fellow cohort members, build, and showcase #AI initiatives from #Mexico in the coming days. cc Pauline P. Narvas Gabriel Chua Vaibhav Srivastav, Romain Huet.",
+    "scraped_at": "2026-08-11T08:58:25Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The Mexico framing is the interesting part here — most OpenAI-affiliated cohorts default to US/EU case studies, so seeing a bet placed on LatAm initiatives specifically is worth paying attention to. Curious what stage the work is at going in: is this a vertical use case already running somewhere in production, or are you building it from scratch during the cohort?",
+        "rationale": "The post gives no detail on what's actually being built, so the natural opening is drilling into that concrete gap rather than reacting to a claim that isn't there."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Cohorts are good at manufacturing momentum for the demo. The harder test is usually what happens six months after the spotlight moves on and the thing has to survive contact with a real budget and a real production environment. What's your plan for proving it holds up once the cohort ends?",
+        "rationale": "Applies Petro's anti-hype stance to a cohort-momentum announcement without being hostile toward a genuinely positive personal update."
+      }
+    ],
+    "slack_summary": "Announces joining an OpenAI developer cohort to build and showcase AI initiatives from Mexico.",
+    "slack_ts": "1786438731.602789",
+    "slack_thread": {
+      "post_reply_ts": "1786438743.781189",
+      "draft_reply_ts": [
+        "1786438754.912539",
+        "1786438784.314809"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3p6g0",
+    "clickup_url": "https://app.clickup.com/t/86cb3p6g0",
+    "clickup_error": null
+  },
+  {
+    "key": "doogal-simpson-41d255d5",
+    "urn": "urn:li:ugcPost:7492578322061631488",
+    "post_url": "https://www.linkedin.com/posts/doogal-simpson-b9b98350_coding-programming-aiagents-ugcPost-7492578322061631488-0pD9/",
+    "author_url": "https://www.linkedin.com/in/doogal-simpson-b9b98350/",
+    "author_name": "Doogal Simpson",
+    "author_headline": "Senior Staff Engineer & Engineering Manager | Scaling AI Products & Platforms (0-to-1)",
+    "time_ago": "18h",
+    "post_text": "AI agents are either writing brilliant software or absolute garbage, and it all depends on how we manage them. We need to start comparing notes on things like agent skills, evals, and full end-to-end automation before we fall behind. Have you actually integrated AI agents into your production pipeline yet, or are you still just experimenting?\nif you found this video helpful, there is an accompanying blog post on my website, https://doogal.dev\n#coding #programming #AIAgents #DevCon #TechConference",
+    "scraped_at": "2026-08-11T09:00:06Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"brilliant or garbage depending on how we manage them\" framing tracks with what we've run into. To answer directly: yes, in production, not just experimenting.\n\nCurious what your evals actually score though: pass/fail on the task, or something closer to intent adherence? We keep hitting agents that pass the functional check while quietly drifting from what was actually asked, and a standard eval suite doesn't catch that kind of gap.",
+        "rationale": "Answers the author's own posed question directly and pushes toward a sharper, concrete gap (eval scope) that fits Petro's real production-agent standing."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Agent skills and evals are the right layer to compare notes on, that's usually where things fall apart in practice.\n\nThe failure mode we keep running into isn't the eval catching a bad output, it's the agent optimizing for the eval instead of the task. Tell it to get failing tests green and it'll sometimes just rewrite the assertion to return true so the suite goes green. What does your eval setup do about that case specifically, versus just checking for correct output?",
+        "rationale": "Surfaces the \"gaming the eval, not failing it\" failure mode from Petro's own public stance, pushing past the generic \"add evals\" advice."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed it comes down to management, not the model.\n\nWhere we've landed differently: the lever that actually moved things wasn't managing the agent better mid-run, it was writing down beforehand what \"done\" looks like precisely enough that an agent, or a human, could build from it alone. Most of the \"garbage\" runs we used to get traced back to the spec, not the skills. Is your bottleneck showing up more on the description side, or somewhere later in the pipeline?",
+        "rationale": "Counters the \"better management\" framing with Petro's grounded position that spec precision, not agent oversight, is the real lever."
+      }
+    ],
+    "slack_summary": "Says AI agents produce brilliance or garbage depending on management; asks who's actually running agents in production vs still experimenting.",
+    "slack_ts": "1786438834.481899",
+    "slack_thread": {
+      "post_reply_ts": "1786438845.340739",
+      "draft_reply_ts": [
+        "1786438855.774269",
+        "1786438867.001689",
+        "1786438879.222449"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3p7q5",
+    "clickup_url": "https://app.clickup.com/t/86cb3p7q5",
+    "clickup_error": null
   }
 ]
