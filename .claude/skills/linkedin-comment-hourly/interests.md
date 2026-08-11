@@ -22,3 +22,5 @@ Agent 1 (`linkedin-comment-hourly-gather-feed`) classifies each scraped post aga
 - Personal life events (weddings, births) unless AI/startup context makes them relevant.
 - Non-tech industry news (real estate, hospitality, retail — unless AI/startup adjacent).
 - LinkedIn platform meta-posts ("just hit 10k followers, here's what I learned") unless the substance is AI or startup lessons.
+- Pure marketing / event-promotion posts with no technical or strategic substance — event invites ("join us at X Dev Days", "host an event in your city"), webinar promos, "support us on Product Hunt" CTAs, company-page ads. A product/model launch post is still relevant ONLY when it carries real technical content (capabilities, pricing, benchmarks), not just the invitation.
+- Bare link / article / newsletter re-shares where the post text adds no original argument — one or two lines of "great read, lots of insights" plus a link or embedded newsletter is not a post worth commenting on.

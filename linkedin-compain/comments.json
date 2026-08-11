@@ -9979,13 +9979,17 @@
         "rationale": "Reframes the cause using Petro's own documented stance (deterministic gates in code, not habits/prompts) without contradicting or repeating it verbatim."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "A PM shipped production code with no engineer — the old quality gate was \"only engineers ship\", and AI quietly removed it without bundling rigour.",
+    "slack_ts": "1786430354.199599",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430398.460409",
+      "draft_reply_ts": [
+        "1786430467.306419",
+        "1786430507.860609",
+        "1786430544.407699"
+      ]
     },
-    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
@@ -10022,13 +10026,17 @@
         "rationale": "Mirrors the post's cost-opacity story with Petro's own already-public BankAI/German-banking pre-ChatGPT production GenAI story (source: posted.md, section \"24.03.26 LLM is a 'dark matter'\" — \"we didn't fully know it would work either... hoping more than knowing\")."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "Sapiom announces a $35M Series A ($50M total) to build production infrastructure for AI agents — routing, budgets, and per-action cost visibility.",
+    "slack_ts": "1786430356.359319",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430408.882429",
+      "draft_reply_ts": [
+        "1786430471.528679",
+        "1786430511.767939",
+        "1786430549.432279"
+      ]
     },
-    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
@@ -10065,13 +10073,17 @@
         "rationale": "Grounds a counter-position in Petro's documented pre-ChatGPT production-GenAI background (BankAI) without inventing a specific unlogged anecdote, consistent with Strategy 2's evidence-backed-counter requirement."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "Anthropic introduces Claude Opus 5: near-frontier intelligence at half the price, new coding SOTA, and their most aligned model per internal audit.",
+    "slack_ts": "1786430357.820169",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430414.008139",
+      "draft_reply_ts": [
+        "1786430474.976499",
+        "1786430513.466529",
+        "1786430552.911769"
+      ]
     },
-    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
@@ -10108,13 +10120,17 @@
         "rationale": "Pushes the post's thesis into \"will this scale as models improve,\" a natural next question given Petro's public bet that requirements/behavior specs, not human-held understanding, are what should survive model improvements."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "AI code that works but you don't know why is where problems begin — a codebase you don't understand is a future problem waiting for a deadline.",
+    "slack_ts": "1786430359.178729",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430417.931589",
+      "draft_reply_ts": [
+        "1786430479.401759",
+        "1786430517.051589",
+        "1786430556.410979"
+      ]
     },
-    "slack_error": "Slack connector unavailable in this session (no Slack MCP tools; haiku+sonnet probes returned NONE) — drafts not posted to Slack",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
@@ -10172,13 +10188,17 @@
         "rationale": "Extends the post's own logic toward instructions-as-durable-artifact — echoes Petro's documentation-as-source-of-truth thesis as an angle, not a pitch, since True BDD is never named."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "Managing AI agents differs from managing humans: the LLM never learns from feedback — you adjust the prompts, and trust shifts to your own prompting.",
+    "slack_ts": "1786430360.247979",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430421.934409",
+      "draft_reply_ts": [
+        "1786430482.383539",
+        "1786430519.379259",
+        "1786430558.917329"
+      ]
     },
-    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
@@ -10215,19 +10235,23 @@
         "rationale": "A concrete, answerable follow-up on the one mechanism (the \"someone must be able to explain it\" rule) the post asserts but doesn't unpack — invites the founder to get specific."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "AI-built products nobody can explain = \"cognitive debt\", like GPS eroding direction sense — his rule: someone must be able to explain anything shipped.",
+    "slack_ts": "1786430366.105449",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430431.768989",
+      "draft_reply_ts": [
+        "1786430490.325139",
+        "1786430526.643539",
+        "1786430567.535479"
+      ]
     },
-    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+    "clickup_task_id": "86cb3k6w6",
+    "clickup_url": "https://app.clickup.com/t/86cb3k6w6",
+    "clickup_error": null
   },
   {
     "key": "scott-johnston-7f935e48",
@@ -10258,19 +10282,23 @@
         "rationale": "Petro has cited the SWE-bench 23%→60%+ jump before (posted.md, 15.01.26 entry) — reusing that real data point to hypothesize a demand/capability lag ties his own known claims to Fly's growth curve."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "Fly's new CEO: agent workloads grew ~12x y/y to 66% of top-100-account revenue — $25M raised to bet the company on \"computers for agents\".",
+    "slack_ts": "1786430367.558259",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430440.520049",
+      "draft_reply_ts": [
+        "1786430493.464769",
+        "1786430529.418649",
+        "1786430570.917649"
+      ]
     },
-    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+    "clickup_task_id": "86cb3k6xe",
+    "clickup_url": "https://app.clickup.com/t/86cb3k6xe",
+    "clickup_error": null
   },
   {
     "key": "marc-brooker-ed155844",
@@ -10301,19 +10329,23 @@
         "rationale": "Agrees with the mechanical layer, then raises a different (adjacent-to-True-BDD, unnamed) experience about intent-vs-rule-satisfaction as the harder unsolved problem, echoing Petro's already-public 25.06.26 \"invent the safeguards\" thesis without contradicting or repeating it verbatim."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "AWS open-sources Dogwood — a temporal-logic policy language for agents (order, time, rate: backup-before-delete, $ caps) compiled to SQL on DSQL.",
+    "slack_ts": "1786430369.440379",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430447.241909",
+      "draft_reply_ts": [
+        "1786430496.723619",
+        "1786430532.811619",
+        "1786430575.147279"
+      ]
     },
-    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+    "clickup_task_id": "86cb3k6xz",
+    "clickup_url": "https://app.clickup.com/t/86cb3k6xz",
+    "clickup_error": null
   },
   {
     "key": "ben-dickson-b460419c",
@@ -10344,19 +10376,23 @@
         "rationale": "Post is reasonable but under-examines how teams actually catch this behavior early; pushes into the detection blindspot without hostility."
       }
     ],
-    "slack_summary": null,
-    "slack_ts": null,
+    "slack_summary": "Engineers who think \"AI does everything now\" will be replaced — like calculators ×1000: you still need coding and design skills to stay sharp.",
+    "slack_ts": "1786430370.529149",
     "slack_thread": {
-      "post_reply_ts": null,
-      "draft_reply_ts": []
+      "post_reply_ts": "1786430450.487709",
+      "draft_reply_ts": [
+        "1786430500.105739",
+        "1786430536.395329",
+        "1786430577.345989"
+      ]
     },
-    "slack_error": "Slack Bot connector unavailable in this session (claude -p micro-call probe confirmed server not connected) — drafts not posted",
+    "slack_error": null,
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+    "clickup_task_id": "86cb3k6ye",
+    "clickup_url": "https://app.clickup.com/t/86cb3k6ye",
+    "clickup_error": null
   },
   {
     "key": "peter-walker-8036a153",
