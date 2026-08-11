@@ -599,6 +599,8 @@ const NUM_LINE = /^\d[\d,]*$/;
 // comment), so the cut can NOT rely on the Like/Comment row alone.
 const POST_TAIL_MARKERS = [
   /^\d[\d,]* reactions?$/i,
+  /\band \d[\d,]* others? reacted$/i, // "A and 14,019 others reacted" — new social-proof line, first seen 2026-08-04; opens the footer block so cut everything after it
+  /^Subscribe$/,                // newsletter-embed CTA — the embed's title/author lines follow it
   /^(Load|View|Show) (more|previous|all) (comments?|replies|reactions?)/i,
   /^Most relevant$/i,           // comment-sort header
   /^Add a comment/i,
@@ -609,7 +611,11 @@ const FOOTER_TRAILERS = [
   /^\d[\d,]* comments?$/i,
   /^\d[\d,]* reposts?$/i,
   /^\d[\d,]* comments? · \d[\d,]* reposts?$/i,
-  /(and \d[\d,]* others?)$/i,                     // "A, B and 87 others"
+  /^\d[\d,]* pages?$/i,                           // document/carousel attachment page count
+  /^Carousel \(\d+\)$/i,                          // carousel attachment caption
+  /^[•·]$/,                                       // bare separator dot — since 2026-08-04 it trails the count block and used to block the whole pop cascade
+  /(and \d[\d,]* others?)( reacted)?$/i,          // "A, B and 87 others" / "… and 87 others reacted"
+  /^Subscribe$/,                                  // newsletter-embed CTA
   /^(.+ )?(likes|loves|celebrates|supports) this$/i,
   /^Activate to view larger image/i,
   /^(See|Show) translation$/i,
