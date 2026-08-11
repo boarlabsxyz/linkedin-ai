@@ -9989,9 +9989,9 @@
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+    "clickup_task_id": "86cb3jx6c",
+    "clickup_url": "https://app.clickup.com/t/86cb3jx6c",
+    "clickup_error": null
   },
   {
     "key": "ilan-zerbib-62f89b6b",
@@ -10032,9 +10032,9 @@
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+    "clickup_task_id": "86cb3jx9m",
+    "clickup_url": "https://app.clickup.com/t/86cb3jx9m",
+    "clickup_error": null
   },
   {
     "key": "claude-67f1d70f",
@@ -10075,9 +10075,9 @@
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+    "clickup_task_id": "86cb3jxcy",
+    "clickup_url": "https://app.clickup.com/t/86cb3jxcy",
+    "clickup_error": null
   },
   {
     "key": "emmanuel-excellent-4c6985d0",
@@ -10118,9 +10118,9 @@
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session (no ClickUp MCP tools; haiku+sonnet probes returned NONE) — task not created, deferred to reconciliation"
+    "clickup_task_id": "86cb3jxjp",
+    "clickup_url": "https://app.clickup.com/t/86cb3jxjp",
+    "clickup_error": null
   },
   {
     "key": "krisztian-kuntner-ea74ce75",
@@ -10182,9 +10182,9 @@
     "source": "feed",
     "slack_request_ts": null,
     "slack_request_user": null,
-    "clickup_task_id": null,
-    "clickup_url": null,
-    "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+    "clickup_task_id": "86cb3jxq1",
+    "clickup_url": "https://app.clickup.com/t/86cb3jxq1",
+    "clickup_error": null
   },
   {
     "key": "mark-andrew-yao-649be771",
@@ -10357,5 +10357,240 @@
     "clickup_task_id": null,
     "clickup_url": null,
     "clickup_error": "ClickUp connector unavailable in this session — search-first index unfetchable; deferred to reconciliation"
+  },
+  {
+    "key": "peter-walker-8036a153",
+    "urn": "urn:li:share:7492686637190221824",
+    "post_url": "https://www.linkedin.com/posts/peterjameswalker_a-basic-recap-of-the-ai-story-in-2026-1-share-7492686637190221824-jE2g/",
+    "author_url": "https://www.linkedin.com/in/peterjameswalker/",
+    "author_name": "Peter Walker",
+    "author_headline": "Head of Insights @ OpenRouter | Data Storyteller",
+    "time_ago": "8h",
+    "post_text": "A basic recap of the AI story in 2026:\n1. There has been an explosion of tokens as models have gotten more capable and agents are working autonomously (or nearly so).\n2. As token usage has increased, so has the diversity of AI models. Tokens are flowing to different models depending on task, cost, and efficiency – and the competition is fierce. Open-weight models have driven token costs just off the frontier down to pennies on the dollar.\n3. The vast majority of the high quality open-weight are Chinese, at least for now. American efforts face business model and capital constraints, while Chinese labs benefit from state support and open-source momentum. The geopolitical layer adds additional spice to the decision-making across model usage.\nThis simple story erases many key nuances and distinctions. But I do believe it sums up the current state of play.\nIf you could explore 70 trillion weekly tokens from OpenRouter - what questions would you be asking?\nThanks in advance for the help in my first day 🙏\nDan Moore and 295 others reacted\nDan Moore and 295 others\n82 comments\n82 comments\n•",
+    "scraped_at": "2026-08-11T06:02:24Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 1 — Clarifying question rooted in the topic",
+        "comment": "The \"competition depending on task, cost, and efficiency\" line in point 2 hides a measurement problem I'd want your data to settle first. If you split the 70T weekly tokens by task type and tracked retry/regeneration rate per model, would the cheap open-weight models still look this competitive — or does some of that headline efficiency actually come from retries being cheap enough not to matter?",
+        "rationale": "Turns the post's own \"what questions would you ask\" invitation into a concrete data-splitting question that surfaces a real methodology gap in the token-cost narrative."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Point 1 is the one that would keep me up on the insights team — \"agents working autonomously\" is doing a lot of work in that sentence. I'd want to know what fraction of the 70T weekly tokens is agent retry/self-correction loops rather than a single clean pass to a useful output, the kind of pattern that shows up right before an agent takes an unsupervised action it shouldn't have. Does the data show that \"wasted token\" tax rising with autonomy, or is it still noise at this scale?",
+        "rationale": "Pushes on the ambiguity in \"agents working autonomously,\" extending Petro's established skepticism about unsupervised-agent failure modes into a sharp, non-hostile question."
+      },
+      {
+        "strategy_label": "Strategy 6 — Reference prior-year data or trends",
+        "comment": "Point 3 has the more interesting second-order question buried in it. Eighteen months ago frontier-adjacent quality was still priced in dollars per million tokens; open-weight is now pricing it in cents. My hypothesis is that's less a compute-cost story and more a customer-acquisition one for labs that don't need per-token profit to survive — curious whether the data shows Chinese open-weight pricing declining steadily over time, or spiking downward in loss-leader waves versus the US frontier labs.",
+        "rationale": "Offers an evidence-backed hypothesis about why open-weight pricing collapsed, inviting Peter's actual OpenRouter data to confirm or contradict it — a trend comparison, not an invented anecdote."
+      }
+    ],
+    "slack_summary": "2026 AI recap in 3 points: token explosion, model diversity, Chinese open-weight dominance — asks what to explore in OpenRouter's 70T weekly tokens.",
+    "slack_ts": "1786428172.423319",
+    "slack_thread": {
+      "post_reply_ts": "1786428190.272559",
+      "draft_reply_ts": [
+        "1786428201.079659",
+        "1786428210.962669",
+        "1786428222.065299"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3jvbr",
+    "clickup_url": "https://app.clickup.com/t/86cb3jvbr",
+    "clickup_error": null
+  },
+  {
+    "key": "dirk-bartels-0f5e55f3",
+    "urn": "urn:li:ugcPost:7492582074361634818",
+    "post_url": "https://www.linkedin.com/posts/dirkbartels_a-quick-read-with-tons-of-interesting-insights-ugcPost-7492582074361634818-kduG/",
+    "author_url": "https://www.linkedin.com/in/dirkbartels/",
+    "author_name": "Dirk Bartels",
+    "author_headline": "Expert Partner at Bain & Company",
+    "time_ago": "15h",
+    "post_text": "A quick read with tons of interesting insights IMHO … everything is shifting at a neck-braking pace, and nothing comes for free anymore. Just “doing AI” is not enough and it needs real commitment and real budget to succeed, plus, you need to continue to iterate … what was true and valuable 6 months ago may already be table stakes today ..\nInside Software\nSubscribe\nInside Software 08.09.26: If AI Is Strategic, Show Me the R&D Allocation\nGreg Callahan",
+    "scraped_at": "2026-08-11T06:03:46Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"table stakes in 6 months\" framing is the part that actually stings — I've seen teams budget for AI like it's a one-time line item instead of a moving target. Does the piece put a number on what \"real R&D allocation\" looks like, or is it more about the recurring commitment (re-training, re-tooling, re-hiring) than a fixed percentage?",
+        "rationale": "The post's headline is about R&D allocation but the caption never names a concrete number — this pulls the vague \"real budget\" claim into something measurable."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Budget as the gatekeeper makes sense on paper, but if everyone with money is iterating at the same clip, budget stops being the differentiator pretty fast. What's actually defensible in a world where \"table stakes\" resets every 6 months — raw iteration speed, or something upstream of that, like how fast an org can admit last quarter's setup is already dead?",
+        "rationale": "Pushes past the post's under-examined assumption that budget alone is the gating factor, toward the sharper question of what stays defensible when everyone iterates at the same pace."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Matches what we ran into building a document-generation and validation product for a European bank, pre-ChatGPT — budget was never actually the bottleneck. What was limiting was whether we were willing to call last quarter's approach obsolete and rebuild instead of polishing it. Real budget without that appetite just buys a well-funded standstill.",
+        "rationale": "Grounds the post's \"real commitment\" claim in Petro's own pre-ChatGPT banking-AI build (European bank document-generation/validation product), where the constraint was willingness to rebuild, not budget size."
+      }
+    ],
+    "slack_summary": "Argues 'doing AI' isn't enough anymore — real commitment and real budget are required, since what was valuable 6 months ago is already table stakes.",
+    "slack_ts": "1786428258.860879",
+    "slack_thread": {
+      "post_reply_ts": "1786428271.308349",
+      "draft_reply_ts": [
+        "1786428282.330889",
+        "1786428292.211429",
+        "1786428301.607139"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3jvv4",
+    "clickup_url": "https://app.clickup.com/t/86cb3jvv4",
+    "clickup_error": null
+  },
+  {
+    "key": "mark-cohen-924c6b6e",
+    "urn": "urn:li:share:7492077872812027904",
+    "post_url": "https://www.linkedin.com/posts/markcohen_productstrategy-saas-ai-share-7492077872812027904-1LbG/",
+    "author_url": "https://www.linkedin.com/in/markcohen/",
+    "author_name": "Mark Cohen",
+    "author_headline": "VP Product | Enterprise AI, SaaS Platforms & Technology Leadership | Former CTO Domain Group | Ex Fairfax Media",
+    "time_ago": "8h",
+    "post_text": "By now even the skeptics reluctantly accept that it's indisputable that vibecoding / AI-assisted coding makes it much faster to ship software. But it's equally true that the speed does not make the value last.  I'd argue it makes it easier to chase the wrong goal because \"it's so easy to progress\"\nI've watched a team put a new feature into production in under a week, and the demo looked great. Months later that feature is still being used, but not because of how fast it shipped. It's stood the test of time because the data behind it was clean and the workflow sits inside a tool people already open every day.\nSpeed got the feature built. Understanding the customer, their data and workflow are what kept it in use.\nIf you are moving fast right now, ask one question before you call it a win: what is hard to copy in what you just built? That is your moat. Everything else is a demo.\n#ProductStrategy #SaaS #AI #Moats #vibecoding",
+    "scraped_at": "2026-08-11T06:05:06Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The reframe from \"did it ship fast\" to \"what's hard to copy\" is the right test — most teams never even ask it once the demo lands well.\n\nOne thing I'd want to pull apart in your example: was the moat really the clean data and workflow fit, or was some of it just switching cost — the team already living in that tool, so leaving costs more than staying? Those two look identical from the outside, but only one of them survives a competitor rebuilding the same feature in a week with AI.",
+        "rationale": "Distinguishes a real defensible moat from mere switching-cost, sharpening the author's own framework without disputing it."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Speed telling you nothing about staying power matches something I watched up close. I gave the same automation task to an experienced dev and, separately, to my son, still in university. The dev kept pulling AI's code back into his own structure — slower, but he could tell you why every line was there. My son just kept iterating with Claude until it worked, barely touching the code himself — noticeably faster, but he couldn't have explained why it worked.\n\nBoth got a working result. But only one of those two would survive someone else needing to change it six months later, and speed didn't tell me which. That's basically your moat question in miniature — the demo doesn't reveal it, only what happens after does.",
+        "rationale": "Real anecdote (Petro's son vs. an experienced dev on the same task, from Petro's own 08.01.26 public post) mirrors the post's exact \"speed built it, understanding kept it\" argument."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Agreed that speed alone is a demo, not a business. I'd push on \"clean data + workflow fit\" as the moat itself though — a well-funded competitor can clean data and embed into a daily tool too, given enough runway.\n\nWhat's actually hard to copy is usually the accumulated judgment behind why the data looks the way it does and what the workflow tolerates — the stuff that never made it into a ticket. Code is the cheap part to replicate now; AI can regenerate a version of it in an afternoon. What can't be regenerated that fast is the understanding that decided what NOT to build.",
+        "rationale": "Extends the author's \"moat\" thesis toward Petro's own contrarian view (code is a disposable artifact, judgment/documentation is what endures) without pitching True BDD."
+      }
+    ],
+    "slack_summary": "AI coding makes shipping fast, but speed doesn't make value last — the moat is clean data and workflow fit, so ask what's hard to copy in what you built.",
+    "slack_ts": "1786428333.489359",
+    "slack_thread": {
+      "post_reply_ts": "1786428346.971909",
+      "draft_reply_ts": [
+        "1786428356.978449",
+        "1786428370.796949",
+        "1786428383.161049"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3jw8u",
+    "clickup_url": "https://app.clickup.com/t/86cb3jw8u",
+    "clickup_error": null
+  },
+  {
+    "key": "github-5dc2fc1b",
+    "urn": "urn:li:ugcPost:7492659040788058114",
+    "post_url": "https://www.linkedin.com/posts/dev-days-2026-ugcPost-7492659040788058114-1Ocg/",
+    "author_url": "https://www.linkedin.com/company/github/posts/",
+    "author_name": "GitHub",
+    "author_headline": "",
+    "time_ago": "10h",
+    "post_text": "The GitHub Copilot app brings your AI-powered development workflow into one place, helping you turn ideas into code and keep your projects moving.\nBring your community together to explore what you can build with it at GitHub Copilot Dev Days.\nJoin or sign up to host an event in your city 👇\ngh.io/dev-days-2026\nDev Days 2026\n·\n6 pages",
+    "scraped_at": "2026-08-11T06:06:28Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Consolidating into \"one place\" is the promise every dev tool makes right before it becomes another tab to check. Genuinely curious what the app actually collapses for a typical day: does it replace IDE round-trips for PR review and issue triage too, or is it mainly a discovery surface that still hands you back to the terminal and editor for the real work?",
+        "rationale": "The post's headline claim (\"one place\") begs a concrete question about what workflow it actually replaces vs. still delegates elsewhere."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Running this as city-hosted events instead of a straight product launch says the friction isn't feature discovery anymore. Most devs already know Copilot exists. What I'd want covered at these Dev Days is the actual failure mode: teams that adopted it and then quietly reverted because review overhead ate the speed gains. Is that in the curriculum, or is it still mostly a feature tour?",
+        "rationale": "Pushes past the marketing framing to the actual adoption risk (review overhead eating the speed gain) that a community-led event format implies is still unsolved."
+      },
+      {
+        "strategy_label": "Reference prior-year data or trends",
+        "comment": "Worth flagging: the ground under these events is moving fast. SWE-bench resolution went from roughly 23% to 60%+ in about a year, so a workshop deck written this spring risks underselling what the tool can do by the time an event actually happens in someone's city this fall. Do you version the Dev Days content per quarter, or is the material evergreen enough to hold?",
+        "rationale": "Ties to a stat Petro already cites publicly (SWE-bench 23%→60%+ YoY) and questions whether fast-moving-target content stays fresh across an event-scheduling lag."
+      }
+    ],
+    "slack_summary": "GitHub pitches the Copilot app as one place for AI-powered development and invites people to join or host Copilot Dev Days events in their city.",
+    "slack_ts": "1786428411.017859",
+    "slack_thread": {
+      "post_reply_ts": "1786428421.837049",
+      "draft_reply_ts": [
+        "1786428430.945899",
+        "1786428439.775159",
+        "1786428456.957559"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3jwhc",
+    "clickup_url": "https://app.clickup.com/t/86cb3jwhc",
+    "clickup_error": null
+  },
+  {
+    "key": "cristina-cordova-33277b2e",
+    "urn": "urn:li:share:7489009432182525952",
+    "post_url": "https://www.linkedin.com/posts/cristinajcordova_ive-never-seen-startups-spend-so-much-time-share-7489009432182525952-jftg/",
+    "author_url": "https://www.linkedin.com/in/cristinajcordova/",
+    "author_name": "Cristina Cordova",
+    "author_headline": "Chief Operating Officer at Linear",
+    "time_ago": "1w",
+    "post_text": "I've never seen startups spend so much time looking sideways.\nOne AI company builds forward deployed engineering and then everyone decides they need an FDE team too. One company pays a certain number for talent, and suddenly that's the market, whether or not companies can afford it. One company juices a launch with influencer tweets that read like the same intern wrote all of them, and suddenly that's the playbook.\nThose choices came out of constraints you can't see from the outside. Forward deployed engineering works when your contracts are seven figures and integration takes 6+ months. It's unlikely a fit it you're selling a product at $20/seat. The comp number works when one hire moves your model quality. Otherwise, it can be a pretty fast way to run out of money.\nFounder mode (the version I believe in) is about refusing to outsource your judgment. Being able to say \"I've thought about it, we're not doing that,\" without needing a competitor's decision to drive your own.\nWhy spend years and your best engineers building a worse version of someone else's company?\nRun yours.\nMarie-Michèle Caron and 496 others reacted\nMarie-Michèle Caron and 496 others\n44 comments\n44 comments\n•",
+    "scraped_at": "2026-08-11T06:07:41Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The line about constraints you can't see from outside is really the whole post. We ran into exactly that with BankAI: a self-hosted GenAI system for German banks, built pre-ChatGPT, running on contracts worth maybe $30K while ChatGPT already existed with billions behind it. Every instinct says copy the direction of the bigger player. We didn't. We stayed narrow: one language, one document type, validated against banking rules nobody outside that domain cared about. The narrow build beat the general-purpose one in its lane for years, purely because our constraints never matched theirs.\n\nWhat I didn't get until after the project was sold and shut down: I couldn't fully articulate why it worked while I was still inside it. Constraints are invisible from the outside, like you say, but they're half-invisible from the inside too, until something forces you to reconstruct the logic afterward.",
+        "rationale": "Cristina's \"constraints you can't see from outside\" thesis is almost exactly the lesson from Petro's BankAI story, so it lands as a real echo rather than a generic anecdote."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "The FDE example is the sharpest one here: a GTM motion built for 6+ month, seven-figure integration cycles getting bolted onto companies selling at $20/seat. What I'm curious about is the moment you actually catch it happening. Is there a concrete signal, cost per deal, sales cycle length, something measurable, that tells you \"this fits someone else's constraint, not ours\" before the team's already sunk a quarter into building it? Or is it mostly something you only reconstruct after the fact, once the number stops working?",
+        "rationale": "Names the one thing the post leaves open — how a founder detects the mismatch in real time rather than in hindsight — inviting a concrete, thoughtful reply from a COO who clearly thinks in operational terms."
+      },
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "Agreed on the FDE point especially, that's the cleanest example of a GTM motion escaping its own economics. I'd add one wrinkle though: most sideways-looking isn't really weak conviction, it's missing primary data. Founders copy because building your own signal, real cost per deal, real churn, real unit economics, takes months they don't have yet, and the industry narrative fills that gap faster than their own numbers can.\n\nSo the fix isn't only \"refuse to outsource your judgment,\" it's shortening the loop to get your own numbers before the narrative locks in. Where do you think that line sits for a founder who's two months in and genuinely doesn't have the data yet?",
+        "rationale": "Adds a real counter-nuance (copying is often a data-poverty problem, not a conviction problem) instead of just agreeing, which keeps the comment substantive without contradicting anything Petro has said publicly."
+      }
+    ],
+    "slack_summary": "Linear's COO on startups copying each other — FDE teams, comp, launch playbooks — arguing founder mode means refusing to outsource your judgment.",
+    "slack_ts": "1786428487.619269",
+    "slack_thread": {
+      "post_reply_ts": "1786428502.969559",
+      "draft_reply_ts": [
+        "1786428514.739879",
+        "1786428526.336019",
+        "1786428538.658709"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb3jwt6",
+    "clickup_url": "https://app.clickup.com/t/86cb3jwt6",
+    "clickup_error": null
   }
 ]
