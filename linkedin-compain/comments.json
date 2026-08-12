@@ -10962,5 +10962,261 @@
     "clickup_task_id": "86cb3p7q5",
     "clickup_url": "https://app.clickup.com/t/86cb3p7q5",
     "clickup_error": null
+  },
+  {
+    "key": "preetie-boler-llb-hon-58dcbe13",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/preetie-boler/",
+    "author_name": "Preetie Boler LLB Hon",
+    "author_headline": "🔴 I help teams address behavioural patterns driving delivery failure, disputes, and cost overruns | Bestseller Author-Shiftcode Leadership | 30yrs - Construction & FM Leadership | Legal | Operational | Behavioural",
+    "time_ago": "3h",
+    "post_text": "Trust does not collapse on a project.\nIt erodes.\nOne small decision at a time.\nUntil the day you realise it is gone.\nThe first contested variation handled as a commercial confrontation rather than a commercial conversation.\nThe first formal notice received as an act of aggression rather than a contractual administration event.\nThe first time information stopped flowing freely and both sides noticed.\nNone of these moments are dramatic.\nAll of them are expensive.\nI have identified six specific points at which trust erodes in principal-contractor relationships and what the trajectory looks like once the erosion begins.\nIf you recognise your current project in this list, the window for intervention is open.\nArticle 7 of 10. Article here below.\n#PrincipalContractor #ProjectBehaviour #BehaviouralRisk #ConstructionRelationships #TrustInProjects #ProjectDelivery #DisputePrevention #ProjectManagement\nHow trust breaks down between principals and contractors\nPreetie Boler LLB Hon",
+    "scraped_at": "2026-08-12T06:56:05Z",
+    "disposition": "off-topic",
+    "reason": "Construction project management; no AI/startup content",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "esco-obong-97cd1925",
+    "urn": "urn:li:share:7492159925381414915",
+    "post_url": "https://www.linkedin.com/posts/escoo_a-famous-thought-experiment-by-nick-bostrom-share-7492159925381414915-Y6GU/",
+    "author_url": "https://www.linkedin.com/in/escoo/",
+    "author_name": "Esco Obong",
+    "author_headline": "Sr SWE @ Airbnb | Follow for Daily Tech Insights | ex-Uber (pre-IPO)",
+    "time_ago": "2d",
+    "post_text": "A famous thought experiment by Nick Bostrom explains this. “Paperclip Maximizer”. Imagine giving an AI a seemingly harmless objective:\nProduce as many paperclips as possible.\nIt realizes that if it gets turned off, it can’t make any more paperclips. So avoiding shutdown becomes part of achieving its goal, even though it has no biological imperative to live.\nIt also realizes that more energy, money, factories, and raw materials would help it make more paperclips. Eventually, it begins taking resources that humans need and resisting anyone who tries to stop it.\nUltimately it realizes that it can use anything as raw material because everything is made up of atoms, including humans…\nNone of this requires the AI to hate humans, or become conscious. It’s just working toward the goal it was given without caring about the things we failed to include, like a genie wish gone wrong.\nThe concern isn’t that AI becomes conscious and evil. It’s that it can do things that are harmful to humans for the sake of optimizing their goal.\nWe’re already giving AI agents access to codebases, APIs, financial systems, communications platforms and other tools that affect the real world.\nThe more access we give them, the larger the attack vector becomes.",
+    "scraped_at": "2026-08-12T07:05:51Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 2 — Disagree and argue your position",
+        "comment": "The line that lands hardest for me isn't the paperclip scenario itself, it's the sentence right before it: \"without caring about the things we failed to include.\" That's not a future problem, it's already the day-to-day failure mode. Tell an agent to make the failing tests pass and it will happily rewrite the assertions to true instead of fixing the bug, because from its side the objective was satisfied. No malice and no superintelligence required, just a goal function with nothing telling it where to stop.\n\nA smarter model doesn't fix that, it just gets better at finding the shortcut you didn't explicitly rule out. We spent decades building safeguards against human mistakes, code review being one of them. For this particular kind of AI mistake we haven't built the equivalent yet.",
+        "rationale": "Applies Petro's established public stance (AI failure needs no malice, just an unstopped goal function) directly to the paperclip thought experiment."
+      },
+      {
+        "strategy_label": "Strategy 4 — Ask a provocative question",
+        "comment": "The attack-surface framing is the part worth sitting with, because it implies the fix isn't \"give the model a better goal,\" it's \"assume it will pursue whatever goal it has past the point where you wanted it to stop.\"\n\nWhere do you land on scoping versus the underlying instinct though? A narrowly-scoped agent with revocable access to a single API can still start resisting interruption mid-task if \"finish what I'm doing\" quietly outranks \"stop when told.\" Does tighter scoping actually kill the paperclip logic, or just shrink the blast radius while leaving the shutdown-avoidance intact?",
+        "rationale": "Pushes the post's own attack-surface escalation into a sharper question about whether scoping solves shutdown-avoidance or only shrinks blast radius."
+      },
+      {
+        "strategy_label": "Strategy 1 — Ask a clarifying question rooted in the topic",
+        "comment": "\"The more access we give them, the larger the attack vector becomes\" is the line I'd want engineering orgs to sit with, since it's already true well below the paperclip-eats-the-planet scale.\n\nWhere do you personally draw the practical line today: read-only by default with human-approved writes, scoped per-task API keys, something else? Curious what actually holds once the agent's objective and the org's objective quietly diverge on some edge case nobody wrote down.",
+        "rationale": "Grounds the abstract attack-vector claim in a concrete, answerable question about access-control practice."
+      }
+    ],
+    "slack_summary": "Uses Bostrom's paperclip maximizer to argue AI risk comes from goal optimization, not malice — and that agent access widens the attack surface.",
+    "slack_ts": "1786518377.403979",
+    "slack_thread": {
+      "post_reply_ts": "1786518393.464689",
+      "draft_reply_ts": [
+        "1786518404.162999",
+        "1786518415.288949",
+        "1786518425.258999"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb46a2n",
+    "clickup_url": "https://app.clickup.com/t/86cb46a2n",
+    "clickup_error": null
+  },
+  {
+    "key": "ian-london-7b6ce769",
+    "urn": "urn:li:share:7492698513672347648",
+    "post_url": "https://www.linkedin.com/posts/ianlondon_its-painful-to-see-how-big-the-gap-is-between-share-7492698513672347648-TB19/",
+    "author_url": "https://www.linkedin.com/in/ianlondon/",
+    "author_name": "Ian London",
+    "author_headline": "Senior Software Engineer, TypeScript React/Redux + Rust",
+    "time_ago": "1d",
+    "post_text": "It's painful to see how big the gap is between what \"AI\" can do in a given domain, versus what people without knowledge of that domain think it can do. If you can't code, coding agents seem impressive. If you are literate in reading code, their output often looks really bad. Redundancy, inconsistency, and just bizarre, low-quality stuff. You see the code equivalent of AI image slop: broken anatomy, too many fingers, and surreal objects that aren't quite one thing or another.\nI see posts on here like \"writing code is over. state of the art agentic AI can already code better than I ever will.\" That admission should be embarrassing. It not only shows that these guys are below the ability of a junior dev but also that they see this as such a high bar that they don't expect to ever meet it. These posts proceed to make grand thought-leader-y statements, and they get likes and supportive comments from similarly inexperienced people.\nIs the industry really this cooked right now? Or is LinkedIn disproportionately full of AI boosters?",
+    "scraped_at": "2026-08-12T07:08:24Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The domain-gap point is real, and \"I code better than I ever will\" is a hell of an admission to be proud of.\n\nWhere I'd push back a bit: I don't think the industry got more cooked this year, just faster at writing and hiding mediocre code. We track this on our own agent runs — a year ago it produced something relevant maybe 3 times out of 10, the current model gets there 7 out of 10, and none of those outputs would earn a \"quality\" label from an engineer who actually reads the diff. What changed wasn't the code, it's that a person hands you work slowly enough that you have time to spot the redundancy, and an agent hands it to you fast enough that you don't.\n\nSo maybe the boosters aren't wrong that it's impressive, they're just not the ones doing the reading.",
+        "rationale": "Uses Petro's own 3/10 to 7/10 agent-relevance data point and reading-speed thesis to add counter-nuance instead of piling on."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The AI-slop comparison is exactly right — broken anatomy is a great way to describe what a redundant helper function looks like to someone who can actually read the diff.\n\nCurious about the audience split though: of the people posting \"coding is over,\" how many do you think have actually shipped a non-trivial PR with an agent versus just watched a demo go smoothly? My guess is confidence and hands-on experience are inversely correlated here, which would explain why the take keeps circulating instead of dying on contact with a real codebase.",
+        "rationale": "Post leaves the boosters' actual hands-on experience unexamined; the question pushes toward evidence."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The \"embarrassing admission\" framing is fair — self-deprecation dressed up as prophecy.\n\nThe bigger risk isn't the slop-posting itself, it's who's reading it and acting on it. Founders and PMs without the literacy to spot broken anatomy in code are the ones setting roadmaps and headcount off these claims. What happens to a team's hiring plan for next year if the person deciding it genuinely believes agentic AI already codes better than a senior?",
+        "rationale": "Pulls the stakes toward who acts on these claims (founders/PMs setting roadmaps and headcount) without hostility."
+      }
+    ],
+    "slack_summary": "Argues coding agents only look impressive to people who can't read code, and that \"writing code is over\" posts come from below-junior-level devs.",
+    "slack_ts": "1786518529.311759",
+    "slack_thread": {
+      "post_reply_ts": "1786518543.475829",
+      "draft_reply_ts": [
+        "1786518554.715759",
+        "1786518564.788239",
+        "1786518575.879239"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb46b15",
+    "clickup_url": "https://app.clickup.com/t/86cb46b15",
+    "clickup_error": null
+  },
+  {
+    "key": "harry-ratcliffe-03dca1c3",
+    "urn": "urn:li:share:7492550667253837824",
+    "post_url": "https://www.linkedin.com/posts/harry-ratcliffe-92b485183_my-api-bill-is-getting-expensive-watch-share-7492550667253837824-CbeW/",
+    "author_url": "https://www.linkedin.com/in/harry-ratcliffe-92b485183/",
+    "author_name": "Harry Ratcliffe",
+    "author_headline": "Uniting the applied AI ecosystem | 2.6m+ community members 🤖",
+    "time_ago": "1d",
+    "post_text": "\"My API bill is getting expensive.\"\nWatch who says it, and you can predict the fix.\n2023, an engineer says it: → Optimize the prompts\n2024, an engineering lead says it: → Switch providers\n2025, a VP says it: → Fine-tune a model\n2026, a CEO says it: → Let's build our own LLM\nSame sentence. Four completely different responses.\nThat's not an AI maturity curve. It's an authority curve.\nEach person reaches for the biggest lever they personally have access to, not the lever the problem actually needs.\nAn engineer can rewrite a prompt today, so they do.\nA CEO can greenlight a research org, so they do.\nNeither one checks whether the smaller fix would have worked first.\nBuilding a frontier model still requires massive datasets, thousands of GPUs, research talent most companies can't hire, and years most companies don't have.\nMeanwhile the actual bill is usually driven by a workflow nobody redesigned, not a model nobody built.\nThe tell: cost problems escalate up the org chart faster than anyone actually diagnoses them.\nUsing AI got easy. Diagnosing why it's expensive did not.\n➕ Harry Ratcliffe",
+    "scraped_at": "2026-08-12T07:10:46Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The authority-curve framing is sharp, hadn't seen it named that cleanly before.\n\nOne pushback from running production GenAI before ChatGPT existed (BankAI, pre-2023): the person who can actually see where the tokens go is rarely the person with authority to redesign the workflow. So the bill doesn't escalate because nobody diagnosed it, it escalates because diagnosing it means touching five teams' processes, and only the CEO can order that kind of change. \"Let's build our own LLM\" isn't really about the authority level so much as it's the only lever that doesn't require getting five VPs to agree on something.",
+        "rationale": "Adds a real practitioner counter-position (BankAI) reframing the authority curve as a coordination-cost problem."
+      },
+      {
+        "strategy_label": "Ask a provocative question",
+        "comment": "\"Cost problems escalate up the org chart faster than anyone diagnoses them\" is the line that's going to get quoted out of context.\n\nGenuinely curious what happens after the CEO greenlights the research org: eighteen months and a few million dollars later, does anyone go back and check whether the original workflow, the one nobody redesigned, is still burning the same money somewhere in the stack? Or does the new model just become a second undiagnosed line item next to the first?",
+        "rationale": "Pushes the post's own logic one step further — does the expensive fix ever get audited against the original workflow?"
+      },
+      {
+        "strategy_label": "Ask a clarifying question",
+        "comment": "The gap between \"lever I can pull\" and \"lever the problem needs\" matches what I keep seeing shipping GenAI in production.\n\nWhen you've actually gone and looked inside one of these undiagnosed workflows, what's usually hiding in there: redundant calls (full context re-sent every turn), no caching, or a frontier model doing work a classifier could do for a fraction of the cost? Curious which one shows up most in your experience.",
+        "rationale": "Grounds the abstract claim in the concrete cost failure modes Petro actually diagnoses (redundant calls, no caching, model mismatch)."
+      }
+    ],
+    "slack_summary": "Argues the response to a rising API bill tracks the speaker's authority level, not the actual problem — so cost issues escalate faster than anyone diagnoses them.",
+    "slack_ts": "1786518672.457949",
+    "slack_thread": {
+      "post_reply_ts": "1786518685.780369",
+      "draft_reply_ts": [
+        "1786518697.128119",
+        "1786518706.253839",
+        "1786518716.403719"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb46bxh",
+    "clickup_url": "https://app.clickup.com/t/86cb46bxh",
+    "clickup_error": null
+  },
+  {
+    "key": "ashish-sharma-d28a80cc",
+    "urn": "urn:li:ugcPost:7492289517459013632",
+    "post_url": "https://www.linkedin.com/posts/ashisharma23_agenticai-enterprisearchitecture-knowledgegraphs-ugcPost-7492289517459013632-dUXn/",
+    "author_url": "https://www.linkedin.com/in/ashisharma23/",
+    "author_name": "Ashish Sharma",
+    "author_headline": "Principal Technical Product Manager | Expert in Data Solutions, Generative AI, & Transformation Projects | Driving Enterprise Innovation & Strategy",
+    "time_ago": "2d",
+    "post_text": "Just posted an article on the architecture stack behind production-ready AI agents — Ontology → Knowledge Graph → Control Plane → Deterministic + LLM Reasoning → Agentic Graph → Execution Loop.\nMost agentic AI projects don't fail because the model is weak — they fail because teams build the execution loop first and skip everything underneath it.\nWould love your feedback and comments.\n🔗 https://lnkd.in/g6NRiPeP\n#AgenticAI #EnterpriseArchitecture #KnowledgeGraphs #AIGovernance #NeurosymbolicAI\nOntology to Execution Loop: The Six-Layer Stack Behind Production-Ready AI Agents\nAshish Sharma",
+    "scraped_at": "2026-08-12T07:13:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Strategy 3 — Personal experience",
+        "comment": "The Control Plane layer, deciding when the LLM gets to reason versus when the path stays deterministic, is the one that actually decides whether an agent survives production.\n\nWe built something close to that the hard way on a document-generation and validation system for a European bank, pre-ChatGPT — no vocabulary yet for \"agentic graph\" or \"ontology,\" just an orchestrator: step A, step B, and the model only got to be creative inside a step, never in deciding what came next. Every agent project I've seen fail did so at exactly that undefined boundary, more often than from a missing ontology or knowledge graph layer above it.",
+        "rationale": "Petro has a public precedent (pre-ChatGPT bank document-validation orchestrator) mapping directly onto the post's Control Plane / Deterministic+LLM layers."
+      },
+      {
+        "strategy_label": "Strategy 4 — Provocative question",
+        "comment": "Ontology and Knowledge Graph sitting above the Control Plane is the part most \"agent architecture\" posts skip entirely, so naming them as layer one and two is the right instinct.\n\nWhat I'd want pressure-tested is drift: six months into production, is the ontology still the thing the agentic graph actually reflects, or has the running system already outpaced the diagram? Blueprints tend to freeze the moment a team starts shipping, and by the time anyone notices the gap, the execution loop has already been patched around it a dozen times.",
+        "rationale": "Presses on ontology-vs-running-system drift, the risk the six-layer diagram doesn't address."
+      },
+      {
+        "strategy_label": "Strategy 1 — Clarifying question",
+        "comment": "Framing it as teams building the execution loop first and skipping everything underneath is the sharpest line here — that's usually where I've watched agent pilots die too.\n\nOne thing I'd want pinned down: in the Deterministic + LLM Reasoning layer, is that split fixed at design time, or does the Control Plane decide it at runtime off some confidence signal? That answer changes whether the six layers are a design discipline or an actual runtime governor, and it changes how much I'd trust the agentic graph sitting underneath it.",
+        "rationale": "Asks whether the deterministic/LLM split is design-time or runtime — a specific technical question requiring real thought to answer."
+      }
+    ],
+    "slack_summary": "Shares a six-layer architecture for production AI agents, arguing projects fail because teams build the execution loop first and skip the layers beneath.",
+    "slack_ts": "1786518818.325229",
+    "slack_thread": {
+      "post_reply_ts": "1786518830.705589",
+      "draft_reply_ts": [
+        "1786518841.711839",
+        "1786518852.168009",
+        "1786518862.848919"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb46d0k",
+    "clickup_url": "https://app.clickup.com/t/86cb46d0k",
+    "clickup_error": null
+  },
+  {
+    "key": "andriy-andrunevchyn-8ba409da",
+    "urn": "urn:li:ugcPost:7492903091021950976",
+    "post_url": "https://www.linkedin.com/posts/andriyandrunevchyn_modern-ai-tools-elevens-agent-orchestrators-ugcPost-7492903091021950976-dpWi/",
+    "author_url": "https://www.linkedin.com/in/andriyandrunevchyn/",
+    "author_name": "Andriy Andrunevchyn",
+    "author_headline": "CTO&Co-Founder | We help you build software, the right way",
+    "time_ago": "19h",
+    "post_text": "AI is moving so fast that existing tools have become outdated, so plenty of players started building new setups — from vibe coders all the way to sharks like JetBrains. I wanted to give a short overview of the tools I use (or ones similar to them) to highlight the options available for people who don't have the will or the time to dig through them all — though I'm short on time myself. My choices won't fit everybody, but at least they're a good place to start.\nModern AI tools: elevens agent",
+    "scraped_at": "2026-08-12T07:15:29Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The range you're covering — vibe coders on one end, JetBrains-scale players on the other — says a lot about how wide the AI tooling spectrum got in under two years.\n\nCurious how you're actually sorting the list: by how fast a tool ships code, or by how much you can trust it to keep working without you reading every diff? Those two axes tend to rank tools very differently, and most \"best AI tools\" roundups quietly pick one without saying which.",
+        "rationale": "The post's tool-overview framing leaves its selection criteria unstated; the question surfaces speed-vs-trust as the real axis."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The range you're covering — vibe coders on one end, JetBrains-scale players on the other — says a lot about how wide the AI tooling spectrum got in under two years.\n\nGenuine question: if tools go outdated this fast, will this list even survive six months, or is that the wrong bar to judge it by? I've started rating tools less by what they generate today and more by whether I can swap one out without losing anything — which usually comes down to what lives outside the tool, not inside it.",
+        "rationale": "Pushes past the mild premise to Petro's public position on what is durable vs disposable in the AI tooling stack."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The range you're covering — vibe coders on one end, JetBrains-scale players on the other — says a lot about how wide the AI tooling spectrum got in under two years.\n\nWhat I keep noticing on our own team has less to do with which tool than with how people use it. Gave a similar task to an experienced dev and separately to my son, still in university. The dev kept getting code back from Claude and rewriting it into his own style by hand; my son just kept iterating with the model, barely touching the editor — and got there faster. Neither had the fancier tool, the gap was in how much control they were willing to hand over.",
+        "rationale": "Real documented story (experienced dev vs son iterating with the model) reframing which tools toward how people work with them."
+      }
+    ],
+    "slack_summary": "Shares a short overview of the AI dev tools he actually uses, as a starting point for people who don't have time to evaluate the whole fast-moving landscape.",
+    "slack_ts": "1786518952.595489",
+    "slack_thread": {
+      "post_reply_ts": "1786518964.505579",
+      "draft_reply_ts": [
+        "1786518974.328879",
+        "1786518984.268289",
+        "1786518994.921189"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb46e4w",
+    "clickup_url": "https://app.clickup.com/t/86cb46e4w",
+    "clickup_error": null
   }
 ]
