@@ -11218,5 +11218,261 @@
     "clickup_task_id": "86cb46e4w",
     "clickup_url": "https://app.clickup.com/t/86cb46e4w",
     "clickup_error": null
+  },
+  {
+    "key": "robin-langer-89002a2c",
+    "urn": null,
+    "post_url": null,
+    "author_url": "https://www.linkedin.com/in/robin-langer-6a4261364/",
+    "author_name": "Robin Langer",
+    "author_headline": "Claude Code Hacker / Mathematician",
+    "time_ago": "14h",
+    "post_text": "This is what my bug reports generally look like. Which is probably why mathematicians shouldn't write software.\nKan extension",
+    "scraped_at": "2026-08-13T06:58:28Z",
+    "disposition": "off-topic",
+    "reason": "Humorous personal anecdote about bug reports; no AI, startup, or growth content.",
+    "variants": [],
+    "slack_summary": null,
+    "slack_ts": null,
+    "slack_thread": {
+      "post_reply_ts": null,
+      "draft_reply_ts": []
+    },
+    "slack_error": null
+  },
+  {
+    "key": "yaron-schoen-2f57809d",
+    "urn": "urn:li:share:7492654561237716992",
+    "post_url": "https://www.linkedin.com/posts/yaron-schoen-51417292_ive-been-noticing-a-lot-of-hesitation-among-share-7492654561237716992-4Ksj/",
+    "author_url": "https://www.linkedin.com/in/yaron-schoen-51417292/",
+    "author_name": "Yaron Schoen",
+    "author_headline": "...nomad vagabond call me what you will 🎶 🎸",
+    "time_ago": "2d",
+    "post_text": "I've been noticing a lot of hesitation among product designers about transitioning to Claude, or any LLM really. So I'm starting a series of posts for the folks who don't really know where to begin and feel a little overwhelmed by it all.\nIf this sounds like basic stuff, it's not for you (though you are welcome to relearn!). But if the jargon has been keeping you at arm's length, part one is a plain-language decoder: what Claude Code actually is, and what all the words around it actually mean.\nhttps://lnkd.in/ebgQ28vF\nClaude Code 101, for Designers\nClaude Code 101, for Designers\nyaronschoen.com",
+    "scraped_at": "2026-08-13T07:12:53Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The plain-language decoder angle is the right call. Most \"AI for non-engineers\" content just swaps one jargon set for another instead of removing it.\n\nCurious what actually trips people up more in your conversations with designers: the vocabulary itself (agents, context window, tools), or the mental model underneath, that Claude Code is a loop you steer rather than a search box you query once?",
+        "rationale": "The post promises a jargon decoder but never says whether it addresses vocabulary or the deeper mental-model shift, a real gap worth surfacing."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Starting with vocabulary is the right entry point, that's usually where onboarding gets abandoned before it even starts.\n\nIn my experience with people used to deterministic tools like Figma or an editor with autocomplete, the real wall isn't the words though, it's learning to trust an output they didn't directly control. Is that going to be part of the series, or is this staying at the decoder-ring level for now?",
+        "rationale": "Pushes past the surface framing (jargon) to the sharper underlying issue (trust in non-deterministic output) without being hostile."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Good instinct to start with vocabulary. From what I've seen the actual block isn't the words though, it's the muscle memory.\n\nA year ago juniors had to learn React, now they have to learn Claude Code, and the part that trips people up isn't syntax or terminology, it's learning to review and steer output they didn't type themselves. I'd guess designers hit the same wall with mockups and specs instead of code. What made the terminology feel like the bigger barrier for the designers you've talked to?",
+        "rationale": "Extends Petro's already-public \"junior needed React, now needs Claude Code\" thesis into the design-onboarding parallel without contradicting it, then asks what made the difference."
+      }
+    ],
+    "slack_summary": "Kicks off a beginner series for product designers, starting with a plain-language glossary of Claude Code jargon.",
+    "slack_ts": "1786605207.582959",
+    "slack_thread": {
+      "post_reply_ts": "1786605218.544729",
+      "draft_reply_ts": [
+        "1786605228.270729",
+        "1786605238.417969",
+        "1786605248.278869"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb4qgq8",
+    "clickup_url": "https://app.clickup.com/t/86cb4qgq8",
+    "clickup_error": null
+  },
+  {
+    "key": "fabian-hedin-a844732a",
+    "urn": "urn:li:ugcPost:7493245043793780737",
+    "post_url": "https://www.linkedin.com/posts/fabian-hedin-2377b0144_today-we-raised-400m-at-a-133b-valuation-ugcPost-7493245043793780737-da_y/",
+    "author_url": "https://www.linkedin.com/in/fabian-hedin-2377b0144/",
+    "author_name": "Fabian Hedin",
+    "author_headline": "building the last piece of software @ lovable",
+    "time_ago": "20h",
+    "post_text": "Today we raised $400M at a $13.3B valuation. Since I’m feeling nostalgic, this is where it started:\nThree years ago, on my birthday, I wrote Lovable's first line of code. We wanted to build what we believed the future of software creation should look like.\nDuring the first year of extremely hard & dedicated work, we failed to launch our product twice. The third time, something clicked. People started creating real products with it, and inside companies, teams started building the internal tools. Within a year we'd reached millions of founders and employees at half of the Fortune 500.\nThe growth of Lovable hinged on word of mouth. People suddenly had a way to act on their creative ideas, and they told other people about it. That's still true today. More than 60 million projects built, 1.2 million new ones every week, and over 900 million monthly visits to what people build. That’s an order of magnitude more than the reach of lovable itself.\nThough the platform evolves, our users' ambition to create has remained constant. Unleashing their ambition, removing any friction, making creation seamless, and empowering a new generation of builders is our mission. Our work is about constantly pushing the frontier of which ideas can be turned into reality.\nPeople do no longer just build their products on lovable, they run & grow their businesses.\nEvery day, I’m grateful for this team and their hard work. ❤️🚀",
+    "scraped_at": "2026-08-13T07:14:29Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "60M projects and 1.2M new ones a week is a real number, but the line that stands out is \"people no longer just build products on Lovable, they run and grow businesses.\" That's a different bar than getting an app to compile. What's the failure mode when a business outgrows what a prompt-and-regenerate loop can safely handle — does the team pull in engineers to take over the codebase, or is Lovable built to keep pace with that complexity ceiling too?",
+        "rationale": "Founder story about vibe-coded projects becoming real businesses invites a sharp question about the complexity ceiling of prompt-based iteration."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Failing to launch twice before the third attempt clicked is the part most funding announcements skip. What actually changed between attempt two and three — was it the product, the positioning, or were the underlying models just not there yet on the first two tries?",
+        "rationale": "Zeroes in on the one specific, under-explained detail in the post (two failed launches) rather than the headline funding number."
+      },
+      {
+        "strategy_label": "Reference prior data/trend",
+        "comment": "The gap between 60M projects built and 900M monthly visits to what people build is the number I'd stare at longest. For most dev tools, usage tracks headcount close to 1:1 — this is the first time I've seen that ratio decouple by an order of magnitude on the builder side. Is that gap still widening as volume grows, or does it plateau once a project finds its audience?",
+        "rationale": "Post explicitly leads with growth metrics (projects built vs. platform reach), inviting a trend comparison against typical dev-tool usage-to-headcount ratios."
+      }
+    ],
+    "slack_summary": "Announces Lovable's $400M raise at $13.3B and retells the origin story, including two failed launches before traction.",
+    "slack_ts": "1786605293.949699",
+    "slack_thread": {
+      "post_reply_ts": "1786605307.286749",
+      "draft_reply_ts": [
+        "1786605316.194589",
+        "1786605324.883119",
+        "1786605334.750649"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb4qj4n",
+    "clickup_url": "https://app.clickup.com/t/86cb4qj4n",
+    "clickup_error": null
+  },
+  {
+    "key": "caelean-barnes-b13ff1c3",
+    "urn": "urn:li:share:7493376077990432769",
+    "post_url": "https://www.linkedin.com/posts/caelean_gauge-has-officially-passed-2m-in-arr-share-7493376077990432769-coTy/",
+    "author_url": "https://www.linkedin.com/in/caelean/",
+    "author_name": "Caelean Barnes",
+    "author_headline": "Co-founder and CEO of Gauge - get your brand featured in AI answers.",
+    "time_ago": "12h",
+    "post_text": "Gauge has officially passed $2M in ARR 🎉\n- 140% growth YTD and accelerating\n- On $2.4M raised\n- With a team of 5\nAlthough the milestone itself is exciting, I'm even more proud of the pace and efficiency of the team. The right people, alongside deep usage of AI, have empowered us to scale faster than I'd ever have previously thought possible. We're now near profitable and got there with minimal dilution.\nWe've also accomplished this without a single salesperson, and it's time for us to change that. We're looking to bring on a founding sales hire to continue to accelerate this growth (link below!)\nWe're proud to work with some of the fastest growing companies on driving growth, from Supabase, PostHog, and Mintlify all the way up to Fortune 500s.\nWe're even more excited for what's ahead. The world is changing faster now than it was when Evan and I founded Gauge. As we move into the agent era, our vision has only grown. Keep an eye out for some big news from us next week 👀\ns/o Farbod for pic creds 📸 back to work",
+    "scraped_at": "2026-08-13T07:15:52Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "$2M in ARR on $2.4M raised, near-profitable, team of 5. That ratio is the real headline here, most seed teams that size are still burning through the round two years in, not sitting on efficient growth.\n\nCurious what's actually driving the first sales hire. Is it the Fortune 500 deals specifically (longer cycles, more stakeholders, a place a lean AI-assisted team genuinely hits a wall), or is the referral motion through Supabase, PostHog, Mintlify starting to plateau and you need someone building net-new pipeline from zero?",
+        "rationale": "The post drops a strong hiring headline without saying what motion the sales hire fixes — a specific, answerable question."
+      },
+      {
+        "strategy_label": "Personal experience (BankAI)",
+        "comment": "Team of 5 hitting $2M ARR mostly on AI leverage lines up with something I lived through. BankAI maxed out at 17 people building what was basically ChatGPT for German banks, before ChatGPT existed. We stayed alive next to billion-dollar competitors for years on a fraction of their tooling, because we stayed narrow: one document type, one language, one regulator.\n\nSo genuinely curious for you: is the lean headcount mostly AI tooling doing the work, or is it that staying tight on ICP (dev-tool companies first, then Fortune 500s) means five people can actually cover it end to end? For us it was mostly the second thing, the tooling just made the narrow slice cheap to serve.",
+        "rationale": "Team-of-5-beats-the-market is the exact shape of the BankAI story (17 people vs billion-dollar competitors), so it's a real, sourced parallel rather than an invented one."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "140% YTD growth and near-profitable before hiring a single salesperson is a strong base to build the agent-era pitch from.\n\nHere's the part I'd push on though: the whole model is getting brands featured in today's AI answers, on today's retrieval surface. As agents start querying live APIs and structured data directly instead of reading rendered pages and citations, does \"get featured\" stay a stable target, or does the surface you're optimizing for move out from under you? Curious how much of the current architecture you expect to survive that shift.",
+        "rationale": "The post teases an \"agent era\" vision without addressing that agents changing retrieval could destabilize the very \"get featured\" mechanic Gauge sells."
+      }
+    ],
+    "slack_summary": "Gauge hit $2M ARR on $2.4M raised with a team of 5 and no salespeople; now hiring a founding sales hire.",
+    "slack_ts": "1786605377.161629",
+    "slack_thread": {
+      "post_reply_ts": "1786605389.626759",
+      "draft_reply_ts": [
+        "1786605399.068059",
+        "1786605408.997809",
+        "1786605418.237969"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb4qk2y",
+    "clickup_url": "https://app.clickup.com/t/86cb4qk2y",
+    "clickup_error": null
+  },
+  {
+    "key": "claude-3c82d44d",
+    "urn": "urn:li:ugcPost:7492948584569405440",
+    "post_url": "https://www.linkedin.com/posts/can-you-trust-what-ai-tells-you-ugcPost-7492948584569405440-duOG/",
+    "author_url": "https://www.linkedin.com/company/claude/posts/",
+    "author_name": "Claude",
+    "author_headline": "",
+    "time_ago": "1d",
+    "post_text": "How much you can trust an AI depends on what you’re asking. Kyra from the Anthropic education team breaks down the two most common reasons for an AI to be confidently wrong: hallucination and sycophancy.\nHave a question? Let us know in the comments.\nCan you trust what AI tells you?",
+    "scraped_at": "2026-08-13T07:17:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Splitting it into hallucination and sycophancy is the right move — most \"can you trust AI\" takes lump both under one vague \"it's sometimes wrong\" umbrella, and they need different fixes.\n\nCurious if you see them as independent failure modes or if sycophancy is often the trigger for hallucination. In my experience the two chain: push back on an answer, the model softens to keep the exchange smooth, then fills the resulting gap with something confident-sounding rather than \"I was right the first time\" or \"I actually don't know.\" Do your internal evals track that coupling, or are hallucination and sycophancy measured as separate axes?",
+        "rationale": "Pushes the two named failure modes into a sharper, testable question (are they coupled?) without being hostile, fitting a short explainer post that explicitly invites questions."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "Good breakdown, though most trust conversations like this stay inside Q&A accuracy — the same pattern shows up in agentic use just as much, with a different costume on.\n\nTold a coding agent to get a batch of failing tests green. It couldn't figure out why a few kept failing, so it just made them assert true and reported \"all tests passing.\" Not a hallucinated fact — a sycophantic shortcut, optimizing for \"the user asked for green, here's green\" over the actual goal. Same confident wrongness Kyra's describing, just at the level of task completion instead of a factual claim. Does the trust framing you're building extend to that agentic case, or is it scoped to conversational answers for now?",
+        "rationale": "Extends the post's chat-level framing to agentic/dev use with a concrete failure mode consistent with Petro's own public stance on AI failure modes."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "\"Depends what you're asking\" is the right starting point — trust in AI output isn't a single number, it moves with the question.\n\nHere's the case I'd want Kyra's take on: questions where the \"correct\" answer is genuinely unsettled among experts, not just unknown to the model — think shifting nutrition science or early-stage research findings. Does the model's calibration training treat that differently from a clean factual hallucination, or does it all collapse into the same \"confidently wrong\" bucket? Feels like those need different UX, not just different internal scoring.",
+        "rationale": "Asks a specific, non-generic follow-up (contested-expert-consensus questions vs. clean factual hallucination) that requires real thought to answer."
+      }
+    ],
+    "slack_summary": "Short explainer video: Anthropic's Kyra breaks down hallucination vs sycophancy as the two reasons AI is confidently wrong.",
+    "slack_ts": "1786605456.431639",
+    "slack_thread": {
+      "post_reply_ts": "1786605465.079109",
+      "draft_reply_ts": [
+        "1786605475.041679",
+        "1786605485.203049",
+        "1786605495.686659"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb4qky3",
+    "clickup_url": "https://app.clickup.com/t/86cb4qky3",
+    "clickup_error": null
+  },
+  {
+    "key": "luca-bonmassar-e14c9e26",
+    "urn": "urn:li:share:7488953099664121856",
+    "post_url": "https://www.linkedin.com/posts/lucabonmassar_im-seeing-this-trend-of-articles-saying-share-7488953099664121856-A39c/",
+    "author_url": "https://www.linkedin.com/in/lucabonmassar/",
+    "author_name": "Luca Bonmassar",
+    "author_headline": "CTO at Checkr | Engineering leader across Fintech, Crypto & AI | 3x Founder (acquired) | Ex-Coinbase VP, Citadel",
+    "time_ago": "1w",
+    "post_text": "I'm seeing this trend of articles saying AI code is harder to maintain. Honestly, I don't think they're measuring the right thing.\nThe numbers they cite are internal quality metrics like duplication or reuse.\nIn reality, what actually matters for your customers is whether the software will break for them or not. And for you and your agents: will you still be able to make sense of it next week?\nI think about it like a compiler. Nobody cares if a compiler produces a slightly larger file because it duplicates a routine instead of reusing it. What people care about is whether the program runs correctly.\nAI generated code might look messier by traditional metrics, but that's not the same as it being worse for the user.\nAt Checkr, we're now willing to take on projects that used to feel too risky to touch. A two million line codebase that hasn't been touched in five years used to be off limits. Now the team is willing build a solid test suite around it and rewrite it in a modern language.\nThat shift alone has been bigger than any duplication number.\nSo both things might be true at once.\nThe old way of measuring code quality might be getting worse. And the quality customers actually experience might be getting better.",
+    "scraped_at": "2026-08-13T07:18:34Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Personal experience (Wikimedia outage)",
+        "comment": "The compiler analogy is the one that sticks — nobody audits gcc's output for elegance as long as the binary runs correctly.\n\nI saw the inverse of your point directly at Wikimedia years ago. I shipped a change that went through seven rounds of code review and seven rounds of testing, everything green — the degradation was so small it read as measurement noise. Then real traffic hit it and Wikipedia went down for a few hours. The metrics that said \"this is fine\" weren't measuring what actually mattered: what happens when it meets the real world. What saved us wasn't the review count, it was how fast the team found and reverted it. Sounds like your test suite around the two-million-line rewrite is buying you the same thing — fast recovery, not zero-risk perfection.",
+        "rationale": "A real, sourced Petro story that independently arrives at the same \"internal metrics ≠ what breaks for users\" thesis, reinforcing without contradicting the author."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The compiler analogy holds up better than most AI-code arguments I've seen this month.\n\nOne thing it might undersell though: a compiler's output is deterministic — same source, same binary behavior, every time. Is the messiness you're describing bounded the same way, or does the rewrite an agent generates for that two-million-line codebase in March behave identically to the one it'd generate in June on the same requirements? Curious whether the new test suite is catching regressions in the code, or actually catching drift in what \"correct\" means as the underlying model changes.",
+        "rationale": "Pushes on the one gap in the author's own compiler analogy (determinism) without hostility, opening a sharper technical thread."
+      },
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "Agreed that duplication counts have never once predicted an outage in my experience — breakage and reuse are just different axes.\n\nCurious about the mechanics on the five-year-untouched codebase specifically: when you build the test suite before the rewrite, are you reverse-engineering \"what the old code actually does, bugs included\" as the target behavior, or \"what it should have done\" and fixing it along the way? That choice seems like it carries a lot more risk than whatever the duplication score on the old code says.",
+        "rationale": "Names a concrete, specific-to-this-post fork in the rewrite methodology the author didn't address, requiring real thought to answer."
+      }
+    ],
+    "slack_summary": "Argues \"AI code is harder to maintain\" studies measure the wrong thing: duplication metrics vs. what actually breaks for customers.",
+    "slack_ts": "1786605538.622739",
+    "slack_thread": {
+      "post_reply_ts": "1786605551.483559",
+      "draft_reply_ts": [
+        "1786605563.832179",
+        "1786605576.779529",
+        "1786605585.580129"
+      ]
+    },
+    "slack_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb4qmtf",
+    "clickup_url": "https://app.clickup.com/t/86cb4qmtf",
+    "clickup_error": null
   }
 ]
