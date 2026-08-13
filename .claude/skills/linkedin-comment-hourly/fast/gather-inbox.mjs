@@ -16,8 +16,9 @@
 //
 // Identity: normalized URL pre-fetch (origin + path, no query, no trailing
 // slash), post key (<author-slug>-<body-hash8> from keys.mjs) post-fetch.
-// Dedup against comments.json is DISPOSITION-AWARE: drafted-with-task → dup;
-// drafted-without-task → clickup-only row; off-topic → reprocess row (Peter
+// Dedup against comments.json is DISPOSITION-AWARE: drafted with BOTH
+// ClickUp legs delivered (task + one comment id per variant) → dup; drafted
+// missing either leg → clickup-only row; off-topic → reprocess row (Peter
 // explicitly curated the link — the automated filter's verdict is overridden);
 // already-commented → skipped.
 //
@@ -537,19 +538,26 @@ async function main() {
     }
     if (entry.disposition === 'drafted') {
       // Completion semantics (codex solution round 3): a drafted entry is
-      // DONE only when both delivery legs left evidence — a task id AND a
-      // Slack outcome (ts or recorded error). A kill between the ledger
-      // write and the Slack posts leaves a drafted entry with neither/one;
-      // treating that as complete would silently drop the Slack delivery.
+      // DONE only when both delivery legs left evidence — the TASK and the
+      // DRAFT COMMENTS on it. A kill between the ledger write and the
+      // ClickUp calls leaves a drafted entry with neither/one; treating that
+      // as complete would silently drop the delivery.
+      // (Until 2026-08-13 the second leg was the Slack thread; the legacy
+      // slack_* fields on old entries are history and are not consulted.)
       const needsClickup = !entry.clickup_task_id;
-      // Slack is complete only when the THREAD reached the post-text reply
-      // (`slack_thread.post_reply_ts`) — the parent `slack_ts` alone means a
-      // kill landed mid-thread and the drafts/post link never arrived
-      // (codex round 4). A recorded slack_error also terminates the leg.
-      const slackDone = !!(entry.slack_ts && entry.slack_thread && entry.slack_thread.post_reply_ts)
-        || !!entry.slack_error;
-      const needsSlack = !slackDone;
-      if (!needsClickup && !needsSlack) {
+      // The comment leg is complete when every stored variant has a
+      // journaled comment id — a partial count means a kill landed mid-loop
+      // and the remaining drafts never arrived. Nothing to deliver (no
+      // variants: a draft-agent failure) counts as done, and a recorded
+      // clickup_comment_error also terminates the leg.
+      const variantCount = Array.isArray(entry.variants) ? entry.variants.length : 0;
+      const deliveredComments = Array.isArray(entry.clickup_comment_ids)
+        ? entry.clickup_comment_ids.length : 0;
+      const commentsDone = variantCount === 0
+        || deliveredComments >= variantCount
+        || !!entry.clickup_comment_error;
+      const needsComments = !commentsDone;
+      if (!needsClickup && !needsComments) {
         counters.accountedDupes++;
         resolvedLedgerKeys.set(k, 'dup');
         return true;
@@ -564,7 +572,7 @@ async function main() {
         rows.set(k, {
           key: k,
           mode: 'clickup-only',
-          needSlack: needsSlack,
+          needComments: needsComments,
           matchedKey: k,
           author: res.author,
           authorUrl: res.authorUrl,
@@ -578,7 +586,7 @@ async function main() {
         return true;
       }
       job.mode = 'clickup-only';
-      job.needSlack = needsSlack;
+      job.needComments = needsComments;
       job.needsFetch = false;
       job.entry = entry;
       resolvedLedgerKeys.set(k, job);
@@ -666,7 +674,7 @@ async function main() {
     rows.set(entry.key, {
       key: entry.key,
       mode: 'clickup-only',
-      needSlack: !!job.needSlack,
+      needComments: !!job.needComments,
       matchedKey: entry.key,
       author: entry.author_name,
       authorUrl: entry.author_url,
@@ -824,10 +832,10 @@ async function main() {
     kv.push(`POST_${i}_REQUESTS=${JSON.stringify(r.requests)}`);
     kv.push(`POST_${i}_MODE=${r.mode}`);
     kv.push(`POST_${i}_MATCHED_KEY=${r.matchedKey || '-'}`);
-    // clickup-only rows: 1 when the entry has no Slack evidence (a kill
-    // landed between the ledger write and the Slack posts) — the drafting
-    // session must re-deliver the Slack leg from the entry's stored variants.
-    kv.push(`POST_${i}_NEED_SLACK=${r.mode === 'clickup-only' ? (r.needSlack ? 1 : 0) : 1}`);
+    // clickup-only rows: 1 when the entry's stored variants are not all
+    // journaled as ClickUp comment ids (a kill landed mid-delivery) — the
+    // drafting session must re-deliver the comment leg from those variants.
+    kv.push(`POST_${i}_NEED_COMMENTS=${r.mode === 'clickup-only' ? (r.needComments ? 1 : 0) : 1}`);
   });
   const contract = kv.join('\n') + '\n';
   const tmp = path.join(OUT_DIR, 'contract.env.tmp');

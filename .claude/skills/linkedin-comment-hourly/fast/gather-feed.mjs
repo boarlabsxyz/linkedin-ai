@@ -160,10 +160,10 @@ function filteredEntry(c, disposition, reason) {
     disposition,
     reason,
     variants: [],
-    slack_summary: null,
-    slack_ts: null,
-    slack_thread: { post_reply_ts: null, draft_reply_ts: [] },
-    slack_error: null,
+    // No delivery fields: a filtered entry is seen-set only — it never gets
+    // a ClickUp task or draft comments. (Filtered entries written before
+    // 2026-08-13 also carry slack_summary/slack_ts/slack_thread/slack_error
+    // from the retired Slack-thread delivery; nothing reads them.)
   };
 }
 

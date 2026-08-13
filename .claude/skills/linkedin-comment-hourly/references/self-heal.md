@@ -30,8 +30,8 @@ silently loses Peter's links. Inbox context is provided for diagnosis only
   to main; you are fixing the fast path for the NEXT fire. Two triggers:
   selector drift (exit 30 — drafts came via the legacy agent fallback), or
   `PERMALINKS_MISSING>0` in an otherwise-accepted contract (the fast gather
-  itself drafted, but ≥1 accepted post shipped to Slack without its post
-  link — an error since 2026-07-21; the caller passes the count as
+  itself drafted, but ≥1 accepted post's ClickUp ticket shipped without its
+  post link — an error since 2026-07-21; the caller passes the count as
   `PERMALINKS_MISSING`, and the attempt log + `GATHER_OUT/manifest.json`
   name the affected keys and the captured `no-copy-item (menu: …)` /
   `no-capture` detail). There is NO rerun this fire: every change you make

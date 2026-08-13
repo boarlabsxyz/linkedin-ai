@@ -25,21 +25,25 @@
 #      FALLBACK first (drafts must ship), then ONE post-landing heal session
 #      AFTER the data is safely merged — its fix is unverified until the
 #      next fire and lands on a review PR. An accepted contract with
-#      PERMALINKS_MISSING>0 (a draft would ship without its post link) is
+#      PERMALINKS_MISSING>0 (a ticket would ship without its post link) is
 #      ALSO an error: the fire goes ⚠️ and gets the same post-landing heal.
 #   3. DRAFTING: invoke the linkedin-comment-hourly skill via `claude -p`
 #      pointing at the accepted contract (or the legacy gather on fallback).
 #      Skipped entirely when the gather found 0 draftable posts.
 #   4. COMMIT: unhealed fires keep today's single auto-merged PR. Healed
-#      fires SPLIT: the linkedin-compain/ data commit auto-merges (Slack
-#      already received the drafts — the cross-fire seen-set must reach main
-#      or the next fire re-drafts the same posts), while the heal's code
+#      fires SPLIT: the linkedin-compain/ data commit auto-merges (the
+#      ClickUp tickets already exist — the cross-fire seen-set must reach
+#      main or the next fire re-drafts the same posts), while the heal's code
 #      changes + incident doc go to a separate `heal/…` PR left OPEN for
 #      review (same review-gate philosophy as the weekly pipeline).
 #   5. BOOKENDS: a 🟢 run-started message goes to Slack C0BF606R4N7 up front,
-#      and a single EXIT trap posts the ✅/⚠️/❌ run-finished summary (drafted/
-#      filtered counts, duration, PR URLs, heal status) on every exit path —
-#      best-effort pinned-haiku micro-calls that never fail the fire.
+#      and a single EXIT trap posts the ✅/⚠️/❌ run-finished summary on every
+#      exit path — a multi-line block listing every ticket this fire produced
+#      (author + ClickUp URL) plus counts, duration, PR URLs and heal status.
+#      Best-effort pinned-haiku micro-calls that never fail the fire.
+#      These two are the ONLY Slack messages the pipeline sends: since
+#      2026-08-13 the drafts ship as ClickUp task comments, not as one
+#      Slack thread per post.
 #
 # Test hooks (all default to production values): FAST_DIR, MAX_ATTEMPTS,
 # MAX_HEALS, GATHER_DEADLINE_SECS, GATHER_WATCHDOG_SECS, HEAL_TIMEOUT_SECS,
@@ -129,6 +133,7 @@ PR_URL=""                    # data PR (auto-merged)
 CODE_PR_URL=""               # heal PR (left open)
 DRAFTED_BASELINE=""          # drafted-entry count at branch checkout
 DRAFTED_DELTA=""             # frozen from the feature branch before merge.sh
+CLICKUP_BASELINE_FILE=""     # keys that already had a task at checkout
 FINISH_POSTED=0
 HEAL_MODE="in-loop"
 FALLBACK_USED=0              # exit 30 → legacy gather (fast path unverified)
@@ -140,6 +145,74 @@ INBOX_POSTS_N=""             # inbox contract POSTS_FOUND
 INBOX_SUMMARY=""             # "inbox: X msgs / Y links / …" for the bookend
 INBOX_NOTE=""                # one-line inbox failure/delivery note (⚠️)
 INBOX_OUT=""                 # inbox stage out-dir
+
+# The tickets this fire produced, as Slack-ready "• <author> — <url>" lines,
+# plus the counts, in PL_TICKET_* globals (never $(…) — see lib.sh's Strategy
+# hook note). The delta is against CLICKUP_BASELINE_FILE, so a reconcile-only
+# fire reports its tickets too.
+#
+# SANITIZATION IS LOAD-BEARING. Author names are scraped LinkedIn content and
+# this text gets inlined into pl_post_slack's haiku prompt, so each name goes
+# through a POSITIVE whitelist — letters (any script: names are often
+# Cyrillic/accented), digits, space and a few benign punctuation marks;
+# everything else (control chars, markup, mentions, backslashes, newlines)
+# becomes a space — then whitespace-collapse and a 40-char cap. A whitelist,
+# not a blacklist: a blacklist has to enumerate every dangerous character,
+# and `\uXXXX` is not Oniguruma syntax anyway (jq's regex engine read
+# "[\\u0000-\\u001f]" as the range 0-u and ate most of the alphabet).
+# Every URL must match the exact ClickUp task-URL shape or the row is
+# dropped — a malformed URL is never inlined.
+collect_ticket_lines() {
+    PL_TICKET_LINES=""
+    PL_TICKET_TOTAL=0
+    PL_TICKET_CREATED=0
+    PL_TICKET_ADOPTED=0
+    [ -n "$CLICKUP_BASELINE_FILE" ] && [ -f "$CLICKUP_BASELINE_FILE" ] || return 0
+    [ -f linkedin-compain/comments.json ] || return 0
+
+    local rows
+    # $apos carries the ASCII apostrophe (O'Brien): a literal ' cannot appear
+    # inside the single-quoted jq program — it would close the quote.
+    rows=$(jq -r --slurpfile base "$CLICKUP_BASELINE_FILE" --arg apos "'" '
+        (($base[0] // []) | map({(.): true}) | add // {}) as $seen
+        | [ .[]
+            | select((.clickup_url // null) != null)
+            | select($seen[(.key // "")] | not)
+            | select(.clickup_url | test("^https://app\\.clickup\\.com/t/[A-Za-z0-9]+$"))
+            | { url: .clickup_url,
+                # NOT `// null`: jq treats false as empty, so `false // null`
+                # is null and every created ticket would count as neither.
+                # An absent key already yields null.
+                adopted: .clickup_adopted,
+                name: ((.author_name // "")
+                        | gsub("[^\\p{L}\\p{N} .,’&()+\\-" + $apos + "]"; " ")
+                        | gsub("\\s+"; " ")
+                        | sub("^ +"; "") | sub(" +$"; "")
+                        | .[0:40] | sub(" +$"; "")
+                        | if . == "" then "(unnamed)" else . end) } ]
+        | "TOTAL=\(length)",
+          "CREATED=\([.[] | select(.adopted == false)] | length)",
+          "ADOPTED=\([.[] | select(.adopted == true)] | length)",
+          (.[0:10][] | "LINE=• \(.name) — \(.url)"),
+          (if length > 10 then "LINE=• …and \(length - 10) more" else empty end)
+      ' linkedin-compain/comments.json 2>/dev/null) || return 0
+
+    local ln
+    while IFS= read -r ln; do
+        case "$ln" in
+            TOTAL=*)   PL_TICKET_TOTAL="${ln#TOTAL=}";;
+            CREATED=*) PL_TICKET_CREATED="${ln#CREATED=}";;
+            ADOPTED=*) PL_TICKET_ADOPTED="${ln#ADOPTED=}";;
+            LINE=*)    PL_TICKET_LINES="${PL_TICKET_LINES}${ln#LINE=}
+";;
+        esac
+    done <<EOF
+$rows
+EOF
+    case "$PL_TICKET_TOTAL" in (*[!0-9]*|'') PL_TICKET_TOTAL=0;; esac
+    PL_TICKET_LINES="${PL_TICKET_LINES%$'\n'}"   # drop the trailing newline
+    return 0
+}
 
 # Single EXIT trap composes + posts the finish message on EVERY exit path
 # (explicit exit N, set -e aborts, and — via the TERM/INT traps — signals).
@@ -164,32 +237,27 @@ on_exit() {
     fi
     case "$drafted" in (''|-*) drafted="?";; esac   # unknown / counter regressed
 
-    local summary="${drafted} drafted, ${POSTS_FILTERED_N:-?} filtered"
-    [ -n "$INBOX_SUMMARY" ] && summary="${summary}; ${INBOX_SUMMARY}"
-    [ -n "$INBOX_NOTE" ] && summary="${summary}; inbox: $(pl_oneline "$INBOX_NOTE")"
-    [ -n "$PR_URL" ] && summary="${summary} — PR: ${PR_URL}"
-    if [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
-        summary="${summary}; self-heal ×${PL_HEAL_COUNT} (${HEAL_MODE}${HEAL_RESULT:+, ${HEAL_RESULT}})${CODE_PR_URL:+ — heal PR awaiting review: ${CODE_PR_URL}}"
-    elif [ "${FALLBACK_USED:-0}" = 1 ]; then
-        summary="${summary}; fast gather NOT healed (${HEAL_RESULT:-skipped})"
-    elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
-        summary="${summary}; permalink failure NOT healed (${HEAL_RESULT:-skipped})"
-    fi
+    collect_ticket_lines
 
-    local msg
+    # Headline: emoji + what happened. Detail lines follow, each omitted when
+    # it carries nothing. Every status the old single-line ladder encoded
+    # still has a home — as the headline suffix, or as a trailing note.
+    local emoji headline note=""
     if [ "$ec" -eq 0 ]; then
+        emoji="✅"; headline="run finished in ${dur}"
         if [ "${POSTS_FOUND_N:-}" = "0" ] && [ "${INBOX_POSTS_N:-0}" = "0" ]; then
-            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} — no draftable posts ($(pl_oneline "${GATHER_END_REASON_TXT:-unknown}")); ${summary}"
+            emoji="⚠️"; headline="run finished in ${dur} — no draftable posts"
+            note="Reason: $(pl_oneline "${GATHER_END_REASON_TXT:-unknown}")"
         elif [ "${FALLBACK_USED:-0}" = 1 ]; then
-            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (selector drift — legacy fallback shipped the drafts) — ${summary}"
+            emoji="⚠️"; headline="run finished in ${dur} — selector drift"
+            note="Legacy fallback shipped the tickets; fast gather NOT healed (${HEAL_RESULT:-skipped})"
         elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
-            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (permalink capture FAILED on ${PERMALINKS_MISSING_N} accepted post(s) — drafts shipped) — ${summary}"
+            emoji="⚠️"; headline="run finished in ${dur} — permalink capture FAILED"
+            note="${PERMALINKS_MISSING_N} accepted post(s) have no link; tickets shipped; NOT healed (${HEAL_RESULT:-skipped})"
         elif [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
-            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (self-healed) — ${summary}"
+            emoji="⚠️"; headline="run finished in ${dur} — self-healed"
         elif [ -n "$INBOX_NOTE" ]; then
-            msg="⚠️ linkedin-comment-hourly: run finished in ${dur} (inbox issue — see summary) — ${summary}"
-        else
-            msg="✅ linkedin-comment-hourly: run finished in ${dur} — ${summary}"
+            emoji="⚠️"; headline="run finished in ${dur} — inbox issue"
         fi
     else
         local why="${RUN_ERRORS:-failed during ${RUN_STAGE}}"
@@ -198,12 +266,39 @@ on_exit() {
             (130) why="interrupted (SIGINT) during ${RUN_STAGE}${RUN_ERRORS:+ — ${RUN_ERRORS}}";;
         esac
         if { [ "$drafted" != "?" ] && [ "$drafted" -gt 0 ]; } || [ -n "$PR_URL" ]; then
-            msg="⚠️ linkedin-comment-hourly: partial failure in ${dur} — $(pl_oneline "$why"); ${summary} (exit ${ec})"
+            emoji="⚠️"; headline="partial failure in ${dur} (exit ${ec})"
         else
-            msg="❌ linkedin-comment-hourly: run failed in ${dur} — $(pl_oneline "$why"); ${summary} (exit ${ec})"
+            emoji="❌"; headline="run failed in ${dur} (exit ${ec})"
         fi
+        note="$(pl_oneline "$why")"
     fi
-    [ "$DRY_RUN" = 1 ] && msg="${msg} [DRY_RUN]"
+
+    local msg="${emoji} linkedin-comment-hourly — ${headline}"
+    if [ "${PL_TICKET_TOTAL:-0}" -gt 0 ]; then
+        msg="${msg}
+
+Tickets (${PL_TICKET_TOTAL}): ${PL_TICKET_CREATED} created, ${PL_TICKET_ADOPTED} adopted
+${PL_TICKET_LINES}"
+    fi
+    msg="${msg}
+
+Feed: ${drafted} accepted · ${POSTS_FILTERED_N:-?} filtered"
+    [ -n "$INBOX_SUMMARY" ] && msg="${msg}
+${INBOX_SUMMARY}"
+    [ -n "$PR_URL" ] && msg="${msg}
+PR: ${PR_URL}"
+    if [ "${PL_HEAL_COUNT:-0}" -gt 0 ]; then
+        msg="${msg}
+Self-heal ×${PL_HEAL_COUNT} (${HEAL_MODE}${HEAL_RESULT:+, ${HEAL_RESULT}})"
+        [ -n "$CODE_PR_URL" ] && msg="${msg}
+Heal PR awaiting review: ${CODE_PR_URL}"
+    fi
+    [ -n "$INBOX_NOTE" ] && msg="${msg}
+⚠️ Inbox: $(pl_oneline "$INBOX_NOTE")"
+    [ -n "$note" ] && msg="${msg}
+⚠️ ${note}"
+    [ "$DRY_RUN" = 1 ] && msg="${msg}
+[DRY_RUN]"
     pl_post_slack "$msg"
 }
 trap on_exit EXIT
@@ -228,6 +323,18 @@ BASE_SHA=$(git rev-parse HEAD)
 # measured as a delta against origin/main's seen-set.
 DRAFTED_BASELINE=$(jq '[.[] | select(.disposition=="drafted")] | length' linkedin-compain/comments.json 2>/dev/null || echo 0)
 case "$DRAFTED_BASELINE" in (*[!0-9]*|'') DRAFTED_BASELINE=0;; esac
+
+# Ticket baseline for the finish bookend's ClickUp list: the KEYS that
+# already had a task before this fire. The bookend lists the delta, which is
+# why this is a key set and not a count — it covers feed rows, inbox rows and
+# reconcile-only fires uniformly, without parsing either contract. Lives
+# under gitignored tmp/, so it survives the per-attempt linkedin-compain/
+# reset and merge.sh's `git checkout main && git pull`.
+mkdir -p "$HEAL_ROOT"
+CLICKUP_BASELINE_FILE="$HEAL_ROOT/clickup-baseline.json"
+jq -c '[.[] | select((.clickup_url // null) != null) | .key]' \
+    linkedin-compain/comments.json > "$CLICKUP_BASELINE_FILE" 2>/dev/null \
+  || echo '[]' > "$CLICKUP_BASELINE_FILE"
 
 pl_npm_ensure "$FAST_DIR"
 
@@ -324,7 +431,7 @@ validate_inbox_contract() {
     || { INBOX_CONTRACT_NOTE="link-conservation arithmetic does not balance"; return 0; }
   INBOX_POSTS_N="$n"
   INBOX_PROPOSED_STATE="$state_prop"
-  INBOX_SUMMARY="inbox: $(grep '^INBOX_MSGS_HUMAN=' "$contract" | head -1 | cut -d= -f2- || true)h msgs / $(grep '^INBOX_LINKS_FOUND=' "$contract" | head -1 | cut -d= -f2- || true) links / ${n} posts / $(grep '^INBOX_DUPLICATES=' "$contract" | head -1 | cut -d= -f2- || true) dup / $(grep '^INBOX_BACKLOG=' "$contract" | head -1 | cut -d= -f2- || true) backlog / $(grep '^INBOX_DEAD=' "$contract" | head -1 | cut -d= -f2- || true) dead"
+  INBOX_SUMMARY="Inbox: $(grep '^INBOX_MSGS_HUMAN=' "$contract" | head -1 | cut -d= -f2- || true) human msgs · $(grep '^INBOX_LINKS_FOUND=' "$contract" | head -1 | cut -d= -f2- || true) links · ${n} posts · $(grep '^INBOX_DUPLICATES=' "$contract" | head -1 | cut -d= -f2- || true) dup · $(grep '^INBOX_BACKLOG=' "$contract" | head -1 | cut -d= -f2- || true) backlog · $(grep '^INBOX_DEAD=' "$contract" | head -1 | cut -d= -f2- || true) dead"
   INBOX_CONTRACT_OK=1
   return 0
 }
@@ -401,29 +508,34 @@ install_inbox_state() {
   n="$INBOX_POSTS_N"
   # UNIFIED two-leg delivery evidence for EVERY mode (codex rounds 1–4): the
   # entry must carry `source` (all inbox writes set it), a NON-EMPTY ClickUp
-  # outcome (task id or error), and — unless the row said NEED_SLACK=0 — a
-  # Slack outcome, where completion means the THREAD's post reply landed
-  # (`slack_thread.post_reply_ts`), not just the parent, or a recorded
-  # slack_error. A "successful" session that wrote entries but skipped the
-  # delivery legs must not consume the messages. Reprocess rows additionally
-  # prove the in-place flip to disposition drafted. Stale markers can only
-  # mis-time the watermark, never lose delivery: any `source` entry without
-  # its task reconciles later, and a replayed message re-emits the Slack leg.
-  local need_slack
+  # TASK outcome (task id or error), and — unless the row said
+  # NEED_COMMENTS=0 — a DRAFT-COMMENT outcome, where completion means every
+  # stored variant has a journaled comment id (a partial count is a kill
+  # mid-delivery) or a recorded clickup_comment_error. A "successful" session
+  # that wrote entries but skipped the delivery legs must not consume the
+  # messages. Reprocess rows additionally prove the in-place flip to
+  # disposition drafted. Stale markers can only mis-time the watermark, never
+  # lose delivery: any `source` entry without its task reconciles later, and a
+  # replayed message re-emits the comment leg.
+  # (Until 2026-08-13 the second leg was the Slack thread — the legacy
+  # slack_* fields on old entries are history and are not consulted here.)
+  local need_comments
   i=1
   while [ "$i" -le "$n" ]; do
     k=$(grep "^POST_${i}_KEY=" "$contract" | head -1 | cut -d= -f2- || true)
     mode=$(grep "^POST_${i}_MODE=" "$contract" | head -1 | cut -d= -f2- || true)
-    need_slack=$(grep "^POST_${i}_NEED_SLACK=" "$contract" | head -1 | cut -d= -f2- || true)
-    [ "$need_slack" = "0" ] || need_slack=1
-    jq -e --arg k "$k" --arg mode "$mode" --argjson ns "$need_slack" '
+    need_comments=$(grep "^POST_${i}_NEED_COMMENTS=" "$contract" | head -1 | cut -d= -f2- || true)
+    [ "$need_comments" = "0" ] || need_comments=1
+    jq -e --arg k "$k" --arg mode "$mode" --argjson nc "$need_comments" '
         any(.[]; .key == $k and (.source != null)
           and (($mode != "reprocess-off-topic") or (.disposition == "drafted"))
           and (((.clickup_task_id | type == "string") and (.clickup_task_id | length > 0))
                or ((.clickup_error | type == "string") and (.clickup_error | length > 0)))
-          and (($ns == 0)
-               or ((.slack_thread.post_reply_ts? // null) != null)
-               or ((.slack_error | type == "string") and (.slack_error | length > 0))))' \
+          and (($nc == 0)
+               or (((.clickup_comment_ids? // []) | length)
+                     >= ((.variants? // []) | length))
+               or ((.clickup_comment_error | type == "string")
+                     and (.clickup_comment_error | length > 0))))' \
       linkedin-compain/comments.json >/dev/null 2>&1 || missing="${missing} ${k}(${mode})"
     i=$((i + 1))
   done
@@ -756,8 +868,8 @@ if [ -n "$CLAUDE_PROMPT" ]; then
     RUN_STAGE="drafting"
     # CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 disables the 10-minute
     # background-task kill switch — the parallel drafting pipeline (prep-refs +
-    # 5 draft agents + Slack) can exceed it, and the legacy gather fallback
-    # certainly does.
+    # 5 draft agents + the sequential ClickUp delivery loop) can exceed it,
+    # and the legacy gather fallback certainly does.
     export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
     run_claude_pipeline() {
@@ -792,7 +904,7 @@ if [ -n "$CLAUDE_PROMPT" ]; then
     pipeline_status=$?
     set -e
     # A failed/killed drafting run must NOT end the fire green — but we still
-    # commit any drafts already written + posted to Slack before the kill.
+    # commit any drafts already written + delivered to ClickUp before the kill.
     if [ "$pipeline_status" -ne 0 ]; then
         echo "run-hourly: drafting pipeline exited $pipeline_status — committing partials, marking the fire failed." >&2
         FIRE_FAILED=1
@@ -868,9 +980,9 @@ land_data_normal() {
     return 0
 }
 
-# Healed fires: the data commit must still reach main — Slack already
-# received the drafts, and an unmerged seen-set would make the next fire
-# re-draft (and re-post) the same posts. Only linkedin-compain/ goes into
+# Healed fires: the data commit must still reach main — the ClickUp tickets
+# and their draft comments already exist, and an unmerged seen-set would make
+# the next fire re-draft the same posts. Only linkedin-compain/ goes into
 # this auto-merged PR; the heal's code + incident stay behind for review.
 # Deterministic commit/PR copy: no claude in this path (commit.sh stages
 # everything with `git add .`, which would drag the unreviewed fix along).
@@ -905,12 +1017,12 @@ land_data_split() {
     fi
     git commit -m "chore: comment drafts + seen-set for ${TS} (self-healed fire)
 
-Data-only commit from a self-healed fire: Slack already received these
-drafts, so the cross-fire seen-set must land on main. The heal's code
-changes + incident ship separately on a review-gated heal/ PR."
+Data-only commit from a self-healed fire: the ClickUp tickets for these
+posts already exist, so the cross-fire seen-set must land on main. The
+heal's code changes + incident ship separately on a review-gated heal/ PR."
     git push origin HEAD
     gh pr create --title "chore: comment drafts + seen-set for ${TS} (self-healed fire)" \
-        --body "Data-only PR from a self-healed fire — auto-merged so the cross-fire seen-set stays on main (the Slack side effects already happened). The code fix + incident arrive on a separate heal/ PR for review."
+        --body "Data-only PR from a self-healed fire — auto-merged so the cross-fire seen-set stays on main (the ClickUp side effects already happened). The code fix + incident arrive on a separate heal/ PR for review."
     PR_URL=$(gh pr view --json url -q .url 2>/dev/null || true)
     ./.claude/skills/common-pr-merge/merge.sh
     return 0
@@ -943,7 +1055,7 @@ commit_heal_code_pr() {
     if [ "$PL_OUTCOME" = "fallback" ]; then
         incident_outcome="selector drift — legacy fallback shipped drafts; fast-path fix unverified until next fire, PR review pending"
     elif [ "${PERMALINK_HEAL:-0}" = 1 ]; then
-        incident_outcome="permalink capture failed on ${PERMALINKS_MISSING_N} accepted post(s) — drafts shipped; fix unverified until next fire, PR review pending"
+        incident_outcome="permalink capture failed on ${PERMALINKS_MISSING_N} accepted post(s) — tickets shipped; fix unverified until next fire, PR review pending"
     elif [ "$FIRE_FAILED" = 1 ]; then
         incident_outcome="gather failed (${PL_OUTCOME}) after ${PL_HEAL_COUNT} heal(s), PR review pending"
     else
@@ -981,7 +1093,7 @@ else
 fi
 
 # Post-landing heal: selector drift (exit 30) or accepted posts that shipped
-# without a permalink (PERMALINKS_MISSING>0). The drafts are safely on main
+# without a permalink (PERMALINKS_MISSING>0). The tickets are safely delivered
 # by now; spend the remaining budget fixing the fast path for the next fire.
 # Its changes are unverified-by-rerun by definition.
 if [ "$POST_LANDING_HEAL" = 1 ] && [ "${PL_HEAL_COUNT:-0}" -lt "$MAX_HEALS" ]; then

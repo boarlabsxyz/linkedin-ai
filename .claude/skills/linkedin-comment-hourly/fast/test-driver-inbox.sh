@@ -27,6 +27,10 @@ INBOX_STATE_FILE=state.json
 RUN_ERRORS=""
 MSG_TS="1784992193.489909"
 SEED_TS="1784992000.000000"
+# Stored drafts + the comment ids proving their delivery — the second leg is
+# only exercised when an entry HAS variants.
+DRAFTS='[{"strategy_label":"s1","comment":"c1","rationale":"r1"},{"strategy_label":"s2","comment":"c2","rationale":"r2"}]'
+CMT_IDS='["cmt-aaa","cmt-bbb"]'
 URL="https://www.linkedin.com/posts/davidlinthicum_the-hidden-tax-on-honest-discourse-in-technology-ugcPost-7486729143691337728-2b55"
 jq -n --arg ts "$SEED_TS" '{last_ts: $ts, updated_at: "x", pending: [], dead: []}' > state.json
 echo '[]' > comments-empty.json
@@ -65,31 +69,37 @@ INBOX_OUT="$D"; validate_inbox_contract
 mkdir -p linkedin-compain && echo '[]' > linkedin-compain/comments.json
 INBOX_NOTE=""; install_inbox_state
 t "I1 draft-mode install blocked"  '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
-jq -n --arg k "$KEY" '[{key: $k, disposition: "drafted", source: "slack-inbox", clickup_task_id: null, clickup_error: null, slack_error: null, slack_thread: {post_reply_ts: null}}]' > linkedin-compain/comments.json
+jq -n --arg k "$KEY" --argjson v "$DRAFTS" '[{key: $k, disposition: "drafted", source: "slack-inbox", variants: $v, clickup_task_id: null, clickup_error: null, clickup_comment_ids: [], clickup_comment_error: null}]' > linkedin-compain/comments.json
 INBOX_NOTE=""; install_inbox_state
 t "I2 blocked w/o delivery legs"   '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
-jq '(.[0].clickup_task_id) = "86abc" | (.[0].slack_thread.post_reply_ts) = "1785000000.000002"' \
+# Task alone is NOT completion while variants remain undelivered.
+jq '(.[0].clickup_task_id) = "86abc"' \
+  linkedin-compain/comments.json > c.tmp && mv c.tmp linkedin-compain/comments.json
+INBOX_NOTE=""; install_inbox_state
+t "I2b task alone still blocked"   '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
+jq --argjson c "$CMT_IDS" '(.[0].clickup_comment_ids) = $c' \
   linkedin-compain/comments.json > c.tmp && mv c.tmp linkedin-compain/comments.json
 INBOX_NOTE=""; install_inbox_state
 t "I3 both legs install ok"        '[ "$(jq -r .last_ts state.json)" = "$MSG_TS" ]'
 
 # ---- install gates, clickup-only mode (entry pre-exists: existence proves nothing)
 jq -n --arg ts "$SEED_TS" '{last_ts: $ts, updated_at: "x", pending: [], dead: []}' > state.json
-jq -n --arg k "$KEY" --arg u "$URL" \
+jq -n --arg k "$KEY" --arg u "$URL" --argjson v "$DRAFTS" \
   '[{key: $k, disposition: "drafted", post_url: $u, author_name: "David Linthicum",
-     post_text: "x", author_url: null, author_headline: "", urn: null,
-     source: "slack-inbox", clickup_task_id: null, clickup_error: null}]' > comments-c.json
+     post_text: "x", author_url: null, author_headline: "", urn: null, variants: $v,
+     source: "slack-inbox", clickup_task_id: null, clickup_error: null,
+     clickup_comment_ids: [], clickup_comment_error: null}]' > comments-c.json
 DC="$WORK/vc"; gen_contract "$DC" "$WORK/comments-c.json"
 INBOX_OUT="$DC"; validate_inbox_contract
 t "C1 clickup-only contract"       '[ "$INBOX_CONTRACT_OK" = 1 ] && grep -q "^POST_1_MODE=clickup-only" "$DC/contract.env"'
-t "C1b flags missing slack leg"    'grep -q "^POST_1_NEED_SLACK=1" "$DC/contract.env"'
-cp comments-c.json linkedin-compain/comments.json   # untouched entry: no task id, no error, no slack
+t "C1b flags missing comment leg"  'grep -q "^POST_1_NEED_COMMENTS=1" "$DC/contract.env"'
+cp comments-c.json linkedin-compain/comments.json   # untouched entry: no task id, no error, no comments
 INBOX_NOTE=""; install_inbox_state
 t "C2 blocked w/o mutation proof"  '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
 jq '(.[0].clickup_error) = "listTasks failed"' comments-c.json > linkedin-compain/comments.json
 INBOX_NOTE=""; install_inbox_state
-t "C3 blocked w/o slack evidence"  '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
-jq '(.[0].clickup_error) = "listTasks failed" | (.[0].slack_ts) = "1785000000.000001" | (.[0].slack_thread) = {post_reply_ts: "1785000000.000002"}' \
+t "C3 blocked w/o comment evidence" '[ "$(jq -r .last_ts state.json)" = "$SEED_TS" ]'
+jq --argjson c "$CMT_IDS" '(.[0].clickup_error) = "listTasks failed" | (.[0].clickup_comment_ids) = $c' \
   comments-c.json > linkedin-compain/comments.json
 INBOX_NOTE=""; install_inbox_state
 t "C4 both legs unblock"           '[ "$(jq -r .last_ts state.json)" = "$MSG_TS" ]'
