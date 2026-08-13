@@ -138,7 +138,7 @@ Then emit exactly the contract shape above. **No prose after the contract block.
 
 - Do **not** open Playwright. Post text arrives pre-scraped.
 - Do **not** invent post content or comment content. If the skill returns something you can't parse, emit `ERROR=PARSE`.
-- Do **not** post the comment to LinkedIn or Slack — that's the orchestrator's job.
+- Do **not** deliver the comment anywhere — not to LinkedIn, not to Slack, not to ClickUp. The orchestrator owns delivery (it files the drafts as ClickUp task comments).
 - Do **not** write the output JSON — the orchestrator does that. The only files you write are the throwaway `./tmp/draft-*.txt` encode buffers, which you delete in step 4.
 - Do **not** hand-compute or hand-edit any base64 blob. Every `*_B64` value must come straight from a Bash command's output that round-trip-verified it.
 - Do **not** skip the pre-work checklist. The Posted-folder de-dup and Transcripts sourcing are why we spend the tokens.

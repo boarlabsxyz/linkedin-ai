@@ -285,8 +285,7 @@ Both off-topic and already-commented use the same read-modify-write. `<COMMENTS_
        author_url:(if $authorurl=="" then null else $authorurl end),
        author_name:$author, author_headline:$headline, time_ago:$time,
        post_text:($text|sub("\n+$";"")), scraped_at:$now, disposition:$disp, reason:$reason,
-       variants:[], slack_summary:null, slack_ts:null,
-       slack_thread:{post_reply_ts:null, draft_reply_ts:[]}, slack_error:null}')
+       variants:[]}')
    # Guard: refuse to append an entry whose post_text came out empty.
    if [ "$(printf '%s' "$entry" | jq -r '.post_text|length')" -eq 0 ]; then
      echo "EMPTY_POST_TEXT for $key — re-scrape the card body before appending" >&2

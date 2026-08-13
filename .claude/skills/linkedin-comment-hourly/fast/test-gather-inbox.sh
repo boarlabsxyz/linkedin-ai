@@ -40,10 +40,16 @@ entry() { # entry <disposition> <clickup_task_id|null> <post_url|null>
     '{key: $k, urn: null, post_url: $u, author_url: "https://www.linkedin.com/in/davidlinthicum",
       author_name: "David Linthicum", author_headline: "x", time_ago: null,
       post_text: "PLACEHOLDER", scraped_at: "2026-07-20T00:00:00Z", disposition: $d,
-      reason: null, variants: [], slack_summary: null, slack_ts: null,
-      slack_thread: {post_reply_ts: null, draft_reply_ts: []}, slack_error: null,
-      source: "feed", clickup_task_id: $c}'
+      reason: null, variants: [], draft_error: null,
+      source: "feed", clickup_task_id: $c, clickup_url: null, clickup_adopted: null,
+      clickup_comment_ids: [], clickup_comment_error: null, clickup_error: null}'
 }
+
+# Two stored drafts + the comment ids that would prove their delivery. The
+# comment leg is only exercised when an entry HAS variants — an entry with
+# none is trivially delivered (nothing to post).
+DRAFTS='[{"strategy_label":"s1","comment":"c1","rationale":"r1"},{"strategy_label":"s2","comment":"c2","rationale":"r2"}]'
+CMT_IDS='["cmt-aaa","cmt-bbb"]'
 
 run() { # run <dir> <state> <comments> [extra args...]
   local dir="$1" st="$2" cm="$3"; shift 3
@@ -78,9 +84,11 @@ t "T1 conservation"           'conservation_ok "$D"'
 t "T1 keys.json"              '[ "$(jq length "$D/keys.json")" = 1 ]'
 t "T1 clean proposed state"   'jq -e ".pending == [] and .dead == [] and .last_ts == \"$MSG_TS\"" "$D/proposed-state.json"'
 
-# ---- T2: already drafted with task id AND slack evidence → accounted dup
+# ---- T2: already drafted with task id AND every draft comment delivered
+#      → accounted dup (both ClickUp legs evidenced)
 D="$WORK/t2"; state "$WORK/t2-state.json" "$SEED_TS"
-jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" '[$e | .slack_ts = "1785000000.000001" | .slack_thread.post_reply_ts = "1785000000.000002"]' > "$WORK/t2-comments.json"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" --argjson c "$CMT_IDS" \
+  '[$e | .variants = $v | .clickup_comment_ids = $c]' > "$WORK/t2-comments.json"
 run "$D" "$WORK/t2-state.json" "$WORK/t2-comments.json"
 t "T2 no rows"                '[ "$(cg "$D" POSTS_FOUND)" = 0 ]'
 t "T2 counted dup"            '[ "$(cg "$D" INBOX_DUPLICATES)" = 1 ]'
@@ -177,7 +185,8 @@ t "T13 exit 23 on no state"   '[ "$(cat "$D/exit")" = 23 ]'
 
 # ---- T14: second run after T1's full delivery → idempotent no-op
 D="$WORK/t14"; state "$WORK/t14-state.json" "$MSG_TS"
-jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" '[$e | .slack_ts = "1785000000.000001" | .slack_thread.post_reply_ts = "1785000000.000002"]' > "$WORK/t14-comments.json"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" --argjson c "$CMT_IDS" \
+  '[$e | .variants = $v | .clickup_comment_ids = $c]' > "$WORK/t14-comments.json"
 run "$D" "$WORK/t14-state.json" "$WORK/t14-comments.json"
 t "T14 idempotent"            '[ "$(cg "$D" POSTS_FOUND)" = 0 ] && [ "$(cg "$D" PROPOSED_WATERMARK)" = "$MSG_TS" ]'
 
@@ -257,14 +266,15 @@ t "T20 fetched permalink used"  '[ "$(cg "$D" POST_1_URL)" = "$URL" ]'
 # is completed FETCHLESSLY (the failing stub proves no fetch was attempted)
 D="$WORK/t21"
 state "$WORK/t21-state.json" "$MSG_TS" "[{\"url\": \"$URL\", \"requests\": [{\"message_ts\": \"$MSG_TS\", \"user\": \"US52EFX2S\"}], \"attempts\": 2, \"last_error\": \"nav\", \"first_seen\": \"2026-07-22T00:00:00Z\"}]"
-jq -n --argjson e "$(entry drafted null "\"$URL\"")" '[$e]' > "$WORK/t21-comments.json"
+jq -n --argjson e "$(entry drafted null "\"$URL\"")" --argjson v "$DRAFTS" \
+  '[$e | .variants = $v]' > "$WORK/t21-comments.json"
 mkdir -p "$D"
 node "$FAST_DIR/gather-inbox.mjs" --messages-file="$FIX/slack-messages.json" \
   --state-file="$WORK/t21-state.json" --comments-file="$WORK/t21-comments.json" \
   --out-dir="$D" --fetch-stub="$WORK/t7-stub.json" >/dev/null 2>"$D/stderr.log"; echo $? > "$D/exit"
 t "T21 fetchless completion"   '[ "$(cg "$D" POSTS_FOUND)" = 1 ] && [ "$(cg "$D" POST_1_MODE)" = clickup-only ]'
 t "T21 no fetch failure"       '[ "$(cg "$D" INBOX_FETCH_FAILED)" = 0 ] && jq -e ".pending == []" "$D/proposed-state.json"'
-t "T21 needs slack leg too"    '[ "$(cg "$D" POST_1_NEED_SLACK)" = 1 ]'
+t "T21 needs comment leg too"  '[ "$(cg "$D" POST_1_NEED_COMMENTS)" = 1 ]'
 
 # ---- T22: /me message subtype is human
 D="$WORK/t22"; state "$WORK/t22-state.json" "$SEED_TS"; echo '[]' > "$WORK/t22-comments.json"
@@ -278,10 +288,10 @@ t "T22 me_message processed"   '[ "$(cg "$D" INBOX_MSGS_HUMAN)" = 1 ] && [ "$(cg
 
 # ---- T23: alias whose post's OPENING was edited — canonical-URL dedup catches it
 D="$WORK/t23"; state "$WORK/t23-state.json" "$SEED_TS"
-# Ledger holds the post under its canonical URL with task+slack complete, but
-# an OLD body whose first 160 chars differ from today's fetch.
-jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" \
-  '[$e | .post_text = "A completely different old opening that shares no prefix with the new body at all." | .slack_ts = "1785000000.000001" | .slack_thread.post_reply_ts = "1785000000.000002"]' > "$WORK/t23-comments.json"
+# Ledger holds the post under its canonical URL with both ClickUp legs
+# complete, but an OLD body whose first 160 chars differ from today's fetch.
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" --argjson c "$CMT_IDS" \
+  '[$e | .post_text = "A completely different old opening that shares no prefix with the new body at all." | .variants = $v | .clickup_comment_ids = $c]' > "$WORK/t23-comments.json"
 jq '.messages = [.messages[0]] | .messages[0].text = "<https://lnkd.in/pEDITED99>" | .messages[0].attachments = []' \
   "$FIX/slack-messages.json" > "$WORK/t23-messages.json"
 jq --arg u "$URL" '{"https://lnkd.in/pEDITED99": .[$u]}' "$FIX/fetch-stub.json" > "$WORK/t23-stub.json"
@@ -292,18 +302,43 @@ node "$FAST_DIR/gather-inbox.mjs" --messages-file="$WORK/t23-messages.json" \
 t "T23 canonical-url dedup"    '[ "$(cg "$D" POSTS_FOUND)" = 0 ] && [ "$(cg "$D" INBOX_DUPLICATES)" = 1 ]'
 t "T23 conservation"           'conservation_ok "$D"'
 
-# ---- T24: drafted entry with task id but NO slack evidence → slack-leg row
+# ---- T24: drafted entry with a task id but variants never delivered as
+#      comments → comment-leg row (the task alone is not completion)
 D="$WORK/t24"; state "$WORK/t24-state.json" "$SEED_TS"
-jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" '[$e]' > "$WORK/t24-comments.json"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" \
+  '[$e | .variants = $v]' > "$WORK/t24-comments.json"
 run "$D" "$WORK/t24-state.json" "$WORK/t24-comments.json"
-t "T24 slack leg re-delivered" '[ "$(cg "$D" POSTS_FOUND)" = 1 ] && [ "$(cg "$D" POST_1_MODE)" = clickup-only ] && [ "$(cg "$D" POST_1_NEED_SLACK)" = 1 ]'
+t "T24 comment leg re-delivered" '[ "$(cg "$D" POSTS_FOUND)" = 1 ] && [ "$(cg "$D" POST_1_MODE)" = clickup-only ] && [ "$(cg "$D" POST_1_NEED_COMMENTS)" = 1 ]'
+
+# ---- T24b: PARTIAL comment ids (a kill landed mid-delivery loop) still owes
+#      the leg — the count must be compared, not merely tested for non-empty
+D="$WORK/t24b"; state "$WORK/t24b-state.json" "$SEED_TS"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" \
+  '[$e | .variants = $v | .clickup_comment_ids = ["cmt-aaa"]]' > "$WORK/t24b-comments.json"
+run "$D" "$WORK/t24b-state.json" "$WORK/t24b-comments.json"
+t "T24b partial ids still owed" '[ "$(cg "$D" POSTS_FOUND)" = 1 ] && [ "$(cg "$D" POST_1_NEED_COMMENTS)" = 1 ]'
+
+# ---- T24c: a recorded clickup_comment_error terminates the leg → dup
+D="$WORK/t24c"; state "$WORK/t24c-state.json" "$SEED_TS"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" --argjson v "$DRAFTS" \
+  '[$e | .variants = $v | .clickup_comment_error = "addTaskComment 500"]' > "$WORK/t24c-comments.json"
+run "$D" "$WORK/t24c-state.json" "$WORK/t24c-comments.json"
+t "T24c comment error ends leg" '[ "$(cg "$D" POSTS_FOUND)" = 0 ] && [ "$(cg "$D" INBOX_DUPLICATES)" = 1 ]'
+
+# ---- T24d: a draft-failed entry (no variants) owes no comments — the task
+#      alone completes it, so a re-drop is a dup
+D="$WORK/t24d"; state "$WORK/t24d-state.json" "$SEED_TS"
+jq -n --argjson e "$(entry drafted '"86xyz"' "\"$URL\"")" \
+  '[$e | .draft_error = "ERROR=PARSE"]' > "$WORK/t24d-comments.json"
+run "$D" "$WORK/t24d-state.json" "$WORK/t24d-comments.json"
+t "T24d no variants = no leg"  '[ "$(cg "$D" POSTS_FOUND)" = 0 ] && [ "$(cg "$D" INBOX_DUPLICATES)" = 1 ]'
 
 # ---- T25: fuzzy match DISQUALIFIED when canonical URLs differ (same author
 # boilerplate opener on two distinct posts must not collapse into a dup)
 D="$WORK/t25"; state "$WORK/t25-state.json" "$SEED_TS"
 jq -n --argjson e "$(entry drafted '"86xyz"' "\"https://www.linkedin.com/posts/davidlinthicum_other-post-activity-999-zz\"")" \
   --arg b "$(jq -r ".[\"$URL\"].body" "$FIX/fetch-stub.json")" \
-  '[$e | .key = "david-linthicum-aaaaaaaa" | .post_text = ($b + "\n\ncompletely different ending making a different hash") | .slack_ts = "1785000000.000001" | .slack_thread.post_reply_ts = "1785000000.000002"]' > "$WORK/t25-comments.json"
+  '[$e | .key = "david-linthicum-aaaaaaaa" | .post_text = ($b + "\n\ncompletely different ending making a different hash")]' > "$WORK/t25-comments.json"
 run "$D" "$WORK/t25-state.json" "$WORK/t25-comments.json"
 t "T25 not a dup of post A"    '[ "$(cg "$D" POSTS_FOUND)" = 1 ] && [ "$(cg "$D" POST_1_MODE)" = draft ]'
 t "T25 conservation"           'conservation_ok "$D"'

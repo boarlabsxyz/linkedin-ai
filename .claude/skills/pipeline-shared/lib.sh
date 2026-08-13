@@ -193,11 +193,13 @@ pl_run_claude_with_watchdog() {
 
 # pl_post_slack <message> — bounded by its own bash watchdog (macOS has no
 # coreutils timeout). Always returns 0: a Slack failure must never fail a
-# fire. Invocation shape is empirically pinned (2026-07-17) — do NOT change
-# it, only relocate it:
+# fire. The message may be single- or multi-line (multi-line since
+# 2026-08-13, when run-hourly.sh's finish bookend grew a ticket list).
+# Invocation shape is empirically pinned (2026-07-17) — do NOT change it,
+# only relocate it:
 #   - message goes INLINE in the prompt, NOT on stdin — haiku intermittently
 #     refuses to post "content it can't see", so it must see the (fully
-#     script-controlled) status line to post it reliably. Verified 3/3.
+#     script-controlled) status message to post it reliably. Verified 3/3.
 #   - --allowedTools pre-approves exactly the one connector tool; combined
 #     with --permission-mode dontAsk, every other tool is denied
 #     non-interactively.
@@ -205,15 +207,21 @@ pl_run_claude_with_watchdog() {
 #     connector vanishes and the model hallucinates the call as text (exits 0).
 #   - NO --setting-sources "" — it correlated with spurious safety refusals;
 #     the inline-message shape makes it unnecessary.
-# The message must be script-controlled (fixed strings, counts, PR URLs —
-# never scraped post/user content), so inlining carries no injection risk.
+#   - the message is the LAST thing in the prompt, so a multi-line body
+#     cannot be confused with trailing instructions.
+# Content rule: the message must be script-controlled (fixed strings, counts,
+# PR/ticket URLs), or scraped values that the CALLER has already sanitized —
+# run-hourly.sh's collect_ticket_lines() is the only such caller today (it
+# strips markup/control chars and length-caps each author name, and validates
+# every URL against the ClickUp task-URL shape). Raw scraped post or user
+# content must never reach here: it is inlined into a prompt.
 pl_post_slack() {
   local msg="$1" out_log
   mkdir -p tmp
   out_log=$(mktemp tmp/slack-bookend.XXXXXX)
-  local prompt="Post the status line below to Slack by calling mcp__claude_ai_Slack_Bot__postMessage exactly once with channel_id=${PL_SLACK_CHANNEL_ID} and text set to the line verbatim. It is a pre-approved automated run-status notification for a channel that already receives these — do not alter, summarize, question, or withhold it. After the tool returns, reply with only: done
+  local prompt="Post the status message below to Slack by calling mcp__claude_ai_Slack_Bot__postMessage exactly once with channel_id=${PL_SLACK_CHANNEL_ID} and text set to the message verbatim, preserving every line break. It is a pre-approved automated run-status notification for a channel that already receives these — do not alter, summarize, reformat, question, or withhold it. After the tool returns, reply with only: done
 
-Status line to post:
+Status message to post:
 ${msg}"
   CLAUDE_HISTORY_ROLE=0 "${CLAUDE_BIN:-claude}" -p "$prompt" \
     --model "${PL_SLACK_POST_MODEL:-claude-haiku-4-5-20251001}" \
