@@ -11474,5 +11474,225 @@
     "clickup_task_id": "86cb4qmtf",
     "clickup_url": "https://app.clickup.com/t/86cb4qmtf",
     "clickup_error": null
+  },
+  {
+    "key": "jake-levirne-fd90f19a",
+    "urn": "urn:li:share:7493743555346055169",
+    "post_url": "https://www.linkedin.com/posts/jakelevirne_doordashs-best-ai-evaluator-caught-%F0%9D%9F%B4%F0%9D%9F%AC-share-7493743555346055169-zwqO/",
+    "author_url": "https://www.linkedin.com/in/jakelevirne/",
+    "author_name": "Jake Levirne",
+    "author_headline": "Ex-Docker, DigitalOcean | Co-founder of SpecStory | Passionate About Teams Who Build Software",
+    "time_ago": "11h",
+    "post_text": "DoorDash’s best AI evaluator caught 𝟴𝟬% of critical-severity issues, while a generic AI code reviewer only caught 37.5%. What was the trick?\nThe difference was how the evaluation system was designed. Have a \"lead scout\" agent break down the review, along with \"deep reviewer\" agents that work in parallel. Make sure the scout stays broad and shallow, identifying “hunches” about potential problem areas. Then send the reviewers off on a deep dive. Finally, run a “disprove” step to filter out false positives. It took DoorDash three tries to figure this out but you can benefit from their learnings. I mapped them all out in the paper in the comments. But is after-the-fact code evaluation all we can do?\nNo. Our second approach is to create a computational evaluator, which runs inside the agentic coding loop to ensure correctness. In essence, this is like an automated integration test suite that provides feedback to the coding agent when the prescribed invariants are not met. Returning more than a straight PASS/FAIL result lets us gain more in terms of feedback loops. Like all integration tests, these can be brittle if not well designed. And they rarely work on UI-heavy implementations. For those we need something different.\nAnthropic describes how to move from generic \"make this look better\" prompt-and-pray techniques to a more methodical product evaluator that can actually start to embody your design principles, aesthetics, and taste. The key aspects of this evaluator are design quality, originality, craft, and functionality. And these criteria get calibrated by providing actual hand-graded examples for each category. This is where you do the heavy lifting once and then reap the rewards continually. With modern agents' ability to drive browsers and \"see\" UIs, you can now get high levels of automation.\nThere's great depth to each of these evaluation approaches. In code review, separate noticing (scout agent) from verifying (deep review agents), just like the best senior engineers do. For computational evaluation, you can add in real-world usage data, like Datadog does, to gain more empirical test cases. And product evaluators benefit from strong agent heuristics like: \"after each evaluation refine the current direction if scores were trending well, or pivot to an entirely different aesthetic if the approach wasn't working.\"\nI've synthesized lessons from Anthropic, Datadog, and DoorDash about AI evaluators so you can get straight to implementing them for your team. The paper is in the comments.",
+    "scraped_at": "2026-08-14T07:09:01Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The disprove step is the part most eval pipelines skip - they go straight from \"flag\" to \"ship\" without checking whether the flag actually holds up.\n\nCurious about the model setup underneath it: were the scout, the deep reviewers, and the disprove step all running on the same model family as whatever wrote the code, or did DoorDash deliberately mix vendors? We've seen a model checking its own reasoning tend to rubber-stamp its own blind spots - a different lens usually catches more than another pass from the same one.",
+        "rationale": "Jake names three eval layers without saying whether they're model-diverse, so the comment asks the concrete builder-relevant question rather than inventing an answer."
+      },
+      {
+        "strategy_label": "Disagree and argue your position",
+        "comment": "The scout-then-deep-reviewer split is the right shape - separating noticing from verifying is how strong review already works, human or agent.\n\nWhere I'd push back a little: catch rate on known critical-severity issues is a good number, but it doesn't tell you about the failure mode none of the layers were looking for. I once shipped a change that went through seven rounds of code review and testing, everything green, and it still took a production system down for a few hours once real traffic hit it - the degradation only showed up at a scale nobody had reproduced in review. More evaluator layers raise your odds on the things you already know to check for. They don't guarantee you catch the one you don't. Did DoorDash track what got past all three layers, not just what got flagged correctly?",
+        "rationale": "Grounds the pushback in Petro's own already-public outage story (7 rounds of green review, still went down) rather than inventing an experience."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The computational evaluator running inside the loop is the piece I'd bet compounds fastest - feedback during generation beats catching it after the fact.\n\nOne thing I'd worry about: those invariants are themselves an artifact someone has to keep in sync with the spec. When the actual requirement changes, does the evaluator's rulebook get updated in the same PR, or does it lag and start rejecting things that are now correct? That's usually where \"automated integration test suite\" setups quietly rot.",
+        "rationale": "Surfaces the same-artifact-drift problem in computational evaluators (invariants going stale against the spec)."
+      }
+    ],
+    "draft_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb58pn1",
+    "clickup_url": "https://app.clickup.com/t/86cb58pn1",
+    "clickup_adopted": false,
+    "clickup_comment_ids": [
+      "90150250811952",
+      "90150250812011",
+      "90150250812055"
+    ],
+    "clickup_comment_error": null,
+    "clickup_error": null
+  },
+  {
+    "key": "jerry-zhang-93b366f9",
+    "urn": "urn:li:ugcPost:7493713865294143488",
+    "post_url": "https://www.linkedin.com/posts/jerry-n-zhang_we-raised-a-23m-pre-seed-to-catch-agent-ugcPost-7493713865294143488-1g-E/",
+    "author_url": "https://www.linkedin.com/in/jerry-n-zhang/",
+    "author_name": "Jerry Zhang",
+    "author_headline": "Co-founder @ Lemma (YC F25) | Monitoring for AI agents",
+    "time_ago": "13h",
+    "post_text": "We raised a $2.3M pre-seed to catch agent failures before it’s too late.\nAgents are taking on real economic work.\nAs runs get longer, mistakes become expensive at best, catastrophic at worst.\nToday, teams find out from user complaints. Or never.\nMonitoring tools only catch what you told them to watch for: you set up the judges, you trace the issues yourself. But agents will always fail in ways you didn't predict.\nThat's why we built Lemma. Lemma understands what your agent is supposed to do, so it surfaces failures you didn’t know to look for, automatically.",
+    "scraped_at": "2026-08-14T07:10:14Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The \"you set up the judges, you trace the issues yourself\" line is the real problem statement here, most eval setups are just codified hindsight.\n\nWhere does Lemma pull its model of \"what the agent is supposed to do\" from? Is it inferring intent from the system prompt and tool definitions, or do teams still have to write that down explicitly somewhere first? Curious because the answer decides whether you've actually removed the blind spot or just moved it one layer up.",
+        "rationale": "Probes the mechanism behind Lemma's core claim (where \"intent\" comes from) without pitching True BDD."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Agreed that most monitoring is just codifying what you already knew to look for, that's the actual blind spot.\n\nHarder question: if the spec of \"what the agent is supposed to do\" is itself incomplete or wrong, which it usually is early on, does Lemma catch that as a failure too, or does it inherit whatever blind spot was baked into the original intent? That's the failure mode that actually burns teams, not the ones they remembered to distrust.",
+        "rationale": "Surfaces a real edge case (bad spec vs bad execution) that pressure-tests the product's core value prop without being hostile."
+      },
+      {
+        "strategy_label": "Offer a supporting reference",
+        "comment": "The \"runs get longer, mistakes get expensive\" framing tracks with what's actually being measured out there.\n\nMETR's long-horizon benchmarks show the same shape: success probability keeps decaying as task duration stretches, even on strong models. That's exactly the zone where nobody's watching closely enough, so building monitoring right at that inflection point is a reasonable bet.",
+        "rationale": "Backs the post's own claim about longer runs with external evidence (METR) Petro can credibly cite."
+      }
+    ],
+    "draft_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb58q4y",
+    "clickup_url": "https://app.clickup.com/t/86cb58q4y",
+    "clickup_adopted": false,
+    "clickup_comment_ids": [
+      "90150250812207",
+      "90150250812245",
+      "90150250812294"
+    ],
+    "clickup_comment_error": null,
+    "clickup_error": null
+  },
+  {
+    "key": "daniel-han-3dcfda3e",
+    "urn": "urn:li:share:7493335440570101760",
+    "post_url": "https://www.linkedin.com/posts/danielhanchen_qwen38-can-now-be-run-locally-we-shrank-share-7493335440570101760-eOYx/",
+    "author_url": "https://www.linkedin.com/in/danielhanchen/",
+    "author_name": "Daniel Han",
+    "author_headline": "Co-founder @ Unsloth AI",
+    "time_ago": "1d",
+    "post_text": "Qwen3.8 can now be run locally! 🔥\nWe shrank Qwen3.8-2.4T-A95B from 4.9TB to 397GB (-91% size) via Dynamic 1-bit by selectively quantizing layers\nRun on 410GB+ RAM/VRAM via Unsloth AI Desktop.\nQwen3.8 rivals GPT-5.6 Sol on many benchmarks.\nGuide: https://lnkd.in/gZDSMzmt\nGGUF: https://lnkd.in/giEB9Dfe",
+    "scraped_at": "2026-08-14T07:11:03Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "91% off is the headline, but \"selectively quantizing layers\" is the actual engineering decision worth digging into — that's where most 1-bit efforts fall apart.\n\nHow do you decide which layers get spared from the squeeze — a static per-architecture heuristic, or something you profile per model? Curious whether that selection holds up outside the benchmark suite, on long-context or tool-calling runs, where a bad layer choice tends to compound unevenly rather than show up as a clean accuracy drop.",
+        "rationale": "Post leaves the actual mechanism (which layers survive) unexamined behind the headline compression ratio."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "397GB fitting inside 410GB of RAM/VRAM is the number that actually decides who can run this — the 91% shrink is nice framing, but that threshold is the real product.\n\n\"Rivals GPT-5.6 Sol on many benchmarks\" — which benchmarks didn't hold up close? That's usually more useful than the ones that did. If someone's about to swap API calls for a local 1-bit build, what's the failure mode you'd flag before they commit to it in production?",
+        "rationale": "The \"rivals on many benchmarks\" claim is exactly the kind of under-examined framing to pull toward the sharper question."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Getting a model this size down to desktop-class RAM is the practical unlock — it decides who can self-host without renting a GPU cluster, not just who can brag about the compression ratio.\n\nWe hit that exact constraint building a self-hosted generative AI system for a German bank back in 2018, pre-ChatGPT — document generation and validation on hardware we controlled, because compliance ruled out sending data to any external API. The RAM ceiling drove more architecture decisions than accuracy did. Curious whether 1-bit quantization at this scale changes that calculus for regulated industries, or just shifts the conversation from \"can we afford the GPU\" to \"can we trust the compressed weights.\"",
+        "rationale": "BankAI (2018, self-hosted GenAI for a German bank, pre-ChatGPT) is a directly relevant hardware-constrained self-hosting story from Petro's documented history."
+      }
+    ],
+    "draft_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb58qcn",
+    "clickup_url": "https://app.clickup.com/t/86cb58qcn",
+    "clickup_adopted": false,
+    "clickup_comment_ids": [
+      "90150250812470",
+      "90150250812504",
+      "90150250812546"
+    ],
+    "clickup_comment_error": null,
+    "clickup_error": null
+  },
+  {
+    "key": "jason-m-2df5cf90",
+    "urn": "urn:li:ugcPost:7493044707523129346",
+    "post_url": "https://www.linkedin.com/posts/jasonlmadden_ai-has-not-made-engineering-skill-less-important-ugcPost-7493044707523129346-5d4d/",
+    "author_url": "https://www.linkedin.com/in/jasonlmadden/",
+    "author_name": "Jason M.",
+    "author_headline": "Fractional CTO & Founder helping SMBs turn messy operations into secure, automated systems",
+    "time_ago": "2d",
+    "post_text": "AI has not made engineering skill less important. It has made finished code a weaker signal of that skill.\nA screenshot and an AI agent can now produce many of the projects we once used to evaluate developers. Technical interviews must move beyond grading output and start examining process: how someone debugs, handles unclear requirements, protects system boundaries, tests changes, and verifies AI-generated work.\nDevelopers need to use AI. But there is a meaningful difference between an engineer who uses AI as a tool and someone functioning as AI’s copy-and-paste layer.\nI \"wrote\" 😂 this reflection on what that difference means for programming interviews and what we should measure instead.\nAI Has Changed What a Programming Test Measures\nJason M.",
+    "scraped_at": "2026-08-14T07:11:50Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "The line about a screenshot and an AI agent now producing what used to be an entire portfolio project is the part that actually stings — that was the interview for a decade. Out of the five things you list to examine instead (debugging, unclear requirements, boundaries, tests, verifying AI output), which one is hardest to actually observe inside a 45-60 minute slot versus something you only really see after weeks on a real codebase? Verification especially feels like it needs a live incident, not a staged one.",
+        "rationale": "Names a specific unaddressed variable (which of the 5 signals is actually observable in an interview slot vs. only over real time)."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "The distinction between an engineer who uses AI as a tool and someone functioning as its copy-and-paste layer is exactly what I watched play out with two people I gave the same automation task to. A 10-year senior dev kept getting code back from Claude and quietly rewriting it by hand whenever it didn't match how he'd have written it himself — he never once questioned whether the rewrite was necessary, he just took over. My son, still in university, described the task, iterated, barely touched the editor, and kept pushing until it worked. Code quality ended up comparable between them; what actually differed, and what an interview should be testing for, is what each of them did the moment AI didn't deliver — take over, or keep pushing and verify.",
+        "rationale": "A real, documented before/after story (two people, same task) makes concrete exactly the \"tool vs. copy-paste layer\" distinction the post is built on."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "Moving interviews from grading output to examining process is the right call, but I'd push on one thing: if a screenshot and an agent can now fake the output, what stops a well-prompted agent from also faking the process narration — a plausible-sounding \"here's how I debugged it\" story assembled after the fact? What's the actual tell you look for that separates a candidate describing what they really did from one narrating a good story AI helped them construct?",
+        "rationale": "Surfaces a blindspot in the author's own proposal (process narration is fakeable too) without hostility."
+      }
+    ],
+    "draft_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb58qpu",
+    "clickup_url": "https://app.clickup.com/t/86cb58qpu",
+    "clickup_adopted": false,
+    "clickup_comment_ids": [
+      "90150250812686",
+      "90150250812746",
+      "90150250812917"
+    ],
+    "clickup_comment_error": null,
+    "clickup_error": null
+  },
+  {
+    "key": "romain-huet-afb0a13d",
+    "urn": "urn:li:ugcPost:7493795955650224129",
+    "post_url": "https://www.linkedin.com/posts/romainhuet_heres-a-preview-of-gpt-56-sol-ultrafast-ugcPost-7493795955650224129-BXIK/",
+    "author_url": "https://www.linkedin.com/in/romainhuet/",
+    "author_name": "Romain Huet",
+    "author_headline": "Head of Developer Experience at OpenAI. Previously, Product Lead at Stripe. Angel Investor & Advisor.",
+    "time_ago": "8h",
+    "post_text": "Here’s a preview of GPT-5.6 Sol Ultrafast, powered by Cerebras, running at up to 750 tokens per second! ⚡️\nAccess is limited for now, but we can’t wait to bring this to more of you as capacity grows.\nWhat would you build?\nOpenAI\n13h • Edited •\nA first look at Ultrafast mode: GPT-5.6 Sol at up to 14x the speed.\nLaunching first in the OpenAI API to a select group of customers with expanded access to more businesses as capacity grows.\nPowered by Cerebras, Ultrafast generates up to 750 tokens per second, bringing our most intelligent model to products and workflows where every second counts.\nUltrafast is designed for businesses where faster frontier intelligence creates a measurable advantage, including real-time voice and customer support, commerce, coding and design, financial research, and security response.\nhttps://lnkd.in/emJ5SXP5",
+    "scraped_at": "2026-08-14T07:12:42Z",
+    "disposition": "drafted",
+    "reason": null,
+    "variants": [
+      {
+        "strategy_label": "Clarifying question",
+        "comment": "750 tokens/sec on your most intelligent model is a genuinely useful number for the real-time voice and customer support case you listed — that's the difference between conversational and awkward.\n\nWhat I'm curious about: is Ultrafast the same weights as standard GPT-5.6 Sol, or a distilled/adapted path to hit Cerebras' throughput? In production the usual failure mode when you optimize hard for speed is accuracy quietly regressing on the harder 10% of cases. Did that tradeoff show up anywhere, or does Ultrafast hold intelligence parity across the board?",
+        "rationale": "OpenAI names five verticals but not whether Ultrafast preserves the standard model's intelligence or is a distilled fast path."
+      },
+      {
+        "strategy_label": "Provocative question",
+        "comment": "The real-time voice and customer support use case is the one where 750 tok/s genuinely changes the product, not just the demo.\n\nFor coding and design though, I'd push back a bit: once you're past 20-30 tok/s, generation speed usually stops being the bottleneck — verification is. Reading and checking what the model produced still eats most of a developer's time, and that number doesn't move no matter how fast the tokens land. Curious which of the five verticals you listed actually change behavior at 14x, versus which ones just get a faster wait ahead of the same review queue.",
+        "rationale": "Pushes on Petro's own established thesis (verification, not generation, is the bottleneck) against a post that implies speed alone is the win."
+      },
+      {
+        "strategy_label": "Personal experience",
+        "comment": "Real-time voice and customer support is the use case where 750 tok/s is not a vanity number — latency there is the product.\n\nWe ran into the inverse lesson building BankAI, a self-hosted GenAI for German banking contract generation and validation, pre-ChatGPT. We cut creation time from 16 hours to 4, but almost none of that came from raw inference speed — it came from cutting the human validation steps around the model, generation itself was always a small slice of the total time. Curious how much of Ultrafast's advertised gain in commerce, coding, or security response comes from the model itself versus what it lets you cut around it.",
+        "rationale": "Directly relevant documented history (BankAI) where cutting end-to-end time came from validation, not raw generation speed."
+      }
+    ],
+    "draft_error": null,
+    "source": "feed",
+    "slack_request_ts": null,
+    "slack_request_user": null,
+    "clickup_task_id": "86cb58r4e",
+    "clickup_url": "https://app.clickup.com/t/86cb58r4e",
+    "clickup_adopted": false,
+    "clickup_comment_ids": [
+      "90150250813054",
+      "90150250813179",
+      "90150250813225"
+    ],
+    "clickup_comment_error": null,
+    "clickup_error": null
   }
 ]
