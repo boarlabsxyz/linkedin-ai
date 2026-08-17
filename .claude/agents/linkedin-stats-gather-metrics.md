@@ -49,7 +49,8 @@ is the count of top-level comments captured this run — these are stored as the
 `comments` in this shape:
 - `weeks[WEEK].metrics.comments` — analytics count (integer, includes replies)
 - `weeks[WEEK].comments` — array of top-level comment entries (each with
-  `author_name`, `author_url`, `text`, `reactions`, `replies_count`)
+  `author_name`, `author_url`, `author_headline`, `comment_urn`, `text`,
+  `reactions`, `replies_count`)
 
 The two numbers (`metrics.comments` vs `len(weeks[WEEK].comments)`) can
 legitimately differ — replies aren't counted in `COMMENTS_SCRAPED`. If the
@@ -340,13 +341,18 @@ the shape has burned this skill before. Use the canonical scrape file.**
    `browser_evaluate` throws, set `comments = []` and continue.
 
 **Output shape contract — every entry in `comments` MUST have EXACTLY these
-five keys, in this order:**
+seven keys, in this order:**
 
 ```
-{ author_name, author_url, text, reactions, replies_count }
+{ author_name, author_url, author_headline, comment_urn, text, reactions, replies_count }
 ```
 
-No `time_text`. No `headline`. No `name`. No `profile_url`. No `author`. No
+`author_headline` and `comment_urn` were added 2026-08-17 for the `people`
+phase (the URN carries the only timestamp LinkedIn gives a comment; the
+headline feeds ICP classification). Both are best-effort — emit `""` when the
+DOM does not carry them, never omit the key.
+
+No `time_text`. No `name`. No `profile_url`. No `author`. No
 additional fields whatsoever. If your scrape produces a different shape,
 your run is broken — return `comments = []` rather than write a malformed
 entry.
@@ -388,7 +394,7 @@ Loading the canonical body via `Read` removes that interpretation gap.
     "company": {...}
   },
   "comments": [
-    { "author_name": "...", "author_url": "...", "text": "...", "reactions": 0, "replies_count": 0 },
+    { "author_name": "...", "author_url": "...", "author_headline": "...", "comment_urn": "urn:li:comment:(activity:...,...)", "text": "...", "reactions": 0, "replies_count": 0 },
     ...
   ]
 }
