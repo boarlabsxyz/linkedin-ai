@@ -963,6 +963,66 @@
           "replies_count": 1
         }
       ]
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:53:19Z",
+      "metrics": {
+        "impressions": 8020,
+        "members_reached": 5676,
+        "reactions": 9,
+        "comments": 4,
+        "reposts": 1,
+        "saves": 1,
+        "sends": 0,
+        "profile_viewers": 9,
+        "followers_gained": 0,
+        "engagement_rate": 0.17
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 29.3,
+          "Entry": 26.1,
+          "Director": 8,
+          "Manager": 6.5,
+          "CXO": 4.7
+        },
+        "job_title": {
+          "Software Engineer": 10.3,
+          "Founder": 2.3,
+          "Project Manager": 1.9,
+          "Co-Founder": 1.8,
+          "Full Stack Engineer": 1.8
+        },
+        "industry": {
+          "IT Services and IT Consulting": 28.9,
+          "Software Development": 20.6,
+          "Technology, Information and Internet": 6.2,
+          "Business Consulting and Services": 4.2,
+          "Financial Services": 3.3
+        },
+        "company_size": {
+          "10,001+ employees": 13.1,
+          "51-200 employees": 12.6,
+          "1001-5000 employees": 11.6,
+          "11-50 employees": 11.5,
+          "201-500 employees": 8.8
+        },
+        "location": {
+          "Prague Metropolitan Area": 5,
+          "Ljubljana Metropolitan Area": 4,
+          "Sofia Metropolitan Area": 3.7,
+          "Zagreb Metropolitan Area": 3.7,
+          "Budapest Metropolitan Area": 2.9
+        },
+        "company": {
+          "EPAM Systems": 0,
+          "SoftServe": 0,
+          "Accenture": 0,
+          "Speed and Function": 0,
+          "IBM": 0
+        }
+      },
+      "comments": []
     }
   }
 }

@@ -1,5 +1,68 @@
 {
   "comments": {
+    "urn:li:comment:(activity:7492474869096472576,7493085128018071552)": {
+      "comment_urn": "urn:li:comment:(activity:7492474869096472576,7493085128018071552)",
+      "commented_at": "2026-08-11T23:25:09Z",
+      "verb": "commented",
+      "text": "Not long ago, teams were assessed by more code, more PRs, and faster delivery (see DORA metrics). Now it feels more obvious that the hard part is still human: understanding what should be built, checking if it works, and seeing if it helps users. Maybe the next useful metrics will be closer to product requirement mistakes, rework, and end-user feedback.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7493085154949709824",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7493085154949709824/",
+      "post_author_name": "Salah Awad",
+      "post_author_url": "https://www.linkedin.com/in/salahawad",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7493085154949709824/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7492474869096472576%2C7493085128018071552%29",
+      "weeks": {
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 0,
+          "replies_count": 1,
+          "impressions": 27
+        }
+      }
+    },
+    "urn:li:comment:(activity:7490570860181983232,7493083360483950593)": {
+      "comment_urn": "urn:li:comment:(activity:7490570860181983232,7493083360483950593)",
+      "commented_at": "2026-08-11T23:18:07Z",
+      "verb": "commented",
+      "text": "I agree the open-source part is the part worth watching most, because that is where it stops feeling like a test and starts feeling real.\n\nI think in the near future we may not use this pattern that much, because Claude Code can just write the code instead of importing it. Which makes the remaining part even more dangerous.",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7493083374937473025",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7493083374937473025/",
+      "post_author_name": "Ethan Mollick",
+      "post_author_url": "https://www.linkedin.com/in/emollick",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7493083374937473025/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7490570860181983232%2C7493083360483950593%29",
+      "weeks": {
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 4
+        }
+      }
+    },
+    "urn:li:comment:(activity:7490100058068164608,7493081542752202752)": {
+      "comment_urn": "urn:li:comment:(activity:7490100058068164608,7493081542752202752)",
+      "commented_at": "2026-08-11T23:10:54Z",
+      "verb": "commented",
+      "text": "I usually prefer to put important decisions into clear behaviour or architecture rules quite early. \n\nOtherwise, the AI still has too much space for improvisation and mistakes. This make human remain the bottleneck. Why did you keep this step for human discussion instead of formalising more of it when the pattern became clear?",
+      "comment_author_name": "Peter Ovchynnikov",
+      "comment_author_url": "https://www.linkedin.com/in/ovchyn",
+      "post_urn": "urn:li:activity:7493081577954947073",
+      "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7493081577954947073/",
+      "post_author_name": "Keith Kurson",
+      "post_author_url": "https://www.linkedin.com/in/keithkurson",
+      "permalink": "https://www.linkedin.com/feed/update/urn:li:activity:7493081577954947073/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7490100058068164608%2C7493081542752202752%29",
+      "weeks": {
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 10
+        }
+      }
+    },
     "urn:li:comment:(activity:7487568033847070720,7491792908463964161)": {
       "comment_urn": "urn:li:comment:(activity:7487568033847070720,7491792908463964161)",
       "commented_at": "2026-08-08T09:50:20Z",
@@ -18,6 +81,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 3
+        },
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 7
         }
       }
     },
@@ -39,6 +108,12 @@
           "reactions": 0,
           "replies_count": 0,
           "impressions": 4
+        },
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 0,
+          "replies_count": 0,
+          "impressions": 8
         }
       }
     },
@@ -72,6 +147,12 @@
           "reactions": 2,
           "replies_count": 0,
           "impressions": 841
+        },
+        "2026-08-17": {
+          "snapshot_at": "2026-08-17T00:52:19Z",
+          "reactions": 2,
+          "replies_count": 0,
+          "impressions": 851
         }
       }
     },

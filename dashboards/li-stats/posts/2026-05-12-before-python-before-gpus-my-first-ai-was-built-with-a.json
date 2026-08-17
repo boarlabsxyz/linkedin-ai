@@ -760,6 +760,60 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:55:07Z",
+      "metrics": {
+        "impressions": 440,
+        "members_reached": 195,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 1,
+        "followers_gained": 0,
+        "engagement_rate": 0.45
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 32.3,
+          "Entry": 27.7,
+          "Director": 9.2,
+          "CXO": 7.2,
+          "Manager": 5.6
+        },
+        "job_title": {
+          "Software Engineer": 6.7,
+          "Project Manager": 3.6,
+          "Full Stack Engineer": 3.1
+        },
+        "industry": {
+          "IT Services and IT Consulting": 22.1,
+          "Aviation and Aerospace Component Manufacturing": 20.5,
+          "Software Development": 16.4,
+          "Technology, Information and Internet": 6.7,
+          "Business Consulting and Services": 3.6
+        },
+        "company_size": {
+          "10,001+ employees": 24.1,
+          "51-200 employees": 15.9,
+          "11-50 employees": 11.3,
+          "1-10 employees": 6.7,
+          "201-500 employees": 6.2
+        },
+        "location": {
+          "Berlin Metropolitan Area": 14.4,
+          "Greater Derby Area": 5.6,
+          "Lviv": 3.6,
+          "Frankfurt Rhine-Main Metropolitan Area": 3.6
+        },
+        "company": {
+          "Rolls-Royce": 11.3,
+          "Speed and Function": 6.7
+        }
+      },
+      "comments": []
     }
   }
 }

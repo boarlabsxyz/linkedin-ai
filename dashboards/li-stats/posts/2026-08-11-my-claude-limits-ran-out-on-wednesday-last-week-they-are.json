@@ -1,0 +1,62 @@
+{
+  "urn": "urn:li:activity:7492904487343288320",
+  "id": "7492904487343288320",
+  "type": "post",
+  "posted_at": "2026-08-11T11:27:21Z",
+  "posted_date": "2026-08-11",
+  "post_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+  "preview": "My Claude limits ran out on Wednesday last week. They are weekly limits, and they normally reset on Sunday, so from Wednesday onwards there was not that much I could actually do. After that came denia",
+  "text": null,
+  "weeks": {
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:58:08Z",
+      "metrics": {
+        "impressions": 205,
+        "members_reached": 131,
+        "reactions": 4,
+        "comments": 0,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.95
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 37.4,
+          "Entry": 15.3,
+          "Director": 14.5,
+          "CXO": 8.4,
+          "VP": 5.3
+        },
+        "job_title": {
+          "Software Engineer": 10.7
+        },
+        "industry": {
+          "IT Services and IT Consulting": 20.6,
+          "Software Development": 16,
+          "Financial Services": 16,
+          "Banking": 10.7,
+          "Technology, Information and Internet": 5.3
+        },
+        "company_size": {
+          "10,001+ employees": 43.5,
+          "51-200 employees": 15.3,
+          "11-50 employees": 6.9,
+          "5001-10,000 employees": 5.3,
+          "1001-5000 employees": 5.3
+        },
+        "location": {
+          "London Area, United Kingdom": 9.9,
+          "Lviv": 4.6
+        },
+        "company": {
+          "HSBC": 28.2,
+          "Speed and Function": 8.4
+        }
+      },
+      "comments": []
+    }
+  }
+}

@@ -49,6 +49,48 @@
         }
       },
       "comments": []
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:57:56Z",
+      "metrics": {
+        "impressions": 186,
+        "members_reached": 93,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 1.08
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 37.6,
+          "Entry": 30.1
+        },
+        "job_title": {
+          "Software Engineer": 18.3,
+          "Quality Assurance Engineer": 6.5
+        },
+        "industry": {
+          "IT Services and IT Consulting": 34.4,
+          "Software Development": 31.2,
+          "Technology, Information and Internet": 9.7
+        },
+        "company_size": {
+          "51-200 employees": 22.6,
+          "10,001+ employees": 16.1,
+          "11-50 employees": 12.9,
+          "1001-5000 employees": 10.8,
+          "201-500 employees": 9.7
+        },
+        "location": {},
+        "company": {
+          "Speed and Function": 10.8
+        }
+      },
+      "comments": []
     }
   }
 }
