@@ -37,3 +37,4 @@ _transcript: 20260725-150058-15284ba4-the-linkedin-post-generation-i-need-two.md
 - For the transcript batch in Google Drive folder `1Nem6WVYGD5v7cII4RDn9jnMO296fkt1-`, create a summary of every transcript and publish all summaries together in a single document in that folder (requested 2026-08-16T11:09:11Z).
 - For this batch, place the transcripts and their summaries together in one ClickUp Doc organized as multiple tabs (requested by Peter 2026-08-16T11:29:57Z).
 - All TrueBDD documents must be stored under the ClickUp hierarchy at `https://app.clickup.com/90151491867/v/f/901515828756/901510881430`, using the appropriate subfolder rather than the TrueBDD root (requested 2026-08-17T17:00:56Z).
+- LinkedIn engagement scoring must award normal users 1 point per reaction and 5 per comment, ICP users 2 per reaction and 10 per comment, and VIP users 4 per reaction and 20 per comment (confirmed 2026-08-17T18:50:54Z).
