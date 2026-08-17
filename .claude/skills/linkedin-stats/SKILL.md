@@ -11,11 +11,12 @@ description: >
 
 ## Step 0 — fast path (always try this first)
 
-Run the deterministic scraper. It performs ALL four gather steps (post
-discovery, per-post metrics, account analytics, outbound comments) in one
-paced Playwright process over the same logged-in Chrome profile the MCP uses
-(~5 min total), and prints the same KEY=VALUE contracts the agents would,
-sectioned as `[posts]` / `[metrics]` / `[account]` / `[comments]`:
+Run the deterministic scraper. It performs ALL five gather steps (post
+discovery, per-post metrics, account analytics, outbound comments, and the
+`people` engagement phase) in one paced Playwright process over the same
+logged-in Chrome profile the MCP uses (~5 min total), and prints the same
+KEY=VALUE contracts the agents would, sectioned as `[posts]` / `[metrics]` /
+`[account]` / `[comments]` / `[people]`:
 
 ```bash
 node .claude/skills/linkedin-stats/fast/scrape-weekly.mjs
@@ -40,6 +41,71 @@ Exit code decides what happens next:
   close the other browser and re-run, or use the agent flow.
 - **20 / 22 / 23** — auth wall / rate-limited / fs failure. Report the error
   verbatim and stop — the agent flow would hit the same wall.
+
+## The `people` phase — WHO engaged, and what it scores
+
+Everything else in this skill counts engagement; this phase records the people
+behind it and tiers them, so the dashboard can show a weighted engagement
+score. It runs last, alone, on its own page, and writes
+`dashboards/li-stats/engagement.json` (`{people, events, targets}`) through
+`fast/merge.py` like every other li-stats file.
+
+**Dating.** LinkedIn timestamps comments but NOT reactions:
+- a comment carries its own URN, which decodes to an exact UTC ms, so comment
+  and reply events are dated exactly and retroactively;
+- a reaction carries nothing, so it is dated by DIFFING this week's reactor set
+  against the set already recorded for that target. The first scan of a target
+  is therefore a **baseline**: its reactors are stored with `backfill: true`
+  and excluded from weekly scores. Real weekly reaction numbers start with the
+  **second** weekly run. Reactions are attributed to `ATTRIBUTED_WEEK` — the
+  ISO Monday *before* the run, i.e. the week that just ended.
+
+**Scope per run** (bounded so this never eats the analytics 429 budget): posts
+published in the last 30 days, posts whose reaction/comment counts changed
+since the previous snapshot, plus never-scanned posts as baseline backlog —
+capped by `--people-max-posts` (25); and Peter's own comments younger than 30
+days, capped by `--people-max-comments` (25). Anything dropped by a cap is
+reported in `TARGETS_DROPPED`, never silently skipped.
+
+**Tiering.** `sources/icp.md` (synced from the ClickUp ICP Doc by the
+`sync-sources` skill) is the rubric; `fast/classify-icp.mjs` classifies each
+person once from their name + headline via a batched, tool-free pinned-haiku
+`claude -p` call and caches the verdict against a hash of that headline.
+`.claude/skills/linkedin-stats/vip-people.md` is the hand-curated 4× list.
+Weights live in `.claude/skills/linkedin-stats/scoring.json`. **Scores are
+computed at build time** by `.github/scripts/build-stats-json.mjs`, never
+stored — so retuning a weight, adding a VIP, or a late ICP verdict rescores
+all history with no re-scrape.
+
+**Contract keys:** `PEOPLE_STATUS` (OK / PARTIAL / SELECTOR_DRIFT / FAILED /
+AUTH / RATE / DEADLINE), `WEEK`, `ATTRIBUTED_WEEK`, `POST_TARGETS`,
+`POST_TARGETS_SCANNED`, `COMMENT_TARGETS_SCANNED`, `TARGETS_FAILED`,
+`TARGETS_DROPPED`, `REACTORS_SEEN`, `REACTORS_EXPECTED`, `TARGETS_SHORT_READ`,
+`COMMENT_EVENTS`, `REPLY_EVENTS`, `COMMENTS_UNDATED`, `PEOPLE_NEW`,
+`EVENTS_NEW`, `ICP_PENDING`, `ICP_CLASSIFIED`, `ICP_UNCLASSIFIED`.
+
+**This phase is ADVISORY on purpose.** It never emits a phase-level `ERROR=`
+line and never escalates the exit code past `partial` (10), so a drifted
+reactor overlay cannot demote a run whose metrics and account data are good,
+nor block the Pages publish. Its health shows up in `PEOPLE_STATUS` and in the
+run manifest. Promote it to a hard canary only once it has proven itself over
+several fires. Flags: `--no-icp` (skip classification), `--icp-max=<n>` (cap
+classifications per run, default 200), `--people-recent-days=<n>`.
+
+Regression suite (browser-free): `node .claude/skills/linkedin-stats/fast/test-people.mjs`.
+
+**Known DOM facts (verified live 2026-08-17)** — LinkedIn's 2026 obfuscation
+reached the post page, so these are the only handles that work:
+- the reactor overlay is a native `<dialog data-testid="dialog">`, NOT
+  `[role="dialog"]` and NOT `.artdeco-modal`;
+- the counts row has no semantic class and no aria-label — the reaction list is
+  opened by clicking the anchor whose text reads `"<n> reactions <n>"`;
+- the overlay lazy-loads ~10 people per page and responds to REAL input events,
+  not `scrollTop` (measured: scrollTop 10→19, mouse wheel →58, End key →68 of
+  70), so paging is driven from node with `mouse.wheel` + `End`;
+- a couple of reactors are private profiles with no link and can never be
+  identified — a shortfall under 10% of `REACTORS_EXPECTED` is treated as
+  normal, anything larger sets `TARGETS_SHORT_READ`.
 
 ## Agent flow (fallback only)
 
@@ -161,5 +227,19 @@ PY
    - Discovery cutoff:   <DISCOVERY_CUTOFF>
    - Oldest visible:     <OLDEST_VISIBLE>
    - Scroll iterations:  <SCROLL_ITERATIONS>
+
+   Engagement people (fast path only — no agent fallback exists)
+   - Status:            <PEOPLE_STATUS>
+   - Attributed week:   <ATTRIBUTED_WEEK>
+   - Targets scanned:   <POST_TARGETS_SCANNED> posts / <COMMENT_TARGETS_SCANNED> comments
+   - Reactors:          <REACTORS_SEEN> of <REACTORS_EXPECTED>
+   - New events:        <EVENTS_NEW> (comments <COMMENT_EVENTS>, replies <REPLY_EVENTS>)
+   - Undated comments:  <COMMENTS_UNDATED>
+   - ICP classified:    <ICP_CLASSIFIED> (pending <ICP_PENDING>)
    ```
+   The `people` phase exists **only** on the fast path: there is no fifth
+   gather agent, because the CI pipeline self-heals rather than falling back,
+   and the phase is advisory (a failure there never blocks the run). On the
+   agent flow, report `[people] SKIPPED=agent_flow`.
+
    Steps run sequentially. If step 1 or step 3's agent returns `ERROR=<...>`, include the error line verbatim and stop without spawning subsequent steps. If step 4's agent returns `ERROR=<...>`, include it verbatim in the report — the snapshot from step 3 is already persisted, so don't roll anything back. Per-post `ERROR=` returns inside step 2 are aggregated into `POSTS_FAILED` / `FAILED_IDS` and do NOT abort the skill.

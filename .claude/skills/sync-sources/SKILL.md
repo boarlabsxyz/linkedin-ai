@@ -5,7 +5,9 @@ description: Pull the LinkedIn writing instruction docs from ClickUp and overwri
 
 # Sync Sources
 
-ClickUp is the source of truth for the LinkedIn writing instructions. This skill pulls the latest content from two ClickUp Docs and overwrites the corresponding local files in `sources/`.
+ClickUp is the source of truth for the LinkedIn writing instructions and for the ICP definition. This skill pulls the latest content from three ClickUp Docs and overwrites the corresponding local files in `sources/`.
+
+`sources/icp.md` is not just reference reading: `.claude/skills/linkedin-stats/fast/classify-icp.mjs` feeds it to the ICP classifier that tiers everyone who engages with Peter's posts, so re-syncing it changes how engagement is scored.
 
 ## Configuration
 
@@ -13,6 +15,7 @@ ClickUp is the source of truth for the LinkedIn writing instructions. This skill
 |---|---|---|
 | `sources/tone-of-voice.md` | LinkedIn — Tone of Voice | `2kyq568v-17915` |
 | `sources/post-instructions.md` | LinkedIn — Post Instructions | `2kyq568v-17935` |
+| `sources/icp.md` | ICP | `2kyq568v-21915` |
 
 Workspace ID: `90151491867`. Parent folder (for reference, not used by sync): `901515356043`.
 

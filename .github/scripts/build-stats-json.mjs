@@ -10,10 +10,18 @@ import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(HERE, "..", "..");
-const LI_STATS = join(REPO_ROOT, "dashboards", "li-stats");
+// --li-stats points the read side at a fixture directory (scoring tests);
+// CI always uses the real one.
+const LI_STATS_ARG = process.argv.indexOf("--li-stats");
+const LI_STATS = LI_STATS_ARG > -1 && process.argv[LI_STATS_ARG + 1]
+  ? resolve(process.argv[LI_STATS_ARG + 1])
+  : join(REPO_ROOT, "dashboards", "li-stats");
 const POSTS_DIR = join(LI_STATS, "posts");
 const ACCOUNT_FILE = join(LI_STATS, "account.json");
 const COMMENTS_FILE = join(LI_STATS, "comments.json");
+const ENGAGEMENT_FILE = join(LI_STATS, "engagement.json");
+const SCORING_FILE = join(REPO_ROOT, ".claude", "skills", "linkedin-stats", "scoring.json");
+const VIP_FILE = join(REPO_ROOT, ".claude", "skills", "linkedin-stats", "vip-people.md");
 
 const METRIC_KEYS = [
   "impressions", "members_reached", "reactions", "comments",
@@ -165,6 +173,21 @@ function zeroFillMonths(rows, zeroFor) {
   return monthRange(start, end).map(month => byMonth.get(month) ?? zeroFor(month));
 }
 
+// Weekly sibling of zeroFillMonths: a week with no engagement must render as
+// an explicit 0 in the trend, not vanish from the series.
+function zeroFillWeeks(rows, zeroFor) {
+  if (!rows.length) return rows;
+  const byWeek = new Map(rows.map(r => [r.week, r]));
+  const weeks = rows.map(r => r.week).sort();
+  const out = [];
+  const end = Date.parse(`${weeks[weeks.length - 1]}T00:00:00Z`);
+  for (let t = Date.parse(`${weeks[0]}T00:00:00Z`); t <= end; t += 7 * 86400000) {
+    const week = new Date(t).toISOString().slice(0, 10);
+    out.push(byWeek.get(week) ?? zeroFor(week));
+  }
+  return out;
+}
+
 const posts_per_month = zeroFillMonths(
   [...monthAgg.values()]
     .map(m => ({ ...m, avg_impressions_per_post: m.posts > 0 ? Math.round(m.total_impressions / m.posts) : 0 })),
@@ -192,9 +215,173 @@ const comments_per_month = zeroFillMonths(
   month => ({ month, comments_posted: 0, reactions_received: 0, impressions_received: 0 }),
 );
 
-const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month, correlation_points, correlation_trend };
+// ---------------------------------------------------------------- engagement
+// Who engaged, and what it is worth. Scores are DERIVED HERE, never stored:
+// dashboards/li-stats/engagement.json holds raw, immutable events, and the
+// weights (scoring.json) plus the hand-curated 4x list (vip-people.md) are
+// applied at build time. Retuning a weight or adding a VIP therefore rescores
+// the entire history on the next Pages build, with no re-scrape.
+//
+// Weekly rows exclude `backfill` events on purpose: a backfilled reaction is
+// one LinkedIn never dated, discovered on a target's first scan, so it belongs
+// to "all time" but to no particular week. See fast/people.mjs for why.
+
+// One `- https://www.linkedin.com/in/<slug>` bullet per person.
+// Fenced code blocks and inline code are stripped first, and only bullet lines
+// count — otherwise the file's own format example and the sentence describing
+// it get parsed as real VIPs (they did, on the first run of this).
+function readVipKeys(file) {
+  try {
+    const md = readFileSync(file, "utf8")
+      .replace(/```[\s\S]*?```/g, "")   // fenced examples
+      .replace(/`[^`\n]*`/g, "");        // inline code
+    const keys = new Set();
+    for (const line of md.split("\n")) {
+      if (!/^\s*[-*]\s/.test(line)) continue;
+      for (const m of line.matchAll(/https?:\/\/(?:[a-z0-9-]+\.)*linkedin\.com\/in\/([A-Za-z0-9\-_%.]+)/gi)) {
+        const slug = m[1].replace(/\/+$/, "");
+        if (/[a-z0-9]/i.test(slug)) keys.add(`in/${slug.toLowerCase()}`);
+      }
+    }
+    return keys;
+  } catch { return new Set(); }
+}
+
+// Base 1/5, ICP 2x, VIP list 4x. Only a fallback — scoring.json is the knob.
+const DEFAULT_WEIGHTS = {
+  normal: { reaction: 1, comment: 5 },
+  icp: { reaction: 2, comment: 10 },
+  vip: { reaction: 4, comment: 20 },
+};
+
+function readScoring(file) {
+  try {
+    const cfg = JSON.parse(readFileSync(file, "utf8"));
+    return { weights: { ...DEFAULT_WEIGHTS, ...(cfg.weights ?? {}) }, precedence: cfg.precedence ?? "max" };
+  } catch { return { weights: DEFAULT_WEIGHTS, precedence: "max" }; }
+}
+
+const scoring = readScoring(SCORING_FILE);
+const vipKeys = readVipKeys(VIP_FILE);
+
+// Tiers a person belongs to, richest last. `normal` is always a floor so a
+// tier weighted below normal can never punish the person who earned it.
+function tiersFor(person, key) {
+  const t = ["normal"];
+  if (person?.icp?.verdict === true) t.push("icp");
+  if (vipKeys.has(key)) t.push("vip");
+  return t;
+}
+
+function pointsFor(tiers, kind) {
+  const vals = tiers.map(t => scoring.weights[t]?.[kind] ?? 0);
+  if (scoring.precedence === "max") return Math.max(...vals);
+  return vals[vals.length - 1]; // priority order: vip > icp > normal
+}
+
+const engagement_score_weeks = [];
+const engagement_score_totals = [];
+const engagement_people = [];
+try {
+  const eng = JSON.parse(readFileSync(ENGAGEMENT_FILE, "utf8"));
+  const peopleMap = eng.people ?? {};
+  const events = Object.values(eng.events ?? {});
+
+  // The most recent ISO week that is already over — the "last week" the tiles
+  // report. Derived from the data, not the clock, so a delayed publish still
+  // shows the week the scrape covered.
+  const currentWeekMonday = (() => {
+    const d = new Date();
+    const day = (d.getUTCDay() + 6) % 7;
+    return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - day))
+      .toISOString().slice(0, 10);
+  })();
+  const weeksPresent = [...new Set(events.map(e => e.attributed_week).filter(Boolean))].sort();
+  const lastWeek = [...weeksPresent].reverse().find(w => w < currentWeekMonday) ?? null;
+
+  const weekAgg = new Map();   // week -> row
+  const personAgg = new Map(); // person_key -> row
+  const totals = {
+    all_time: { scope: "all_time", score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0, people: 0 },
+    last_week: { scope: "last_week", score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0, people: 0 },
+  };
+  const allTimePeople = new Set();
+  const lastWeekPeople = new Set();
+
+  for (const ev of events) {
+    const key = ev.person_key;
+    const person = peopleMap[key];
+    const tiers = tiersFor(person, key);
+    const tier = tiers[tiers.length - 1];
+    const kind = ev.kind === "comment" ? "comment" : "reaction";
+    const pts = pointsFor(tiers, kind);
+    const bucket = `score_${tier}`;
+
+    const prow = personAgg.get(key) ?? {
+      person_key: key,
+      name: person?.name ?? key,
+      headline: person?.headline ?? "",
+      profile_url: person?.profile_url ?? "",
+      tier,
+      reactions: 0, comments: 0, score: 0, score_last_week: 0,
+    };
+    prow.tier = tier;
+    prow[kind === "comment" ? "comments" : "reactions"] += 1;
+    prow.score += pts;
+
+    totals.all_time.score += pts;
+    totals.all_time[bucket] += pts;
+    totals.all_time[kind === "comment" ? "comments" : "reactions"] += 1;
+    allTimePeople.add(key);
+
+    if (ev.attributed_week && !ev.backfill) {
+      const w = ev.attributed_week;
+      const row = weekAgg.get(w) ?? {
+        week: w, score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0,
+      };
+      row.score += pts;
+      row[bucket] += pts;
+      row[kind === "comment" ? "comments" : "reactions"] += 1;
+      weekAgg.set(w, row);
+
+      if (w === lastWeek) {
+        prow.score_last_week += pts;
+        totals.last_week.score += pts;
+        totals.last_week[bucket] += pts;
+        totals.last_week[kind === "comment" ? "comments" : "reactions"] += 1;
+        lastWeekPeople.add(key);
+      }
+    }
+    personAgg.set(key, prow);
+  }
+
+  totals.all_time.people = allTimePeople.size;
+  totals.last_week.people = lastWeekPeople.size;
+  totals.last_week.week = lastWeek ?? "";
+  totals.all_time.week = "";
+
+  engagement_score_weeks.push(...zeroFillWeeks(
+    [...weekAgg.values()].sort((a, b) => a.week.localeCompare(b.week)),
+    week => ({ week, score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0 }),
+  ));
+  engagement_score_totals.push(totals.last_week, totals.all_time);
+  engagement_people.push(...[...personAgg.values()].sort((a, b) => b.score - a.score));
+} catch { /* engagement.json optional until the people phase has run once */ }
+
+// Always emit both total rows so the score tiles read "0" rather than
+// "No data" before the first people-phase run.
+if (!engagement_score_totals.length) {
+  for (const scope of ["last_week", "all_time"]) {
+    engagement_score_totals.push({
+      scope, week: "", score: 0, score_normal: 0, score_icp: 0, score_vip: 0,
+      reactions: 0, comments: 0, people: 0,
+    });
+  }
+}
+
+const payload = { posts, post_weeks, post_demographics, account_weeks, account_demographics, posts_per_month, comments_per_month, correlation_points, correlation_trend, engagement_score_weeks, engagement_score_totals, engagement_people };
 
 mkdirSync(dirname(resolve(args.out)), { recursive: true });
 writeFileSync(args.out, JSON.stringify(payload));
 
-console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length} comments_per_month=${comments_per_month.length} correlation_points=${correlation_points.length}`);
+console.error(`wrote ${args.out} — posts=${posts.length} post_weeks=${post_weeks.length} post_demographics=${post_demographics.length} account_weeks=${account_weeks.length} account_demographics=${account_demographics.length} posts_per_month=${posts_per_month.length} comments_per_month=${comments_per_month.length} correlation_points=${correlation_points.length} engagement_score_weeks=${engagement_score_weeks.length} engagement_people=${engagement_people.length} vip_list=${vipKeys.size}`);

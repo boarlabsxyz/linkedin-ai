@@ -8,11 +8,18 @@
 // keep the arrow function exactly as written.
 //
 // Output shape: an array (length 0..200) where EVERY entry has EXACTLY these
-// five keys, in this order:
-//   { author_name, author_url, text, reactions, replies_count }
+// seven keys, in this order:
+//   { author_name, author_url, author_headline, comment_urn, text, reactions,
+//     replies_count }
 //
-// Do not add other keys (no `headline`, no `time_text`, no `profile_url`, no
-// `author`, no `name`). Do not rename keys. Do not change selectors.
+// `comment_urn` and `author_headline` were added 2026-08-17 for the `people`
+// phase: the URN's second id decodes to the exact comment timestamp (the only
+// dating LinkedIn gives us for engagement), and the headline is what the ICP
+// classifier reads. Both are best-effort — "" when the DOM does not carry
+// them — and every downstream consumer must tolerate an empty value.
+//
+// Do not add further keys (no `time_text`, no `profile_url`, no `author`, no
+// `name`). Do not rename keys. Do not change selectors.
 
 () => {
   const isTopLevel = (el) =>
@@ -57,6 +64,20 @@
 
     const author_name = (nameEl?.textContent || '').trim();
 
+    // Headline sits under the name in the comment's meta block. Class names
+    // vary across LinkedIn's A/B variants, so match on the stable prefix.
+    const headlineEl =
+      a.querySelector('.comments-comment-meta__description-subtitle') ||
+      a.querySelector('[class*="comments-comment-meta__description-subtitle"]');
+    const author_headline = (headlineEl?.textContent || '')
+      .replace(/\s+/g, ' ').trim().slice(0, 400);
+
+    // urn:li:comment:(activity:<postId>,<commentId>) — the comment id decodes
+    // to an exact UTC timestamp (id >> 22). Without it a comment cannot be
+    // attributed to a week.
+    const rawUrn = a.getAttribute('data-id') || a.getAttribute('data-urn') || '';
+    const comment_urn = /^urn:li:comment:\(/.test(rawUrn) ? rawUrn : '';
+
     // Pull text via innerText (handles line breaks), trim, cap at 2000 chars.
     let text = (textEl?.innerText || '').trim();
     if (text.length > 2000) text = text.slice(0, 2000);
@@ -67,6 +88,8 @@
     out.push({
       author_name,
       author_url,
+      author_headline,
+      comment_urn,
       text,
       reactions:     parseInt0(reactEl?.textContent),
       replies_count: parseInt0(repliesEl?.textContent),

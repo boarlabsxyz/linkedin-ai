@@ -43,6 +43,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import * as People from './people.mjs';
+import { classifyPeople, headlineHash, loadIcpText, needsClassification } from './classify-icp.mjs';
 
 // ---------------------------------------------------------------- constants
 
@@ -60,6 +62,8 @@ const DATA_ROOT = earlyArgs['data-root']
 const POSTS_DIR = path.join(DATA_ROOT, 'posts');
 const ACCOUNT_FILE = path.join(DATA_ROOT, 'account.json');
 const COMMENTS_FILE = path.join(DATA_ROOT, 'comments.json');
+const ENGAGEMENT_FILE = path.join(DATA_ROOT, 'engagement.json');
+const ICP_FILE = path.join(REPO_ROOT, 'sources', 'icp.md');
 const AGENTS_DIR = path.join(REPO_ROOT, '.claude', 'agents');
 const MERGE_PY = path.join(SCRIPT_DIR, 'merge.py');
 const MANIFEST_FILE = path.join(REPO_ROOT, 'tmp', 'fast-scrape-manifest.json');
@@ -83,7 +87,15 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => {
   const m = a.match(/^--([^=]+)(?:=(.*))?$/);
   return m ? [m[1], m[2] ?? true] : [a, true];
 }));
-const PHASES = String(args.phases || 'posts,metrics,account,comments').split(',');
+const PHASES = String(args.phases || 'posts,metrics,account,comments,people').split(',');
+// `people` phase knobs. The caps bound the extra navigations (public bucket,
+// 700-900ms apart) so the phase cannot eat the 429 budget the analytics
+// surfaces depend on; whatever they drop is reported, never silently skipped.
+const PEOPLE_MAX_POSTS = Math.max(0, parseInt(args['people-max-posts'] || '25', 10));
+const PEOPLE_MAX_COMMENTS = Math.max(0, parseInt(args['people-max-comments'] || '25', 10));
+const PEOPLE_RECENT_DAYS = Math.max(1, parseInt(args['people-recent-days'] || '30', 10));
+const NO_ICP = !!args['no-icp'];
+const ICP_MAX = Math.max(0, parseInt(args['icp-max'] || '200', 10));
 const CONCURRENCY = Math.max(1, parseInt(args.concurrency || '3', 10));
 const POSTS_LIMIT = args['posts-limit'] ? parseInt(args['posts-limit'], 10) : Infinity;
 const POST_FILES_ONLY = args['post-file'] ? String(args['post-file']).split(',') : null;
@@ -1405,11 +1417,483 @@ async function phaseCommentsOut(page) {
   };
 }
 
+// ------------------------------------------------------- phase: people (who)
+// Everything above counts engagement; this phase records WHO produced it.
+// The dating rules and the baseline caveat live in people.mjs — read that
+// header before touching any of this.
+//
+// Deliberately ADVISORY: this phase never emits a phase-level `ERROR=` line
+// and never escalates the exit code beyond `partial`. A reactor overlay that
+// drifts must not demote a weekly run that scraped its metrics perfectly, nor
+// block the Pages publish. Its health is reported through PEOPLE_STATUS, which
+// the skill report and the run manifest both surface. Promote it to a hard
+// canary only once it has proven itself across several fires.
+//
+// These evaluators are plain functions (playwright serializes fn.toString()),
+// not asFn(`…`) strings — the string form exists for the canonical scrape
+// bodies loaded from .claude/agents/*.js, and hand-escaping regexes into a
+// template literal is a bug farm.
+
+// The reactor overlay is a NATIVE <dialog data-testid="dialog">, not an
+// artdeco modal and not [role="dialog"] — verified on the live post page
+// 2026-08-17. Keep the legacy selectors as fallbacks.
+const DIALOG_SEL = 'dialog[open], [data-testid="dialog"], [role="dialog"], [aria-modal="true"], .artdeco-modal';
+
+// Open the post's reaction list. In 2026 the counts row lost every semantic
+// class (`social-details-social-counts__*` matches nothing) and carries no
+// aria-label, so the only stable handle left is the TEXT: an anchor reading
+// "70 reactions 70". The whole counts row ("70 reactions 70 90 comments …")
+// matches that prefix too, hence the length bound plus the requirement that a
+// real clickable ancestor exists — the row wrapper is an unclickable DIV.
+async function openPostReactors(page, dialogSel) {
+  return page.evaluate(async (sel) => {
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const root = document.querySelector('main') || document.body;
+    const hit = Array.from(root.querySelectorAll('*')).find((el) => {
+      if (el.offsetParent === null) return false;
+      if (el.closest('.comments-comment-entity, .comments-comment-item, .comments-comments-list')) return false;
+      const t = (el.innerText || '').replace(/\s+/g, ' ').trim();
+      return t.length <= 40 && /^\d[\d,]*\s+reactions?\b/i.test(t) && !!el.closest('a, button, [role="button"]');
+    });
+    if (!hit) return 'no-button';
+    hit.closest('a, button, [role="button"]').click();
+    for (let i = 0; i < 10; i++) {           // the dialog mounts async
+      await sleep(400);
+      if (document.querySelector(sel)) return 'open';
+    }
+    return 'no-dialog';
+  }, dialogSel);
+}
+
+// Read every reactor out of the open dialog, scrolling it until it stops
+// growing. Entries are NOT list items with separate name/headline nodes any
+// more: each person is a single anchor whose innerText is
+// "Name • 1st Headline", so the label is returned raw and split in node by
+// people.mjs/parseReactorLabel (pure, and therefore testable).
+// Read the entries currently rendered in the dialog, plus the expected total
+// from the "All <n>" tab — so a short read is visible instead of silent.
+async function readReactorDialog(page, dialogSel) {
+  return page.evaluate((sel) => {
+    const dialog = document.querySelector(sel);
+    if (!dialog) return { error: 'no-dialog', people: [], expected: null };
+    const out = new Map();
+    for (const a of dialog.querySelectorAll('a[href*="/in/"], a[href*="/company/"]')) {
+      let url = a.getAttribute('href') || '';
+      try {
+        const u = new URL(url, 'https://www.linkedin.com');
+        url = u.origin + u.pathname.replace(/\/+$/, '');
+      } catch { continue; }
+      if (!url || /\/(in|company)$/.test(url)) continue;
+      const label = (a.innerText || '').replace(/\s+/g, ' ').trim();
+      if (!label) continue;
+      if (!out.has(url)) out.set(url, { url, label });
+    }
+    let expected = null;
+    for (const b of dialog.querySelectorAll('button, [role="button"]')) {
+      const m = (b.getAttribute('aria-label') || '').match(/^(\d[\d,]*)\s+All reactions?$/i);
+      if (m) { expected = parseInt(m[1].replace(/,/g, ''), 10); break; }
+    }
+    return { error: null, people: [...out.values()], expected };
+  }, dialogSel);
+}
+
+/**
+ * Page through the reactor list.
+ *
+ * The list lazy-loads ~10 entries at a time and, measured on the live dialog
+ * 2026-08-17, responds very differently depending on how you ask:
+ *   programmatic scrollTop  10 -> 19
+ *   real mouse wheel        10 -> 58
+ *   End key                    -> 68 of 70
+ * So the scrolling is driven from node with real input events, not from inside
+ * page.evaluate. Stops on the expected total, on the cap, or after two
+ * consecutive rounds that add nobody.
+ */
+async function scrapeOpenReactorDialog(page, maxScrolls, maxPeople, dialogSel) {
+  const box = await page.locator(dialogSel).first().boundingBox().catch(() => null);
+  if (box) await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2).catch(() => {});
+
+  let last = await readReactorDialog(page, dialogSel);
+  if (last.error) return { error: last.error, people: [], expected: null };
+  let stagnant = 0;
+
+  for (let i = 0; i < maxScrolls; i++) {
+    if (last.expected && last.people.length >= last.expected) break;
+    if (last.people.length >= maxPeople) break;
+    const before = last.people.length;
+    if (box) {
+      for (let w = 0; w < 3; w++) { await page.mouse.wheel(0, 900).catch(() => {}); await sleep(250); }
+    }
+    await page.keyboard.press('End').catch(() => {});
+    await sleep(700);
+    last = await readReactorDialog(page, dialogSel);
+    if (last.error) break;
+    stagnant = last.people.length > before ? 0 : stagnant + 1;
+    if (stagnant >= 2) break;
+  }
+
+  return {
+    error: null,
+    expected: last.expected,
+    people: last.people.slice(0, maxPeople)
+      .map(({ url, label }) => ({ url, ...People.parseReactorLabel(label) })),
+  };
+}
+
+// A native <dialog> closes on Escape; the close button is the fallback.
+async function closeDialog(page, dialogSel) {
+  await page.keyboard.press('Escape').catch(() => {});
+  await sleep(400);
+  const stillOpen = await page.evaluate((sel) => !!document.querySelector(sel), dialogSel).catch(() => false);
+  if (!stillOpen) return;
+  await page.evaluate((sel) => {
+    const dlg = document.querySelector(sel);
+    const btn = dlg && Array.from(dlg.querySelectorAll('button')).find((b) => {
+      const al = (b.getAttribute('aria-label') || '').toLowerCase();
+      return /dismiss|close/.test(al);
+    });
+    if (btn) btn.click();
+  }, dialogSel).catch(() => {});
+  await sleep(400);
+}
+
+// Peter's own comment lives on someone else's post. Open its reaction count.
+// The comments subtree still has semantic classes, so try those first and fall
+// back to the same text handle the post-level counts row needs.
+async function openCommentReactors(page, commentUrn, dialogSel) {
+  return page.evaluate(async ({ urn, sel }) => {
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const article = document.querySelector(`article.comments-comment-entity[data-id="${urn}"]`)
+      || Array.from(document.querySelectorAll('article.comments-comment-entity'))
+        .find((a) => (a.getAttribute('data-id') || '') === urn);
+    if (!article) return 'no-comment';
+    let target = Array.from(article.querySelectorAll('button, span[role="button"], a')).find((b) => {
+      if (b.offsetParent === null) return false;
+      const cls = String(b.className || '');
+      const al = (b.getAttribute('aria-label') || '').toLowerCase();
+      return /comments-comment-social-bar__reactions-count/.test(cls) || /reaction/.test(al);
+    });
+    if (!target) {
+      const hit = Array.from(article.querySelectorAll('*')).find((el) => {
+        if (el.offsetParent === null) return false;
+        const t = (el.innerText || '').replace(/\s+/g, ' ').trim();
+        return t.length <= 40 && /^\d[\d,]*\s+reactions?\b/i.test(t) && !!el.closest('a, button, [role="button"]');
+      });
+      target = hit ? hit.closest('a, button, [role="button"]') : null;
+    }
+    if (!target) return 'no-button';
+    target.click();
+    for (let i = 0; i < 8; i++) {
+      await sleep(400);
+      if (document.querySelector(sel)) return 'open';
+    }
+    return 'no-dialog';
+  }, { urn: commentUrn, sel: dialogSel });
+}
+
+// Expand and read the replies under Peter's own comment. Each reply carries
+// its own comment URN, so replies are dated exactly.
+async function scrapeCommentReplies(page, commentUrn) {
+  return page.evaluate(async (urn) => {
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const findArticle = () =>
+      document.querySelector(`article.comments-comment-entity[data-id="${urn}"]`)
+      || Array.from(document.querySelectorAll('article.comments-comment-entity'))
+        .find((a) => (a.getAttribute('data-id') || '') === urn);
+    let article = findArticle();
+    if (!article) return { error: 'no-comment', replies: [] };
+
+    // "N replies" / "Load more replies" — click until nothing new appears.
+    for (let i = 0; i < 6; i++) {
+      article = findArticle();
+      if (!article) break;
+      const scope = article.parentElement || article;
+      const btn = Array.from(scope.querySelectorAll('button')).find((b) => {
+        if (b.offsetParent === null || b.disabled) return false;
+        const t = (b.innerText || b.textContent || '').trim().toLowerCase();
+        return /^\d+\s+repl(y|ies)$/.test(t) || /^load more replies$/.test(t)
+          || /^previous replies$/.test(t) || /^see previous replies$/.test(t);
+      });
+      if (!btn) break;
+      btn.click();
+      await sleep(1200);
+    }
+
+    article = findArticle();
+    if (!article) return { error: 'no-comment', replies: [] };
+    const scope = article.parentElement || article;
+    const replyEls = Array.from(scope.querySelectorAll(
+      '.comments-replies-list article.comments-comment-entity, .comments-comment-replies article.comments-comment-entity',
+    ));
+    const replies = [];
+    for (const el of replyEls.slice(0, 100)) {
+      const reply_urn = el.getAttribute('data-id') || '';
+      if (!/^urn:li:comment:\(/.test(reply_urn)) continue;
+      const nameEl = el.querySelector('.comments-comment-meta__description-title');
+      const linkEl = el.querySelector('a.comments-comment-meta__description-container')
+        || el.querySelector('a.comments-comment-meta__image-link');
+      const headlineEl = el.querySelector('.comments-comment-meta__description-subtitle')
+        || el.querySelector('[class*="comments-comment-meta__description-subtitle"]');
+      const textEl = el.querySelector('.comments-comment-item__main-content');
+      let url = linkEl?.getAttribute('href') || '';
+      try {
+        const u = new URL(url, 'https://www.linkedin.com');
+        url = u.origin + u.pathname;
+      } catch { /* keep raw */ }
+      replies.push({
+        reply_urn,
+        name: (nameEl?.textContent || '').replace(/\s+/g, ' ').trim(),
+        url,
+        headline: (headlineEl?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 400),
+        text: (textEl?.innerText || '').trim().slice(0, 500),
+      });
+    }
+    return { error: null, replies };
+  }, commentUrn);
+}
+
+function isDeadlineStop() { return /deadline/.test(breakerTripped ?? ''); }
+
+async function phasePeople(page) {
+  const attributedWeek = People.previousWeek(WEEK);
+  let engagement = {};
+  try { engagement = readJson(ENGAGEMENT_FILE); } catch { /* first ever run */ }
+  const scannedTargets = engagement.targets ?? {};
+
+  const entries = fs.readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith('.json')).sort()
+    .map((f) => {
+      const file = path.join(POSTS_DIR, f);
+      try { return { file, data: readJson(file) }; } catch { return null; }
+    })
+    .filter(Boolean);
+
+  const peopleAll = [];
+  const eventsAll = [];
+  const targetRecords = [];
+
+  // 1. Commenters — free. The metrics phase already wrote this week's comment
+  //    snapshots, and each entry now carries its own URN, so every comment
+  //    LinkedIn still shows is dated exactly, right back through history.
+  let commentEvents = 0;
+  let commentsUndated = 0;
+  for (const e of entries) {
+    const snap = (e.data.weeks ?? {})[WEEK];
+    if (!snap || !Array.isArray(snap.comments) || !e.data.urn) continue;
+    const r = People.buildPostCommentEvents({ post: e.data, comments: snap.comments });
+    peopleAll.push(...r.people);
+    eventsAll.push(...r.events);
+    commentEvents += r.events.length;
+    commentsUndated += r.undated;
+  }
+
+  // 2. Reactors on in-scope posts — one paced navigation each.
+  const { selected: postTargets, dropped: postsDropped } = People.selectPostTargets(entries, {
+    week: WEEK, maxPosts: PEOPLE_MAX_POSTS, recentDays: PEOPLE_RECENT_DAYS, scannedTargets,
+  });
+  log(`people: ${postTargets.length} post targets (${postsDropped} over the cap), `
+    + `${commentEvents} comment events, attributing reactions to ${attributedWeek}`);
+
+  let scanned = 0;
+  let failed = 0;
+  let reactorsSeen = 0;
+  let reactorsExpected = 0;
+  let reactorsShort = 0;
+  let dialogFailures = 0;
+  let stopped = null;
+
+  for (const t of postTargets) {
+    if (breakerTripped) { stopped = isDeadlineStop() ? 'deadline' : 'breaker'; break; }
+    try {
+      await pacedGotoRetry(page, t.data.post_url, null);
+      await page.waitForSelector('.feed-shared-update-v2, [data-urn^="urn:li:activity"]', { timeout: 10000 })
+        .catch(() => {});
+      await sleep(500);
+      const opened = await openPostReactors(page, DIALOG_SEL);
+      if (opened !== 'open') { dialogFailures++; failed++; vlog(`people: post ${t.data.id} — ${opened}`); continue; }
+      const { error, people: reactors, expected } = await scrapeOpenReactorDialog(page, 30, 500, DIALOG_SEL);
+      await closeDialog(page, DIALOG_SEL);
+      if (error) { dialogFailures++; failed++; continue; }
+      // A short read is data loss, so surface it instead of quietly storing
+      // the first page of reactors.
+      // Private profiles ("LinkedIn Member") render without a link and can
+      // never be identified, so a small shortfall is normal; only a real gap
+      // counts as a short read.
+      if (expected && reactors.length < expected * 0.9) {
+        reactorsShort++;
+        log(`people: post ${t.data.id} — read only ${reactors.length} of ${expected} reactors`);
+      }
+      if (expected) reactorsExpected += expected;
+      const isBaseline = !scannedTargets[People.targetIdForPost(t.data.urn)];
+      const r = People.buildPostReactionEvents({
+        post: t.data, reactors, attributedWeek, isBaseline,
+      });
+      peopleAll.push(...r.people);
+      eventsAll.push(...r.events);
+      targetRecords.push({
+        target_id: People.targetIdForPost(t.data.urn), target_type: 'post',
+        target_urn: t.data.urn, target_url: t.data.post_url,
+        week: WEEK, reactor_count: reactors.length,
+      });
+      reactorsSeen += reactors.length;
+      scanned++;
+      vlog(`people: post ${t.data.id} (${t.reason}) — ${reactors.length} reactors${isBaseline ? ' [baseline]' : ''}`);
+    } catch (err) {
+      failed++;
+      if (err instanceof AuthError) { stopped = 'auth'; break; }
+      if (err instanceof BreakerError || err instanceof RateLimitError) {
+        stopped = isDeadlineStop() ? 'deadline' : 'rate';
+        break;
+      }
+      vlog(`people: post ${t.data.id} failed: ${String(err.message).slice(0, 120)}`);
+    }
+  }
+
+  // 3. Reactors and repliers on Peter's OWN recent comments.
+  let commentTargetsScanned = 0;
+  let replyEvents = 0;
+  let commentsDropped = 0;
+  if (!stopped) {
+    let outbound = {};
+    try { outbound = readJson(COMMENTS_FILE).comments ?? {}; } catch { /* optional */ }
+    const sel = People.selectCommentTargets(outbound, {
+      maxComments: PEOPLE_MAX_COMMENTS, recentDays: PEOPLE_RECENT_DAYS,
+    });
+    commentsDropped = sel.dropped;
+    for (const { comment } of sel.selected) {
+      if (breakerTripped) { stopped = isDeadlineStop() ? 'deadline' : 'breaker'; break; }
+      try {
+        await pacedGotoRetry(page, comment.permalink, null);
+        await page.waitForSelector('article.comments-comment-entity', { timeout: 10000 }).catch(() => {});
+        await sleep(600);
+
+        const replyRes = await scrapeCommentReplies(page, comment.comment_urn);
+        if (!replyRes.error && replyRes.replies.length) {
+          const r = People.buildReplyEvents({ comment, replies: replyRes.replies });
+          peopleAll.push(...r.people);
+          eventsAll.push(...r.events);
+          replyEvents += r.events.length;
+        }
+
+        const opened = await openCommentReactors(page, comment.comment_urn, DIALOG_SEL);
+        if (opened === 'open') {
+          const { error, people: reactors, expected } = await scrapeOpenReactorDialog(page, 12, 300, DIALOG_SEL);
+          await closeDialog(page, DIALOG_SEL);
+          if (!error && expected) {
+            reactorsExpected += expected;
+            if (reactors.length < expected * 0.9) reactorsShort++;
+          }
+          if (!error) {
+            const tid = People.targetIdForComment(comment.comment_urn);
+            const isBaseline = !scannedTargets[tid];
+            const r = People.buildCommentReactionEvents({
+              comment, reactors, attributedWeek, isBaseline,
+            });
+            peopleAll.push(...r.people);
+            eventsAll.push(...r.events);
+            targetRecords.push({
+              target_id: tid, target_type: 'comment',
+              target_urn: comment.comment_urn, target_url: comment.permalink,
+              week: WEEK, reactor_count: reactors.length,
+            });
+            reactorsSeen += reactors.length;
+          } else { dialogFailures++; }
+        } else if (opened !== 'no-button') {
+          // no-button is normal: a comment with zero reactions has no count.
+          dialogFailures++;
+        }
+        commentTargetsScanned++;
+      } catch (err) {
+        failed++;
+        if (err instanceof AuthError) { stopped = 'auth'; break; }
+        if (err instanceof BreakerError || err instanceof RateLimitError) {
+          stopped = isDeadlineStop() ? 'deadline' : 'rate';
+          break;
+        }
+        vlog(`people: comment ${comment.comment_urn} failed: ${String(err.message).slice(0, 120)}`);
+      }
+    }
+  }
+
+  // 4. One write for the whole phase.
+  const mergedPeople = People.mergePeople(peopleAll);
+  let mergeOut = '';
+  if (mergedPeople.length || eventsAll.length || targetRecords.length) {
+    mergeOut = mergeViaPython({
+      mode: 'engagement', path: ENGAGEMENT_FILE,
+      people: mergedPeople, events: eventsAll, targets: targetRecords,
+    });
+    log(`people: ${mergeOut}`);
+  }
+  const mergeVal = (k) => (mergeOut.match(new RegExp(`${k}=(\\d+)`))?.[1] ?? '0');
+
+  // 5. ICP tiering — cached per person, so this is a no-op once steady.
+  let icpClassified = 0;
+  let icpPending = 0;
+  if (!NO_ICP) {
+    try {
+      const after = readJson(ENGAGEMENT_FILE);
+      const pending = Object.values(after.people ?? {}).filter(needsClassification);
+      icpPending = pending.length;
+      const batch = pending.slice(0, ICP_MAX).map((p) => ({
+        key: p.key, name: p.name || '', headline: p.headline || '',
+      }));
+      if (batch.length) {
+        loadIcpText(ICP_FILE);
+        const verdicts = await classifyPeople(batch);
+        icpClassified = verdicts.size;
+        if (verdicts.size) {
+          mergeViaPython({
+            mode: 'engagement', path: ENGAGEMENT_FILE,
+            icp_verdicts: [...verdicts].map(([key, v]) => ({
+              key, verdict: v.verdict, reason: v.reason, model: v.model,
+              headline_hash: headlineHash(batch.find((b) => b.key === key)?.headline ?? ''),
+            })),
+          });
+        }
+      }
+    } catch (err) {
+      // An unavailable classifier is never fatal: unclassified people score at
+      // the `normal` tier and a later run corrects the whole history, because
+      // scores are derived at build time.
+      log(`people: ICP classification skipped — ${String(err.message).slice(0, 140)}`);
+    }
+  }
+
+  const attempted = postTargets.length;
+  let status = 'OK';
+  if (stopped) status = stopped.toUpperCase();
+  else if (attempted > 0 && scanned === 0 && dialogFailures >= attempted) status = 'SELECTOR_DRIFT';
+  else if (failed > 0 || postsDropped > 0 || commentsDropped > 0 || reactorsShort > 0) status = 'PARTIAL';
+
+  return {
+    PEOPLE_STATUS: status,
+    WEEK,
+    ATTRIBUTED_WEEK: attributedWeek,
+    POST_TARGETS: attempted,
+    POST_TARGETS_SCANNED: scanned,
+    COMMENT_TARGETS_SCANNED: commentTargetsScanned,
+    TARGETS_FAILED: failed,
+    TARGETS_DROPPED: postsDropped + commentsDropped,
+    REACTORS_SEEN: reactorsSeen,
+    REACTORS_EXPECTED: reactorsExpected,
+    TARGETS_SHORT_READ: reactorsShort,
+    COMMENT_EVENTS: commentEvents,
+    REPLY_EVENTS: replyEvents,
+    COMMENTS_UNDATED: commentsUndated,
+    PEOPLE_NEW: mergeVal('PEOPLE_NEW'),
+    EVENTS_NEW: mergeVal('EVENTS_NEW'),
+    ICP_PENDING: icpPending,
+    ICP_CLASSIFIED: icpClassified,
+    ICP_UNCLASSIFIED: Math.max(0, icpPending - icpClassified),
+  };
+}
+
 // ---------------------------------------------------------------- main
 
 const contractSections = new Map(); // section -> obj | {ERROR}
 function flushContracts() {
-  for (const section of ['posts', 'metrics', 'account', 'comments']) {
+  for (const section of ['posts', 'metrics', 'account', 'comments', 'people']) {
     const obj = contractSections.get(section);
     if (!obj) continue;
     console.log(`[${section}]`);
@@ -1595,6 +2079,35 @@ try {
   })();
 
   await Promise.all([metricsTask, commentsTask]);
+
+  // Phase E (people) runs LAST and ALONE: it reads the post snapshots the
+  // metrics phase just wrote and the comments.json the comments phase just
+  // merged, and its navigations should never compete with theirs for the
+  // shared rate budget. Advisory — see the phase header: it can mark the run
+  // partial, but it never sets ERROR= and never escalates past exit 10.
+  if (PHASES.includes('people')) {
+    const started = Date.now();
+    const page = await context.newPage();
+    try {
+      const r = await phasePeople(page);
+      contractSections.set('people', r);
+      manifestPhase('people', started, r);
+      if (r.PEOPLE_STATUS !== 'OK') sev.partial = true;
+    } catch (e) {
+      // Deliberately not fail(): no ERROR= line, no severity escalation
+      // beyond partial. A brand-new phase must not be able to demote a run
+      // whose metrics and account data are perfectly good.
+      contractSections.set('people', {
+        PEOPLE_STATUS: 'FAILED',
+        REASON: String(e?.reason || e?.message || 'UNKNOWN').split('\n')[0].slice(0, 160),
+      });
+      manifestPhase('people', started, { failed: true });
+      sev.partial = true;
+      log(`people phase failed (advisory): ${String(e?.message).split('\n')[0]}`);
+    } finally {
+      await page.close().catch(() => {});
+    }
+  }
 } catch (e) {
   if (e instanceof AuthError) sev.auth = true;
   else if (e instanceof BreakerError) { if (isDeadline()) sev.partial = true; else sev.rate = true; }
