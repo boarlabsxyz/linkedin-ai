@@ -557,6 +557,63 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:52:57Z",
+      "metrics": {
+        "impressions": 1329,
+        "members_reached": 633,
+        "reactions": 31,
+        "comments": 6,
+        "reposts": 6,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 3,
+        "followers_gained": 1,
+        "engagement_rate": 3.24
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 36,
+          "Entry": 31.8,
+          "Manager": 4.7,
+          "Director": 3.5,
+          "CXO": 3
+        },
+        "job_title": {
+          "Software Engineer": 14.2,
+          "Frontend Developer": 4.7,
+          "Full Stack Engineer": 2.8,
+          "Founder": 2.2,
+          "Quality Assurance Engineer": 1.9
+        },
+        "industry": {
+          "IT Services and IT Consulting": 33.5,
+          "Software Development": 27.6,
+          "Technology, Information and Internet": 8.7,
+          "Staffing and Recruiting": 2.7,
+          "Financial Services": 2.1
+        },
+        "company_size": {
+          "51-200 employees": 20.7,
+          "11-50 employees": 13.9,
+          "10,001+ employees": 10.1,
+          "1001-5000 employees": 9.3,
+          "201-500 employees": 8.7
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 11.7,
+          "Lviv": 7.1,
+          "London Area, United Kingdom": 2.5,
+          "Cracow Metropolitan Area": 2.2,
+          "Wroclaw Metropolitan Area": 1.9
+        },
+        "company": {
+          "Speed and Function": 5.5,
+          "EPAM Systems": 1.4
+        }
+      },
+      "comments": []
     }
   }
 }

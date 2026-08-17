@@ -104,6 +104,51 @@
           "replies_count": 0
         }
       ]
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:55:19Z",
+      "metrics": {
+        "impressions": 221,
+        "members_reached": 117,
+        "reactions": 1,
+        "comments": 1,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 0,
+        "followers_gained": 0,
+        "engagement_rate": 0.9
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 30.8,
+          "Entry": 29.1,
+          "CXO": 5.1
+        },
+        "job_title": {
+          "Software Engineer": 22.2
+        },
+        "industry": {
+          "IT Services and IT Consulting": 38.5,
+          "Software Development": 30.8,
+          "Technology, Information and Internet": 8.5
+        },
+        "company_size": {
+          "51-200 employees": 30.8,
+          "11-50 employees": 12,
+          "10,001+ employees": 12,
+          "1001-5000 employees": 7.7,
+          "501-1000 employees": 6.8
+        },
+        "location": {
+          "Lviv": 6.8,
+          "Kyiv Metropolitan Area": 6.8
+        },
+        "company": {
+          "Speed and Function": 17.1
+        }
+      },
+      "comments": []
     }
   }
 }

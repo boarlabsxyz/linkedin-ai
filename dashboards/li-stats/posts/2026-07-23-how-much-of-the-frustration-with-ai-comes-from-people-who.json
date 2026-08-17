@@ -202,6 +202,60 @@
           "replies_count": 2
         }
       ]
+    },
+    "2026-08-17": {
+      "snapshot_at": "2026-08-17T00:53:40Z",
+      "metrics": {
+        "impressions": 479,
+        "members_reached": 287,
+        "reactions": 2,
+        "comments": 4,
+        "reposts": 0,
+        "saves": 0,
+        "sends": 0,
+        "profile_viewers": 2,
+        "followers_gained": 0,
+        "engagement_rate": 1.25
+      },
+      "demographics": {
+        "seniority": {
+          "Senior": 34.5,
+          "Entry": 26.8,
+          "Manager": 8,
+          "Director": 5.9,
+          "CXO": 5.2
+        },
+        "job_title": {
+          "Software Engineer": 20.6,
+          "Product Manager": 2.1,
+          "Founder": 2.1
+        },
+        "industry": {
+          "Software Development": 33.1,
+          "IT Services and IT Consulting": 28.9,
+          "Technology, Information and Internet": 7.7,
+          "Financial Services": 4.2,
+          "Business Consulting and Services": 2.1
+        },
+        "company_size": {
+          "51-200 employees": 18.8,
+          "1001-5000 employees": 15.7,
+          "10,001+ employees": 12.5,
+          "11-50 employees": 10.1,
+          "1-10 employees": 8
+        },
+        "location": {
+          "Kyiv Metropolitan Area": 3.5,
+          "London Area, United Kingdom": 3.1,
+          "Amsterdam Area": 3.1,
+          "Greater Bengaluru Area": 2.8,
+          "Lviv": 2.4
+        },
+        "company": {
+          "Speed and Function": 7.3
+        }
+      },
+      "comments": []
     }
   }
 }
