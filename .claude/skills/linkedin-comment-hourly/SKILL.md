@@ -5,8 +5,9 @@ description: >
   channel C0BF606R4N7 since the last fire (deterministic read-slack-inbox.sh +
   fast/gather-inbox.mjs, watermark in ./linkedin-compain/slack-inbox.json),
   gather 5 home-feed posts that pass all filters (unseen, on-topic per
-  interests.md, not already commented on, not a repost) via the deterministic
-  fast/gather-feed.mjs scraper (<5 min), draft 2-3 comment variants per post
+  interests.md, AUTHOR inside the ICP per sources/icp.md + icp-filter.md, not
+  already commented on, not a repost) via the deterministic
+  fast/gather-feed.mjs scraper, draft 2-3 comment variants per post
   via the linkedin-comment-ideas skill (full pre-work checklist), append one
   entry per post to the single ./linkedin-compain/comments.json array, and
   create one ClickUp task per accepted post (the source post itself) in list
@@ -29,7 +30,10 @@ Thin orchestrator. The gather step is a **deterministic fast script** (`fast/gat
 | Resource | ID / Path |
 |---|---|
 | Comments file | `./linkedin-compain/comments.json` (single JSON array — every post, drafted or filtered, is one object) |
-| Interests file | `.claude/skills/linkedin-comment-hourly/interests.md` |
+| Interests file | `.claude/skills/linkedin-comment-hourly/interests.md` — gate 1 (topic) |
+| ICP rubric | `sources/icp.md` — gate 2 (author), the canonical ClickUp-synced doc, shared verbatim with `linkedin-stats` |
+| ICP gate rules | `.claude/skills/linkedin-comment-hourly/icp-filter.md` — how to judge the rubric from a card, plus the `## Always accept` / `## Never accept` profile-URL lists |
+| ICP author cache | `./linkedin-compain/icp-authors.json` — one cached verdict per author profile, invalidated by a headline change or 90 days (written by the gather; hand-editable) |
 | Reference cache | `$HOME/.cache/linkedin-ai-refs` (local mirror of ICP / True BDD / Posted / Transcripts; **outside the worktree** so `git clean -fd` can't wipe it) |
 | Slack channel | `C0BF606R4N7` (https://spdfn.slack.com/archives/C0BF606R4N7) — **read-only for you**: the inbox stage reads Peter's links from it, and `run-hourly.sh` posts the run bookends to it. You never post here. |
 | Target posts per fire | `5` (feed) + up to 5 slack-inbox posts |
@@ -43,27 +47,38 @@ Thin orchestrator. The gather step is a **deterministic fast script** (`fast/gat
 
 ### Step 1 — Gather 5 posts from the home feed (fast script, agent only as fallback)
 
-The gather is deterministic: `fast/gather-feed.mjs` scrapes the feed on the shared `mcp-chrome-linkedin-ai` Chrome profile, classifies candidates against `interests.md` via batched tool-free `claude -p` haiku calls, appends the off-topic / already-commented entries to `comments.json` itself, recovers permalinks, and writes the contract to a run-scoped `tmp/gather-feed/<ts>/` dir.
+The gather is deterministic: `fast/gather-feed.mjs` scrapes the feed on the shared `mcp-chrome-linkedin-ai` Chrome profile, classifies candidates via batched tool-free `claude -p` haiku calls, appends the filtered entries to `comments.json` itself, recovers permalinks, and writes the contract to a run-scoped `tmp/gather-feed/<ts>/` dir.
+
+**A post is accepted only when BOTH gates pass** (Peter, 2026-08-17 — "selects posts from my ICP only"):
+
+1. **Topic** — on-topic per `interests.md`, as before.
+2. **Author** — the author is inside the ICP (`sources/icp.md`, judged by `icp-filter.md`). Precedence: `## Never accept` list → `## Always accept` list → the cached verdict in `linkedin-compain/icp-authors.json` → the classifier's card verdict. A card verdict marked low-confidence escalates to a **profile probe** (the script opens the author's LinkedIn profile and re-judges from it, ≤12 per fire); if no probe was possible, the post is left **unseen** rather than guessed either way.
+
+There is **no backfill**: a fire that can't find 5 ICP authors ships fewer posts (or none) instead of filling the gap with off-target ones. That is why the gather budget is 900s / 250 scrolls, and why `GATHER_END_REASON=deadline` with `POSTS_FOUND<5` is a normal outcome, not a failure.
+
+ICP rejects are appended to `comments.json` as ordinary `off-topic` entries whose `reason` starts with `off-icp: ` — so a wrongly-rejected post is revived through the normal inbox `reprocess-off-topic` path when Peter drops its link in Slack. To repair a miss permanently, add the author to `icp-filter.md`.
 
 Pick ONE of three paths:
 
 1. **Pre-gathered (cron).** If your invocation prompt names a contract path (run-hourly.sh already ran the script), Read that `contract.env` and parse it. Do NOT re-run the script and do NOT spawn the gather agent.
-2. **Run it yourself (interactive).** No contract in the prompt → run via Bash (**timeout 600000** — it needs up to ~5-7 min):
+2. **Run it yourself (interactive).** No contract in the prompt → run via Bash (**timeout 1200000** — the ICP gate needs up to ~15-18 min):
    ```bash
    [ -d .claude/skills/linkedin-comment-hourly/fast/node_modules/playwright-core ] || (cd .claude/skills/linkedin-comment-hourly/fast && npm install --no-audit --no-fund --silent)
-   node .claude/skills/linkedin-comment-hourly/fast/gather-feed.mjs --deadline-secs=300
+   node .claude/skills/linkedin-comment-hourly/fast/gather-feed.mjs --deadline-secs=900
    ```
    The contract is printed on stdout (and written to `<OUT_DIR>/contract.env`). Exit 0/10 → parse it. Exit 20 (auth) / 21 (profile locked — close the Playwright MCP browser or another Chrome on the profile) / 22 (rate-limited) / 23 (fs) / 31 (classifier down) → report the failure and stop.
 3. **Legacy agent fallback.** ONLY when the script exits 30 (selector drift) or the prompt explicitly says to use the legacy gather: spawn `linkedin-comment-hourly-gather-feed` via the Agent tool with prompt body:
    ```
    COMMENTS_FILE=./linkedin-compain/comments.json
    TARGET_COUNT=5
-   MAX_SCROLL_ITERATIONS=80
+   MAX_SCROLL_ITERATIONS=250
    INTERESTS_FILE=.claude/skills/linkedin-comment-hourly/interests.md
+   ICP_FILE=sources/icp.md
+   ICP_FILTER_FILE=.claude/skills/linkedin-comment-hourly/icp-filter.md
    ```
    (The agent returns `POST_<i>_TEXT_B64` instead of `POST_<i>_TEXT_FILE` — decode via `base64 -d` to a temp file and treat that as the text file — and its legacy contract has no `GATHER_END_REASON` / `OUT_DIR`; treat those as absent.)
 
-Contract keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, `GATHER_END_REASON`, `PERMALINKS_MISSING` (count of accepted posts whose permalink capture failed end-to-end; >0 demotes the exit to 10 and makes the scheduled driver flag the fire ⚠️ + run a post-landing heal — a ticket shipping without its post link is an error, not a cosmetic gap; user-mandated 2026-07-21), `PERMALINKS_UNVERIFIED` (count of accepted posts whose `POST_<i>_URL` is a raw captured link kept without positive page verification — not an error, but a count that grows across fires means the verifier is broken and the keeps are masking it; added 2026-07-24), `OUT_DIR`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_FILE` for i = 1..`POSTS_FOUND`. `POST_<i>_TEXT_FILE` is an absolute path to the full post body — **post bodies travel as files, never as inline base64** (large inline blobs poisoned agent contexts and got generations refused, 2026-07-16 fire). `POST_<i>_URL` is the **post permalink**, in one of exactly two shapes: a `https://www.linkedin.com/posts/<slug>/` URL — verified (the copy-link payload's resolution target, which the script OPENED and confirmed renders the right post via author/body match — the normal case) or, when positive verification failed, kept raw from the copy-link payload with the tracking query stripped (the desktop copy-link sometimes writes the full canonical URL directly instead of a short link, first seen 2026-07-24) — or the raw `https://lnkd.in/p/<code>` short link when that is what the copy-link wrote and the resolved page couldn't be positively verified. Unverified keeps are counted in `PERMALINKS_UNVERIFIED` (rare; unverified but LinkedIn-issued, never rebuilt). It's `-` only when capture failed entirely. **Never emit `/feed/update/<urn>/` URLs or rebuild a permalink from a URN** — those internal routes render unreliably outside the full web app (user-verified 2026-07-16), and the urn type is load-bearing anyway (`activity` names the thread, `ugcPost`/`share` name the post — same post, different digits; guessing shipped 4 broken links). `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is best-effort metadata from the verified `/posts/` slug (the thread's activity id); `-` when ambiguous — a `-` URN does **not** imply a `-` URL. `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. The script has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries are the relevant ones still needing drafts.
+Contract keys: `POSTS_FOUND`, `POSTS_OFF_TOPIC`, `POSTS_OFF_ICP` (on-topic posts rejected because their author is outside the ICP — written to the ledger as `off-topic` entries with an `off-icp: ` reason, and counted into the driver's filtered total), `POSTS_ICP_UNDECIDED` (on-topic posts left unseen because the ICP question stayed unresolved — nothing was written, a later fire retries), `ICP_PROBES` / `ICP_CACHE_HITS` (how much the gate spent, and how much the author cache saved — watch these to retune the deadline), `POSTS_ALREADY_COMMENTED`, `POSTS_REPOSTS_SKIPPED`, `POSTS_PROMOTED_SKIPPED`, `SCROLL_ITERATIONS`, `FEED_EXHAUSTED`, `GATHER_END_REASON`, `PERMALINKS_MISSING` (count of accepted posts whose permalink capture failed end-to-end; >0 demotes the exit to 10 and makes the scheduled driver flag the fire ⚠️ + run a post-landing heal — a ticket shipping without its post link is an error, not a cosmetic gap; user-mandated 2026-07-21), `PERMALINKS_UNVERIFIED` (count of accepted posts whose `POST_<i>_URL` is a raw captured link kept without positive page verification — not an error, but a count that grows across fires means the verifier is broken and the keeps are masking it; added 2026-07-24), `OUT_DIR`, and `POST_<i>_KEY`, `POST_<i>_URN`, `POST_<i>_URL`, `POST_<i>_AUTHOR_URL`, `POST_<i>_AUTHOR`, `POST_<i>_HEADLINE`, `POST_<i>_TIME_AGO`, `POST_<i>_TEXT_FILE` for i = 1..`POSTS_FOUND`. `POST_<i>_TEXT_FILE` is an absolute path to the full post body — **post bodies travel as files, never as inline base64** (large inline blobs poisoned agent contexts and got generations refused, 2026-07-16 fire). `POST_<i>_URL` is the **post permalink**, in one of exactly two shapes: a `https://www.linkedin.com/posts/<slug>/` URL — verified (the copy-link payload's resolution target, which the script OPENED and confirmed renders the right post via author/body match — the normal case) or, when positive verification failed, kept raw from the copy-link payload with the tracking query stripped (the desktop copy-link sometimes writes the full canonical URL directly instead of a short link, first seen 2026-07-24) — or the raw `https://lnkd.in/p/<code>` short link when that is what the copy-link wrote and the resolved page couldn't be positively verified. Unverified keeps are counted in `PERMALINKS_UNVERIFIED` (rare; unverified but LinkedIn-issued, never rebuilt). It's `-` only when capture failed entirely. **Never emit `/feed/update/<urn>/` URLs or rebuild a permalink from a URN** — those internal routes render unreliably outside the full web app (user-verified 2026-07-16), and the urn type is load-bearing anyway (`activity` names the thread, `ugcPost`/`share` name the post — same post, different digits; guessing shipped 4 broken links). `POST_<i>_AUTHOR_URL` is the **author profile link**. `POST_<i>_URN` is best-effort metadata from the verified `/posts/` slug (the thread's activity id); `-` when ambiguous — a `-` URN does **not** imply a `-` URL. `POST_<i>_KEY` is the synthetic `<author-slug>-<body-hash8>` identifier. The script has already appended the off-topic / already-commented posts to `comments.json`; the `POST_<i>_*` entries are the relevant ones still needing drafts.
 
 If `POSTS_FOUND=0`, emit the failure line (include `GATHER_END_REASON`), do NOT spawn Step 1.5 / Step 2, and stop. The shell driver's porcelain check still commits any filtered appends. **Exception:** when an inbox contract (Step 1b) has posts, Steps 1.5/2 still run for those.
 
@@ -77,7 +92,7 @@ Peter drops LinkedIn post links into the Slack channel; the deterministic `read-
   - `reprocess-off-topic` — the post was previously auto-filtered off-topic, but Peter explicitly requested it: full flow, except the ledger write **updates the existing entry in place** at `POST_<i>_MATCHED_KEY` (set `disposition` to `drafted`, fill `variants`/`source`/`slack_request_ts`, keep the original `scraped_at`).
   - `clickup-only` — the post was already drafted in an earlier fire but one or both delivery legs never completed (a kill can land between the ledger write and the ClickUp calls): do **only** the completion work — the ClickUp task sub-step (adopt-or-create; the entry may already hold a task id, then adoption just confirms it), and, **when `POST_<i>_NEED_COMMENTS=1`**, the draft-comment sub-step run off the entry's **stored `variants`** (adopt any comment already carrying this post's marker, post only the missing ones). Record the ids into the entry exactly like a fresh draft. No draft agent either way.
 
-Inbox posts are Peter-curated: NO interest filtering, NO repost filtering — never second-guess an inbox post's topicality.
+Inbox posts are Peter-curated: NO interest filtering, NO **ICP** filtering, NO repost filtering — never second-guess an inbox post's topicality or its author.
 
 ### Step 1.5 — Refresh the local reference cache
 
@@ -245,7 +260,8 @@ Draft-comment failures:   <n> (<keys>)
 - Do **not**, however, interleave the **ClickUp calls or the `comments.json` writes** — those stay strictly sequential (Step 2b) to avoid a read-modify-write race on the single file.
 - Do **not** post anything to Slack. Not a per-post message, not a thread, not a summary — the channel receives only the 🟢/✅ bookends `run-hourly.sh` posts around you. (Until 2026-08-13 this skill posted one thread per post; that is gone, and the drafts ship as ClickUp task comments instead.)
 - Do **not** skip Step 1.5 (prep-refs) — without the local cache, the draft agents have no reference material (they have no GDrive tools).
-- Do **not** invent or edit the interest filter here. If the filter needs tuning, edit `interests.md`. Inbox posts bypass it entirely — never re-filter a Peter-curated link.
+- Do **not** invent or edit either filter here. Topic tuning goes in `interests.md`; ICP tuning goes in `icp-filter.md` (or upstream in the ClickUp ICP Doc that `sync-sources` pulls into `sources/icp.md`). Inbox posts bypass **both** gates entirely — never re-filter a Peter-curated link.
+- Do **not** treat a fire that accepted fewer than 5 feed posts as a failure. The ICP gate has no backfill; shipping 2 on-target tickets is the intended outcome, and padding the fire with off-ICP posts is exactly what this change removed.
 - Do **not** put the comment variants in the task **description** — the description is the source post, and its plain `key:` footer is the task's identity. Drafts go in task **comments**, one per variant, each carrying its `draft <n> · key: <POST_KEY>` marker.
 - Do **not** create a ClickUp task without the plain-text `key:` footer, and never create one when the search-first index could not be fetched (record `clickup_error` and let reconciliation retry).
 - Do **not** post draft comments without checking for existing ones first when the task was adopted — a duplicate comment set on every re-drop is exactly what the marker prevents.
