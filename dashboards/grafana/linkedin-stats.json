@@ -2423,7 +2423,30 @@
         }
       ],
       "title": "Reactions & comments — total vs ICP (last week and all time)",
-      "type": "table"
+      "type": "table",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "week": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "scope": 0,
+              "reactions": 1,
+              "reactions_icp": 2,
+              "icp_reaction_pct": 3,
+              "comments": 4,
+              "comments_icp": 5,
+              "icp_comment_pct": 6,
+              "icp_engagement_pct": 7,
+              "week": 8
+            },
+            "renameByName": {}
+          }
+        }
+      ]
     },
     {
       "collapsed": false,
