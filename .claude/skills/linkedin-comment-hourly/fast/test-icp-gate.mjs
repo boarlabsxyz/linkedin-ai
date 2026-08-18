@@ -14,6 +14,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { profileKey, readProfileList, headlineHash } from './keys.mjs';
 import { icpWithoutProbe, __test } from './gather-feed.mjs';
+import { cacheAgeDays, cachedProfileData } from '../../pipeline-shared/icp-cache.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..', '..', '..');
@@ -103,28 +104,159 @@ test('the ICP rubric the gate ships with is present and non-trivial', () => {
 
 // ---------------------------------------------------------------- cache rules
 
+const RUBRIC = 'rubric-v1';
 const cacheEntry = (over = {}) => ({
   verdict: true, confidence: 'high', reason: 'ok', evidence: 'profile',
-  headline_hash: headlineHash('Founder @ Agentic'), model: 'm',
-  decided_at: new Date().toISOString(), ...over,
+  headline_hash: headlineHash('Founder @ Agentic'), rubric_hash: RUBRIC, model: 'm',
+  profile_url: 'https://www.linkedin.com/in/x/', profile_text: 'About: maintains a coding agent',
+  scraped_at: new Date().toISOString(), decided_at: new Date().toISOString(), ...over,
 });
+__test.setRubricHash(RUBRIC);
 
 test('a fresh cache entry hits', () => {
   __test.setIcpState({ cache: { 'in/x': cacheEntry() } });
   assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic').verdict, true);
 });
 
-test('a changed headline invalidates the cached verdict', () => {
-  __test.setIcpState({ cache: { 'in/x': cacheEntry() } });
+test('a changed headline invalidates a CARD verdict — re-judging one is free', () => {
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'card' }) } });
   assert.equal(__test.icpCacheGet('in/x', 'VP Sales @ Agentic'), null);
+  assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic').verdict, true);
+});
+
+test('a changed headline does NOT invalidate a PROFILE verdict inside the window', () => {
+  // Peter's rule (2026-08-18): a profile read once is not read again for the
+  // TTL, whatever else moves about the person.
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'profile' }) } });
+  assert.equal(__test.icpCacheGet('in/x', 'VP Sales @ Somewhere Else').verdict, true);
+});
+
+test('the default no-touch window is 10 days', () => {
+  assert.equal(__test.ICP_CACHE_TTL_DAYS, 10);
+});
+
+const day = (n) => new Date(Date.now() - n * 86_400_000).toISOString();
+
+test('the window is measured from the SCRAPE, not from the verdict', () => {
+  // A re-judge stamps a new decided_at; if that reset the window, a profile
+  // read once would never be re-read.
+  const e = cacheEntry({ scraped_at: day(11), decided_at: day(0) });
+  assert.ok(cacheAgeDays(e) > 10, 'an 11-day-old scrape is stale however fresh the verdict');
+  assert.equal(cachedProfileData(e), null, 'and its data is no longer reusable');
+});
+
+test('a profile read inside the window blocks another page load', () => {
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'profile', scraped_at: day(9) }) } });
+  assert.equal(__test.profileReadRecently('in/x'), true);
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'profile', scraped_at: day(11) }) } });
+  assert.equal(__test.profileReadRecently('in/x'), false);
+  // A card-only entry has no scrape date at all — that is what "no page was
+  // opened" looks like on disk. (An entry that HAS a scraped_at was scraped,
+  // whatever its latest verdict happened to be judged from.)
+  __test.setIcpState({ cache: { 'in/x': { verdict: true, evidence: 'card', decided_at: day(1) } } });
+  assert.equal(__test.profileReadRecently('in/x'), false, 'a card verdict opened no page');
+  assert.equal(__test.profileReadRecently(''), false);
+});
+
+test('a verdict from a DIFFERENT ICP rubric is dropped, but its data survives', () => {
+  // The whole point of caching scraped data: the ICP definition moves, the
+  // profile text does not, so the author is re-judged offline.
+  const stale = cacheEntry({ rubric_hash: 'rubric-v0' });
+  __test.setIcpState({ cache: { 'in/x': stale } });
+  assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic'), null, 'verdict is not today\'s answer');
+  assert.equal(cachedProfileData(stale), 'About: maintains a coding agent', 'data is still usable');
+  assert.equal(__test.profileReadRecently('in/x'), true, 'and the page must not be re-opened');
+});
+
+test('cachedProfileData refuses what cannot be re-judged', () => {
+  assert.equal(cachedProfileData(null), null);
+  assert.equal(cachedProfileData({ evidence: 'card', decided_at: day(1) }), null, 'no page was ever read');
+  assert.equal(cachedProfileData(cacheEntry({ profile_text: '   ' })), null, 'empty scrape');
+  assert.equal(cachedProfileData(cacheEntry({ scraped_at: day(11) })), null, 'outside the window');
+});
+
+test('a headline-only verdict never deletes a scrape the other pipeline paid for', () => {
+  // linkedin-stats writes card verdicts into the same file. If that dropped
+  // profile_text, the feed gate would re-open pages it already read.
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ scraped_at: day(2) }) } });
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: false, confidence: 'high', reason: 'headline says sales', evidence: 'card', model: 'm',
+  });
+  const e = __test.getIcpCache()['in/x'];
+  assert.equal(e.evidence, 'card', 'the verdict was judged from a card');
+  assert.equal(e.profile_text, 'About: maintains a coding agent', 'but the scrape survives');
+  assert.equal(e.scraped_at, day(2), 'and so does its date');
+  assert.equal(__test.profileReadRecently('in/x'), true, 'so the page still must not be re-opened');
+});
+
+test('a re-judge keeps the original scrape date, text and URL', () => {
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ scraped_at: day(3), verdict: false, rubric_hash: 'old' }) } });
+  // evidence 'profile' with NO profileText = a re-judge off stored data.
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: true, confidence: 'high', reason: 'rubric widened', evidence: 'profile', model: 'm',
+  });
+  const e = __test.getIcpCache()['in/x'];
+  assert.equal(e.verdict, true);
+  assert.equal(e.rubric_hash, RUBRIC, 're-stamped with the rubric that judged it');
+  assert.equal(e.profile_text, 'About: maintains a coding agent', 'data carried over');
+  assert.equal(e.profile_url, 'https://www.linkedin.com/in/x/');
+  assert.equal(e.scraped_at, day(3), 'the no-touch window must NOT slide forward');
+});
+
+test('a profile read that failed to classify still blocks the next page load', () => {
+  // verdict: null — the page was read but no verdict came back. There is
+  // nothing to use (icpCacheGet skips it) but the read must not repeat.
+  __test.setIcpState({});
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: null, confidence: 'low', reason: 'profile read; not classified yet',
+    evidence: 'profile', profileUrl: 'https://www.linkedin.com/in/x/', profileText: 'About: builds a coding agent',
+  });
+  assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic'), null, 'no verdict to hand out');
+  assert.equal(__test.profileReadRecently('in/x'), true, 'but the page must not be re-opened');
+  assert.equal(__test.getIcpCache()['in/x'].verdict, null);
+});
+
+test('a profile entry stores the page text and URL it was judged from', () => {
+  __test.setIcpState({});
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: true, confidence: 'high', reason: 'maintains a coding agent', evidence: 'profile',
+    model: 'm', profileUrl: 'https://www.linkedin.com/in/x/', profileText: 'About: builds a coding agent',
+  });
+  const e = __test.getIcpCache()['in/x'];
+  assert.equal(e.profile_url, 'https://www.linkedin.com/in/x/');
+  assert.equal(e.profile_text, 'About: builds a coding agent');
+  assert.equal(e.headline, 'Founder @ Agentic');
+});
+
+test('a card entry with no prior scrape stores no page text', () => {
+  __test.setIcpState({});
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: true, confidence: 'high', reason: 'r', evidence: 'card', model: 'm',
+  });
+  const e = __test.getIcpCache()['in/x'];
+  assert.ok(!('profile_text' in e) && !('profile_url' in e));
+  assert.equal(__test.profileReadRecently('in/x'), false);
+});
+
+test('the shared module is the single implementation both pipelines import', async () => {
+  const shared = await import('../../pipeline-shared/icp-cache.mjs');
+  const keys = await import('./keys.mjs');
+  assert.equal(keys.profileKey, shared.profileKey, 'keys.mjs must re-export, not re-implement');
+  assert.equal(keys.headlineHash, shared.headlineHash);
+  assert.equal(keys.readProfileList, shared.readProfileList);
+  assert.equal(shared.ICP_CACHE_REL_PATH, 'dashboards/li-stats/icp-authors.json');
+  assert.equal(shared.DEFAULT_TTL_DAYS, 10);
+  // Both pipelines must hash the same texts in the same order.
+  assert.equal(shared.rubricHash('a', 'b'), shared.rubricHash('a', 'b'));
+  assert.notEqual(shared.rubricHash('a', 'b'), shared.rubricHash('b', 'a'));
 });
 
 test('a verdict older than the TTL invalidates', () => {
   const old = new Date(Date.now() - (__test.ICP_CACHE_TTL_DAYS + 1) * 86_400_000).toISOString();
-  __test.setIcpState({ cache: { 'in/x': cacheEntry({ decided_at: old }) } });
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ scraped_at: old }) } });
   assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic'), null);
   const fresh = new Date(Date.now() - (__test.ICP_CACHE_TTL_DAYS - 1) * 86_400_000).toISOString();
-  __test.setIcpState({ cache: { 'in/x': cacheEntry({ decided_at: fresh }) } });
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ scraped_at: fresh }) } });
   assert.equal(__test.icpCacheGet('in/x', 'Founder @ Agentic').verdict, true);
 });
 
@@ -132,7 +264,7 @@ test('a malformed, undated or unkeyed entry is a miss, never a crash', () => {
   __test.setIcpState({
     cache: {
       'in/no-verdict': cacheEntry({ verdict: 'yes' }),
-      'in/no-date': cacheEntry({ decided_at: undefined }),
+      'in/no-date': cacheEntry({ scraped_at: undefined, decided_at: undefined }),
     },
   });
   assert.equal(__test.icpCacheGet('in/no-verdict', 'Founder @ Agentic'), null);

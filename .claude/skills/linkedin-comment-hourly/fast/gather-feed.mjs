@@ -20,7 +20,8 @@
 // Both gates must pass. interests.md and icp-filter.md remain the no-code
 // tuning knobs. A low-confidence ICP verdict escalates to a profile probe
 // (the author's own LinkedIn page), and every author verdict is cached in
-// linkedin-compain/icp-authors.json so deep scrolls get cheaper every fire.
+// dashboards/li-stats/icp-authors.json — SHARED with linkedin-stats — so
+// deep scrolls get cheaper every fire and both pipelines judge a person once.
 //
 // Filtered posts (off-topic / already-commented) are appended to the single
 // comments.json array exactly like the agent did (jq is the only serializer
@@ -32,7 +33,7 @@
 //   node gather-feed.mjs [--target-count=5] [--deadline-secs=900]
 //                        [--comments-file=path] [--interests-file=path]
 //                        [--icp-file=sources/icp.md] [--icp-filter-file=path]
-//                        [--icp-cache-file=linkedin-compain/icp-authors.json]
+//                        [--icp-cache-file=dashboards/li-stats/icp-authors.json]
 //                        [--profile-probe-max=12] [--icp-cache-ttl-days=90]
 //                        [--out-dir=tmp/gather-feed/<utc-ts>]
 //                        [--batch-size=6] [--max-scrolls=250]
@@ -67,9 +68,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { authorSlug, normText, makeKey, fuzzyId } from './keys.mjs';
+// The ICP author cache is SHARED with linkedin-stats (Peter, 2026-08-18) and
+// lives under dashboards/li-stats/ — see pipeline-shared/icp-cache.mjs.
 import {
-  authorSlug, normText, makeKey, fuzzyId, headlineHash, profileKey, readProfileList,
-} from './keys.mjs';
+  ICP_CACHE_REL_PATH, profileKey, readProfileList, rubricHash,
+  cacheAgeDays, cachedProfileData, profileReadRecently as sharedProfileReadRecently,
+  icpCacheGet as sharedCacheGet, icpCacheSet as sharedCacheSet,
+  loadIcpCache as sharedCacheLoad, saveIcpCache as sharedCacheSave,
+} from '../../pipeline-shared/icp-cache.mjs';
 
 const execFile = promisify(execFileCb);
 
@@ -96,12 +103,18 @@ const INTERESTS_FILE = path.resolve(REPO_ROOT, String(args['interests-file'] || 
 // decision rules plus the hand-curated allow/deny profile lists.
 const ICP_FILE = path.resolve(REPO_ROOT, String(args['icp-file'] || 'sources/icp.md'));
 const ICP_FILTER_FILE = path.resolve(REPO_ROOT, String(args['icp-filter-file'] || '.claude/skills/linkedin-comment-hourly/icp-filter.md'));
-const ICP_CACHE_FILE = path.resolve(REPO_ROOT, String(args['icp-cache-file'] || 'linkedin-compain/icp-authors.json'));
+const ICP_CACHE_FILE = path.resolve(REPO_ROOT, String(args['icp-cache-file'] || ICP_CACHE_REL_PATH));
 // ~20s per probe (nav + one classifier call), so 20 spends about 7 min of the
 // 900s budget in the worst case — and the author cache makes later fires much
 // cheaper, since a person is probed once, not once per post.
 const PROFILE_PROBE_MAX = Math.max(0, parseInt(args['profile-probe-max'] || '20', 10));
-const ICP_CACHE_TTL_DAYS = Math.max(1, parseInt(args['icp-cache-ttl-days'] || '90', 10));
+// 10 days (Peter, 2026-08-18): a profile we have opened once is not opened
+// again for the whole window, whatever else changes about the person.
+const ICP_CACHE_TTL_DAYS = Math.max(1, parseInt(args['icp-cache-ttl-days'] || '10', 10));
+// How much of the profile page to KEEP. The cache stores scraped data, not a
+// verdict, so this is the ceiling on what a future re-judge gets to see; the
+// classifier itself reads a smaller slice.
+const PROFILE_TEXT_MAX = Math.max(1000, parseInt(args['profile-text-max'] || '8000', 10));
 const PROBE_FILE = args['probe-file'] ? path.resolve(REPO_ROOT, String(args['probe-file'])) : null;
 const RUN_TS = new Date().toISOString().replace(/[:.]/g, '-').replace(/-\d{3}Z$/, 'Z');
 const OUT_DIR = path.resolve(REPO_ROOT, String(args['out-dir'] || path.join('tmp', 'gather-feed', RUN_TS)));
@@ -411,66 +424,46 @@ let icpDeny = new Set();
 let icpCache = {};
 let icpCacheDirty = false;
 
-function loadIcpCache() {
-  try {
-    const parsed = JSON.parse(fs.readFileSync(ICP_CACHE_FILE, 'utf8'));
-    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) icpCache = parsed;
-  } catch { icpCache = {}; } // absent or corrupt — a cache miss is never fatal
-}
+function loadIcpCache() { icpCache = sharedCacheLoad(ICP_CACHE_FILE); }
 
-function icpCacheGet(pkey, headline) {
-  if (!pkey) return null;
-  const e = icpCache[pkey];
-  if (!e || typeof e.verdict !== 'boolean') return null;
-  // A changed headline is a changed person: new job, new project, new answer.
-  if (e.headline_hash !== headlineHash(headline)) return null;
-  const ageDays = (Date.now() - Date.parse(e.decided_at || '')) / 86_400_000;
-  if (!Number.isFinite(ageDays) || ageDays < 0 || ageDays > ICP_CACHE_TTL_DAYS) return null;
-  return e;
-}
+const icpCacheGet = (pkey, headline) =>
+  sharedCacheGet(icpCache, pkey, headline, { rubricHash: RUBRIC_HASH, ttlDays: ICP_CACHE_TTL_DAYS });
+
+const profileReadRecently = (pkey) => sharedProfileReadRecently(icpCache, pkey, ICP_CACHE_TTL_DAYS);
 
 function icpCacheSet(pkey, headline, v) {
-  if (!pkey) return; // no profile link on the card — nothing stable to key on
-  icpCache[pkey] = {
-    verdict: v.verdict,
-    confidence: v.confidence,
-    reason: v.reason,
-    evidence: v.evidence,
-    headline_hash: headlineHash(headline),
-    model: v.model || null,
-    decided_at: nowIso(),
-  };
+  if (!pkey) return;
+  sharedCacheSet(icpCache, pkey, headline, v, { rubricHash: RUBRIC_HASH });
   icpCacheDirty = true;
 }
 
-// node writes this file, not jq: the "jq is the only serializer" rule guards
-// comments.json (the seen-set), not a derived cache. Sorted keys + stable
-// 2-space JSON keep the diff readable. A dry run parks its verdicts in the
-// out-dir so it never dirties the tracked tree.
+// A dry run parks its verdicts in the out-dir so it never dirties the tracked
+// tree; a real run writes the file both pipelines read.
 function saveIcpCache() {
   if (!icpCacheDirty) return;
   const target = DRY_RUN ? path.join(OUT_DIR, 'icp-authors.json') : ICP_CACHE_FILE;
-  const tmp = `${target}.tmp-${process.pid}`;
-  try {
-    const sorted = {};
-    for (const k of Object.keys(icpCache).sort()) sorted[k] = icpCache[k];
-    fs.mkdirSync(path.dirname(target), { recursive: true });
-    fs.writeFileSync(tmp, `${JSON.stringify(sorted, null, 2)}\n`);
-    fs.renameSync(tmp, target);
-    icpCacheDirty = false;
-    vlog(`icp cache: ${Object.keys(sorted).length} authors -> ${target}`);
-  } catch (e) {
-    fs.rmSync(tmp, { force: true });
-    log(`icp cache write failed (${target}): ${String(e.message).split('\n')[0]}`);
-  }
+  const err = sharedCacheSave(target, icpCache);
+  if (err) { log(`icp cache write failed (${target}): ${err}`); return; }
+  icpCacheDirty = false;
+  vlog(`icp cache: ${Object.keys(icpCache).length} authors -> ${target}`);
 }
 
 // Profile pages lost their semantic classes in the 2026 obfuscation just like
 // the analytics surfaces did; main.innerText is the drift-resistant read.
-const PROFILE_SCRAPE = () => {
+const PROFILE_SCRAPE = (limit) => {
   const main = document.querySelector('main') || document.body;
-  return { text: (main.innerText || '').slice(0, 4000) };
+  return { text: (main.innerText || '').slice(0, limit) };
 };
+
+// The rubric a verdict was reached under. `sources/icp.md` gets re-synced from
+// ClickUp and `icp-filter.md` is a tuning knob — when either moves, every
+// cached VERDICT is stale, but the scraped profile data behind it is not.
+// That is the whole reason the cache stores the data and not just the answer:
+// a retune re-judges from disk instead of re-opening hundreds of profiles.
+let RUBRIC_HASH = '';
+// Argument ORDER is load-bearing: linkedin-stats hashes the same two texts in
+// the same order, or the two pipelines would invalidate each other forever.
+const computeRubricHash = () => rubricHash(ICP_TEXT, ICP_FILTER_TEXT);
 
 const profileUrlFor = (cand) => {
   try {
@@ -485,6 +478,10 @@ const profileUrlFor = (cand) => {
 // spends a permalink recovery on a candidate it may not be able to judge.
 function canProbe(cand) {
   if (!profileUrlFor(cand)) { vlog(`icp probe skipped for ${cand.key}: no usable profile URL`); return false; }
+  if (profileReadRecently(profileKey(cand.authorUrl))) {
+    vlog(`icp probe skipped for ${cand.key}: profile already read within ${ICP_CACHE_TTL_DAYS}d`);
+    return false;
+  }
   if (counters.icpProbes >= PROFILE_PROBE_MAX) {
     vlog(`icp probe skipped for ${cand.key}: probe budget ${PROFILE_PROBE_MAX} spent`);
     return false;
@@ -522,15 +519,34 @@ async function probeProfile(cand) {
       () => ((document.querySelector('main') || document.body).innerText || '').trim().length > 200,
       undefined, { timeout: 8000 },
     ).catch(() => {});
-    ({ text } = await p.evaluate(PROFILE_SCRAPE));
+    ({ text } = await p.evaluate(PROFILE_SCRAPE, PROFILE_TEXT_MAX));
   } catch (e) {
     log(`icp probe nav failed for ${cand.key}: ${String(e.message).split('\n')[0]}`);
     return null;
   }
   if (!text || text.trim().length < 120) {
     log(`icp probe for ${cand.key}: profile text too thin (${(text || '').trim().length} chars)`);
-    return null;
+    return null; // nothing worth caching — a thin read is worth retrying
   }
+  // The page IS read now. Bank that before classifying, so a classifier
+  // failure below can't cost a second page load next fire.
+  icpCacheSet(profileKey(cand.authorUrl), cand.headline, {
+    verdict: null,
+    confidence: 'low',
+    reason: 'profile read; not classified yet',
+    evidence: 'profile',
+    model: null,
+    profileUrl: url,
+    profileText: text.slice(0, 2500),
+  });
+  const verdict = await classifyStoredProfile(cand, text);
+  return verdict ? { ...verdict, profileUrl: url, profileText: text } : null;
+}
+
+// Judge one person from profile text, whatever its source — a page just read,
+// or the same page's text pulled out of the cache days later. Returns null if
+// the ladder never produced a valid verdict.
+async function classifyStoredProfile(cand, text) {
   for (const model of [CLASSIFY_MODEL, CLASSIFY_MODEL_ESCALATION]) {
     if (outOfTime()) break;
     try {
@@ -579,6 +595,21 @@ async function decideIcp(page, c, v) {
   const pkey = profileKey(c.authorUrl);
   const early = icpWithoutProbe(pkey, c.headline, v);
   if (early) return early;
+  // No usable verdict — but we may still hold this author's scraped profile
+  // from an earlier fire. Re-judge from THAT (one classifier call, zero page
+  // loads) before considering the browser. This is the path a retuned ICP
+  // takes: the rubric moved, the data did not.
+  const stored = cachedProfileData(icpCache[pkey], ICP_CACHE_TTL_DAYS);
+  if (stored) {
+    counters.icpRejudged++;
+    const rejudged = await classifyStoredProfile(c, stored);
+    if (rejudged) {
+      icpCacheSet(pkey, c.headline, rejudged);
+      return { verdict: rejudged.verdict, source: `cache-rejudge/${rejudged.confidence}`, reason: rejudged.reason };
+    }
+    // Classifier failed on cached data. The page is still inside its no-touch
+    // window, so canProbe() below refuses it and this post goes undecided.
+  }
   // Low confidence — the card can't settle it, so read the profile. Recover
   // the permalink FIRST: the probe costs 10-20s and LinkedIn virtualizes cards
   // out of the DOM, so deferring recovery would ship a ticket with no link.
@@ -1059,7 +1090,7 @@ for (const sig of ['SIGTERM', 'SIGINT']) {
 // ------------------------------------------------------------------- main
 
 const counters = {
-  offTopic: 0, offIcp: 0, icpUndecided: 0, icpProbes: 0, icpCacheHits: 0,
+  offTopic: 0, offIcp: 0, icpUndecided: 0, icpProbes: 0, icpCacheHits: 0, icpRejudged: 0,
   alreadyCommented: 0, reposts: 0, promoted: 0,
   scrollIterations: 0, parseFailures: 0,
 };
@@ -1090,6 +1121,9 @@ function emitContractInner(feedExhausted, endReason) {
   kv.push(`POSTS_ICP_UNDECIDED=${counters.icpUndecided}`);
   kv.push(`ICP_PROBES=${counters.icpProbes}`);
   kv.push(`ICP_CACHE_HITS=${counters.icpCacheHits}`);
+  // Authors re-judged from cached profile text — no page load. Grows after
+  // the ICP rubric is retuned, which is exactly when it should.
+  kv.push(`ICP_REJUDGED=${counters.icpRejudged}`);
   kv.push(`POSTS_ALREADY_COMMENTED=${counters.alreadyCommented}`);
   kv.push(`POSTS_REPOSTS_SKIPPED=${counters.reposts}`);
   kv.push(`POSTS_PROMOTED_SKIPPED=${counters.promoted}`);
@@ -1139,6 +1173,8 @@ function emitContractInner(feedExhausted, endReason) {
       probes: counters.icpProbes,
       probe_max: PROFILE_PROBE_MAX,
       cache_hits: counters.icpCacheHits,
+      rejudged_from_cache: counters.icpRejudged,
+      rubric_hash: RUBRIC_HASH,
       off_icp: counters.offIcp,
       undecided: counters.icpUndecided,
     },
@@ -1158,11 +1194,16 @@ function loadRubrics() {
   if (!ICP_TEXT.trim()) throw new Error(`icp file is empty: ${ICP_FILE}`);
   ICP_FILTER_TEXT = fs.readFileSync(ICP_FILTER_FILE, 'utf8');
   if (!ICP_FILTER_TEXT.trim()) throw new Error(`icp filter file is empty: ${ICP_FILTER_FILE}`);
+  RUBRIC_HASH = computeRubricHash();
   icpAllow = readProfileList(ICP_FILTER_TEXT, 'always accept');
   icpDeny = readProfileList(ICP_FILTER_TEXT, 'never accept');
   loadIcpCache();
+  const cached = Object.values(icpCache);
+  const reusable = cached.filter((e) => cachedProfileData(e)).length;
+  const currentRubric = cached.filter((e) => e.rubric_hash === RUBRIC_HASH).length;
   log(`icp gate: ${icpAllow.size} always-accept, ${icpDeny.size} never-accept, `
-    + `${Object.keys(icpCache).length} cached author verdicts`);
+    + `${cached.length} cached authors (${reusable} with reusable profile data, `
+    + `${currentRubric} judged under the current rubric ${RUBRIC_HASH})`);
 }
 
 // Offline hit-rate probe: run BOTH gates over a corpus of already-captured
@@ -1459,6 +1500,7 @@ async function main() {
   log(`done: ${accepted.length}/${TARGET_COUNT} accepted, ${counters.offTopic} off-topic, `
     + `${counters.offIcp} off-icp, ${counters.icpUndecided} icp-undecided, `
     + `${counters.icpProbes} profile probes, ${counters.icpCacheHits} cache hits, `
+    + `${counters.icpRejudged} re-judged from cache, `
     + `${counters.alreadyCommented} already-commented, ${counters.reposts} reposts, `
     + `${counters.promoted} promoted, ${counters.scrollIterations} scrolls, `
     + `${classifyCalls} classify calls, ${Math.round((Date.now() - t0) / 1000)}s`);
@@ -1489,6 +1531,10 @@ export const __test = {
   getIcpCache: () => icpCache,
   icpCacheGet,
   icpCacheSet,
+  profileReadRecently,
+  cachedProfileData,
+  setRubricHash: (h) => { RUBRIC_HASH = h; },
+  getRubricHash: () => RUBRIC_HASH,
   counters,
   ICP_CACHE_TTL_DAYS,
 };
