@@ -20,7 +20,8 @@
 // Both gates must pass. interests.md and icp-filter.md remain the no-code
 // tuning knobs. A low-confidence ICP verdict escalates to a profile probe
 // (the author's own LinkedIn page), and every author verdict is cached in
-// linkedin-compain/icp-authors.json so deep scrolls get cheaper every fire.
+// dashboards/li-stats/icp-authors.json — SHARED with linkedin-stats — so
+// deep scrolls get cheaper every fire and both pipelines judge a person once.
 //
 // Filtered posts (off-topic / already-commented) are appended to the single
 // comments.json array exactly like the agent did (jq is the only serializer
@@ -32,7 +33,7 @@
 //   node gather-feed.mjs [--target-count=5] [--deadline-secs=900]
 //                        [--comments-file=path] [--interests-file=path]
 //                        [--icp-file=sources/icp.md] [--icp-filter-file=path]
-//                        [--icp-cache-file=linkedin-compain/icp-authors.json]
+//                        [--icp-cache-file=dashboards/li-stats/icp-authors.json]
 //                        [--profile-probe-max=12] [--icp-cache-ttl-days=90]
 //                        [--out-dir=tmp/gather-feed/<utc-ts>]
 //                        [--batch-size=6] [--max-scrolls=250]
@@ -67,9 +68,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
+import { authorSlug, normText, makeKey, fuzzyId } from './keys.mjs';
+// The ICP author cache is SHARED with linkedin-stats (Peter, 2026-08-18) and
+// lives under dashboards/li-stats/ — see pipeline-shared/icp-cache.mjs.
 import {
-  authorSlug, normText, makeKey, fuzzyId, headlineHash, profileKey, readProfileList,
-} from './keys.mjs';
+  ICP_CACHE_REL_PATH, profileKey, readProfileList, rubricHash,
+  cacheAgeDays, cachedProfileData, profileReadRecently as sharedProfileReadRecently,
+  icpCacheGet as sharedCacheGet, icpCacheSet as sharedCacheSet,
+  loadIcpCache as sharedCacheLoad, saveIcpCache as sharedCacheSave,
+} from '../../pipeline-shared/icp-cache.mjs';
 
 const execFile = promisify(execFileCb);
 
@@ -96,7 +103,7 @@ const INTERESTS_FILE = path.resolve(REPO_ROOT, String(args['interests-file'] || 
 // decision rules plus the hand-curated allow/deny profile lists.
 const ICP_FILE = path.resolve(REPO_ROOT, String(args['icp-file'] || 'sources/icp.md'));
 const ICP_FILTER_FILE = path.resolve(REPO_ROOT, String(args['icp-filter-file'] || '.claude/skills/linkedin-comment-hourly/icp-filter.md'));
-const ICP_CACHE_FILE = path.resolve(REPO_ROOT, String(args['icp-cache-file'] || 'linkedin-compain/icp-authors.json'));
+const ICP_CACHE_FILE = path.resolve(REPO_ROOT, String(args['icp-cache-file'] || ICP_CACHE_REL_PATH));
 // ~20s per probe (nav + one classifier call), so 20 spends about 7 min of the
 // 900s budget in the worst case — and the author cache makes later fires much
 // cheaper, since a person is probed once, not once per post.
@@ -417,114 +424,28 @@ let icpDeny = new Set();
 let icpCache = {};
 let icpCacheDirty = false;
 
-function loadIcpCache() {
-  try {
-    const parsed = JSON.parse(fs.readFileSync(ICP_CACHE_FILE, 'utf8'));
-    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) icpCache = parsed;
-  } catch { icpCache = {}; } // absent or corrupt — a cache miss is never fatal
-}
+function loadIcpCache() { icpCache = sharedCacheLoad(ICP_CACHE_FILE); }
 
-// Age of the SCRAPE, which is what the no-touch window is about. Kept apart
-// from `decided_at` on purpose: re-judging cached data must not slide the
-// window forward, or a profile read once would never be re-read.
-// (`decided_at` is the fallback for entries written before the split.)
-export function cacheAgeDays(entry, now = Date.now()) {
-  const ms = Date.parse(entry?.scraped_at || entry?.decided_at || '');
-  if (!Number.isFinite(ms)) return Infinity;
-  const days = (now - ms) / 86_400_000;
-  return days < 0 ? Infinity : days; // a future timestamp is corrupt, not fresh
-}
+const icpCacheGet = (pkey, headline) =>
+  sharedCacheGet(icpCache, pkey, headline, { rubricHash: RUBRIC_HASH, ttlDays: ICP_CACHE_TTL_DAYS });
 
-// The scraped profile data a future re-judge can run on: present, non-empty,
-// and read inside the no-touch window. Independent of whether the VERDICT
-// stored beside it is still usable.
-export function cachedProfileData(entry, ttlDays = ICP_CACHE_TTL_DAYS) {
-  if (!entry || entry.evidence !== 'profile') return null;
-  if (!entry.profile_text || !String(entry.profile_text).trim()) return null;
-  return cacheAgeDays(entry) <= ttlDays ? String(entry.profile_text) : null;
-}
+const profileReadRecently = (pkey) => sharedProfileReadRecently(icpCache, pkey, ICP_CACHE_TTL_DAYS);
 
-function icpCacheGet(pkey, headline) {
-  if (!pkey) return null;
-  const e = icpCache[pkey];
-  if (!e || typeof e.verdict !== 'boolean') return null;
-  if (cacheAgeDays(e) > ICP_CACHE_TTL_DAYS) return null;
-  // A verdict reached under a different ICP rubric is not an answer to today's
-  // question. Drop it — the caller re-judges from the stored profile data,
-  // with no page load.
-  if (e.rubric_hash !== RUBRIC_HASH) return null;
-  // Within the TTL a PROFILE entry is untouchable, even if the headline moved:
-  // we already opened that page and paid for it, and Peter's rule is that a
-  // profile we have read once is not read again for the whole window. A CARD
-  // entry has no such cost — re-judging it rides the batch call we make
-  // anyway — so a changed headline (new job, new project, new answer)
-  // invalidates it.
-  if (e.evidence !== 'profile' && e.headline_hash !== headlineHash(headline)) return null;
-  return e;
-}
-
-// "Opened once, then left alone for the window" applies to the PAGE LOAD, not
-// just to the verdict: a profile we read but failed to classify still must not
-// be re-opened. Those reads are stored with `verdict: null` — icpCacheGet
-// skips them (there is no verdict to use, so the post stays undecided) and
-// this is what keeps the probe off them.
-function profileReadRecently(pkey) {
-  if (!pkey) return false;
-  const e = icpCache[pkey];
-  if (!e || e.evidence !== 'profile') return false;
-  return cacheAgeDays(e) <= ICP_CACHE_TTL_DAYS;
-}
-
-// The SCRAPED DATA is the durable asset here, not the answer: the ICP
-// definition moves (a `sync-sources` pull, an `icp-filter.md` edit) and every
-// verdict goes stale with it, while the profile text stays exactly as good as
-// the day it was read. So a profile entry keeps its page text verbatim, and a
-// re-judge overwrites only the verdict fields — `scraped_at`, `profile_text`
-// and `profile_url` are carried over from the existing entry.
 function icpCacheSet(pkey, headline, v) {
-  if (!pkey) return; // no profile link on the card — nothing stable to key on
-  const prev = icpCache[pkey] || {};
-  const isProfile = v.evidence === 'profile';
-  const fresh = isProfile && v.profileText != null; // a real page read, not a re-judge
-  icpCache[pkey] = {
-    verdict: typeof v.verdict === 'boolean' ? v.verdict : null,
-    confidence: v.confidence,
-    reason: v.reason,
-    evidence: v.evidence,
-    headline: sanitizeLine(headline).slice(0, 300),
-    headline_hash: headlineHash(headline),
-    rubric_hash: RUBRIC_HASH,
-    model: v.model || null,
-    decided_at: nowIso(),
-    ...(isProfile ? {
-      scraped_at: fresh ? nowIso() : (prev.scraped_at || prev.decided_at || nowIso()),
-      profile_url: fresh ? (v.profileUrl || null) : (prev.profile_url ?? null),
-      profile_text: fresh ? String(v.profileText || '') : (prev.profile_text ?? ''),
-    } : {}),
-  };
+  if (!pkey) return;
+  sharedCacheSet(icpCache, pkey, headline, v, { rubricHash: RUBRIC_HASH });
   icpCacheDirty = true;
 }
 
-// node writes this file, not jq: the "jq is the only serializer" rule guards
-// comments.json (the seen-set), not a derived cache. Sorted keys + stable
-// 2-space JSON keep the diff readable. A dry run parks its verdicts in the
-// out-dir so it never dirties the tracked tree.
+// A dry run parks its verdicts in the out-dir so it never dirties the tracked
+// tree; a real run writes the file both pipelines read.
 function saveIcpCache() {
   if (!icpCacheDirty) return;
   const target = DRY_RUN ? path.join(OUT_DIR, 'icp-authors.json') : ICP_CACHE_FILE;
-  const tmp = `${target}.tmp-${process.pid}`;
-  try {
-    const sorted = {};
-    for (const k of Object.keys(icpCache).sort()) sorted[k] = icpCache[k];
-    fs.mkdirSync(path.dirname(target), { recursive: true });
-    fs.writeFileSync(tmp, `${JSON.stringify(sorted, null, 2)}\n`);
-    fs.renameSync(tmp, target);
-    icpCacheDirty = false;
-    vlog(`icp cache: ${Object.keys(sorted).length} authors -> ${target}`);
-  } catch (e) {
-    fs.rmSync(tmp, { force: true });
-    log(`icp cache write failed (${target}): ${String(e.message).split('\n')[0]}`);
-  }
+  const err = sharedCacheSave(target, icpCache);
+  if (err) { log(`icp cache write failed (${target}): ${err}`); return; }
+  icpCacheDirty = false;
+  vlog(`icp cache: ${Object.keys(icpCache).length} authors -> ${target}`);
 }
 
 // Profile pages lost their semantic classes in the 2026 obfuscation just like
@@ -540,10 +461,9 @@ const PROFILE_SCRAPE = (limit) => {
 // That is the whole reason the cache stores the data and not just the answer:
 // a retune re-judges from disk instead of re-opening hundreds of profiles.
 let RUBRIC_HASH = '';
-const computeRubricHash = () => crypto.createHash('sha256')
-  .update(`${ICP_TEXT}
----
-${ICP_FILTER_TEXT}`, 'utf8').digest('hex').slice(0, 16);
+// Argument ORDER is load-bearing: linkedin-stats hashes the same two texts in
+// the same order, or the two pipelines would invalidate each other forever.
+const computeRubricHash = () => rubricHash(ICP_TEXT, ICP_FILTER_TEXT);
 
 const profileUrlFor = (cand) => {
   try {
@@ -679,7 +599,7 @@ async function decideIcp(page, c, v) {
   // from an earlier fire. Re-judge from THAT (one classifier call, zero page
   // loads) before considering the browser. This is the path a retuned ICP
   // takes: the rubric moved, the data did not.
-  const stored = cachedProfileData(icpCache[pkey]);
+  const stored = cachedProfileData(icpCache[pkey], ICP_CACHE_TTL_DAYS);
   if (stored) {
     counters.icpRejudged++;
     const rejudged = await classifyStoredProfile(c, stored);

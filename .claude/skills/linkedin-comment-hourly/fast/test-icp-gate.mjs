@@ -13,7 +13,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { profileKey, readProfileList, headlineHash } from './keys.mjs';
-import { icpWithoutProbe, cacheAgeDays, cachedProfileData, __test } from './gather-feed.mjs';
+import { icpWithoutProbe, __test } from './gather-feed.mjs';
+import { cacheAgeDays, cachedProfileData } from '../../pipeline-shared/icp-cache.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..', '..', '..');
@@ -149,7 +150,10 @@ test('a profile read inside the window blocks another page load', () => {
   assert.equal(__test.profileReadRecently('in/x'), true);
   __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'profile', scraped_at: day(11) }) } });
   assert.equal(__test.profileReadRecently('in/x'), false);
-  __test.setIcpState({ cache: { 'in/x': cacheEntry({ evidence: 'card', scraped_at: day(1) }) } });
+  // A card-only entry has no scrape date at all — that is what "no page was
+  // opened" looks like on disk. (An entry that HAS a scraped_at was scraped,
+  // whatever its latest verdict happened to be judged from.)
+  __test.setIcpState({ cache: { 'in/x': { verdict: true, evidence: 'card', decided_at: day(1) } } });
   assert.equal(__test.profileReadRecently('in/x'), false, 'a card verdict opened no page');
   assert.equal(__test.profileReadRecently(''), false);
 });
@@ -166,9 +170,23 @@ test('a verdict from a DIFFERENT ICP rubric is dropped, but its data survives', 
 
 test('cachedProfileData refuses what cannot be re-judged', () => {
   assert.equal(cachedProfileData(null), null);
-  assert.equal(cachedProfileData(cacheEntry({ evidence: 'card' })), null, 'no page was ever read');
+  assert.equal(cachedProfileData({ evidence: 'card', decided_at: day(1) }), null, 'no page was ever read');
   assert.equal(cachedProfileData(cacheEntry({ profile_text: '   ' })), null, 'empty scrape');
   assert.equal(cachedProfileData(cacheEntry({ scraped_at: day(11) })), null, 'outside the window');
+});
+
+test('a headline-only verdict never deletes a scrape the other pipeline paid for', () => {
+  // linkedin-stats writes card verdicts into the same file. If that dropped
+  // profile_text, the feed gate would re-open pages it already read.
+  __test.setIcpState({ cache: { 'in/x': cacheEntry({ scraped_at: day(2) }) } });
+  __test.icpCacheSet('in/x', 'Founder @ Agentic', {
+    verdict: false, confidence: 'high', reason: 'headline says sales', evidence: 'card', model: 'm',
+  });
+  const e = __test.getIcpCache()['in/x'];
+  assert.equal(e.evidence, 'card', 'the verdict was judged from a card');
+  assert.equal(e.profile_text, 'About: maintains a coding agent', 'but the scrape survives');
+  assert.equal(e.scraped_at, day(2), 'and so does its date');
+  assert.equal(__test.profileReadRecently('in/x'), true, 'so the page still must not be re-opened');
 });
 
 test('a re-judge keeps the original scrape date, text and URL', () => {
@@ -210,13 +228,27 @@ test('a profile entry stores the page text and URL it was judged from', () => {
   assert.equal(e.headline, 'Founder @ Agentic');
 });
 
-test('a card entry stores no page text — nothing was opened', () => {
+test('a card entry with no prior scrape stores no page text', () => {
   __test.setIcpState({});
   __test.icpCacheSet('in/x', 'Founder @ Agentic', {
     verdict: true, confidence: 'high', reason: 'r', evidence: 'card', model: 'm',
   });
   const e = __test.getIcpCache()['in/x'];
   assert.ok(!('profile_text' in e) && !('profile_url' in e));
+  assert.equal(__test.profileReadRecently('in/x'), false);
+});
+
+test('the shared module is the single implementation both pipelines import', async () => {
+  const shared = await import('../../pipeline-shared/icp-cache.mjs');
+  const keys = await import('./keys.mjs');
+  assert.equal(keys.profileKey, shared.profileKey, 'keys.mjs must re-export, not re-implement');
+  assert.equal(keys.headlineHash, shared.headlineHash);
+  assert.equal(keys.readProfileList, shared.readProfileList);
+  assert.equal(shared.ICP_CACHE_REL_PATH, 'dashboards/li-stats/icp-authors.json');
+  assert.equal(shared.DEFAULT_TTL_DAYS, 10);
+  // Both pipelines must hash the same texts in the same order.
+  assert.equal(shared.rubricHash('a', 'b'), shared.rubricHash('a', 'b'));
+  assert.notEqual(shared.rubricHash('a', 'b'), shared.rubricHash('b', 'a'));
 });
 
 test('a verdict older than the TTL invalidates', () => {
