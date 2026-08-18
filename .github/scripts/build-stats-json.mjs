@@ -279,6 +279,23 @@ function pointsFor(tiers, kind) {
   return vals[vals.length - 1]; // priority order: vip > icp > normal
 }
 
+// One shape for a totals row, used by the real aggregation and by the
+// all-zero fallback below — they must never drift apart, or a tile that reads
+// a field the fallback forgot renders "No data" instead of 0.
+//
+// `*_icp` counts are keyed on the person's ICP verdict, NOT on their scoring
+// tier: the VIP list is a separate, hand-curated axis, so a VIP who is not in
+// the ICP must not inflate the ICP share. The `icp_*_pct` fields answer "how
+// much of my engagement comes from the audience I am actually targeting".
+const EMPTY_TOTALS = {
+  scope: "", week: "",
+  score: 0, score_normal: 0, score_icp: 0, score_vip: 0,
+  reactions: 0, comments: 0, people: 0,
+  reactions_icp: 0, comments_icp: 0, people_icp: 0,
+  reactions_non_icp: 0, comments_non_icp: 0,
+  icp_reaction_pct: 0, icp_comment_pct: 0, icp_engagement_pct: 0,
+};
+
 const engagement_score_weeks = [];
 const engagement_score_totals = [];
 const engagement_people = [];
@@ -302,11 +319,13 @@ try {
   const weekAgg = new Map();   // week -> row
   const personAgg = new Map(); // person_key -> row
   const totals = {
-    all_time: { scope: "all_time", score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0, people: 0 },
-    last_week: { scope: "last_week", score: 0, score_normal: 0, score_icp: 0, score_vip: 0, reactions: 0, comments: 0, people: 0 },
+    all_time: { ...EMPTY_TOTALS, scope: "all_time" },
+    last_week: { ...EMPTY_TOTALS, scope: "last_week" },
   };
   const allTimePeople = new Set();
   const lastWeekPeople = new Set();
+  const allTimeIcpPeople = new Set();
+  const lastWeekIcpPeople = new Set();
 
   for (const ev of events) {
     const key = ev.person_key;
@@ -316,6 +335,9 @@ try {
     const kind = ev.kind === "comment" ? "comment" : "reaction";
     const pts = pointsFor(tiers, kind);
     const bucket = `score_${tier}`;
+    const isIcp = person?.icp?.verdict === true;
+    const countField = kind === "comment" ? "comments" : "reactions";
+    const icpCountField = `${countField}_icp`;
 
     const prow = personAgg.get(key) ?? {
       person_key: key,
@@ -323,16 +345,19 @@ try {
       headline: person?.headline ?? "",
       profile_url: person?.profile_url ?? "",
       tier,
+      is_icp: isIcp,
       reactions: 0, comments: 0, score: 0, score_last_week: 0,
     };
     prow.tier = tier;
-    prow[kind === "comment" ? "comments" : "reactions"] += 1;
+    prow.is_icp = isIcp;
+    prow[countField] += 1;
     prow.score += pts;
 
     totals.all_time.score += pts;
     totals.all_time[bucket] += pts;
-    totals.all_time[kind === "comment" ? "comments" : "reactions"] += 1;
+    totals.all_time[countField] += 1;
     allTimePeople.add(key);
+    if (isIcp) { totals.all_time[icpCountField] += 1; allTimeIcpPeople.add(key); }
 
     if (ev.attributed_week && !ev.backfill) {
       const w = ev.attributed_week;
@@ -348,8 +373,9 @@ try {
         prow.score_last_week += pts;
         totals.last_week.score += pts;
         totals.last_week[bucket] += pts;
-        totals.last_week[kind === "comment" ? "comments" : "reactions"] += 1;
+        totals.last_week[countField] += 1;
         lastWeekPeople.add(key);
+        if (isIcp) { totals.last_week[icpCountField] += 1; lastWeekIcpPeople.add(key); }
       }
     }
     personAgg.set(key, prow);
@@ -357,8 +383,21 @@ try {
 
   totals.all_time.people = allTimePeople.size;
   totals.last_week.people = lastWeekPeople.size;
+  totals.all_time.people_icp = allTimeIcpPeople.size;
+  totals.last_week.people_icp = lastWeekIcpPeople.size;
   totals.last_week.week = lastWeek ?? "";
   totals.all_time.week = "";
+
+  // Share of engagement that came from the ICP. One decimal place: the tiles
+  // read as percentages, and a raw ratio would render as 0.37.
+  const pct = (n, d) => (d > 0 ? Math.round((1000 * n) / d) / 10 : 0);
+  for (const t of [totals.last_week, totals.all_time]) {
+    t.reactions_non_icp = t.reactions - t.reactions_icp;
+    t.comments_non_icp = t.comments - t.comments_icp;
+    t.icp_reaction_pct = pct(t.reactions_icp, t.reactions);
+    t.icp_comment_pct = pct(t.comments_icp, t.comments);
+    t.icp_engagement_pct = pct(t.reactions_icp + t.comments_icp, t.reactions + t.comments);
+  }
 
   engagement_score_weeks.push(...zeroFillWeeks(
     [...weekAgg.values()].sort((a, b) => a.week.localeCompare(b.week)),
@@ -372,10 +411,7 @@ try {
 // "No data" before the first people-phase run.
 if (!engagement_score_totals.length) {
   for (const scope of ["last_week", "all_time"]) {
-    engagement_score_totals.push({
-      scope, week: "", score: 0, score_normal: 0, score_icp: 0, score_vip: 0,
-      reactions: 0, comments: 0, people: 0,
-    });
+    engagement_score_totals.push({ ...EMPTY_TOTALS, scope });
   }
 }
 

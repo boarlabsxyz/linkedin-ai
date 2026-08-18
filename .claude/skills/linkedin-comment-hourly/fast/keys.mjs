@@ -40,3 +40,57 @@ export function makeKey(author, body) {
 // normalized body. Catches the same card even when the hash recipe differs
 // (legacy bash normalization vs ours, footer-cut differences, …).
 export const fuzzyId = (author, body) => `${normText(author)}|${normText(body).slice(0, 160)}`;
+
+// A cached ICP verdict is only valid for the headline that produced it — same
+// invalidation idea as linkedin-stats/fast/classify-icp.mjs `headlineHash`.
+export const headlineHash = (headline) =>
+  crypto.createHash('sha256').update(normText(headline), 'utf8').digest('hex').slice(0, 16);
+
+// ---------------------------------------------------------- person identity
+
+// Author identity for the ICP gate: the normalized profile path, e.g.
+// "in/gregceccarelli". Same shape linkedin-stats/fast/people.mjs `personKey`
+// stores, so a verdict is portable between the two pipelines. Returns '' when
+// the card carried no usable profile link — an author without an identity is
+// never cached and never allow/deny-listed, only classified per post.
+export function profileKey(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return '';
+  try {
+    const u = new URL(raw, 'https://www.linkedin.com');
+    if (!/(^|\.)linkedin\.com$/i.test(u.hostname)) return '';
+    const m = u.pathname.match(/\/in\/([^/?#]+)/i);
+    if (!m) return '';
+    const slug = decodeURIComponent(m[1]).replace(/\/+$/, '').toLowerCase();
+    return /[a-z0-9]/i.test(slug) ? `in/${slug}` : '';
+  } catch { return ''; }
+}
+
+// Profile-URL bullets out of a markdown section of `file`, keyed like
+// profileKey(). Only `- ` / `* ` bullet lines count, and fenced/inline code is
+// stripped first — otherwise the file's own format example and the prose
+// describing it parse as real entries (exactly how readVipKeys in
+// .github/scripts/build-stats-json.mjs got burned on its first run).
+//
+// `section` is a case-insensitive heading substring: bullets are collected only
+// while the nearest preceding `#`-heading matches it. Omit it to take every
+// bullet in the file.
+export function readProfileList(md, section = null) {
+  const clean = String(md || '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`\n]*`/g, '');
+  const want = section ? section.toLowerCase() : null;
+  const keys = new Set();
+  let inSection = !want;
+  for (const line of clean.split('\n')) {
+    const h = line.match(/^\s{0,3}#{1,6}\s+(.*)$/);
+    if (h) { inSection = !want || h[1].toLowerCase().includes(want); continue; }
+    if (!inSection) continue;
+    if (!/^\s*[-*]\s/.test(line)) continue;
+    for (const m of line.matchAll(/https?:\/\/(?:[a-z0-9-]+\.)*linkedin\.com\/in\/([A-Za-z0-9\-_%.]+)/gi)) {
+      const k = profileKey(`https://www.linkedin.com/in/${m[1]}`);
+      if (k) keys.add(k);
+    }
+  }
+  return keys;
+}

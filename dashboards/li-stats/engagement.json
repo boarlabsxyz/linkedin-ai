@@ -1,0 +1,1574 @@
+{
+  "people": {
+    "in/al-shkundia-00a624225": {
+      "key": "in/al-shkundia-00a624225",
+      "name": "Al Shkundia",
+      "profile_url": "https://www.linkedin.com/in/al-shkundia-00a624225",
+      "headline": "--",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "No headline information provided",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "d8156bae0c4243d3"
+      }
+    },
+    "in/alex-ost-sf": {
+      "key": "in/alex-ost-sf",
+      "name": "Alex Ost",
+      "profile_url": "https://www.linkedin.com/in/alex-ost-sf",
+      "headline": "Lead Developer at Speed and Function",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Lead Developer at Speed & Function (Peter's company), not AI-coding OSS founder/staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "21d6a2cefbbdc63f"
+      }
+    },
+    "in/alyona-pugolovok": {
+      "key": "in/alyona-pugolovok",
+      "name": "Alyona P.",
+      "profile_url": "https://www.linkedin.com/in/alyona-pugolovok",
+      "headline": "Delivery & Data Operations",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Operations/data role, not technical founder or staff engineer of AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "66292632a9cf6ef3"
+      }
+    },
+    "in/anastasiiast": {
+      "key": "in/anastasiiast",
+      "name": "Anastasiia Stetsenko",
+      "profile_url": "https://www.linkedin.com/in/anastasiiast",
+      "headline": "Personal Brand & LinkedIn Training for Leaders and Companies ✦ ✈️Creator of curated travel experiences (Mexico, Cambodia, yachting) ✦ ex-Brand Ambassadors Lead @ DataArt, Global Software Engineering Firm",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Marketing/brand/operations background, no AI-coding OSS project leadership",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "0dba2f658890840e"
+      }
+    },
+    "in/arozhylo": {
+      "key": "in/arozhylo",
+      "name": "Andrii Rozhylo",
+      "profile_url": "https://www.linkedin.com/in/arozhylo",
+      "headline": "AI Transformation Leader | Business Strategist | Entrepreneur | Delivery Manager | Product Manager | Marketing Expert",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Generic business titles (strategist, delivery manager), no AI-coding OSS evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "b2d0a2f798f3f48d"
+      }
+    },
+    "in/artyom-valantov-aa9802223": {
+      "key": "in/artyom-valantov-aa9802223",
+      "name": "Artyom Valantov",
+      "profile_url": "https://www.linkedin.com/in/artyom-valantov-aa9802223",
+      "headline": "Head of Service Opertions at Grinfi.io | Outbound automation software | 21-layer protection & native AI personalization",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Operations role at commercial automation software, not AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "019cd88281e2aca7"
+      }
+    },
+    "in/batovskyi": {
+      "key": "in/batovskyi",
+      "name": "Dmytro Batovsky",
+      "profile_url": "https://www.linkedin.com/in/batovskyi",
+      "headline": "Software application solutions for purpose-driven organizations",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Vague headline about solutions, no AI-coding OSS project evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "93120cf15ba753a0"
+      }
+    },
+    "in/brianna-nadrofsky": {
+      "key": "in/brianna-nadrofsky",
+      "name": "Brianna Nadrofsky (Leonard)",
+      "profile_url": "https://www.linkedin.com/in/brianna-nadrofsky",
+      "headline": "Executive Operations Partner | Turning complexity into clarity, structure, and momentum.",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Executive operations/coaching role, not technical founder or staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "d62d39641121d740"
+      }
+    },
+    "in/charizard15": {
+      "key": "in/charizard15",
+      "name": "Yuvaraja Balamurugan",
+      "profile_url": "https://www.linkedin.com/in/charizard15",
+      "headline": "Engineering Leader | ex-Klarna & ex-Clark Germany | Built & Scaled Global Tech Teams | Bridging Business & Technology",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Engineering leader at Big Tech (Klarna, Clark), not founder/staff engineer of AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "8d072b6a6c336b3f"
+      }
+    },
+    "in/cristian-cucu": {
+      "key": "in/cristian-cucu",
+      "name": "Cristian C.",
+      "profile_url": "https://www.linkedin.com/in/cristian-cucu",
+      "headline": "Director of AI at Entry.com | AI Operations & Customer Operations Leader | Production AI, Support Automation, Client-Facing Delivery",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Director of AI at commercial company with focus on operations/delivery, not OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "4c59cf6852bd2e88"
+      }
+    },
+    "in/dmitry-tkachuk": {
+      "key": "in/dmitry-tkachuk",
+      "name": "Dmytro Tkachuk",
+      "profile_url": "https://www.linkedin.com/in/dmitry-tkachuk",
+      "headline": "Senior Product leader · AI & Cybersecurity · Linux & Cloud security · Drove Imunify to industry-default status in hostings protection · Master’s degree · WebSecurity enthusiast · Open to Product Owner / Head of Product",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Product leader in cybersecurity/hosting, not AI-coding OSS founder or staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "f8ce02989697252d"
+      }
+    },
+    "in/dmitryevseev": {
+      "key": "in/dmitryevseev",
+      "name": "Dmytro Yevsieiev",
+      "profile_url": "https://www.linkedin.com/in/dmitryevseev",
+      "headline": "Engineering Lead | Building & Scaling Startup Products from 0→1 | Rational AI Enthusiast",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Generic engineering lead title, unclear project type and no AI-coding OSS evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "6efefe928b6c855e"
+      }
+    },
+    "in/dshcherbyna": {
+      "key": "in/dshcherbyna",
+      "name": "Dmytro Shcherbyna",
+      "profile_url": "https://www.linkedin.com/in/dshcherbyna",
+      "headline": "Head of Engineering",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Generic 'Head of Engineering' title with no context of AI-coding OSS project",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "3f5f14b7711e6f45"
+      }
+    },
+    "in/felixjofre/en": {
+      "key": "in/felixjofre/en",
+      "name": "Félix Jofré",
+      "profile_url": "https://www.linkedin.com/in/felixjofre/en",
+      "headline": "Project Manager | Louder Than Ten Certified Digital Project Lead | Business Strategist",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Project management/business strategy role, not technical founder or staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "da5fc1998c4e58c5"
+      }
+    },
+    "in/florencedivet": {
+      "key": "in/florencedivet",
+      "name": "Florence Divet ☀️",
+      "profile_url": "https://www.linkedin.com/in/florencedivet",
+      "headline": "I help CEOs, Senior Leaders and Teams lead with clarity, confidence and purpose. Leadership and Team coach. Follow for insights on Leadership, Career and Personal Growth.",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Leadership coach (explicitly excluded as consultant), not AI-coding OSS founder/staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "3116ec4806416bfe"
+      }
+    },
+    "in/gluzd": {
+      "key": "in/gluzd",
+      "name": "Nick Gluzdov",
+      "profile_url": "https://www.linkedin.com/in/gluzd",
+      "headline": "Reimagining Software Delivery with Developmental Practices",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Vague consulting headline about software delivery, no AI-coding OSS evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "42378da8f425abe9"
+      }
+    },
+    "in/igor-demihovskiy-699641185": {
+      "key": "in/igor-demihovskiy-699641185",
+      "name": "Igor Demihovskiy",
+      "profile_url": "https://www.linkedin.com/in/igor-demihovskiy-699641185",
+      "headline": "Digital Plumber",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Vague title 'Digital Plumber' provides no substantive evidence of AI-coding OSS role",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "d468c15d99667fd4"
+      }
+    },
+    "in/interwebology": {
+      "key": "in/interwebology",
+      "name": "Ryan W",
+      "profile_url": "https://www.linkedin.com/in/interwebology",
+      "headline": "Senior SRE | 91% Incident Reduction on Petabyte Pipelines | VIPER Startup Scale & Merger | 99% Higher Velocity Unblocking IaC Project | Kubernetes, Terraform, Python, GenAI Infra | 🥇 IBM RAG & Agentic AI",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Senior SRE infrastructure/ops role, not founder/staff engineer of AI-coding OSS project",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "e1f8c406f6d34c0a"
+      }
+    },
+    "in/irinamaliugova/en": {
+      "key": "in/irinamaliugova/en",
+      "name": "Irina Maliugova",
+      "profile_url": "https://www.linkedin.com/in/irinamaliugova/en",
+      "headline": "Front-End Developer",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Front-end developer, not founder/staff engineer of OSS, no public profile evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "7e109aa4fbf3af12"
+      }
+    },
+    "in/katiamishina": {
+      "key": "in/katiamishina",
+      "name": "Caterina Mishina",
+      "profile_url": "https://www.linkedin.com/in/katiamishina",
+      "headline": "Senior Customer Experience Manager | Voice of Customer · CX Strategy · Fintech | AI-Augmented VoC | Open to Head of CX roles in Europe",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Customer experience/operations role in fintech, not AI-coding OSS founder or staff engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "ca68ed5d8029a8a2"
+      }
+    },
+    "in/liliia-volnitska-5314a821a": {
+      "key": "in/liliia-volnitska-5314a821a",
+      "name": "Liliia Volnitska",
+      "profile_url": "https://www.linkedin.com/in/liliia-volnitska-5314a821a",
+      "headline": "Project Manager",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Project Manager; no AI-coding OSS founder/engineer role evident",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "f0a184ef9691553a"
+      }
+    },
+    "in/maksym-toropov": {
+      "key": "in/maksym-toropov",
+      "name": "Maksym Toropov",
+      "profile_url": "https://www.linkedin.com/in/maksym-toropov",
+      "headline": "Senior Frontend Engineer | React, Next.js, TypeScript | AI-Augmented Development",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Senior FE engineer; no founder/staff role at AI-coding OSS project",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "d9493884735c455d"
+      }
+    },
+    "in/marcelvelica": {
+      "key": "in/marcelvelica",
+      "name": "Marcel Velica",
+      "profile_url": "https://www.linkedin.com/in/marcelvelica",
+      "headline": "Cybersecurity Strategy & Risk Leader | Fractional CISO & AI Governance Advisor | B2B Tech Brand Partner |",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Cybersecurity consultant; not building AI-coding tools",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "10e970015ad30d15"
+      }
+    },
+    "in/mariia-platonova": {
+      "key": "in/mariia-platonova",
+      "name": "Mariia Platonova",
+      "profile_url": "https://www.linkedin.com/in/mariia-platonova",
+      "headline": "Senior B2B Marketing Leader | Agentic AI | Data Management | Automation",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "B2B marketing leader; not engineer or OSS project founder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "049c7cd390e4c2f5"
+      }
+    },
+    "in/mcm2013": {
+      "key": "in/mcm2013",
+      "name": "Michael Maiorano",
+      "profile_url": "https://www.linkedin.com/in/mcm2013",
+      "headline": "Coherent Operating Systems | Building intelligent systems FOR humans | GTM, Ops & Finance Leader",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Operations/GTM leader; not AI-coding OSS founder/engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "a0a5b653651c9b10"
+      }
+    },
+    "in/moudrick": {
+      "key": "in/moudrick",
+      "name": "Oleksii Mudryk",
+      "profile_url": "https://www.linkedin.com/in/moudrick",
+      "headline": "Software Engineer",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Generic software engineer; no AI-coding OSS project evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "cbaf88df6de7321b"
+      }
+    },
+    "in/nataliia-baburina-30792349": {
+      "key": "in/nataliia-baburina-30792349",
+      "name": "Nataliia Baburina",
+      "profile_url": "https://www.linkedin.com/in/nataliia-baburina-30792349",
+      "headline": "Helping Leaders and Organizations Turn Uncertainty into Strategic Action | Executive & Leadership Coach | Organizational Consultant | Team Coach & Facilitator | PCC, ICF | Founder, Sense&Action ehf",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Executive coach/consultant; not engineer or OSS builder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "3a7b854b85cc31e3"
+      }
+    },
+    "in/nick-curum": {
+      "key": "in/nick-curum",
+      "name": "Nick Curum",
+      "profile_url": "https://www.linkedin.com/in/nick-curum",
+      "headline": "20 years allocating capital in oil and gas | Now I show professionals how to use the same frameworks to build a portfolio of their own",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Finance/portfolio professional; not technical engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "b5dd1a3918e32e28"
+      }
+    },
+    "in/nimish-g%c3%a5tam-44125512": {
+      "key": "in/nimish-g%c3%a5tam-44125512",
+      "name": "Nimish Gåtam",
+      "profile_url": "https://www.linkedin.com/in/nimish-g%C3%A5tam-44125512",
+      "headline": "VP of AI Engineering | Fractional CTO consultant | Policy and Responsible AI | Ex-CTO | Ex-Wikipedia",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "VP/CTO consultant excluded type; not AI-coding OSS founder/staff",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "b83edac8cc3566de"
+      }
+    },
+    "in/nstas": {
+      "key": "in/nstas",
+      "name": "Stas Nikitin",
+      "profile_url": "https://www.linkedin.com/in/nstas",
+      "headline": "OS Integrator at Speed and Function",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Operations role; no AI-coding OSS founder/engineer indication",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "7ac2a25e91b13af9"
+      }
+    },
+    "in/oleksandr-mazur-005441174": {
+      "key": "in/oleksandr-mazur-005441174",
+      "name": "Oleksandr Mazur",
+      "profile_url": "https://www.linkedin.com/in/oleksandr-mazur-005441174",
+      "headline": "Full Stack Engineer (JavaScript, TypeScript, React.js, Next.js | Python, Django | PostgreSQL, MongoDB)",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Full-stack web developer; no AI-coding OSS project involvement",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "076209c297ff775a"
+      }
+    },
+    "in/oleksandr-orlyk": {
+      "key": "in/oleksandr-orlyk",
+      "name": "Oleksandr Orlyk",
+      "profile_url": "https://www.linkedin.com/in/oleksandr-orlyk",
+      "headline": "Product manager | AI automation | Prompt engineer",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Product manager; no AI-coding OSS founder/staff role",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "e3c530311da35244"
+      }
+    },
+    "in/olena-kryvoshapka-5b0b8bb7": {
+      "key": "in/olena-kryvoshapka-5b0b8bb7",
+      "name": "Olena Kryvoshapka",
+      "profile_url": "https://www.linkedin.com/in/olena-kryvoshapka-5b0b8bb7",
+      "headline": "Consultant at Roland Berger| Master of Science, Masters in Management | Innovation Management and Entrepreneurship | International Business",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Management consultant; not engineer or OSS builder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "949c0d726024fb79"
+      }
+    },
+    "in/petersterkenburg": {
+      "key": "in/petersterkenburg",
+      "name": "Peter Sterkenburg",
+      "profile_url": "https://www.linkedin.com/in/petersterkenburg",
+      "headline": "Revenue Operations | Hubspot | GTM Systems Architect | B2B | SaaS",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "RevOps/GTM systems person; not AI-coding OSS founder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "2cc076c441dcc9ef"
+      }
+    },
+    "in/rajbharathi": {
+      "key": "in/rajbharathi",
+      "name": "Raj Bharathi",
+      "profile_url": "https://www.linkedin.com/in/rajbharathi",
+      "headline": "CEO @KronosX AI | Building the agentic data layer that makes Healthcare AI-Ready.",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "CEO of healthcare data product; not AI-coding tools OSS project",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "c35015ca993cb78f"
+      }
+    },
+    "in/ritwick-ghosh-9b0158160": {
+      "key": "in/ritwick-ghosh-9b0158160",
+      "name": "Ritwick Ghosh",
+      "profile_url": "https://www.linkedin.com/in/ritwick-ghosh-9b0158160",
+      "headline": "ML Engineer @NDTV | Ex-ML Engineer @Aftershoot | IIEST, Shibpur",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "ML engineer at company; no OSS founder/staff role evident",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "9f42982a50db700f"
+      }
+    },
+    "in/russzurba": {
+      "key": "in/russzurba",
+      "name": "Ruslan Zhurba",
+      "profile_url": "https://www.linkedin.com/in/russzurba",
+      "headline": "Principal Engineer",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Generic Principal Engineer; no AI-coding OSS project evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "96919f3cdf963bb0"
+      }
+    },
+    "in/scottrossignolpmp": {
+      "key": "in/scottrossignolpmp",
+      "name": "Scott Rossignol",
+      "profile_url": "https://www.linkedin.com/in/scottrossignolpmp",
+      "headline": "Healthcare Interoperability Consultant | Rabble Rouser",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Healthcare interoperability consultant; not AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "d405144a3e18224e"
+      }
+    },
+    "in/sergey-smaglyuk": {
+      "key": "in/sergey-smaglyuk",
+      "name": "Sergey Smaglyuk",
+      "profile_url": "https://www.linkedin.com/in/sergey-smaglyuk",
+      "headline": "COO | Scaled Bootstrapped IT Company to ~$1M ARR & 32%+ EBITDA | AI-Driven Operations & Business Scaling",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Operations/COO; not AI-coding OSS founder or engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "04df601794a7c534"
+      }
+    },
+    "in/smolyaro": {
+      "key": "in/smolyaro",
+      "name": "Ostap Smolyar",
+      "profile_url": "https://www.linkedin.com/in/smolyaro",
+      "headline": "Senior PHP/Magento Backend Developer and a bit of Java :)",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Senior backend dev (PHP/Magento); no AI-coding OSS role",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "f185c700a80472f1"
+      }
+    },
+    "in/stacy-salova-2a232b1a7": {
+      "key": "in/stacy-salova-2a232b1a7",
+      "name": "Stacy Salova",
+      "profile_url": "https://www.linkedin.com/in/stacy-salova-2a232b1a7",
+      "headline": "Department Coordinator",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Department Coordinator — administrative role, not technical founder/engineer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "aca3fa200fc4cc87"
+      }
+    },
+    "in/surenarustamyan": {
+      "key": "in/surenarustamyan",
+      "name": "Suren Arustamyan",
+      "profile_url": "https://www.linkedin.com/in/surenarustamyan",
+      "headline": "COO & Principal Engineer / Architect",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Principal Engineer but no AI-coding OSS project context in headline",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "9e7a70763f325329"
+      }
+    },
+    "in/tdrobakhina": {
+      "key": "in/tdrobakhina",
+      "name": "Dr. Tetiana D.",
+      "profile_url": "https://www.linkedin.com/in/tdrobakhina",
+      "headline": "Business development | Ph.D. in Public Administration | Creative growth strategies | Coaching for C-Levels (presale and sales)| Ex-Expert UCF",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Business development role, not founder/engineer of AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "0a29af6d8a8d17a7"
+      }
+    },
+    "in/vadim-kovalenko-frontdev": {
+      "key": "in/vadim-kovalenko-frontdev",
+      "name": "Vadim Kovalenko",
+      "profile_url": "https://www.linkedin.com/in/vadim-kovalenko-frontdev",
+      "headline": "Инженер-программист в компании Speed and Function",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Software engineer at Speed & Function; employee, not OSS founder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "f3e6a7557a3ca78a"
+      }
+    },
+    "in/vitalii-pikozh": {
+      "key": "in/vitalii-pikozh",
+      "name": "Vitalii Pikozh",
+      "profile_url": "https://www.linkedin.com/in/vitalii-pikozh",
+      "headline": "Full-stack JavaScript Engineer | React, Next.js, Node.js | CI/CD, Docker | End-to-End Development",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Full-stack developer, no founder/OSS/AI-coding signals, ordinary developer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "e9bd9afd5a200c1d"
+      }
+    },
+    "in/vitaliisenych": {
+      "key": "in/vitaliisenych",
+      "name": "VitaliI Senych",
+      "profile_url": "https://www.linkedin.com/in/vitaliisenych",
+      "headline": "Senior Software Engineer",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Senior Software Engineer title lacks AI-coding OSS project evidence",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "639b8deec7c0da57"
+      }
+    },
+    "in/vitaly-gapontsev": {
+      "key": "in/vitaly-gapontsev",
+      "name": "Vitaly Gapontsev",
+      "profile_url": "https://www.linkedin.com/in/vitaly-gapontsev",
+      "headline": "Front-End / Fullstack (React + Node.js)",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Front-end/fullstack developer, no founder/AI-coding/OSS indication",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "a4728b460552c92c"
+      }
+    },
+    "in/vladyslav-shapovalov-dev": {
+      "key": "in/vladyslav-shapovalov-dev",
+      "name": "Vladyslav Shapovalov",
+      "profile_url": "https://www.linkedin.com/in/vladyslav-shapovalov-dev",
+      "headline": "Lead | Senior Software Engineer: Python, API | Java Script, React.js | SQL, Postgres, Elasticsearch | Docker, AWS cloud, Terraform",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Senior engineer but headline lacks AI-coding OSS project context",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "dde894b6a6284950"
+      }
+    },
+    "in/vlaschevskiy": {
+      "key": "in/vlaschevskiy",
+      "name": "Vadym Lashchevskyi",
+      "profile_url": "https://www.linkedin.com/in/vlaschevskiy",
+      "headline": "Senior QA Automation Engineer | Plawright • TypeScript • C# | 18+ years in test autimation | Open to remote opportunities",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "QA automation engineer, not AI-coding tool/OSS founder or builder",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "dffcb43a309cee83"
+      }
+    },
+    "in/volodymyr-kuchko": {
+      "key": "in/volodymyr-kuchko",
+      "name": "Volodymyr Kuchko",
+      "profile_url": "https://www.linkedin.com/in/volodymyr-kuchko",
+      "headline": "QA Engineer | Manual AI-Assisted Testing",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "QA engineer using AI tools, not building AI-coding OSS",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "68c4c8bc4174c2bb"
+      }
+    },
+    "in/volodymyr-vorona-7315b221a": {
+      "key": "in/volodymyr-vorona-7315b221a",
+      "name": "Volodymyr Vorona",
+      "profile_url": "https://www.linkedin.com/in/volodymyr-vorona-7315b221a",
+      "headline": "Software developer (JavaScript, NodeJS, ReactJS, Next.js, PHP, Laravel)",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "Software developer, no founder/OSS/AI-coding signals, ordinary developer",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "648c690e9d92ce15"
+      }
+    },
+    "in/yurii-puzichenko": {
+      "key": "in/yurii-puzichenko",
+      "name": "Yura Puzichenko",
+      "profile_url": "https://www.linkedin.com/in/yurii-puzichenko",
+      "headline": "AI Solo Founder | автор тг-каналу “Пан Пузіч”",
+      "headline_seen_at": "2026-08-17T21:00:39Z",
+      "first_seen_at": "2026-08-17T21:00:39Z",
+      "icp": {
+        "verdict": false,
+        "reason": "AI Solo Founder lacks confirmation of AI-coding OSS specificity",
+        "model": "claude-haiku-4-5-20251001",
+        "classified_at": "2026-08-17T21:02:36Z",
+        "headline_hash": "43e33a8acf01801d"
+      }
+    }
+  },
+  "events": {
+    "react:post:urn:li:activity:7447607429929844736:in/florencedivet": {
+      "event_id": "react:post:urn:li:activity:7447607429929844736:in/florencedivet",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "person_key": "in/florencedivet",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7447607429929844736:in/moudrick": {
+      "event_id": "react:post:urn:li:activity:7447607429929844736:in/moudrick",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "person_key": "in/moudrick",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7447607429929844736:in/rajbharathi": {
+      "event_id": "react:post:urn:li:activity:7447607429929844736:in/rajbharathi",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "person_key": "in/rajbharathi",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7447607429929844736:in/vadim-kovalenko-frontdev": {
+      "event_id": "react:post:urn:li:activity:7447607429929844736:in/vadim-kovalenko-frontdev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "person_key": "in/vadim-kovalenko-frontdev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7447607429929844736:in/vladyslav-shapovalov-dev": {
+      "event_id": "react:post:urn:li:activity:7447607429929844736:in/vladyslav-shapovalov-dev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "person_key": "in/vladyslav-shapovalov-dev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/brianna-nadrofsky": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/brianna-nadrofsky",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/brianna-nadrofsky",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/charizard15": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/charizard15",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/charizard15",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/dmitry-tkachuk": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/dmitry-tkachuk",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/dmitry-tkachuk",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/irinamaliugova/en": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/irinamaliugova/en",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/irinamaliugova/en",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/moudrick": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/moudrick",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/moudrick",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/nimish-g%c3%a5tam-44125512": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/nimish-g%c3%a5tam-44125512",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/nimish-g%c3%a5tam-44125512",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/petersterkenburg": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/petersterkenburg",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/petersterkenburg",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/rajbharathi": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/rajbharathi",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/rajbharathi",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/ritwick-ghosh-9b0158160": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/ritwick-ghosh-9b0158160",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/ritwick-ghosh-9b0158160",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/russzurba": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/russzurba",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/russzurba",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/scottrossignolpmp": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/scottrossignolpmp",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/scottrossignolpmp",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/vitaly-gapontsev": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/vitaly-gapontsev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/vitaly-gapontsev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/vlaschevskiy": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/vlaschevskiy",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/vlaschevskiy",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/volodymyr-kuchko": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/volodymyr-kuchko",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/volodymyr-kuchko",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7449791320329547776:in/yurii-puzichenko": {
+      "event_id": "react:post:urn:li:activity:7449791320329547776:in/yurii-puzichenko",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "person_key": "in/yurii-puzichenko",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7452456886655762433:in/mcm2013": {
+      "event_id": "react:post:urn:li:activity:7452456886655762433:in/mcm2013",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7452456886655762433",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+      "person_key": "in/mcm2013",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7452456886655762433:in/nimish-g%c3%a5tam-44125512": {
+      "event_id": "react:post:urn:li:activity:7452456886655762433:in/nimish-g%c3%a5tam-44125512",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7452456886655762433",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+      "person_key": "in/nimish-g%c3%a5tam-44125512",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7452456886655762433:in/tdrobakhina": {
+      "event_id": "react:post:urn:li:activity:7452456886655762433:in/tdrobakhina",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7452456886655762433",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+      "person_key": "in/tdrobakhina",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7452456886655762433:in/vitaly-gapontsev": {
+      "event_id": "react:post:urn:li:activity:7452456886655762433:in/vitaly-gapontsev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7452456886655762433",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+      "person_key": "in/vitaly-gapontsev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/al-shkundia-00a624225": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/al-shkundia-00a624225",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/al-shkundia-00a624225",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/alex-ost-sf": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/alex-ost-sf",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/alex-ost-sf",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/alyona-pugolovok": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/alyona-pugolovok",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/alyona-pugolovok",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/anastasiiast": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/anastasiiast",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/anastasiiast",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/arozhylo": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/arozhylo",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/arozhylo",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/batovskyi": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/batovskyi",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/batovskyi",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/brianna-nadrofsky": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/brianna-nadrofsky",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/brianna-nadrofsky",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/cristian-cucu": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/cristian-cucu",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/cristian-cucu",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/dmitryevseev": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/dmitryevseev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/dmitryevseev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/dshcherbyna": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/dshcherbyna",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/dshcherbyna",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/felixjofre/en": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/felixjofre/en",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/felixjofre/en",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/gluzd": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/gluzd",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/gluzd",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/igor-demihovskiy-699641185": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/igor-demihovskiy-699641185",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/igor-demihovskiy-699641185",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/katiamishina": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/katiamishina",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/katiamishina",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/liliia-volnitska-5314a821a": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/liliia-volnitska-5314a821a",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/liliia-volnitska-5314a821a",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/maksym-toropov": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/maksym-toropov",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/maksym-toropov",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/marcelvelica": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/marcelvelica",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/marcelvelica",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/mariia-platonova": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/mariia-platonova",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/mariia-platonova",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/moudrick": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/moudrick",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/moudrick",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/nataliia-baburina-30792349": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/nataliia-baburina-30792349",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/nataliia-baburina-30792349",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/nstas": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/nstas",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/nstas",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/oleksandr-mazur-005441174": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/oleksandr-mazur-005441174",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/oleksandr-mazur-005441174",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/oleksandr-orlyk": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/oleksandr-orlyk",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/oleksandr-orlyk",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/olena-kryvoshapka-5b0b8bb7": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/olena-kryvoshapka-5b0b8bb7",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/olena-kryvoshapka-5b0b8bb7",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/sergey-smaglyuk": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/sergey-smaglyuk",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/sergey-smaglyuk",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/smolyaro": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/smolyaro",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/smolyaro",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/stacy-salova-2a232b1a7": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/stacy-salova-2a232b1a7",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/stacy-salova-2a232b1a7",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/surenarustamyan": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/surenarustamyan",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/surenarustamyan",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/vitaliisenych": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/vitaliisenych",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/vitaliisenych",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/volodymyr-vorona-7315b221a": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/volodymyr-vorona-7315b221a",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/volodymyr-vorona-7315b221a",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7453510493186560000:in/yurii-puzichenko": {
+      "event_id": "react:post:urn:li:activity:7453510493186560000:in/yurii-puzichenko",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "person_key": "in/yurii-puzichenko",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7454986157144203265:in/alyona-pugolovok": {
+      "event_id": "react:post:urn:li:activity:7454986157144203265:in/alyona-pugolovok",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7454986157144203265",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7454986157144203265/",
+      "person_key": "in/alyona-pugolovok",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7454986157144203265:in/liliia-volnitska-5314a821a": {
+      "event_id": "react:post:urn:li:activity:7454986157144203265:in/liliia-volnitska-5314a821a",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7454986157144203265",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7454986157144203265/",
+      "person_key": "in/liliia-volnitska-5314a821a",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7454986157144203265:in/vitalii-pikozh": {
+      "event_id": "react:post:urn:li:activity:7454986157144203265:in/vitalii-pikozh",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7454986157144203265",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7454986157144203265/",
+      "person_key": "in/vitalii-pikozh",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7455199959148208129:in/artyom-valantov-aa9802223": {
+      "event_id": "react:post:urn:li:activity:7455199959148208129:in/artyom-valantov-aa9802223",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7455199959148208129",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7455199959148208129/",
+      "person_key": "in/artyom-valantov-aa9802223",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7455199959148208129:in/interwebology": {
+      "event_id": "react:post:urn:li:activity:7455199959148208129:in/interwebology",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7455199959148208129",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7455199959148208129/",
+      "person_key": "in/interwebology",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7455199959148208129:in/nick-curum": {
+      "event_id": "react:post:urn:li:activity:7455199959148208129:in/nick-curum",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7455199959148208129",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7455199959148208129/",
+      "person_key": "in/nick-curum",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-17T21:00:39Z"
+    }
+  },
+  "targets": {
+    "post:urn:li:activity:7447607429929844736": {
+      "target_id": "post:urn:li:activity:7447607429929844736",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7447607429929844736",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7447607429929844736/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 5
+    },
+    "post:urn:li:activity:7449791320329547776": {
+      "target_id": "post:urn:li:activity:7449791320329547776",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7449791320329547776",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7449791320329547776/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 15
+    },
+    "post:urn:li:activity:7452456886655762433": {
+      "target_id": "post:urn:li:activity:7452456886655762433",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7452456886655762433",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7452456886655762433/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 4
+    },
+    "post:urn:li:activity:7453510493186560000": {
+      "target_id": "post:urn:li:activity:7453510493186560000",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7453510493186560000",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7453510493186560000/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 31
+    },
+    "post:urn:li:activity:7454986157144203265": {
+      "target_id": "post:urn:li:activity:7454986157144203265",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7454986157144203265",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7454986157144203265/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 3
+    },
+    "post:urn:li:activity:7455199959148208129": {
+      "target_id": "post:urn:li:activity:7455199959148208129",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7455199959148208129",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7455199959148208129/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 3
+    }
+  }
+}

@@ -11,7 +11,8 @@
 # Flow:
 #   1. Branch off origin/main.
 #   2. FAST GATHER under the self-heal attempt loop: up to MAX_ATTEMPTS runs
-#      of the deterministic feed scraper
+#      of the deterministic feed scraper (which accepts a post only when it is
+#      on-topic AND its author is inside the ICP — see icp-filter.md)
 #      (.claude/skills/linkedin-comment-hourly/fast/gather-feed.mjs), each
 #      with a fresh --out-dir and, on retries, linkedin-compain/ reset to the
 #      committed baseline (the gather appends filtered entries to the
@@ -89,11 +90,17 @@ HEAL_TIMEOUT_SECS="${HEAL_TIMEOUT_SECS:-1800}"
 # Don't START a heal this late into the fire: the drafting phase + PR chains
 # + the finish bookend must still fit under the workflow's timeout-minutes.
 HEAL_CUTOFF_SECS="${HEAL_CUTOFF_SECS:-6600}"
-GATHER_DEADLINE_SECS="${GATHER_DEADLINE_SECS:-300}"
+# 900s (was 300): the gather accepts a post only when its AUTHOR is inside the
+# ICP as well as the topic filter, which passes a much smaller fraction of the
+# feed — reaching 5 takes several times more cards, plus bounded profile
+# probes for the authors a card can't settle.
+GATHER_DEADLINE_SECS="${GATHER_DEADLINE_SECS:-900}"
 # Belt-and-suspenders wall clock around the node process itself: the
 # in-process deadline should always win; if node wedges anyway (stalled
 # Chrome launch, hung subprocess), the watchdog frees the runner slot.
-GATHER_WATCHDOG_SECS="${GATHER_WATCHDOG_SECS:-420}"
+# Worst case stays under the workflow's timeout-minutes: inbox 6 + 3×18 gather
+# + 30 heal + 50 drafting ≈ 150 min of the 180 available.
+GATHER_WATCHDOG_SECS="${GATHER_WATCHDOG_SECS:-1080}"
 # 3000s (was 2400): the sequential write+Slack+ClickUp loop can now carry up
 # to 5 feed + 5 inbox posts per fire.
 CLAUDE_TIMEOUT_SECS="${CLAUDE_TIMEOUT_SECS:-3000}"
@@ -127,7 +134,8 @@ PL_SESSION_NOTES=()
 RUN_STAGE="preflight"        # preflight | gather | drafting | pr-chain | post-landing-heal | heal-pr | done
 RUN_ERRORS=""                # accumulated one-line failure notes
 POSTS_FOUND_N=""             # from the gather contract
-POSTS_FILTERED_N=""          # off-topic + already-commented, this run
+POSTS_FILTERED_N=""          # off-topic + off-icp + already-commented, this run
+POSTS_OFF_ICP_N=0            # on-topic posts whose author failed the ICP gate
 GATHER_END_REASON_TXT=""
 PR_URL=""                    # data PR (auto-merged)
 CODE_PR_URL=""               # heal PR (left open)
@@ -283,6 +291,7 @@ ${PL_TICKET_LINES}"
     msg="${msg}
 
 Feed: ${drafted} accepted · ${POSTS_FILTERED_N:-?} filtered"
+    [ "${POSTS_OFF_ICP_N:-0}" -gt 0 ] && msg="${msg} (${POSTS_OFF_ICP_N} off-ICP)"
     [ -n "$INBOX_SUMMARY" ] && msg="${msg}
 ${INBOX_SUMMARY}"
     [ -n "$PR_URL" ] && msg="${msg}
@@ -590,6 +599,7 @@ CODEX_AVAILABLE=${PL_CODEX_AVAILABLE}
 FAST_DIR=${FAST_DIR}
 GATHER_OUT=${GATHER_OUT:-}
 PERMALINKS_MISSING=${PERMALINKS_MISSING_N:-0}
+POSTS_OFF_ICP=${POSTS_OFF_ICP_N:-0}
 COMMENTS_FILE=./linkedin-compain/comments.json
 INBOX_OUT=${INBOX_OUT:-}
 INBOX_OK=${INBOX_OK:-0}
@@ -655,7 +665,7 @@ pipeline_run_attempt() {
 # from aborting the driver on a failed grep. Never `source` the contract —
 # it holds scraped values, not trusted shell.
 validate_contract() {
-  local contract="$GATHER_OUT/contract.env" posts_found end_reason posts_off posts_already i tf k a contract_out
+  local contract="$GATHER_OUT/contract.env" posts_found end_reason posts_off posts_off_icp posts_already i tf k a contract_out
   CONTRACT_OK=0
   CONTRACT_NOTE=""
   if [ ! -f "$contract" ]; then
@@ -707,6 +717,13 @@ validate_contract() {
   done
   case "$posts_off" in (*[!0-9]*|'') posts_off=0;; esac
   case "$posts_already" in (*[!0-9]*|'') posts_already=0;; esac
+  # On-topic posts rejected because their AUTHOR is outside the ICP. Absent in
+  # pre-2026-08-17 contracts → 0. They land in comments.json as `off-topic`
+  # entries carrying an `off-icp: ` reason, so they are filtered posts like any
+  # other as far as the seen-set and this count are concerned.
+  posts_off_icp=$(grep '^POSTS_OFF_ICP=' "$contract" 2>/dev/null | head -1 | cut -d= -f2- || true)
+  case "$posts_off_icp" in (*[!0-9]*|'') posts_off_icp=0;; esac
+  POSTS_OFF_ICP_N="$posts_off_icp"
   # PERMALINKS_MISSING is an error SIGNAL, not a contract breaker (absent in
   # pre-2026-07-21 contracts → 0): >0 flags the fire and schedules a
   # post-landing heal, but the drafts still ship.
@@ -714,7 +731,7 @@ validate_contract() {
   case "$permalinks_missing" in (*[!0-9]*|'') permalinks_missing=0;; esac
   PERMALINKS_MISSING_N="$permalinks_missing"
   POSTS_FOUND_N="$posts_found"
-  POSTS_FILTERED_N=$(( posts_off + posts_already ))
+  POSTS_FILTERED_N=$(( posts_off + posts_off_icp + posts_already ))
   GATHER_END_REASON_TXT="$end_reason"
   CONTRACT_OK=1
   return 0

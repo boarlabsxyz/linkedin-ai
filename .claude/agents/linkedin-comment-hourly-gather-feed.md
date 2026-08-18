@@ -4,8 +4,9 @@ description: >
   Scrolls Peter's LinkedIn home feed (linkedin.com/feed/), scrapes each visible
   post card via the control-menu button (LinkedIn's home feed has obfuscated
   CSS classes and no data-urn attributes as of 2026), classifies each card
-  against interests.md, filters out already-seen / already-commented / repost /
-  promoted / off-topic cards, and returns exactly TARGET_COUNT post structs (or
+  against interests.md AND its author against the ICP (sources/icp.md +
+  icp-filter.md), filters out already-seen / already-commented / repost /
+  promoted / off-topic / off-ICP cards, and returns exactly TARGET_COUNT post structs (or
   fewer if the feed truly ends). Appends off-topic and already-commented entries
   (with full post text) to the single COMMENTS_FILE array so the next fire
   doesn't reclassify them. Returns a strict KEY=VALUE contract.
@@ -50,8 +51,10 @@ Only accepted posts get pass-2 recovery — filtered (off-topic / already-commen
 
 - **COMMENTS_FILE** — the single JSON-array file holding every handled post (drafted + filtered), one object per post. Doubles as the cross-fire seen-set. Default: `./linkedin-compain/comments.json`
 - **TARGET_COUNT** — how many good posts to return. Default: `5`.
-- **MAX_SCROLL_ITERATIONS** — safety cap. Default: `80`.
+- **MAX_SCROLL_ITERATIONS** — safety cap. Default: `250` (the ICP gate accepts a much smaller share of the feed than the topic filter alone did).
 - **INTERESTS_FILE** — path to the interest classification categories. Default: `.claude/skills/linkedin-comment-hourly/interests.md`.
+- **ICP_FILE** — the ICP rubric a post's AUTHOR must match. Default: `sources/icp.md`.
+- **ICP_FILTER_FILE** — how to judge that rubric from a card, plus the always/never-accept profile lists. Default: `.claude/skills/linkedin-comment-hourly/icp-filter.md`.
 - **PETER_NAMES** — regex of Peter's own names to detect "you commented" false-positives. Default: `/\b(Peter|Petro) (Ovchynnykov|Ovchyn)\b/i`.
 - **FEED_URL** — `https://www.linkedin.com/feed/` (constant).
 
@@ -63,6 +66,7 @@ Your final message must be **exactly** one of two shapes — no extra prose afte
 ```
 POSTS_FOUND=<int>
 POSTS_OFF_TOPIC=<int>
+POSTS_OFF_ICP=<int>
 POSTS_ALREADY_COMMENTED=<int>
 POSTS_REPOSTS_SKIPPED=<int>
 POSTS_PROMOTED_SKIPPED=<int>
@@ -96,7 +100,7 @@ Ensure the comments file exists (an empty JSON array if this is the first fire):
 [ -f "<COMMENTS_FILE>" ] || printf '[]\n' > "<COMMENTS_FILE>"
 ```
 
-Read `INTERESTS_FILE` (via the Read tool) and hold its categories in mind — you'll use them to classify each candidate post inline (no tool call needed, you're the classifier).
+Read `INTERESTS_FILE`, `ICP_FILE` and `ICP_FILTER_FILE` (via the Read tool) and hold them in mind — you'll use them to classify each candidate post inline (no tool call needed, you're the classifier). A card must pass **both** gates: on-topic per `INTERESTS_FILE`, **and** its author inside the ICP per `ICP_FILE` as judged by `ICP_FILTER_FILE`.
 
 Build the seen-set from the keys already recorded in `<COMMENTS_FILE>` — one line per key:
 
@@ -123,7 +127,7 @@ Wait 3 more seconds after this initial scroll.
 Maintain:
 - `queue` — array of accepted post structs (target size = TARGET_COUNT).
 - `seenInRun` — set of keys already processed this run (dedup within-run).
-- `offTopicCount`, `alreadyCommentedCount`, `repostsSkippedCount`, `promotedSkippedCount`.
+- `offTopicCount`, `offIcpCount`, `alreadyCommentedCount`, `repostsSkippedCount`, `promotedSkippedCount`.
 - `staleScrolls` — consecutive scroll iterations with no new keys.
 - `scrollIterations` — total scroll operations performed.
 - `feedExhausted` — set true when scrollHeight stops growing across `staleScrolls >= 3`.
@@ -259,7 +263,8 @@ For each card:
 5. **Skip if already-commented** → `alreadyCommentedCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"already-commented"` (see the append helper below), then add the key to `seenInRun`.
 6. **Classify** the body text against `interests.md` categories. Bias toward inclusion.
 7. **Off-topic** → `offTopicCount++` and **append an entry** to `<COMMENTS_FILE>` with `disposition:"off-topic"` and a one-line `reason`, then add the key to `seenInRun`.
-8. **Relevant** → run the permalink recovery flow (step 3d) for this card's `author` **now**, while the card is mounted, to set `postUrl` (and `urn` when it resolves). Then append `{ key, urn, postUrl, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
+7b. **Gate 2 — the author.** For an on-topic card, decide whether its AUTHOR is inside the ICP, judging `ICP_FILE` by the rules in `ICP_FILTER_FILE`, from the author name + headline + post body. The `## Never accept` list rejects outright; the `## Always accept` list accepts outright. Outside the ICP → `offIcpCount++` and append an entry with `disposition:"off-topic"` and a `reason` that STARTS WITH `off-icp: ` (that prefix is what keeps ICP rejects distinguishable while staying revivable through the inbox's reprocess path), then add the key to `seenInRun`. When you genuinely cannot tell from the card, open the author's profile in the throwaway tab and decide from it; if even that is not possible, **skip the card silently** — write nothing, so a later fire can judge it properly. Never accept a post to fill the quota: returning fewer than `TARGET_COUNT` is correct when the feed holds fewer ICP authors.
+8. **Relevant and inside the ICP** → run the permalink recovery flow (step 3d) for this card's `author` **now**, while the card is mounted, to set `postUrl` (and `urn` when it resolves). Then append `{ key, urn, postUrl, authorUrl, author, headline, bodyText, timeAgo }` to `queue`. Break out if `queue.length >= TARGET_COUNT`. (Relevant posts are NOT written here — the orchestrator writes their full `drafted` entry after Agent 2 drafts them.)
 
 #### Append helper (filtered entries)
 
@@ -452,7 +457,7 @@ Final message shape (see contract at top).
 - Do **not** pass arguments to `mcp__playwright__browser_evaluate` (no `author` arg, no `target`/`element`/`ref` fishing). It can't take them. Inline any per-card value (e.g. the author name) as a literal inside a zero-arg function. Getting this wrong makes the agent retry forever and burns the entire fire.
 - Do **not** retry the step-3d recovery. One `browser_evaluate` (capture short link) + one throwaway-tab navigation (resolve it) per card; on any failure, set `post_url: null` and continue. Permalink recovery is best-effort and must never block drafting. Do **not** read the clipboard (`navigator.clipboard.readText()`) — it throws "Document is not focused" in the cron tab; intercept `writeText` instead.
 - Do **not** invent post text. If you can't scrape a card cleanly, skip it.
-- Do **not** classify without reading `interests.md`.
+- Do **not** classify without reading `interests.md`, `sources/icp.md` and `icp-filter.md`. Topic alone is not enough — an on-topic post from an author outside the ICP is a reject, not a ticket.
 - Do **not** write entries for promoted or repost cards. They're not stable identifiers and must stay out of the seen-set so a later original isn't suppressed.
 - Do **not** hand-write JSON into `<COMMENTS_FILE>` — always build entries with `jq -n` and append with `jq '. + [$e]'`, so the array never gets corrupted.
 - Do **not** append a filtered entry with an empty `post_text`. It MUST carry the full scraped body (via `--rawfile`); if the guard prints `EMPTY_POST_TEXT`, re-scrape the card body and retry rather than writing a textless entry.

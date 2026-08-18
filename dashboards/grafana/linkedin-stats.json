@@ -523,6 +523,1265 @@
       "fieldConfig": {
         "defaults": {
           "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      "id": 28,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^score$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "Engagement score (all time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^score_normal$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "…from normal audience",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 5
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^score_icp$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "…from ICP",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 5
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^score_vip$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "…from VIP list (4×)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent",
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "id": 32,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^icp_reaction_pct$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "ICP share of reactions (all time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent",
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 9
+      },
+      "id": 33,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^icp_comment_pct$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "ICP share of comments (all time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent",
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 9
+      },
+      "id": 34,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^icp_engagement_pct$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "ICP share of all engagement (all time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 9
+      },
+      "id": 35,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^people_icp$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "score",
+              "text": "score",
+              "type": "number"
+            },
+            {
+              "selector": "score_normal",
+              "text": "score_normal",
+              "type": "number"
+            },
+            {
+              "selector": "score_icp",
+              "text": "score_icp",
+              "type": "number"
+            },
+            {
+              "selector": "score_vip",
+              "text": "score_vip",
+              "type": "number"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "people",
+              "text": "people",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "people_icp",
+              "text": "people_icp",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_non_icp",
+              "text": "reactions_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "comments_non_icp",
+              "text": "comments_non_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          },
+          "filterExpression": "scope == \"all_time\""
+        }
+      ],
+      "title": "ICP engagers (all time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
             "mode": "palette-classic"
           },
           "custom": {
@@ -574,7 +1833,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 5
+        "y": 13
       },
       "id": 26,
       "options": {
@@ -735,7 +1994,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 5
+        "y": 13
       },
       "id": 27,
       "options": {
@@ -865,12 +2124,314 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "grafanacloud-infinity"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "week"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scope"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Scope"
+              },
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reactions"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Reactions — total"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "reactions_icp"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Reactions — ICP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "comments"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Comments — total"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "comments_icp"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Comments — ICP"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "icp_reaction_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ICP share of reactions"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 100
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "icp_comment_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ICP share of comments"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 100
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "icp_engagement_pct"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ICP share of all engagement"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 100
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "gradient"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 36,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "scope",
+              "text": "scope",
+              "type": "string"
+            },
+            {
+              "selector": "week",
+              "text": "week",
+              "type": "string"
+            },
+            {
+              "selector": "reactions",
+              "text": "reactions",
+              "type": "number"
+            },
+            {
+              "selector": "reactions_icp",
+              "text": "reactions_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_reaction_pct",
+              "text": "icp_reaction_pct",
+              "type": "number"
+            },
+            {
+              "selector": "comments",
+              "text": "comments",
+              "type": "number"
+            },
+            {
+              "selector": "comments_icp",
+              "text": "comments_icp",
+              "type": "number"
+            },
+            {
+              "selector": "icp_comment_pct",
+              "text": "icp_comment_pct",
+              "type": "number"
+            },
+            {
+              "selector": "icp_engagement_pct",
+              "text": "icp_engagement_pct",
+              "type": "number"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "grafanacloud-infinity"
+          },
+          "filters": [],
+          "format": "table",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "engagement_score_totals",
+          "source": "url",
+          "type": "json",
+          "url": "https://boarlabsxyz.github.io/linkedin-ai/stats.json",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Reactions & comments — total vs ICP (last week and all time)",
+      "type": "table"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 26
       },
       "id": 20,
       "title": "Account view",
@@ -902,7 +2463,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 13
+        "y": 27
       },
       "id": 2,
       "options": {
@@ -997,7 +2558,7 @@
         "h": 4,
         "w": 6,
         "x": 6,
-        "y": 13
+        "y": 27
       },
       "id": 3,
       "options": {
@@ -1092,7 +2653,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 13
+        "y": 27
       },
       "id": 4,
       "options": {
@@ -1187,7 +2748,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 13
+        "y": 27
       },
       "id": 5,
       "options": {
@@ -1283,7 +2844,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 31
       },
       "id": 6,
       "options": {
@@ -1387,7 +2948,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 31
       },
       "id": 7,
       "options": {
@@ -1491,7 +3052,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 39
       },
       "id": 8,
       "options": {
@@ -1595,7 +3156,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 39
       },
       "id": 9,
       "options": {
@@ -1696,7 +3257,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 33
+        "y": 47
       },
       "id": 10,
       "options": {
@@ -1855,7 +3416,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 33
+        "y": 47
       },
       "id": 11,
       "options": {
@@ -2020,7 +3581,7 @@
         "h": 10,
         "w": 8,
         "x": 16,
-        "y": 33
+        "y": 47
       },
       "id": 12,
       "options": {
@@ -2183,7 +3744,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 57
       },
       "id": 13,
       "options": {
@@ -2281,7 +3842,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 51
+        "y": 65
       },
       "id": 19,
       "options": {
@@ -2373,7 +3934,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 51
+        "y": 65
       },
       "id": 15,
       "options": {
@@ -2465,7 +4026,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 51
+        "y": 65
       },
       "id": 16,
       "options": {
@@ -2544,7 +4105,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 73
       },
       "id": 17,
       "options": {
@@ -2615,7 +4176,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 85
       },
       "id": 18,
       "options": {
