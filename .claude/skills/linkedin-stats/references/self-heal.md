@@ -41,6 +41,15 @@ the nav-slowdown signature. The scraper also has semantic canaries (zero
 followers / zero audience-demographic rows → page failure): hollow data from
 silent anchor drift arrives as exit 10, not as a lying exit 0.
 
+**A zero is NOT an exit code.** The `[selfcheck]` section reports
+`ZERO_SIGNALS` (zero new posts / new comments / reactors / commenters) and
+never escalates: `computeSelfcheck()` touches neither `sev` nor
+`resolveExit()`. The wrapper routes it AFTER the loop to a separate,
+browser-carrying revalidation session (`references/zero-revalidation.md`),
+because a quiet week is a valid result and only a real page load can tell it
+from a broken scraper. Do not add zero checks to the exit path — the two cases
+are indistinguishable from inside the process.
+
 ## Known history (do not re-derive)
 
 2026-07-20: both weekly fires failed ONLY under the GH Actions runner — Chrome
@@ -56,3 +65,11 @@ with an orphan sweep between attempts, timeout-class phase errors → exit 10
 (partials kept). Diag probes from that investigation live in `tmp/diag-*.mjs`
 in interactive checkouts (gitignored — may be absent here; the incident doc
 describes them).
+
+2026-08-17: the per-post comment scrape returned EMPTY for all 50 posts —
+`COMMENTS_SCRAPED_TOTAL=0` where the week before those files held 85 comments —
+while the analytics `metrics.comments` stayed non-zero. The run exited 0,
+cleared the coverage gate (all 50 posts WERE measured, just measured as empty),
+auto-merged and published. `[people] COMMENT_EVENTS=0` inherited it downstream.
+This is why the `[selfcheck]` / zero-revalidation gate exists; the failure had
+no other detector.

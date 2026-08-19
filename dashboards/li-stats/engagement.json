@@ -60,6 +60,21 @@
         "headline_hash": "0dba2f658890840e"
       }
     },
+    "in/anatoly-chelyshev": {
+      "key": "in/anatoly-chelyshev",
+      "name": "Anatoly Chelyshev",
+      "profile_url": "https://www.linkedin.com/in/anatoly-chelyshev",
+      "headline": "Customer-First Product Leader | AI Agents & SaaS Delivery | From brief to launch to revenue | AWS/GCP • DevOps | SportsTech & HealthTech",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
+      }
+    },
     "in/arozhylo": {
       "key": "in/arozhylo",
       "name": "Andrii Rozhylo",
@@ -150,6 +165,21 @@
         "headline_hash": "4c59cf6852bd2e88"
       }
     },
+    "in/dc-ukr/en": {
+      "key": "in/dc-ukr/en",
+      "name": "Denys Chystiakov, PMP, PMI-ACP, PSM, PSPO",
+      "profile_url": "https://www.linkedin.com/in/dc-ukr",
+      "headline": "Delivery Management | Program Management | Project Management | Agile | GenAI",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
+      }
+    },
     "in/dmitry-tkachuk": {
       "key": "in/dmitry-tkachuk",
       "name": "Dmytro Tkachuk",
@@ -193,6 +223,21 @@
         "model": "claude-haiku-4-5-20251001",
         "classified_at": "2026-08-17T21:02:36Z",
         "headline_hash": "3f5f14b7711e6f45"
+      }
+    },
+    "in/erikabrodnock": {
+      "key": "in/erikabrodnock",
+      "name": "Professor Erika Brodnock MBE",
+      "profile_url": "https://www.linkedin.com/in/erikabrodnock",
+      "headline": "Follow for posts on Productivity, Leadership, AI, Entrepreneurship & Growth | Multi-Award-Winning Founder at Kinhub | PhD at LSE | Co-Author of Better Venture | Keynote Speaker",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
       }
     },
     "in/felixjofre/en": {
@@ -240,6 +285,21 @@
         "headline_hash": "42378da8f425abe9"
       }
     },
+    "in/henrysyahputra": {
+      "key": "in/henrysyahputra",
+      "name": "Henry Syahputra",
+      "profile_url": "https://www.linkedin.com/in/henrysyahputra",
+      "headline": "CTO of ARC",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
+      }
+    },
     "in/igor-demihovskiy-699641185": {
       "key": "in/igor-demihovskiy-699641185",
       "name": "Igor Demihovskiy",
@@ -253,6 +313,21 @@
         "model": "claude-haiku-4-5-20251001",
         "classified_at": "2026-08-17T21:02:36Z",
         "headline_hash": "d468c15d99667fd4"
+      }
+    },
+    "in/inesadruzhkova": {
+      "key": "in/inesadruzhkova",
+      "name": "Inesa Druzhkova",
+      "profile_url": "https://www.linkedin.com/in/inesadruzhkova",
+      "headline": "Full Stack Engineer",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
       }
     },
     "in/interwebology": {
@@ -495,6 +570,21 @@
         "headline_hash": "949c0d726024fb79"
       }
     },
+    "in/olga-mykhailova-michai-58b5424b": {
+      "key": "in/olga-mykhailova-michai-58b5424b",
+      "name": "Olga Mykhailova (Michai)",
+      "profile_url": "https://www.linkedin.com/in/olga-mykhailova-michai-58b5424b",
+      "headline": "I design culture that works | Less drama and more movement | Helping C-level leaders turn resistance and difficult dynamics into collaboration and change | Developmental Culture | Nonviolent Communication",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
+      }
+    },
     "in/petersterkenburg": {
       "key": "in/petersterkenburg",
       "name": "Peter Sterkenburg",
@@ -645,6 +735,21 @@
         "headline_hash": "0a29af6d8a8d17a7"
       }
     },
+    "in/thearslaniqbal": {
+      "key": "in/thearslaniqbal",
+      "name": "Arslan Iqbal",
+      "profile_url": "https://www.linkedin.com/in/thearslaniqbal",
+      "headline": "Personal Brand Strategist | Helping Founders, CEOs & Executives Build Authority on LinkedIn & X | 250+ Personal Brands Helped",
+      "headline_seen_at": "2026-08-19T12:59:51Z",
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "icp": {
+        "verdict": null,
+        "reason": null,
+        "model": null,
+        "classified_at": null,
+        "headline_hash": null
+      }
+    },
     "in/vadim-kovalenko-frontdev": {
       "key": "in/vadim-kovalenko-frontdev",
       "name": "Vadim Kovalenko",
@@ -782,6 +887,71 @@
     }
   },
   "events": {
+    "comment:urn:li:comment:(activity:7486035888146329601,7486053525467222016)": {
+      "event_id": "comment:urn:li:comment:(activity:7486035888146329601,7486053525467222016)",
+      "kind": "comment",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "person_key": "in/vitaly-gapontsev",
+      "occurred_at": "2026-07-23T13:44:04Z",
+      "attributed_week": "2026-07-20",
+      "backfill": false,
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "text": "Vitaly Gapontsev, Open to work  1st\nVitaly Gapontsev • 1st\nFront-End / Fullstack (React + Node.js)\n...the thing is, engineers aren't supposed to manage. Many, like me, went engineering precisely because they did not want to manage people.\nAnd if we put a manager to steer an AI, they can't control the quality and fix problems because they lack engineering skills.\nWhich was exactly what they needed engineers for.\nSo it turns out, not only can't we remove any of them from the equation, we now need "
+    },
+    "comment:urn:li:comment:(activity:7486035888146329601,7488953767074263040)": {
+      "event_id": "comment:urn:li:comment:(activity:7486035888146329601,7488953767074263040)",
+      "kind": "comment",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "person_key": "in/olga-mykhailova-michai-58b5424b",
+      "occurred_at": "2026-07-31T13:48:36Z",
+      "attributed_week": "2026-07-27",
+      "backfill": false,
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "text": "Olga Mykhailova (Michai) Verified Profile 1st\nOlga Mykhailova (Michai)\n• 1st\nI design culture that works | Less drama and more movement | Helping C-level leaders turn resistance and difficult dynamics into collaboration and change | Developmental Culture | Nonviolent Communication\nI assume teachers and pedagogues are the best AI learners then\n0"
+    },
+    "comment:urn:li:comment:(activity:7486035888146329601,7491468373667799040)": {
+      "event_id": "comment:urn:li:comment:(activity:7486035888146329601,7491468373667799040)",
+      "kind": "comment",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "person_key": "in/vitaly-gapontsev",
+      "occurred_at": "2026-08-07T12:20:45Z",
+      "attributed_week": "2026-08-03",
+      "backfill": false,
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "text": "Vitaly Gapontsev, Open to work  1st\nVitaly Gapontsev • 1st\nFront-End / Fullstack (React + Node.js)\n(edited) 1w\nPeter Ovchynnikov\nIt is obvious, however, that this is a rather specific case. Good docs, established codebase with consistent choices in architecture and code styling, etc. When a project lacks these, code discipline, architectural choices, prioritization, and task decomposition decisions *must* come from or be thoroughly reviewed by a human. A tech-proficient human.\nPlus, for big proj"
+    },
+    "comment:urn:li:comment:(activity:7488189837460799489,7490814600452444160)": {
+      "event_id": "comment:urn:li:comment:(activity:7488189837460799489,7490814600452444160)",
+      "kind": "comment",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7488189837460799489",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7488189837460799489/",
+      "person_key": "in/olga-mykhailova-michai-58b5424b",
+      "occurred_at": "2026-08-05T17:02:53Z",
+      "attributed_week": "2026-08-03",
+      "backfill": false,
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "text": "Olga Mykhailova (Michai) Verified Profile 1st\nOlga Mykhailova (Michai)\n• 1st\nI design culture that works | Less drama and more movement | Helping C-level leaders turn resistance and difficult dynamics into collaboration and change | Developmental Culture | Nonviolent Communication\nI did it to some extent. Not for coding but for contract reading while designing new templates. Used 2 agents checking the work of each other and writing recommendations on what to check next time when we do regression"
+    },
+    "comment:urn:li:comment:(activity:7490361400977039361,7493357461475860480)": {
+      "event_id": "comment:urn:li:comment:(activity:7490361400977039361,7493357461475860480)",
+      "kind": "comment",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7490361400977039361",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7490361400977039361/",
+      "person_key": "in/olga-mykhailova-michai-58b5424b",
+      "occurred_at": "2026-08-12T17:27:18Z",
+      "attributed_week": "2026-08-10",
+      "backfill": false,
+      "first_seen_at": "2026-08-19T12:59:51Z",
+      "text": "Olga Mykhailova (Michai) Verified Profile 1st\nOlga Mykhailova (Michai)\n• 1st\nI design culture that works | Less drama and more movement | Helping C-level leaders turn resistance and difficult dynamics into collaboration and change | Developmental Culture | Nonviolent Communication\nnot to mention that there could be personal preferences, simply like/dislike, that is hard to put in an acceptance criteria or definition of done\n0"
+    },
     "react:post:urn:li:activity:7447607429929844736:in/florencedivet": {
       "event_id": "react:post:urn:li:activity:7447607429929844736:in/florencedivet",
       "kind": "reaction",
@@ -1513,6 +1683,150 @@
       "attributed_week": null,
       "backfill": true,
       "first_seen_at": "2026-08-17T21:00:39Z"
+    },
+    "react:post:urn:li:activity:7485297316942409728:in/anatoly-chelyshev": {
+      "event_id": "react:post:urn:li:activity:7485297316942409728:in/anatoly-chelyshev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7485297316942409728",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7485297316942409728/",
+      "person_key": "in/anatoly-chelyshev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7485297316942409728:in/henrysyahputra": {
+      "event_id": "react:post:urn:li:activity:7485297316942409728:in/henrysyahputra",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7485297316942409728",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7485297316942409728/",
+      "person_key": "in/henrysyahputra",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7485297316942409728:in/inesadruzhkova": {
+      "event_id": "react:post:urn:li:activity:7485297316942409728:in/inesadruzhkova",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7485297316942409728",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7485297316942409728/",
+      "person_key": "in/inesadruzhkova",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7485297316942409728:in/vitalii-pikozh": {
+      "event_id": "react:post:urn:li:activity:7485297316942409728:in/vitalii-pikozh",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7485297316942409728",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7485297316942409728/",
+      "person_key": "in/vitalii-pikozh",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7486035888146329601:in/anatoly-chelyshev": {
+      "event_id": "react:post:urn:li:activity:7486035888146329601:in/anatoly-chelyshev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "person_key": "in/anatoly-chelyshev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7486035888146329601:in/erikabrodnock": {
+      "event_id": "react:post:urn:li:activity:7486035888146329601:in/erikabrodnock",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "person_key": "in/erikabrodnock",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7488189837460799489:in/olga-mykhailova-michai-58b5424b": {
+      "event_id": "react:post:urn:li:activity:7488189837460799489:in/olga-mykhailova-michai-58b5424b",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7488189837460799489",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7488189837460799489/",
+      "person_key": "in/olga-mykhailova-michai-58b5424b",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7490361400977039361:in/olga-mykhailova-michai-58b5424b": {
+      "event_id": "react:post:urn:li:activity:7490361400977039361:in/olga-mykhailova-michai-58b5424b",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7490361400977039361",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7490361400977039361/",
+      "person_key": "in/olga-mykhailova-michai-58b5424b",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7492904487343288320:in/anastasiiast": {
+      "event_id": "react:post:urn:li:activity:7492904487343288320:in/anastasiiast",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7492904487343288320",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+      "person_key": "in/anastasiiast",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7492904487343288320:in/anatoly-chelyshev": {
+      "event_id": "react:post:urn:li:activity:7492904487343288320:in/anatoly-chelyshev",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7492904487343288320",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+      "person_key": "in/anatoly-chelyshev",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7492904487343288320:in/dc-ukr/en": {
+      "event_id": "react:post:urn:li:activity:7492904487343288320:in/dc-ukr/en",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7492904487343288320",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+      "person_key": "in/dc-ukr/en",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
+    },
+    "react:post:urn:li:activity:7492904487343288320:in/thearslaniqbal": {
+      "event_id": "react:post:urn:li:activity:7492904487343288320:in/thearslaniqbal",
+      "kind": "reaction",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7492904487343288320",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+      "person_key": "in/thearslaniqbal",
+      "occurred_at": null,
+      "attributed_week": null,
+      "backfill": true,
+      "first_seen_at": "2026-08-19T12:59:51Z"
     }
   },
   "targets": {
@@ -1569,6 +1883,51 @@
       "first_scanned_week": "2026-08-17",
       "last_scanned_week": "2026-08-17",
       "reactor_count": 3
+    },
+    "post:urn:li:activity:7485297316942409728": {
+      "target_id": "post:urn:li:activity:7485297316942409728",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7485297316942409728",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7485297316942409728/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 4
+    },
+    "post:urn:li:activity:7486035888146329601": {
+      "target_id": "post:urn:li:activity:7486035888146329601",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7486035888146329601",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7486035888146329601/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 2
+    },
+    "post:urn:li:activity:7488189837460799489": {
+      "target_id": "post:urn:li:activity:7488189837460799489",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7488189837460799489",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7488189837460799489/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 1
+    },
+    "post:urn:li:activity:7490361400977039361": {
+      "target_id": "post:urn:li:activity:7490361400977039361",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7490361400977039361",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7490361400977039361/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 1
+    },
+    "post:urn:li:activity:7492904487343288320": {
+      "target_id": "post:urn:li:activity:7492904487343288320",
+      "target_type": "post",
+      "target_urn": "urn:li:activity:7492904487343288320",
+      "target_url": "https://www.linkedin.com/feed/update/urn:li:activity:7492904487343288320/",
+      "first_scanned_week": "2026-08-17",
+      "last_scanned_week": "2026-08-17",
+      "reactor_count": 4
     }
   }
 }

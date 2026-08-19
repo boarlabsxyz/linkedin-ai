@@ -19,9 +19,9 @@
 //                 judged per icp-filter.md)?
 // Both gates must pass. interests.md and icp-filter.md remain the no-code
 // tuning knobs. A low-confidence ICP verdict escalates to a profile probe
-// (the author's own LinkedIn page), and every author verdict is cached in
-// dashboards/li-stats/icp-authors.json — SHARED with linkedin-stats — so
-// deep scrolls get cheaper every fire and both pipelines judge a person once.
+// (the author's own LinkedIn page), and every author is cached as one file
+// under dashboards/profiles/ — SHARED with linkedin-stats — so deep scrolls
+// get cheaper every fire and both pipelines describe a person once.
 //
 // Filtered posts (off-topic / already-commented) are appended to the single
 // comments.json array exactly like the agent did (jq is the only serializer
@@ -33,8 +33,8 @@
 //   node gather-feed.mjs [--target-count=5] [--deadline-secs=900]
 //                        [--comments-file=path] [--interests-file=path]
 //                        [--icp-file=sources/icp.md] [--icp-filter-file=path]
-//                        [--icp-cache-file=dashboards/li-stats/icp-authors.json]
-//                        [--profile-probe-max=12] [--icp-cache-ttl-days=90]
+//                        [--profiles-dir=dashboards/profiles]
+//                        [--profile-probe-max=12] [--icp-cache-ttl-days=10]
 //                        [--out-dir=tmp/gather-feed/<utc-ts>]
 //                        [--batch-size=6] [--max-scrolls=250]
 //                        [--classify-model=claude-haiku-4-5-20251001]
@@ -69,14 +69,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { authorSlug, normText, makeKey, fuzzyId } from './keys.mjs';
-// The ICP author cache is SHARED with linkedin-stats (Peter, 2026-08-18) and
-// lives under dashboards/li-stats/ — see pipeline-shared/icp-cache.mjs.
+// The per-person profile store is SHARED with linkedin-stats (Peter,
+// 2026-08-19) and lives under dashboards/profiles/, one file per person —
+// see pipeline-shared/profile-store.mjs.
 import {
-  ICP_CACHE_REL_PATH, profileKey, readProfileList, rubricHash,
-  cacheAgeDays, cachedProfileData, profileReadRecently as sharedProfileReadRecently,
-  icpCacheGet as sharedCacheGet, icpCacheSet as sharedCacheSet,
-  loadIcpCache as sharedCacheLoad, saveIcpCache as sharedCacheSave,
-} from '../../pipeline-shared/icp-cache.mjs';
+  PROFILES_REL_DIR, profileKey, readProfileList, rubricHash, openProfileStore,
+} from '../../pipeline-shared/profile-store.mjs';
 
 const execFile = promisify(execFileCb);
 
@@ -103,7 +101,7 @@ const INTERESTS_FILE = path.resolve(REPO_ROOT, String(args['interests-file'] || 
 // decision rules plus the hand-curated allow/deny profile lists.
 const ICP_FILE = path.resolve(REPO_ROOT, String(args['icp-file'] || 'sources/icp.md'));
 const ICP_FILTER_FILE = path.resolve(REPO_ROOT, String(args['icp-filter-file'] || '.claude/skills/linkedin-comment-hourly/icp-filter.md'));
-const ICP_CACHE_FILE = path.resolve(REPO_ROOT, String(args['icp-cache-file'] || ICP_CACHE_REL_PATH));
+const PROFILES_DIR = path.resolve(REPO_ROOT, String(args['profiles-dir'] || PROFILES_REL_DIR));
 // ~20s per probe (nav + one classifier call), so 20 spends about 7 min of the
 // 900s budget in the worst case — and the author cache makes later fires much
 // cheaper, since a person is probed once, not once per post.
@@ -418,34 +416,34 @@ async function classifyBatch(cands) {
 let icpAllow = new Set(); // loaded from icp-filter.md in main()
 let icpDeny = new Set();
 
-// profileKey -> {verdict, confidence, reason, evidence, headline_hash, model,
-// decided_at}. An author is judged ONCE, so the much deeper scrolling this
+// One file per person under dashboards/profiles/, SHARED with linkedin-stats.
+// An author is described and judged ONCE, so the much deeper scrolling this
 // gate needs gets cheaper every fire. Hand-editable; icp-filter.md still wins.
-let icpCache = {};
-let icpCacheDirty = false;
+// A dry run parks its writes in the out-dir so it never dirties the tracked
+// tree, while still READING the real store.
+let store = null;
 
-function loadIcpCache() { icpCache = sharedCacheLoad(ICP_CACHE_FILE); }
-
-const icpCacheGet = (pkey, headline) =>
-  sharedCacheGet(icpCache, pkey, headline, { rubricHash: RUBRIC_HASH, ttlDays: ICP_CACHE_TTL_DAYS });
-
-const profileReadRecently = (pkey) => sharedProfileReadRecently(icpCache, pkey, ICP_CACHE_TTL_DAYS);
-
-function icpCacheSet(pkey, headline, v) {
-  if (!pkey) return;
-  sharedCacheSet(icpCache, pkey, headline, v, { rubricHash: RUBRIC_HASH });
-  icpCacheDirty = true;
+function openStore() {
+  store = openProfileStore(PROFILES_DIR, {
+    writeDir: DRY_RUN ? path.join(OUT_DIR, 'profiles') : null,
+    ttlDays: ICP_CACHE_TTL_DAYS,
+    rubricHash: RUBRIC_HASH,
+  });
 }
 
-// A dry run parks its verdicts in the out-dir so it never dirties the tracked
-// tree; a real run writes the file both pipelines read.
+const icpCacheGet = (pkey, headline) => store.verdict(pkey, headline);
+
+const profileReadRecently = (pkey) => store.readRecently(pkey);
+
+const icpCacheSet = (pkey, headline, v) => store.set(pkey, headline, v);
+
 function saveIcpCache() {
-  if (!icpCacheDirty) return;
-  const target = DRY_RUN ? path.join(OUT_DIR, 'icp-authors.json') : ICP_CACHE_FILE;
-  const err = sharedCacheSave(target, icpCache);
-  if (err) { log(`icp cache write failed (${target}): ${err}`); return; }
-  icpCacheDirty = false;
-  vlog(`icp cache: ${Object.keys(icpCache).length} authors -> ${target}`);
+  if (!store || !store.dirtyCount()) return;
+  const res = store.flush();
+  if (res.failed) log(`profile store: ${res.failed} write(s) failed — ${res.errors[0]}`);
+  if (res.written) {
+    vlog(`profile store: ${res.written} profile(s) -> ${DRY_RUN ? path.join(OUT_DIR, 'profiles') : PROFILES_DIR}`);
+  }
 }
 
 // Profile pages lost their semantic classes in the 2026 obfuscation just like
@@ -529,16 +527,21 @@ async function probeProfile(cand) {
     return null; // nothing worth caching — a thin read is worth retrying
   }
   // The page IS read now. Bank that before classifying, so a classifier
-  // failure below can't cost a second page load next fire.
+  // failure below can't cost a second page load next fire — and flush it
+  // immediately, so a kill mid-fire can't either. PROFILE_TEXT_MAX is the one
+  // ceiling: the store holds what a future re-judge gets to see, and the
+  // classifiers slice it down themselves.
   icpCacheSet(profileKey(cand.authorUrl), cand.headline, {
     verdict: null,
     confidence: 'low',
     reason: 'profile read; not classified yet',
     evidence: 'profile',
     model: null,
+    name: cand.author,
     profileUrl: url,
-    profileText: text.slice(0, 2500),
+    profileText: text.slice(0, PROFILE_TEXT_MAX),
   });
+  saveIcpCache();
   const verdict = await classifyStoredProfile(cand, text);
   return verdict ? { ...verdict, profileUrl: url, profileText: text } : null;
 }
@@ -570,7 +573,7 @@ async function classifyStoredProfile(cand, text) {
 // Everything the gate can settle without touching the network, in precedence
 // order: deny list, allow list, cached author verdict, confident card verdict.
 // Returns null to mean "escalate to the profile probe". Exported for the test.
-export function icpWithoutProbe(pkey, headline, v) {
+export function icpWithoutProbe(pkey, headline, v, name = '') {
   if (pkey && icpDeny.has(pkey)) return { verdict: false, source: 'denylist', reason: 'denylisted in icp-filter.md' };
   if (pkey && icpAllow.has(pkey)) return { verdict: true, source: 'allowlist', reason: 'allowlisted in icp-filter.md' };
   const cached = icpCacheGet(pkey, headline);
@@ -580,7 +583,7 @@ export function icpWithoutProbe(pkey, headline, v) {
   }
   if (v.icpConfidence === 'high') {
     icpCacheSet(pkey, headline, {
-      verdict: v.icp, confidence: 'high', reason: v.icpReason, evidence: 'card', model: v.model,
+      verdict: v.icp, confidence: 'high', reason: v.icpReason, evidence: 'card', model: v.model, name,
     });
     return { verdict: v.icp, source: 'card', reason: v.icpReason };
   }
@@ -593,18 +596,18 @@ export function icpWithoutProbe(pkey, headline, v) {
 //   {verdict: null}  -> undecided; write NOTHING so a later fire can retry
 async function decideIcp(page, c, v) {
   const pkey = profileKey(c.authorUrl);
-  const early = icpWithoutProbe(pkey, c.headline, v);
+  const early = icpWithoutProbe(pkey, c.headline, v, c.author);
   if (early) return early;
   // No usable verdict — but we may still hold this author's scraped profile
   // from an earlier fire. Re-judge from THAT (one classifier call, zero page
   // loads) before considering the browser. This is the path a retuned ICP
   // takes: the rubric moved, the data did not.
-  const stored = cachedProfileData(icpCache[pkey], ICP_CACHE_TTL_DAYS);
+  const stored = store.profileText(pkey);
   if (stored) {
     counters.icpRejudged++;
     const rejudged = await classifyStoredProfile(c, stored);
     if (rejudged) {
-      icpCacheSet(pkey, c.headline, rejudged);
+      icpCacheSet(pkey, c.headline, { ...rejudged, name: c.author });
       return { verdict: rejudged.verdict, source: `cache-rejudge/${rejudged.confidence}`, reason: rejudged.reason };
     }
     // Classifier failed on cached data. The page is still inside its no-touch
@@ -621,7 +624,7 @@ async function decideIcp(page, c, v) {
   if (!c.permalinkTried && !outOfTime()) await recoverPermalink(page, c);
   const probed = await probeProfile(c);
   if (probed) {
-    icpCacheSet(pkey, c.headline, probed);
+    icpCacheSet(pkey, c.headline, { ...probed, name: c.author });
     return { verdict: probed.verdict, source: `profile/${probed.confidence}`, reason: probed.reason };
   }
   // No probe happened. Deciding either way here would be a guess: accepting
@@ -1169,7 +1172,10 @@ function emitContractInner(feedExhausted, endReason) {
     icp: {
       allow_listed: icpAllow.size,
       deny_listed: icpDeny.size,
-      cached_authors: Object.keys(icpCache).length,
+      cached_authors: store ? store.count() : 0,
+      profiles_dir: PROFILES_DIR,
+      profiles_loaded: store ? store.stats().loaded : 0,
+      profiles_written: store ? store.stats().written : 0,
       probes: counters.icpProbes,
       probe_max: PROFILE_PROBE_MAX,
       cache_hits: counters.icpCacheHits,
@@ -1197,13 +1203,13 @@ function loadRubrics() {
   RUBRIC_HASH = computeRubricHash();
   icpAllow = readProfileList(ICP_FILTER_TEXT, 'always accept');
   icpDeny = readProfileList(ICP_FILTER_TEXT, 'never accept');
-  loadIcpCache();
-  const cached = Object.values(icpCache);
-  const reusable = cached.filter((e) => cachedProfileData(e)).length;
-  const currentRubric = cached.filter((e) => e.rubric_hash === RUBRIC_HASH).length;
+  openStore();
+  // One readdir, no file reads: with one file per person, counting "how many
+  // have reusable profile data" would mean parsing the whole store at startup.
+  // Those numbers are reported at the end of the run instead, over the records
+  // this fire actually touched.
   log(`icp gate: ${icpAllow.size} always-accept, ${icpDeny.size} never-accept, `
-    + `${cached.length} cached authors (${reusable} with reusable profile data, `
-    + `${currentRubric} judged under the current rubric ${RUBRIC_HASH})`);
+    + `${store.count()} profile files on disk, rubric ${RUBRIC_HASH}`);
 }
 
 // Offline hit-rate probe: run BOTH gates over a corpus of already-captured
@@ -1522,18 +1528,22 @@ async function main() {
 // fast/test-icp-gate.mjs, which imports this module (see the direct-invocation
 // guard at the bottom — importing must never start a scrape).
 export const __test = {
-  setIcpState({ allow = [], deny = [], cache = {} } = {}) {
+  // `records` seeds an in-MEMORY store (dir === null), so a test never touches
+  // dashboards/profiles/ and flush() is a no-op.
+  setIcpState({ allow = [], deny = [], records = {} } = {}) {
     icpAllow = new Set(allow);
     icpDeny = new Set(deny);
-    icpCache = cache;
-    icpCacheDirty = false;
+    store = openProfileStore(null, {
+      seed: records, ttlDays: ICP_CACHE_TTL_DAYS, rubricHash: RUBRIC_HASH,
+    });
   },
-  getIcpCache: () => icpCache,
+  getProfile: (pkey) => store.get(pkey),
+  getStore: () => store,
   icpCacheGet,
   icpCacheSet,
   profileReadRecently,
-  cachedProfileData,
-  setRubricHash: (h) => { RUBRIC_HASH = h; },
+  cachedProfileData: (pkey) => store.profileText(pkey),
+  setRubricHash: (h) => { RUBRIC_HASH = h; if (store) store.setRubricHash(h); },
   getRubricHash: () => RUBRIC_HASH,
   counters,
   ICP_CACHE_TTL_DAYS,

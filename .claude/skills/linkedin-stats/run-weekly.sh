@@ -25,6 +25,15 @@
 #      retry, dashboards/li-stats is reset to the committed baseline so the
 #      final tree is one attempt's coherent output, never a cross-attempt
 #      hybrid.
+#   3b. Selfcheck revalidation: if the contract's [selfcheck] section names any
+#      suspicious ZERO (no new posts / no new comments / no reactors / no
+#      commenters) or any non-zero ANOMALY (an engager LinkedIn showed that we
+#      could not name), a bounded session opens a browser and decides whether
+#      there is a real-world explanation, BEFORE the merge decision
+#      (references/zero-revalidation.md). Confirmed-real merges as normal;
+#      a bug, or no verdict at all, leaves the PR open. Neither is ever an
+#      exit code — a quiet week is a valid result, and only a page load can
+#      tell it apart from a parser that rotted.
 #   4. jq-validate snapshots, then commit + push + PR via the common-pr-*
 #      scripts. ONLY a no-heal exit-0 run auto-merges (and flips the
 #      main_updated output that gates the Pages publish job). Everything
@@ -74,6 +83,9 @@ DEADLINE_SECS="${DEADLINE_SECS:-1500}"
 HEAL_TIMEOUT_SECS="${HEAL_TIMEOUT_SECS:-4500}"
 REVIEW_TIMEOUT_SECS="${REVIEW_TIMEOUT_SECS:-1500}"
 RATE_LIMIT_SLEEP_SECS="${RATE_LIMIT_SLEEP_SECS:-1200}"
+# The zero-signal revalidation session is a bounded <=6-page-load protocol,
+# not a full heal — it gets 30 minutes, not 75.
+ZERO_TIMEOUT_SECS="${ZERO_TIMEOUT_SECS:-1800}"
 LOCK_RETRY_SLEEP_SECS="${LOCK_RETRY_SLEEP_SECS:-60}"
 HARD_CAP_EXTRA_SECS="${HARD_CAP_EXTRA_SECS:-600}"
 FAST_DIR="${FAST_DIR:-.claude/skills/linkedin-stats/fast}"
@@ -105,6 +117,12 @@ RUN_ERRORS=""                # accumulated one-line failure notes
 PR_URL=""
 MERGED=0
 FINISH_POSTED=0
+# Zero-signal gate state. Initialized here because the EXIT trap reads it and
+# `set -u` would kill the bookend on an early failure.
+ZERO_SIGNALS="-"             # comma list from [selfcheck], or "-"
+ANOMALY_SIGNALS="-"          # non-zero defects from [selfcheck], or "-"
+ZERO_VERDICT="none"          # none | confirmed | bug | unverified
+ZERO_BLOCK_MERGE=0
 
 # Single EXIT trap: detached-copy self-delete + the finish bookend, on EVERY
 # exit path (explicit exit N, set -e aborts, and — via TERM/INT traps —
@@ -138,7 +156,9 @@ on_exit() {
             msg="✅ linkedin-stats-weekly: scrape finished in ${dur} — ${summary}; merged to main"
         else
             local kind="recovered after self-heal"
-            if [ "${PL_HEAL_COUNT:-0}" -eq 0 ]; then
+            if [ "$ZERO_BLOCK_MERGE" = 1 ]; then
+                kind="selfcheck ${ZERO_VERDICT} [zero ${ZERO_SIGNALS}, anomaly ${ANOMALY_SIGNALS}]"
+            elif [ "${PL_HEAL_COUNT:-0}" -eq 0 ]; then
                 kind="accepted partial"
             elif [ "${PL_PARTIAL:-0}" = 1 ]; then
                 kind="recovered (accepted partial)"
@@ -373,25 +393,111 @@ RUN_STAGE="commit"
 # Always revert the corrupt file (the PR must stay parseable), and demote the
 # whole run to failed — a run that silently discarded one of its outputs must
 # not be called clean, partial, or recovered.
-invalid_json=0
-while IFS= read -r -d '' f; do
-  if ! jq empty "$f" 2>/dev/null; then
-    invalid_json=1
-    git checkout -- "$f" 2>/dev/null || rm -f "$f"
-    echo "run-weekly: $f was not valid JSON — reverted." >&2
-    PL_SESSION_NOTES+=("invalid JSON reverted: $f")
+# Idempotent: also re-run after any session that may have touched the data.
+validate_snapshots() {
+  local invalid_json=0 f
+  while IFS= read -r -d '' f; do
+    if ! jq empty "$f" 2>/dev/null; then
+      invalid_json=1
+      git checkout -- "$f" 2>/dev/null || rm -f "$f"
+      echo "run-weekly: $f was not valid JSON — reverted." >&2
+      PL_SESSION_NOTES+=("invalid JSON reverted: $f")
+    fi
+  done < <(find dashboards/li-stats dashboards/profiles -name '*.json' -print0 2>/dev/null)
+  if [ "$invalid_json" -eq 1 ] && [ "$scrape_ok" -eq 1 ]; then
+    echo "run-weekly: truncated snapshot detected — demoting the run to UNRESOLVED." >&2
+    scrape_ok=0
   fi
-done < <(find dashboards/li-stats -name '*.json' -print0)
-if [ "$invalid_json" -eq 1 ] && [ "$scrape_ok" -eq 1 ]; then
-  echo "run-weekly: truncated snapshot detected — demoting the run to UNRESOLVED." >&2
-  scrape_ok=0
+}
+validate_snapshots
+
+# --------------------------------------------- zero-signal revalidation gate
+# A clean run can still be lying. On 2026-08-17 every post's comment array came
+# back empty (85 comments across 50 files the week before, 0 that week) and the
+# run exited 0, auto-merged and published — no counter the acceptance gate
+# reads had moved. So any zero in [selfcheck] ZERO_SIGNALS gets LOOKED AT, by a
+# session with a browser, BEFORE the merge decision. Deliberately not an exit
+# code: a quiet week is a valid result, and only a real page load tells the two
+# apart (Peter, 2026-08-19: "even open playwright yourself and make sure: WOW
+# really zero").
+# Both selfcheck lists share one parser and one session: a suspicious ZERO and
+# a non-zero DEFECT (e.g. an engager LinkedIn showed that we could not name)
+# ask the same question — is there a real-world explanation, or did a parser
+# rot? Only a browser can answer it.
+signals_of() {
+  local key="$1" log="$2" v=""
+  [ -f "$log" ] && v=$(grep -Eo "^${key}=[A-Za-z0-9_,-]+" "$log" 2>/dev/null | tail -1 | cut -d= -f2)
+  printf '%s' "${v:--}"
+}
+
+zero_check_prompt() {
+  cat <<EOF
+You are the zero-signal revalidation layer of the linkedin-stats weekly
+pipeline, invoked headless by run-weekly.sh after a scrape that exited 0 with
+no healing but reported at least one ZERO counter. Read CORE_FILE first for the
+ground rules, then PROTOCOL_FILE, and follow PROTOCOL_FILE exactly.
+Your job is NOT to make the number non-zero — it is to decide, with evidence
+from a real page load, whether each zero is REAL. A real zero is a valid result
+and must be recorded as such, not "fixed". There is no rerun after you: the
+attempt loop is over, so this is post-landing mode and your own targeted probe
+is the only verification.
+Context:
+PIPELINE_NAME=linkedin-stats-weekly
+PROTOCOL_FILE=${SKILL_DIR}/references/zero-revalidation.md
+CORE_FILE=${SHARED_DIR}/references/self-heal-core.md
+OVERLAY_FILE=${SKILL_DIR}/references/self-heal.md
+WRAPPER=${SKILL_DIR}/run-weekly.sh
+HEAL_MODE=post-landing
+ZERO_SIGNALS=${ZERO_SIGNALS}
+ANOMALY_SIGNALS=${ANOMALY_SIGNALS}
+LOG_FILE=${PL_ATTEMPT_LOG:-}
+HEAL_DIR=${HEAL_ROOT}
+CONFIRM_FILE=${HEAL_ROOT}/ZERO_CONFIRMED
+BUG_FILE=${HEAL_ROOT}/ZERO_BUG
+INCIDENT_FILE=${INCIDENT_FILE}
+CODEX_AVAILABLE=${PL_CODEX_AVAILABLE}
+WEEK=${WEEK}
+FAST_DIR=${FAST_DIR}
+EOF
+}
+
+if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEALED" -eq 0 ] && [ "$fast_exit" -eq 0 ]; then
+  ZERO_SIGNALS=$(signals_of ZERO_SIGNALS "${PL_ATTEMPT_LOG:-/dev/null}")
+  ANOMALY_SIGNALS=$(signals_of ANOMALY_SIGNALS "${PL_ATTEMPT_LOG:-/dev/null}")
+fi
+if [ "$ZERO_SIGNALS" != "-" ] || [ "$ANOMALY_SIGNALS" != "-" ]; then
+  echo "run-weekly: selfcheck signals — zero [${ZERO_SIGNALS}], anomaly [${ANOMALY_SIGNALS}] — revalidating before the merge decision."
+  rm -f "$HEAL_ROOT/ZERO_CONFIRMED" "$HEAL_ROOT/ZERO_BUG"
+  pl_ensure_incident_skeleton
+  pl_run_claude_with_watchdog "$ZERO_TIMEOUT_SECS" stats-zero-check "$(zero_check_prompt)" || true
+  pl_sweep_profile_chrome
+  if [ -f "$HEAL_ROOT/ZERO_BUG" ]; then
+    # BUG wins a double marker: fail closed on an ambiguous verdict.
+    ZERO_VERDICT="bug"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }selfcheck bug: $(pl_oneline "$(head -c 300 "$HEAL_ROOT/ZERO_BUG")")"
+  elif [ -f "$HEAL_ROOT/ZERO_CONFIRMED" ]; then
+    ZERO_VERDICT="confirmed"
+  else
+    # Timed out, died, or reasoned without probing. An UNVERIFIED zero is
+    # exactly what shipped on 2026-08-17 — it gets no benefit of the doubt.
+    ZERO_VERDICT="unverified"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }selfcheck revalidation left no verdict"
+  fi
+  PL_SESSION_NOTES+=("selfcheck zero [${ZERO_SIGNALS}] anomaly [${ANOMALY_SIGNALS}] -> ${ZERO_VERDICT}")
+  echo "run-weekly: selfcheck verdict = ${ZERO_VERDICT} ($(date -u +%H:%M:%SZ))"
+  [ "$ZERO_VERDICT" = "confirmed" ] || ZERO_BLOCK_MERGE=1
+  # The session may have edited code or data; re-run the truncation sweep.
+  validate_snapshots
 fi
 
-# Auto-merge ONLY the boring case: first-grade success with no healing. A
-# healed run's fix and an accepted partial's gaps both deserve human eyes —
-# and a permanent regression must not quietly auto-merge partial data every
-# Monday (that's how 2026-07-20 would have looked with a laxer gate).
-if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEALED" -eq 0 ] && [ "$fast_exit" -eq 0 ]; then
+# Auto-merge ONLY the boring case: first-grade success with no healing, and no
+# unexplained zero. A healed run's fix and an accepted partial's gaps both
+# deserve human eyes — and a permanent regression must not quietly auto-merge
+# partial data every Monday (that's how 2026-07-20 would have looked with a
+# laxer gate). A zero the revalidation session CONFIRMED as real is not a
+# blocker: a quiet week publishes like any other.
+if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEALED" -eq 0 ] && [ "$fast_exit" -eq 0 ] \
+   && [ "$ZERO_BLOCK_MERGE" -eq 0 ]; then
   # git diff --quiet only sees TRACKED changes; new posts create untracked
   # JSON files, so use git status --porcelain. A weekly run must at minimum
   # add a weeks[WEEK] entry to account.json — "no changes" means the scrape
@@ -432,7 +538,13 @@ mkdir -p "$(dirname "$INCIDENT_FILE")"
   if [ "${#PL_SESSION_NOTES[@]}" -gt 0 ]; then
     printf -- '- note: %s\n' "${PL_SESSION_NOTES[@]}"
   fi
-  if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
+  if [ "$ZERO_SIGNALS" != "-" ] || [ "$ANOMALY_SIGNALS" != "-" ]; then
+    printf -- '- selfcheck: zero [%s], anomaly [%s] -> %s\n' "$ZERO_SIGNALS" "$ANOMALY_SIGNALS" "$ZERO_VERDICT"
+  fi
+  if [ "$ZERO_BLOCK_MERGE" -eq 1 ]; then
+    printf -- '- outcome: SELFCHECK %s — zero [%s] / anomaly [%s] not confirmed real; PR left unmerged for review\n' \
+      "$(printf '%s' "$ZERO_VERDICT" | tr 'a-z' 'A-Z')" "$ZERO_SIGNALS" "$ANOMALY_SIGNALS"
+  elif [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
     if [ "$fast_exit" -eq 0 ]; then acceptance="full success"; else acceptance="accepted partial, exit 10"; fi
     printf -- '- outcome: RECOVERED — outer gate accepted attempt %s (%s) after %s heal session(s); PR left unmerged for review\n' "$PL_ATTEMPT" "$acceptance" "$PL_HEAL_COUNT"
   elif [ "$scrape_ok" -eq 1 ]; then
@@ -444,7 +556,9 @@ mkdir -p "$(dirname "$INCIDENT_FILE")"
   fi
 } >> "$INCIDENT_FILE"
 
-if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
+if [ "$ZERO_BLOCK_MERGE" -eq 1 ]; then
+  outcome="selfcheck zero [${ZERO_SIGNALS}] anomaly [${ANOMALY_SIGNALS}] ${ZERO_VERDICT}, PR review pending"
+elif [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
   outcome="recovered after ${PL_ATTEMPT} attempts / ${PL_HEAL_COUNT} heal(s), PR review pending"
   [ "$fast_exit" -eq 10 ] && outcome="recovered (accepted partial) after ${PL_ATTEMPT} attempts / ${PL_HEAL_COUNT} heal(s), PR review pending"
 elif [ "$scrape_ok" -eq 1 ]; then
