@@ -213,22 +213,27 @@ test('cachedProfileData refuses what cannot be re-judged', () => {
 test('a headline-only verdict never deletes a scrape the other pipeline paid for', () => {
   // linkedin-stats writes card verdicts into the same store. If that dropped
   // profile_text, the feed gate would re-open pages it already read.
-  __test.setIcpState({ records: { 'in/x': profileRecord({ scraped_at: day(2) }) } });
+  // `day(2)` is captured ONCE: calling it again in the assertion re-reads the
+  // clock, and a millisecond tick between the two calls fails a comparison
+  // that has nothing to do with what is under test.
+  const scrapedAt = day(2);
+  __test.setIcpState({ records: { 'in/x': profileRecord({ scraped_at: scrapedAt }) } });
   __test.icpCacheSet('in/x', 'Founder @ Agentic', {
     verdict: false, confidence: 'high', reason: 'headline says sales', evidence: 'card', model: 'm',
   });
   const rec = __test.getProfile('in/x');
   assert.equal(rec.icp.evidence, 'card', 'the verdict was judged from a card');
   assert.equal(rec.profile_text, 'About: maintains a coding agent', 'but the scrape survives');
-  assert.equal(rec.scraped_at, day(2), 'and so does its date');
+  assert.equal(rec.scraped_at, scrapedAt, 'and so does its date');
   assert.equal(__test.profileReadRecently('in/x'), true, 'so the page still must not be re-opened');
 });
 
 test('a re-judge keeps the original scrape date, text and URL', () => {
+  const scrapedAt = day(3); // captured once — see the note on the card test
   __test.setIcpState({
     records: {
       'in/x': profileRecord({
-        scraped_at: day(3),
+        scraped_at: scrapedAt,
         icp: { verdict: false, rubric_hash: 'old' },
       }),
     },
@@ -242,7 +247,7 @@ test('a re-judge keeps the original scrape date, text and URL', () => {
   assert.equal(rec.icp.rubric_hash, RUBRIC, 're-stamped with the rubric that judged it');
   assert.equal(rec.profile_text, 'About: maintains a coding agent', 'data carried over');
   assert.equal(rec.profile_url, 'https://www.linkedin.com/in/x');
-  assert.equal(rec.scraped_at, day(3), 'the no-touch window must NOT slide forward');
+  assert.equal(rec.scraped_at, scrapedAt, 'the no-touch window must NOT slide forward');
 });
 
 test('a profile read that failed to classify still blocks the next page load', () => {

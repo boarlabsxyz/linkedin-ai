@@ -1,4 +1,4 @@
-# Zero-signal revalidation — linkedin-stats weekly
+# Selfcheck revalidation — linkedin-stats weekly
 
 Additive protocol on top of the IMMUTABLE `pipeline-shared/references/self-heal-core.md`.
 Everything in the core still binds you: no git writes, never edit
@@ -6,7 +6,10 @@ Everything in the core still binds you: no git writes, never edit
 no secrets in the incident, read prior `doc/incidents/*.md` first.
 
 You are invoked by `run-weekly.sh` AFTER a scrape that exited 0 with no
-healing, but whose `[selfcheck]` section named at least one zero counter.
+healing, but whose `[selfcheck]` section named at least one signal — a
+suspicious ZERO (`ZERO_SIGNALS`) or a non-zero DEFECT (`ANOMALY_SIGNALS`).
+Both ask the same question and both land here: is there a real-world
+explanation, or did a parser rot?
 
 ## Why this exists
 
@@ -50,7 +53,8 @@ playwright yourself and make sure: WOW really zero."*
 
 ## Per-signal protocol
 
-`ZERO_SIGNALS` is a comma list. Handle every name in it.
+`ZERO_SIGNALS` and `ANOMALY_SIGNALS` are comma lists. Handle every name in
+both.
 
 ### `posts_new` — `[posts] POSTS_NEW=0`
 
@@ -133,6 +137,37 @@ selector drift in the canonical scrape body. Also BUG when the count is > 0 but
 `metrics.comments` on many posts, 85 → 0 across 50 files, `[people]
 COMMENT_EVENTS=0` inherited downstream. The correct verdict that day was
 `commenters: BUG`.
+
+### `roster_unresolved` — `[people] ROSTER_UNRESOLVED > 0`
+
+The one ANOMALY signal: an engager LinkedIn displayed that could not be turned
+into a profile link. Owner: `readReactorDialog` (reactor lists) and the
+canonical `.claude/agents/linkedin-stats-gather-metrics.scrape-comments.js`
+(commenter lists), via `People.rosterUrls`.
+
+There is no stored counter for this — the field was deliberately removed
+(Peter, 2026-08-19: *"let's just drop them. if face such stuff, just break
+pipeline and fix during self-improving stuff"*). A roster is a list of profile
+links; a person with no link is a hole in it, and an "and N others" number next
+to the array just normalizes the hole.
+
+Probe: open the post whose target reported it (the log line names the id), open
+the reaction overlay, and count in the dialog:
+
+```js
+const d = document.querySelector('dialog[open], [data-testid="dialog"]');
+[d.querySelectorAll('a[href*="/in/"]').length,
+ [...d.querySelectorAll('*')].filter(e => /LinkedIn Member/i.test(e.innerText || '')).length]
+```
+
+REAL only if the shortfall is exactly accounted for by entries rendering as
+"LinkedIn Member" with **no anchor**. Say so explicitly with the two counts.
+
+BUG in every other case — and this is the likely one. Private members render no
+anchor at all, so they normally never reach the parser: 12 of 12 resolved on
+the first real corpus. A non-zero here usually means the anchor selector
+(`a[href*="/in/"]`) or the URL normalization stopped matching, i.e. people ARE
+being displayed with links we no longer read.
 
 ## If you find a bug
 

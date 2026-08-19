@@ -25,13 +25,15 @@
 #      retry, dashboards/li-stats is reset to the committed baseline so the
 #      final tree is one attempt's coherent output, never a cross-attempt
 #      hybrid.
-#   3b. Zero-signal revalidation: if the contract's [selfcheck] section names
-#      any zero counter (no new posts / no new comments / no reactors / no
-#      commenters), a bounded session opens a browser and decides whether the
-#      zero is REAL before the merge decision
+#   3b. Selfcheck revalidation: if the contract's [selfcheck] section names any
+#      suspicious ZERO (no new posts / no new comments / no reactors / no
+#      commenters) or any non-zero ANOMALY (an engager LinkedIn showed that we
+#      could not name), a bounded session opens a browser and decides whether
+#      there is a real-world explanation, BEFORE the merge decision
 #      (references/zero-revalidation.md). Confirmed-real merges as normal;
-#      a bug, or no verdict at all, leaves the PR open. A zero is never an
-#      exit code — a quiet week is a valid result.
+#      a bug, or no verdict at all, leaves the PR open. Neither is ever an
+#      exit code — a quiet week is a valid result, and only a page load can
+#      tell it apart from a parser that rotted.
 #   4. jq-validate snapshots, then commit + push + PR via the common-pr-*
 #      scripts. ONLY a no-heal exit-0 run auto-merges (and flips the
 #      main_updated output that gates the Pages publish job). Everything
@@ -118,6 +120,7 @@ FINISH_POSTED=0
 # Zero-signal gate state. Initialized here because the EXIT trap reads it and
 # `set -u` would kill the bookend on an early failure.
 ZERO_SIGNALS="-"             # comma list from [selfcheck], or "-"
+ANOMALY_SIGNALS="-"          # non-zero defects from [selfcheck], or "-"
 ZERO_VERDICT="none"          # none | confirmed | bug | unverified
 ZERO_BLOCK_MERGE=0
 
@@ -154,7 +157,7 @@ on_exit() {
         else
             local kind="recovered after self-heal"
             if [ "$ZERO_BLOCK_MERGE" = 1 ]; then
-                kind="zero-signal ${ZERO_VERDICT} [${ZERO_SIGNALS}]"
+                kind="selfcheck ${ZERO_VERDICT} [zero ${ZERO_SIGNALS}, anomaly ${ANOMALY_SIGNALS}]"
             elif [ "${PL_HEAL_COUNT:-0}" -eq 0 ]; then
                 kind="accepted partial"
             elif [ "${PL_PARTIAL:-0}" = 1 ]; then
@@ -417,9 +420,13 @@ validate_snapshots
 # code: a quiet week is a valid result, and only a real page load tells the two
 # apart (Peter, 2026-08-19: "even open playwright yourself and make sure: WOW
 # really zero").
-zero_signals_of() {
-  local log="$1" v=""
-  [ -f "$log" ] && v=$(grep -Eo '^ZERO_SIGNALS=[A-Za-z0-9_,-]+' "$log" 2>/dev/null | tail -1 | cut -d= -f2)
+# Both selfcheck lists share one parser and one session: a suspicious ZERO and
+# a non-zero DEFECT (e.g. an engager LinkedIn showed that we could not name)
+# ask the same question — is there a real-world explanation, or did a parser
+# rot? Only a browser can answer it.
+signals_of() {
+  local key="$1" log="$2" v=""
+  [ -f "$log" ] && v=$(grep -Eo "^${key}=[A-Za-z0-9_,-]+" "$log" 2>/dev/null | tail -1 | cut -d= -f2)
   printf '%s' "${v:--}"
 }
 
@@ -442,6 +449,7 @@ OVERLAY_FILE=${SKILL_DIR}/references/self-heal.md
 WRAPPER=${SKILL_DIR}/run-weekly.sh
 HEAL_MODE=post-landing
 ZERO_SIGNALS=${ZERO_SIGNALS}
+ANOMALY_SIGNALS=${ANOMALY_SIGNALS}
 LOG_FILE=${PL_ATTEMPT_LOG:-}
 HEAL_DIR=${HEAL_ROOT}
 CONFIRM_FILE=${HEAL_ROOT}/ZERO_CONFIRMED
@@ -454,10 +462,11 @@ EOF
 }
 
 if [ "$scrape_ok" -eq 1 ] && [ "$PL_HEALED" -eq 0 ] && [ "$fast_exit" -eq 0 ]; then
-  ZERO_SIGNALS=$(zero_signals_of "${PL_ATTEMPT_LOG:-/dev/null}")
+  ZERO_SIGNALS=$(signals_of ZERO_SIGNALS "${PL_ATTEMPT_LOG:-/dev/null}")
+  ANOMALY_SIGNALS=$(signals_of ANOMALY_SIGNALS "${PL_ATTEMPT_LOG:-/dev/null}")
 fi
-if [ "$ZERO_SIGNALS" != "-" ]; then
-  echo "run-weekly: zero signals [${ZERO_SIGNALS}] — revalidating before the merge decision."
+if [ "$ZERO_SIGNALS" != "-" ] || [ "$ANOMALY_SIGNALS" != "-" ]; then
+  echo "run-weekly: selfcheck signals — zero [${ZERO_SIGNALS}], anomaly [${ANOMALY_SIGNALS}] — revalidating before the merge decision."
   rm -f "$HEAL_ROOT/ZERO_CONFIRMED" "$HEAL_ROOT/ZERO_BUG"
   pl_ensure_incident_skeleton
   pl_run_claude_with_watchdog "$ZERO_TIMEOUT_SECS" stats-zero-check "$(zero_check_prompt)" || true
@@ -465,17 +474,17 @@ if [ "$ZERO_SIGNALS" != "-" ]; then
   if [ -f "$HEAL_ROOT/ZERO_BUG" ]; then
     # BUG wins a double marker: fail closed on an ambiguous verdict.
     ZERO_VERDICT="bug"
-    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }zero-signal bug: $(pl_oneline "$(head -c 300 "$HEAL_ROOT/ZERO_BUG")")"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }selfcheck bug: $(pl_oneline "$(head -c 300 "$HEAL_ROOT/ZERO_BUG")")"
   elif [ -f "$HEAL_ROOT/ZERO_CONFIRMED" ]; then
     ZERO_VERDICT="confirmed"
   else
     # Timed out, died, or reasoned without probing. An UNVERIFIED zero is
     # exactly what shipped on 2026-08-17 — it gets no benefit of the doubt.
     ZERO_VERDICT="unverified"
-    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }zero-signal revalidation left no verdict"
+    RUN_ERRORS="${RUN_ERRORS:+${RUN_ERRORS}; }selfcheck revalidation left no verdict"
   fi
-  PL_SESSION_NOTES+=("zero signals [${ZERO_SIGNALS}] -> ${ZERO_VERDICT}")
-  echo "run-weekly: zero-signal verdict = ${ZERO_VERDICT} ($(date -u +%H:%M:%SZ))"
+  PL_SESSION_NOTES+=("selfcheck zero [${ZERO_SIGNALS}] anomaly [${ANOMALY_SIGNALS}] -> ${ZERO_VERDICT}")
+  echo "run-weekly: selfcheck verdict = ${ZERO_VERDICT} ($(date -u +%H:%M:%SZ))"
   [ "$ZERO_VERDICT" = "confirmed" ] || ZERO_BLOCK_MERGE=1
   # The session may have edited code or data; re-run the truncation sweep.
   validate_snapshots
@@ -529,12 +538,12 @@ mkdir -p "$(dirname "$INCIDENT_FILE")"
   if [ "${#PL_SESSION_NOTES[@]}" -gt 0 ]; then
     printf -- '- note: %s\n' "${PL_SESSION_NOTES[@]}"
   fi
-  if [ "$ZERO_SIGNALS" != "-" ]; then
-    printf -- '- zero signals: [%s] -> %s\n' "$ZERO_SIGNALS" "$ZERO_VERDICT"
+  if [ "$ZERO_SIGNALS" != "-" ] || [ "$ANOMALY_SIGNALS" != "-" ]; then
+    printf -- '- selfcheck: zero [%s], anomaly [%s] -> %s\n' "$ZERO_SIGNALS" "$ANOMALY_SIGNALS" "$ZERO_VERDICT"
   fi
   if [ "$ZERO_BLOCK_MERGE" -eq 1 ]; then
-    printf -- '- outcome: ZERO-SIGNAL %s — [%s] not confirmed real; PR left unmerged for review\n' \
-      "$(printf '%s' "$ZERO_VERDICT" | tr 'a-z' 'A-Z')" "$ZERO_SIGNALS"
+    printf -- '- outcome: SELFCHECK %s — zero [%s] / anomaly [%s] not confirmed real; PR left unmerged for review\n' \
+      "$(printf '%s' "$ZERO_VERDICT" | tr 'a-z' 'A-Z')" "$ZERO_SIGNALS" "$ANOMALY_SIGNALS"
   elif [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
     if [ "$fast_exit" -eq 0 ]; then acceptance="full success"; else acceptance="accepted partial, exit 10"; fi
     printf -- '- outcome: RECOVERED — outer gate accepted attempt %s (%s) after %s heal session(s); PR left unmerged for review\n' "$PL_ATTEMPT" "$acceptance" "$PL_HEAL_COUNT"
@@ -548,7 +557,7 @@ mkdir -p "$(dirname "$INCIDENT_FILE")"
 } >> "$INCIDENT_FILE"
 
 if [ "$ZERO_BLOCK_MERGE" -eq 1 ]; then
-  outcome="zero signals [${ZERO_SIGNALS}] ${ZERO_VERDICT}, PR review pending"
+  outcome="selfcheck zero [${ZERO_SIGNALS}] anomaly [${ANOMALY_SIGNALS}] ${ZERO_VERDICT}, PR review pending"
 elif [ "$scrape_ok" -eq 1 ] && [ "$PL_HEAL_COUNT" -gt 0 ]; then
   outcome="recovered after ${PL_ATTEMPT} attempts / ${PL_HEAL_COUNT} heal(s), PR review pending"
   [ "$fast_exit" -eq 10 ] && outcome="recovered (accepted partial) after ${PL_ATTEMPT} attempts / ${PL_HEAL_COUNT} heal(s), PR review pending"

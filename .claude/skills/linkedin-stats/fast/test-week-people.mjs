@@ -137,10 +137,7 @@ const runMerge = (payload) => {
   return { status: res.status, out: (res.stdout || '').trim(), err: (res.stderr || '').trim() };
 };
 const val = (out, k) => Number(out.match(new RegExp(`${k}=(-?\\d+)`))?.[1] ?? NaN);
-const row = (over = {}) => ({
-  reactors: null, reactors_unresolved: null,
-  commenters: null, commenters_unresolved: null, ...over,
-});
+const row = (over = {}) => ({ reactors: null, commenters: null, ...over });
 
 const withCorpus = (fn) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'week-people-'));
@@ -164,7 +161,7 @@ test('a roster attaches to an EXISTING week entry without disturbing it', () => 
   const before = JSON.parse(fs.readFileSync(file, 'utf8')).weeks[WEEK];
   const r = runMerge({
     mode: 'week_people', week: WEEK, comments_path: path.join(dir, 'comments.json'),
-    posts: [{ path: file, ...row({ reactors: [U('b'), U('a')], reactors_unresolved: 2 }) }],
+    posts: [{ path: file, ...row({ reactors: [U('b'), U('a')]}) }],
     comments: [],
   });
   assert.equal(r.status, 0, r.err);
@@ -174,7 +171,7 @@ test('a roster attaches to an EXISTING week entry without disturbing it', () => 
 
   const after = JSON.parse(fs.readFileSync(file, 'utf8')).weeks[WEEK];
   assert.deepEqual(after.reactors, [U('a'), U('b')], 'stored sorted');
-  assert.equal(after.reactors_unresolved, 2);
+  assert.equal('reactors_unresolved' in after, false, 'the counter is a defect signal, not stored data');
   assert.equal(after.commenters, undefined, 'an unmeasured side is not invented');
   assert.deepEqual(after.metrics, before.metrics, 'the snapshot is untouched');
   assert.deepEqual(after.demographics, before.demographics);
@@ -185,7 +182,7 @@ test('a missing week entry is created WITHOUT metrics', () => withCorpus((dir) =
   const file = anyPost(dir);
   const r = runMerge({
     mode: 'week_people', week: '2030-01-07', comments_path: path.join(dir, 'comments.json'),
-    posts: [{ path: file, ...row({ reactors: [U('a')], reactors_unresolved: 0 }) }],
+    posts: [{ path: file, ...row({ reactors: [U('a')]}) }],
     comments: [],
   });
   assert.equal(r.status, 0, r.err);
@@ -202,11 +199,11 @@ test('null means NOT MEASURED and never erases the other side', () => withCorpus
   const p = path.join(dir, 'comments.json');
   runMerge({
     mode: 'week_people', week: WEEK, comments_path: p, comments: [],
-    posts: [{ path: file, ...row({ commenters: [U('c')], commenters_unresolved: 0 }) }],
+    posts: [{ path: file, ...row({ commenters: [U('c')]}) }],
   });
   runMerge({
     mode: 'week_people', week: WEEK, comments_path: p, comments: [],
-    posts: [{ path: file, ...row({ reactors: [U('r')], reactors_unresolved: 0 }) }], // commenters: null
+    posts: [{ path: file, ...row({ reactors: [U('r')]}) }], // commenters: null
   });
   const entry = JSON.parse(fs.readFileSync(file, 'utf8')).weeks[WEEK];
   assert.deepEqual(entry.commenters, [U('c')], 'a run that did not look must not clear it');
@@ -218,15 +215,14 @@ test('rosters UNION — a partial re-read never shrinks a good list', () => with
   const p = path.join(dir, 'comments.json');
   runMerge({
     mode: 'week_people', week: WEEK, comments_path: p, comments: [],
-    posts: [{ path: file, ...row({ reactors: [U('a'), U('b'), U('c')], reactors_unresolved: 3 }) }],
+    posts: [{ path: file, ...row({ reactors: [U('a'), U('b'), U('c')]}) }],
   });
   runMerge({
     mode: 'week_people', week: WEEK, comments_path: p, comments: [],
-    posts: [{ path: file, ...row({ reactors: [U('a')], reactors_unresolved: 1 }) }],
+    posts: [{ path: file, ...row({ reactors: [U('a')]}) }],
   });
   const entry = JSON.parse(fs.readFileSync(file, 'utf8')).weeks[WEEK];
   assert.deepEqual(entry.reactors, [U('a'), U('b'), U('c')]);
-  assert.equal(entry.reactors_unresolved, 3, 'and the unresolved count keeps the max');
 }));
 
 test('an outbound comment gets the same four keys', () => withCorpus((dir) => {
@@ -236,7 +232,7 @@ test('an outbound comment gets the same four keys', () => withCorpus((dir) => {
     mode: 'week_people', week: WEEK, comments_path: p, posts: [],
     comments: [{
       comment_urn: urn,
-      ...row({ reactors: [U('r')], reactors_unresolved: 0, commenters: [], commenters_unresolved: 0 }),
+      ...row({ reactors: [U('r')], commenters: []}),
     }],
   });
   assert.equal(r.status, 0, r.err);
@@ -244,34 +240,35 @@ test('an outbound comment gets the same four keys', () => withCorpus((dir) => {
   const entry = JSON.parse(fs.readFileSync(p, 'utf8')).comments[urn].weeks[WEEK];
   assert.deepEqual(entry.reactors, [U('r')]);
   assert.deepEqual(entry.commenters, [], 'measured-and-nobody is a real answer');
-  assert.equal(entry.commenters_unresolved, 0);
 }));
 
 test('an unknown path or urn is COUNTED, not crashed on', () => withCorpus((dir) => {
   const r = runMerge({
     mode: 'week_people', week: WEEK, comments_path: path.join(dir, 'comments.json'),
-    posts: [{ path: path.join(dir, 'posts', 'does-not-exist.json'), ...row({ reactors: [U('a')], reactors_unresolved: 0 }) }],
-    comments: [{ comment_urn: 'urn:li:comment:(activity:9,9)', ...row({ reactors: [U('a')], reactors_unresolved: 0 }) }],
+    posts: [{ path: path.join(dir, 'posts', 'does-not-exist.json'), ...row({ reactors: [U('a')]}) }],
+    comments: [{ comment_urn: 'urn:li:comment:(activity:9,9)', ...row({ reactors: [U('a')]}) }],
   });
   assert.equal(r.status, 0, r.err);
   assert.equal(val(r.out, 'MISSING'), 2);
   assert.equal(val(r.out, 'POSTS_UPDATED'), 0);
 }));
 
-test('a list without its count is refused as SCRAPE_BAD_SHAPE', () => withCorpus((dir) => {
+test('a malformed roster is refused as SCRAPE_BAD_SHAPE', () => withCorpus((dir) => {
   const file = anyPost(dir);
+  // A side key missing entirely is a caller bug, not a tolerable input.
   const bad = runMerge({
     mode: 'week_people', week: WEEK, comments_path: path.join(dir, 'comments.json'), comments: [],
-    posts: [{ path: file, reactors: [U('a')], reactors_unresolved: null, commenters: null, commenters_unresolved: null }],
+    posts: [{ path: file, reactors: [U('a')] }],
   });
   assert.notEqual(bad.status, 0);
   assert.match(bad.err, /SCRAPE_BAD_SHAPE/);
 
   for (const broken of [
-    { reactors: 'not-a-list', reactors_unresolved: 0 },
-    { reactors: [''], reactors_unresolved: 0 },
-    { reactors: [U('a')], reactors_unresolved: -1 },
-    { reactors: [U('a')], reactors_unresolved: true },
+    { reactors: 'not-a-list' },
+    { reactors: [''] },
+    { reactors: ['   '] },
+    { reactors: [123] },
+    { commenters: [null] },
   ]) {
     const res = runMerge({
       mode: 'week_people', week: WEEK, comments_path: path.join(dir, 'comments.json'), comments: [],
@@ -301,7 +298,7 @@ test('every file the payload did not touch stays byte-identical', () => withCorp
 
   runMerge({
     mode: 'week_people', week: WEEK, comments_path: path.join(dir, 'comments.json'), comments: [],
-    posts: [{ path: file, ...row({ reactors: [U('a')], reactors_unresolved: 0 }) }],
+    posts: [{ path: file, ...row({ reactors: [U('a')]}) }],
   });
 
   for (const [full, before] of snapshot) {

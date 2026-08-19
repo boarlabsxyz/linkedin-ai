@@ -44,8 +44,9 @@ Exit code decides what happens next:
 
 ## Step 0.5 — zero-signal self-check (do NOT skip on a green run)
 
-On exit 0 or 10, read `[selfcheck] ZERO_SIGNALS`. If it is anything other than
-`-`, **the run is not reported as clean until you have looked**.
+On exit 0 or 10, read `[selfcheck] ZERO_SIGNALS` and `ANOMALY_SIGNALS`. If
+either is anything other than `-`, **the run is not reported as clean until you
+have looked**.
 
 Four counters are watched — zero new posts (`POSTS_NEW`), zero new outbound
 comments (`COMMENTS_NEW`), zero reactors (`REACTORS_SEEN`), zero commenters
@@ -53,6 +54,10 @@ comments (`COMMENTS_NEW`), zero reactors (`REACTORS_SEEN`), zero commenters
 happily when it is broken as when the week was quiet: on 2026-08-17 the per-post
 comment scrape returned empty for all 50 posts — 85 comments the week before —
 and the run exited 0, auto-merged and published.
+
+`ANOMALY_SIGNALS` is the mirror image: a non-zero counter that should be zero.
+Today that is `roster_unresolved` — an engager LinkedIn displayed that the
+parser could not turn into a profile link.
 
 Follow `references/zero-revalidation.md` in this session. Each probe is one
 `browser_navigate` + one `browser_evaluate` via the Playwright MCP, so the whole
@@ -96,8 +101,8 @@ carries the engagers themselves — on every post file and on every
 ```json
 "2026-08-17": {
   "snapshot_at": "…", "metrics": {…}, "demographics": {…}, "comments": [ … ],
-  "reactors":   ["https://www.linkedin.com/in/a", …], "reactors_unresolved": 2,
-  "commenters": ["https://www.linkedin.com/in/c", …], "commenters_unresolved": 0
+  "reactors":   ["https://www.linkedin.com/in/a", …],
+  "commenters": ["https://www.linkedin.com/in/c", …]
 }
 ```
 
@@ -107,10 +112,16 @@ who **replied** to it. Three rules:
 - **`null` = not measured, `[]` = measured and nobody.** The phase harvests
   commenters for every post but opens the reaction overlay only for its
   selected targets, so most posts get `commenters: […], reactors: null`.
-- **`*_unresolved`** counts people LinkedIn showed that cannot be given a URL.
-  Private "LinkedIn Member" profiles render with no anchor at all, so the
-  dialog's own total minus the URLs found is the only evidence they were there.
-  Never a silent drop.
+- **A person who cannot be given a URL breaks the run** — there is no "and N
+  others we could not name" counter (Peter, 2026-08-19: "let's just drop them.
+  if face such stuff, just break pipeline and fix during self-improving
+  stuff"). A roster is a list of profile links; carrying a hole-count next to
+  it forever just normalizes the hole. `ROSTER_UNRESOLVED > 0` raises the
+  `roster_unresolved` anomaly, which blocks the merge and goes to the
+  revalidation session. Expected to be 0 always — private "LinkedIn Member"
+  profiles render no anchor at all, so they never reach the parser (12 of 12
+  resolved on the first real corpus) — which is why a non-zero reads as "a
+  parser stopped finding links", not "someone was shy".
 - **Union, never overwrite** — a partial re-read of a lazily-paged dialog must
   not shrink a good list, the same reason events are append-only.
 
@@ -149,7 +160,8 @@ AUTH / RATE / DEADLINE), `WEEK`, `ATTRIBUTED_WEEK`, `POST_TARGETS`,
 `COMMENT_EVENTS`, `REPLY_EVENTS`, `COMMENTS_UNDATED`, `COMMENTERS_RECOVERED`,
 `PEOPLE_NEW`, `EVENTS_NEW`, `PROFILES_WRITTEN`, `ROSTER_POSTS`,
 `ROSTER_COMMENTS`, `ROSTER_WEEKS_CREATED`, `ROSTER_MISSING`, `REACTOR_URLS`,
-`COMMENTER_URLS`, `ICP_PENDING`, `ICP_CLASSIFIED`, `ICP_UNCLASSIFIED`.
+`COMMENTER_URLS`, `ROSTER_UNRESOLVED`, `REPLIES_UNMEASURED`, `ICP_PENDING`,
+`ICP_CLASSIFIED`, `ICP_UNCLASSIFIED`.
 
 **This phase is ADVISORY on purpose.** It never emits a phase-level `ERROR=`
 line and never escalates the exit code past `partial` (10), so a drifted
@@ -319,9 +331,10 @@ PY
    - Profiles written:  <PROFILES_WRITTEN>
    - ICP classified:    <ICP_CLASSIFIED> (pending <ICP_PENDING>)
 
-   Zero-signal self-check
-   - Zero signals: <ZERO_SIGNALS>
-   - Verdict:      <per signal: confirmed real — evidence | BUG — what is broken>
+   Selfcheck
+   - Zero signals:    <ZERO_SIGNALS>
+   - Anomaly signals: <ANOMALY_SIGNALS>
+   - Verdict:         <per signal: confirmed real — evidence | BUG — what is broken>
    ```
    The `people` phase exists **only** on the fast path: there is no fifth
    gather agent, because the CI pipeline self-heals rather than falling back,

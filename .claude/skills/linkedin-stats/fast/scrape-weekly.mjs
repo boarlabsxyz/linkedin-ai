@@ -1863,14 +1863,12 @@ async function phasePeople(page) {
   const rosterPosts = new Map();    // post file path -> row
   const rosterComments = new Map(); // comment urn    -> row
   const rosterRow = (m, k) => {
-    if (!m.has(k)) {
-      m.set(k, {
-        reactors: null, reactors_unresolved: null,
-        commenters: null, commenters_unresolved: null,
-      });
-    }
+    if (!m.has(k)) m.set(k, { reactors: null, commenters: null });
     return m.get(k);
   };
+  // People LinkedIn showed that we could not name. NOT stored — a non-zero
+  // count breaks the run instead (see People.rosterUrls).
+  let rosterUnresolved = 0;
 
   // 1. Commenters — free. The metrics phase already wrote this week's comment
   //    snapshots, and each entry now carries its own URN, so every comment
@@ -1897,9 +1895,8 @@ async function phasePeople(page) {
     // still fill it.
     if (!snap.comments.length) continue;
     const cr = People.rosterFromComments(snap.comments);
-    const row = rosterRow(rosterPosts, e.file);
-    row.commenters = cr.urls;
-    row.commenters_unresolved = cr.unresolved;
+    rosterUnresolved += cr.unresolved;
+    rosterRow(rosterPosts, e.file).commenters = cr.urls;
   }
 
   // 2. Reactors on in-scope posts — one paced navigation each.
@@ -1934,9 +1931,8 @@ async function phasePeople(page) {
           const onPage = await loadAndScrapePostComments(page);
           if (onPage.length) {
             const cr = People.rosterFromComments(onPage);
-            const row = rosterRow(rosterPosts, t.file);
-            row.commenters = cr.urls;
-            row.commenters_unresolved = cr.unresolved;
+            rosterUnresolved += cr.unresolved;
+            rosterRow(rosterPosts, t.file).commenters = cr.urls;
             const ev = People.buildPostCommentEvents({ post: t.data, comments: onPage });
             peopleAll.push(...ev.people);
             eventsAll.push(...ev.events);
@@ -1977,9 +1973,8 @@ async function phasePeople(page) {
         week: WEEK, reactor_count: reactors.length,
       });
       const rr = People.rosterUrls(reactors, { expected });
-      const rrow = rosterRow(rosterPosts, t.file);
-      rrow.reactors = rr.urls;
-      rrow.reactors_unresolved = rr.unresolved;
+      rosterUnresolved += rr.unresolved;
+      rosterRow(rosterPosts, t.file).reactors = rr.urls;
       reactorsSeen += reactors.length;
       scanned++;
       vlog(`people: post ${t.data.id} (${t.reason}) — ${reactors.length} reactors${isBaseline ? ' [baseline]' : ''}`);
@@ -2028,9 +2023,8 @@ async function phasePeople(page) {
           // side stays null rather than claiming nobody replied.
           if (replyRes.measured) {
             const cr = People.rosterFromReplies(replyRes.replies);
-            const row = rosterRow(rosterComments, comment.comment_urn);
-            row.commenters = cr.urls;
-            row.commenters_unresolved = cr.unresolved;
+            rosterUnresolved += cr.unresolved;
+            rosterRow(rosterComments, comment.comment_urn).commenters = cr.urls;
           } else {
             repliesUnmeasured++;
           }
@@ -2058,9 +2052,8 @@ async function phasePeople(page) {
               week: WEEK, reactor_count: reactors.length,
             });
             const rr = People.rosterUrls(reactors, { expected });
-            const crow = rosterRow(rosterComments, comment.comment_urn);
-            crow.reactors = rr.urls;
-            crow.reactors_unresolved = rr.unresolved;
+            rosterUnresolved += rr.unresolved;
+            rosterRow(rosterComments, comment.comment_urn).reactors = rr.urls;
             reactorsSeen += reactors.length;
           } else { dialogFailures++; }
         } else if (opened !== 'no-button') {
@@ -2197,6 +2190,7 @@ async function phasePeople(page) {
     COMMENTS_UNDATED: commentsUndated,
     COMMENTERS_RECOVERED: commentersRecovered,
     REPLIES_UNMEASURED: repliesUnmeasured,
+    ROSTER_UNRESOLVED: rosterUnresolved,
     PEOPLE_NEW: mergeVal('PEOPLE_NEW'),
     EVENTS_NEW: mergeVal('EVENTS_NEW'),
     PROFILES_WRITTEN: profilesWritten,
@@ -2250,6 +2244,18 @@ function computeSelfcheck() {
     out[key] = v;
     if (v === 0) zero.push(name);
   };
+  // Non-zero DEFECTS get the same treatment as a suspicious zero: reported,
+  // never escalated to an exit code, and routed to the session that can open a
+  // browser and tell a real-world explanation from a broken parser.
+  const anomaly = [];
+  const flag = (name, section, key) => {
+    if (!ran(section)) return;
+    const v = Number(sectionOf(section)?.[key]);
+    if (!Number.isFinite(v)) return;
+    out[key] = v;
+    if (v > 0) anomaly.push(name);
+  };
+
   check('posts_new', 'posts', 'POSTS_NEW');
   check('comments_new', 'comments', 'COMMENTS_NEW');
   check('reactors', 'people', 'REACTORS_SEEN');
@@ -2257,12 +2263,18 @@ function computeSelfcheck() {
   // inherits an empty comment scrape, and COMMENT_EVENTS can also be 0 for the
   // unrelated reason that older snapshots carry no comment_urn.
   check('commenters', 'metrics', 'COMMENTS_SCRAPED_TOTAL');
+  // A roster entry LinkedIn showed but we could not name. Expected to be 0
+  // always — private members render no anchor at all, so they never even
+  // reach the parser — which is exactly why a non-zero is worth breaking on
+  // rather than storing as an "and N others" footnote.
+  flag('roster_unresolved', 'people', 'ROSTER_UNRESOLVED');
   if (ran('people')) {
     const v = sectionOf('people')?.COMMENTER_URLS;
     if (v !== undefined) out.COMMENTER_URLS = Number(v); // cross-check, not a gate
   }
   out.PHASES_RUN = PHASES.join(',');
   out.ZERO_SIGNALS = zero.join(',') || '-';
+  out.ANOMALY_SIGNALS = anomaly.join(',') || '-';
   return out;
 }
 
@@ -2275,6 +2287,7 @@ function flushContracts() {
   } catch (e) {
     contractSections.set('selfcheck', {
       ZERO_SIGNALS: '-',
+      ANOMALY_SIGNALS: '-',
       SELFCHECK_ERROR: String(e?.message || e).split('\n')[0].slice(0, 120),
     });
   }

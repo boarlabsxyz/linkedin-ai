@@ -277,10 +277,23 @@ export const isSelf = (person) =>
  * per person, deduped and sorted so a week's diff shows only real change. Each
  * URL resolves to a file under dashboards/profiles/.
  *
- * `unresolved` is the people LinkedIn showed that cannot be given a URL —
- * never a silent drop. Private "LinkedIn Member" profiles render with no
- * anchor at all, so the reactor dialog's own total (`expected`) minus the URLs
- * we found is the only evidence they were there.
+ * `unresolved` counts the people LinkedIn showed that could NOT be given a URL
+ * — computed here, but deliberately NOT stored (Peter, 2026-08-19: "let's just
+ * drop them. if face such stuff, just break pipeline and fix during
+ * self-improving stuff"). A roster is a list of profile links; a person who
+ * has no link is a hole in it, and carrying a "some people are missing" number
+ * next to the array forever just normalizes the hole. So the caller treats a
+ * non-zero count as a DEFECT that blocks the merge and goes to the
+ * revalidation session, which can open a browser and say whether it is a
+ * genuinely private "LinkedIn Member" or a parser that stopped finding links.
+ *
+ * `expected` is the reaction dialog's own total. Private profiles render with
+ * no anchor at all — they never reach `records` — so that total minus the URLs
+ * found is the only evidence they were there.
+ *
+ * Expected to be 0 essentially always (12 of 12 on the first real corpus), so
+ * a non-zero here reads as "a parser stopped finding links", not "someone was
+ * shy". That is the whole reason it is worth failing on.
  */
 export function rosterUrls(records, { expected = null, dropSelf = false } = {}) {
   const urls = new Set();

@@ -335,22 +335,26 @@ def merge_week_people(p):
         ABSENCE of `metrics` to skip such an entry (see
         .github/scripts/build-stats-json.mjs).
 
+    A person LinkedIn showed but that could not be given a profile URL is NOT
+    recorded here. There is no "and N others we could not name" counter: the
+    scraper fails the run instead, and the revalidation session decides whether
+    it was a genuinely private member or a parser that stopped finding links
+    (Peter, 2026-08-19). In practice it has never happened — 12 of 12 resolved
+    on the first real corpus — so a non-zero count means something broke.
+
     Payload:
       week            "YYYY-MM-DD"
       comments_path   outbound comments file (optional if `comments` is empty)
-      posts[]         {path, reactors|None, reactors_unresolved|None,
-                       commenters|None, commenters_unresolved|None}
-      comments[]      {comment_urn, ...same four keys...}
+      posts[]         {path, reactors|None, commenters|None}
+      comments[]      {comment_urn, reactors|None, commenters|None}
     """
     week = p["week"]
     if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(week)):
         raise SystemExit(f"SCRAPE_BAD_SHAPE: week is not a date: {week!r}")
     now_iso = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    POST_REQUIRED = {"path", "reactors", "reactors_unresolved",
-                     "commenters", "commenters_unresolved"}
-    COMMENT_REQUIRED = {"comment_urn", "reactors", "reactors_unresolved",
-                        "commenters", "commenters_unresolved"}
+    POST_REQUIRED = {"path", "reactors", "commenters"}
+    COMMENT_REQUIRED = {"comment_urn", "reactors", "commenters"}
     SIDES = ("reactors", "commenters")
 
     def check(row, required, label):
@@ -359,19 +363,12 @@ def merge_week_people(p):
             raise SystemExit(
                 f"SCRAPE_BAD_SHAPE: {label} missing fields {sorted(missing)}")
         for side in SIDES:
-            urls, count = row[side], row[f"{side}_unresolved"]
-            # A list without its count, or a count without its list, is a
-            # caller bug — not something to paper over.
-            if (urls is None) != (count is None):
-                raise SystemExit(
-                    f"SCRAPE_BAD_SHAPE: {label} {side} and {side}_unresolved must both be null or both set")
+            urls = row[side]
             if urls is None:
                 continue
             if not isinstance(urls, list) or any(
                     not isinstance(u, str) or not u.strip() for u in urls):
                 raise SystemExit(f"SCRAPE_BAD_SHAPE: {label} {side} is not a list of urls")
-            if not isinstance(count, int) or isinstance(count, bool) or count < 0:
-                raise SystemExit(f"SCRAPE_BAD_SHAPE: {label} {side}_unresolved is not a count")
 
     incoming_posts = p.get("posts", [])
     incoming_comments = p.get("comments", [])
@@ -388,9 +385,10 @@ def merge_week_people(p):
                 continue
             merged = sorted(set(entry.get(side) or []) | set(row[side]))
             entry[side] = merged
-            entry[f"{side}_unresolved"] = max(
-                int(entry.get(f"{side}_unresolved") or 0), int(row[f"{side}_unresolved"]))
             counts[side] += len(merged)
+            # Legacy shape: these counters were stored until 2026-08-19. They
+            # are a defect signal now, not data — drop them on touch.
+            entry.pop(f"{side}_unresolved", None)
 
     def week_entry(weeks):
         if week not in weeks:
