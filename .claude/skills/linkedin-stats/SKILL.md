@@ -57,7 +57,13 @@ and the run exited 0, auto-merged and published.
 
 `ANOMALY_SIGNALS` is the mirror image: a non-zero counter that should be zero.
 Today that is `roster_unresolved` — an engager LinkedIn displayed that the
-parser could not turn into a profile link.
+parser could not turn into a profile link, on EITHER side (reactors and
+commenters both feed it).
+
+`REPLIES_UNMEASURED` is reported but deliberately not a signal: LinkedIn
+renders a comment thread flat, so a reply cannot be told from a top-level
+comment without leaning on an obfuscated CSS hash. The phase writes `null`
+("not measured") instead of guessing — see `references/zero-revalidation.md`.
 
 Follow `references/zero-revalidation.md` in this session. Each probe is one
 `browser_navigate` + one `browser_evaluate` via the Playwright MCP, so the whole

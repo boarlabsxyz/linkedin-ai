@@ -151,8 +151,10 @@ pipeline and fix during self-improving stuff"*). A roster is a list of profile
 links; a person with no link is a hole in it, and an "and N others" number next
 to the array just normalizes the hole.
 
-Probe: open the post whose target reported it (the log line names the id), open
-the reaction overlay, and count in the dialog:
+The counter is a SUM over both sides, so probe whichever the log implicates —
+the phase logs the target id next to each roster it builds.
+
+**Reactor side** — open the post, open the reaction overlay, count in the dialog:
 
 ```js
 const d = document.querySelector('dialog[open], [data-testid="dialog"]');
@@ -160,14 +162,41 @@ const d = document.querySelector('dialog[open], [data-testid="dialog"]');
  [...d.querySelectorAll('*')].filter(e => /LinkedIn Member/i.test(e.innerText || '')).length]
 ```
 
-REAL only if the shortfall is exactly accounted for by entries rendering as
-"LinkedIn Member" with **no anchor**. Say so explicitly with the two counts.
+**Commenter side** — same post, no dialog; count units against the anchors
+inside them:
+
+```js
+const U = 'div[id^="replaceableComment_urn:li:comment:"]';
+const units = [...document.querySelectorAll(U)].filter(u => !u.parentElement?.closest(U));
+[units.length, units.filter(u => u.querySelector('a[href*="/in/"]')).length]
+```
+
+REAL, on either side, only if the shortfall is exactly accounted for by entries
+that render as "LinkedIn Member" with **no anchor at all**. Say so explicitly
+with the two counts.
 
 BUG in every other case — and this is the likely one. Private members render no
-anchor at all, so they normally never reach the parser: 12 of 12 resolved on
-the first real corpus. A non-zero here usually means the anchor selector
-(`a[href*="/in/"]`) or the URL normalization stopped matching, i.e. people ARE
-being displayed with links we no longer read.
+anchor, so they normally never reach the parser: 12 of 12 reactors and 4 of 4
+commenters resolved on the first real corpus. A non-zero here usually means the
+anchor selector (`a[href*="/in/"]`) or the URL normalization stopped matching,
+i.e. people ARE being displayed with links we no longer read.
+
+### `REPLIES_UNMEASURED` — reported, deliberately NOT a signal
+
+Not in either list, and not a defect to chase. On a comment permalink LinkedIn
+renders the whole thread FLAT: measured live 2026-08-19, a top-level comment
+and a reply shared the same parent, the same DOM depth, the same left offset
+(397px), the same width, the same computed padding and margin. The only thing
+that differs is an obfuscated CSS-module hash on the grandparent
+(`dcc9147d…` vs `ccb1a91d…`) — split 4/4 and perfectly consistent, but with
+nothing derivable behind it. Anchoring on that hash is precisely the class of
+selector that silently died in the 2026-08 migration.
+
+So the phase writes `commenters: null` ("not measured") for outbound comments
+rather than `[]` ("nobody replied"), and reports the count. That is an honest
+capability limit, not a broken parser — do not "fix" it by guessing from
+document order or from the reply's leading @-mention (only 3 of 4 replies
+carried one).
 
 ## If you find a bug
 
