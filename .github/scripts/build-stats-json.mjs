@@ -68,7 +68,14 @@ for (const fname of readdirSync(POSTS_DIR).filter(f => f.endsWith(".json")).sort
   let latestWeek = "";
   let latestImpressions = 0;
   for (const [week, snap] of Object.entries(d.weeks ?? {})) {
-    const m = snap.metrics ?? {};
+    // The people phase can CREATE weeks[WEEK] purely to hang its reactor /
+    // commenter roster on — a --phases=people run has no metrics phase to
+    // create it. Such an entry has no `metrics`, and `m[k] ?? 0` would turn it
+    // into a fabricated all-zero week in the Grafana feed, which is worse than
+    // no row at all. Test the DATA, not a marker, so a hand-edit is covered
+    // too. Skipping first also keeps it out of the `latestWeek` race below.
+    if (!snap?.metrics) continue;
+    const m = snap.metrics;
     const row = { id: d.id, week };
     for (const k of METRIC_KEYS) row[k] = m[k] ?? 0;
     post_weeks.push(row);
@@ -201,7 +208,11 @@ try {
     const month = (entry.commented_at ?? "").slice(0, 7);
     if (!month) continue;
     const weeks = entry.weeks ?? {};
-    const sortedWeeks = Object.keys(weeks).sort();
+    // Same rule as the post loop: a people-only week entry carries the replier
+    // roster but no counts, and letting it win "latest" would zero this
+    // comment's whole month.
+    const sortedWeeks = Object.keys(weeks)
+      .filter((w) => weeks[w] && "reactions" in weeks[w]).sort();
     const latestSnap = sortedWeeks.length ? weeks[sortedWeeks[sortedWeeks.length - 1]] : {};
     const cur = commentsAgg.get(month) ?? { month, comments_posted: 0, reactions_received: 0, impressions_received: 0 };
     cur.comments_posted += 1;

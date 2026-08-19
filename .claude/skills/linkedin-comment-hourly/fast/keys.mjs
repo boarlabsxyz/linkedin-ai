@@ -41,10 +41,10 @@ export function makeKey(author, body) {
 // (legacy bash normalization vs ours, footer-cut differences, …).
 export const fuzzyId = (author, body) => `${normText(author)}|${normText(body).slice(0, 160)}`;
 
-// Person identity, the ICP-cache headline hash and the icp-filter.md bullet
-// parser now live in the SHARED cache module — linkedin-stats needs the same
+// Person identity, the headline hash and the icp-filter.md bullet parser now
+// live in the SHARED profile store — linkedin-stats needs the same
 // implementations, and two copies would silently diverge. Re-exported here so
 // gather-feed/gather-inbox keep importing every identity helper from one place.
 export {
   profileKey, headlineHash, readProfileList,
-} from '../../pipeline-shared/icp-cache.mjs';
+} from '../../pipeline-shared/profile-store.mjs';

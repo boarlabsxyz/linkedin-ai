@@ -16,7 +16,7 @@ discovery, per-post metrics, account analytics, outbound comments, and the
 `people` engagement phase) in one paced Playwright process over the same
 logged-in Chrome profile the MCP uses (~5 min total), and prints the same
 KEY=VALUE contracts the agents would, sectioned as `[posts]` / `[metrics]` /
-`[account]` / `[comments]` / `[people]`:
+`[account]` / `[comments]` / `[people]` / `[selfcheck]`:
 
 ```bash
 node .claude/skills/linkedin-stats/fast/scrape-weekly.mjs
@@ -41,6 +41,28 @@ Exit code decides what happens next:
   close the other browser and re-run, or use the agent flow.
 - **20 / 22 / 23** — auth wall / rate-limited / fs failure. Report the error
   verbatim and stop — the agent flow would hit the same wall.
+
+## Step 0.5 — zero-signal self-check (do NOT skip on a green run)
+
+On exit 0 or 10, read `[selfcheck] ZERO_SIGNALS`. If it is anything other than
+`-`, **the run is not reported as clean until you have looked**.
+
+Four counters are watched — zero new posts (`POSTS_NEW`), zero new outbound
+comments (`COMMENTS_NEW`), zero reactors (`REACTORS_SEEN`), zero commenters
+(`COMMENTS_SCRAPED_TOTAL`). A zero is the one shape a scraper produces just as
+happily when it is broken as when the week was quiet: on 2026-08-17 the per-post
+comment scrape returned empty for all 50 posts — 85 comments the week before —
+and the run exited 0, auto-merged and published.
+
+Follow `references/zero-revalidation.md` in this session. Each probe is one
+`browser_navigate` + one `browser_evaluate` via the Playwright MCP, so the whole
+check is ~4 navigations. State a verdict per signal, and obey the same honesty
+rule the headless session gets: **a confirmed-real zero is a result, reported as
+real — never edit code to make a real zero non-zero.**
+
+In CI this runs automatically: `run-weekly.sh` dispatches a bounded session
+before the merge decision, and a zero that is not confirmed real leaves the PR
+open instead of publishing.
 
 ## The `people` phase — WHO engaged, and what it scores
 
@@ -67,10 +89,53 @@ capped by `--people-max-posts` (25); and Peter's own comments younger than 30
 days, capped by `--people-max-comments` (25). Anything dropped by a cap is
 reported in `TARGETS_DROPPED`, never silently skipped.
 
+**Per-week rosters.** Counts alone do not say WHO, so each week snapshot also
+carries the engagers themselves — on every post file and on every
+`comments.json` entry:
+
+```json
+"2026-08-17": {
+  "snapshot_at": "…", "metrics": {…}, "demographics": {…}, "comments": [ … ],
+  "reactors":   ["https://www.linkedin.com/in/a", …], "reactors_unresolved": 2,
+  "commenters": ["https://www.linkedin.com/in/c", …], "commenters_unresolved": 0
+}
+```
+
+Canonical profile URLs, deduped and sorted; each resolves to a file under
+`dashboards/profiles/`. On an outbound comment, `commenters` means the people
+who **replied** to it. Three rules:
+- **`null` = not measured, `[]` = measured and nobody.** The phase harvests
+  commenters for every post but opens the reaction overlay only for its
+  selected targets, so most posts get `commenters: […], reactors: null`.
+- **`*_unresolved`** counts people LinkedIn showed that cannot be given a URL.
+  Private "LinkedIn Member" profiles render with no anchor at all, so the
+  dialog's own total minus the URLs found is the only evidence they were there.
+  Never a silent drop.
+- **Union, never overwrite** — a partial re-read of a lazily-paged dialog must
+  not shrink a good list, the same reason events are append-only.
+
+Written by `merge.py`'s `week_people` mode as a read-modify-write (the metrics
+phase writes `weeks[WEEK]` before this phase runs). A target with no
+`weeks[WEEK]` gets one created carrying `people_only: true` and NO `metrics`
+— `build-stats-json.mjs` skips metrics-less entries so they never become a
+fabricated all-zero week in Grafana. While on the post page for the reaction
+overlay, the phase also scrapes the top-level commenters itself, at zero extra
+navigations: that decouples the roster from the metrics phase, which returned
+zero comments for all 50 posts on 2026-08-17.
+
+**Profiles.** Every person the phase sees gets one file under
+`dashboards/profiles/` (`pipeline-shared/profile-store.mjs`) — name, headline,
+profile link, first-seen and last-updated dates — SHARED with
+linkedin-comment-hourly. **This phase never opens a profile page** (Peter,
+2026-08-19); it records only what the reaction overlay and comment cards hand
+it. The store drops a write whose record is unchanged, so re-seeing the same
+people cannot churn git.
+
 **Tiering.** `sources/icp.md` (synced from the ClickUp ICP Doc by the
 `sync-sources` skill) is the rubric; `fast/classify-icp.mjs` classifies each
 person once from their name + headline via a batched, tool-free pinned-haiku
-`claude -p` call and caches the verdict against a hash of that headline.
+`claude -p` call and caches the verdict in that person's profile file, stamped
+with the rubric hash it was reached under.
 `.claude/skills/linkedin-stats/vip-people.md` is the hand-curated 4× list.
 Weights live in `.claude/skills/linkedin-stats/scoring.json`. **Scores are
 computed at build time** by `.github/scripts/build-stats-json.mjs`, never
@@ -81,18 +146,32 @@ all history with no re-scrape.
 AUTH / RATE / DEADLINE), `WEEK`, `ATTRIBUTED_WEEK`, `POST_TARGETS`,
 `POST_TARGETS_SCANNED`, `COMMENT_TARGETS_SCANNED`, `TARGETS_FAILED`,
 `TARGETS_DROPPED`, `REACTORS_SEEN`, `REACTORS_EXPECTED`, `TARGETS_SHORT_READ`,
-`COMMENT_EVENTS`, `REPLY_EVENTS`, `COMMENTS_UNDATED`, `PEOPLE_NEW`,
-`EVENTS_NEW`, `ICP_PENDING`, `ICP_CLASSIFIED`, `ICP_UNCLASSIFIED`.
+`COMMENT_EVENTS`, `REPLY_EVENTS`, `COMMENTS_UNDATED`, `COMMENTERS_RECOVERED`,
+`PEOPLE_NEW`, `EVENTS_NEW`, `PROFILES_WRITTEN`, `ROSTER_POSTS`,
+`ROSTER_COMMENTS`, `ROSTER_WEEKS_CREATED`, `ROSTER_MISSING`, `REACTOR_URLS`,
+`COMMENTER_URLS`, `ICP_PENDING`, `ICP_CLASSIFIED`, `ICP_UNCLASSIFIED`.
 
 **This phase is ADVISORY on purpose.** It never emits a phase-level `ERROR=`
 line and never escalates the exit code past `partial` (10), so a drifted
 reactor overlay cannot demote a run whose metrics and account data are good,
 nor block the Pages publish. Its health shows up in `PEOPLE_STATUS` and in the
 run manifest. Promote it to a hard canary only once it has proven itself over
-several fires. Flags: `--no-icp` (skip classification), `--icp-max=<n>` (cap
-classifications per run, default 200), `--people-recent-days=<n>`.
+several fires. One exception is already provable rather than advisory:
+`REACTORS_SEEN=0` while `REACTORS_EXPECTED>0` means the dialog told us the
+count and we read nobody — that sets `SELECTOR_DRIFT` and rides the normal
+exit-10 heal path.
 
-Regression suite (browser-free): `node .claude/skills/linkedin-stats/fast/test-people.mjs`.
+Flags: `--no-icp` (skip classification), `--icp-max=<n>` (cap classifications
+per run, default 200), `--people-recent-days=<n>`, `--people-recent-only`
+(drop the never-scanned backlog and scan only the recency window — what the
+roster backfill uses), `--profiles-dir=<dir>`.
+
+Regression suites (browser-free):
+```bash
+node .claude/skills/linkedin-stats/fast/test-people.mjs
+node .claude/skills/linkedin-stats/fast/test-week-people.mjs
+node .claude/skills/pipeline-shared/test-profile-store.mjs
+```
 
 **Known DOM facts (verified live 2026-08-17)** — LinkedIn's 2026 obfuscation
 reached the post page, so these are the only handles that work:
@@ -235,11 +314,23 @@ PY
    - Reactors:          <REACTORS_SEEN> of <REACTORS_EXPECTED>
    - New events:        <EVENTS_NEW> (comments <COMMENT_EVENTS>, replies <REPLY_EVENTS>)
    - Undated comments:  <COMMENTS_UNDATED>
+   - Rosters written:   <ROSTER_POSTS> posts / <ROSTER_COMMENTS> comments
+                        (<REACTOR_URLS> reactor + <COMMENTER_URLS> commenter urls)
+   - Profiles written:  <PROFILES_WRITTEN>
    - ICP classified:    <ICP_CLASSIFIED> (pending <ICP_PENDING>)
+
+   Zero-signal self-check
+   - Zero signals: <ZERO_SIGNALS>
+   - Verdict:      <per signal: confirmed real — evidence | BUG — what is broken>
    ```
    The `people` phase exists **only** on the fast path: there is no fifth
    gather agent, because the CI pipeline self-heals rather than falling back,
    and the phase is advisory (a failure there never blocks the run). On the
    agent flow, report `[people] SKIPPED=agent_flow`.
+
+   The agent flow has no `[selfcheck]` section — compute the same four numbers
+   from the step aggregates (`POSTS_NEW`, `COMMENTS_NEW`,
+   `COMMENTS_SCRAPED_TOTAL`; `REACTORS_SEEN` is fast-path only) and apply
+   step 0.5 to them.
 
    Steps run sequentially. If step 1 or step 3's agent returns `ERROR=<...>`, include the error line verbatim and stop without spawning subsequent steps. If step 4's agent returns `ERROR=<...>`, include it verbatim in the report — the snapshot from step 3 is already persisted, so don't roll anything back. Per-post `ERROR=` returns inside step 2 are aggregated into `POSTS_FAILED` / `FAILED_IDS` and do NOT abort the skill.

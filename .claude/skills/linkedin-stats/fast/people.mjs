@@ -96,7 +96,18 @@ export function personRecord({ name, url, headline }) {
   if (!key) return null;
   let profile_url = '';
   try {
-    if (url) { const u = new URL(url, 'https://www.linkedin.com'); profile_url = u.origin + u.pathname.replace(/\/+$/, ''); }
+    if (url) {
+      const u = new URL(url, 'https://www.linkedin.com');
+      let p = u.pathname.replace(/\/+$/, '');
+      // Trailing segments are noise, not identity: LinkedIn hands out locale
+      // suffixes ("/in/dc-ukr/en") and activity paths
+      // ("/in/x/recent-activity/all"). Keep only "/in/<slug>" so this URL and
+      // the profileKey that names the person's file agree — otherwise a
+      // roster entry points at a profile file that does not exist.
+      const m = p.match(/^(\/in\/[^/]+)/i);
+      if (m) p = m[1];
+      profile_url = u.origin + p;
+    }
   } catch { profile_url = ''; }
   return {
     key,
@@ -119,8 +130,14 @@ export { targetIdForPost, targetIdForComment };
  * never scanned (the baseline backlog). Everything is newest-first inside its
  * band, and the caller caps the list — the number dropped is reported, never
  * silently swallowed.
+ *
+ * `recentOnly` drops the never-scanned band entirely, so a run can be scoped
+ * to "the last N days" instead of dragging in the whole back catalogue as
+ * baselines. Used by the one-off roster backfill.
  */
-export function selectPostTargets(entries, { week, maxPosts = 25, recentDays = 30, scannedTargets = {} } = {}) {
+export function selectPostTargets(entries, {
+  week, maxPosts = 25, recentDays = 30, scannedTargets = {}, recentOnly = false,
+} = {}) {
   const weekMs = weekToMs(week);
   const scored = [];
   for (const { file, data } of entries) {
@@ -135,7 +152,8 @@ export function selectPostTargets(entries, { week, maxPosts = 25, recentDays = 3
       && ((latest.metrics?.reactions ?? 0) !== (prev.metrics?.reactions ?? 0)
         || (latest.metrics?.comments ?? 0) !== (prev.metrics?.comments ?? 0)));
     const recent = Number.isFinite(postedMs) && (weekMs - postedMs) <= recentDays * DAY_MS;
-    const neverScanned = !scannedTargets[targetIdForPost(data.urn)];
+    const neverScanned = !recentOnly && !scannedTargets[targetIdForPost(data.urn)];
+    if (recentOnly && !recent) continue;
     if (!changed && !recent && !neverScanned) continue;
     scored.push({
       file,
@@ -247,6 +265,51 @@ export function buildCommentReactionEvents({ comment, reactors, attributedWeek, 
   return { people, events };
 }
 
+// ------------------------------------------------------------------ rosters
+
+/** Peter himself is not an engager with Peter. */
+export const SELF_KEY = 'in/ovchyn';
+export const isSelf = (person) =>
+  person.key === SELF_KEY || /\/in\/ovchyn$/i.test(person.profile_url || '');
+
+/**
+ * The "who engaged" list a week snapshot carries: canonical profile URLs, one
+ * per person, deduped and sorted so a week's diff shows only real change. Each
+ * URL resolves to a file under dashboards/profiles/.
+ *
+ * `unresolved` is the people LinkedIn showed that cannot be given a URL —
+ * never a silent drop. Private "LinkedIn Member" profiles render with no
+ * anchor at all, so the reactor dialog's own total (`expected`) minus the URLs
+ * we found is the only evidence they were there.
+ */
+export function rosterUrls(records, { expected = null, dropSelf = false } = {}) {
+  const urls = new Set();
+  let blank = 0;
+  for (const r of records ?? []) {
+    const p = personRecord(r);
+    if (!p) { blank++; continue; }
+    if (dropSelf && isSelf(p)) continue;
+    if (p.profile_url) urls.add(p.profile_url); else blank++;
+  }
+  const list = [...urls].sort();
+  return {
+    urls: list,
+    unresolved: expected === null ? blank : Math.max(blank, expected - list.length),
+  };
+}
+
+/**
+ * Commenters on one of Peter's posts, from the snapshot the metrics phase
+ * wrote. Unlike buildPostCommentEvents this KEEPS entries with no comment URN:
+ * a comment that cannot be DATED is still a commenter.
+ */
+export const rosterFromComments = (comments) => rosterUrls(
+  (comments ?? []).map((c) => ({ name: c.author_name, url: c.author_url, headline: c.author_headline })));
+
+/** Repliers to one of Peter's own comments. */
+export const rosterFromReplies = (replies) => rosterUrls(
+  (replies ?? []).map((r) => ({ name: r.name, url: r.url, headline: r.headline })), { dropSelf: true });
+
 /** Replies to one of Peter's own comments — dated exactly by their own URN. */
 export function buildReplyEvents({ comment, replies }) {
   const people = [];
@@ -258,7 +321,7 @@ export function buildReplyEvents({ comment, replies }) {
     const person = personRecord({ name: r.name, url: r.url, headline: r.headline });
     if (!person) { undated++; continue; }
     // Peter replying to himself is not engagement with Peter.
-    if (/\/in\/ovchyn$/i.test(person.profile_url) || person.key === 'in/ovchyn') continue;
+    if (isSelf(person)) continue;
     people.push(person);
     events.push({
       event_id: `reply:${r.reply_urn}`,

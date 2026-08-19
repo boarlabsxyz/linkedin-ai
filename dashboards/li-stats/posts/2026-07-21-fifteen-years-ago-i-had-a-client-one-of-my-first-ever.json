@@ -187,7 +187,14 @@
           "Speed and Function": 22.3
         }
       },
-      "comments": []
+      "comments": [],
+      "reactors": [
+        "https://www.linkedin.com/in/anatoly-chelyshev",
+        "https://www.linkedin.com/in/henrysyahputra",
+        "https://www.linkedin.com/in/inesadruzhkova",
+        "https://www.linkedin.com/in/vitalii-pikozh"
+      ],
+      "reactors_unresolved": 0
     }
   }
 }
